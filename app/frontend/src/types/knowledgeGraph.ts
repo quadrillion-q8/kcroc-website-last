@@ -420,6 +420,10 @@ export const WebPageSchema = RoutableEntitySchema.extend({
   // Optional article metadata used when schemaTypes includes Article/TechArticle.
   authorName: z.string().optional(),
   authorUrl: z.string().optional(),
+  reviewerUrl: z.string().url().optional(),
+  proficiencyLevel: z.string().optional(),
+  about: z.array(z.string()).optional(),
+  keywords: z.array(z.string()).optional(),
   datePublished: z.string().optional(),
   dateModified: z.string().optional(),
   articleSection: z.string().optional(),

@@ -37,7 +37,7 @@ const routableEntities = (KCROC_GRAPH.routableEntities ?? []).map((e: any) => {
         serviceTypes: e.serviceTypes ?? []
       };
     case 'WebPage':
-      return { ...b, description: e.description, featuredFAQIds: e.featuredFAQIds ?? [], articleSection: e.articleSection, authorUrl: e.authorUrl, datePublished: e.datePublished, dateModified: e.dateModified };
+      return { ...b, description: e.description, featuredFAQIds: e.featuredFAQIds ?? [], articleSection: e.articleSection, authorUrl: e.authorUrl, reviewerUrl: e.reviewerUrl, proficiencyLevel: e.proficiencyLevel, about: e.about ?? [], keywords: e.keywords ?? [], datePublished: e.datePublished, dateModified: e.dateModified };
     default:
       return b;
   }

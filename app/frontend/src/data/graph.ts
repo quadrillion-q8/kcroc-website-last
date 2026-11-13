@@ -859,10 +859,10 @@ export const rawGraphData: RawGraphData = {
     'guide-bios-uefi': {
       id: 'guide-bios-uefi', slug: 'guides/bios-uefi-recovery-kuwait', entityType: 'WebPage', isActive: true,
       title: 'BIOS & UEFI Troubleshooting, Update Failures & Firmware Recovery',
-      description: "A global technical reference to diagnosing BIOS and UEFI update failures, no-POST symptoms, OEM recovery paths, SPI flash programming, TPM measurements and the checks that distinguish firmware corruption from hardware faults.",
+      description: "A global technical reference to diagnosing BIOS/UEFI update failures, no-POST symptoms, OEM recovery paths, SPI NOR flash programming, capsule-image validation, 1.8V/3.3V chip safety, TPM measurements and storage-controller faults.",
       seo: {
-        title: 'BIOS & UEFI Recovery Guide: Fix Failed Updates & No-POST',
-        description: "Diagnose failed BIOS and UEFI updates, black screens and no-POST faults. Compare OEM recovery methods, SPI programming, TPM and BitLocker risks.",
+        title: 'BIOS & UEFI Recovery Guide: Failed Updates, No POST & SPI Flash',
+        description: 'Diagnose BIOS/UEFI update failures, black screens and no-POST faults. Learn OEM recovery, SPI NOR sizing, 1.8V/3.3V safety, TPM and BitLocker checks.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait',
         ogImage: 'https://www.computerrepairkuwait.com/images/discover/bios-hero-motherboard-1200x675.webp',
         ogType: 'article',
@@ -872,7 +872,7 @@ export const rawGraphData: RawGraphData = {
           'ar': 'https://www.computerrepairkuwait.com/guides/ar/bios-uefi-recovery-kuwait',
           'x-default': 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait'
         },
-        lastModified: '2026-11-09',
+        lastModified: '2026-11-13',
         schemaTypes: ['TechArticle', 'FAQPage', 'BreadcrumbList']
       },
       featuredFAQIds: [
@@ -897,9 +897,13 @@ export const rawGraphData: RawGraphData = {
       ],
       relatedServiceIds: ['srv-motherboard', 'srv-laptop', 'srv-gaming'],
       datePublished: '2026-10-05',
-      dateModified: '2026-11-09',
+      dateModified: '2026-11-13',
       articleSection: 'BIOS, UEFI & Firmware Recovery',
       authorUrl: 'https://www.computerrepairkuwait.com/author/imran',
+      reviewerUrl: 'https://www.computerrepairkuwait.com/author/imran',
+      proficiencyLevel: 'Beginner to advanced hardware technician',
+      about: ['UEFI Firmware', 'BIOS Recovery', 'SPI NOR Flash Memory', 'Intel Flash Descriptor', 'Intel Converged Security and Management Engine (CSME)', 'AMD Platform Security Processor (PSP)', 'NVRAM EFI Variables', 'DMI / SMBIOS', 'Embedded Controller Firmware', 'Power-On Self-Test (POST)', 'Trusted Platform Module (TPM)'],
+      keywords: ['BIOS recovery after failed update', 'UEFI recovery guide', 'black screen after BIOS update', 'no POST after BIOS update', 'SPI NOR flash programming', '1.8V vs 3.3V SPI flash', 'UEFI capsule header and image size', 'Intel Flash Descriptor and CSME', 'AMD PSP and AGESA firmware', 'DDR5 memory training after BIOS update', 'Intel VMD INACCESSIBLE_BOOT_DEVICE', 'BitLocker recovery after BIOS update', 'HP Sure Start BIOS recovery', 'ThinkPad emergency reset'],
       contentImages: [
         { src: '/images/guides/bios-recovery/bios-chip-repair-kuwait-laptop-motherboard.webp', alt: 'SPI firmware flash chip and motherboard circuitry during a recovery diagnosis', width: 800, height: 450, placement: 'hero', caption: 'Firmware flash-device inspection during a motherboard recovery diagnosis.' }
       ]

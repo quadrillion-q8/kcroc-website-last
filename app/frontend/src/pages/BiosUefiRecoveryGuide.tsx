@@ -9,7 +9,6 @@ import {
   Volume2, Wrench, Zap, XCircle
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import StickyTOC from '@/components/blog/StickyTOC';
 
 import { SEOEngine } from '../core/components/SEOEngine';
 import { IMAGES } from '../constants/images';
@@ -63,9 +62,9 @@ const warningSigns = [
 
 const manufacturerNotes = [
   { brand: 'Dell', method: 'Dell BIOS Recovery / BIOS Auto-Recovery on supported systems', trigger: 'Ctrl + Esc is documented for many supported models; exact recovery path depends on the model.', media: 'Some supported USB workflows use FAT32 and may require BIOS_IMG.rcv. Rename only when Dell’s exact model instructions require it.', caveat: 'Confirm by full model or Service Tag and follow the documented AC/battery requirements.', sourceUrl: 'https://www.dell.com/support/kbdoc/en-us/000132453/how-to-recover-the-bios-on-a-dell-computer-or-tablet' },
-  { brand: 'HP', method: 'HP BIOS Recovery; HP Sure Start on selected business systems', trigger: 'Win + B, and on some documented models Win + V; follow exact product-number instructions.', media: 'Use the HP BIOS package and supported recovery-media creation workflow where available; no single filename is universal.', caveat: 'Sure Start uses protected automatic recovery. HP says manual key-combination and USB recovery methods are not supported on Sure Start systems.', sourceUrl: 'https://support.hp.com/ca-en/document/ish_3932413-2337994-16' },
-  { brand: 'Lenovo', method: 'Platform-specific BIOS recovery or self-recovery, where provided', trigger: 'ThinkPad, IdeaPad and Legion behavior differs; there is no universal key sequence for every Lenovo family.', media: 'Use the package and recovery instructions for the exact Machine Type Model and board revision. File format and USB requirements vary.', caveat: 'Verify that the exact system supports the proposed recovery method before preparing media.', sourceUrl: 'https://pcsupport.lenovo.com/' },
-  { brand: 'ASUS', method: 'CrashFree BIOS 3 or USB BIOS FlashBack on supported boards', trigger: 'CrashFree is model/board dependent. FlashBack requires the dedicated port and physical button on equipped boards.', media: 'Follow the board manual for USB format and port. Some FlashBack workflows use FAT16/32 media and BIOSRenamer to create the exact .CAP filename.', caveat: 'CrashFree and FlashBack are different mechanisms; do not assume CPU/RAM independence or identical filenames.', sourceUrl: 'https://www.asus.com/support/faq/1038568/' },
+  { brand: 'HP', method: 'HP BIOS Recovery; HP Sure Start on selected business systems', trigger: 'Win + B, and on some documented models Win + V; follow exact product-number instructions.', media: 'Use the HP BIOS package and supported recovery-media creation workflow where available; no single filename is universal.', caveat: 'On supported Sure Start systems, the HP Endpoint Security Controller monitors firmware integrity and can restore the main BIOS from an isolated backup. HP says manual key-combination and USB recovery methods are not supported on these systems.', sourceUrl: 'https://support.hp.com/ca-en/document/ish_3932413-2337994-16' },
+  { brand: 'Lenovo', method: 'Platform-specific BIOS recovery or self-recovery, where provided', trigger: 'Some ThinkPad models have an emergency-reset hole described in their hardware guide; use it only as a model-specific power-reset procedure.', media: 'Use the package and recovery instructions for the exact Machine Type Model and board revision. File format and USB requirements vary.', caveat: 'The emergency-reset hole is not a firmware rewrite or universal BIOS-recovery trigger. Verify that the exact model includes this feature and follow its user guide.', sourceUrl: 'https://pcsupport.lenovo.com/' },
+  { brand: 'ASUS', method: 'CrashFree BIOS 3 or USB BIOS FlashBack on supported boards', trigger: 'CrashFree is model/board dependent. FlashBack requires the dedicated port and physical button on equipped boards.', media: 'Follow the board manual for USB format and port. Some FlashBack workflows use FAT16/32 media and BIOSRenamer to create the exact .CAP filename.', caveat: 'USB BIOS FlashBack can operate without a CPU or DRAM on equipped models. CrashFree BIOS 3 is a separate recovery path; do not assume it has the same pre-boot independence or works on every board.', sourceUrl: 'https://www.asus.com/support/faq/1038568/' },
   { brand: 'Acer', method: 'Model-specific firmware recovery, if supported', trigger: 'Key combinations and crisis behavior vary by platform generation; verify the exact product service documentation.', media: 'Use only the official package for the complete model identifier and documented recovery-media layout.', caveat: 'Do not assume Fn + Esc, a particular .fd filename or a black-screen write sequence is universal.', sourceUrl: 'https://www.acer.com/support' },
   { brand: 'MSI', method: 'Flash BIOS Button on equipped motherboards', trigger: 'Use the dedicated rear-I/O port and physical button only when the exact board supports this feature.', media: 'MSI documents MSI.ROM on supported Flash BIOS Button models. Check the exact manual for the required USB format and port.', caveat: 'Do not assume the button, filename or procedure exists on every MSI board.', sourceUrl: 'https://us.msi.com/support/technical_details/MB_Flash_BIOS_Button' },
   { brand: 'Gigabyte', method: 'Q-Flash Plus on equipped motherboards', trigger: 'Use the dedicated port and Q-Flash Plus button only when the exact board supports the feature.', media: 'Gigabyte documents gigabyte.bin for supported Q-Flash Plus boards. Confirm the USB layout and filename in the exact board manual.', caveat: 'Q-Flash Plus is not the same as the regular in-UEFI Q-Flash utility and is not present on every board.', sourceUrl: 'https://www.gigabyte.com/FileUpload/Global/KeyFeature/3701/index.html' },
@@ -136,6 +135,7 @@ const toc = [
   { id: 'symptom-matcher', label: 'Symptom Matcher' },
   { id: 'updates', label: 'Before You Flash' },
   { id: 'warning-signs', label: 'Warning Signs' },
+  { id: 'post-update-matrix', label: 'Post-Update False Bricks' },
   { id: 'firmware-vs-hardware', label: 'Firmware vs Hardware' },
   { id: 'recovery-intake', label: 'Pre-Recovery Intake' },
   { id: 'manufacturers', label: 'OEM Recovery Matrix' },
@@ -147,7 +147,7 @@ const toc = [
   { id: 'faq', label: '18 FAQs' },
 ];
 
-const LAST_REVIEWED = 'November 9, 2026';
+const LAST_REVIEWED = 'November 13, 2026';
 
 export default function BiosUefiRecoveryGuide() {
   return (
@@ -156,7 +156,6 @@ export default function BiosUefiRecoveryGuide() {
       {/* Dynamic SEO Engine Integration */}
       <SEOEngine entityId="guide-bios-uefi" />
 
-      <StickyTOC toc={toc} />
 
       {/* ─── HERO ─── */}
       <section className="relative overflow-hidden border-b border-slate-800/80 px-4 pb-10 pt-24 sm:px-6 sm:pb-16">
@@ -186,13 +185,13 @@ export default function BiosUefiRecoveryGuide() {
                   <a href="#manufacturers">OEM Recovery Table</a>
                 </Button>
               </div>
-              <div className="mt-6 flex flex-wrap gap-2">
+              <nav aria-label="Table of contents" className="mt-6 flex flex-wrap gap-2">
                 {toc.map((item) => (
                   <a key={item.id} href={`#${item.id}`} className="rounded-full border border-slate-800 bg-brand-dark/40 px-3 py-1.5 text-[11px] text-slate-400 transition hover:border-cyan-500/50 hover:text-cyan-300">
                     {item.label}
                   </a>
                 ))}
-              </div>
+              </nav>
             </div>
 
             <div className="rounded-2xl border border-red-500/30 bg-red-500/5 p-5 shadow-2xl shadow-red-950/20 sm:p-6">
@@ -375,7 +374,7 @@ export default function BiosUefiRecoveryGuide() {
           <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
             <div className="border border-slate-800 rounded-xl p-4 sm:p-5">
               <h3 className="text-cyan-300 font-bold text-sm sm:text-base mb-2">Generally Makes Sense to Update</h3>
-              <ul className="space-y-1.5">
+              <ul className="list-none space-y-1.5 pl-0">
                 {['Release notes describe a fix for a symptom you actually have', "You're installing new hardware that needs updated firmware support"].map(item => (
                   <li key={item} className="flex items-start gap-1.5 text-slate-400 text-xs sm:text-sm">
                     <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
@@ -386,7 +385,7 @@ export default function BiosUefiRecoveryGuide() {
             </div>
             <div className="border border-slate-800 rounded-xl p-4 sm:p-5">
               <h3 className="text-red-300 font-bold text-sm sm:text-base mb-2">Often Better to Leave Alone</h3>
-              <ul className="space-y-1.5">
+              <ul className="list-none space-y-1.5 pl-0">
                 {['The system is stable with no symptom the update claims to fix', "You'd be jumping several versions at once — check if step updates are required", "You're on battery or unstable power, where an interruption is the real risk"].map(item => (
                   <li key={item} className="flex items-start gap-1.5 text-slate-400 text-xs sm:text-sm">
                     <XCircle className="w-3.5 h-3.5 text-red-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
@@ -446,7 +445,7 @@ export default function BiosUefiRecoveryGuide() {
                   </div>
                 </div>
                 <p className="mt-4 text-sm leading-6 text-slate-300">{sign.description}</p>
-                <ul className="mt-4 space-y-2">
+                <ul className="list-none mt-4 space-y-2 pl-0">
                   {sign.clues.map((clue) => (
                     <li key={clue} className="flex items-start gap-2 text-xs leading-5 text-slate-400 sm:text-sm">
                       <CheckCircle2 className={`mt-0.5 h-4 w-4 shrink-0 ${sign.urgent ? 'text-red-300' : 'text-cyan-300'}`} aria-hidden="true" />
@@ -457,6 +456,36 @@ export default function BiosUefiRecoveryGuide() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ─── POST-UPDATE FALSE-BRICK MATRIX ─── */}
+      <section id="post-update-matrix" className="scroll-mt-20 border-t border-slate-900 bg-slate-900/30 px-4 py-8 sm:px-6 sm:py-16">
+        <div className="container mx-auto max-w-5xl">
+          <div className="mb-7 max-w-3xl">
+            <Badge className="mb-3 border-amber-500/30 bg-amber-500/10 px-3 py-1.5 text-amber-300">After a BIOS/UEFI update</Badge>
+            <h2 className="mt-1 text-2xl font-bold text-white sm:text-4xl">Post-Update False Bricks: When a Successful BIOS Update Looks Like a Dead Board</h2>
+            <p className="mt-3 text-sm leading-6 text-slate-400 sm:text-base">A completed update can still change memory-training behavior, storage settings, pre-boot graphics support or TPM measurements. These symptoms can look like firmware corruption even when the flash operation succeeded.</p>
+          </div>
+          <div className="overflow-x-auto rounded-2xl border border-slate-800">
+            <table className="w-full min-w-[920px] border-collapse text-left">
+              <thead className="bg-slate-900/80 text-[11px] uppercase tracking-wider text-slate-400">
+                <tr><th scope="col" className="px-4 py-4">What you see</th><th scope="col" className="px-4 py-4">What may have happened</th><th scope="col" className="px-4 py-4">First safe check</th></tr>
+              </thead>
+              <tbody className="divide-y divide-slate-800 text-xs sm:text-sm">
+                <tr className="align-top"><th scope="row" className="px-4 py-4 font-bold text-white">Black screen, fans running and a DRAM LED or training code</th><td className="px-4 py-4 leading-6 text-slate-300">DDR5 Memory Reference Code (MRC) or platform memory retraining may be running after a firmware or memory-configuration change. Kingston documents several minutes on some DDR5 PCs (commonly 3–5 minutes) and up to 15 minutes on some server/workstation systems; duration varies by platform and memory configuration.</td><td className="px-4 py-4 leading-6 text-slate-300">Allow the platform's documented training cycle to finish and avoid repeated forced power-offs. If it does not progress, record the debug LED/POST code and follow exact board/laptop guidance; there is no universal timeout or single-DIMM slot rule.</td></tr>
+                <tr className="align-top"><th scope="row" className="px-4 py-4 font-bold text-white">BIOS splash appears, then Windows reports <code>INACCESSIBLE_BOOT_DEVICE</code></th><td className="px-4 py-4 leading-6 text-slate-300">Firmware defaults may have changed the storage-controller path, such as Intel VMD/RST, RAID or AHCI, from the mode used when Windows was installed.</td><td className="px-4 py-4 leading-6 text-slate-300">Compare the current VMD/RAID/AHCI setting with the previous known-good setting and restore it only when verified. Do not toggle modes at random or reinstall Windows as the first response.</td></tr>
+                <tr className="align-top"><th scope="row" className="px-4 py-4 font-bold text-white">System appears to boot, but the monitor stays black before Windows</th><td className="px-4 py-4 leading-6 text-slate-300">A change from Legacy/CSM to UEFI-only boot can expose a pre-boot graphics compatibility issue, including an older card without a suitable UEFI Graphics Output Protocol (GOP) driver. A display, cable or GPU fault can look similar.</td><td className="px-4 py-4 leading-6 text-slate-300">Check monitor input and supported outputs first. Where available, test integrated graphics or a known UEFI-compatible card, then follow exact motherboard/GPU documentation before changing CSM or Secure Boot settings.</td></tr>
+                <tr className="align-top"><th scope="row" className="px-4 py-4 font-bold text-white">Windows opens a BitLocker recovery screen</th><td className="px-4 py-4 leading-6 text-slate-300">A successful firmware or Secure Boot update can change measured-boot values checked by the TPM, causing BitLocker to request its recovery key. This is a security challenge, not proof that the SPI image is corrupt.</td><td className="px-4 py-4 leading-6 text-slate-300">Use the saved recovery key. Before a planned TPM/UEFI update, suspend BitLocker using Microsoft's current instructions and resume protection afterward; do not clear the TPM simply to dismiss the prompt.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-4 text-xs leading-6 text-slate-500">Reference guidance:
+            {' '}<a href="https://www.kingston.com/en/support/technical/products/gaming-memory" target="_blank" rel="noopener noreferrer" className="text-cyan-300 underline underline-offset-4">Kingston on DDR5 memory training</a>,
+            {' '}<a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/bug-check-0x7b--inaccessible-boot-device" target="_blank" rel="noopener noreferrer" className="text-cyan-300 underline underline-offset-4">Microsoft's INACCESSIBLE_BOOT_DEVICE guidance</a>,
+            {' '}<a href="https://www.intel.com/content/www/us/en/support/articles/000089467/graphics.html" target="_blank" rel="noopener noreferrer" className="text-cyan-300 underline underline-offset-4">Intel's CSM/legacy graphics note</a> and
+            {' '}<a href="https://learn.microsoft.com/en-us/troubleshoot/windows-client/windows-security/suspend-bitlocker-protection-non-microsoft-updates" target="_blank" rel="noopener noreferrer" className="text-cyan-300 underline underline-offset-4">Microsoft's BitLocker firmware-update guidance</a>.
+          </p>
         </div>
       </section>
 
@@ -744,6 +773,70 @@ export default function BiosUefiRecoveryGuide() {
               </div>
             </div>
           </div>
+
+          <div className="mt-6 rounded-2xl border border-cyan-500/20 bg-slate-950/60 p-5 sm:p-7">
+            <Badge className="mb-3 border-cyan-500/30 bg-cyan-500/10 px-3 py-1.5 text-cyan-300">SPI NOR engineering reference</Badge>
+            <h3 className="text-xl font-bold text-white sm:text-2xl">Inside the SPI Flash Image: Regions, Capsule Data and Exact Binary Sizes</h3>
+            <p className="mt-3 text-sm leading-6 text-slate-300">A firmware flash image is not always one interchangeable block called BIOS. Depending on the platform, an SPI device can contain a region map, management/security firmware, board configuration and unique factory data. The layout is chipset- and board-specific; do not assume every listed region exists on every laptop or motherboard.</p>
+            <h4 className="mt-6 text-base font-bold text-cyan-300">Common firmware regions and platform data</h4>
+            <div className="mt-3 overflow-x-auto rounded-xl border border-slate-800">
+              <table className="w-full min-w-[780px] border-collapse text-left text-xs sm:text-sm">
+                <thead className="bg-slate-900/80 text-[11px] uppercase tracking-wider text-slate-400"><tr><th scope="col" className="px-3 py-3">Region / data</th><th scope="col" className="px-3 py-3">Role</th><th scope="col" className="px-3 py-3">Important qualification</th></tr></thead>
+                <tbody className="divide-y divide-slate-800 text-slate-300">
+                  <tr className="align-top"><th scope="row" className="px-3 py-3 font-semibold text-white">Intel Flash Descriptor (IFD)</th><td className="px-3 py-3 leading-5">On descriptor-mode Intel platforms, describes flash-region layout and access permissions.</td><td className="px-3 py-3 leading-5">Not a universal region on every SPI design; location and permissions are platform-defined.</td></tr>
+                  <tr className="align-top"><th scope="row" className="px-3 py-3 font-semibold text-white">Intel CSME</th><td className="px-3 py-3 leading-5">Intel Converged Security and Management Engine firmware and related platform capabilities.</td><td className="px-3 py-3 leading-5">Intel-specific; region size and contents depend on chipset generation and configuration.</td></tr>
+                  <tr className="align-top"><th scope="row" className="px-3 py-3 font-semibold text-white">GbE / PDR</th><td className="px-3 py-3 leading-5">Where present, stores integrated Ethernet firmware/MAC data and platform data.</td><td className="px-3 py-3 leading-5">Optional and board-specific; preserve original values rather than copying a generic donor image.</td></tr>
+                  <tr className="align-top"><th scope="row" className="px-3 py-3 font-semibold text-white">BIOS / UEFI and NVRAM EFI variables</th><td className="px-3 py-3 leading-5">Contains firmware volumes, PEI/DXE components, setup code and firmware-variable stores.</td><td className="px-3 py-3 leading-5">Variable stores and DMI/SMBIOS fields are not guaranteed to occupy the same offsets across models.</td></tr>
+                  <tr className="align-top"><th scope="row" className="px-3 py-3 font-semibold text-white">AMD PSP / AGESA</th><td className="px-3 py-3 leading-5">AMD Platform Security Processor firmware and platform initialization components are handled in an AMD-specific image layout.</td><td className="px-3 py-3 leading-5">Do not map AMD regions as if they were Intel IFD/CSME regions.</td></tr>
+                  <tr className="align-top"><th scope="row" className="px-3 py-3 font-semibold text-white">EC / KBC firmware</th><td className="px-3 py-3 leading-5">Embedded Controller or keyboard-controller firmware coordinates platform functions such as power and keyboard behavior.</td><td className="px-3 py-3 leading-5">May reside in a separate controller/flash device; a main SPI dump may not include it.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-xs leading-6 text-slate-400">DMI/SMBIOS strings, serials, UUIDs, MAC addresses and OEM configuration may be stored in platform-specific locations. ESRT (EFI System Resource Table) is an OS-facing firmware-resource/update table, not a universal raw SPI partition. Some systems use multiple SPI devices or split firmware images; identify every device and its role before reconstructing a dump.</p>
+            <h4 className="mt-6 text-base font-bold text-cyan-300">Flash-chip capacity: exact byte counts for a full-chip image</h4>
+            <div className="mt-3 overflow-x-auto rounded-xl border border-slate-800">
+              <table className="w-full min-w-[640px] border-collapse text-left text-xs sm:text-sm">
+                <thead className="bg-slate-900/80 text-[11px] uppercase tracking-wider text-slate-400"><tr><th scope="col" className="px-3 py-3">Density</th><th scope="col" className="px-3 py-3">Binary capacity</th><th scope="col" className="px-3 py-3">Exact bytes</th><th scope="col" className="px-3 py-3">Last address</th></tr></thead>
+                <tbody className="divide-y divide-slate-800 text-slate-300">
+                  <tr><th scope="row" className="px-3 py-3 font-semibold text-white">64 Mbit</th><td className="px-3 py-3">8 MiB</td><td className="px-3 py-3 font-mono">8,388,608</td><td className="px-3 py-3 font-mono">0x7FFFFF</td></tr>
+                  <tr><th scope="row" className="px-3 py-3 font-semibold text-white">128 Mbit</th><td className="px-3 py-3">16 MiB</td><td className="px-3 py-3 font-mono">16,777,216</td><td className="px-3 py-3 font-mono">0xFFFFFF</td></tr>
+                  <tr><th scope="row" className="px-3 py-3 font-semibold text-white">256 Mbit</th><td className="px-3 py-3">32 MiB</td><td className="px-3 py-3 font-mono">33,554,432</td><td className="px-3 py-3 font-mono">0x1FFFFFF</td></tr>
+                  <tr><th scope="row" className="px-3 py-3 font-semibold text-white">512 Mbit</th><td className="px-3 py-3">64 MiB</td><td className="px-3 py-3 font-mono">67,108,864</td><td className="px-3 py-3 font-mono">0x3FFFFFF</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-3 text-xs leading-6 text-slate-400">These are binary capacities (MiB), not decimal MB. For a full-chip read/write, the raw image must match the IC's addressable capacity exactly. A 16 MiB chip is 16,777,216 bytes; a file measuring 16,779,264 bytes is 2,048 bytes larger. That difference alone does not prove the extra bytes are a capsule header or identify the correct payload offset.</p>
+            <h4 className="mt-6 text-base font-bold text-cyan-300">The UEFI Capsule Header Trap</h4>
+            <p className="mt-3 text-xs leading-6 text-slate-300">A manufacturer's download may be a signed UEFI capsule, an executable installer, a container with several payloads, or a model-specific recovery package. The UEFI specification defines an EFI_CAPSULE_HEADER with CapsuleGuid, HeaderSize, Flags and CapsuleImageSize; CapsuleImageSize includes the capsule header, and HeaderSize can be extended for capsule-specific data. File extensions such as .CAP, .FD, .RCV or .EXE do not by themselves identify a full raw SPI image.</p>
+            <p className="mt-2 text-xs leading-6 text-slate-400">Never strip a fixed 2 KB (or any other fixed amount) from every OEM file. Identify the actual payload using the manufacturer's package format and platform documentation, verify its intended region and board revision, then validate the result before writing. Some OEM recovery tools expect a capsule or partial BIOS-region image and perform their own checks; the full-chip byte-size rule applies when preparing a full-chip image for direct programming.</p>
+            <h4 className="mt-6 text-base font-bold text-cyan-300">8-Pin SPI NOR Flash Reference</h4>
+            <p className="mt-2 text-xs leading-6 text-slate-400">This is the common 8-pin 25-series SPI NOR assignment in standard SPI mode. Dual/Quad modes reuse data pins as IO0–IO3. Confirm the exact manufacturer's datasheet and package drawing before probing; SOIC-8, WSON-8 and other packages must not be identified by appearance alone.</p>
+            <div className="mt-3 overflow-x-auto rounded-xl border border-slate-800">
+              <table className="w-full min-w-[720px] border-collapse text-left text-xs sm:text-sm">
+                <thead className="bg-slate-900/80 text-[11px] uppercase tracking-wider text-slate-400"><tr><th scope="col" className="px-3 py-3">Pin</th><th scope="col" className="px-3 py-3">Common signal</th><th scope="col" className="px-3 py-3">Function / check</th></tr></thead>
+                <tbody className="divide-y divide-slate-800 text-slate-300">
+                  <tr><th scope="row" className="px-3 py-2 font-semibold text-white">1</th><td className="px-3 py-2 font-mono">/CS#</td><td className="px-3 py-2">Active-low chip select; check exact IC idle/access behavior.</td></tr>
+                  <tr><th scope="row" className="px-3 py-2 font-semibold text-white">2</th><td className="px-3 py-2 font-mono">DO / IO1 (MISO)</td><td className="px-3 py-2">Serial data output in standard SPI mode; IO1 in Quad mode.</td></tr>
+                  <tr><th scope="row" className="px-3 py-2 font-semibold text-white">3</th><td className="px-3 py-2 font-mono">/WP# / IO2</td><td className="px-3 py-2">Write-protect input or Quad IO2, depending on mode.</td></tr>
+                  <tr><th scope="row" className="px-3 py-2 font-semibold text-white">4</th><td className="px-3 py-2 font-mono">GND / VSS</td><td className="px-3 py-2">Ground reference.</td></tr>
+                  <tr><th scope="row" className="px-3 py-2 font-semibold text-white">5</th><td className="px-3 py-2 font-mono">DI / IO0 (MOSI)</td><td className="px-3 py-2">Serial data input in standard SPI mode; IO0 in Quad mode.</td></tr>
+                  <tr><th scope="row" className="px-3 py-2 font-semibold text-white">6</th><td className="px-3 py-2 font-mono">CLK / SCLK</td><td className="px-3 py-2">Serial clock from host controller or programmer.</td></tr>
+                  <tr><th scope="row" className="px-3 py-2 font-semibold text-white">7</th><td className="px-3 py-2 font-mono">/HOLD# or /RESET# / IO3</td><td className="px-3 py-2">Hold/reset or Quad IO3 function depends on exact flash family and configuration.</td></tr>
+                  <tr><th scope="row" className="px-3 py-2 font-semibold text-white">8</th><td className="px-3 py-2 font-mono">VCC / VDD</td><td className="px-3 py-2">Supply pin; verify operating range before connection.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <h4 className="mt-6 text-base font-bold text-cyan-300">1.8V vs 3.3V: verify the exact chip before connecting a programmer</h4>
+            <p className="mt-2 text-xs leading-6 text-slate-300">Winbond's W25Q128JV family specifies a 2.7–3.6 V supply, while the W25Q128JW family specifies 1.7–1.95 V. Both are 128-Mbit families, but full ordering codes and package options vary. Do not infer the rail from a generic family name, clip colour or programmer label: read the complete IC marking, check the exact datasheet and verify supply and logic-signal levels.</p>
+            <p className="mt-2 text-xs leading-6 text-slate-400">Applying 3.3 V to a 1.8 V flash device or its connected host-side SPI pins can permanently damage hardware. Use a correctly rated adapter/level shifter that handles signal levels as well as VCC, isolate board power as required by the service procedure, and do not attach an external programmer to a live motherboard. Use ESD precautions and suitable measurement equipment; CS# and CLK activity alone does not prove that firmware contents are valid.</p>
+            <div className="mt-5 border-t border-slate-800 pt-4 text-xs leading-6 text-slate-500">Official references:
+              {' '}<a href="https://uefi.org/specs/UEFI/2.11/08_Services_Runtime_Services.html" target="_blank" rel="noopener noreferrer" className="text-cyan-300 underline underline-offset-4">UEFI 2.11 capsule specification</a>,
+              {' '}<a href="https://edc.intel.com/content/www/br/pt/design/platforms/core-processor-series-3-datasheet-volume-1-of-2/001/spi0-for-flash/" target="_blank" rel="noopener noreferrer" className="text-cyan-300 underline underline-offset-4">Intel SPI flash-region documentation</a>,
+              {' '}<a href="https://www.winbond.com/hq/product/code-storage-flash/qspi-nor/w25q-jv/" target="_blank" rel="noopener noreferrer" className="text-cyan-300 underline underline-offset-4">Winbond W25Q-JV datasheet page</a> and
+              {' '}<a href="https://www.winbond.com/hq/product/code-storage-flash/qspi-nor/w25q-jw/" target="_blank" rel="noopener noreferrer" className="text-cyan-300 underline underline-offset-4">Winbond W25Q-JW datasheet page</a>.
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -798,7 +891,7 @@ export default function BiosUefiRecoveryGuide() {
             </div>
             <div className="p-5 sm:p-7">
               <h3 className="text-white font-bold text-base sm:text-lg mb-3">Practical Guidance</h3>
-              <ul className="space-y-1.5">
+              <ul className="list-none space-y-1.5 pl-0">
                 {bitlockerGuidance.map((item) => (
                   <li key={item} className="flex items-start gap-1.5 text-slate-300 text-xs sm:text-sm">
                     <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
@@ -855,7 +948,7 @@ export default function BiosUefiRecoveryGuide() {
                   The firmware storage and the SSD/HDD are normally separate storage devices. A proper SPI/EEPROM reflash targets the firmware device, but a technician should still confirm the exact recovery procedure and avoid any separate “factory restore” or OS-reinstallation step unless it is required and authorized.
                 </p>
                 <p className="mt-3 text-slate-400">Two real, avoidable risks exist alongside recovery work:</p>
-                <ul className="mt-2 space-y-1.5">
+                <ul className="list-none mt-2 space-y-1.5 pl-0">
                   <li className="flex items-start gap-1.5 text-slate-400">
                     <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
                     <span>An update can trigger a BitLocker/FileVault recovery-key prompt — data isn't at risk, but becomes inaccessible without the key.</span>
@@ -981,7 +1074,7 @@ export default function BiosUefiRecoveryGuide() {
             <h2 className="text-xl sm:text-3xl font-bold text-white">When to Move from USB Recovery to Hardware Diagnosis</h2>
             <p className="mt-3 text-slate-400 text-xs sm:text-sm leading-relaxed">A failed USB attempt does not automatically mean the chip must be desoldered. Escalate in a controlled order so a firmware fault is not confused with a power, memory or controller fault.</p>
           </div>
-          <ol className="space-y-3">
+          <ol className="list-none space-y-3 pl-0">
             {[
               ['Confirm the recovery method is supported', 'Check the full model identifier, board revision, recovery feature, required key sequence, image source, filename, USB layout and power prerequisites against current OEM documentation.'],
               ['Stop repeated attempts when the documented method fails', 'Do not rotate through donor files, similar-model packages or undocumented hotkeys. Record LED, beep, USB activity and the exact point where the procedure stopped.'],
@@ -992,7 +1085,7 @@ export default function BiosUefiRecoveryGuide() {
               ['Verify beyond the first splash screen', 'Confirm POST, memory initialization, firmware setup, TPM/Secure Boot state, storage-controller mode, OS boot and stable operation. Keep the original dump and recovery notes with the repair record.']
             ].map(([title, text], index) => (
               <li key={title} className="flex gap-4 rounded-xl border border-slate-800 bg-brand-dark/50 p-4 sm:p-5">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-indigo-500/15 text-sm font-bold text-indigo-300">{index + 1}</span>
+                <span aria-hidden="true" className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-indigo-500/15 text-sm font-bold text-indigo-300">{index + 1}</span>
                 <div><h3 className="text-white font-bold text-sm sm:text-base">{title}</h3><p className="mt-1.5 text-slate-400 text-xs sm:text-sm leading-relaxed">{text}</p></div>
               </li>
             ))}
@@ -1022,7 +1115,7 @@ export default function BiosUefiRecoveryGuide() {
             ] as [string, string[]][]).map(([title, items]) => (
               <div key={title}>
                 <h3 className="mb-2 border-b border-slate-800 pb-2 text-sm font-bold text-cyan-300 print:border-gray-400 print:text-black">{title}</h3>
-                <ul className="space-y-2">{items.map((item) => <li key={item} className="flex gap-2 text-xs leading-5 text-slate-300 print:text-black"><span aria-hidden="true" className="shrink-0 text-cyan-300 print:text-black">☐</span><span>{item}</span></li>)}</ul>
+                <ul className="list-none space-y-2 pl-0">{items.map((item) => <li key={item} className="flex gap-2 text-xs leading-5 text-slate-300 print:text-black"><span aria-hidden="true" className="shrink-0 text-cyan-300 print:text-black">☐</span><span>{item}</span></li>)}</ul>
               </div>
             ))}
           </div>
@@ -1046,7 +1139,7 @@ export default function BiosUefiRecoveryGuide() {
               <details key={item.q} className="group rounded-xl border border-slate-800 bg-brand-dark/40 p-4 open:border-cyan-500/30 open:bg-slate-900/60 sm:p-5" open={index === 0}>
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-bold text-white sm:text-base">
                   <span>{item.q}</span>
-                  <ChevronRight className="h-5 w-5 shrink-0 text-slate-500 transition-transform group-open:rotate-90 group-open:text-cyan-400" />
+                  <ChevronRight className="h-5 w-5 shrink-0 text-slate-500 transition-transform group-open:rotate-90 group-open:text-cyan-400" aria-hidden="true" />
                 </summary>
                 <p className="mt-3 pr-8 text-xs leading-6 text-slate-400 sm:text-sm">{item.a}</p>
               </details>
