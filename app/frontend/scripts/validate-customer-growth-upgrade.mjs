@@ -1228,7 +1228,7 @@ add('Arabic charging troubleshooting page has static FAQ answers, safe checks an
   && arabicChargingGuide.includes("لا تدخل دبوساً أو عوداً أو أداة معدنية"));
 add('Arabic charging troubleshooting page uses relevant gallery photos with responsive thumbnails, alt text and captions',
   [
-    'dell-vostro-laptop-motherboard-removed-fan-heatsink-chip-level-repair.webp',
+    'silver-laptop-charger-on-car-seat-pickup-delivery-kuwait.webp',
     'laptop-dc-jack-cable-harness-charging-port-replacement-kuwait.webp',
     'laptop-dc-power-jack-connector-replacement-part-kuwait.webp',
     'macbook-pro-logic-board-power-section-usb-c-controller-chips.webp',
@@ -1239,7 +1239,7 @@ add('Arabic charging troubleshooting page uses relevant gallery photos with resp
   && (arabicChargingGuide.match(/alt=\{/g) || []).length >= 5
   && arabicChargingGuide.includes('loading="eager"')
   && arabicChargingGuide.includes('loading="lazy"')
-  && graph.includes('/images/gallery/dell-vostro-laptop-motherboard-removed-fan-heatsink-chip-level-repair.webp'));
+  && graph.includes('/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp'));
 
 add('Motherboard service snippet targets laptop, desktop and MacBook logic-board intent',
   graph.includes("title: 'Laptop Motherboard Repair Kuwait | MacBook Logic Board | KCROC'") &&
