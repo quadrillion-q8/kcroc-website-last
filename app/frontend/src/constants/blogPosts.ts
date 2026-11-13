@@ -3403,7 +3403,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Cooling performance depends on the complete heat path: chip-to-cooler contact, heatsink or radiator capacity, fan and pump operation, and the movement of air through the case.",
       "Thermal paste and GPU thermal pads should be serviced only when inspection and measurements support it. There is no universal annual repaste interval, and pad thickness must match the exact graphics-card design."
     ],
-    image: "/images/custom-gaming-pc-case-build-interior.webp",
+    image: "/images/blog/gaming-pc-thermal-throttling-kuwait.webp",
     discoverImage: "/images/discover/custom-gaming-pc-teardown-and-diagnostics-workbench-1200x675.webp",
     date: "2026-06-22",
     technicalReviewDate: "November 6, 2026",
