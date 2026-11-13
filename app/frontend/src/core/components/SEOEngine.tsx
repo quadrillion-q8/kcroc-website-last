@@ -936,7 +936,8 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
   // URLs are normalized to absolute URLs because social crawlers and Discover
   // need a fetchable canonical asset URL.
   const contentImage = (entity as any).contentImages?.find((image: any) => image?.placement === 'hero')
-    || (entity as any).contentImages?.[0];
+    || (entity as any).contentImages?.[0]
+    || (entity as any).contentImage;
 
   // Last-resort, first-party image selection for article/guide routes that do
   // not yet have an explicit graph/SEO image. These files are already present
@@ -946,15 +947,23 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
   const imagePath = `${canonicalUrl} ${title}`.toLowerCase();
   const discoverFallbacks: Array<[RegExp, string]> = [
     [/bios|uefi|firmware/, '/images/discover/bios-hero-motherboard-1200x675.webp'],
+    [/charging[-\\s]?port|dc[-\\s]?jack|power[-\\s]?jack|usb-c/, '/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp'],
+    [/hinge|chassis/, '/images/broken-laptop-hinge-plastic-chassis-damage.webp'],
+    [/keyboard/, '/images/laptop-keyboard-top-case-assembly-removal.webp'],
+    [/macbook.*(screen|display)|(screen|display).*macbook/, '/images/technician-holding-opened-macbook-for-repair.webp'],
+    [/macbook.*battery|battery.*macbook/, '/images/macbook-internal-battery-replacement-service.webp'],
+    [/liquid|spill|corrosion/, '/images/laptop-motherboard-diagnostic-bench-repair.webp'],
     [/wifi|wi-fi|wireless|network/, '/images/discover/laptop-wifi-network-card-1200x675.webp'],
-    [/battery|swollen|charging|power/, '/images/discover/swollen-macbook-battery-replacement-2-1200x675.webp'],
+    [/battery|swollen/, '/images/laptop-bottom-chassis-battery-ram-open.webp'],
+    [/gaming[-\\s]?laptop/, '/images/gaming-laptop-overheating-repair.webp'],
     [/overheat|thermal|temperature|throttl|cooling|fan|heat/, '/images/discover/laptop-dust-cleaning-overheating-kuwait-1200x675.webp'],
     [/gaming|gpu|graphics|rtx|game/, '/images/discover/gaming-pc-thermal-throttling-kuwait-1200x675.webp'],
     [/ssd|storage|nvme|disk|drive/, '/images/discover/lexar-nvme-ssd-upgrade-pc-repair-kuwait-1000-1200x675.webp'],
     [/ram|memory/, '/images/discover/windows-11-8gb-ram-performance-1200x675.webp'],
-    [/screen|display|hinge/, '/images/discover/laptop-screen-protection-kuwait-1200x675.webp'],
+    [/screen|display/, '/images/laptop-screen-assembly-disassembly-repair.webp'],
     [/windows|software|driver|update|boot|blue-screen|bsod/, '/images/discover/windows-os-software-repair-and-installation-kuwait-1200x675.webp'],
-    [/motherboard|diagnostic|repair|laptop/, '/images/discover/laptop-repair-kuwait-1200x675.webp'],
+    [/motherboard|diagnostic/, '/images/motherboard-repair-kuwait.webp'],
+    [/repair|laptop/, '/images/discover/laptop-repair-kuwait-1200x675.webp'],
   ];
   const isArticleLike = /\/(blog|guides|news)\//i.test(canonicalUrl)
     || (ogType || '').toLowerCase() === 'article'
@@ -1018,7 +1027,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
       <meta property="og:image" content={resolvedOgImage} />
       <meta property="og:image:width" content={resolvedOgImageWidth} />
       <meta property="og:image:height" content={resolvedOgImageHeight} />
-      <meta property="og:image:alt" content={ogImageAlt || title} />
+      <meta property="og:image:alt" content={ogImageAlt || contentImage?.alt || title} />
       <meta property="og:image:type" content="image/webp" />
       <meta property="og:site_name" content={business.legalName} />
       <meta property="og:locale" content={resolvedLocale} />
@@ -1037,7 +1046,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={resolvedOgImage} />
-      <meta name="twitter:image:alt" content={ogImageAlt || title} />
+      <meta name="twitter:image:alt" content={ogImageAlt || contentImage?.alt || title} />
 
       {alternates && Object.entries(alternates).map(([hreflang, href]) => (
         <link key={hreflang} rel="alternate" hrefLang={hreflang} href={href.startsWith('http') ? href : `${business.websiteUrl}${href.startsWith('/') ? href : `/${href}`}`} />
