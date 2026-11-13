@@ -17,7 +17,11 @@ const ICON_MAP: Record<string, React.ElementType> = {
 const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx: number }) => {
   const { ref, visible } = useFadeIn();
   const Icon = ICON_MAP[service.iconKey] || Wrench;
-  const cardImage = service.contentImages?.[0];
+  const cardImage =
+    service.contentImages?.find((image) => image.placement === 'hero') ??
+    service.contentImages?.find((image) => image.placement === 'coreFeatures') ??
+    service.contentImages?.find((image) => image.placement === 'commonIssues') ??
+    service.contentImages?.[0];
   const cardText = service.shortDescription || service.description;
 
   return (
