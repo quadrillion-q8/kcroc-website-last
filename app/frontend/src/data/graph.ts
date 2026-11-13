@@ -862,7 +862,7 @@ export const rawGraphData: RawGraphData = {
       description: "A global technical reference to diagnosing BIOS/UEFI update failures, no-POST symptoms, OEM recovery paths, SPI NOR flash programming, capsule-image validation, 1.8V/3.3V chip safety, TPM measurements and storage-controller faults.",
       seo: {
         title: 'BIOS & UEFI Recovery Guide: Failed Updates, No POST & SPI Flash',
-        description: 'Diagnose BIOS/UEFI update failures, black screens and no-POST faults. Learn OEM recovery, SPI NOR sizing, 1.8V/3.3V safety, TPM and BitLocker checks.',
+        description: "Diagnose failed BIOS and UEFI updates, black screens and no-POST faults. Compare OEM recovery methods, SPI programming, TPM and BitLocker risks.",
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait',
         ogImage: 'https://www.computerrepairkuwait.com/images/discover/bios-hero-motherboard-1200x675.webp',
         ogType: 'article',
