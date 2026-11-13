@@ -17,7 +17,10 @@ const ICON_MAP: Record<string, React.ElementType> = {
 const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx: number }) => {
   const { ref, visible } = useFadeIn();
   const Icon = ICON_MAP[service.iconKey] || Wrench;
-  const cardImage = service.contentImages?.[0];
+  const cardImage = service.contentImages?.find((image) => image.placement === 'hero')
+    ?? service.contentImages?.find((image) => image.placement === 'commonIssues')
+    ?? service.contentImages?.find((image) => image.placement === 'coreFeatures')
+    ?? service.contentImages?.[0];
   const cardText = service.shortDescription || service.description;
 
   return (
@@ -34,14 +37,12 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
           <div className="relative aspect-[16/9] w-full shrink-0 overflow-hidden">
             <img
               src={cardImage.src}
-              srcSet={`${cardImage.src.replace(/\.webp$/, '.w480.webp')} 480w, ${cardImage.src} ${cardImage.width || 1000}w`}
               alt={cardImage.alt}
               width={cardImage.width}
               height={cardImage.height}
               loading="lazy"
               decoding="async"
               fetchPriority="low"
-              sizes="(max-width: 639px) 50vw, (max-width: 1023px) 50vw, 33vw"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-kcroc-card via-kcroc-card/10 to-transparent" />
