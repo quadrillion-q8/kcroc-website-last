@@ -13,16 +13,12 @@ import {
   Cpu,
   Droplets,
   Flame,
-  Laptop,
   MapPin,
   MessageCircle,
   Monitor,
   Phone,
   Shield,
-  Thermometer,
-  Wind,
   Wrench,
-  Zap,
 } from 'lucide-react';
 
 import SchemaMarkup from '../components/seo/SchemaMarkup';
@@ -363,7 +359,7 @@ function SectionHeading({ eyebrow, title, intro }: { eyebrow: string; title: str
 
 export default function BlogLaptopRepair() {
   return (
-    <main className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30">
+    <div className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30">
       <Head>
         <title>Laptop Repair in Kuwait (2026 Guide): Costs, Diagnostics &amp; Board-Level Restoration | KCROC</title>
         <meta
@@ -809,6 +805,6 @@ export default function BlogLaptopRepair() {
           </Card>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
