@@ -104,7 +104,7 @@ const WORKSHOP_GALLERY_IMAGES = [
   { ...IMAGES.brand.shopInterior, caption: 'Inside our central repair workshop' },
   { ...IMAGES.brand.technicians, caption: 'Technicians diagnosing a device' },
   { ...IMAGES.brand.leadTechnician, caption: 'Component-level board work in progress' },
-  { ...IMAGES.brand.inventory, caption: 'Genuine spare parts inventory' },
+  { ...IMAGES.brand.inventory, caption: 'Tested replacement components, checked for model compatibility' },
 ];
 
 export default function LocationDeepTemplate() {
@@ -180,7 +180,9 @@ export default function LocationDeepTemplate() {
     ? 'Hi KCROC, I need free pickup in Mishref / West Mishref / Mubarak Al-Abdullah. Device / model: ____. Issue: ____. Block / street / building: ____. I can share my WhatsApp location pin. Please confirm a collection window.'
     : location.slug === 'farwaniya'
       ? 'Hi KCROC, I need free pickup in Farwaniya. Device / model: ____. Issue: ____. Area / block: ____. Please confirm a collection slot.'
-      : 'Hi KCROC, I am in ' + location.title + ' and need a device repaired. Can we arrange a pickup?';
+      : location.slug === 'mangaf'
+        ? 'Hi KCROC, I need free pickup in Mangaf / Fahaheel / Abu Halifa / Ahmadi. Device / model: ____. Issue: ____. Area / block / street / building: ____. I can share my WhatsApp location pin. Preferred pickup window (10 AM–10 PM): ____. Please confirm an available collection slot.'
+        : 'Hi KCROC, I am in ' + location.title + ' and need a device repaired. Can we arrange a pickup?';
   const WA_LINK = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(whatsappMessage);
   const towerHandoverMessage = [
     'Hi KCROC, I would like to arrange a free Kuwait City office pickup.',
@@ -1440,8 +1442,8 @@ export default function LocationDeepTemplate() {
               Ready to fix your device?
             </h2>
             <p className="text-slate-400 mb-8 max-w-2xl mx-auto text-sm sm:text-base">
-              Book a free pickup from {location.title}, or send us your device's symptoms on
-              WhatsApp to arrange a free diagnosis.
+              Book a free pickup from {location.title}, or send us your device model and symptoms on
+              WhatsApp to arrange pickup and a bench inspection at our Hawalli lab.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button size="lg" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-8 w-full sm:w-auto" asChild>
