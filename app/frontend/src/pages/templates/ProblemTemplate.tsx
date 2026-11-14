@@ -190,6 +190,40 @@ const ProblemTemplate: React.FC = () => {
         </div>
       </section>
 
+      {problem.quickAnswer && (
+        <section id="keyboard-quick-answer" aria-labelledby="keyboard-quick-answer-title" className="relative z-10 mx-auto -mt-7 max-w-7xl px-6">
+          <div className="rounded-3xl border border-cyan-800/60 bg-slate-950/90 p-6 shadow-2xl md:p-8">
+            <div className="max-w-4xl">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-300">Quick diagnostic answer</p>
+              <h2 id="keyboard-quick-answer-title" className="mt-2 text-2xl font-black text-white md:text-3xl">What to check when your laptop keyboard stops working</h2>
+              <p className="mt-4 text-base leading-8 text-slate-300">{problem.quickAnswer.answer}</p>
+            </div>
+            <div className="mt-6 grid gap-3 md:grid-cols-3">
+              <article className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+                <h3 className="text-sm font-black uppercase tracking-wide text-cyan-300">Repair pricing</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-300">{problem.quickAnswer.pricing}</p>
+              </article>
+              <article className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+                <h3 className="text-sm font-black uppercase tracking-wide text-cyan-300">Turnaround</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-300">{problem.quickAnswer.turnaround}</p>
+              </article>
+              <article className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+                <h3 className="text-sm font-black uppercase tracking-wide text-cyan-300">Pickup & workshop</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-300">{problem.quickAnswer.logistics}</p>
+              </article>
+            </div>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link to="/laptop-keyboard-replacement-kuwait" className="inline-flex min-h-11 items-center justify-center rounded-full bg-cyan-400 px-5 py-3 text-sm font-black text-slate-950 transition-colors hover:bg-cyan-300">
+                Keyboard replacement details <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+              </Link>
+              <a href={buildWhatsAppLink('Hi KCROC, my laptop keyboard is not working. Laptop model: ____. Affected keys or symptoms: ____. Pickup area: ____. Please help me confirm the next diagnostic step and quote.')} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center justify-center rounded-full border border-slate-700 px-5 py-3 text-sm font-bold text-white transition-colors hover:border-cyan-400/60 hover:text-cyan-200">
+                Send model and symptoms on WhatsApp
+              </a>
+            </div>
+          </div>
+        </section>
+      )}
+
       <section className="py-16 px-6 max-w-7xl mx-auto relative z-10">
         <div className="space-y-14">
 

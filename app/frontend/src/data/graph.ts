@@ -8105,48 +8105,101 @@ export const rawGraphData: RawGraphData = {
 
     'problem-keyboard-fail': {
       id: 'problem-keyboard-fail', slug: 'laptop-keyboard-not-working', entityType: 'Problem', isActive: true,
-      title: 'Laptop Keyboard Not Working', primaryKeyword: "laptop keyboard not working", secondaryKeywords: ["laptop keyboard replacement Kuwait","some laptop keys not working","laptop keyboard liquid damage"],
-      description: 'Troubleshooting guide for laptops where some or all keyboard keys have stopped responding.',
-      symptom: 'Specific keys (often in a diagonal line) stop working, the entire keyboard is dead, or keys are typing multiple characters at once. Sometimes accompanied by a continuously pressing "ghost" key.',
-      causes: ['Liquid spill damage causing track corrosion', 'Dust or sand blocking the membrane mechanism', 'Swollen battery pushing up against the keyboard from underneath', 'Damaged ribbon cable connection to the motherboard'],
-      doNotDo: 'Do not pry the keys off with a knife or screwdriver to "clean underneath." Modern laptop key hinges (especially MacBooks) are extremely fragile and will snap, requiring a full keyboard replacement anyway.',
-      solution: 'We first check for software/driver issues. If hardware has failed, we replace the entire keyboard assembly. If the battery is swollen and crushing the keyboard, we safely remove the hazard and replace both.',
-      urgency: 'medium',
-      relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-keyboard'],
-      contentImages: [
-        { src: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.src, alt: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.alt, width: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.width, height: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.height, placement: 'causes', caption: 'The keyboard and top case assembly removed to check for liquid damage, dust, or a swollen battery underneath.' },
-        { src: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.src, alt: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.alt, width: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.width, height: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.height, placement: 'solution', caption: 'Replacing the keyboard assembly and ribbon cable connection during reassembly.' },
+      title: 'Laptop Keyboard Not Working',
+      primaryKeyword: 'laptop keyboard not working Kuwait',
+      secondaryKeywords: ['laptop keys not working', 'laptop keyboard repair Kuwait', 'laptop keyboard typing by itself', 'laptop keyboard liquid damage', 'MacBook keyboard issue Kuwait'],
+      description: 'A practical guide to diagnosing laptop keys that do not respond, repeat characters or fail in groups, including safe checks, liquid and battery warnings, keyboard-matrix faults and repair options in Kuwait.',
+      symptom: 'Some built-in keys stop responding, several keys fail together, characters repeat without being pressed, or the entire keyboard becomes unresponsive. A bulging keyboard deck or lifting trackpad may indicate pressure from a swollen battery.',
+      causes: [
+        'Liquid residue or corrosion affecting the keyboard membrane, flex-cable contacts or nearby board connectors.',
+        'A torn, loose or poorly seated keyboard flex cable, or a damaged ZIF connector or locking latch.',
+        'Wear, contamination or physical damage within the key switch, scissor mechanism or keyboard matrix.',
+        'A software setting, input-language mismatch, accessibility feature or keyboard driver issue.',
+        'A board-side keyboard input fault, including a model-specific embedded-controller or related input-circuit problem.',
+        'A swollen lithium-ion battery deforming the chassis and pressing against the keyboard or trackpad.'
       ],
-      intro: "When some keys stop working, or the whole keyboard goes dead, the cause is usually a liquid spill, a damaged ribbon cable, a worn keyboard assembly or something pushing up from underneath, such as a swollen battery. The pattern of dead keys often tells us where to look first, so note which keys fail before you contact us.",
+      doNotDo: 'Avoid DIY disassembly or liquid cleaning. If the case or trackpad is visibly deformed, or a spill has just occurred, isolate power rather than continuing to test the keys.',
+      solution: 'KCROC separates software settings, the keyboard assembly, its flex cable and ZIF socket, and the motherboard-side input path before recommending a repair. If replacement is needed, the compatible keyboard, language layout, backlight and mounting design are confirmed against the exact model. A swollen battery or liquid contamination is assessed before a new keyboard is fitted.',
+      urgency: 'medium',
+      relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-keyboard', 'srv-liquid-damage', 'srv-battery'],
+      contentImages: [
+        { src: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.src, alt: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.alt, width: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.width, height: IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.height, placement: 'causes', caption: 'A removed keyboard and top-case assembly being checked for connector, contamination and chassis-related faults.' },
+        { src: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.src, alt: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.alt, width: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.width, height: IMAGES.laptopHardware.laptopKeyboardHeatsinkAssemblyRemoval.height, placement: 'solution', caption: 'Internal laptop inspection before the correct keyboard or larger assembly is selected.' }
+      ],
+      intro: 'When a laptop keyboard stops responding, repeats characters or loses a group of keys, the cause is not automatically a failed keyboard. The fault may be in the key mechanism, the keyboard matrix, its flat-flex cable and ZIF socket, liquid contamination, operating-system settings or the motherboard-side input circuit. The pattern of affected keys helps narrow the checks, but it is not proof of one specific failed component.',
+      quickAnswer: {
+        answer: 'Start with a known-good external USB keyboard and, where the laptop supports it, compare built-in key input in firmware or the manufacturer diagnostics. These checks help separate an operating-system issue from the built-in keyboard path, but they do not identify the exact failed component. A group of dead keys can involve the keyboard matrix, flex cable, ZIF socket or board-side controller. If the chassis bulges, the trackpad lifts or liquid has been spilled, stop testing and isolate power.',
+        pricing: 'Keyboard replacement labour guide: 10–20 KWD, plus the compatible keyboard or larger assembly. Palmrest-riveted designs and MacBook top-case repairs are quoted after the exact model and mounting design are checked.',
+        turnaround: 'Timing is confirmed after the model, fault, compatible part availability and mounting design are reviewed. A universal 24–48-hour promise would be misleading.',
+        logistics: 'Free pickup and delivery across Kuwait. Diagnosis and repair are carried out at KCROC’s Hawalli workshop; paid work starts only after you approve the quote.'
+      },
       diagnosticSteps: [
-        { step: 1, title: "Test with an external keyboard", description: "Plug in a USB keyboard. If it works normally, the laptop's own keyboard or its connection is at fault. If it also misbehaves, the problem is more likely software or the board." },
-        { step: 2, title: "See whether the keys work outside Windows", description: "Restart and press the key to open the BIOS or boot menu. If the keys respond there but not in Windows, a driver or software setting is the cause." },
-        { step: 3, title: "Look at the pattern", description: "A diagonal line of dead keys or a block of keys often points to a damaged track. A completely dead keyboard often points to the ribbon cable or its connector." },
-        { step: 4, title: "Check for a swollen battery", description: "If the trackpad is lifting, the case does not sit flat or the keyboard bulges, stop using the laptop. A swollen battery can push up against the keyboard." },
-        { step: 5, title: "Remember any spills", description: "Even a small spill weeks ago can corrode the tracks under the keyboard. Tell us about it, as it changes what we check." },
+        { step: 1, title: 'Compare with a known-good USB keyboard', description: 'Connect a working external USB keyboard. If it types normally while the built-in keyboard does not, the operating system can accept external input and the fault is more likely in the built-in keyboard path. The internal flex, socket and board-side input circuit still need to be distinguished.' },
+        { step: 2, title: 'Check input before Windows or macOS', description: 'Where the BIOS/UEFI menu or manufacturer diagnostics support keyboard input, check whether the built-in keys respond there. If they work before the operating system loads but fail in Windows or macOS, review the input layout, accessibility settings and drivers. Not every firmware menu accepts every key.' },
+        { step: 3, title: 'Record the exact keys and layout', description: 'Write down the affected keys and whether they form a row, column, cluster or scattered pattern. Also check the selected input language and layout. A grouped pattern can point toward a matrix or connection issue, but a diagonal pattern alone does not prove a broken trace.' },
+        { step: 4, title: 'Look for chassis or trackpad deformation', description: 'With the laptop switched off, view it on a flat surface without pressing the case. A lifted trackpad, bowed palmrest, widening seam or raised keyboard deck may indicate a swollen battery. Stop using and charging it; do not press the affected area.' },
+        { step: 5, title: 'Recall spills and contamination', description: 'Tell the technician about water, coffee, Karak tea or sweet drinks—even if the spill happened days or weeks ago. After a spill, switch the laptop off and disconnect power if safe. Do not restart it to test the keys or spray cleaner under the keycaps.' }
       ],
       decisionTree: [
-        { symptom: "External keyboard works, built-in keys do not", direction: "The built-in keyboard or its ribbon cable has failed and usually needs replacing." },
-        { symptom: "Keys fail only in Windows", direction: "Check drivers and settings first. Hardware is less likely." },
-        { symptom: "Keys type repeatedly or by themselves", direction: "Liquid residue or a damaged membrane is likely. Stop using the keyboard." },
-        { symptom: "Keyboard bulges or the trackpad lifts", direction: "Possible swollen battery. Stop using and charging it, and contact us." },
+        { symptom: 'External USB keyboard works, built-in keys do not', direction: 'The built-in keyboard path needs inspection. Possible causes include the keyboard assembly, flex cable, ZIF socket, latch or board-side input circuit; the external test does not distinguish them by itself.' },
+        { symptom: 'Built-in keys work in firmware but fail in Windows or macOS', direction: 'Check the active input language, accessibility settings and operating-system keyboard drivers before ordering hardware.' },
+        { symptom: 'A row, column or group of keys is dead', direction: 'A keyboard-matrix trace, membrane layer, flex cable or connector may be involved. The exact key map and model-specific circuit determine the next test.' },
+        { symptom: 'Keys repeat or type by themselves after a spill', direction: 'Stop testing. Switch off and disconnect power if safe; liquid residue may affect the keyboard, connector or board beneath it.' },
+        { symptom: 'The keyboard deck bulges or the trackpad lifts', direction: 'Treat this as a possible swollen-battery safety issue. Stop using and charging the laptop and arrange safe professional handling.' }
       ],
       technicianMethod: [
-        { step: 1, title: "Test and inspect", description: "We confirm the fault with an external keyboard and then open the laptop to look for liquid residue, corrosion, a loose ribbon cable and battery swelling." },
-        { step: 2, title: "Reseat or replace the cable", description: "If the ribbon cable or connector is the problem, we reseat or replace it before replacing the keyboard." },
-        { step: 3, title: "Replace the keyboard assembly", description: "If the keyboard itself has failed, we fit a replacement matched to your model." },
-        { step: 4, title: "Make the laptop safe", description: "If the battery is swollen, we remove it safely and replace it, because it could damage the new keyboard as well." },
-        { step: 5, title: "Test every key", description: "We test each key before returning the laptop. The repair carries a 30-day warranty." },
+        { step: 1, title: 'Confirm the model and failure pattern', description: 'We record the exact laptop model, key layout, backlight configuration, affected keys, operating-system behavior and any history of a spill or impact. Safe external and firmware checks are used as supporting evidence, not as a final diagnosis.' },
+        { step: 2, title: 'Inspect the flex cable and ZIF socket', description: 'With power isolated, we inspect the keyboard flex, socket contacts and locking flap for an unseated cable, torn flex, contamination, bent contacts or latch damage. Magnification is used where access and connector design make it appropriate.' },
+        { step: 3, title: 'Check the keyboard and surrounding hardware', description: 'We assess the keyboard matrix and key mechanism, then inspect beneath the keyboard or palmrest for liquid residue, corrosion, debris and signs of battery swelling when the device design allows safe access.' },
+        { step: 4, title: 'Verify the board-side input path when indicated', description: 'If a known-good compatible keyboard and sound connector do not restore input, we investigate the relevant board-side traces and model-specific embedded-controller or other keyboard input circuitry. Not every laptop uses the same controller layout.' },
+        { step: 5, title: 'Match the assembly and test every key', description: 'We confirm the exact part number, Arabic/English layout, backlight and mounting design before quoting. After approved work, we test each key, modifiers and supported lighting functions. Completed repairs carry the published 30-day warranty.' }
       ],
-      safetyNotes: ["Do not pry keys off with a knife or screwdriver. The hinges are fragile, especially on MacBooks, and snapped hinges can turn a small fault into a full keyboard replacement.", "Do not use or charge a laptop with a bulging battery or a lifting trackpad.", "Do not clean under the keys with liquids, because it can spread residue to the board."],
+      safetyNotes: [
+        'Do not lever off modern scissor-switch keycaps with a knife, screwdriver or tweezers. The cap or hinge can break, and some designs are not safely serviceable at keycap level.',
+        'Do not spray alcohol, contact cleaner or other liquid directly under the keys. It can carry residue deeper into the keyboard and onto the board.',
+        'After a liquid spill, switch the laptop off and disconnect the charger if safe. Do not power it on or charge it to see whether the keyboard has recovered.',
+        'If the battery or chassis appears swollen, stop using and charging the laptop. Do not press, bend, puncture or attempt to remove the battery yourself.'
+      ],
+      kuwaitContext: [
+        'Fine dust and sand can collect around keycaps and moving key mechanisms in Kuwait. They may affect key travel, but a cluster of dead keys still needs electrical and connector checks rather than an assumption that dust is the cause.',
+        'Karak, coffee, water and sweet drinks can leave residue after the visible liquid dries. A past spill remains important diagnostic history, especially if keys later begin to repeat or fail in groups.',
+        'KCROC repairs devices at its Hawalli workshop and arranges free pickup and delivery across Kuwait. A service-area pickup does not mean there is a second repair shop in that area.'
+      ],
+      expertNotes: [
+        { title: 'How the keyboard matrix works', description: 'Most laptop keyboards scan a matrix of intersecting row and column circuits rather than giving every key an individual wire. A damaged membrane path, flex connection or shared circuit can disable several keys. The affected-key pattern is useful evidence, but a diagonal line is not a universal signature of one broken trace.' },
+        { title: 'ZIF ribbon connector and locking latch', description: 'A ZIF (zero-insertion-force) socket secures the keyboard flat-flex cable with a small locking flap or sliding retainer. A torn flex, contaminated contact, bent pin, cracked socket or damaged latch can interrupt signals. The connector must be inspected and handled according to its exact design; forcing the latch can destroy it.' },
+        { title: 'Embedded controller and board-side input', description: 'On many laptop platforms, an embedded controller (EC) or another model-specific input controller reads keyboard matrix signals. The controller is not the default suspect: the keyboard, flex cable, socket, power conditions and board-side traces should be checked first. Controller architecture differs across manufacturers and generations.' },
+        { title: 'Why keyboard replacement quotes differ', description: 'Some laptops use a standalone keyboard held by screws or retaining clips. Others fasten the keyboard into the palmrest with plastic heat-stakes or rivets, which can require extensive disassembly or a larger palmrest assembly. Many MacBook designs integrate the keyboard into the top case; the exact generation and part availability determine the practical repair route.' },
+        { title: 'Battery swelling is a separate safety fault', description: 'A lithium-ion pouch cell can expand and deform the surrounding chassis, sometimes lifting the trackpad or pressing against the keyboard deck. Deformation is a warning sign, not a safe way to diagnose the battery. Stop use and charging and do not compress, puncture or remove the cell yourself.' }
+      ],
+      relatedResourcePaths: [
+        { label: 'Laptop keyboard replacement: pricing and part compatibility', path: '/laptop-keyboard-replacement-kuwait' },
+        { label: 'Laptop liquid-damage inspection and repair', path: '/laptop-liquid-damage-repair-kuwait' }
+      ],
       faqs: [
-        { question: "Can a single dead key be repaired?", answer: "Sometimes a stuck or dirty key can be freed, but on most laptops a failed key means replacing the keyboard assembly. We check the cause first and explain the option before you approve any work." },
-        { question: "Is a MacBook keyboard replacement more involved?", answer: "On many MacBooks the keyboard is part of the top case, which makes the replacement larger than on a typical Windows laptop. We confirm the scope and the quote after identifying your exact model." },
-        { question: "Can I use an external keyboard while I wait?", answer: "Yes. A USB or Bluetooth keyboard works as a stop-gap, but do not keep using a laptop whose battery looks swollen." },
-        { question: "Could the spill have damaged more than the keyboard?", answer: "It can. Liquid can reach the board and corrode it over time, so we inspect underneath before we quote. Mention any spill, even an old one." },
+        { question: 'Can a single dead key be repaired without replacing the whole keyboard?', answer: 'Sometimes. If a key is physically stuck because of accessible debris or a damaged keycap mechanism, model-appropriate cleaning or a key-level repair may be possible. If the key mechanism moves normally but does not register electrically, the membrane or matrix may be damaged and the keyboard assembly may need replacement. We inspect before quoting.' },
+        { question: 'Why have several laptop keys stopped working together?', answer: 'Laptop keyboards commonly use a row-and-column matrix. A damaged membrane path, flex cable, connector or shared input circuit can affect a group of keys. A diagonal or clustered pattern helps guide testing, but it does not prove the keyboard trace is broken without model-specific checks.' },
+        { question: 'Is a MacBook keyboard replacement more involved than a Windows laptop?', answer: 'It can be. Many MacBook Air and MacBook Pro generations integrate the keyboard into a riveted top case, while some Windows laptops use a simpler standalone keyboard and others also use a riveted palmrest. We check the exact model identifier, generation, layout and available assembly before confirming the repair route and quote.' },
+        { question: 'Can I use an external keyboard while waiting for repair?', answer: 'Usually, yes, as a temporary workaround if there has been no liquid spill and there are no signs of battery swelling or chassis deformation. Do not continue using or charging a laptop with a swollen battery, and do not power on a device after a spill just to test it.' },
+        { question: 'Could a small spill damage more than the keyboard?', answer: 'Yes. Liquid can travel through the keyboard deck and affect the flex connector, trackpad cable, board-side traces or nearby components. Switch the laptop off, disconnect power if safe and tell the technician what was spilled and when; do not restart it for testing.' },
+        { question: 'Will a normal keyboard replacement erase my files?', answer: 'A keyboard-only replacement does not normally erase the storage drive or operating system. However, if the same incident also damaged the motherboard or power circuitry, the wider fault may affect whether the laptop starts. We explain any additional risk found during diagnosis before paid work.' }
       ],
-      seo: { title: 'Laptop Keyboard Not Working — Repair in Kuwait | KCROC', description: 'Laptop keyboard dead or typing by itself? We replace keyboards for Dell, HP, Lenovo, and MacBooks. Fast service with free pick & drop in Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-keyboard-not-working', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
-      navigationPriority: 50, popular: false
+      relatedGuideSlug: undefined,
+      seo: {
+        title: 'Laptop Keyboard Not Working in Kuwait? Safe Checks & Repair | KCROC',
+        description: 'Dead or repeating laptop keys in Kuwait? Check safe causes, spill and battery warnings, and keyboard repair pricing: 10–20 KWD labour plus parts. Free pickup.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-keyboard-not-working',
+        locale: 'en_KW',
+        alternates: {
+          'en-KW': 'https://www.computerrepairkuwait.com/laptop-keyboard-not-working',
+          'x-default': 'https://www.computerrepairkuwait.com/laptop-keyboard-not-working'
+        },
+        ogType: 'article',
+        schemaTypes: ['TechArticle', 'FAQPage'],
+        lastModified: '2026-11-14T00:00:00+03:00'
+      },
+      navigationPriority: 50,
+      popular: false
     } as ProblemEntity,
 
     'problem-wifi-fail': {

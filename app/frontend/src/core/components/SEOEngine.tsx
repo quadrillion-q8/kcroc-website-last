@@ -693,6 +693,12 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
           const articleText = [
             problemEntity.description,
             problemEntity.intro,
+            ...(problemEntity.quickAnswer ? [
+              `Quick answer: ${problemEntity.quickAnswer.answer}`,
+              `Pricing guide: ${problemEntity.quickAnswer.pricing}`,
+              `Turnaround guidance: ${problemEntity.quickAnswer.turnaround}`,
+              `Pickup and workshop: ${problemEntity.quickAnswer.logistics}`
+            ] : []),
             `Symptom: ${problemEntity.symptom}.`,
             `Common causes: ${problemEntity.causes.join('; ')}.`,
             ...(problemEntity.emergencySteps ?? []).map(step => `Emergency action: ${step.title}. ${step.description}`),
