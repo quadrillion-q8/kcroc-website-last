@@ -26,6 +26,12 @@ const KUWAIT_GOVERNORATE_LINKS = [
   { label: 'مبارك الكبير', path: '/location/mubarak-al-kabeer' }
 ];
 
+const FAHAHEEL_LOCAL_LINKS = [
+  { label: 'المنقف', path: '/ar/computer-repair-mangaf' },
+  { label: 'الأحمدي', path: '/ar/computer-repair-ahmadi' },
+  { label: 'أبو حليفة', path: '/location/abu-halifa' }
+];
+
 const AR_GUIDES = [
   { title: 'دليل شراء اللابتوب في الكويت 2026', path: '/blog/ar/laptop-buying-guide-kuwait-2026' },
   { title: 'متى تنظف اللابتوب وتغير المعجون الحراري؟', path: '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait' }
@@ -5201,14 +5207,15 @@ export default function ArabicCommercialPage() {
 
         <section className="mt-12" aria-labelledby="arabic-areas">
           <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">مناطق الخدمة</p>
-          <h2 id="arabic-areas" className="mt-2 text-2xl font-black text-white sm:text-3xl">خدمة الاستلام والتوصيل في مناطق الكويت</h2>
-          <div className={slug === 'gaming-laptop-cleaning-kuwait' ? "mt-6 flex flex-wrap gap-2" : "mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3"}>
-            {(slug === 'gaming-laptop-cleaning-kuwait' ? KUWAIT_GOVERNORATE_LINKS : LOCAL_LINKS).map((item) => (
-              <Link key={item.path} to={item.path} className={slug === 'gaming-laptop-cleaning-kuwait' ? "rounded-full border border-slate-700 bg-slate-900/65 px-4 py-2 text-sm font-semibold text-slate-300 transition hover:border-cyan-500/40 hover:text-cyan-300" : "rounded-xl border border-slate-800 bg-slate-900/45 px-5 py-4 font-semibold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300"}>{item.label}</Link>
+          <h2 id="arabic-areas" className="mt-2 text-2xl font-black text-white sm:text-3xl">{slug === 'computer-repair-fahaheel' ? 'المناطق القريبة من مسار استلام الفحيحيل' : 'خدمة الاستلام والتوصيل في مناطق الكويت'}</h2>
+          <div className={slug === 'gaming-laptop-cleaning-kuwait' || slug === 'computer-repair-fahaheel' ? "mt-6 flex flex-wrap gap-2" : "mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3"}>
+            {(slug === 'computer-repair-fahaheel' ? FAHAHEEL_LOCAL_LINKS : slug === 'gaming-laptop-cleaning-kuwait' ? KUWAIT_GOVERNORATE_LINKS : LOCAL_LINKS).map((item) => (
+              <Link key={item.path} to={item.path} className={slug === 'gaming-laptop-cleaning-kuwait' || slug === 'computer-repair-fahaheel' ? "rounded-full border border-slate-700 bg-slate-900/65 px-4 py-2 text-sm font-semibold text-slate-300 transition hover:border-cyan-500/40 hover:text-cyan-300" : "rounded-xl border border-slate-800 bg-slate-900/45 px-5 py-4 font-semibold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300"}>{item.label}</Link>
             ))}
           </div>
         </section>
 
+        {slug !== 'computer-repair-fahaheel' && (
         <section className="mt-12" aria-labelledby="arabic-guides">
           <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">{slug === 'laptop-keyboard-replacement-kuwait' ? 'خدمات ومراجع مرتبطة بالكيبورد' : slug === 'laptop-charging-port-repair-kuwait' ? 'مراجع وخدمات مرتبطة بمشكلة الشحن' : 'أدلة عربية مرتبطة'}</p>
           <h2 id="arabic-guides" className="mt-2 text-2xl font-black text-white sm:text-3xl">{slug === 'laptop-keyboard-replacement-kuwait' ? 'الخطوة التالية حسب العطل' : slug === 'laptop-charging-port-repair-kuwait' ? 'معلومات إضافية لتحديد سبب عدم الشحن' : 'معلومات تساعدك قبل قرار الإصلاح'}</h2>
@@ -5218,6 +5225,7 @@ export default function ArabicCommercialPage() {
             ))}
           </div>
         </section>
+        )}
 
         <section className="mt-12" aria-labelledby="arabic-faq">
           <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">الأسئلة الشائعة</p>
