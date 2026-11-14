@@ -5693,28 +5693,165 @@ export const rawGraphData: RawGraphData = {
       navigationPriority: 72
     } as LocationEntity,
 
-    'loc-riggae': { id: 'loc-riggae', slug: 'riggae', entityType: 'Location', isActive: true, isPhysicalLocation: false,
+    'loc-riggae': {
+      id: 'loc-riggae',
+      slug: 'riggae',
+      entityType: 'Location',
+      isActive: true,
+      isPhysicalLocation: false,
       title: 'Riggae',
-      description: 'Laptop, MacBook and computer repair for Riggae with free pickup to KCROC\'s Hawalli lab, covering common power, display and charging issues.',
-      localIntro: "KCROC covers Riggae and nearby Khaitan, Farwaniya and Ardiya with scheduled pickup and delivery. Laptops that will not power on, have a black display or fail to charge are diagnosed at the Hawalli lab, where technicians check the relevant power, display or charging path before quoting. Riggae is a service area, not a separate walk-in branch.",
+      description: 'Laptop, MacBook and computer repair for Riggae with free pickup to KCROC’s Hawalli lab. Component-level diagnosis for power, liquid, display, charging and motherboard faults, with a quote before paid work.',
+      heroBadge: 'Riggae · 92700 · Fourth & Fifth Ring Road Corridor · Free Pickup',
+      heroHeadline: 'Laptop, MacBook & Computer Repair in Riggae',
+      localValueHeading: 'Riggae doorstep collection. Component-level repair at our Hawalli lab.',
+      localServicesHeading: 'Laptop, MacBook, Screen & Motherboard Repair for Riggae',
+      localPickupHeading: 'Free Pickup Across Riggae & the Farwaniya Governorate Corridor — Repaired in Hawalli',
+      localIntro: 'Riggae’s residential towers, family homes and office addresses around the Riggae Courts Complex sit between Kuwait’s Fourth and Fifth Ring Roads, close to Ardiya and Al-Andalous. KCROC arranges free collection and return delivery from Riggae (92700) and nearby Farwaniya Governorate areas: Ardiya (92400), Farwaniya (80000), Khaitan (83000) and Andalous (92000). We also collect from Ardiya residential and industrial addresses. Share your block, street, building or office-reception instructions and a WhatsApp location pin. Dispatch confirms a collection window against the actual address, building access, traffic and the day’s route; we do not promise a fixed drive or collection time. All diagnosis and repair take place at our central Hawalli workshop, not at a Riggae storefront.',
       localHighlights: [
-        { title: 'Pickup from Riggae', description: 'Free collection and return delivery are available for residents and home offices in Riggae.' },
-        { title: 'No-power and charging diagnosis', description: 'Charging ports, power rails and related motherboard faults are checked systematically.' },
-        { title: 'Screen repair', description: 'Cracked, dim or failed laptop displays can be assessed for panel, cable and board causes.' },
-        { title: 'MacBook support', description: 'Apple MacBooks are handled alongside Windows laptops, including liquid-damage and board diagnostics.' }
+        {
+          title: 'Tower, villa and office pickup in Riggae',
+          description: 'Book collection from homes, apartment buildings and offices around Riggae, including addresses near the Courts Complex. Riggae is positioned between the Fourth and Fifth Ring Roads; the team confirms the collection point and timing from your exact block, building access and the active dispatch route.'
+        },
+        {
+          title: 'A MacBook that still turns on after a spill is not cleared',
+          description: 'Power it down, unplug the charger and do not keep testing or charging it. Moisture and residue can create electrical leakage, corrosion or short circuits after the first visible symptom. We inspect the affected areas and select an appropriate board-cleaning and repair path where the damage is technically recoverable.'
+        },
+        {
+          title: 'Faint, flickering and black-screen diagnosis',
+          description: 'A faint image, lid-sensitive flicker or a completely black display can involve the panel, eDP cable, connector or motherboard backlight power path. We test the display chain before recommending a panel replacement, so the quote reflects the failed part rather than a guess.'
+        },
+        {
+          title: 'Unexpected shutdowns and dead-key troubleshooting',
+          description: 'A laptop that switches off under load needs checks of cooling, fan operation, adapter and battery behaviour, and board power stability. For unresponsive keys, we inspect the keyboard matrix, ribbon cable, connector and embedded-controller signal path before deciding whether the keyboard itself needs replacement.'
+        }
       ],
-            localFaqs: [
-        { id: "faq-riggae-local-1", question: "Do you collect from Riggae, Khaitan, Farwaniya and Ardiya?", answer: "Yes. Riggae, Khaitan, Farwaniya and Ardiya are covered by free pickup and delivery. Send your area and the device symptoms on WhatsApp and we will arrange collection." },
-        { id: "faq-riggae-local-2", question: "My laptop shuts off by itself after a few minutes. What could be causing it?", answer: "The usual causes are overheating, a failing battery or a power-delivery fault on the board. If the laptop feels very hot or the fan is loud, thermal build-up is likely. If it dies even when plugged in, the charging circuit needs testing. We diagnose it on the bench before suggesting any part." },
-        { id: "faq-riggae-local-3", question: "Some keys on my laptop stopped working. Is it the keyboard or something else?", answer: "Plug in a USB keyboard to check. If the external keyboard works normally, the laptop's keyboard or its ribbon cable is the problem. If keys also fail on the external one, a software or board fault is more likely. Liquid spills are a common cause of patchy key failure, so mention any past spill when you contact us." },
-        { id: "faq-riggae-local-4", question: "My MacBook got wet and still turns on. Does it still need repair?", answer: "Yes, it is worth having it checked even if it still works. Liquid damage can keep corroding components after it seems fine, and faults sometimes appear days later. Switch it off, keep it unplugged and bring it in as soon as you can so the board can be inspected and cleaned at component level." },
-        { id: "faq-riggae-local-5", question: "My laptop screen flickers or shows a faint image. What does that point to?", answer: "Shine a torch at the screen at an angle. A faint image usually points to the backlight, while flickering that changes when you move the lid often points to the display cable. An external monitor that works properly points away from the board. We confirm which part has failed before quoting." },
-        { id: "faq-riggae-local-6", question: "Is there a branch in Riggae, and where is the repair done?", answer: "There is no walk-in branch in Riggae. Devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), open daily from 10:00 AM to 10:00 PM. You can bring a device in yourself or have it collected for free, and repairs carry a 30-day warranty." },
+      localEmergencyProtocol: {
+        heading: 'MacBook got wet? Stop powering it on and arrange an inspection.',
+        intro: 'A MacBook that still starts after a water, coffee or tea spill may still have moisture or residue around connectors and logic-board components. Continuing to use or charge it can make the damage worse. Switch it off and keep it disconnected while arranging an assessment.',
+        steps: [
+          {
+            title: 'Shut it down and unplug it',
+            description: 'Power the MacBook off and disconnect its charger and accessories. Do not keep opening apps or restarting it to see whether it still works.'
+          },
+          {
+            title: 'Keep it off; avoid home remedies',
+            description: 'Do not charge it, apply a hair dryer or heat gun, or rely on rice. Keep the device disconnected and share what liquid was spilled and when it happened.'
+          },
+          {
+            title: 'Arrange a Riggae pickup',
+            description: 'Send the MacBook model, spill details and your Riggae block or location pin. Our Hawalli lab checks the affected board and connectors, then explains the appropriate cleaning or component-repair options before paid work.'
+          }
+        ]
+      },
+      localServiceCards: [
+        {
+          title: 'Laptop Repair — Power, Charging, Thermal & Keyboard Faults',
+          summary: 'For everyday, business and performance laptops collected from Riggae homes and offices.',
+          problem: 'The laptop will not start, shuts down after a few minutes, charges intermittently, runs unusually hot or has a group of keys that no longer responds.',
+          expertise: 'We check cooling and fan operation, temperatures under load, the adapter and battery, charging connector and power path. For keyboard faults we inspect the key matrix, ribbon cable, FPC connector and relevant embedded-controller signals before choosing a replacement.',
+          solution: 'Free pickup and initial diagnosis, followed by a clear quote before paid work. Common laptop repairs start from 15 KWD; charging-port repair is typically 20–35 KWD and keyboard labour is 10–20 KWD plus the compatible keyboard or assembly.',
+          serviceIds: ['srv-laptop', 'srv-charging-port']
+        },
+        {
+          title: 'Motherboard Repair & Component-Level Diagnostics',
+          summary: 'For no-power, unstable power, charging and repairable liquid-related board faults.',
+          problem: 'A laptop or desktop is completely dead, cuts out under load, has a shorted power path, or has been quoted for a full motherboard replacement without a component-level diagnosis.',
+          expertise: 'The lab checks power rails, connectors and components with a multimeter, bench power-supply current profiling, microscope inspection, thermal imaging and boardview or schematic references where available. Firmware is investigated only when the symptoms and test results support it.',
+          solution: 'Where the original board is technically and economically repairable, we assess targeted component repair before recommending a full board swap. Published component-level motherboard repair starts from 25 KWD, with a common guide range of 25–60 KWD.',
+          serviceIds: ['srv-motherboard']
+        },
+        {
+          title: 'MacBook Air & MacBook Pro — Liquid, Charging & Logic-Board Repair',
+          summary: 'Model-specific assessment for Intel and Apple-silicon MacBook Air and Pro devices.',
+          problem: 'A MacBook has been exposed to water or coffee, will not charge, has no power, or shows a dim or black display even though it previously appeared to work.',
+          expertise: 'We inspect the ports, connectors, affected board areas and relevant power or display paths before deciding whether cleaning, connector work, component-level logic-board repair or a compatible part is appropriate. Data preservation is treated carefully but cannot be guaranteed on a liquid-damaged device.',
+          solution: 'The diagnosis identifies the practical repair options before approval. MacBook logic-board repair is published at 45–100+ KWD; liquid-damage work is generally 35–90+ KWD depending on the model and extent of corrosion.',
+          serviceIds: ['srv-macbook', 'srv-liquid-damage']
+        },
+        {
+          title: 'Laptop Screen, Display Cable & Backlight Diagnosis',
+          summary: 'For cracked, lined, flickering, black or very faint laptop displays.',
+          problem: 'The screen is cracked, flickers as the lid moves, shows vertical lines, goes black, or displays a very faint image that is easier to see under a light.',
+          expertise: 'We distinguish panel damage from eDP cable or connector faults and backlight-power problems on the motherboard. A faint image can indicate that the image is present while the backlight path has failed; testing confirms the cause.',
+          solution: 'We quote for a compatible panel only when the panel is actually faulty, or explain the relevant cable, connector or board-level option. Screen-replacement labour starts from 30 KWD plus the panel.',
+          serviceIds: ['srv-screen']
+        }
+      ],
+      localFaqs: [
+        {
+          id: 'faq-riggae-local-1',
+          question: 'How do you protect personal or office files during repair?',
+          answer: 'Our normal diagnostic process is hardware-focused: technicians test the requested fault without browsing personal or business documents. For a Windows laptop or desktop with a removable NVMe or SATA drive, you can remove and keep that drive before collection; tell us first so the team can plan the hardware checks. Many newer MacBooks use onboard storage that is not removable like a standard laptop SSD. Keep a backup whenever possible, because no repair process can guarantee data access if the storage or logic board is damaged.'
+        },
+        {
+          id: 'faq-riggae-local-2',
+          question: 'My laptop shuts off by itself after a few minutes. What could be causing it?',
+          answer: 'Common causes include a thermal-protection shutdown from a blocked heatsink or failed fan, an unstable charger or battery, or a motherboard power rail that drops when the processor is under load. Firmware can also be relevant in some cases, but an Intel Management Engine or BIOS fault should not be assumed from the symptom alone. At the Hawalli lab we check cooling, temperatures, adapter and battery behaviour, and power stability under the conditions that reproduce the shutdown before recommending a repair.'
+        },
+        {
+          id: 'faq-riggae-local-3',
+          question: 'Some keys on my laptop stopped working. Is it the keyboard or something else?',
+          answer: 'It may be a failed keyboard membrane or key matrix, but a loose or damaged ribbon cable, contaminated FPC connector or a fault in the embedded-controller input path can produce similar symptoms. A spill or humidity can affect either the keyboard or its connector. We inspect the keyboard assembly and its connection to the board before quoting a keyboard replacement; labour is 10–20 KWD plus the compatible part.'
+        },
+        {
+          id: 'faq-riggae-local-4',
+          question: 'My MacBook got wet and still turns on. Does it still need repair?',
+          answer: 'Yes. Turn it off now, disconnect the charger and do not keep using or charging it. A MacBook can appear to work while moisture or residue remains around live circuits and connectors; corrosion or a short may develop later. Arrange an inspection as soon as practical. We assess the affected areas and explain whether cleaning or component-level board work is suitable, but the outcome depends on the liquid, the time exposed and the damage already present.'
+        },
+        {
+          id: 'faq-riggae-local-5',
+          question: 'My laptop screen flickers or shows a very faint, dark image. What does that point to?',
+          answer: 'Flicker that changes when you move the lid can point to a worn or pinched eDP display cable or connector. If a faint image is visible when you shine a light across the screen, the LCD may still be producing an image while the backlight or its power path has failed. The panel, cable, connector and motherboard backlight circuit all need to be distinguished by testing before deciding whether a screen replacement is necessary.'
+        },
+        {
+          id: 'faq-riggae-local-6',
+          question: 'Can you collect a desktop PC or office computer from Riggae?',
+          answer: 'Yes. Free collection and return delivery can be arranged for desktop computers and office systems as well as laptops and MacBooks. When you book, tell us whether it is a tower, all-in-one or complete workstation, its approximate size, and any access or reception instructions. We confirm a suitable collection time for the address; diagnosis and repair are completed at the Hawalli lab.'
+        }
       ],
       landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)',
-      coords: { lat: 29.2770, lng: 47.9500 }, serviceRadiusKm: 18, serviceAreas: ['Riggae', 'Khaitan', 'Farwaniya', 'Ardiya'],
-      relatedServiceIds: ['srv-laptop', 'srv-screen', 'srv-charging-port', 'srv-motherboard'], relatedProblemIds: ['problem-black-screen', 'problem-no-power', 'problem-not-charging', 'problem-slow'], contentImage: { src: IMAGES.services.motherboardRepair.src, alt: IMAGES.services.motherboardRepair.alt, width: IMAGES.services.motherboardRepair.width, height: IMAGES.services.motherboardRepair.height, caption: 'Laptop motherboard and computer repair serving Riggae and nearby Farwaniya areas.' },
-      seo: { title: "Computer Repair Riggae | Free Pickup | KCROC", description: "Laptop and computer repair for Riggae, Khaitan and Farwaniya. Free pickup and delivery; devices are repaired at the Hawalli workshop.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/riggae', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-10-02T00:00:00+03:00' },
+      coords: { lat: 29.30278, lng: 47.91667 },
+      serviceRadiusKm: 18,
+      areaPostalCode: '92700',
+      areaPostalRegion: 'Farwaniya Governorate',
+      additionalAreaPostalCodes: [
+        { name: 'Ardiya', postalCode: '92400', addressRegion: 'Farwaniya Governorate' },
+        { name: 'Farwaniya', postalCode: '80000', addressRegion: 'Farwaniya Governorate' },
+        { name: 'Khaitan', postalCode: '83000', addressRegion: 'Farwaniya Governorate' },
+        { name: 'Andalous', postalCode: '92000', addressRegion: 'Farwaniya Governorate' }
+      ],
+      serviceAreas: ['Riggae', 'Ardiya', 'Farwaniya', 'Khaitan', 'Andalous'],
+      serviceTypes: [
+        'Laptop and desktop computer repair',
+        'MacBook Air and MacBook Pro hardware repair',
+        'Component-level motherboard diagnostics and repair',
+        'Laptop display panel, cable and backlight diagnostics',
+        'Laptop charging-port and keyboard fault diagnosis',
+        'Liquid-damage inspection and appropriate board cleaning'
+      ],
+      localPricingAnchorsPlacement: 'after-services',
+      localPricingHeading: 'Published Repair Prices for Riggae & Nearby Areas',
+      localPricingAnchors: [
+        { label: 'Common laptop repairs', price: 'From 15 KWD', note: 'Starting rate; exact scope and any required parts are confirmed after diagnosis.' },
+        { label: 'Laptop charging-port repair', price: '20–35 KWD', note: 'Guide range varies by connector type and the fault in the charging path.' },
+        { label: 'Laptop keyboard replacement', price: '10–20 KWD labour + part', note: 'The compatible keyboard or assembly is priced for the exact laptop model.' },
+        { label: 'Laptop screen replacement', price: 'Labour from 30 KWD + panel', note: 'Panel cost depends on model, resolution, touch support and refresh rate.' },
+        { label: 'Component-level motherboard repair', price: '25–60 KWD', note: 'Published guide range; complex faults may require a separate quote.' },
+        { label: 'Laptop liquid-damage repair', price: '35–90+ KWD', note: 'Depends on corrosion, affected areas, model and repairability.' },
+        { label: 'MacBook logic-board repair', price: '45–100+ KWD', note: 'Model- and fault-dependent; data preservation cannot be guaranteed.' }
+      ],
+      relatedServiceIds: ['srv-laptop', 'srv-charging-port', 'srv-macbook', 'srv-liquid-damage', 'srv-screen', 'srv-motherboard'],
+      relatedProblemIds: ['problem-no-power', 'problem-overheating', 'problem-black-screen', 'problem-liquid-spill', 'problem-not-charging', 'problem-keyboard-fail'],
+      relatedLocationIds: ['loc-farwaniya', 'loc-khaitan'],
+      contentImage: { src: IMAGES.services.motherboardRepair.src, alt: IMAGES.services.motherboardRepair.alt, width: IMAGES.services.motherboardRepair.width, height: IMAGES.services.motherboardRepair.height, caption: 'Laptop motherboard and computer repair serving Riggae and nearby Farwaniya areas.' },
+      seo: {
+        title: 'Laptop, MacBook & PC Repair Riggae | Free Pickup | KCROC',
+        description: 'Laptop, MacBook, screen and motherboard repair for Riggae (92700), Ardiya (92400), Farwaniya (80000) and Khaitan (83000). Free pickup to KCROC’s Hawalli lab; diagnosis and quote first.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/location/riggae',
+        ogType: 'website',
+        schemaTypes: ['LocalBusiness'],
+        lastModified: '2026-11-14T00:00:00+03:00'
+      },
       navigationPriority: 70
     } as LocationEntity,
 
