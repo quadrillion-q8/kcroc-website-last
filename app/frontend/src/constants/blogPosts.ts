@@ -1465,17 +1465,31 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     "id": "news-windows-11-26h2-iso-released",
     "slug": "windows-11-26h2-iso-released",
-    "title": "Windows 11 26H2 ISO Is Now Available — What PC Users Should Know Before Installing",
-    "excerpt": "Windows 11 26H2 is now available for eligible PCs, and Microsoft has published official installation media. Learn which installation path fits your PC, how to prepare for a clean install, what to check when setup fails, and how to separate Windows problems from hardware faults.",
-    "description": "Windows 11 26H2 ISO is now available. Learn the official download options, requirements, upgrade vs clean install paths, installation fixes, and post-install checks.",
+    "title": "Windows 11 26H2 Rollout Status, ISO Guide & Post-Update Fixes (November 2026)",
+    "excerpt": "Six weeks into the Windows 11 26H2 rollout, this November 14 guide covers the November 10 KB5132061 security update, official ISO choices, the 10-day rollback limit, and post-update checks for drivers, storage and hardware.",
+    "description": "Windows 11 26H2 November 2026 update: KB5132061 status, ISO installation steps, 10-day rollback limits, and practical checks for NVMe, RAM, drivers and cooling.",
     "content": [
-      "Windows 11 26H2 is now available for eligible PCs, with Microsoft using a controlled rollout for supported Windows 11 24H2 and 25H2 systems.",
-      "This KCROC technician guide explains the official ISO and installation paths, the minimum requirements to check, and what to do when an upgrade turns into a storage, driver, firmware, thermal or hardware problem."
+      "Six weeks after Microsoft's September 29 announcement of Windows 11, version 26H2, the November 10, 2026 security update is KB5132061. Its 26H2 OS build is 26300.9974, while feature-update availability remains controlled and subject to device compatibility and safeguard holds.",
+      "This KCROC technician guide explains the current servicing position, official ISO and Windows Update paths, rollback limits, and how to investigate storage, driver, firmware, thermal or hardware symptoms without assuming that the Windows update caused them."
     ],
     "richContent": [
       {
         "type": "paragraph",
-        "text": "Windows 11, version 26H2 — the Windows 11 2026 Update — is now available for eligible PCs. Microsoft says 26H2 is being delivered through a controlled rollout, and for eligible Windows 11 24H2 and 25H2 devices the feature update is delivered as an enablement package designed to make the transition relatively small and quick. The important part for a PC owner is not simply that 26H2 exists; it is choosing the installation path that matches the condition of the machine."
+        "text": "Six weeks after Microsoft announced Windows 11, version 26H2, the November servicing position is more useful than the launch-day headline. The November 10, 2026 security cumulative update is KB5132061; for 26H2 it updates the OS to build 26300.9974. Microsoft continues to use a controlled feature rollout, so an ISO download does not mean every compatible PC has been offered the feature update through Windows Update."
+      },
+      {
+        "type": "callout",
+        "variant": "info",
+        "title": "November 14, 2026 rollout and servicing status",
+        "text": "KB5132061 is the November 10 security update for Windows 11 26H2 (build 26300.9974) and 25H2 (build 26200.9974), all editions. Its 24H2 applicability is limited to Enterprise and Education. Windows 11 24H2 Home and Pro reached end of updates on October 13, 2026. For 26H2, Microsoft still requires an update released on or after September 22, 2026 (such as KB5124010) before KB5132061 can install."
+      },
+      {
+        "type": "list",
+        "items": [
+          "26H2 and 25H2: install the latest applicable cumulative update through Windows Update or your organization's management tools; KB5132061 is the November 10 security release.",
+          "24H2: do not assume every edition is still serviced. The November KB5132061 page lists Enterprise and Education only; Home and Pro have passed their October 13, 2026 end-of-updates date.",
+          "Feature upgrade: availability remains controlled. Wait for Windows Update to offer 26H2 to the device, and check Microsoft's release-health page before using installation media if a safeguard hold may apply."
+        ]
       },
       {
         "type": "callout",
@@ -1496,24 +1510,42 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
-        "text": "Microsoft announced Windows 11, version 26H2 on September 29, 2026. The release continues the annual Windows feature-update cadence. Microsoft describes 26H2 as being built on the same servicing foundation as recent Windows 11 releases, with eligible 24H2 and 25H2 PCs receiving an enablement package that activates components already present through previous servicing updates."
+        "text": "Microsoft announced Windows 11, version 26H2 on September 29, 2026. As of November 14, the latest security cumulative update is KB5132061, released November 10. For 26H2, that update produces OS build 26300.9974. It includes improvements from earlier October servicing releases, including the October 28 preview update KB5127936. The feature update itself still follows Microsoft's controlled rollout and eligibility rules."
       },
       {
         "type": "paragraph",
-        "text": "That distinction matters because an eligible 24H2 or 25H2 PC is not necessarily facing the same installation workload as a full operating-system reinstall. Microsoft says the enablement-package path uses a small download and a restart for eligible devices. By contrast, a clean install from ISO or USB is a different operation because it replaces the Windows installation and can erase data from the target disk."
+        "text": "That distinction matters because an eligible 25H2 PC is not necessarily facing the same installation workload as a full operating-system reinstall. Microsoft says eligible devices move through an enablement package using a small download and restart. For 24H2, check the edition: Home and Pro reached end of updates on October 13, 2026, while Enterprise and Education remain on a separate servicing timeline. By contrast, a clean install from ISO or USB is a different operation because it replaces the Windows installation and can erase data from the target disk."
       },
       {
         "type": "paragraph",
-        "text": "Microsoft also says that some features introduced under temporary commercial control in version 25H2 will be enabled by default in 26H2. For organizations, Microsoft recommends targeted deployments first so applications, devices and business-critical workflows can be validated before a broader rollout."
+        "text": "Microsoft says some features introduced under temporary commercial control in version 25H2 will be enabled by default in 26H2. For organizations, Microsoft recommends targeted deployments first so applications, devices and business-critical workflows can be validated before a broader rollout. The November 10 KB5132061 update also continues Microsoft's staged delivery of newer Secure Boot certificates to eligible devices."
       },
       {
         "type": "h2",
-        "text": "Should You Install Windows 11 26H2 or Wait?",
+        "text": "Should You Install Windows 11 26H2 or Wait in November 2026?",
         "id": "should-install-or-wait"
       },
       {
         "type": "paragraph",
         "text": "The answer depends on the device, not just the version number. Microsoft is using a controlled feature rollout and may place safeguard holds on devices where a known compatibility issue could affect the update experience. That means two otherwise similar PCs may not receive the feature update at the same time."
+      },
+      {
+        "type": "h3",
+        "text": "What Changed Between Launch Week and November 14, 2026?",
+        "id": "november-install-decision"
+      },
+      {
+        "type": "paragraph",
+        "text": "In early October, waiting was sensible for production devices that did not need an immediate rebuild. By mid-November, make the decision from the Windows edition, update status, compatibility and device condition—not from the age of the announcement."
+      },
+      {
+        "type": "list",
+        "items": [
+          "If your PC is on 25H2 and running reliably, take 26H2 when Windows Update offers it for that device. Back up important files, confirm BitLocker recovery access and leave practical free space on C: before starting.",
+          "If your PC is on 24H2 Home or Pro, note that this edition reached end of updates on October 13, 2026. Move to a supported Windows 11 release through an eligible, supported path; do not describe this as an actively serviced 24H2 consumer branch.",
+          "If your PC is on 24H2 Enterprise or Education, Microsoft's November KB5132061 page still lists those editions. Follow your organization's servicing policy and validate business applications before broad deployment.",
+          "If a safeguard hold blocks 26H2, do not force the ISO or Installation Assistant to bypass a known compatibility block on a work-critical PC. Check the exact driver, firmware or application issue in Windows release health first."
+        ]
       },
       {
         "type": "comparisonTable",
@@ -2157,11 +2189,33 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
-        "text": "Microsoft's official Windows 11 26H2 update history currently says the update has no known issues listed for that specific release page and directs users to the Windows release-health hub for the latest rollout and safeguard information. That distinction is important: a general Windows 11 issue can affect several versions, while an issue specifically documented for 26H2 may be tracked separately."
+        "text": "Check Microsoft's live Windows 11 release-health hub and the version-specific update history before diagnosing a problem as a 26H2 regression. The November 10 KB5132061 servicing page lists the improvements and known issues for that cumulative update, including a repair rollout for some failed November update installations. A general Windows 11 issue can affect several versions, while a version-specific issue may be tracked separately."
       },
       {
         "type": "paragraph",
         "text": "Windows 11 release health: https://learn.microsoft.com/en-us/windows/release-health/windows11-release-information"
+      },
+      {
+        "type": "h3",
+        "text": "What If the Go Back Option Is Greyed Out? (Past the 10-Day Window)",
+        "id": "rollback-window-expired"
+      },
+      {
+        "type": "paragraph",
+        "text": "Windows normally gives you 10 days after a feature upgrade to return to the previous version. The Go back option also depends on the previous-installation files remaining on the PC, including Windows.old and $windows.~bt. Storage cleanup can remove those files sooner. By November 14, many devices upgraded in early October are already beyond the standard rollback period, so Settings > System > Recovery may show Go back as unavailable."
+      },
+      {
+        "type": "list",
+        "ordered": true,
+        "items": [
+          "Install the latest applicable Windows cumulative update and model-specific OEM drivers. For supported 26H2 and 25H2 systems, KB5132061 is the November 10, 2026 security update; use Windows Update or your organization's approved deployment channel.",
+          "Repair the current Windows installation before wiping the drive. Try Settings > System > Recovery > Fix problems using Windows Update, or run DISM.exe /Online /Cleanup-Image /RestoreHealth followed by sfc /scannow from an elevated Terminal.",
+          "If freezes, NVMe timeouts, blue screens or thermal shutdowns continue, test RAM, SSD health, firmware, storage-controller drivers and temperatures. A clean install will not fix a failing SSD, unstable memory or inadequate cooling."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Do not delete Windows.old or the related rollback files while you may still need to return to the previous version. Once the 10-day period has expired or the files are gone, a manual clean install of the previous release is a separate process and requires a verified backup, the correct media and any needed product or recovery information."
       },
       {
         "type": "h2",
@@ -2182,6 +2236,23 @@ export const BLOG_POSTS: BlogPost[] = [
           "The laptop overheats, throttles aggressively or powers off unexpectedly.",
           "Charging becomes unstable or the device loses power during setup.",
           "A display, USB-C, Wi-Fi or other device fails after driver changes and also fails outside the Windows environment."
+        ]
+      },
+      {
+        "type": "h3",
+        "text": "Six-Week Post-Update Diagnosis: What to Measure",
+        "id": "post-update-hardware-checks"
+      },
+      {
+        "type": "paragraph",
+        "text": "A symptom that appears after a Windows update is a useful timeline clue, not proof that the update damaged a component. In a bench diagnosis, reproduce the workload and collect storage, driver and temperature evidence before recommending a reinstall or replacement."
+      },
+      {
+        "type": "list",
+        "items": [
+          "NVMe storage: review SMART/health data and Windows storage events while indexing, security scans or normal workloads are active. Look for repeated resets, controller timeouts, disappearance or abnormal latency; high disk activity by itself does not prove an SSD is failing.",
+          "Intel VMD/IRST: if an NVMe drive is absent in Windows Setup, confirm the UEFI storage mode and load the exact OEM Intel Rapid Storage Technology (VMD) driver for that laptop model. Do not switch VMD/RAID to AHCI on an existing encrypted installation without a verified backup and BitLocker recovery key.",
+          "Cooling: measure CPU/GPU temperatures, fan response and clock behavior under a repeatable sustained workload. Inspect blocked intake, fan and heatsink airflow when temperature or throttling evidence points to a cooling problem."
         ]
       },
       {
@@ -2295,7 +2366,7 @@ export const BLOG_POSTS: BlogPost[] = [
           },
           {
             "question": "What is the difference between the Windows 11 26H2 enablement package and the full ISO?",
-            "answer": "On eligible PCs already running Windows 11 24H2 or 25H2, Windows Update uses a small enablement package to activate features already staged by servicing updates; the September 22, 2026 prerequisite is KB5124010 Preview or a later cumulative update. The full Windows 11 26H2 ISO is multi-gigabyte installation media for clean installs, offline workflows, virtual machines or rebuilding a Windows installation."
+            "answer": "On an eligible, supported Windows 11 24H2 or 25H2 device, the enablement package activates features already staged by monthly servicing. For 26H2, Microsoft says an update released on or after September 22, 2026 (such as KB5124010) must be installed before the November 10 security update KB5132061. KB5132061 is the current November security cumulative update; KB5124010 is the prerequisite checkpoint, not a replacement for it. The full Windows 11 26H2 ISO is multi-gigabyte installation media for clean installs, offline workflows, virtual machines or rebuilding a Windows installation."
           },
           {
             "question": "Will installing the Windows 11 26H2 ISO delete my files?",
@@ -2324,6 +2395,14 @@ export const BLOG_POSTS: BlogPost[] = [
           {
             "question": "Should I bring my laptop for diagnosis if Windows 11 26H2 setup keeps freezing?",
             "answer": "Repeated freezes or blue screens after checking the official ISO checksum and testing a known-good USB drive can point to unstable RAM, an unhealthy NVMe SSD, overheating, firmware or motherboard power faults. Stop repeating the same install attempt and test the machine first. KCROC diagnoses hardware at its Hawalli workshop and offers free pickup and delivery across Kuwait."
+          },
+          {
+            "question": "Which Windows 11 editions receive the November 10, 2026 KB5132061 update?",
+            "answer": "Microsoft lists KB5132061 for all editions of Windows 11 26H2 and 25H2, and for Windows 11 24H2 Enterprise and Education only. Windows 11 24H2 Home and Pro reached end of updates on October 13, 2026. Check the edition shown in Settings > System > About and follow the applicable support path."
+          },
+          {
+            "question": "Why is Go back unavailable after upgrading to Windows 11 26H2?",
+            "answer": "The built-in rollback option is normally available for 10 days after a feature upgrade and requires the previous-installation files, including Windows.old and $windows.~bt, to remain on the device. After the time limit expires or cleanup removes those files, Go back is no longer available. Update and repair the current Windows installation, then diagnose storage, memory, firmware and cooling symptoms before considering a clean reinstall."
           }
         ]
       },
@@ -2346,6 +2425,14 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
+        "text": "November 10, 2026 security update KB5132061: https://support.microsoft.com/en-us/servicing/os/windows-11/2026/11/kb5132061-windows-11-24h2-25h2-26h2-security-update"
+      },
+      {
+        "type": "paragraph",
+        "text": "Windows 11 release information, builds and servicing end dates: https://learn.microsoft.com/en-us/windows/release-health/windows11-release-information"
+      },
+      {
+        "type": "paragraph",
         "text": "Windows 11 compatibility and hardware requirements: https://learn.microsoft.com/en-us/windows/compatibility/windows-11/"
       },
       {
@@ -2356,13 +2443,13 @@ export const BLOG_POSTS: BlogPost[] = [
         "type": "callout",
         "variant": "info",
         "title": "Article status",
-        "text": "This KCROC News article was originally prepared for September 30, 2026 and technically reviewed on November 9, 2026. Windows release details, rollout status and known issues can change, so check Microsoft's official release-health and update-history pages before a major installation."
+        "text": "This KCROC News guide was originally published on September 30, 2026 and updated with a technical review on November 14, 2026 by Imran Natiq at the KCROC Hardware Engineering Lab in Hawalli, Kuwait. Windows rollout availability, cumulative updates and safeguard holds can change; verify the current Microsoft release-health and update-history pages before a major installation."
       }
     ],
     "image": "/images/windows-os-software-repair-and-installation-kuwait.webp",
     "discoverImage": "/images/discover/windows-os-software-repair-and-installation-kuwait-1200x675.webp",
     "date": "2026-09-30",
-    "technicalReviewDate": "November 9, 2026",
+    "technicalReviewDate": "November 14, 2026",
     "author": "Imran Natiq",
     "category": "Windows & Microsoft",
     "readTime": "18–22 min read",
@@ -2388,8 +2475,8 @@ export const BLOG_POSTS: BlogPost[] = [
       "SFC",
       "mbr2gpt"
     ],
-    "seoTitle": "Windows 11 26H2 ISO Download, Clean Install & Hardware Guide",
-    "seoDescription": "Official Windows 11 26H2 ISO guide by Imran Natiq. Learn enablement package vs clean install steps, SHA256 verification, setup error fixes, and hardware checks.",
+    "seoTitle": "Windows 11 26H2: November Rollout, ISO & Fixes | KCROC",
+    "seoDescription": "Windows 11 26H2 November 2026 update: KB5132061 status, ISO install steps, 10-day rollback limits, and hardware checks for NVMe, RAM and cooling.",
     "contentType": "news"
   },
 
