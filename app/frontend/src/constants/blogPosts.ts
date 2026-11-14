@@ -9591,14 +9591,14 @@ export const BLOG_POSTS: BlogPost[] = [
         items: [
           "Workshop: Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19, Hawalli, Kuwait.",
           "Hours: daily, 10:00 AM–10:00 PM.",
-          "Phone / WhatsApp: +965 5530 1913.",
+          "Contact: use the WhatsApp and booking actions on this page to arrange collection.",
           "Initial diagnosis: free; a quotation is provided before paid work.",
-          "Repair policy: No Fix, No Fee under KCROC’s stated terms, with a 30-day warranty on covered completed repairs."
+          "Repair policy: No Fix, No Fee under KCROC’s stated terms, with warranty coverage on eligible completed repairs."
         ]
       },
       {
         type: "paragraph",
-        text: "To ask about a Mac diagnosis or arrange pickup, send the model identifier and symptom through WhatsApp: https://wa.me/96555301913 . Include a photo of the model label or About This Mac screen if available, but do not share passwords or sensitive account credentials."
+        text: "To ask about a Mac diagnosis or arrange pickup, use the article’s existing WhatsApp or booking actions. Share the model identifier, symptom and collection area; include a photo of the model label or About This Mac screen if available, but do not share passwords or sensitive account credentials."
       },
       {
         type: "h2",
