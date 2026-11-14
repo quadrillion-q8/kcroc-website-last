@@ -31,6 +31,34 @@ const AR_GUIDES = [
   { title: 'متى تنظف اللابتوب وتغير المعجون الحراري؟', path: '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait' }
 ];
 
+const MANGAF_WORKSHOP_GALLERY = [
+  { image: IMAGES.brand.shopInterior, alt: 'الجزء الداخلي من مختبر KCROC المركزي في حولي', caption: 'مختبر KCROC في حولي — هنا تتم أعمال الفحص والإصلاح للأجهزة المستلمة من المنقف.' },
+  { image: IMAGES.brand.technicians, alt: 'فنيون يفحصون جهاز كمبيوتر داخل مختبر KCROC', caption: 'فحص الأجهزة وتحديد مسار الإصلاح قبل اعتماد أي عمل مدفوع.' },
+  { image: IMAGES.brand.leadTechnician, alt: 'فني مختبر يعمل على لوحة إلكترونية لإصلاحها على مستوى المكونات', caption: 'أعمال فحص وإصلاح اللوحات الإلكترونية على مستوى المكونات.' },
+  { image: IMAGES.brand.inventory, alt: 'مكونات وقطع بديلة محفوظة داخل مختبر KCROC', caption: 'نتحقق من توافق القطعة مع موديل الجهاز قبل اعتمادها للتركيب.' }
+];
+
+const MANGAF_PROCESS_STEPS = [
+  { step: 1, title: 'الاستلام من موقعك', description: 'أرسل منطقتك والبلوك والشارع ورقم المبنى على واتساب، وشارك موقعك المباشر والوقت المفضل للاستلام. نؤكد لك موعدًا متاحًا ضمن ساعات العمل من 10 صباحًا إلى 10 مساءً.' },
+  { step: 2, title: 'الفحص في مختبر حولي', description: 'نسجل الجهاز ونفحص الأعراض ومكونات الهاردوير لتحديد سبب العطل. نشرح لك نتيجة الفحص وخيارات الإصلاح والتكلفة قبل بدء أي عمل مدفوع.' },
+  { step: 3, title: 'الإصلاح والاختبار والإرجاع', description: 'بعد موافقتك ننفذ الإصلاح المناسب ونختبر الجهاز، ثم ننسق توصيله إلى موقعك. وتطبق سياسة No Fix, No Fee وفق شروط الخدمة إذا تعذر إتمام الإصلاح.' }
+];
+
+const MANGAF_TRUST_CARDS = [
+  { title: 'إصلاح على مستوى المكونات', description: 'نفحص اللوحة ودوائر الطاقة ونحدد المكوّن المتضرر، ونقيّم إمكانية إصلاحه بدل اقتراح تبديل المذربورد كاملة بشكل تلقائي.' },
+  { title: 'خصوصية بياناتك', description: 'يركز الفحص المعتاد على الهاردوير ولا يتطلب تصفح ملفاتك الشخصية. ونوضح لك مسبقًا أي خطوة قد تستلزم التعامل مع وحدة التخزين.' },
+  { title: 'استلام وتوصيل مجاني', description: 'نستلم الجهاز من المنقف والمناطق القريبة ونعيده بعد الإصلاح والاختبار، من دون الحاجة إلى زيارة مختبر حولي لتسليم الجهاز.' },
+  { title: 'ضمان 30 يومًا', description: 'الإصلاحات المكتملة مشمولة بضمان لمدة 30 يومًا وفق شروط الخدمة، مع توضيح نطاق التغطية قبل التنفيذ.' },
+  { title: 'No Fix, No Fee', description: 'إذا تعذر إتمام الإصلاح، لا تُفرض أجرة الإصلاح وفق شروط السياسة. نوضح نتيجة الفحص وخياراتك قبل أي عمل مدفوع.' },
+  { title: 'مختبر ESD-Safe', description: 'تتم أعمال اللوحات والـMicrosoldering على محطات عمل مؤرضة ومجهزة للحماية من الكهرباء الساكنة داخل مختبر KCROC بحولي.' }
+];
+
+const MANGAF_PROBLEM_LABELS: Record<string, string> = {
+  'problem-no-power': 'اللابتوب ما يشتغل أو ما يستجيب',
+  'problem-overheating': 'ارتفاع حرارة اللابتوب أو إطفاؤه',
+  'problem-liquid-spill': 'انسكاب ماء أو قهوة على اللابتوب'
+};
+
 const CONFIG: Record<string, {
   h1: string;
   eyebrow: string;
@@ -447,31 +475,37 @@ const CONFIG: Record<string, {
       { q: 'هل الاستلام من المنقف والفحيحيل وأبو حليفة والأحمدي مجاني؟', a: 'نعم، هذه المناطق ضمن نطاق الاستلام والتوصيل المجاني المذكور لخدمة المنقف. أرسل منطقتك وموقع الاستلام على واتساب حتى ننسق الموعد.' },
       { q: 'إذا ما قدرتوا تصلحون الجهاز، هل أدفع؟', a: 'تطبق سياسة No Fix, No Fee: إذا تعذر علينا إصلاح الجهاز، ما تدفع رسوم إصلاح وفق شروط السياسة. الفحص الأولي والاستلام والتوصيل مجانيان.' },
       { q: 'انسكب سائل على اللابتوب، شنو أسوي؟', a: 'طفّ الجهاز وافصل الشاحن إذا كان ذلك آمنًا، ولا تحاول تشغّله أو تشحنه مرة ثانية للتجربة. دز لنا نوع الجهاز ونوع السائل ووقت الانسكاب على واتساب لترتيب الاستلام والفحص بأسرع ما يمكن.' },
-      { q: 'هل تصلحون MacBook ومذربورد لابتوبات الألعاب؟', a: 'نعم، نفحص MacBook واللابتوبات وأجهزة الألعاب، ونقيّم إصلاح اللوحة على مستوى المكونات عندما تسمح حالة الجهاز والعطل بذلك. القرار النهائي يكون بعد التشخيص.' }
+      { q: 'هل تصلحون MacBook ومذربورد لابتوبات الألعاب؟', a: 'نعم، نفحص MacBook ولابتوبات الألعاب، ونقيّم إصلاح اللوحة على مستوى المكونات عندما تسمح حالة الجهاز والعطل بذلك. القرار النهائي يكون بعد التشخيص.' },
+      { q: 'كم تكلفة تصليح اللابتوب في المنقف؟', a: 'تبدأ بعض إصلاحات اللابتوب الشائعة من 15 د.ك. يعتمد السعر النهائي على موديل الجهاز والعطل والقطع المطلوبة. الفحص الأولي مجاني، ونوضح لك التكلفة قبل بدء أي إصلاح مدفوع.' },
+      { q: 'كم يستغرق التصليح؟', a: 'كثير من الإصلاحات تنتهي خلال 24 إلى 48 ساعة من وصول الجهاز، وقد تتوفر بعض أعمال الشاشة والبطارية في نفس اليوم إذا كانت القطعة الصحيحة متوفرة. إصلاح المذربورد على مستوى المكونات قد يستغرق 24 إلى 72 ساعة. نؤكد المدة الواقعية بعد الفحص.' },
+      { q: 'لمبة الشاحن تشتغل لكن اللابتوب ما يشتغل، هل العطل من المذربورد؟', a: 'ممكن، لكن مو بالضرورة. قد يكون السبب من الشاحن أو البطارية أو مدخل الشحن أو دائرة الطاقة على اللوحة. نفحص مسار الطاقة أولًا قبل تحديد القطعة أو اقتراح تبديل المذربورد.' },
+      { q: 'شنو المعلومات المطلوبة لترتيب الاستلام؟', a: 'أرسل لنا المنطقة والبلوك والشارع ورقم المبنى، وشارك موقع واتساب المباشر إذا أمكن. اكتب الوقت المفضل للاستلام بين 10 صباحًا و10 مساءً، والفريق يؤكد لك الموعد المتاح.' }
     ],
     englishPath: '/location/mangaf',
     arabicLinks: [
       { label: 'تصليح كمبيوتر في الفحيحيل', path: '/ar/computer-repair-fahaheel' },
+      { label: 'تصليح كمبيوتر في أبو حليفة', path: '/location/abu-halifa' },
       { label: 'تصليح كمبيوتر في الأحمدي', path: '/ar/computer-repair-ahmadi' },
       { label: 'تصليح اللابتوب', path: '/ar/laptop-repair-kuwait' },
       { label: 'تصليح المذربورد', path: '/ar/motherboard-repair-kuwait' },
       { label: 'تصليح MacBook', path: '/ar/macbook-repair-kuwait' },
-      { label: 'إصلاح أضرار السوائل', path: '/ar/laptop-liquid-damage-repair-kuwait' },
-      { label: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' }
+      { label: 'تصليح لابتوبات الألعاب', path: '/ar/gaming-laptop-repair-kuwait' },
+      { label: 'إصلاح أضرار السوائل', path: '/ar/laptop-liquid-damage-repair-kuwait' }
     ],
-    serviceIds: ['srv-laptop', 'srv-macbook', 'srv-liquid-damage', 'srv-motherboard'],
+    serviceIds: ['srv-laptop', 'srv-macbook', 'srv-liquid-damage', 'srv-motherboard', 'srv-gaming-laptop'],
     areas: ['المنقف', 'الفحيحيل', 'أبو حليفة', 'الأحمدي'],
     highlights: [
-      { title: 'استلام من المنقف والمناطق القريبة', description: 'ننسق استلام اللابتوب أو MacBook أو الكمبيوتر من البيت أو المكتب في المنقف والفحيحيل وأبو حليفة والأحمدي، ثم نعيد الجهاز بعد الإصلاح والاختبار.' },
+      { title: 'استلام من المنقف والمناطق القريبة', description: 'ننسق استلام اللابتوب أو MacBook أو كمبيوتر الألعاب من البيت أو المكتب في المنقف والفحيحيل وأبو حليفة والأحمدي. أرسل البلوك والشارع ورقم المبنى وموقع واتساب المباشر، مع الوقت المفضل للاستلام بين 10 صباحًا و10 مساءً؛ ونؤكد لك الموعد المتاح.' },
       { title: 'إصلاح المذربورد بدل التبديل المباشر', description: 'نفحص دوائر الطاقة والمكونات ونحدد سبب العطل. إصلاح المكوّن ممكن في بعض الحالات، ويعتمد القرار على حالة اللوحة بعد الفحص.' },
       { title: 'أعطال التشغيل والحرارة والسوائل', description: 'نفحص الجهاز إذا ما يشتغل أو ما يشحن أو ترتفع حرارته أو تعرض لسائل، ونحدد مسار الإصلاح قبل إعطاء السعر.' },
-      { title: 'مختبر واحد في حولي', description: 'المنقف منطقة خدمة وليست فرعًا. جميع أعمال التشخيص والإصلاح تتم في مختبر KCROC بحولي، مع ضمان 30 يومًا على الإصلاح المكتمل وفق الشروط.' }
+      { title: 'مختبرنا المركزي في حولي', description: 'المنقف منطقة خدمة وليست فرعًا. يتم الفحص والإصلاح في مختبر KCROC المركزي في حولي: شارع ابن خلدون، مجمع الملا، السرداب، محل 19. الضمان 30 يومًا على الإصلاحات المكتملة وفق شروط الخدمة.' }
     ],
     serviceCardCopy: {
       'srv-laptop': { title: 'تصليح اللابتوب', description: 'تشخيص مشاكل التشغيل والشحن والحرارة والشاشة حسب موديل الجهاز.' },
       'srv-macbook': { title: 'تصليح MacBook', description: 'فحص أعطال الطاقة والشحن والسوائل واللوحة الأم في أجهزة MacBook حسب الموديل.' },
       'srv-liquid-damage': { title: 'فحص أضرار السوائل', description: 'فحص آثار الانسكاب والموصلات واللوحة قبل إعادة تشغيل الجهاز أو اقتراح الإصلاح.' },
-      'srv-motherboard': { title: 'تصليح المذربورد', description: 'تتبع العطل إلى المكوّن أو دائرة الطاقة وإصلاحه عندما تكون حالة اللوحة مناسبة فنيًا.' }
+      'srv-motherboard': { title: 'تصليح المذربورد', description: 'تتبع العطل إلى المكوّن أو دائرة الطاقة وإصلاحه عندما تكون حالة اللوحة مناسبة فنيًا.' },
+      'srv-gaming-laptop': { title: 'تصليح لابتوبات الألعاب', description: 'تشخيص مشاكل الطاقة والحرارة والشاشة والشحن في لابتوبات الألعاب حسب الموديل ونتيجة الفحص.' }
     }
   },
   'computer-repair-fahaheel': {
@@ -2054,6 +2088,15 @@ export default function ArabicCommercialPage() {
   const cfg = slug ? CONFIG[slug] : undefined;
   const page = slug ? KCROC_GRAPH.pages.find((item) => item.slug === `ar/${slug}`) : undefined;
   const business = KCROC_GRAPH.business;
+  const mangafLocation = slug === 'computer-repair-mangaf'
+    ? KCROC_GRAPH.locations.find((location) => location.slug === 'mangaf')
+    : undefined;
+  const mangafBrands = (mangafLocation?.relatedBrandIds ?? [])
+    .map((id) => KCROC_GRAPH.brands.find((brand) => brand.id === id))
+    .filter(Boolean);
+  const mangafProblems = (mangafLocation?.relatedProblemIds ?? [])
+    .map((id) => KCROC_GRAPH.problems.find((problem) => problem.id === id))
+    .filter(Boolean);
 
   // Reuse the corresponding English service's existing KCROC photography.
   // These are real first-party assets already assigned in the service graph.
@@ -2218,7 +2261,7 @@ export default function ArabicCommercialPage() {
         : slug === 'computer-repair-kuwait-city'
             ? 'السلام عليكم KCROC، أحتاج تصليح كمبيوتر أو لابتوب أو ماك بوك (MacBook) أو كمبيوتر قيمنق من مدينة الكويت أو محافظة العاصمة. نوع الجهاز والموديل: ____. المشكلة: ____. منطقة الاستلام: ____. الاستلام من: مكتب / منزل. فضلاً نسقوا الاستلام والتوصيل المجاني، وأكدوا نتيجة التشخيص والسعر قبل الإصلاح.'
             : slug === 'computer-repair-mangaf'
-              ? 'السلام عليكم KCROC، أحتاج تصليح كمبيوتر أو لابتوب من المنقف. المنطقة: المنقف / الفحيحيل / أبو حليفة / الأحمدي: ____. نوع الجهاز والموديل: ____. المشكلة: لا يشتغل / لا يشحن / حرارة / سائل / مذربورد / أخرى: ____. أرجو تنسيق الاستلام المجاني وتوضيح التشخيص والسعر قبل أي إصلاح مدفوع.'
+              ? 'السلام عليكم KCROC، أحتاج تصليح كمبيوتر أو لابتوب من المنقف. منطقة الاستلام: المنقف / الفحيحيل / أبو حليفة / الأحمدي: ____. البلوك والشارع ورقم المبنى: ____. نوع الجهاز والموديل: ____. المشكلة: لا يشتغل / لا يشحن / حرارة / سائل / مذربورد / أخرى: ____. أقدر أشارك موقع واتساب المباشر. الوقت المفضل للاستلام بين 10 صباحًا و10 مساءً: ____. أرجو تأكيد الموعد المتاح ونتيجة الفحص والتكلفة قبل أي إصلاح مدفوع.'
               : slug === 'computer-repair-fahaheel'
                 ? 'السلام عليكم KCROC، أحتاج تصليح كمبيوتر أو لابتوب من الفحيحيل أو المناطق القريبة. المنطقة: الفحيحيل / فنطاس / المنقف / أبو حليفة / مدينة صباح الأحمد البحرية: ____. نوع الجهاز والموديل: ____. الأعراض: ____. أرجو تنسيق الاستلام والتوصيل المجاني وتأكيد التكلفة بعد الفحص وقبل الإصلاح.'
                 : slug === 'computer-repair-ahmadi'
@@ -4602,6 +4645,80 @@ export default function ArabicCommercialPage() {
               ))}
             </div>
           </section>
+        )}
+
+        {slug === 'computer-repair-mangaf' && (
+          <>
+            <section className="mt-12" aria-labelledby="mangaf-supported-brands">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">الأجهزة والماركات</p>
+              <h2 id="mangaf-supported-brands" className="mt-2 text-2xl font-black text-white sm:text-3xl">ماركات اللابتوبات التي نخدمها في المنقف</h2>
+              <p className="mt-3 max-w-3xl leading-8 text-slate-300">نفحص أجهزة الماركات التالية حسب الموديل وتوفر القطع، إضافة إلى أجهزة MacBook:</p>
+              <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+                {mangafBrands.map((brand) => (
+                  <div key={brand.id} className="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-4 text-center font-bold text-white">
+                    {brand.brandName}
+                  </div>
+                ))}
+                <div className="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-4 text-center">
+                  <span className="block font-bold text-white">Apple</span>
+                  <span className="mt-1 block text-xs text-slate-400">MacBook Air / Pro</span>
+                </div>
+              </div>
+            </section>
+
+            <section className="mt-12" aria-labelledby="mangaf-common-problems">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">مشاكل شائعة</p>
+              <h2 id="mangaf-common-problems" className="mt-2 text-2xl font-black text-white sm:text-3xl">أعطال الكمبيوتر واللابتوب التي نفحصها</h2>
+              <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                {mangafProblems.map((problem) => (
+                  <Link key={problem.id} to={`/${problem.slug}`} className="rounded-xl border border-slate-800 bg-slate-900/45 px-5 py-4 font-semibold text-slate-200 transition hover:border-cyan-500/40 hover:text-cyan-300">
+                    {MANGAF_PROBLEM_LABELS[problem.id] ?? problem.title}
+                  </Link>
+                ))}
+              </div>
+            </section>
+
+            <section className="mt-12" aria-labelledby="mangaf-workshop-gallery">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">من داخل المختبر</p>
+              <h2 id="mangaf-workshop-gallery" className="mt-2 text-2xl font-black text-white sm:text-3xl">وين يتم فحص وإصلاح جهازك؟</h2>
+              <p className="mt-3 max-w-3xl leading-8 text-slate-300">الأجهزة المستلمة من المنقف تُفحص وتُصلح في مختبر KCROC المركزي في حولي، ثم ننسق إرجاعها بعد الاختبار.</p>
+              <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                {MANGAF_WORKSHOP_GALLERY.map((item) => (
+                  <figure key={item.image.src} className="overflow-hidden rounded-xl border border-slate-800 bg-slate-900/45">
+                    <img src={item.image.src} alt={item.alt} width={item.image.width} height={item.image.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                    <figcaption className="px-3 py-3 text-xs leading-6 text-slate-300">{item.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </section>
+
+            <section className="mt-12" aria-labelledby="mangaf-repair-process">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">خطوات الخدمة</p>
+              <h2 id="mangaf-repair-process" className="mt-2 text-2xl font-black text-white sm:text-3xl">شلون تتم خدمة التصليح من المنقف؟</h2>
+              <div className="mt-6 grid gap-4 sm:grid-cols-3">
+                {MANGAF_PROCESS_STEPS.map((step) => (
+                  <article key={step.step} className="rounded-2xl border border-slate-800 bg-slate-900/45 p-6">
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-cyan-500 text-sm font-black text-slate-950">{step.step}</span>
+                    <h3 className="mt-4 font-bold text-white">{step.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-400">{step.description}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section className="mt-12" aria-labelledby="mangaf-trust-pillars">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">لماذا KCROC</p>
+              <h2 id="mangaf-trust-pillars" className="mt-2 text-2xl font-black text-white sm:text-3xl">فحص واضح وخدمة من مختبر واحد في حولي</h2>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {MANGAF_TRUST_CARDS.map((item) => (
+                  <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-900/45 p-5">
+                    <h3 className="font-bold text-white">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-400">{item.description}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+          </>
         )}
 
         {slug === 'computer-repair-farwaniya' && (
