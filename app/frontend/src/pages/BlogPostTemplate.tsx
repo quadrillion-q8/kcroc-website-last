@@ -1572,7 +1572,7 @@ export default function BlogPostTemplate() {
                 <span className="flex items-center gap-1.5 mt-1"><Clock size={14} aria-hidden="true" /> {post.readTime}</span>
                 <span className="flex items-center gap-1.5 mt-1">
                   <User size={14} aria-hidden="true" />
-                  {post.author === 'Imran Natiq' ? (
+                  {post.author === 'Imran Natiq' && !isGlobalNewsArticle ? (
                     <Link to="/author/imran" className="hover:text-cyan-400 transition-colors">
                       {post.author}
                     </Link>
@@ -1628,33 +1628,43 @@ export default function BlogPostTemplate() {
               {post.author === 'Imran Natiq' && (
                 <aside className="mb-10 rounded-2xl border border-slate-800 bg-slate-900/50 p-5 sm:p-6" aria-label="Author and technical review">
                   <div className="flex items-start gap-4">
-                    <img
-                      src={AUTHOR_IMAGE_URL}
-                      alt={isGlobalEditorialArticle ? 'Imran Natiq — Hardware Repair Engineer' : 'Imran Natiq — Hardware Repair Engineer at KCROC'}
-                      className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl object-cover border border-slate-800 shrink-0"
-                      loading="lazy"
-                      decoding="async"
-                    />
+                    {!isGlobalNewsArticle && (
+                      <img
+                        src={AUTHOR_IMAGE_URL}
+                        alt={isGlobalEditorialArticle ? 'Imran Natiq — Hardware Repair Engineer' : 'Imran Natiq — Hardware Repair Engineer at KCROC'}
+                        className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl object-cover border border-slate-800 shrink-0"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    )}
                     <div className="min-w-0">
                       <p className="text-xs font-black uppercase tracking-wider text-cyan-400 mb-1">
                         Written &amp; technically reviewed by
                       </p>
-                      <Link to="/author/imran" className="text-lg font-bold text-white hover:text-cyan-400 transition-colors">
-                        Imran Natiq
-                      </Link>
+                      {isGlobalNewsArticle ? (
+                        <p className="text-lg font-bold text-white">Imran Natiq</p>
+                      ) : (
+                        <Link to="/author/imran" className="text-lg font-bold text-white hover:text-cyan-400 transition-colors">
+                          Imran Natiq
+                        </Link>
+                      )}
                       <p className="text-sm text-slate-400 mt-1 leading-relaxed">
-                        {post.slug === 'gaming-pc-not-turning-on-kuwait'
-                          ? 'Lead Hardware Repair Engineer at Kuwait Computer Repair On Call (KCROC), Hawalli — focused on component-level motherboard diagnostics, ATX power-sequence analysis, firmware recovery and gaming desktop stability.'
-                          : post.slug === 'nvidia-dlss-5-neural-rendering-explained'
-                            ? 'Hardware Repair Engineer at KCROC — focused on laptop thermal diagnostics, GPU load testing, and component-level motherboard repair at our ESD-safe laboratory in Hawalli, Kuwait.'
-                            : isGlobalEditorialArticle
-                              ? 'Hardware Repair Engineer and technical reviewer focused on computer hardware, software troubleshooting, performance, firmware and diagnostics.'
-                              : 'Hardware Repair Engineer at KCROC, focused on laptop thermal troubleshooting, hardware testing and component-level repair in Kuwait.'}
+                        {isGlobalNewsArticle
+                          ? 'Technology writer and technical reviewer covering computer architecture, processors, computing platforms and consumer hardware.'
+                          : post.slug === 'gaming-pc-not-turning-on-kuwait'
+                            ? 'Lead Hardware Repair Engineer at Kuwait Computer Repair On Call (KCROC), Hawalli — focused on component-level motherboard diagnostics, ATX power-sequence analysis, firmware recovery and gaming desktop stability.'
+                            : post.slug === 'nvidia-dlss-5-neural-rendering-explained'
+                              ? 'Hardware Repair Engineer at KCROC — focused on laptop thermal diagnostics, GPU load testing, and component-level motherboard repair at our ESD-safe laboratory in Hawalli, Kuwait.'
+                              : isGlobalEditorialArticle
+                                ? 'Hardware Repair Engineer and technical reviewer focused on computer hardware, software troubleshooting, performance, firmware and diagnostics.'
+                                : 'Hardware Repair Engineer at KCROC, focused on laptop thermal troubleshooting, hardware testing and component-level repair in Kuwait.'}
                       </p>
                       <p className="text-xs text-slate-500 mt-2">
-                        Technical review: {isGlobalEditorialArticle
-                          ? `${getTechnicalReviewDateLabel(post, 'November 7, 2026')}${post.slug === 'gaming-pc-not-turning-on-kuwait' ? ' · KCROC Hardware Engineering Lab, Hawalli, Kuwait' : post.slug === 'nvidia-dlss-5-neural-rendering-explained' ? ' · Hawalli, Kuwait' : ''}`
-                          : `${getTechnicalReviewDateLabel(post, 'September 1, 2026')} · Hawalli, Kuwait`}
+                        Technical review: {isGlobalNewsArticle
+                          ? getTechnicalReviewDateLabel(post, 'November 14, 2026')
+                          : isGlobalEditorialArticle
+                            ? `${getTechnicalReviewDateLabel(post, 'November 7, 2026')}${post.slug === 'gaming-pc-not-turning-on-kuwait' ? ' · KCROC Hardware Engineering Lab, Hawalli, Kuwait' : post.slug === 'nvidia-dlss-5-neural-rendering-explained' ? ' · Hawalli, Kuwait' : ''}`
+                            : `${getTechnicalReviewDateLabel(post, 'September 1, 2026')} · Hawalli, Kuwait`}
                       </p>
                     </div>
                   </div>
