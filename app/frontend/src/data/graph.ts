@@ -5273,7 +5273,6 @@ export const rawGraphData: RawGraphData = {
           answer: 'Our hardware diagnostics focus on the device and its circuits rather than browsing personal documents. For many Windows laptops and desktop PCs, you may ask to keep a removable NVMe or SATA SSD before collection; tell us before handover so we can confirm whether removal is practical for that model. Some MacBooks have storage soldered to the logic board, so it cannot be removed like a standard drive. Data preservation is a priority, but it cannot be guaranteed for every fault or damaged device.'
         }
       ],
-      title: 'Abu Halifa',
       landmark: 'Mobile Dispatch Area (Diagnosis and repair take place at KCROC’s Hawalli lab: Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19)',
       coords: { lat: 29.1213, lng: 48.1268 },
       serviceRadiusKm: 20,
