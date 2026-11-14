@@ -9255,213 +9255,447 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: "news-apple-m6-macbook-pro-imac-november-2026",
     slug: "apple-m6-macbook-pro-imac-official-specs",
-    title: "Apple’s M6 MacBook Pro and iMac Have Arrived: Official Specs and Repair Insights",
-    excerpt: "Apple’s M6 MacBook Pro and 24-inch iMac are now shipping. We break down the confirmed hardware, the 153GB/s versus 170GB/s memory tiers, charging and what Mac owners in Kuwait should check.",
-    description: "Apple’s M6 14-inch MacBook Pro and 24-inch iMac became available on November 6, 2026. Review the official CPU, GPU, Neural Engine, memory bandwidth, display, charging and ownership details.",
+    title: "Apple’s M6 MacBook Pro, iMac and Mac mini Have Arrived: Silicon Architecture, Memory Bandwidth and Hardware Repair Insights for Kuwait",
+    excerpt: "Apple’s 2nm M6 platform now spans Mac mini, 14-inch MacBook Pro and 24-inch iMac. This engineering-led guide checks the CPU/GPU design, memory-bandwidth tiers, display and charging specifications, model identifiers, and repair decisions for Mac owners in Kuwait.",
+    description: "Apple’s M6 Mac guide: confirmed 2nm silicon, 12-core CPU/GPU, Neural Accelerators, 153/170GB/s memory tiers, 96W fast charging, iMac configurations, Mac mini and Kuwait repair guidance.",
     content: [
-      "Apple’s M6 generation has reached its first wave of Mac notebooks and desktops. The 14-inch MacBook Pro and 24-inch iMac were announced on October 27, 2026, with retail availability beginning November 6. Apple’s technical documentation confirms a 12-core CPU and GPU design, a Dual 16-core Neural Engine and an important memory-bandwidth difference between MacBook Pro configurations.",
-      "This KCROC analysis separates published specifications from details that Apple has not disclosed, then explains what those choices mean when buying, maintaining or diagnosing a Mac in Kuwait."
+      "Apple’s M6 generation now spans three Mac form factors: the Mac mini, 14-inch MacBook Pro and 24-inch iMac. Apple identifies M6 as its first 2-nanometer chip and lists a 12-core CPU, 12-core GPU with Neural Accelerators and a Dual 16-core Neural Engine on the full M6 configuration. The 14-inch MacBook Pro and Mac mini also expose an important buyer detail: Apple specifies 153GB/s memory bandwidth for 16GB configurations and 170GB/s for selected higher-memory configurations.",
+      "This KCROC engineering guide separates manufacturer-published facts from details that remain undisclosed, explains how the three M6 Mac designs differ, and gives Mac owners in Kuwait a practical way to decide between upgrading, maintaining or diagnosing an existing device."
     ],
     richContent: [
       {
         type: "paragraph",
-        text: "Apple announced the 14-inch MacBook Pro with M6 and the 24-inch iMac with M6 on October 27, 2026. Pre-orders opened October 28 and both products became available from November 6. The M6 had already reached the Mac mini, announced on August 25 and available from September 22. The central story is not only a new chip name: Apple is extending its 12-core CPU, GPU Neural Accelerators and Dual 16-core Neural Engine across several Mac form factors."
+        text: "Apple’s M6 story began with the Mac mini on August 25, 2026, followed by customer availability on September 22. Apple announced the 14-inch MacBook Pro and 24-inch iMac with M6 on October 27; pre-orders opened October 28 and retail availability began November 6. The three products share the M6 family, but their CPU bins, memory choices, ports, displays and upgrade paths are not identical. Those differences matter more than treating every M6-branded Mac as the same computer."
       },
       {
         type: "statCards",
         items: [
-          { value: "12-core", label: "MacBook Pro CPU" },
-          { value: "12-core", label: "MacBook Pro GPU" },
-          { value: "Dual 16-core", label: "Neural Engine" },
-          { value: "153 / 170GB/s", label: "Memory bandwidth by configuration" }
-        ]
-      },
-      {
-        type: "callout",
-        variant: "info",
-        title: "A specification check: Apple has not published a process-node figure",
-        text: "Apple’s M6 announcement and the MacBook Pro technical specification page identify the CPU, GPU, Neural Engine, memory and connectivity, but do not state a transistor manufacturing node or transistor count. This article therefore does not present “2nm N2” or “46 billion transistors” as confirmed M6 specifications."
-      },
-      {
-        type: "h2",
-        text: "Release dates and starting prices",
-        id: "m6-mac-release-dates-and-prices"
-      },
-      {
-        type: "timeline",
-        title: "Apple’s first M6 Mac releases",
-        numbered: true,
-        steps: [
-          { label: "August 25, 2026 — M6 Mac mini announced", note: "Apple announced the M6 Mac mini and opened pre-orders." },
-          { label: "September 22, 2026 — M6 Mac mini available", note: "The new Mac mini began arriving to customers and Apple retail locations from this date." },
-          { label: "October 27, 2026 — M6 MacBook Pro and iMac announced", note: "Apple introduced the 14-inch MacBook Pro and 24-inch iMac with M6." },
-          { label: "October 28, 2026 — pre-orders opened", note: "Pre-orders began for the MacBook Pro and iMac." },
-          { label: "November 6, 2026 — retail availability", note: "Both M6 Mac models began arriving to customers and stores." }
-        ]
-      },
-      {
-        type: "paragraph",
-        text: "Apple’s published United States starting prices are $1,999 for the 14-inch MacBook Pro with M6, $1,499 for the 10-core iMac configuration and $1,699 for the 12-core iMac configuration. These are US prices, not a quoted Kuwait retail price; local availability, retailer pricing, taxes and configuration can differ."
-      },
-      {
-        type: "h2",
-        text: "M6 CPU architecture: 2 Super, 4 Performance and 6 Efficiency cores",
-        id: "m6-12-core-cpu-architecture"
-      },
-      {
-        type: "paragraph",
-        text: "Apple’s technical specifications describe the MacBook Pro M6 CPU as a 12-core design: two Super cores, four Performance cores and six Efficiency cores. That is a three-tier arrangement rather than a simple split between performance and efficiency cores. The design gives macOS different core groups for high-priority work, sustained multi-threaded tasks and lower-power background activity. Actual results still depend on the software, workload, thermal conditions and configuration."
-      },
-      {
-        type: "h2",
-        text: "12-core GPU, Neural Accelerators and Dual 16-core Neural Engine",
-        id: "m6-gpu-and-neural-engine"
-      },
-      {
-        type: "paragraph",
-        text: "The 14-inch M6 MacBook Pro has a 12-core GPU with Neural Accelerators and hardware-accelerated ray tracing. Apple says the GPU delivers up to 30 percent faster graphics and up to 25 percent faster AI workloads than the M5 MacBook Pro used for its comparison. Apple’s footnote identifies that comparison system as a 14-inch M5 model with a 10-core CPU, 10-core GPU, 32GB of unified memory and a 4TB SSD, so the figures should be read as Apple’s controlled test claims rather than a guarantee for every application."
-      },
-      {
-        type: "paragraph",
-        text: "The M6 also includes a Dual 16-core Neural Engine. Apple positions the combined CPU, GPU Neural Accelerators and Neural Engine as a platform for on-device AI workloads, including local model use. The Neural Engine’s core count alone does not predict performance in every app: model size, memory capacity, software optimisation and available features all matter."
-      },
-      {
-        type: "h2",
-        text: "The important M6 MacBook Pro detail: 153GB/s versus 170GB/s memory bandwidth",
-        id: "m6-unified-memory-bandwidth"
-      },
-      {
-        type: "paragraph",
-        text: "Apple’s technical specification page lists three unified-memory configurations for the 14-inch M6 MacBook Pro. The bandwidth is not identical across them: the 16GB configuration is specified at 153GB/s, while the 24GB and 32GB configurations are specified at 170GB/s."
-      },
-      {
-        type: "comparisonTable",
-        title: "Official 14-inch MacBook Pro M6 memory configurations",
-        featureLabel: "Configuration",
-        columns: ["Unified memory", "Published bandwidth"],
-        rows: [
-          { feature: "Base configuration", values: ["16GB", "153GB/s"] },
-          { feature: "Higher-memory configuration", values: ["24GB", "170GB/s"] },
-          { feature: "Maximum listed configuration", values: ["32GB", "170GB/s"] }
+          { value: "2nm", label: "Apple-announced process generation" },
+          { value: "12-core", label: "Full M6 CPU" },
+          { value: "12-core", label: "Full M6 GPU" },
+          { value: "Dual 16-core", label: "Neural Engine" }
         ]
       },
       {
         type: "callout",
         variant: "expert",
-        title: "What buyers should take from the bandwidth split",
-        text: "Do not read “up to 170GB/s” as the bandwidth of every M6 MacBook Pro. Apple lists 153GB/s for the 16GB model and 170GB/s for the 24GB and 32GB models. Choose the memory capacity and bandwidth tier that fit the work you actually run before placing an order."
+        title: "Specification audit: confirmed versus not published",
+        text: "Apple’s August 25 M6 announcement explicitly describes M6 as its first 2-nanometer chip. Apple’s current product and technical-specification pages also confirm the core configurations, Neural Accelerators, Dual 16-core Neural Engine and published memory tiers. Apple does not publish a transistor count or a universal peak clock figure in those documents, so this article does not present “46 billion transistors” or a 4.8GHz maximum clock as manufacturer-confirmed specifications."
       },
       {
         type: "h2",
-        text: "Display, battery, charging and connectivity",
-        id: "m6-macbook-pro-display-battery-connectivity"
+        text: "1. Apple M6 silicon: first 2nm generation, three compute blocks",
+        id: "apple-m6-2nm-silicon-architecture"
+      },
+      {
+        type: "paragraph",
+        text: "Apple introduced M6 as its first 2nm chip in the August 25, 2026 Mac mini announcement. That is a manufacturer-published process-generation claim, not an inference from a third-party chip database. Apple’s product material describes three major compute areas: the CPU, the GPU with Neural Accelerators in each core, and the Dual 16-core Neural Engine. Apple also identifies hardware-accelerated ray tracing and an updated media engine. The practical point is that general-purpose computing, graphics work and selected AI tasks have distinct hardware resources; one core-count headline cannot describe the performance of every workload."
+      },
+      {
+        type: "paragraph",
+        text: "The phrase “2nm” is a process-generation label. It should not be interpreted as a literal measurement of every transistor feature, nor does it independently tell a buyer how fast an application will run. A finished Mac’s behaviour also depends on the selected M6 bin, unified-memory capacity, storage configuration, cooling design, power limits, operating system and software."
+      },
+      {
+        type: "h2",
+        text: "2. CPU topology: 2 Super, 4 Performance and 6 Efficiency cores",
+        id: "m6-12-core-cpu-topology"
+      },
+      {
+        type: "paragraph",
+        text: "On the full 12-core M6 CPU configuration, Apple lists two Super cores, four Performance cores and six Efficiency cores. The three groups are intended for different operating points: Super cores handle latency-sensitive bursts; Performance cores provide additional throughput for sustained multi-threaded work; and Efficiency cores support lower-power background and lighter tasks. The scheduler can distribute activity across these groups, but it does not turn every application into a perfectly parallel workload."
       },
       {
         type: "list",
         items: [
-          "Display: 14.2-inch Liquid Retina XDR, 3024 × 1964 native resolution, ProMotion up to 120Hz and up to 1,600 nits peak HDR brightness.",
-          "Battery: 72.4Wh, rated by Apple for up to 24 hours of video streaming and up to 16 hours of wireless web use; real battery life varies by workload and settings.",
-          "Charging: Apple lists 60W as the minimum recommended adapter wattage and says fast charging requires a 96W or higher USB Power Delivery source.",
-          "Ports: three Thunderbolt 4 (USB-C) ports, HDMI, SDXC, a 3.5mm headphone jack and MagSafe 3.",
-          "External displays: support for up to two external displays, including two 4K displays at up to 165Hz each under Apple’s listed conditions.",
-          "Wireless: Apple’s N1 wireless networking chip with Wi-Fi 7, Bluetooth 6 and Thread networking."
+          "2 Super cores: short, high-priority bursts such as interactive actions, parts of application launches and latency-sensitive work.",
+          "4 Performance cores: sustained multi-threaded activity such as code compilation, creative exports and workloads that can use multiple CPU threads.",
+          "6 Efficiency cores: lower-power tasks such as background services, sync activity and lighter system work."
+        ]
+      },
+      {
+        type: "callout",
+        variant: "info",
+        title: "Important iMac exception: the entry 10-core bin",
+        text: "The $1,499 two-port iMac is not the same CPU/GPU configuration as the full 12-core M6. Apple lists a 10-core CPU made up of 2 Super, 3 Performance and 5 Efficiency cores, paired with a 10-core GPU. The 12-core CPU and GPU configuration is used by the four-port iMac and the full M6 configurations in the MacBook Pro and Mac mini."
+      },
+      {
+        type: "h2",
+        text: "3. GPU architecture, Neural Accelerators and ray tracing",
+        id: "m6-gpu-neural-accelerators-ray-tracing"
+      },
+      {
+        type: "paragraph",
+        text: "The full M6 GPU has 12 cores and Neural Accelerators integrated into each GPU core. Apple also lists hardware-accelerated ray tracing and third-generation ray-tracing technology on the 14-inch MacBook Pro announcement, together with Dynamic Caching for more efficient use of on-chip memory. These features are relevant to graphics, 3D rendering, supported creative applications and selected AI workloads. They do not mean every game or program automatically receives the same uplift."
+      },
+      {
+        type: "paragraph",
+        text: "The 10-core iMac configuration uses a 10-core GPU. The 12-core iMac and full M6 MacBook Pro/Mac mini configurations use a 12-core GPU. That distinction should be checked on the exact product configuration rather than inferred from the words “iMac M6” or “MacBook M6” alone."
+      },
+      {
+        type: "h2",
+        text: "4. Dual 16-core Neural Engine and the M6 Media Engine",
+        id: "m6-dual-neural-engine-media-engine"
+      },
+      {
+        type: "paragraph",
+        text: "Apple describes the M6 Neural Engine as Dual 16-core: two 16-core engine blocks, or 32 Neural Engine cores in total. Apple positions it alongside the GPU Neural Accelerators for on-device AI features such as model inference, image generation and other supported machine-learning operations. Actual results depend on the model, precision, memory footprint, software framework and whether an application uses the Neural Engine, GPU or CPU."
+      },
+      {
+        type: "paragraph",
+        text: "Apple’s M6 technical pages also list hardware video support for H.264, HEVC, ProRes and ProRes RAW, including dedicated video encode/decode and ProRes encode/decode engines, plus AV1 decode. For content creators, dedicated media blocks can handle supported codecs without making the CPU perform every stage in software. The exact supported export settings remain application- and format-dependent."
+      },
+      {
+        type: "h2",
+        text: "5. Unified memory: 153GB/s versus 170GB/s",
+        id: "m6-unified-memory-bandwidth-tiers"
+      },
+      {
+        type: "paragraph",
+        text: "Unified memory is shared by the CPU, GPU and Neural Engine. Apple’s 14-inch M6 MacBook Pro technical specification is explicit about the bandwidth split: the 16GB configuration is listed at 153GB/s, while 24GB and 32GB configurations are listed at 170GB/s. Apple’s Mac mini specification page also shows 153GB/s on the 16GB M6 configurations and 170GB/s for the higher-memory configuration. The memory capacity and bandwidth tier are therefore linked to the configuration selected at purchase."
+      },
+      {
+        type: "comparisonTable",
+        title: "M6 memory configurations: what Apple explicitly publishes",
+        featureLabel: "Mac configuration",
+        columns: ["Unified memory", "Apple-published bandwidth"],
+        rows: [
+          { feature: "14-inch MacBook Pro M6 — base", values: ["16GB", "153GB/s"] },
+          { feature: "14-inch MacBook Pro M6 — higher tiers", values: ["24GB or 32GB", "170GB/s"] },
+          { feature: "Mac mini M6 — base", values: ["16GB", "153GB/s"] },
+          { feature: "Mac mini M6 — higher tier", values: ["24GB or 32GB", "170GB/s"] },
+          { feature: "24-inch iMac M6", values: ["16GB base; 24GB or 32GB options depend on CPU bin", "Up to 170GB/s; Apple’s iMac page does not show the same per-capacity bandwidth table as the MacBook Pro page"] }
         ]
       },
       {
         type: "paragraph",
-        text: "The fast-charge figure is easy to misread: a 96W-or-higher USB PD source is required for Apple’s fast-charge capability, while 60W is the minimum recommended charging wattage. A compatible charger can still charge the computer without providing the specified fast-charge performance."
-      },
-      {
-        type: "h2",
-        text: "The 24-inch M6 iMac: two CPU and GPU tiers",
-        id: "m6-imac-configurations"
-      },
-      {
-        type: "paragraph",
-        text: "The M6 iMac keeps the 24-inch all-in-one format and is offered in two main chip configurations. The US starting price is $1,499 for the 10-core CPU and 10-core GPU model, or $1,699 for the 12-core CPU and 12-core GPU model. Apple lists a 24-inch 4.5K Retina display, seven colour options, Wi-Fi 7 and Bluetooth 6, with up to four Thunderbolt 4 ports depending on configuration."
-      },
-      {
-        type: "paragraph",
-        text: "For an all-in-one computer, the screen, logic board, power system and storage are closely integrated into one enclosure. Before buying, compare the configuration you need with the cost and service implications of an all-in-one design; do not assume that every internal component can be upgraded like a conventional desktop PC."
-      },
-      {
-        type: "h2",
-        text: "What this means for Mac owners in Kuwait",
-        id: "m6-mac-ownership-and-repair-kuwait"
-      },
-      {
-        type: "paragraph",
-        text: "The practical buying decision is configuration first, not headline chip branding. Developers, creators and users who work with large local AI models should compare memory capacity, storage and the applications they actually use. Owners of an older Mac should also diagnose the existing device before treating a slow system, charging fault or display failure as a reason to replace it."
-      },
-      {
-        type: "paragraph",
-        text: "For supported MacBook generations, KCROC’s MacBook Repair Kuwait service covers diagnosis of power, charging, display, battery, keyboard, liquid-damage and logic-board symptoms. Motherboard Repair Kuwait explains the component-level diagnostic approach, while MacBook Screen Replacement Kuwait covers model-matched display assessment. The KCROC MacBook service information currently lists supported M1–M5 generations and compatible parts; M6 model support must be confirmed against the exact model and fault before a repair is accepted."
+        text: "The jump from 153GB/s to 170GB/s is approximately 11.1 percent in peak bandwidth. That does not mean every task becomes 11.1 percent faster: software may be CPU-bound, GPU-bound, storage-bound or limited by its own algorithms. For large local AI models, high-resolution creative projects and workloads that repeatedly move substantial data between compute units, both capacity and bandwidth can matter."
       },
       {
         type: "callout",
-        variant: "tip",
-        title: "Before arranging a Mac repair",
-        text: "Share the Mac model identifier, screen size, year and a short description of the symptom. For charging faults, include the adapter wattage and whether the problem occurs over MagSafe, USB-C or both. That helps the technician identify the correct diagnostic path before collection."
-      },
-      {
-        type: "paragraph",
-        text: "KCROC operates from its repair laboratory at Al Mullah Complex, Basement Shop 19, Ibn Khaldoun Street, Hawalli, with free pickup and delivery across Kuwait. Initial diagnosis is free, a quote is approved before paid work, and a 30-day warranty applies to covered completed repairs. Repair feasibility and warranty coverage depend on the model, fault and parts involved."
+        variant: "warning",
+        title: "Choose unified memory before checkout",
+        text: "Apple Silicon unified memory is not a conventional user-replaceable SO-DIMM upgrade. Select enough memory for the intended applications when configuring the Mac. Do not buy a 16GB machine on the assumption that KCROC or another repair shop can later convert it to 24GB or 32GB."
       },
       {
         type: "h2",
-        text: "Official Apple references",
-        id: "official-apple-m6-references"
+        text: "6. 14-inch MacBook Pro M6: display, battery, charging and I/O",
+        id: "14-inch-m6-macbook-pro-complete-specs"
       },
       {
         type: "paragraph",
-        text: "Apple’s announcement for the 14-inch MacBook Pro with M6: https://www.apple.com/newsroom/2026/10/apple-introduces-the-new-14-inch-macbook-pro-with-m6/ . Apple’s M6 MacBook Pro technical specifications, including the memory-bandwidth tiers and charging requirements: https://support.apple.com/en-us/148300 . Apple’s M6 iMac announcement and pricing: https://www.apple.com/newsroom/2026/10/apple-unveils-new-imac-with-m6/ . Apple’s M6 Mac mini announcement: https://www.apple.com/newsroom/2026/08/apple-unveils-a-more-powerful-mac-mini-featuring-the-all-new-m6-and-m5-pro/ ."
+        text: "Apple’s 14-inch M6 MacBook Pro is the mobile member of this first M6 group. Apple lists a 14.2-inch Liquid Retina XDR display at 3024 × 1964 native resolution, 254 pixels per inch, ProMotion up to 120Hz, P3 wide colour and True Tone. Peak HDR brightness reaches 1,600 nits for HDR content, while the listed sustained full-screen XDR brightness is 1,000 nits. A nano-texture display option is available on configurations where offered."
+      },
+      {
+        type: "list",
+        items: [
+          "CPU/GPU: 12-core CPU (2 Super, 4 Performance, 6 Efficiency) and 12-core GPU with Neural Accelerators.",
+          "Neural Engine: Dual 16-core Neural Engine.",
+          "Unified memory: 16GB at 153GB/s, or 24GB/32GB at 170GB/s.",
+          "Storage: 1TB standard, configurable to 2TB or 4TB.",
+          "Battery: 72.4Wh lithium-polymer; Apple rates it for up to 24 hours of video streaming and up to 16 hours of wireless web use.",
+          "Ports: MagSafe 3, three Thunderbolt 4 (USB-C) ports, HDMI, SDXC card slot and 3.5mm headphone jack.",
+          "Wireless: Apple N1 wireless networking chip, Wi-Fi 7, Bluetooth 6 and Thread networking.",
+          "External displays: up to two external displays, with supported combinations including two 6K/60Hz displays or two 4K/165Hz displays, while using the built-in display."
+        ]
+      },
+      {
+        type: "h3",
+        text: "60W minimum recommended versus 96W fast charging",
+        id: "m6-macbook-pro-charging-wattage"
+      },
+      {
+        type: "paragraph",
+        text: "Apple lists 60W as the minimum recommended power-adapter wattage for charging the 14-inch M6 MacBook Pro. Fast charging requires a 96W-or-higher USB Power Delivery power source. Those figures describe different thresholds: a suitable lower-wattage USB-PD adapter can charge the Mac, but it does not meet Apple’s stated fast-charge requirement. The supplied adapter and included cable can vary by sales configuration and market, so check the exact box contents rather than assuming every regional SKU ships identically."
+      },
+      {
+        type: "paragraph",
+        text: "For a charging complaint, separate the adapter, cable, port and computer before concluding that the logic board has failed. Verify the adapter’s USB-PD capability and rated output, test a known-good compliant cable, compare MagSafe 3 with USB-C charging where supported, inspect the connector for physical damage and confirm whether the battery is recognised. A board-level diagnosis should follow controlled checks rather than a guess based only on a low charging percentage."
+      },
+      {
+        type: "h2",
+        text: "7. 24-inch iMac M6: two-port versus four-port configuration",
+        id: "24-inch-imac-m6-two-port-four-port"
+      },
+      {
+        type: "paragraph",
+        text: "The 24-inch iMac M6 keeps the 4.5K all-in-one format and seven colour options, but Apple offers two materially different hardware configurations. The two-port model starts at US$1,499 and uses a 10-core CPU/10-core GPU bin. The four-port model starts at US$1,699 and uses the full 12-core CPU/12-core GPU configuration. These are published US starting prices, not Kuwait retail quotations."
+      },
+      {
+        type: "comparisonTable",
+        title: "Apple iMac M6: two-port and four-port differences",
+        featureLabel: "Feature",
+        columns: ["Two-port iMac", "Four-port iMac"],
+        rows: [
+          { feature: "Published US starting price", values: ["$1,499", "$1,699"] },
+          { feature: "CPU / GPU", values: ["10-core CPU (2S + 3P + 5E) / 10-core GPU", "12-core CPU (2S + 4P + 6E) / 12-core GPU"] },
+          { feature: "Rear ports", values: ["2 Thunderbolt / USB 4 ports", "4 Thunderbolt 4 ports"] },
+          { feature: "Unified memory options", values: ["16GB; configurable to 24GB", "16GB; configurable to 24GB or 32GB"] },
+          { feature: "SSD options", values: ["256GB; configurable to 512GB or 1TB", "256GB; configurable to 512GB, 1TB or 2TB"] },
+          { feature: "Ethernet", values: ["2.5Gb Ethernet is a configure-to-order option", "2.5Gb Ethernet included"] },
+          { feature: "Nano-texture glass", values: ["Not listed for this bin", "Available as an option"] }
+        ]
+      },
+      {
+        type: "paragraph",
+        text: "Both models use a 24-inch-class 4.5K Retina display (23.5 inches measured diagonally), a 12MP Center Stage camera and Apple’s Dual 16-core Neural Engine. Apple lists memory bandwidth up to 170GB/s for iMac M6, but its public iMac page does not present the same explicit 16GB-versus-24GB/32GB bandwidth breakdown shown on the MacBook Pro technical page. For that reason, this article does not assign an exact 153GB/s figure to every iMac 16GB SKU."
+      },
+      {
+        type: "paragraph",
+        text: "The all-in-one form factor has a different service profile from a Mac mini or tower PC. The display, logic board, speakers, cooling assembly and enclosure are integrated into one unit. A display fault should be diagnosed before pricing a complete assembly, and any opening or reassembly procedure must account for the model-specific display attachment and sealing method. Internal access is not the same as a user upgrade path."
+      },
+      {
+        type: "h2",
+        text: "8. M6 Mac mini: compact desktop, ports and three-display support",
+        id: "m6-mac-mini-specifications"
+      },
+      {
+        type: "paragraph",
+        text: "Apple announced the M6 Mac mini on August 25, 2026 and began availability on September 22. It starts at US$899 in the United States. Apple’s model-identification support page lists the M6 Mac mini as Model Identifier Mac18,5; individual order numbers and regional part numbers vary by configuration. Apple’s technical page lists the full 12-core M6 CPU, 12-core GPU, Neural Accelerators, hardware ray tracing and Dual 16-core Neural Engine."
+      },
+      {
+        type: "list",
+        items: [
+          "Memory: 16GB standard, configurable to 24GB or 32GB; Apple lists 153GB/s for the base 16GB configurations and 170GB/s for the higher-memory tier.",
+          "Storage: 256GB SSD standard, configurable to 512GB, 1TB or 2TB.",
+          "Front I/O: two USB-C ports supporting USB 3 up to 10Gb/s and a 3.5mm headphone jack.",
+          "Rear I/O: three Thunderbolt 4 ports, HDMI and 2.5Gb Ethernet, configurable to 10Gb Ethernet.",
+          "Wireless: Apple N1 wireless networking, Wi-Fi 7, Bluetooth 6 and Thread networking.",
+          "Displays: up to three external displays, subject to Apple’s supported resolution and refresh-rate combinations."
+        ]
+      },
+      {
+        type: "paragraph",
+        text: "The Mac mini is the logical M6 form factor for a user who already owns suitable monitors, keyboard and pointing device. It avoids paying for an integrated laptop display and battery, while giving a compact desktop footprint. It is not automatically the better choice for someone who needs portability, a built-in camera or a battery-backed mobile workstation."
+      },
+      {
+        type: "h2",
+        text: "9. Model identifiers: what to send a repair technician",
+        id: "m6-mac-model-identifiers"
+      },
+      {
+        type: "paragraph",
+        text: "Marketing names are not enough to order a compatible part. Apple model-identification references list the 14-inch M6 MacBook Pro as Mac18,1, the 24-inch M6 iMac as Mac18,2, and the M6 Mac mini as Mac18,5. The iMac uses different two-port and four-port configurations within its M6 family, so confirm the actual port count and chip bin as well as the model identifier. A part or order number may vary with colour, memory, storage and sales market. For the M6 Mac mini, independent model catalogues also cross-reference A3534 / EMC 9032; use the on-device Model Identifier and serial-based lookup when matching service parts."
+      },
+      {
+        type: "list",
+        ordered: true,
+        items: [
+          "On a working Mac, open the Apple menu and choose About This Mac; record the model name and chip.",
+          "For more detail, open System Information and record the Model Identifier.",
+          "For a MacBook, include the screen size and whether it charges over MagSafe, USB-C or both.",
+          "For an iMac, state whether the rear has two or four Thunderbolt/USB-C ports.",
+          "For a Mac mini, include its Model Identifier and the connected monitor/resolution setup if the issue involves display output."
+        ]
+      },
+      {
+        type: "h2",
+        text: "10. Apple’s performance claims: read the comparison baseline",
+        id: "apple-m6-published-performance-comparisons"
+      },
+      {
+        type: "paragraph",
+        text: "Apple publishes performance multipliers, but each number belongs to a specific comparison system and workload. For the 14-inch M6 MacBook Pro, Apple says the GPU is up to 30 percent faster than M5 and on-device AI workloads are up to 25 percent faster than M5. Apple’s published examples also cite up to 13x faster time-to-first-token for LLM prompt processing, 11.7x faster ray-traced Blender rendering, 3.3x faster Affinity image processing and 2.5x faster Xcode project builds compared with a 13-inch M1 MacBook Pro. These are Apple-reported results, not guaranteed performance ratios in every app."
+      },
+      {
+        type: "comparisonTable",
+        title: "Selected Apple-reported M6 comparisons",
+        featureLabel: "Product and workload",
+        columns: ["Apple-reported comparison", "Important context"],
+        rows: [
+          { feature: "14-inch MacBook Pro M6 — graphics", values: ["Up to 30% faster than M5", "Apple’s specified workload and comparison machine; not a universal FPS uplift"] },
+          { feature: "14-inch MacBook Pro M6 — on-device AI", values: ["Up to 25% faster than M5", "Workload-dependent, including LLM prompt processing"] },
+          { feature: "14-inch MacBook Pro M6 — LLM time to first token", values: ["Up to 13x versus 13-inch M1 MacBook Pro; up to 1.3x versus 14-inch M5 MacBook Pro", "Prompt-processing metric, not sustained token generation rate"] },
+          { feature: "24-inch iMac M6 — on-device AI", values: ["Up to 5x versus M4 iMac", "Apple-reported AI workload comparison"] },
+          { feature: "Mac mini M6 — AI performance", values: ["Up to 4x versus Mac mini M4", "Apple-reported system comparison"] }
+        ]
+      },
+      {
+        type: "callout",
+        variant: "info",
+        title: "Do not confuse prompt processing with ongoing token generation",
+        text: "Time to first token measures how quickly a model begins responding after a prompt. It is not the same as sustained tokens per second after generation starts. Model size, quantisation, context length, memory capacity and software implementation all affect local LLM performance."
+      },
+      {
+        type: "h2",
+        text: "11. M1 through M5 owners: upgrade the workload, not the marketing label",
+        id: "m1-m5-to-m6-upgrade-decision"
+      },
+      {
+        type: "paragraph",
+        text: "An M6 Mac is a clear generational option for buyers who need the newest 2nm platform, the current on-device AI features, faster graphics or the selected 170GB/s memory tier. But an M1, M2, M3, M4 or M5 Mac that already meets its owner’s workload does not become unusable merely because a new generation exists. Before spending a large amount in Kuwait, identify the actual constraint: memory pressure, storage capacity, battery health, thermal throttling, charging instability, display damage or a software-specific limitation."
+      },
+      {
+        type: "comparisonTable",
+        title: "Upgrade or diagnose your existing Mac?",
+        featureLabel: "Observed situation",
+        columns: ["First decision"],
+        rows: [
+          { feature: "Your existing Mac has enough memory and performs normally", values: ["Keep using it; upgrade only when a specific workflow or feature requires the new platform."] },
+          { feature: "Activity Monitor repeatedly shows memory pressure and swap during your normal workload", values: ["Measure the workload and select a new configuration with enough unified memory before purchase."] },
+          { feature: "The MacBook runs hot, fans remain loud or performance falls under sustained load", values: ["Check airflow, fan operation, heatsink condition, temperature readings and software load before replacing the computer."] },
+          { feature: "Battery runtime has dropped or the Mac shuts down unexpectedly on battery", values: ["Check battery health, cycle/condition data and power behaviour; do not assume the logic board is at fault."] },
+          { feature: "USB-C or MagSafe charging is intermittent", values: ["Test the adapter, cable, connector, port and charging negotiation systematically before deciding on board-level repair."] },
+          { feature: "The screen is cracked, black, flickering or has lines", values: ["Confirm whether the failure is panel/assembly, cable, connector or board-related before approving a display replacement."] }
+        ]
+      },
+      {
+        type: "h2",
+        text: "12. Mac hardware diagnostics in Kuwait: what KCROC can and cannot confirm",
+        id: "kcroc-mac-diagnostics-and-repair-kuwait"
+      },
+      {
+        type: "paragraph",
+        text: "KCROC’s MacBook repair information currently covers supported Intel and Apple Silicon MacBook generations through M1–M5, subject to the exact model, symptoms and parts availability. The published service scope includes power and charging diagnosis, logic-board faults, liquid-damage inspection, screen and battery replacement, keyboard/trackpad symptoms and thermal-related checks. M6 is a newly released generation and is not being presented here as an already confirmed repair-stock or parts capability."
+      },
+      {
+        type: "paragraph",
+        text: "For M6 devices, first check the applicable Apple warranty or AppleCare coverage. For an out-of-warranty fault, KCROC must verify the exact Model Identifier, failure symptoms, diagnostic feasibility and compatible parts before accepting the job. A specification page is not evidence that a replacement component or board-level repair method is already available for every M6 model."
+      },
+      {
+        type: "h3",
+        text: "What a useful Mac diagnostic includes",
+        id: "mac-diagnostic-checklist"
+      },
+      {
+        type: "list",
+        ordered: true,
+        items: [
+          "Identify the computer: model name, model identifier, chip generation, screen size and approximate year.",
+          "Record the symptom precisely: no power, no charge, battery drain, overheating, display failure, liquid exposure, random restart or performance slowdown.",
+          "For charging problems, record the adapter wattage, cable type and whether MagSafe 3, USB-C or both are affected.",
+          "Separate external causes from the device: test a known-good compliant power source and cable where safe, check the outlet and inspect connectors for damage.",
+          "Ask for the diagnostic findings and a written quotation before approving paid repair work."
+        ]
+      },
+      {
+        type: "paragraph",
+        text: "For supported generations, KCROC’s MacBook Repair Kuwait service is the starting point for general diagnosis. MacBook logic-board and motherboard symptoms can be assessed through Motherboard Repair Kuwait. For a damaged or failed display, see MacBook Screen Replacement Kuwait; for a swollen or worn battery, see MacBook Battery Replacement Kuwait. Each service must still be matched to the exact model and fault."
+      },
+      {
+        type: "callout",
+        variant: "warning",
+        title: "Data preservation is not standalone data recovery",
+        text: "Where a repair is technically viable, working on the original logic board may preserve the device’s existing storage components. It does not guarantee that files will remain accessible, and it is not a substitute for a separate backup. KCROC does not offer standalone data-recovery or specialist file-rescue services."
+      },
+      {
+        type: "h2",
+        text: "13. KCROC Hawalli laboratory and free pickup across Kuwait",
+        id: "kcroc-hawalli-lab-kuwait-pickup"
+      },
+      {
+        type: "paragraph",
+        text: "Kuwait Computer Repair On Call (KCROC) operates its physical workshop at Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19, Hawalli, Kuwait. Hardware diagnostics and completed repairs are carried out at this Hawalli laboratory; other districts are served through arranged collection and return rather than separate storefront branches. Free pickup and delivery are available across Kuwait, with an initial diagnosis before any paid repair is approved."
+      },
+      {
+        type: "list",
+        items: [
+          "Workshop: Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19, Hawalli, Kuwait.",
+          "Hours: daily, 10:00 AM–10:00 PM.",
+          "Phone / WhatsApp: +965 5530 1913.",
+          "Initial diagnosis: free; a quotation is provided before paid work.",
+          "Repair policy: No Fix, No Fee under KCROC’s stated terms, with a 30-day warranty on covered completed repairs."
+        ]
+      },
+      {
+        type: "paragraph",
+        text: "To ask about a Mac diagnosis or arrange pickup, send the model identifier and symptom through WhatsApp: https://wa.me/96555301913 . Include a photo of the model label or About This Mac screen if available, but do not share passwords or sensitive account credentials."
+      },
+      {
+        type: "h2",
+        text: "14. Official Apple technical references",
+        id: "official-apple-m6-technical-references"
+      },
+      {
+        type: "paragraph",
+        text: "Apple — M6 and M5 Ultra announcement (August 25, 2026; identifies M6 as Apple’s first 2nm chip): https://www.apple.com/newsroom/2026/08/apple-introduces-m6-and-m5-ultra-for-a-big-leap-in-performance-and-ai-compute/ ."
+      },
+      {
+        type: "paragraph",
+        text: "Apple — Mac mini with M6 and M5 Pro announcement (August 25, 2026): https://www.apple.com/newsroom/2026/08/apple-unveils-a-more-powerful-mac-mini-featuring-the-all-new-m6-and-m5-pro/ . Apple — Mac mini technical specifications: https://www.apple.com/mac-mini/specs/ . Apple Support — identify your Mac mini model: https://support.apple.com/en-ie/102852 ."
+      },
+      {
+        type: "paragraph",
+        text: "Apple — 14-inch MacBook Pro with M6 announcement (October 27, 2026): https://www.apple.com/newsroom/2026/10/apple-introduces-the-new-14-inch-macbook-pro-with-m6/ . Apple Support — MacBook Pro (14-inch, M6) technical specifications: https://support.apple.com/en-us/148300 ."
+      },
+      {
+        type: "paragraph",
+        text: "Apple — 24-inch iMac with M6 announcement (October 27, 2026): https://www.apple.com/newsroom/2026/10/apple-unveils-new-imac-with-m6/ . Apple — iMac technical specifications: https://www.apple.com/imac/specs/ . Apple Support — identify your iMac model: https://support.apple.com/en-us/108054 . Independent model-number cross-reference for Mac mini A3534 / EMC 9032: https://everymac.com/systems/apple/mac_mini/specs/mac-mini-m6-12-core-cpu-12-core-gpu-2026-specs.html ."
       },
       {
         type: "faq",
         display: "static",
         items: [
           {
-            question: "When did the M6 MacBook Pro and M6 iMac become available?",
-            answer: "Apple announced both models on October 27, 2026, opened pre-orders on October 28 and began availability on November 6, 2026."
+            question: "Is Apple M6 officially a 2nm chip?",
+            answer: "Yes. Apple’s August 25, 2026 M6 announcement describes M6 as its first 2-nanometer chip. Apple’s official materials do not publish a transistor count, so a 46-billion figure should not be treated as an Apple-confirmed specification."
           },
           {
-            question: "Does every M6 MacBook Pro configuration have 170GB/s memory bandwidth?",
-            answer: "No. Apple lists 153GB/s for the 16GB unified-memory configuration. The 24GB and 32GB configurations are listed at 170GB/s."
+            question: "What CPU and GPU are in the full M6 configuration?",
+            answer: "The full M6 configuration has a 12-core CPU with 2 Super, 4 Performance and 6 Efficiency cores, a 12-core GPU with Neural Accelerators, hardware-accelerated ray tracing and a Dual 16-core Neural Engine."
+          },
+          {
+            question: "Why does the 14-inch M6 MacBook Pro list 153GB/s and 170GB/s memory bandwidth?",
+            answer: "Apple specifies 153GB/s for the 16GB unified-memory configuration. The 24GB and 32GB configurations are specified at 170GB/s."
+          },
+          {
+            question: "Does the M6 Mac mini have the same memory bandwidth options?",
+            answer: "Apple lists 153GB/s on the 16GB M6 Mac mini configurations and 170GB/s for the 24GB or 32GB higher-memory options."
+          },
+          {
+            question: "What is the difference between the two-port and four-port M6 iMac?",
+            answer: "The two-port iMac starts at US$1,499 and has a 10-core CPU and 10-core GPU. The four-port model starts at US$1,699 and has a 12-core CPU and 12-core GPU, four Thunderbolt 4 ports and standard 2.5Gb Ethernet."
+          },
+          {
+            question: "How much does the M6 Mac mini cost?",
+            answer: "Apple’s published United States starting price is US$899 for the M6 Mac mini. Retail prices in Kuwait can differ by retailer, configuration, import costs and warranty."
           },
           {
             question: "What charger is needed for fast charging on the 14-inch M6 MacBook Pro?",
-            answer: "Apple says fast charging requires a 96W or higher USB Power Delivery source. Apple lists 60W as the minimum recommended adapter wattage."
+            answer: "Apple lists 60W as the minimum recommended adapter wattage. Fast charging requires a 96W-or-higher USB Power Delivery power source."
           },
           {
-            question: "How much does the M6 iMac cost?",
-            answer: "Apple’s published US starting prices are $1,499 for the 10-core CPU and 10-core GPU configuration, and $1,699 for the 12-core CPU and 12-core GPU configuration. Kuwait retail prices may differ."
+            question: "How many external displays can the M6 MacBook Pro and Mac mini support?",
+            answer: "Apple lists up to two external displays for the 14-inch M6 MacBook Pro and up to three external displays for the M6 Mac mini. The supported resolutions and refresh rates depend on the connection combination."
           },
           {
-            question: "Can KCROC confirm repair support for an M6 MacBook?",
-            answer: "M6 support must be confirmed against the exact model identifier, fault and parts availability before a repair is accepted. KCROC’s current MacBook service information lists supported M1–M5 generations."
+            question: "Can unified memory be upgraded later on an M6 Mac?",
+            answer: "Unified memory is not a conventional user-upgradeable memory module. Select the capacity you need when purchasing the Mac; Apple lists different capacities by product and configuration."
+          },
+          {
+            question: "Can KCROC repair an M6 MacBook or iMac in Kuwait?",
+            answer: "M6 repair acceptance is subject to the exact model identifier, fault, diagnostic feasibility and parts availability. KCROC’s current published MacBook repair scope lists supported Intel and M1–M5 generations; M6 capability must be confirmed case by case."
+          },
+          {
+            question: "Where does KCROC perform MacBook and logic-board repairs?",
+            answer: "KCROC performs diagnostics and repairs at its Hawalli laboratory: Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19, Hawalli, Kuwait. Free pickup and delivery can be arranged across Kuwait."
           }
         ]
       }
     ],
     image: "/images/apple-macbook-logic-board-and-fan-repair.webp",
-    imageAlt: "Apple MacBook logic board and cooling assembly photographed at the KCROC repair lab",
-    imageCaption: "KCROC repair-lab photograph of MacBook internal hardware, included for technical context rather than as an M6 teardown image.",
+    imageAlt: "MacBook logic board and cooling assembly photographed at the KCROC Hawalli repair laboratory",
+    imageCaption: "KCROC repair-lab photograph for component-level hardware context; it is not represented as an M6 teardown.",
     date: "2026-11-14",
     technicalReviewDate: "November 14, 2026",
     author: "Imran Natiq",
     category: "Apple & Mac",
-    readTime: "8–10 min read",
+    readTime: "15–18 min read",
     tags: [
       "Apple M6",
+      "Apple M6 specifications",
+      "2nm Apple silicon",
       "MacBook Pro M6",
       "iMac M6",
-      "Apple silicon",
-      "MacBook specifications",
-      "Unified memory bandwidth",
-      "Mac repair Kuwait"
+      "Mac mini M6",
+      "153GB/s memory bandwidth",
+      "170GB/s memory bandwidth",
+      "Apple N1",
+      "MacBook repair Kuwait",
+      "MacBook logic board repair Hawalli",
+      "Mac diagnostics Kuwait"
     ],
-    seoTitle: "Apple M6 MacBook Pro & iMac: Specs and Repair Insights | KCROC",
-    seoDescription: "Apple’s M6 MacBook Pro and 24-inch iMac became available November 6, 2026. Check official CPU, memory bandwidth, display, charging and repair details.",
+    seoTitle: "Apple M6 Mac Specs: MacBook Pro, iMac & Mini | KCROC",
+    seoDescription: "Apple’s M6 Mac guide: 2nm silicon, MacBook Pro/iMac/Mini specs, 153/170GB/s memory tiers, 96W fast charging and repair guidance in Kuwait.",
     contentType: "news"
   },
 
