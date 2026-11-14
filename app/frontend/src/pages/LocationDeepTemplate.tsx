@@ -182,7 +182,9 @@ export default function LocationDeepTemplate() {
       ? 'Hi KCROC, I need free pickup in Farwaniya. Device / model: ____. Issue: ____. Area / block: ____. Please confirm a collection slot.'
       : location.slug === 'mangaf'
         ? 'Hi KCROC, I need free pickup in Mangaf / Fahaheel / Abu Halifa / Ahmadi. Device / model: ____. Issue: ____. Area / block / street / building: ____. I can share my WhatsApp location pin. Preferred pickup window (10 AM–10 PM): ____. Please confirm an available collection slot.'
-        : 'Hi KCROC, I am in ' + location.title + ' and need a device repaired. Can we arrange a pickup?';
+        : location.slug === 'fahaheel'
+          ? 'Hi KCROC, I need free pickup from Fahaheel / Fintas / Mangaf / Abu Halifa / Sabah Al-Ahmad Sea City. Device / model: ____. Issue / symptoms: ____. Area / block / street / building: ____. I can share my WhatsApp location pin. Preferred pickup window (10 AM–10 PM): ____. Please confirm an available collection slot.'
+          : 'Hi KCROC, I am in ' + location.title + ' and need a device repaired. Can we arrange a pickup?';
   const WA_LINK = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(whatsappMessage);
   const towerHandoverMessage = [
     'Hi KCROC, I would like to arrange a free Kuwait City office pickup.',
@@ -221,7 +223,9 @@ export default function LocationDeepTemplate() {
       question: `How much does laptop repair cost for ${location.title} customers?`,
       answer: location.slug === 'mishref'
         ? 'The initial diagnostic and pickup/return delivery are free. Selected common laptop and desktop repairs start from 15 KWD; battery labour starts from 8 KWD plus the battery, keyboard labour from 10 KWD plus the part, and screen labour from 30 KWD plus the panel. Component-level motherboard repair is published from 25 KWD (25–60 KWD guide range). Selected MacBook work starts from 25 KWD, but MacBook logic-board repair is separately listed at 45–100+ KWD. We confirm the exact quote before paid work begins.'
-        : `Diagnostics are free. Common laptop repairs start from 15 KWD, screen-replacement labor from 30 KWD plus the panel, and component-level motherboard repair from 25 KWD. The final price depends on the device, fault and parts. You receive the confirmed quote before paid work begins, and under our No Fix, No Fee policy you pay nothing if we cannot fix it.`,
+        : location.slug === 'fahaheel'
+          ? 'Selected common laptop repairs start from 15 KWD, screen-replacement labour from 30 KWD plus the panel, and component-level motherboard repair from 25 KWD. These are guide prices: the final cost depends on the exact model, fault and compatible parts. We explain the inspection scope, any applicable charges and the full quote before paid work begins. Under our No Fix, No Fee policy, repair charges are not applied when we cannot complete the repair, subject to the policy terms.'
+          : `Diagnostics are free. Common laptop repairs start from 15 KWD, screen-replacement labor from 30 KWD plus the panel, and component-level motherboard repair from 25 KWD. The final price depends on the device, fault and parts. You receive the confirmed quote before paid work begins, and under our No Fix, No Fee policy you pay nothing if we cannot fix it.`,
     },
     {
       id: `faq-${location.slug}-turnaround`,
