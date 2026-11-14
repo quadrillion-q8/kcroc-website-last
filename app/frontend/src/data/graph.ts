@@ -5138,19 +5138,189 @@ export const rawGraphData: RawGraphData = {
       caption: 'Gaming PC thermal and stability diagnosis for Mangaf customers; repairs are completed at KCROC’s Hawalli lab.'
     }, seo: { title: "Computer Repair Mangaf | Free Pickup | KCROC", description: "Laptop, MacBook and motherboard repair for Mangaf and nearby Fahaheel, Abu Halifa and Ahmadi, with free pickup to our Hawalli lab.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/mangaf', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 50 } as LocationEntity,
 
-    'loc-abu-halifa': { id: 'loc-abu-halifa', slug: 'abu-halifa', entityType: 'Location', isActive: true, isPhysicalLocation: false, localIntro: "Abu Halifa is served by free pickup from villas and residential compounds, so there is no need to travel to Hawalli. We collect, diagnose and repair at our lab, then return the device after testing. The service zone includes Mangaf, Fahaheel and Fintas.", localHighlights: [
-        { title: "Pickup from Abu Halifa villas and compounds", description: "Share your area and a map pin on WhatsApp and we will arrange free collection." },
-        { title: "Laptop, MacBook and gaming PC repair", description: "Power, charging, overheating and board-level faults are all handled in-house." },
-        { title: "Diagnose first, then quote", description: "You receive the confirmed fault and the price before any paid work begins." },
-        { title: "Repaired in Hawalli", description: "Abu Halifa is a service area, not a branch. Work is done at our central lab." },
-      ], localFaqs: [
-        { id: "faq-abu-halifa-local-1", question: "Can you collect from a compound in Abu Halifa?", answer: "Yes. Free pickup is available from villas, compounds and apartments across Abu Halifa. Send your area and a map pin and we will arrange the time." },
-        { id: "faq-abu-halifa-local-2", question: "Do you also cover Fintas and Mangaf?", answer: "Yes. Both are close neighbours inside our service zone with the same free pickup and delivery." },
-        { id: "faq-abu-halifa-local-3", question: "What does diagnose first, then quote mean?", answer: "We test the device and find the actual fault before giving you a price. Diagnostics are free, you approve the repair before any paid work starts, and under our No Fix, No Fee policy you pay nothing if we cannot fix it." },
-        { id: "faq-abu-halifa-local-4", question: "We have more than one device that needs repair. Can you collect them together?", answer: "Message us the list of devices and what each one is doing, for example a laptop, a MacBook and a gaming PC. We will arrange collection and confirm what each device needs after diagnosis." },
-        { id: "faq-abu-halifa-local-5", question: "My MacBook is not charging. Is it the cable, the port or the board?", answer: "It can be any of the three. We test the cable and charger first, then the port and the power circuit on the board. We trace MacBook charging faults at component level where that is technically possible, and explain the repair path before any paid work." },
-        { id: "faq-abu-halifa-local-6", question: "Is there a shop in Abu Halifa, and where is the repair done?", answer: "There is no shop in Abu Halifa. Devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), tested before return and covered by a 30-day warranty. Collection and delivery are free." },
-      ], title: 'Abu Halifa', description: 'Laptop, MacBook, and gaming PC repair for Abu Halifa\'s villas and residential compounds, with free pickup and delivery to KCROC\'s Hawalli lab — no need to travel.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.1213, lng: 48.1268 }, serviceRadiusKm: 20, serviceAreas: ['Abu Halifa', 'Mangaf', 'Fahaheel', 'Fintas'], relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-screen', 'srv-battery'], relatedProblemIds: ['problem-cracked-screen', 'problem-no-power', 'problem-overheating', 'problem-black-screen'], contentImage: { src: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.src, alt: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.alt, width: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.width, height: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.height, caption: 'Laptop motherboard repair for villas and compounds across Abu Halifa.' }, seo: { title: "Computer Repair Abu Halifa | Free Pickup | KCROC", description: "Laptop and computer repair for Abu Halifa with free pickup and delivery. Diagnosis, approved repairs and testing take place at our Hawalli lab.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/abu-halifa', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 45 } as LocationEntity,
+    'loc-abu-halifa': {
+      id: 'loc-abu-halifa',
+      slug: 'abu-halifa',
+      entityType: 'Location',
+      isActive: true,
+      isPhysicalLocation: false,
+      heroBadge: 'Abu Halifa · 54600 · Free villa and compound pickup',
+      heroHeadline: 'Laptop, MacBook & Computer Repair in Abu Halifa',
+      localValueHeading: 'Free Collection from Abu Halifa Homes, Compounds & Offices',
+      localServicesHeading: 'Five Specialist Computer Repair Services for Abu Halifa',
+      localPickupHeading: 'Abu Halifa & Southern Coastal Pickup — Repairs at Our Hawalli Lab',
+      title: 'Abu Halifa',
+      description: 'Laptop, MacBook, charging-port, gaming PC and desktop repair for Abu Halifa homes, villas and compounds, with free pickup and testing at KCROC’s Hawalli lab.',
+      localIntro: "When a laptop stops charging, a MacBook will not power on, or a family desktop develops a hardware fault, Abu Halifa residents can arrange collection instead of carrying the equipment across Kuwait. KCROC collects from homes, villas, gated compounds and offices in Abu Halifa, then diagnoses and completes approved repairs at our central Hawalli laboratory: Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19. The repaired device is tested before return delivery. We do not operate a walk-in branch in Abu Halifa. When booking, share your block, street, villa or building number and WhatsApp location pin; for a gated compound, include the gate instructions or agreed handover point so the collection details can be confirmed. Route 30 and the Coastal Road are useful local corridor references, but the exact pin and address details guide the handover.",
+      localHighlights: [
+        {
+          title: 'Pickup from villas, compounds and apartments',
+          description: 'Free collection can be arranged from Abu Halifa homes and offices. Share your block, street, building or villa number and WhatsApp pin. For a gated compound, provide its approved gate or handover instructions and we will confirm the collection point with you.'
+        },
+        {
+          title: 'One collection window for multiple devices',
+          description: 'Have two laptops, a MacBook and a desktop that all need attention? Send us the device list and symptoms. We can arrange a shared collection window by agreement, record each device separately and provide a separate diagnosis and quote for each one.'
+        },
+        {
+          title: 'Collection for complete desktop towers',
+          description: 'You do not need to carry a full-size home-office or gaming desktop to a shop. Tell us the approximate case size, weight and cooling setup when booking so the collection can be planned for the complete system.'
+        },
+        {
+          title: 'Recognisable Abu Halifa address references',
+          description: 'Abu Halifa uses the general postal reference 54600; Blocks 1–3 use 54601–54603. Kuwait Magic Mall is on the Coastal Road, and the Abu Halifa Co-op supply branch is in Block 2 on Abdulmalik bin Marwan Street. Share your exact pin to confirm the handover point.'
+        }
+      ],
+      localServiceCards: [
+        {
+          title: 'Component-Level Laptop & Motherboard Repair',
+          summary: 'Hardware diagnosis for Dell, HP, Lenovo, ASUS, Acer and MSI laptops.',
+          problem: 'A laptop will not power on, shuts down unexpectedly, charges intermittently, overheats, freezes or shows a black screen.',
+          expertise: 'We inspect the model-specific power, charging, display and cooling paths using bench diagnostics and microscope-assisted board checks. Where the original board is repairable, component-level work is considered before a full motherboard replacement is recommended.',
+          solution: 'Book free pickup from Abu Halifa. We assess the laptop at our Hawalli lab, explain the fault and send a quote before any paid repair begins.',
+          serviceIds: ['srv-laptop', 'srv-motherboard']
+        },
+        {
+          title: 'MacBook Air & MacBook Pro Repair',
+          summary: 'Power, USB-C and MagSafe charging, display, battery and logic-board faults.',
+          problem: 'A MacBook will not start, does not charge reliably, shows a black or flickering screen, has a battery issue or has suffered liquid exposure.',
+          expertise: 'We confirm the exact model and compatible charger, then inspect the USB-C or MagSafe ports, any relevant I/O assembly and the logic-board power path. Controller and charging-circuit checks are model-specific; the component is identified by measurements rather than assumption.',
+          solution: 'We explain the repair options and price after diagnosis. Collection and return delivery can be arranged from Abu Halifa, and covered completed repairs include KCROC’s 30-day warranty.',
+          serviceIds: ['srv-macbook']
+        },
+        {
+          title: 'Laptop Charging Port Repair — DC Jack, Slim-Tip & USB-C',
+          summary: 'Connector and charging-path diagnosis for common laptop power-input faults.',
+          problem: 'The charger only works at an angle, the DC jack feels loose, a connector pin is damaged, or a USB-C port no longer charges the laptop.',
+          expertise: 'We first verify the compatible adapter, then inspect the connector, mounting points, solder joints and upstream charging path. A DC jack, Lenovo rectangular Slim-Tip or USB-C receptacle can be repaired or replaced where the board and connector condition make it viable.',
+          solution: 'The diagnosis identifies whether the fault is in the adapter, connector or board-side power circuit. You receive the repair quote before work, without defaulting to a full motherboard replacement.',
+          serviceIds: ['srv-charging-port']
+        },
+        {
+          title: 'Gaming PC Repair & Complete-System Diagnostics',
+          summary: 'Fault diagnosis for complete gaming desktop towers collected from Abu Halifa.',
+          problem: 'A gaming desktop will not start, shows no display, restarts unexpectedly, overheats, becomes unstable or develops loud fan noise.',
+          expertise: 'We assess the complete system, including power supply, memory, motherboard, firmware, cooling, cabling and the display path. The fault is isolated across the system before a repair or replacement is recommended.',
+          solution: 'Share the tower’s approximate size, weight, cooling arrangement and symptoms when booking. The complete system is assessed at our Hawalli lab, quoted before paid work and checked before return.',
+          serviceIds: ['srv-gaming']
+        },
+        {
+          title: 'Desktop & Home-Office PC Repair',
+          summary: 'Repair and troubleshooting for family desktops, office PCs and workstation towers.',
+          problem: 'A desktop suffers from no power, blue-screen loops, boot failures, random restarts, memory instability, storage faults or cooling problems.',
+          expertise: 'We check the power supply, RAM, storage, motherboard and operating-system boot path to identify the cause. Compatible hardware upgrades can be recommended when they address the diagnosed issue.',
+          solution: 'Arrange collection for the complete desktop and receive a clear repair quote after bench assessment. We return the system after the approved work and relevant checks are complete.',
+          serviceIds: ['srv-desktop-pc']
+        }
+      ],
+      localPricingHeading: 'Published Starting Rates for Abu Halifa Pickup Customers',
+      localPricingAnchorsPlacement: 'after-services',
+      localPricingAnchors: [
+        { label: 'Initial diagnosis, pickup & return delivery', price: 'FREE', note: 'The initial hardware assessment and arranged collection/return are free. Paid work starts only after you approve the quote.' },
+        { label: 'Laptop and desktop repair', price: 'From 15 KWD', note: 'Published starting rate for selected repairs; the final price depends on the device, fault and any required parts.' },
+        { label: 'Laptop charging-port repair', price: '20–35 KWD', note: 'Guide range for DC jack, Slim-Tip, USB-C connector and related board work, confirmed after inspection.' },
+        { label: 'Motherboard component repair', price: '25–60 KWD', note: 'The quote depends on the affected circuit, board condition and repair scope.' },
+        { label: 'MacBook board-level repair', price: '45–100+ KWD', note: 'Model- and fault-dependent guide range; parts and complex work are quoted after diagnosis.' }
+      ],
+      localFaqs: [
+        {
+          id: 'faq-abu-halifa-shop',
+          question: 'Do you have a walk-in computer repair shop in Abu Halifa, and where is the repair done?',
+          answer: 'KCROC does not operate a walk-in storefront in Abu Halifa. We arrange free pickup and return delivery, while diagnosis and repairs are completed at our central Hawalli laboratory: Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19. The Hawalli workshop is open daily from 10:00 AM to 10:00 PM if you prefer to visit the actual lab.'
+        },
+        {
+          id: 'faq-abu-halifa-compound',
+          question: 'Can you collect a laptop or desktop from a gated compound or villa in Abu Halifa?',
+          answer: 'Yes. Pickup can be arranged from villas, apartments and gated residential compounds in Abu Halifa. Send the compound name, block, street, villa or building number and WhatsApp location pin. Include any gate-entry or approved handover instructions; our team will confirm the collection point and time with you before dispatch.'
+        },
+        {
+          id: 'faq-abu-halifa-multi-device',
+          question: 'Can you collect more than one device in the same Abu Halifa pickup?',
+          answer: 'Yes. Send us the number of devices, their models and a brief description of each fault. We can arrange a shared collection window by agreement. Each device is logged separately, assessed individually at the Hawalli lab and given its own quote, so you can decide which repairs to approve.'
+        },
+        {
+          id: 'faq-abu-halifa-desktop-tower',
+          question: 'Can you collect a full-size desktop PC or gaming tower from Abu Halifa?',
+          answer: 'Yes. We can arrange collection for a complete home-office desktop or gaming tower. When booking, share the approximate case size and weight, cooling arrangement and fault symptoms so the handover and transport can be planned. We assess complete systems; detached components are not booked as a substitute for a complete-PC collection.'
+        },
+        {
+          id: 'faq-abu-halifa-macbook-charging',
+          question: 'My MacBook is not charging. Is the problem the adapter, USB-C port or logic board?',
+          answer: 'It can be in the charger or cable, the port or I/O assembly, or the logic-board power-delivery and charging circuit. We start by checking a compatible known-good charger and cable, then inspect the ports and model-specific power path. USB-C controller and charging-IC names vary by MacBook generation, so the exact failed part is identified from the measurements and board design before a repair is quoted.'
+        },
+        {
+          id: 'faq-abu-halifa-charging-port',
+          question: 'Do you repair Dell barrel jacks, Lenovo Slim-Tip and USB-C laptop charging ports?',
+          answer: 'Yes, where the connector and surrounding board are suitable for repair. We inspect the compatible adapter, DC jack or USB-C receptacle, solder joints, mounting points and related charging path. Some models use a separate I/O board while others route charging through the mainboard; diagnosis determines the correct repair and price.'
+        },
+        {
+          id: 'faq-abu-halifa-nearby-pickup',
+          question: 'Do you also collect from Fintas, Egaila, Mangaf and Fahaheel?',
+          answer: 'Yes. Free pickup and return delivery can also be arranged in Fintas, Egaila (also written Eqaila), Mangaf and Fahaheel. For address references, Fintas has a general post-office code of 50000 and Blocks 1–4 use 50001–50004; Egaila is 54200, Mangaf is 53700 and Fahaheel is 63000. Send the exact block, street, building and location pin so the collection point can be confirmed.'
+        },
+        {
+          id: 'faq-abu-halifa-repair-cost',
+          question: 'How much does laptop, MacBook or desktop repair cost for Abu Halifa customers?',
+          answer: 'The initial diagnosis, arranged pickup and return delivery are free. Published guide rates include selected laptop and desktop repairs from 15 KWD, charging-port work around 20–35 KWD, motherboard component repair around 25–60 KWD and MacBook board-level repair around 45–100+ KWD. Parts may be separate. The actual fault is checked first and you receive the confirmed quote before any paid work begins. Under our No Fix, No Fee policy, you pay nothing if we cannot complete the repair.'
+        },
+        {
+          id: 'faq-abu-halifa-turnaround',
+          question: 'How long does a repair take after collection from Abu Halifa?',
+          answer: 'Turnaround depends on the fault, the repair path, parts availability and the current workshop workload. A connector or modular-part job may be quicker than a complex motherboard diagnosis and repair. After the device reaches our Hawalli lab and is assessed, we send you the findings, quote and a realistic completion estimate before you approve the work.'
+        },
+        {
+          id: 'faq-abu-halifa-data-privacy',
+          question: 'How do you protect personal files on family and office devices?',
+          answer: 'Our hardware diagnostics focus on the device and its circuits rather than browsing personal documents. For many Windows laptops and desktop PCs, you may ask to keep a removable NVMe or SATA SSD before collection; tell us before handover so we can confirm whether removal is practical for that model. Some MacBooks have storage soldered to the logic board, so it cannot be removed like a standard drive. Data preservation is a priority, but it cannot be guaranteed for every fault or damaged device.'
+        }
+      ],
+      title: 'Abu Halifa',
+      landmark: 'Mobile Dispatch Area (Diagnosis and repair take place at KCROC’s Hawalli lab: Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19)',
+      coords: { lat: 29.1213, lng: 48.1268 },
+      serviceRadiusKm: 20,
+      serviceAreas: ['Abu Halifa', 'Fintas', 'Egaila', 'Mangaf', 'Fahaheel'],
+      areaPostalCode: '54600',
+      areaPostalRegion: 'Ahmadi Governorate',
+      additionalAreaPostalCodes: [
+        { name: 'Abu Halifa Block 1', postalCode: '54601', addressRegion: 'Ahmadi Governorate' },
+        { name: 'Abu Halifa Block 2', postalCode: '54602', addressRegion: 'Ahmadi Governorate' },
+        { name: 'Abu Halifa Block 3', postalCode: '54603', addressRegion: 'Ahmadi Governorate' },
+        { name: 'Fintas', postalCode: '50000', addressRegion: 'Ahmadi Governorate' },
+        { name: 'Fintas Block 1', postalCode: '50001', addressRegion: 'Ahmadi Governorate' },
+        { name: 'Fintas Block 2', postalCode: '50002', addressRegion: 'Ahmadi Governorate' },
+        { name: 'Fintas Block 3', postalCode: '50003', addressRegion: 'Ahmadi Governorate' },
+        { name: 'Fintas Block 4', postalCode: '50004', addressRegion: 'Ahmadi Governorate' },
+        { name: 'Egaila', postalCode: '54200', addressRegion: 'Ahmadi Governorate' },
+        { name: 'Mangaf', postalCode: '53700', addressRegion: 'Ahmadi Governorate' },
+        { name: 'Fahaheel', postalCode: '63000', addressRegion: 'Ahmadi Governorate' }
+      ],
+      serviceTypes: [
+        'Laptop and motherboard repair',
+        'MacBook repair and logic-board diagnostics',
+        'Laptop DC jack, Slim-Tip and USB-C charging-port repair',
+        'Complete gaming PC system diagnostics',
+        'Desktop and home-office PC repair'
+      ],
+      relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-macbook', 'srv-charging-port', 'srv-gaming', 'srv-desktop-pc'],
+      relatedProblemIds: ['problem-no-power', 'problem-overheating', 'problem-black-screen', 'problem-not-charging', 'problem-freezing-crashing'],
+      relatedBrandIds: [],
+      relatedLocationIds: ['loc-fahaheel', 'loc-mangaf'],
+      contentImage: {
+        src: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.src,
+        alt: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.alt,
+        width: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.width,
+        height: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen.height,
+        caption: 'Laptop motherboard diagnosis and repair for Abu Halifa pickup customers.'
+      },
+      seo: {
+        title: 'Laptop, MacBook & PC Repair Abu Halifa | Free Pickup | KCROC',
+        description: 'Laptop, MacBook, charging-port and desktop repair in Abu Halifa, with free pickup from villas and compounds. Gaming PC and office tower diagnostics at KCROC’s Hawalli lab.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/location/abu-halifa',
+        ogType: 'website',
+        schemaTypes: ['LocalBusiness'],
+        lastModified: '2026-11-14T00:00:00+03:00'
+      },
+      navigationPriority: 45
+    } } as LocationEntity,
 
     // 🚀 NEW: Jabriya, Mubarak Al-Kabeer, Fintas, and Sabah Al-Salem — second
     // batch of previously-uncovered high-value areas. Each again gets a
