@@ -1170,6 +1170,7 @@ export default function BlogPostTemplate() {
   };
 
   const isNoPowerGuide = post?.slug === 'laptop-wont-turn-on';
+  const isGlobalNewsArticle = Boolean(isNews && post?.isGlobalGuide === true);
 
   // ─── SEO SCHEMA: WebPage + Article/TechArticle + optional FAQPage + Breadcrumb ───
   const SCHEMA_DATA = useMemo(() => {
@@ -1184,7 +1185,7 @@ export default function BlogPostTemplate() {
           "name": post.title,
           "description": post.description || post.excerpt,
           ...(isGuide ? { "inLanguage": "en" } : (["why-8gb-ram-is-no-longer-enough-for-windows-11", "why-is-my-laptop-so-slow"].includes(post.slug) || isNoPowerGuide ? { "inLanguage": "en-KW" } : {})),
-          "isPartOf": { "@id": `${business.websiteUrl}/#website` }
+          ...(isGlobalNewsArticle ? {} : { "isPartOf": { "@id": `${business.websiteUrl}/#website` } })
         },
         {
           "@type": ["windows-11-26h2-iso-released", "nvidia-dlss-5-neural-rendering-explained"].includes(post.slug)
@@ -1195,7 +1196,7 @@ export default function BlogPostTemplate() {
           "description": post.excerpt,
           ...(isGuide ? { "inLanguage": "en" } : {}),
           ...(isNews ? {
-            "inLanguage": "en-KW",
+            "inLanguage": isGlobalNewsArticle ? "en" : "en-KW",
             "articleSection": post.category,
             "keywords": post.tags ?? [],
             "isAccessibleForFree": true
@@ -1309,7 +1310,7 @@ export default function BlogPostTemplate() {
           "image": toAbsoluteAssetUrl(post.discoverImage || post.image),
           "datePublished": post.date,
           "dateModified": getModifiedDate(post),
-          "author": post.slug === "windows-11-26h2-iso-released"
+          "author": isGlobalNewsArticle ? { "@type": "Person", "name": post.author } : post.slug === "windows-11-26h2-iso-released"
             ? { "@id": `${AUTHOR_URL}#person` }
             : post.author === "Imran Natiq" ? {
               "@type": "Person",
@@ -1325,14 +1326,16 @@ export default function BlogPostTemplate() {
                     "url": business.websiteUrl
                   }
             } : { "@type": "Organization", "name": post.author },
-          "publisher": ["windows-11-26h2-iso-released", "nvidia-dlss-5-neural-rendering-explained", "gaming-pc-not-turning-on-kuwait"].includes(post.slug)
+          ...(isGlobalNewsArticle ? {} : {
+            "publisher": ["windows-11-26h2-iso-released", "nvidia-dlss-5-neural-rendering-explained", "gaming-pc-not-turning-on-kuwait"].includes(post.slug)
             ? { "@id": `${business.websiteUrl}/#business` }
             : {
               "@type": "Organization",
               "name": post.slug === "why-is-my-laptop-so-slow" ? "KCROC Hardware Engineering Lab" : business.legalName,
               "url": business.websiteUrl,
               "logo": { "@type": "ImageObject", "url": `${business.websiteUrl}/logo.webp`, "width": 1024, "height": 1024 }
-            },
+            }
+          }),
           "mainEntityOfPage": { "@id": `${pageUrl}#webpage` }
         },
         ...(post.slug === "gaming-pc-black-screen-no-display-kuwait" ? [{
@@ -1414,7 +1417,7 @@ export default function BlogPostTemplate() {
   return (
     <div className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
 
-      <Head htmlAttributes={isGuide ? { lang: 'en' } : undefined}>
+      <Head htmlAttributes={isGuide || isGlobalNewsArticle ? { lang: 'en' } : undefined}>
         <title>{post.seoTitle || `${post.title.length > 57 ? `${post.title.slice(0, 57)}…` : post.title} | KCROC`}</title>
         <meta name="description" content={post.seoDescription || (post.description || post.excerpt).slice(0, 155)} />
         <link rel="canonical" href={pageUrl} />
@@ -1428,7 +1431,7 @@ export default function BlogPostTemplate() {
       <meta property="og:title" content={post.seoTitle || post.title} />
       <meta property="og:description" content={post.slug === 'why-is-my-laptop-so-slow' ? post.seoDescription || post.description || post.excerpt : post.description || post.excerpt} />
       <meta property="og:url" content={pageUrl} />
-      <meta property="og:site_name" content={isGlobalEditorialArticle ? "KCROC Hardware Engineering Lab" : business.legalName} />
+      {!isGlobalNewsArticle && <meta property="og:site_name" content={isGlobalEditorialArticle ? "KCROC Hardware Engineering Lab" : business.legalName} />}
       {!isGlobalEditorialArticle && <meta property="og:locale" content="en_KW" />}
       <meta property="og:image" content={socialImage} />
       {discoverReady && <meta property="og:image:width" content="1200" />}
@@ -1490,12 +1493,12 @@ export default function BlogPostTemplate() {
             <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
               <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-3">Author</p>
               <p className="font-bold text-white">{post.author}</p>
-              <p className="text-xs text-slate-500 mt-1">{post.slug === 'why-is-my-laptop-so-slow' || post.slug === 'gaming-pc-not-turning-on-kuwait' ? 'KCROC Hardware Engineering Lab · Hawalli, Kuwait' : isGlobalEditorialArticle ? 'KCROC Technical Editorial' : 'Kuwait Computer Repair On Call'}</p>
+              <p className="text-xs text-slate-500 mt-1">{isGlobalNewsArticle ? 'Global technology coverage' : post.slug === 'why-is-my-laptop-so-slow' || post.slug === 'gaming-pc-not-turning-on-kuwait' ? 'KCROC Hardware Engineering Lab · Hawalli, Kuwait' : isGlobalEditorialArticle ? 'KCROC Technical Editorial' : 'Kuwait Computer Repair On Call'}</p>
             </div>
 
             {(isGlobalEditorialArticle ? relatedPosts : recentPosts).length > 0 && (
               <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
-                <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-4">{isGlobalEditorialArticle ? 'Related Guides' : 'Recent Articles'}</p>
+                <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-4">{isGlobalNewsArticle ? 'Related News' : isGlobalEditorialArticle ? 'Related Guides' : 'Recent Articles'}</p>
                 <ul className="space-y-3">
                   {(isGlobalEditorialArticle ? relatedPosts : recentPosts).map(r => (
                     <li key={r.slug}>
