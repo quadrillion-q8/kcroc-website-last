@@ -680,17 +680,17 @@ export const rawGraphData: RawGraphData = {
       slug: 'news/windows-11-26h2-iso-released',
       entityType: 'WebPage',
       isActive: true,
-      title: 'Windows 11 26H2 ISO Is Now Available — What PC Users Should Know Before Installing',
-      description: 'Windows 11 26H2 ISO is now available. Learn the official download options, requirements, upgrade vs clean install paths, installation troubleshooting and post-install checks.',
+      title: 'Windows 11 26H2 Rollout Status, ISO Guide & Post-Update Fixes (November 2026)',
+      description: 'Six weeks into the Windows 11 26H2 rollout: November 10 KB5132061 servicing status, official ISO options, rollback limits, and hardware troubleshooting.',
       seo: {
-        title: 'Windows 11 26H2 ISO Download, Clean Install & Hardware Guide',
-        description: 'Official Windows 11 26H2 ISO guide by Imran Natiq. Learn enablement package vs clean install steps, SHA256 verification, setup error fixes, and hardware checks.',
+        title: 'Windows 11 26H2: November Rollout, ISO & Fixes | KCROC',
+        description: 'Windows 11 26H2 November 2026 update: KB5132061 status, ISO install steps, 10-day rollback limits, and hardware checks for NVMe, RAM and cooling.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/news/windows-11-26h2-iso-released',
         ogImage: 'https://www.computerrepairkuwait.com/images/discover/windows-os-software-repair-and-installation-kuwait-1200x675.webp',
         ogType: 'article',
         schemaTypes: ['WebPage', 'Person'],
-        lastModified: '2026-11-09T00:00:00+03:00',
-        breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'News', url: '/news' }, { name: 'Windows 11 26H2 ISO Is Now Available', url: '/news/windows-11-26h2-iso-released' }]
+        lastModified: '2026-11-14T00:00:00+03:00',
+        breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'News', url: '/news' }, { name: 'Windows 11 26H2 November rollout and fixes', url: '/news/windows-11-26h2-iso-released' }]
       },
       relatedServiceIds: ['srv-laptop', 'srv-ssd-ram', 'srv-motherboard', 'srv-gaming'],
       relatedResourcePaths: [
