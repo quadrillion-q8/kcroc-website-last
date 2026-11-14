@@ -536,6 +536,12 @@ export const ProblemSchema = RoutableEntitySchema.extend({
   // carry first-party diagnostic expertise without turning every problem into
   // a generic blog post.
   intro: z.string().optional(),
+  quickAnswer: z.object({
+    answer: z.string(),
+    pricing: z.string(),
+    turnaround: z.string(),
+    logistics: z.string(),
+  }).optional(),
   diagnosticSteps: z.array(z.object({
     step: z.number(),
     title: z.string(),
