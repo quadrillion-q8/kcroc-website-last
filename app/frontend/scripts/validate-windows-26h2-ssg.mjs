@@ -37,6 +37,8 @@ const addedQuestions = [
   'How much free disk space should I have before installing Windows 11 26H2?',
   'What does error 0xC1900101 mean during a Windows 11 26H2 upgrade?',
   'Should I bring my laptop for diagnosis if Windows 11 26H2 setup keeps freezing?',
+  'Which Windows 11 editions receive the November 10, 2026 KB5132061 update?',
+  'Why is Go back unavailable after upgrading to Windows 11 26H2?',
 ];
 
 for (const question of addedQuestions) {
@@ -49,8 +51,8 @@ for (const question of addedQuestions) {
 const visibleQuestionCount = (visibleFaq.match(/<h3\b/gi) ?? []).length;
 assert.equal(
   visibleQuestionCount,
-  20,
-  'Expected 20 visible FAQ question headings in static HTML; found ' + visibleQuestionCount,
+  22,
+  'Expected 22 visible FAQ question headings in static HTML; found ' + visibleQuestionCount,
 );
 assert.ok(
   !/<details\b/i.test(visibleFaq),
@@ -60,12 +62,17 @@ assert.ok(
 const faqSchemaQuestionCount = (html.match(/"@type"\s*:\s*"Question"/g) ?? []).length;
 assert.equal(
   faqSchemaQuestionCount,
-  20,
-  'FAQPage JSON-LD should contain the same 20 FAQ questions',
+  22,
+  'FAQPage JSON-LD should contain the same 22 FAQ questions',
 );
 assert.ok(html.includes('"@type":"FAQPage"') || html.includes('"@type": "FAQPage"'), 'FAQPage JSON-LD is missing');
 assert.ok(html.includes('"TechArticle"') && html.includes('"NewsArticle"'), 'NewsArticle/TechArticle JSON-LD types are missing');
 assert.ok(html.includes('reviewedBy'), 'Technical reviewer reference is missing from JSON-LD');
+assert.ok(html.includes('KB5132061'), 'November 10 cumulative update reference is missing from prerendered HTML');
+assert.ok(html.includes('26300.9974'), 'November 2026 26H2 build number is missing from prerendered HTML');
+assert.ok(html.includes('October 13, 2026'), '24H2 Home/Pro end-of-updates clarification is missing');
+assert.ok(html.includes('Windows.old') && html.includes('$windows.~bt'), 'Rollback-file requirements are missing');
+assert.ok(html.includes('November 14, 2026'), 'Updated technical review date is missing from prerendered HTML');
 assert.ok(
   html.includes('https://www.computerrepairkuwait.com/#business'),
   'Canonical KCROC business entity reference is missing',
@@ -136,12 +143,12 @@ for (const serviceRoute of [
 }
 
 assert.ok(
-  html.includes('Windows 11 26H2 ISO Download, Clean Install &amp; Hardware Guide') ||
-    html.includes('Windows 11 26H2 ISO Download, Clean Install & Hardware Guide'),
-  'Updated SEO title is missing from the rendered page',
+  html.includes('Windows 11 26H2: November Rollout, ISO &amp; Fixes | KCROC') ||
+    html.includes('Windows 11 26H2: November Rollout, ISO & Fixes | KCROC'),
+  'Updated November 2026 SEO title is missing from the rendered page',
 );
 assert.ok(html.includes('max-image-preview:large'), 'Discover preview robots directive is missing');
 
 console.log(
-  'Windows 11 26H2 SSG validation passed: 20 visible FAQ answers and matching FAQPage JSON-LD, seven semantic decision-tree steps, five comparison tables, setup error codes, PowerShell checks, Intel VMD guidance, canonical URL and internal links are present in prerendered HTML.',
+  'Windows 11 26H2 SSG validation passed: 22 visible FAQ answers and matching FAQPage JSON-LD, seven semantic decision-tree steps, November servicing and rollback guidance, five comparison tables, setup error codes, PowerShell checks, Intel VMD guidance, canonical URL and internal links are present in prerendered HTML.',
 );
