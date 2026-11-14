@@ -69,6 +69,9 @@ const ARABIC_LOCATION_PAGES: Record<string, string> = {
   farwaniya: '/ar/computer-repair-farwaniya',
   'kuwait-city': '/ar/computer-repair-kuwait-city',
   jahra: '/ar/computer-repair-jahra',
+  ahmadi: '/ar/computer-repair-ahmadi',
+  fahaheel: '/ar/computer-repair-fahaheel',
+  mangaf: '/ar/computer-repair-mangaf',
 };
 
 const SERVICE_ICON_MAP: Record<string, React.ElementType> = {
