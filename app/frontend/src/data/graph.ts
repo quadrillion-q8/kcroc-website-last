@@ -5320,7 +5320,7 @@ export const rawGraphData: RawGraphData = {
         lastModified: '2026-11-14T00:00:00+03:00'
       },
       navigationPriority: 45
-    } } as LocationEntity,
+    } as LocationEntity,
 
     // 🚀 NEW: Jabriya, Mubarak Al-Kabeer, Fintas, and Sabah Al-Salem — second
     // batch of previously-uncovered high-value areas. Each again gets a
