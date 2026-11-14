@@ -9255,12 +9255,12 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: "news-apple-m6-macbook-pro-imac-november-2026",
     slug: "apple-m6-macbook-pro-imac-official-specs",
-    title: "Apple’s M6 MacBook Pro, iMac and Mac mini Have Arrived: Silicon Architecture, Memory Bandwidth and Hardware Repair Insights for Kuwait",
-    excerpt: "Apple’s 2nm M6 platform now spans Mac mini, 14-inch MacBook Pro and 24-inch iMac. This engineering-led guide checks the CPU/GPU design, memory-bandwidth tiers, display and charging specifications, model identifiers, and repair decisions for Mac owners in Kuwait.",
-    description: "Apple’s M6 Mac guide: confirmed 2nm silicon, 12-core CPU/GPU, Neural Accelerators, 153/170GB/s memory tiers, 96W fast charging, iMac configurations, Mac mini and Kuwait repair guidance.",
+    title: "Apple M6 MacBook Pro, iMac and Mac mini: Specifications, Architecture and Performance",
+    excerpt: "Apple’s M6 generation brings its first 2nm Mac chip to the Mac mini, 14-inch MacBook Pro and 24-inch iMac. This global technology report compares the architecture, memory tiers, displays, charging, connectivity and published performance claims.",
+    description: "A global guide to Apple M6: 2nm silicon, CPU and GPU architecture, memory bandwidth, MacBook Pro, iMac and Mac mini configurations, charging, connectivity and upgrade considerations.",
     content: [
       "Apple’s M6 generation now spans three Mac form factors: the Mac mini, 14-inch MacBook Pro and 24-inch iMac. Apple identifies M6 as its first 2-nanometer chip and lists a 12-core CPU, 12-core GPU with Neural Accelerators and a Dual 16-core Neural Engine on the full M6 configuration. The 14-inch MacBook Pro and Mac mini also expose an important buyer detail: Apple specifies 153GB/s memory bandwidth for 16GB configurations and 170GB/s for selected higher-memory configurations.",
-      "This KCROC engineering guide separates manufacturer-published facts from details that remain undisclosed, explains how the three M6 Mac designs differ, and gives Mac owners in Kuwait a practical way to decide between upgrading, maintaining or diagnosing an existing device."
+      "This report separates manufacturer-published specifications from details that remain undisclosed, explains how the three M6 Mac designs differ, and helps readers compare the new generation with the Mac they already own."
     ],
     richContent: [
       {
@@ -9374,7 +9374,7 @@ export const BLOG_POSTS: BlogPost[] = [
         type: "callout",
         variant: "warning",
         title: "Choose unified memory before checkout",
-        text: "Apple Silicon unified memory is not a conventional user-replaceable SO-DIMM upgrade. Select enough memory for the intended applications when configuring the Mac. Do not buy a 16GB machine on the assumption that KCROC or another repair shop can later convert it to 24GB or 32GB."
+        text: "Apple Silicon unified memory is not a conventional user-replaceable SO-DIMM upgrade. Select enough memory for the intended applications when configuring the Mac. Do not assume a service provider can later convert a 16GB machine to 24GB or 32GB; unified memory is integrated into the system design."
       },
       {
         type: "h2",
@@ -9418,7 +9418,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "paragraph",
-        text: "The 24-inch iMac M6 keeps the 4.5K all-in-one format and seven colour options, but Apple offers two materially different hardware configurations. The two-port model starts at US$1,499 and uses a 10-core CPU/10-core GPU bin. The four-port model starts at US$1,699 and uses the full 12-core CPU/12-core GPU configuration. These are published US starting prices, not Kuwait retail quotations."
+        text: "The 24-inch iMac M6 keeps the 4.5K all-in-one format and seven colour options, but Apple offers two materially different hardware configurations. The two-port model starts at US$1,499 and uses a 10-core CPU/10-core GPU bin. The four-port model starts at US$1,699 and uses the full 12-core CPU/12-core GPU configuration. These are published US starting prices; retail prices and configurations vary by market."
       },
       {
         type: "comparisonTable",
@@ -9469,12 +9469,12 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "h2",
-        text: "9. Model identifiers: what to send a repair technician",
+        text: "9. Model identifiers: how to identify an M6 Mac",
         id: "m6-mac-model-identifiers"
       },
       {
         type: "paragraph",
-        text: "Marketing names are not enough to order a compatible part. Apple model-identification references list the 14-inch M6 MacBook Pro as Mac18,1, the 24-inch M6 iMac as Mac18,2, and the M6 Mac mini as Mac18,5. The iMac uses different two-port and four-port configurations within its M6 family, so confirm the actual port count and chip bin as well as the model identifier. A part or order number may vary with colour, memory, storage and sales market. For the M6 Mac mini, independent model catalogues also cross-reference A3534 / EMC 9032; use the on-device Model Identifier and serial-based lookup when matching service parts."
+        text: "Marketing names are not enough to identify a precise configuration. Apple model-identification references list the 14-inch M6 MacBook Pro as Mac18,1, the 24-inch M6 iMac as Mac18,2, and the M6 Mac mini as Mac18,5. The iMac uses different two-port and four-port configurations within its M6 family, so confirm the actual port count and chip bin as well as the model identifier. Product and order numbers may vary with colour, memory, storage and sales market. For the M6 Mac mini, independent model catalogues also cross-reference A3534 / EMC 9032; use the on-device Model Identifier and serial-based lookup when checking a particular system."
       },
       {
         type: "list",
@@ -9522,7 +9522,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "paragraph",
-        text: "An M6 Mac is a clear generational option for buyers who need the newest 2nm platform, the current on-device AI features, faster graphics or the selected 170GB/s memory tier. But an M1, M2, M3, M4 or M5 Mac that already meets its owner’s workload does not become unusable merely because a new generation exists. Before spending a large amount in Kuwait, identify the actual constraint: memory pressure, storage capacity, battery health, thermal throttling, charging instability, display damage or a software-specific limitation."
+        text: "An M6 Mac is a clear generational option for buyers who need the newest 2nm platform, the current on-device AI features, faster graphics or the selected 170GB/s memory tier. But an M1, M2, M3, M4 or M5 Mac that already meets its owner’s workload does not become unusable merely because a new generation exists. Before replacing an otherwise capable Mac, identify the actual constraint: memory pressure, storage capacity, battery health, thermal throttling, charging instability, display damage or a software-specific limitation."
       },
       {
         type: "comparisonTable",
@@ -9540,65 +9540,16 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "h2",
-        text: "12. Mac hardware diagnostics in Kuwait: what KCROC can and cannot confirm",
-        id: "kcroc-mac-diagnostics-and-repair-kuwait"
+        text: "12. Warranty, service and repairability",
+        id: "m6-warranty-service-repairability"
       },
       {
         type: "paragraph",
-        text: "KCROC’s MacBook repair information currently covers supported Intel and Apple Silicon MacBook generations through M1–M5, subject to the exact model, symptoms and parts availability. The published service scope includes power and charging diagnosis, logic-board faults, liquid-damage inspection, screen and battery replacement, keyboard/trackpad symptoms and thermal-related checks. M6 is a newly released generation and is not being presented here as an already confirmed repair-stock or parts capability."
+        text: "For a newly released Mac, begin with the applicable limited-warranty terms and any AppleCare coverage for the device. Coverage, eligible service options and consumer rights vary by country and purchase channel, so check the current terms that apply to the product and the region where support is requested."
       },
       {
         type: "paragraph",
-        text: "For M6 devices, first check the applicable Apple warranty or AppleCare coverage. For an out-of-warranty fault, KCROC must verify the exact Model Identifier, failure symptoms, diagnostic feasibility and compatible parts before accepting the job. A specification page is not evidence that a replacement component or board-level repair method is already available for every M6 model."
-      },
-      {
-        type: "h3",
-        text: "What a useful Mac diagnostic includes",
-        id: "mac-diagnostic-checklist"
-      },
-      {
-        type: "list",
-        ordered: true,
-        items: [
-          "Identify the computer: model name, model identifier, chip generation, screen size and approximate year.",
-          "Record the symptom precisely: no power, no charge, battery drain, overheating, display failure, liquid exposure, random restart or performance slowdown.",
-          "For charging problems, record the adapter wattage, cable type and whether MagSafe 3, USB-C or both are affected.",
-          "Separate external causes from the device: test a known-good compliant power source and cable where safe, check the outlet and inspect connectors for damage.",
-          "Ask for the diagnostic findings and a written quotation before approving paid repair work."
-        ]
-      },
-      {
-        type: "paragraph",
-        text: "For supported generations, KCROC’s MacBook Repair Kuwait service is the starting point for general diagnosis. MacBook logic-board and motherboard symptoms can be assessed through Motherboard Repair Kuwait. For a damaged or failed display, see MacBook Screen Replacement Kuwait; for a swollen or worn battery, see MacBook Battery Replacement Kuwait. Each service must still be matched to the exact model and fault."
-      },
-      {
-        type: "callout",
-        variant: "warning",
-        title: "Data preservation is not standalone data recovery",
-        text: "Where a repair is technically viable, working on the original logic board may preserve the device’s existing storage components. It does not guarantee that files will remain accessible, and it is not a substitute for a separate backup. KCROC does not offer standalone data-recovery or specialist file-rescue services."
-      },
-      {
-        type: "h2",
-        text: "13. KCROC Hawalli laboratory and free pickup across Kuwait",
-        id: "kcroc-hawalli-lab-kuwait-pickup"
-      },
-      {
-        type: "paragraph",
-        text: "Kuwait Computer Repair On Call (KCROC) operates its physical workshop at Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19, Hawalli, Kuwait. Hardware diagnostics and completed repairs are carried out at this Hawalli laboratory; other districts are served through arranged collection and return rather than separate storefront branches. Free pickup and delivery are available across Kuwait, with an initial diagnosis before any paid repair is approved."
-      },
-      {
-        type: "list",
-        items: [
-          "Workshop: Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19, Hawalli, Kuwait.",
-          "Hours: daily, 10:00 AM–10:00 PM.",
-          "Contact: use the WhatsApp and booking actions on this page to arrange collection.",
-          "Initial diagnosis: free; a quotation is provided before paid work.",
-          "Repair policy: No Fix, No Fee under KCROC’s stated terms, with warranty coverage on eligible completed repairs."
-        ]
-      },
-      {
-        type: "paragraph",
-        text: "To ask about a Mac diagnosis or arrange pickup, use the article’s existing WhatsApp or booking actions. Share the model identifier, symptom and collection area; include a photo of the model label or About This Mac screen if available, but do not share passwords or sensitive account credentials."
+        text: "Before approving an out-of-warranty repair, ask the service provider to confirm the exact model identifier, fault, diagnostic evidence, compatible parts, data-handling process and any effect on existing coverage. Back up important files before service whenever the computer still operates. Repair work does not guarantee data access or preservation; maintain a separate verified backup."
       },
       {
         type: "h2",
@@ -9647,7 +9598,7 @@ export const BLOG_POSTS: BlogPost[] = [
           },
           {
             question: "How much does the M6 Mac mini cost?",
-            answer: "Apple’s published United States starting price is US$899 for the M6 Mac mini. Retail prices in Kuwait can differ by retailer, configuration, import costs and warranty."
+            answer: "Apple’s published United States starting price is US$899 for the M6 Mac mini. Retail prices in other markets can differ by retailer, configuration, taxes and warranty terms."
           },
           {
             question: "What charger is needed for fast charging on the 14-inch M6 MacBook Pro?",
@@ -9662,19 +9613,18 @@ export const BLOG_POSTS: BlogPost[] = [
             answer: "Unified memory is not a conventional user-upgradeable memory module. Select the capacity you need when purchasing the Mac; Apple lists different capacities by product and configuration."
           },
           {
-            question: "Can KCROC repair an M6 MacBook or iMac in Kuwait?",
-            answer: "M6 repair acceptance is subject to the exact model identifier, fault, diagnostic feasibility and parts availability. KCROC’s current published MacBook repair scope lists supported Intel and M1–M5 generations; M6 capability must be confirmed case by case."
+            question: "What should I check before arranging service for an M6 Mac?",
+            answer: "Confirm the exact model identifier, document the fault, check warranty or AppleCare coverage, and ask the service provider to verify diagnostic capability and compatible parts before approving work."
           },
           {
-            question: "Where does KCROC perform MacBook and logic-board repairs?",
-            answer: "KCROC performs diagnostics and repairs at its Hawalli laboratory: Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19, Hawalli, Kuwait. Free pickup and delivery can be arranged across Kuwait."
+            question: "Does repair availability vary by country and model?",
+            answer: "Yes. Warranty terms, authorised service options, consumer protections and parts availability can vary by region and exact Mac configuration. Check the support options applicable to the device before arranging service."
           }
         ]
       }
     ],
-    image: "/images/apple-macbook-logic-board-and-fan-repair.webp",
-    imageAlt: "MacBook logic board and cooling assembly photographed at the KCROC Hawalli repair laboratory",
-    imageCaption: "KCROC repair-lab photograph for component-level hardware context; it is not represented as an M6 teardown.",
+    image: "/images/macbook-pro-open-macos-screen.webp",
+    imageAlt: "Close-up of a MacBook Pro keyboard and macOS display",
     date: "2026-11-14",
     technicalReviewDate: "November 14, 2026",
     author: "Imran Natiq",
@@ -9690,13 +9640,14 @@ export const BLOG_POSTS: BlogPost[] = [
       "153GB/s memory bandwidth",
       "170GB/s memory bandwidth",
       "Apple N1",
-      "MacBook repair Kuwait",
-      "MacBook logic board repair Hawalli",
-      "Mac diagnostics Kuwait"
+      "Apple M6 architecture",
+      "MacBook Pro M6 specifications",
+      "M6 Mac performance"
     ],
-    seoTitle: "Apple M6 Mac Specs: MacBook Pro, iMac & Mini | KCROC",
-    seoDescription: "Apple’s M6 Mac guide: 2nm silicon, MacBook Pro/iMac/Mini specs, 153/170GB/s memory tiers, 96W fast charging and repair guidance in Kuwait.",
-    contentType: "news"
+    seoTitle: "Apple M6 Mac Specs: MacBook Pro, iMac & Mac mini",
+    seoDescription: "Apple M6 explained: 2nm architecture, MacBook Pro, iMac and Mac mini specifications, memory bandwidth, charging, connectivity and performance.",
+    contentType: "news",
+    isGlobalGuide: true
   },
 
 
