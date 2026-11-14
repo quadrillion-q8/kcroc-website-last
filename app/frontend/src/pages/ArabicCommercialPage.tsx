@@ -13,9 +13,18 @@ const LOCAL_LINKS = [
   { label: 'الفروانية', path: '/ar/computer-repair-farwaniya' },
   { label: 'السالمية', path: '/ar/computer-repair-salmiya' },
   { label: 'الجهراء', path: '/ar/computer-repair-jahra' },
+  { label: 'الأحمدي', path: '/location/ahmadi' },
+  { label: 'مدينة الكويت', path: '/ar/computer-repair-kuwait-city' }
+];
+
+const SOUTHERN_LOCATION_LINKS = [
   { label: 'الأحمدي', path: '/ar/computer-repair-ahmadi' },
   { label: 'الفحيحيل', path: '/ar/computer-repair-fahaheel' },
   { label: 'المنقف', path: '/ar/computer-repair-mangaf' },
+  { label: 'الفروانية', path: '/ar/computer-repair-farwaniya' },
+  { label: 'السالمية', path: '/ar/computer-repair-salmiya' },
+  { label: 'حولي', path: '/ar/computer-repair-hawalli' },
+  { label: 'الجهراء', path: '/ar/computer-repair-jahra' },
   { label: 'مدينة الكويت', path: '/ar/computer-repair-kuwait-city' }
 ];
 
@@ -24,9 +33,7 @@ const KUWAIT_GOVERNORATE_LINKS = [
   { label: 'العاصمة', path: '/ar/computer-repair-kuwait-city' },
   { label: 'الفروانية', path: '/ar/computer-repair-farwaniya' },
   { label: 'الجهراء', path: '/ar/computer-repair-jahra' },
-  { label: 'الأحمدي', path: '/ar/computer-repair-ahmadi' },
-  { label: 'الفحيحيل', path: '/ar/computer-repair-fahaheel' },
-  { label: 'المنقف', path: '/ar/computer-repair-mangaf' },
+  { label: 'الأحمدي', path: '/location/ahmadi' },
   { label: 'مبارك الكبير', path: '/location/mubarak-al-kabeer' }
 ];
 
@@ -1940,7 +1947,10 @@ function ArabicComputerRepairPage({
               <h2 id="local-service" className="mt-2 text-3xl font-black text-white sm:text-4xl">ما تحتاج تودي الجهاز بنفسك إلى حولي</h2>
               <p className="mt-4 max-w-3xl leading-8 text-slate-400">مختبر KCROC موجود في حولي، في شارع ابن خلدون، مجمع الملا، محل 19 في البدروم. وإذا ما يناسبك تروح للمختبر، نرتب استلام جهازك من البيت أو المكتب في مناطق الكويت، ونرجعه لك بعد الإصلاح والاختبار. دز لنا منطقتك على واتساب ونوضح لك طريقة الاستلام.</p>
               <div className="mt-6 flex flex-wrap gap-2">
-                {LOCAL_LINKS.map((item) => (
+                {(slug === 'computer-repair-mangaf' || slug === 'computer-repair-fahaheel' || slug === 'computer-repair-ahmadi'
+                  ? SOUTHERN_LOCATION_LINKS
+                  : LOCAL_LINKS
+                ).map((item) => (
                   <Link key={item.path} to={item.path} className="rounded-full border border-slate-800 bg-black/10 px-4 py-2 text-sm font-bold text-slate-300 transition hover:border-cyan-500/40 hover:text-cyan-300">{item.label}</Link>
                 ))}
               </div>
