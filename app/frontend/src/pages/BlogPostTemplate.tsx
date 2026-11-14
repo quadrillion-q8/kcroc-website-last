@@ -1082,7 +1082,9 @@ export default function BlogPostTemplate() {
       return post.relatedPostSlugs
         .map((relatedSlug) => postsBySlug.get(relatedSlug))
         .filter((item): item is BlogPost => Boolean(
-          item && !item.redirectTo && typeof item.title === 'string' && item.title.trim()
+          item && !item.redirectTo &&
+          typeof item.slug === 'string' && item.slug.trim() &&
+          typeof item.title === 'string' && item.title.trim()
         ));
     }
     if (post.isPillar) {
@@ -1103,7 +1105,14 @@ export default function BlogPostTemplate() {
   }, [post, relatedPosts]);
 
   const recentPosts = useMemo(
-    () => post ? BLOG_POSTS.filter(p => !p.redirectTo && p.slug !== post.slug).sort((a, b) => +new Date(b.date) - +new Date(a.date)).slice(0, 4) : [],
+    () => post ? BLOG_POSTS
+      .filter((item) => Boolean(
+        item && !item.redirectTo &&
+        typeof item.slug === 'string' && item.slug.trim() && item.slug !== post.slug &&
+        typeof item.title === 'string' && item.title.trim()
+      ))
+      .sort((a, b) => +new Date(b.date) - +new Date(a.date))
+      .slice(0, 4) : [],
     [post]
   );
 
@@ -1553,7 +1562,10 @@ export default function BlogPostTemplate() {
                     <Network size={12} aria-hidden="true" /> Pillar Guide
                   </span>
                 )}
-                <span className="flex items-center gap-1.5 mt-1"><Calendar size={14} aria-hidden="true" /> {new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                <span className="flex items-center gap-1.5 mt-1"><Calendar size={14} aria-hidden="true" /> {isWindows26H2Guide ? 'Published: ' : ''}{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'Asia/Kuwait' })}</span>
+                {isWindows26H2Guide && post.technicalReviewDate && (
+                  <span className="flex items-center gap-1.5 mt-1"><Calendar size={14} aria-hidden="true" /> Updated: {getTechnicalReviewDateLabel(post, 'November 14, 2026')}</span>
+                )}
                 <span className="flex items-center gap-1.5 mt-1"><Clock size={14} aria-hidden="true" /> {post.readTime}</span>
                 <span className="flex items-center gap-1.5 mt-1">
                   <User size={14} aria-hidden="true" />
