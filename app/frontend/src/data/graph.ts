@@ -10,7 +10,7 @@ import { IMAGES } from '../constants/images.js';
 export const rawGraphData: RawGraphData = {
   metadata: {
     version: '3.8.5',
-    lastUpdated: '2026-11-13T00:00:00+03:00',
+    lastUpdated: '2026-11-15T00:00:00+03:00',
     environment: 'production'
   },
 
@@ -375,6 +375,90 @@ export const rawGraphData: RawGraphData = {
         altText: 'فني يفحص مجموعة شاشة اللابتوب وكابل العرض قبل تحديد هل العطل من لوحة LCD أو التوصيل'
       },
       relatedServiceIds: ['srv-screen', 'srv-laptop', 'srv-battery', 'srv-hinge', 'srv-macbook-screen']
+    } as WebPageEntity,
+
+    'page-ar-mangaf-computer-repair': {
+      id: 'page-ar-mangaf-computer-repair',
+      slug: 'ar/computer-repair-mangaf',
+      entityType: 'WebPage',
+      isActive: true,
+      title: 'تصليح كمبيوتر ولابتوب في المنقف',
+      description: 'تصليح اللابتوب والماك بوك واللوحة الأم في المنقف، مع استلام وتوصيل مجاني من المناطق القريبة وإصلاح الأجهزة داخل مختبر KCROC في حولي.',
+      seo: {
+        title: 'تصليح كمبيوتر المنقف | استلام وتوصيل مجاني | KCROC',
+        description: 'تحتاج تصليح كمبيوتر أو لابتوب في المنقف؟ نرتب الاستلام من المنقف والفحيحيل وأبو حليفة والأحمدي، ونفحص الجهاز ونصلحه في مختبرنا بحولي مع عرض السعر قبل الإصلاح وضمان 30 يومًا.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-mangaf',
+        locale: 'ar_KW',
+        alternates: {
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-mangaf',
+          'en-KW': 'https://www.computerrepairkuwait.com/location/mangaf',
+          'x-default': 'https://www.computerrepairkuwait.com/location/mangaf'
+        },
+        ogType: 'website',
+        schemaTypes: ['WebPage', 'BreadcrumbList'],
+        lastModified: '2026-11-15T00:00:00+03:00',
+        breadcrumbs: [
+          { name: 'الرئيسية', url: '/ar' },
+          { name: 'تصليح كمبيوتر ولابتوب في المنقف', url: '/ar/computer-repair-mangaf' }
+        ]
+      },
+      relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-liquid-damage', 'srv-motherboard']
+    } as WebPageEntity,
+
+    'page-ar-fahaheel-computer-repair': {
+      id: 'page-ar-fahaheel-computer-repair',
+      slug: 'ar/computer-repair-fahaheel',
+      entityType: 'WebPage',
+      isActive: true,
+      title: 'تصليح كمبيوتر ولابتوب في الفحيحيل',
+      description: 'تصليح اللابتوب والماك بوك وكمبيوتر الألعاب في الفحيحيل والمناطق القريبة، مع استلام وتوصيل مجاني والإصلاح في مختبر KCROC بحولي.',
+      seo: {
+        title: 'تصليح كمبيوتر الفحيحيل | استلام وتوصيل مجاني | KCROC',
+        description: 'تصليح كمبيوتر ولابتوب في الفحيحيل وفنطاس والمنقف وأبو حليفة. نستلم الجهاز مجانًا ونفحصه ونصلحه في مختبر KCROC بحولي، مع توضيح التكلفة قبل أي عمل مدفوع.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-fahaheel',
+        locale: 'ar_KW',
+        alternates: {
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-fahaheel',
+          'en-KW': 'https://www.computerrepairkuwait.com/location/fahaheel',
+          'x-default': 'https://www.computerrepairkuwait.com/location/fahaheel'
+        },
+        ogType: 'website',
+        schemaTypes: ['WebPage', 'BreadcrumbList'],
+        lastModified: '2026-11-15T00:00:00+03:00',
+        breadcrumbs: [
+          { name: 'الرئيسية', url: '/ar' },
+          { name: 'تصليح كمبيوتر ولابتوب في الفحيحيل', url: '/ar/computer-repair-fahaheel' }
+        ]
+      },
+      relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-gaming', 'srv-battery']
+    } as WebPageEntity,
+
+    'page-ar-ahmadi-computer-repair': {
+      id: 'page-ar-ahmadi-computer-repair',
+      slug: 'ar/computer-repair-ahmadi',
+      entityType: 'WebPage',
+      isActive: true,
+      title: 'تصليح كمبيوتر ولابتوب في الأحمدي',
+      description: 'تصليح كمبيوتر الألعاب واللابتوب والماك بوك في الأحمدي ومناطق جنوب الكويت، مع استلام وتوصيل مجاني وإصلاح في مختبر KCROC بحولي.',
+      seo: {
+        title: 'تصليح كمبيوتر الأحمدي | فني لابتوب وGaming PC | KCROC',
+        description: 'تحتاج تصليح كمبيوتر أو Gaming PC أو MacBook في الأحمدي؟ نرتب الاستلام من الأحمدي والفحيحيل والمنقف والمهبولة والصباحية، ونفحص الجهاز في مختبرنا بحولي قبل تحديد الإصلاح والتكلفة.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-ahmadi',
+        locale: 'ar_KW',
+        alternates: {
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-ahmadi',
+          'en-KW': 'https://www.computerrepairkuwait.com/location/ahmadi',
+          'x-default': 'https://www.computerrepairkuwait.com/location/ahmadi'
+        },
+        ogType: 'website',
+        schemaTypes: ['WebPage', 'BreadcrumbList'],
+        lastModified: '2026-11-15T00:00:00+03:00',
+        breadcrumbs: [
+          { name: 'الرئيسية', url: '/ar' },
+          { name: 'تصليح كمبيوتر ولابتوب في الأحمدي', url: '/ar/computer-repair-ahmadi' }
+        ]
+      },
+      relatedServiceIds: ['srv-gaming', 'srv-macbook', 'srv-laptop', 'srv-motherboard']
     } as WebPageEntity,
 
     'page-ar-hawalli-computer-repair': {
@@ -5097,7 +5181,20 @@ export const rawGraphData: RawGraphData = {
       ...IMAGES.laptopHardware.desktopPcTowerRepairKuwait,
       alt: 'Desktop PC tower inspected for repair at the KCROC workshop',
       caption: 'Complete desktop PC diagnosis and repair for Ahmadi customers; all bench work is completed at the Hawalli lab.'
-    }, seo: { title: "Computer Repair Ahmadi | Free Pickup | KCROC", description: "Laptop, MacBook and gaming PC repair for Ahmadi, Fahaheel, Mangaf and Mahboula. Free pickup and repair at our Hawalli lab.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/ahmadi', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-09-27T00:00:00+03:00' }, navigationPriority: 60 } as LocationEntity,
+    }, seo: {
+      title: "Computer Repair Ahmadi | Free Pickup | KCROC",
+      description: "Laptop, MacBook and gaming PC repair for Ahmadi, Fahaheel, Mangaf and Mahboula. Free pickup and repair at our Hawalli lab.",
+      canonicalUrl: 'https://www.computerrepairkuwait.com/location/ahmadi',
+      locale: 'en_KW',
+      alternates: {
+        'en-KW': 'https://www.computerrepairkuwait.com/location/ahmadi',
+        'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-ahmadi',
+        'x-default': 'https://www.computerrepairkuwait.com/location/ahmadi'
+      },
+      ogType: 'website',
+      schemaTypes: ['LocalBusiness'],
+      lastModified: '2026-11-15T00:00:00+03:00'
+    }, navigationPriority: 60 } as LocationEntity,
 
     // 🚀 NEW: Fahaheel, Mangaf, and Abu Halifa were previously only mentioned
     // as text inside Hawalli's and Ahmadi's `serviceAreas` arrays — they had
@@ -5118,7 +5215,20 @@ export const rawGraphData: RawGraphData = {
         { id: "faq-fahaheel-local-4", question: "I spilled a sweet drink on my laptop. Is that worse than water?", answer: "Yes, it can be. Sugar and milk residue stay on the board and keep causing damage after the liquid dries. Switch the laptop off, unplug it and message us as soon as possible, and do not try to power it on to check." },
         { id: "faq-fahaheel-local-5", question: "My laptop overheats and shuts down. Is it safe to keep using it?", answer: "It is better to stop. Repeated overheating shutdowns put stress on the board and battery. We clean the cooling system, replace the paste and test the machine under load before it is returned." },
         { id: "faq-fahaheel-local-6", question: "Is there a shop in Fahaheel?", answer: "No. Fahaheel is a service area, not a branch. Devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), and we collect and deliver for free." },
-      ], title: 'Fahaheel', description: 'Free pickup and delivery for laptop, MacBook, and gaming PC repair across Fahaheel\'s residential and family communities, with every device diagnosed at KCROC\'s Hawalli lab.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.0810, lng: 48.1288 }, serviceRadiusKm: 20, serviceAreas: ['Fahaheel', 'Fintas', 'Mangaf', 'Abu Halifa', 'Sabah Al-Ahmad Sea City'], relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-gaming', 'srv-battery'], relatedProblemIds: ['problem-liquid-spill', 'problem-no-power', 'problem-overheating', 'problem-black-screen'], contentImage: { src: IMAGES.macbook.logicBoard.src, alt: IMAGES.macbook.logicBoard.alt, width: IMAGES.macbook.logicBoard.width, height: IMAGES.macbook.logicBoard.height, caption: 'MacBook motherboard repair for families and residents across Fahaheel.' }, seo: { title: "Computer Repair Fahaheel | Free Pickup | KCROC", description: "Free pickup and delivery for laptop, MacBook and gaming PC repair in Fahaheel, Mangaf and Abu Halifa. Repairs take place in Hawalli.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/fahaheel', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 55 } as LocationEntity,
+      ], title: 'Fahaheel', description: 'Free pickup and delivery for laptop, MacBook, and gaming PC repair across Fahaheel\'s residential and family communities, with every device diagnosed at KCROC\'s Hawalli lab.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.0810, lng: 48.1288 }, serviceRadiusKm: 20, serviceAreas: ['Fahaheel', 'Fintas', 'Mangaf', 'Abu Halifa', 'Sabah Al-Ahmad Sea City'], relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-gaming', 'srv-battery'], relatedProblemIds: ['problem-liquid-spill', 'problem-no-power', 'problem-overheating', 'problem-black-screen'], contentImage: { src: IMAGES.macbook.logicBoard.src, alt: IMAGES.macbook.logicBoard.alt, width: IMAGES.macbook.logicBoard.width, height: IMAGES.macbook.logicBoard.height, caption: 'MacBook motherboard repair for families and residents across Fahaheel.' }, seo: {
+        title: "Computer Repair Fahaheel | Free Pickup | KCROC",
+        description: "Free pickup and delivery for laptop, MacBook and gaming PC repair in Fahaheel, Mangaf and Abu Halifa. Repairs take place in Hawalli.",
+        canonicalUrl: 'https://www.computerrepairkuwait.com/location/fahaheel',
+        locale: 'en_KW',
+        alternates: {
+          'en-KW': 'https://www.computerrepairkuwait.com/location/fahaheel',
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-fahaheel',
+          'x-default': 'https://www.computerrepairkuwait.com/location/fahaheel'
+        },
+        ogType: 'website',
+        schemaTypes: ['LocalBusiness'],
+        lastModified: '2026-11-15T00:00:00+03:00'
+      }, navigationPriority: 55 } as LocationEntity,
 
     'loc-mangaf': { id: 'loc-mangaf', slug: 'mangaf', entityType: 'Location', isActive: true, isPhysicalLocation: false, localIntro: "Mangaf residents can have laptops, MacBooks and motherboards repaired without leaving home: we collect, repair at our Hawalli lab and return the device free of charge. The Mangaf zone also covers Fahaheel, Abu Halifa and Ahmadi. Component-level motherboard repair is the speciality we lead with here.", localHighlights: [
         { title: "Pickup from Mangaf, Fahaheel, Abu Halifa and Ahmadi", description: "Tell us your area on WhatsApp to arrange free collection." },
@@ -5136,7 +5246,20 @@ export const rawGraphData: RawGraphData = {
       ...IMAGES.gaming.gamingPcThermalThrottlingKuwait,
       alt: 'Gaming desktop PC checked for heat-related performance problems',
       caption: 'Gaming PC thermal and stability diagnosis for Mangaf customers; repairs are completed at KCROC’s Hawalli lab.'
-    }, seo: { title: "Computer Repair Mangaf | Free Pickup | KCROC", description: "Laptop, MacBook and motherboard repair for Mangaf and nearby Fahaheel, Abu Halifa and Ahmadi, with free pickup to our Hawalli lab.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/mangaf', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 50 } as LocationEntity,
+    }, seo: {
+        title: "Computer Repair Mangaf | Free Pickup | KCROC",
+        description: "Laptop, MacBook and motherboard repair for Mangaf and nearby Fahaheel, Abu Halifa and Ahmadi, with free pickup to our Hawalli lab.",
+        canonicalUrl: 'https://www.computerrepairkuwait.com/location/mangaf',
+        locale: 'en_KW',
+        alternates: {
+          'en-KW': 'https://www.computerrepairkuwait.com/location/mangaf',
+          'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-mangaf',
+          'x-default': 'https://www.computerrepairkuwait.com/location/mangaf'
+        },
+        ogType: 'website',
+        schemaTypes: ['LocalBusiness'],
+        lastModified: '2026-11-15T00:00:00+03:00'
+      }, navigationPriority: 50 } as LocationEntity,
 
     'loc-abu-halifa': {
       id: 'loc-abu-halifa',

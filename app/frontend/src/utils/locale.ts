@@ -33,6 +33,9 @@ const ENGLISH_TO_ARABIC: Record<string, string> = {
   '/location/jahra': '/ar/computer-repair-jahra',
   '/location/farwaniya': '/ar/computer-repair-farwaniya',
   '/location/kuwait-city': '/ar/computer-repair-kuwait-city',
+  '/location/ahmadi': '/ar/computer-repair-ahmadi',
+  '/location/fahaheel': '/ar/computer-repair-fahaheel',
+  '/location/mangaf': '/ar/computer-repair-mangaf',
 
   '/guides/bios-uefi-recovery-kuwait': '/guides/ar/bios-uefi-recovery-kuwait',
   '/blog/laptop-buying-guide-kuwait-2026': '/blog/ar/laptop-buying-guide-kuwait-2026',
@@ -68,6 +71,9 @@ const ARABIC_TO_ENGLISH: Record<string, string> = {
   '/ar/computer-repair-jahra': '/location/jahra',
   '/ar/computer-repair-farwaniya': '/location/farwaniya',
   '/ar/computer-repair-kuwait-city': '/location/kuwait-city',
+  '/ar/computer-repair-ahmadi': '/location/ahmadi',
+  '/ar/computer-repair-fahaheel': '/location/fahaheel',
+  '/ar/computer-repair-mangaf': '/location/mangaf',
 
   '/guides/ar/bios-uefi-recovery-kuwait': '/guides/bios-uefi-recovery-kuwait',
   '/blog/ar/laptop-buying-guide-kuwait-2026': '/blog/laptop-buying-guide-kuwait-2026',
