@@ -2262,11 +2262,11 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
-        "text": "For Windows 11 100% Disk Usage symptoms, see: https://www.computerrepairkuwait.com/blog/windows-11-100-disk-usage-causes-solutions"
+        "text": "For Windows 11 100% Disk Usage symptoms, see: /blog/windows-11-100-disk-usage-causes-solutions"
       },
       {
         "type": "paragraph",
-        "text": "For BitLocker recovery prompts after a firmware change, see the related BitLocker recovery-key guide: https://www.computerrepairkuwait.com/blog/bitlocker-recovery-key-after-bios-update"
+        "text": "For BitLocker recovery prompts after a firmware change, see the related BitLocker recovery-key guide: /blog/bitlocker-recovery-key-after-bios-update"
       },
       {
         "type": "h2",
@@ -3602,7 +3602,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: 'paragraph', text: "A faster SSD can reduce some of the delay when Windows needs data from storage, including during paging. It cannot match the responsiveness of physical RAM, and it cannot remove the underlying capacity limit. If the system is already using an SSD and becomes sluggish only when several applications are open together, investigate memory pressure. If it is still using a hard drive, the storage upgrade may be worthwhile for separate reasons—but do not treat it as a substitute for RAM." },
       { type: 'image', src: '/images/blog/windows-11-memory-performance.webp', alt: 'Laptop SSD storage and Windows virtual memory performance concept', caption: 'An SSD improves storage access; additional RAM increases the amount of active data the system can keep in physical memory.' },
       { type: 'paragraph', text: "Normal page-file activity is expected Windows behavior and is not, by itself, evidence that an SSD is being damaged. Do not disable virtual memory or buy a faster drive solely because Task Manager shows a page file. Microsoft's explanation of page-file sizing describes how the file supports system commit and crash-dump settings, and why sizing depends on the individual system: https://learn.microsoft.com/en-us/troubleshoot/windows-client/performance/how-to-determine-the-appropriate-page-file-size-for-64-bit-versions-of-windows." },
-      { type: 'paragraph', text: "For a separate storage problem, such as a drive that is missing or not detected, use the SSD diagnostic guide: https://www.computerrepairkuwait.com/guides/ssd-not-detected-windows-11. If disk usage—not memory pressure—is the symptom, compare the processes and causes in this guide: https://www.computerrepairkuwait.com/blog/windows-11-100-disk-usage-causes-solutions." },
+      { type: 'paragraph', text: "For a separate storage problem, such as a drive that is missing or not detected, use the SSD diagnostic guide: https://www.computerrepairkuwait.com/guides/ssd-not-detected-windows-11. If disk usage—not memory pressure—is the symptom, compare the processes and causes in this guide: /blog/windows-11-100-disk-usage-causes-solutions." },
       { type: 'h2', text: 'Before You Upgrade: Check Laptop RAM Compatibility', id: 'check-upgrade-compatibility' },
       { type: 'paragraph', text: "Not every laptop can be upgraded. Some models have removable SO-DIMM memory modules; others use memory soldered directly to the motherboard. Some combine soldered memory with one upgradeable slot. The exact model and motherboard configuration determine the supported capacity—not the laptop's appearance or the amount of RAM installed today." },
       { type: 'list', ordered: true, items: [
