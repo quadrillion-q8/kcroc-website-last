@@ -8,7 +8,7 @@ import { useAnalytics } from '../../analytics/AnalyticsProvider';
 import { Button } from '@/components/ui/button';
 import MobileMenu from './MobileMenu';
 import { getLanguageSwitchPath } from '../../../utils/locale';
-import { isEnglishTechnicalGuideRoute } from '../../../constants/routes';
+import { isEnglishTechnicalGuideRoute, isGlobalBlogEditorialPath } from '../../../constants/routes';
 
 const DesktopMegaMenu = React.lazy(() => import('./DesktopMegaMenu'));
 const SearchBar = React.lazy(() => import('../SearchBar').then(m => ({ default: m.SearchBar })));
@@ -42,7 +42,7 @@ export default function Header() {
   const mobileToggleRef = useRef<HTMLButtonElement>(null);
   
   const location = useLocation();
-  const isGlobalEditorialArticle = location.pathname === '/blog/why-8gb-ram-is-no-longer-enough-for-windows-11' || location.pathname === '/blog/why-is-my-laptop-so-slow';
+  const isGlobalEditorialArticle = isGlobalBlogEditorialPath(location.pathname);
   const isGlobalSlowLaptopGuide = location.pathname === '/blog/why-is-my-laptop-so-slow';
   const isGlobalTechnicalGuide = isEnglishTechnicalGuideRoute(location.pathname);
   const hideConversionActions = isGlobalEditorialArticle || isGlobalTechnicalGuide;
@@ -50,21 +50,14 @@ export default function Header() {
   const { trackConversion } = useAnalytics();
   
   const baseNavModel = getLocalizedNavigation(location.pathname);
-  const navModel = isGlobalTechnicalGuide
+  const navModel = isGlobalTechnicalGuide || isGlobalEditorialArticle
     ? {
         ...baseNavModel,
         header: baseNavModel.header.filter((link) =>
           ['nav_blog', 'nav_news', 'nav_guides', 'nav_about', 'nav_gallery'].includes(link.id)
         ),
       }
-    : location.pathname === '/blog/why-is-my-laptop-so-slow'
-      ? {
-          ...baseNavModel,
-          header: baseNavModel.header.filter((link) =>
-            !['nav_services', 'nav_problems', 'nav_brands', 'nav_pricing', 'nav_locations'].includes(link.id)
-          ),
-        }
-      : baseNavModel;
+    : baseNavModel;
   const languageSwitch = getLanguageSwitchPath(location.pathname);
   
   const phoneDigits = NAV_GRAPH.business!.telephone.replace(/\D/g, '');
