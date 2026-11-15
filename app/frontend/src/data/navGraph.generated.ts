@@ -695,19 +695,19 @@ export const NAV_GRAPH = {
     {
       "id": "loc-kuwait-city",
       "slug": "kuwait-city",
-      "title": "One repair lab, clear accountability",
+      "title": "Kuwait City",
       "navigationPriority": 95
     },
     {
       "id": "loc-salmiya",
       "slug": "salmiya",
-      "title": "Hardware-first privacy and removable-storage option",
+      "title": "Salmiya",
       "navigationPriority": 90
     },
     {
       "id": "loc-farwaniya",
       "slug": "farwaniya",
-      "title": "Every repair is completed at the Hawalli lab",
+      "title": "Farwaniya",
       "navigationPriority": 80
     },
     {
@@ -737,7 +737,7 @@ export const NAV_GRAPH = {
     {
       "id": "loc-abu-halifa",
       "slug": "abu-halifa",
-      "title": "Recognisable Abu Halifa address references",
+      "title": "Abu Halifa",
       "navigationPriority": 45
     },
     {
@@ -749,97 +749,97 @@ export const NAV_GRAPH = {
     {
       "id": "loc-sabah-al-salem",
       "slug": "sabah-al-salem",
-      "title": "Diagnosis before paid work",
+      "title": "Sabah Al-Salem",
       "navigationPriority": 25
     },
     {
       "id": "loc-rumaithiya",
       "slug": "rumaithiya",
-      "title": "Privacy-conscious handling",
+      "title": "Rumaithiya",
       "navigationPriority": 78
     },
     {
       "id": "loc-surra",
       "slug": "surra",
-      "title": "Shaab — Blocks 1–9 · 35900",
+      "title": "Surra",
       "navigationPriority": 86
     },
     {
       "id": "loc-khaitan",
       "slug": "khaitan",
-      "title": "Motherboard repair",
+      "title": "Khaitan",
       "navigationPriority": 72
     },
     {
       "id": "loc-riggae",
       "slug": "riggae",
-      "title": "Arrange a Riggae pickup",
+      "title": "Riggae",
       "navigationPriority": 70
     },
     {
       "id": "loc-mahboula",
       "slug": "mahboula",
-      "title": "One repair workflow at the Hawalli laboratory",
+      "title": "Mahboula",
       "navigationPriority": 64
     },
     {
       "id": "loc-messila",
       "slug": "messila",
-      "title": "No need to visit the lab",
+      "title": "Messila",
       "navigationPriority": 50
     },
     {
       "id": "loc-shuwaikh-residential",
       "slug": "shuwaikh-residential",
-      "title": "Shuwaikh B coverage, clearly identified",
+      "title": "Shuwaikh Residential",
       "navigationPriority": 92
     },
     {
       "id": "loc-abdullah-al-salem",
       "slug": "abdullah-al-salem",
-      "title": "Four-block Al-Dahiya collection coverage",
+      "title": "Abdullah Al-Salem",
       "navigationPriority": 93
     },
     {
       "id": "loc-shamiya",
       "slug": "shamiya",
-      "title": "Coverage across Shamiya Blocks 1–9",
+      "title": "Shamiya",
       "navigationPriority": 90
     },
     {
       "id": "loc-nuzha",
       "slug": "nuzha",
-      "title": "Coverage across all three Nuzha blocks",
+      "title": "Nuzha",
       "navigationPriority": 91
     },
     {
       "id": "loc-adailiya",
       "slug": "adailiya",
-      "title": "One collection service for two neighbouring suburbs",
+      "title": "Adailiya",
       "navigationPriority": 92
     },
     {
       "id": "loc-kaifan",
       "slug": "kaifan",
-      "title": "Seven-block Kaifan collection near the Second Ring Road",
+      "title": "Kaifan",
       "navigationPriority": 85
     },
     {
       "id": "loc-yarmouk",
       "slug": "yarmouk",
-      "title": "Workshop diagnosis in Hawalli",
+      "title": "Yarmouk",
       "navigationPriority": 84
     },
     {
       "id": "loc-qortuba",
       "slug": "qortuba",
-      "title": "Quote before paid work",
+      "title": "Qortuba",
       "navigationPriority": 83
     },
     {
       "id": "loc-mishref",
       "slug": "mishref",
-      "title": "Clear approval and return delivery",
+      "title": "Mishref",
       "navigationPriority": 82
     }
   ],
