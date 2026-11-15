@@ -6045,11 +6045,11 @@ export const BLOG_POSTS: BlogPost[] = [
     description: "A measurement-first gaming PC optimization guide for 2026 covering FPS, 1% lows, frame-time, CPU/GPU bottlenecks, RAM, thermals, ReBAR, VRR, Reflex, Windows settings and safe tuning.",
     content: [
       "The fastest way to make a gaming PC worse is to change twenty settings before measuring what is actually limiting performance.",
-      "This KCROC guide uses a technician-style workflow: establish a baseline, identify the bottleneck, change one variable, benchmark the same workload, and keep the change only when the evidence supports it."
+      "This guide uses a measured workflow: establish a baseline, identify the bottleneck, change one variable, benchmark the same workload, and keep the change only when the evidence supports it."
     ],
     richContent: [
       { type: "paragraph", text: "Gaming PC optimization is overloaded with one-size-fits-all tweaks: disable services, change registry values, use a special power plan, delete caches, turn off security features, or copy somebody else's BIOS settings. Some changes help a particular system. Others do nothing, create instability, reduce security, or simply move the problem somewhere else. A better approach is to treat performance tuning like a diagnosis: measure first, form a hypothesis, change one variable, and test again." },
-      { type: "callout", variant: "expert", title: "KCROC performance rule", text: "Do not optimize the setting. Optimize the bottleneck. If you cannot explain what a change is supposed to improve, measure before you apply it." },
+      { type: "callout", variant: "expert", title: "Performance principle", text: "Do not optimize the setting. Optimize the bottleneck. If you cannot explain what a change is supposed to improve, measure before you apply it." },
       { type: "image", src: "/images/gaming-laptop-dual-fan-motherboard-diagnostics.webp", alt: "Gaming PC and laptop performance diagnostics at a technician workbench", caption: "Professional performance tuning starts with measurements and repeatable tests, not a long list of unexplained tweaks." },
       { type: "statCards", items: [
         { value: "FPS", label: "Overall rendering rate" },
@@ -6079,7 +6079,7 @@ export const BLOG_POSTS: BlogPost[] = [
         { feature: "CPU per-thread load", values: ["CPU bottleneck location", "Game-engine/CPU-bound diagnosis"] },
         { feature: "System latency", values: ["Input-to-display delay", "Competitive/high-refresh gaming"] }
       ] },
-      { type: "paragraph", text: "For an existing high-FPS stutter problem, continue into KCROC's dedicated guide: https://www.computerrepairkuwait.com/guides/windows-gaming-frame-time-stutter." },
+      { type: "paragraph", text: "For an existing high-FPS stutter problem, continue with the dedicated frame-time troubleshooting guide: /guides/windows-gaming-frame-time-stutter." },
       { type: "h2", text: "Step 2: Find the Real Bottleneck", id: "find-bottleneck" },
       { type: "comparisonTable", title: "Symptom-to-bottleneck map", columns: ["Observed pattern", "Likely branch", "First test"], rows: [
         { feature: "GPU stays around 95–99% and FPS rises when GPU settings are lowered", values: ["GPU-bound", "Lower one GPU-heavy setting and repeat the scene"] },
@@ -6139,10 +6139,10 @@ export const BLOG_POSTS: BlogPost[] = [
       ] },
       { type: "h2", text: "Shader Compilation and Asset Streaming", id: "shaders" },
       { type: "paragraph", text: "Some games compile shaders or prepare rendering pipelines when new effects, materials or areas are encountered. Asset streaming can create another class of transient hitch. If the same hitch happens predictably during first-use events and then becomes less frequent, that pattern differs from random system-wide frame-time spikes." },
-      { type: "paragraph", text: "Use KCROC's dedicated shader guide when the evidence points to first-use rendering work instead of deleting caches or reinstalling Windows automatically: https://www.computerrepairkuwait.com/guides/shader-compilation-stutter-windows." },
+      { type: "paragraph", text: "Use the shader-compilation guide when the evidence points to first-use rendering work instead of deleting caches or reinstalling Windows automatically: /guides/shader-compilation-stutter-windows." },
       { type: "h2", text: "DPC/ISR Latency: An Advanced Branch", id: "dpc" },
       { type: "paragraph", text: "Driver interrupt and Deferred Procedure Call activity can matter for latency-sensitive workloads, but a high latency measurement alone does not prove that one driver is causing every gaming hitch. Correlate timing with the actual symptom and use controlled device or driver tests before making broad changes." },
-      { type: "paragraph", text: "If the evidence points toward driver timing, continue with KCROC's advanced guide: https://www.computerrepairkuwait.com/guides/dpc-latency-gaming-stutter." },
+      { type: "paragraph", text: "If the evidence points toward driver timing, continue with the advanced DPC-latency guide: /guides/dpc-latency-gaming-stutter." },
       { type: "h2", text: "The Optimization Myths I Would Not Follow Blindly", id: "myths" },
       { type: "comparisonTable", title: "Claim vs evidence-based response", columns: ["Common claim", "Better response"], rows: [
         { feature: "Disable every Windows service for more FPS", values: ["Change only services linked to a measured problem and keep a rollback path"] },
@@ -6166,7 +6166,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "paragraph", text: "When software tuning cannot explain persistent instability, artifacts, shutdowns or performance loss, the next step is a hardware assessment of the GPU, power delivery, memory and cooling system rather than more software tweaks." },
       { type: "h2", text: "Ambient Temperature: Heat Changes the Test Environment", id: "ambient-temperature" },
       { type: "paragraph", text: "High ambient temperature can reduce thermal headroom compared with a cooler test environment. For a gaming PC or laptop used in a warm room, compare performance at the beginning of a session with performance after sustained load. If temperatures rise while clocks or FPS fall, treat cooling as part of performance tuning rather than separate maintenance." },
-      { type: "callout", variant: "recommendation", title: "The KCROC standard", text: "Diagnose first. Tune second. Repair only when the evidence points to hardware. The goal is repeatable gaming performance, not the largest possible list of tweaks." },
+      { type: "callout", variant: "recommendation", title: "The performance standard", text: "Diagnose first. Tune second. Repair only when the evidence points to hardware. The goal is repeatable gaming performance, not the largest possible list of tweaks." },
       { type: "h2", text: "Frequently Asked Questions", id: "faq" },
       { type: "faq", items: [
         { question: "What is the most important gaming PC optimization?", answer: "Finding the actual bottleneck is more important than any individual Windows or BIOS tweak. Start with a repeatable benchmark and measure FPS, frame-time, utilization, temperatures and clocks." },
@@ -6187,7 +6187,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "paragraph", text: "AMD — Ryzen Master Curve Optimizer: https://docs.amd.com/r/en-US/68886-ryzen-master-user-guide/Curve-Optimizer" },
       { type: "paragraph", text: "AMD — AM5 and EXPO platform information: https://www.amd.com/en/products/processors/chipsets/am5.html" },
       { type: "h2", text: "Bottom Line", id: "bottom-line" },
-      { type: "paragraph", text: "The strongest gaming PC optimization strategy is not a secret Windows setting. It is a repeatable diagnostic process: measure the baseline, identify the bottleneck, change one variable, benchmark the same workload, verify stability, and keep only changes that produce a meaningful result. That method scales from a budget gaming PC to a high-end RTX/Radeon system and from a desktop in a cool room to a gaming machine operating through Kuwait's heat." }
+      { type: "paragraph", text: "The strongest gaming PC optimization strategy is not a secret Windows setting. It is a repeatable diagnostic process: measure the baseline, identify the bottleneck, change one variable, benchmark the same workload, verify stability, and keep only changes that produce a meaningful result. That method scales from a budget gaming PC to a high-end RTX/Radeon system and from a desktop in a cool room to a gaming machine operating in a hot environment." }
     ],
     image: "/images/gaming-laptop-dual-fan-motherboard-diagnostics.webp",
     discoverImage: "/images/discover/gaming-laptop-dual-fan-motherboard-diagnostics-workbench-1200x675.webp",
@@ -6198,7 +6198,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "22-28 min read",
     isPillar: true,
     tags: ["Gaming PC Optimization", "FPS Optimization", "1% Lows", "Frame Time", "Input Latency", "Resizable BAR", "Smart Access Memory", "XMP", "EXPO", "PBO", "Curve Optimizer", "GPU Undervolting", "Windows 11 Gaming"],
-    seoTitle: "Gaming PC Optimization 2026: FPS, 1% Lows & Latency | KCROC",
+    seoTitle: "Gaming PC Optimization 2026: FPS, 1% Lows & Latency",
     seoDescription: "Optimize a gaming PC scientifically in 2026: measure FPS and 1% lows, find CPU/GPU bottlenecks, tune RAM, ReBAR, thermals, VRR and latency without blindly applying tweaks.",
     contentType: "guide"
   },
@@ -6211,11 +6211,11 @@ export const BLOG_POSTS: BlogPost[] = [
     description: "Gaming stuttering despite high FPS? Diagnose frame-time spikes, shaders, Game Bar, DPC latency, drivers, RAM, GPU limits and thermal throttling in Windows 11.",
     content: [
       "Gaming stutter is a symptom, not a diagnosis. A high average FPS can still hide uneven frame delivery, while a stable frame rate can coexist with other problems such as input latency or network lag.",
-      "This KCROC guide uses a controlled troubleshooting order: reproduce the stutter, measure the right signal, change one variable at a time, and only then decide whether the problem is software, driver, thermal or hardware related."
+      "This guide uses a controlled troubleshooting order: reproduce the stutter, measure the right signal, change one variable at a time, and only then decide whether the problem is software, driver, thermal or hardware related."
     ],
     richContent: [
       { type: "paragraph", text: "If a Windows 11 game reports 100+ FPS but still feels jerky, the first question should not be which registry tweak to apply. The useful question is whether frames are arriving consistently. Average FPS describes the amount of rendered work over time; it does not fully describe the spacing between individual frames. A short burst of slow frames can make gameplay feel uneven even when the average number looks healthy." },
-      { type: "callout", variant: "expert", title: "KCROC diagnostic principle", text: "Treat stutter as an evidence problem. Reproduce the same scene, observe the same workload, change one variable, and compare the result. Do not assume GameBarPresenceWriter.exe, Game Bar, Windows 11, the GPU or the registry is the cause simply because one of them is visible during the symptom." },
+      { type: "callout", variant: "expert", title: "Diagnostic principle", text: "Treat stutter as an evidence problem. Reproduce the same scene, observe the same workload, change one variable, and compare the result. Do not assume GameBarPresenceWriter.exe, Game Bar, Windows 11, the GPU or the registry is the cause simply because one of them is visible during the symptom." },
       { type: "image", src: "/images/gaming-laptop-dual-fan-motherboard-diagnostics.webp", alt: "Gaming laptop motherboard, cooling fans and components during performance diagnostics", caption: "Gaming stutter can originate in frame-time behavior, drivers, memory, storage, cooling or hardware. The useful starting point is measured evidence." },
 
       { type: "h2", text: "The Four Questions to Answer Before Changing Anything", id: "four-questions" },
@@ -6360,7 +6360,7 @@ export const BLOG_POSTS: BlogPost[] = [
 
       { type: "h2", text: "Bottom Line", id: "bottom-line" },
       { type: "paragraph", text: "The most useful gaming optimization is often better diagnosis. Start with frame-time behavior, then separate Game Bar and other overlays, CPU/GPU limits, memory and storage pressure, driver latency, shader compilation, Windows graphics settings and thermal behavior. Use A/B testing and roll back changes that do not prove the hypothesis." },
-      { type: "paragraph", text: "KCROC's GameBarPresenceWriter guide is one specialized branch of this larger troubleshooting model. When that branch does not explain the symptom, move to the evidence that does rather than forcing every stutter problem into a Windows-tweak explanation." }
+      { type: "paragraph", text: "The GameBarPresenceWriter guide is one specialized branch of this larger troubleshooting model. When that branch does not explain the symptom, move to the evidence that does rather than forcing every stutter problem into a Windows-tweak explanation." }
     ],
     image: "/images/gaming-laptop-dual-fan-motherboard-diagnostics.webp",
     discoverImage: "/images/discover/gaming-laptop-dual-fan-motherboard-diagnostics-1200x675.webp",
@@ -6373,7 +6373,7 @@ export const BLOG_POSTS: BlogPost[] = [
     clusterParent: "gaming-pc-optimization-2026",
     relatedPostSlugs: ["windows-gaming-frame-time-stutter", "gamebar-presence-writer-fix", "shader-compilation-stutter-windows", "dpc-latency-gaming-stutter"],
     tags: ["Windows 11 Gaming", "Gaming Stutter", "Frame Time", "Game Bar", "DPC Latency", "Shader Compilation", "Thermal Throttling", "HAGS", "VRR", "VBS", "HVCI"],
-    seoTitle: "Windows 11 Gaming Stutter & FPS Drops: Fix Guide 2026 | KCROC",
+    seoTitle: "Windows 11 Gaming Stutter & FPS Drops: Fix Guide 2026",
     seoDescription: "Gaming stuttering despite high FPS? Diagnose frame-time spikes, shaders, Game Bar, DPC latency, drivers, RAM, GPU limits and thermal throttling in Windows 11.",
     contentType: "guide"
   },
@@ -6412,7 +6412,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "h2", text: "Separate Rendering Stutter From Input or Network Problems", id: "render-vs-input-network" },
       { type: "paragraph", text: "Not every “laggy” feeling is a frame-time problem. Network latency can make an online game feel delayed even when rendering is smooth. Input latency can also be present when frames are delivered evenly. A useful test is to ask whether the scene itself visibly hitches, whether camera movement remains smooth, and whether the problem appears offline or in a local benchmark too." },
       { type: "h2", text: "When Game Bar Is Worth Testing", id: "game-bar" },
-      { type: "paragraph", text: "Xbox Game Bar, recording and overlays are reasonable variables when the hitch appears after opening the overlay, beginning capture or interacting with the Game Bar interface. For a deeper process-level explanation, see KCROC's GameBarPresenceWriter.exe guide: /guides/gamebar-presence-writer-fix" },
+      { type: "paragraph", text: "Xbox Game Bar, recording and overlays are reasonable variables when the hitch appears after opening the overlay, beginning capture or interacting with the Game Bar interface. For a deeper process-level explanation, see The GameBarPresenceWriter.exe guide: /guides/gamebar-presence-writer-fix" },
       { type: "paragraph", text: "Microsoft documents the Windows 11 Game Bar and Game Mode settings and related keyboard controls. https://learn.microsoft.com/en-us/windows/apps/develop/settings/settings-windows-11" },
       { type: "h2", text: "When Frame-Time Spikes Point Beyond Windows", id: "beyond-windows" },
       { type: "paragraph", text: "If the hitch appears only after long sessions, compare temperature and clock behavior. If it occurs across multiple games after the system is warm, thermal throttling or power behavior becomes more plausible. If the whole desktop pauses, investigate storage, memory and driver activity. If crashes and artifacts appear, prioritize hardware diagnosis." },
@@ -6436,7 +6436,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "9-12 min read",
     clusterParent: "windows-gaming-performance-stutter-fix",
     tags: ["Gaming Stutter", "Frame Time", "High FPS Stutter", "Windows 11 Gaming", "PC Performance"],
-    seoTitle: "Gaming Stutter With High FPS: Frame-Time Guide | KCROC",
+    seoTitle: "Gaming Stutter With High FPS: Frame-Time Guide",
     contentType: "guide"
   },
 
@@ -6481,7 +6481,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "paragraph", text: "Windows 11 has an Optimizations for windowed games setting for compatible DirectX 10 and DirectX 11 games running in windowed and borderless-windowed modes. Microsoft says the feature can reduce frame latency and enables modern display features on supported systems. https://support.microsoft.com/en-us/windows/hardware/display-graphics/optimizations-for-windowed-games-in-windows-11" },
       { type: "paragraph", text: "Because presentation mode and shader compilation are separate layers, changing windowed-game optimization should be tested as its own variable. It should not be described as a universal shader fix." },
       { type: "h2", text: "What Game Bar Has to Do With Shader Stutter", id: "game-bar" },
-      { type: "paragraph", text: "Game Bar can be a useful A/B test when the hitch begins with overlay or capture activity, but shader compilation has a different signature. For the process-level Game Bar branch, see KCROC's GameBarPresenceWriter.exe guide: /guides/gamebar-presence-writer-fix" },
+      { type: "paragraph", text: "Game Bar can be a useful A/B test when the hitch begins with overlay or capture activity, but shader compilation has a different signature. For the process-level Game Bar branch, see The GameBarPresenceWriter.exe guide: /guides/gamebar-presence-writer-fix" },
       { type: "h2", text: "When Shader Troubleshooting Should Stop", id: "stop" },
       { type: "paragraph", text: "Stop treating the issue as a shader problem when the symptom is random across many games, grows with temperature, includes crashes or artifacts, or affects the entire Windows desktop. At that point, investigate drivers, storage, RAM, thermal behavior, power delivery and hardware stability." },
       { type: "h2", text: "Frequently Asked Questions", id: "faq" },
@@ -6496,7 +6496,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "h2", text: "Bottom Line", id: "bottom-line" },
       { type: "paragraph", text: "Shader compilation can create real, short-lived game hitches, but the pattern matters. Look for first-use triggers, repeatability and improvement on subsequent passes. Do not confuse a normal compilation event with a failing GPU, and do not turn cache deletion into a generic optimization routine." }
     ],
-    "image": "/images/desktop-pc-tower-repair-kuwait.webp",
+    "image": "/images/custom-gaming-pc-case-build-interior.webp",
     discoverImage: "/images/discover/gaming-pc-rgb-installing-windows-11-1200x675.webp",
     date: "2026-09-29",
     technicalReviewDate: "September 29, 2026",
@@ -6505,7 +6505,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "9-12 min read",
     clusterParent: "windows-gaming-performance-stutter-fix",
     tags: ["Shader Compilation", "PC Gaming Stutter", "DirectX 12", "GPU Drivers", "Windows 11 Gaming"],
-    seoTitle: "Shader Compilation Stutter in PC Games | KCROC",
+    seoTitle: "Shader Compilation Stutter in PC Games",
     contentType: "guide"
   },
 
@@ -6555,7 +6555,7 @@ export const BLOG_POSTS: BlogPost[] = [
       ] },
       { type: "callout", variant: "warning", title: "Avoid driver hunting websites", text: "Random driver-download sites and automated “driver booster” tools can add new variables. Use the manufacturer or Windows-supported update path and keep records of what changed." },
       { type: "h2", text: "Where Game Bar Fits Into the DPC Branch", id: "game-bar" },
-      { type: "paragraph", text: "Game Bar and capture software can add another background or overlay variable. If the hitch begins specifically when Game Bar opens, test that branch first. KCROC's GameBarPresenceWriter.exe guide covers the Game Bar-specific process and registry workaround in detail: /guides/gamebar-presence-writer-fix" },
+      { type: "paragraph", text: "Game Bar and capture software can add another background or overlay variable. If the hitch begins specifically when Game Bar opens, test that branch first. The GameBarPresenceWriter.exe guide covers the Game Bar-specific process and registry workaround in detail: /guides/gamebar-presence-writer-fix" },
       { type: "h2", text: "Where Thermals Fit Into the DPC Branch", id: "thermals" },
       { type: "paragraph", text: "A driver-latency hypothesis becomes weaker when the symptom follows temperature and sustained load. If a laptop is smooth when cold and stutters after heat builds, compare temperature, clock speed and fan behavior before tracing kernel activity." },
       { type: "h2", text: "When DPC/ISR Analysis Is Worth the Effort", id: "when-worth-it" },
@@ -6581,7 +6581,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "10-13 min read",
     clusterParent: "windows-gaming-performance-stutter-fix",
     tags: ["DPC Latency", "ISR", "Windows Drivers", "Gaming Stutter", "Windows 11 Gaming"],
-    seoTitle: "DPC Latency & Gaming Stutter: Driver Guide | KCROC",
+    seoTitle: "DPC Latency & Gaming Stutter: Driver Guide",
     contentType: "guide"
   },
 
