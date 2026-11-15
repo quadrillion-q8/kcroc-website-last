@@ -127,7 +127,7 @@ const contentStart = html.indexOf('<article');
 const contentEnd = html.indexOf('</article>', contentStart);
 assert.ok(contentStart >= 0 && contentEnd > contentStart, 'Article content wrapper is missing');
 const articleHtml = html.slice(contentStart, contentEnd + '</article>'.length);
-for (const forbidden of [/Kuwait/i, /Hawalli/i, /KCROC/i, /wa\\.me/i, /pickup|delivery/i, /KWD|\\bKD\\b/i, /No Fix, No Fee/i, /30-day warranty/i, /\\+965|tel:/i, /href="\\/(?:laptop-repair-kuwait|ssd-ram-upgrade-kuwait|motherboard-repair-kuwait|gaming-pc-repair-kuwait|contact|book)/i]) {
+for (const forbidden of [/Kuwait/i, /Hawalli/i, /KCROC/i, /wa\.me/i, /pickup|delivery/i, /KWD|\bKD\b/i, /No Fix, No Fee/i, /30-day warranty/i, /\+965|tel:/i, /href="\/(?:laptop-repair-kuwait|ssd-ram-upgrade-kuwait|motherboard-repair-kuwait|gaming-pc-repair-kuwait|contact|book)/i]) {
   assert.ok(!forbidden.test(articleHtml), 'Global Windows 11 26H2 article contains a local business or sales trace: ' + forbidden);
 }
 assert.ok(html.includes('max-image-preview:large'), 'Discover preview robots directive is missing');
