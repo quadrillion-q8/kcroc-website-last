@@ -50,17 +50,17 @@ assert.ok(html.includes('IBM Nighthawk r2 vs Heron: processor specifications'), 
 assert.ok(/<table[\s>]/i.test(html), 'Comparison table is missing from prerendered HTML');
 assert.ok(html.includes('100,000+ circuits per second'), 'Published throughput figure is missing');
 assert.ok(html.includes('NewsArticle') && html.includes('FAQPage'), 'NewsArticle or FAQPage JSON-LD is missing');
-assert.ok(html.includes('reviewedBy') && html.includes('Hardware Repair Engineer'), 'Technical reviewer identity is missing from JSON-LD');
+assert.ok(html.includes('reviewedBy') && html.includes('hardware engineer'), 'Technical reviewer identity is missing from JSON-LD');
 assert.ok(html.includes('max-image-preview:large'), 'Discover robots preview directive is missing');
 assert.ok(html.includes('og:image:width') && html.includes('content="1200"'), '1200px social image width metadata is missing');
 assert.ok(html.includes('og:image:height') && html.includes('content="675"'), '675px social image height metadata is missing');
 
-for (const route of [
-  '/motherboard-repair-kuwait',
-  '/gaming-pc-repair-kuwait',
-  '/gaming-laptop-cleaning-kuwait',
-]) {
-  assert.ok(html.includes(`href="${route}"`), `KCROC internal service link missing: ${route}`);
+const ibmArticleStart = html.indexOf('<article');
+const ibmArticleEnd = html.indexOf('</article>', ibmArticleStart);
+assert.ok(ibmArticleStart >= 0 && ibmArticleEnd > ibmArticleStart, 'IBM article content wrapper is missing');
+const ibmArticleHtml = html.slice(ibmArticleStart, ibmArticleEnd + '</article>'.length);
+for (const forbidden of [/Kuwait/i, /Hawalli/i, /KCROC/i, /wa\\.me/i, /pickup|delivery/i, /href="\\/(?:motherboard-repair-kuwait|gaming-pc-repair-kuwait|gaming-laptop-cleaning-kuwait)/i]) {
+  assert.ok(!forbidden.test(ibmArticleHtml), 'Global IBM article contains a local business or sales trace: ' + forbidden);
 }
 
 for (const label of [
@@ -74,7 +74,7 @@ for (const label of [
 assert.ok(!html.includes('External source</a>'), 'A generic External source anchor remains');
 assert.ok(!/hreflang="ar-KW"/i.test(html), 'Arabic hreflang points to a missing translation route');
 
-console.log('✅ Quantum news SSG validation passed: comparison table, six visible FAQ answers, NewsArticle/FAQPage schema, descriptive citations, internal service links and Discover metadata are present in prerendered HTML.');
+console.log('✅ Quantum news SSG validation passed: comparison table, six visible FAQ answers, NewsArticle/FAQPage schema, descriptive citations, global editorial scope and Discover metadata are present in prerendered HTML.');
 
 // DLSS 5 Gaming Technology news: verify the complete article is present in initial SSG HTML.
 const dlssArticlePath = path.join(
@@ -109,7 +109,7 @@ assert.ok(dlssHtml.includes('TechArticle') && dlssHtml.includes('reviewedBy'), '
 assert.ok(dlssHtml.includes('"@type":"HowTo"'), 'DLSS 5 HowTo schema is missing');
 assert.equal((dlssHtml.match(/"@type":"HowToStep"/g) ?? []).length, 7, 'DLSS 5 HowTo schema must contain seven setup steps');
 assert.ok(dlssHtml.includes('2026-11-09T18:00:00.000Z'), 'DLSS 5 dateModified is not synchronized to the November 9 technical review');
-assert.ok(dlssHtml.includes('November 9, 2026') && dlssHtml.includes('Hawalli, Kuwait'), 'Visible technical review byline does not show the November 9 Hawalli review');
+assert.ok(dlssHtml.includes('November 9, 2026') && dlssHtml.includes('Written and technically reviewed by Imran Natiq'), 'Neutral technical review byline is missing');
 assert.ok(dlssHtml.includes('Benchmark provenance and technical review'), 'Benchmark source provenance/editorial method note is missing');
 
 for (const fps of [
@@ -141,8 +141,13 @@ assert.ok(dlssHtml.includes('max-image-preview:large'), 'Discover preview robots
 assert.ok(dlssHtml.includes('og:image:width') && dlssHtml.includes('content="1200"'), '1200px social image width metadata is missing');
 assert.ok(dlssHtml.includes('og:image:height') && dlssHtml.includes('content="675"'), '675px social image height metadata is missing');
 assert.ok(dlssHtml.includes('Gaming Technology'), 'Gaming Technology news category is missing');
-assert.ok(dlssHtml.includes('href="/gaming-pc-repair-kuwait"'), 'KCROC gaming PC/GPU internal link is missing');
-assert.ok(dlssHtml.includes('href="/contact"'), 'KCROC Contact internal link is missing');
+const dlssArticleStart = dlssHtml.indexOf('<article');
+const dlssArticleEnd = dlssHtml.indexOf('</article>', dlssArticleStart);
+assert.ok(dlssArticleStart >= 0 && dlssArticleEnd > dlssArticleStart, 'DLSS article content wrapper is missing');
+const dlssArticleHtml = dlssHtml.slice(dlssArticleStart, dlssArticleEnd + '</article>'.length);
+for (const forbidden of [/Kuwait/i, /Hawalli/i, /KCROC/i, /wa\\.me/i, /pickup|delivery/i, /href="\\/(?:gaming-pc-repair-kuwait|gaming-laptop-cleaning-kuwait|contact|book)/i]) {
+  assert.ok(!forbidden.test(dlssArticleHtml), 'Global DLSS article contains a local business or sales trace: ' + forbidden);
+}
 
 for (const label of [
   'NVIDIA — DLSS 5 rollout, October model and Hogwarts Legacy benchmarks',
@@ -158,5 +163,5 @@ for (const label of [
 assert.ok(!dlssHtml.includes('External source</a>'), 'A generic External source anchor remains in the DLSS 5 article');
 assert.ok(!/hreflang="ar-KW"/i.test(dlssHtml), 'Arabic hreflang points to a missing DLSS 5 translation route');
 
-console.log('✅ DLSS 5 news SSG validation passed: TechArticle, HowTo and FAQPage schema; synchronized November 9 review timestamp; eleven FAQ answers; full RTX 5090 dataset; benchmark provenance; masking and output-resolution analysis; interactive explorer; accessible seven-step list; clean list DOM; citations, driver guidance and internal links are present.');
+console.log('✅ DLSS 5 news SSG validation passed: TechArticle, HowTo and FAQPage schema; synchronized November 9 review timestamp; eleven FAQ answers; full RTX 5090 dataset; benchmark provenance; masking and output-resolution analysis; interactive explorer; accessible seven-step list; clean list DOM; citations, driver guidance and global editorial scope are present.');
 
