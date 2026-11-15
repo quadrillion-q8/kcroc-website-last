@@ -1396,7 +1396,7 @@ export default function BlogPostTemplate() {
           "image": toAbsoluteAssetUrl(post.discoverImage || post.image),
           "datePublished": post.date,
           "dateModified": getModifiedDate(post),
-          "author": isGlobalNewsArticle ? { "@type": "Person", "name": post.author } : post.slug === "windows-11-26h2-iso-released"
+          "author": isGlobalNewsArticle || isGlobalBlogArticle ? { "@type": "Person", "name": post.author } : post.slug === "windows-11-26h2-iso-released"
             ? { "@id": `${AUTHOR_URL}#person` }
             : post.author === "Imran Natiq" ? {
               "@type": "Person",
@@ -1413,14 +1413,21 @@ export default function BlogPostTemplate() {
                   }
             } : { "@type": "Organization", "name": post.author },
           ...(isGlobalNewsArticle ? {} : {
-            "publisher": ["windows-11-26h2-iso-released", "nvidia-dlss-5-neural-rendering-explained", "gaming-pc-not-turning-on-kuwait"].includes(post.slug)
-            ? { "@id": `${business.websiteUrl}/#business` }
-            : {
-              "@type": "Organization",
-              "name": post.slug === "why-is-my-laptop-so-slow" ? "KCROC Hardware Engineering Lab" : business.legalName,
-              "url": business.websiteUrl,
-              "logo": { "@type": "ImageObject", "url": `${business.websiteUrl}/logo.webp`, "width": 1024, "height": 1024 }
-            }
+            "publisher": isGlobalBlogArticle
+              ? {
+                  "@type": "Organization",
+                  "name": "KCROC",
+                  "url": business.websiteUrl,
+                  "logo": { "@type": "ImageObject", "url": `${business.websiteUrl}/logo.webp`, "width": 1024, "height": 1024 }
+                }
+              : ["windows-11-26h2-iso-released", "nvidia-dlss-5-neural-rendering-explained", "gaming-pc-not-turning-on-kuwait"].includes(post.slug)
+                ? { "@id": `${business.websiteUrl}/#business` }
+                : {
+                    "@type": "Organization",
+                    "name": post.slug === "why-is-my-laptop-so-slow" ? "KCROC Hardware Engineering Lab" : business.legalName,
+                    "url": business.websiteUrl,
+                    "logo": { "@type": "ImageObject", "url": `${business.websiteUrl}/logo.webp`, "width": 1024, "height": 1024 }
+                  }
           }),
           "mainEntityOfPage": { "@id": `${pageUrl}#webpage` }
         },
@@ -1579,7 +1586,7 @@ export default function BlogPostTemplate() {
             <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
               <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-3">Author</p>
               <p className="font-bold text-white">{post.author}</p>
-              <p className="text-xs text-slate-500 mt-1">{isGlobalNewsArticle ? 'Global technology coverage' : post.slug === 'why-is-my-laptop-so-slow' || post.slug === 'gaming-pc-not-turning-on-kuwait' ? 'KCROC Hardware Engineering Lab · Hawalli, Kuwait' : isGlobalEditorialArticle ? 'KCROC Technical Editorial' : 'Kuwait Computer Repair On Call'}</p>
+              <p className="text-xs text-slate-500 mt-1">{isGlobalNewsArticle ? 'Global technology coverage' : isGlobalEditorialArticle ? 'KCROC Technical Editorial' : 'Kuwait Computer Repair On Call'}</p>
             </div>
 
             {(isGlobalEditorialArticle ? relatedPosts : recentPosts).length > 0 && (
