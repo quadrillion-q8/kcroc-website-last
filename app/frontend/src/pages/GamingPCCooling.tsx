@@ -28,7 +28,7 @@ import SchemaMarkup from '../components/seo/SchemaMarkup';
 
 const SITE_URL = KCROC_GRAPH.business!.websiteUrl;
 const PAGE_URL = `${SITE_URL}/blog/gaming-pc-cooling`;
-const PAGE_TITLE = 'Gaming PC Cooling Guide: Stop Overheating & Thermal Throttling | KCROC';
+const PAGE_TITLE = 'Gaming PC Cooling Guide: Stop Overheating & Thermal Throttling';
 const PAGE_DESCRIPTION =
   'Why is your gaming PC overheating? Learn how to read CPU and GPU temperatures, diagnose thermal throttling, improve airflow, tune fan curves, and choose air or liquid cooling.';
 const HERO_IMAGE = '/images/discover/custom-gaming-pc-teardown-and-diagnostics-workbench-1200x675.webp';
@@ -257,9 +257,8 @@ export default function GamingPCCooling() {
         inLanguage: 'en',
         articleSection: 'Gaming Hardware',
         author: {
-          '@type': 'Organization',
-          name: 'KCROC Technical Editorial Team',
-          url: `${SITE_URL}/about`,
+          '@type': 'Person',
+          name: 'Imran Natiq',
         },
         publisher: {
           '@type': 'Organization',
@@ -308,7 +307,7 @@ export default function GamingPCCooling() {
         <title>{PAGE_TITLE}</title>
         <meta name="description" content={PAGE_DESCRIPTION} />
         <meta name="keywords" content="gaming PC cooling, gaming PC overheating, CPU overheating while gaming, GPU overheating, thermal throttling, PC airflow, fan curves, air cooling vs liquid cooling" />
-        <meta name="author" content="KCROC Technical Editorial Team" />
+        <meta name="author" content="Imran Natiq" />
         <meta name="robots" content="index, follow, max-image-preview:large" />
         <link rel="canonical" href={PAGE_URL} />
         <link rel="preload" as="image" href={HERO_IMAGE} />
@@ -355,7 +354,7 @@ export default function GamingPCCooling() {
                 Learn how to interpret CPU and GPU temperatures, find the real cause of heat-related FPS drops, improve case airflow, tune fan curves and choose the right cooling system—without replacing parts by guesswork.
               </p>
               <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-slate-400 sm:text-sm">
-                <span>By KCROC Technical Editorial Team</span>
+                <span>By Imran Natiq</span>
                 <span>Published June 22, 2026</span>
                 <span>Technically reviewed November 6, 2026</span>
                 <span className="inline-flex items-center gap-1.5"><Clock3 className="h-4 w-4 text-cyan-300" /> 10–12 min read</span>
