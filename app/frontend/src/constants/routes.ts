@@ -33,6 +33,25 @@ export const ROUTES = {
 export const getBlogRoute = (slug: string) => `/blog/${slug}`;
 export const getGuideRoute = (slug: string) => `/guides/${slug}`;
 
+/**
+ * Blog URLs are global editorial pages by default. These six explicitly
+ * retained market-specific articles keep their Kuwait-local presentation.
+ */
+export const KUWAIT_EDITORIAL_EXCEPTION_SLUGS = new Set([
+  'laptop-buying-guide-kuwait-2026',
+  'laptop-temperatures-kuwait-safe-cpu-gpu-temperatures',
+  'ar/laptop-buying-guide-kuwait-2026',
+  'ar/how-often-clean-laptop-replace-thermal-paste-kuwait',
+  'how-often-clean-laptop-replace-thermal-paste-kuwait',
+  'laptop-repair-kuwait-2026',
+]);
+
+export const isGlobalBlogEditorialPath = (pathname: string): boolean => {
+  if (!pathname.startsWith('/blog/')) return false;
+  const slug = pathname.slice('/blog/'.length).replace(/\\/+$/, '');
+  return !KUWAIT_EDITORIAL_EXCEPTION_SLUGS.has(slug);
+};
+
 /** English technical guides use a global editorial shell; Arabic guides retain Kuwait-local presentation. */
 export const isEnglishTechnicalGuideRoute = (pathname: string): boolean =>
   pathname === '/guides' || (pathname.startsWith('/guides/') && !pathname.startsWith('/guides/ar/'));
