@@ -225,14 +225,43 @@ add('English technical guides use a shared global editorial shell while Arabic g
   blogPostTemplate.includes('excludeEntityIds={isGlobalEditorialArticle ? GLOBAL_EDITORIAL_AUTOLINK_EXCLUSIONS : undefined}') &&
   semanticAutoLinker.includes('excludeEntityIds?.includes(entity.id)'));
 
-add('English Windows services/settings guides contain no Kuwait-local repair or pickup promotion',
+const localServicesCalloutPattern = /\{\s*"type": "callout",\s*"variant": "expert",\s*"title": "KCROC hardware diagnostics in Kuwait",\s*"text": "[^"]*"\s*\}/s;
+const localServicesCallout = windowsServicesGuideEntry.match(localServicesCalloutPattern);
+const windowsServicesGuideGlobalBody = windowsServicesGuideEntry.replace(localServicesCalloutPattern, '');
+const servicesFaqStart = windowsServicesGuideEntry.indexOf('"type": "faq"');
+const servicesFaqEnd = windowsServicesGuideEntry.indexOf('        ]', servicesFaqStart);
+const servicesFaqBlock = servicesFaqStart >= 0 && servicesFaqEnd > servicesFaqStart
+  ? windowsServicesGuideEntry.slice(servicesFaqStart, servicesFaqEnd)
+  : '';
+const servicesFaqCount = (servicesFaqBlock.match(/"question":/g) || []).length;
+
+add('English Windows services and settings guides remain global, with one isolated Kuwait hardware-diagnostic callout',
   windowsServicesGuideEntry.includes('The same evidence-first principle applies to Windows troubleshooting generally: measure first, change second.') &&
   windowsServicesGuideEntry.includes('hot, dusty environments') &&
   windowsSettingsGuideEntry.includes("When Settings Changes Aren't Enough") &&
   windowsSettingsGuideEntry.includes('Review Windows Update history') &&
-  !/\bKuwait\b|\bHawalli\b|free pickup|No Fix, No Fee|Computer Repair Kuwait|wa\.me|tel:\+965/.test(windowsServicesGuideEntry) &&
-  !/\bKuwait\b|\bHawalli\b|free pickup|No Fix, No Fee|Computer Repair Kuwait|wa\.me|tel:\+965/.test(windowsSettingsGuideEntry) &&
+  Boolean(localServicesCallout) &&
+  localServicesCallout[0].includes('Al Mullah Complex') &&
+  localServicesCallout[0].includes('Ibn Khaldoun Street') &&
+  localServicesCallout[0].includes('Basement Shop 19') &&
+  !globalGuideSalesSignals.test(windowsServicesGuideGlobalBody) &&
+  !globalGuideSalesSignals.test(windowsSettingsGuideEntry) &&
   graph.includes('An evidence-led review of Windows 11 settings for privacy, startup, battery life, gaming and security'));
+
+add('Windows services guide includes all requested expansion modules, read-only audit commands and exactly 12 static FAQs',
+  windowsServicesGuideEntry.includes('How Windows 11 Services Start') &&
+  windowsServicesGuideEntry.includes('WHESVC Technical Profile and Patch Verification') &&
+  windowsServicesGuideEntry.includes('DiagTrack: Privacy Controls') &&
+  windowsServicesGuideEntry.includes('SysMain, RAM Pressure and Storage') &&
+  windowsServicesGuideEntry.includes('MapsBroker: Offline Maps') &&
+  windowsServicesGuideEntry.includes('Eight More Windows 11 Services Worth Auditing') &&
+  windowsServicesGuideEntry.includes('12-Service Windows 11 Audit Matrix') &&
+  windowsServicesGuideEntry.includes('Read-Only PowerShell Audit Toolkit') &&
+  windowsServicesGuideEntry.includes('Safe rollback and WinRE recovery protocol') &&
+  windowsServicesGuideEntry.includes('Software vs. Hardware Bottleneck Triage') &&
+  windowsServicesGuideEntry.includes('tasklist.exe /svc') &&
+  servicesFaqCount === 12 &&
+  windowsServicesGuideEntry.includes('"display": "static"'));
 
 // The no-power article is intentionally a Kuwait-local service-intent guide.
 // Its local workshop, quote, pickup and warranty details are independently

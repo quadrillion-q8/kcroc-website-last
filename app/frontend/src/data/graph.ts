@@ -1213,10 +1213,10 @@ export const rawGraphData: RawGraphData = {
       entityType: 'WebPage',
       isActive: true,
       title: 'Windows 11 Background Services You Can Audit in 2026',
-      description: 'A technician-written Windows 11 guide covering WHESVC, DiagTrack, SysMain and MapsBroker, with evidence-first checks before changing service settings.',
+      description: 'A technician-led Windows 11 guide covering 12 commonly questioned services, startup triggers, svchost mapping, read-only PowerShell audits, safe rollback, and hardware-versus-software diagnosis.',
       seo: {
-        title: 'WHESVC Explained: Windows Health and Optimized Experiences | KCROC',
-        description: 'What is WHESVC in Windows 11? Learn what Windows Health and Optimized Experiences does, how to check its status, CVE-2025-59241, and safer troubleshooting.',
+        title: 'Windows 11 Background Services Audit 2026: Safe Settings | KCROC',
+        description: 'Audit 12 Windows 11 background services, map svchost.exe with PowerShell, review safe startup choices, and separate service activity from RAM, SSD and thermal faults.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/windows-11-background-services-audit', locale: 'en',
         ogType: 'article',
         schemaTypes: ['Article', 'BreadcrumbList']
