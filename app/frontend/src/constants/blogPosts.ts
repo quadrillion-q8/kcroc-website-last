@@ -4022,6 +4022,89 @@ export const BLOG_POSTS: BlogPost[] = [
         "text": "The objective is to make your particular PC run correctly with only the features you actually need."
       },
       {
+        "type": "h2",
+        "text": "How Windows 11 Services Start: Automatic, Manual and Triggered Startup",
+        "id": "windows-service-startup-types"
+      },
+      {
+        "type": "paragraph",
+        "text": "The Service Control Manager (SCM) maintains the service configuration database and starts services according to their configured startup mode, dependencies, and trigger conditions. Windows 11 versions 24H2, 25H2 and 26H2 can share much of the same service architecture, but the exact configuration on a PC still depends on its edition, update level, management policy, installed features and OEM image. Windows 11 26H2 reached general availability on 29 September 2026; check the current release and servicing status at https://learn.microsoft.com/en-us/windows/release-health/windows11-release-information."
+      },
+      {
+        "type": "comparisonTable",
+        "title": "Startup settings: what each option actually means",
+        "featureLabel": "Service / topic",
+        "columns": [
+          "Configuration",
+          "When Windows starts it",
+          "Practical meaning"
+        ],
+        "rows": [
+          {
+            "feature": "Automatic",
+            "values": [
+              "The Service Control Manager starts it during system startup.",
+              "Use only where the service or feature requires it; do not change it based on memory footprint alone."
+            ]
+          },
+          {
+            "feature": "Automatic (Delayed Start)",
+            "values": [
+              "The service starts after the initial automatic-start workload.",
+              "Useful for services that do not need to run at the earliest boot stage; delayed start is not a general performance switch."
+            ]
+          },
+          {
+            "feature": "Manual / Demand start",
+            "values": [
+              "The service can be started by Windows, an application, an administrator, or a configured trigger.",
+              "Manual does not mean broken or permanently unused. A service can start when a feature requests it."
+            ]
+          },
+          {
+            "feature": "Disabled",
+            "values": [
+              "The Service Control Manager refuses ordinary start requests.",
+              "Highest compatibility risk. Dependent features can fail, and service-control errors may appear."
+            ]
+          },
+          {
+            "feature": "Trigger-start configuration",
+            "values": [
+              "A configured event, such as device arrival or a network change, can start the service.",
+              "Trigger start is an additional start mechanism, not a fifth universal startup type. A stopped trigger-start service is idle until its trigger fires."
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "For ordinary Win32 services, the registry Start value commonly maps 2 to Automatic, 3 to Demand/Manual, and 4 to Disabled. Delayed automatic start and trigger information are stored separately. Avoid editing these values directly: use Services, supported Windows settings, or the Service Control Manager tools, and record the original configuration first. Microsoft describes the SCM and trigger-start lifecycle here: https://learn.microsoft.com/en-us/windows/win32/services/about-services."
+      },
+      {
+        "type": "h3",
+        "text": "Why Task Manager shows so many svchost.exe processes",
+        "id": "why-windows-shows-many-svchost-processes"
+      },
+      {
+        "type": "paragraph",
+        "text": "svchost.exe is a host process used by Windows services. Depending on the service, Windows may host one service in a process or group compatible services together. Modern Windows versions also isolate many services into separate hosts for reliability, security boundaries and clearer diagnostics. A large process count is not, by itself, evidence of malware or wasted resources."
+      },
+      {
+        "type": "paragraph",
+        "text": "Expand a Service Host group in Task Manager, or map its process ID to service names before deciding what to investigate. The following command is read-only and shows service associations for Service Host processes:"
+      },
+      {
+        "type": "code",
+        "language": "powershell",
+        "title": "Map Service Host processes to services",
+        "code": "tasklist.exe /svc /fi \"imagename eq svchost.exe\""
+      },
+      {
+        "type": "paragraph",
+        "text": "Do not disable a service because its name appears under svchost.exe. Identify the exact service, check its state and dependencies, and reproduce the resource spike before changing anything."
+      },
+      {
         "type": "h3",
         "text": "A relatively new Windows component that deserves a closer look",
         "id": "a-relatively-new-windows-component-that-deserves-a-closer-look"
@@ -4135,6 +4218,78 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "paragraph",
         "text": "Most importantly, keep Windows updated before deciding that the service itself is the problem."
+      },
+      {
+        "type": "h2",
+        "text": "WHESVC Technical Profile and Patch Verification",
+        "id": "whesvc-technical-profile-patch-check"
+      },
+      {
+        "type": "paragraph",
+        "text": "WHESVC is the service name associated with Windows Health and Optimized Experiences. It may be absent on some Windows images or configured differently by build and policy, so treat the live device configuration as the source of truth. Do not publish one startup mode as universal, and do not create the service manually if a query returns no result."
+      },
+      {
+        "type": "comparisonTable",
+        "title": "WHESVC: what to verify on the device",
+        "featureLabel": "Service / topic",
+        "columns": [
+          "Attribute",
+          "Technician check"
+        ],
+        "rows": [
+          {
+            "feature": "Service name",
+            "values": [
+              "whesvc"
+            ]
+          },
+          {
+            "feature": "Display name",
+            "values": [
+              "Windows Health and Optimized Experiences"
+            ]
+          },
+          {
+            "feature": "Presence and state",
+            "values": [
+              "Query Win32_Service; record whether it exists and whether it is running."
+            ]
+          },
+          {
+            "feature": "Startup configuration",
+            "values": [
+              "Read the current StartMode and inspect trigger information where relevant; do not assume one default for every SKU."
+            ]
+          },
+          {
+            "feature": "Host process",
+            "values": [
+              "Use the reported ProcessId and PathName rather than assuming a fixed svchost.exe command line."
+            ]
+          },
+          {
+            "feature": "Security status",
+            "values": [
+              "Install the latest cumulative update supported for the device and Windows edition."
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "CVE-2025-59241 is a local elevation-of-privilege issue associated with Windows Health and Optimized Experiences. The published minimum fixed builds for the affected Windows 11 24H2 and 25H2 branches were 26100.6899 and 26200.6899. These are historical fix floors, not recommended target builds. Windows 11 24H2 Home and Pro reached end of servicing on 14 October 2026; use a currently supported Windows release and its latest cumulative update. Official references: https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-59241 and https://learn.microsoft.com/en-us/windows/release-health/windows11-release-information."
+      },
+      {
+        "type": "code",
+        "language": "powershell",
+        "title": "Read-only Windows build and WHESVC check",
+        "code": "$os = Get-ItemProperty 'HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion'\n$svc = Get-CimInstance Win32_Service -Filter \"Name='whesvc'\" -ErrorAction SilentlyContinue\n\n[pscustomobject]@{\n    WindowsEdition = $os.ProductName\n    DisplayVersion = $os.DisplayVersion\n    FullBuild      = \"$($os.CurrentBuild).$($os.UBR)\"\n    ServicePresent = [bool]$svc\n    State          = if ($svc) { $svc.State } else { 'Not found on this image' }\n    StartMode      = if ($svc) { $svc.StartMode } else { 'N/A' }\n    ProcessId      = if ($svc) { $svc.ProcessId } else { 0 }\n}"
+      },
+      {
+        "type": "callout",
+        "variant": "warning",
+        "title": "Do not confuse presence with compromise",
+        "text": "A WHESVC entry, diagnostic trace or temporary file is not proof of spyware or an active vulnerability. Verify the Windows build, apply current security updates, and investigate a repeatable abnormal event before changing service configuration."
       },
       {
         "type": "h3",
@@ -4262,6 +4417,59 @@ export const BLOG_POSTS: BlogPost[] = [
         "text": "For most home PCs, the privacy settings provide a more sensible starting point than aggressive service removal."
       },
       {
+        "type": "h2",
+        "text": "DiagTrack: Privacy Controls, Diagnostic Data and Service Activity",
+        "id": "diagtrack-privacy-controls-and-diagnostics"
+      },
+      {
+        "type": "paragraph",
+        "text": "Connected User Experiences and Telemetry (DiagTrack) is part of Windows diagnostic-data collection. Microsoft distinguishes diagnostic events and diagnostic logs managed by this component from crash reporting and crash dumps managed by Windows Error Reporting. A crash or driver reset can coincide with diagnostic activity, but that does not prove DiagTrack caused the underlying failure. Microsoft documents these collection paths and controls at https://learn.microsoft.com/en-us/windows/privacy/configure-windows-diagnostic-data-in-your-organization."
+      },
+      {
+        "type": "comparisonTable",
+        "title": "Use the supported privacy control before changing the service",
+        "featureLabel": "Service / topic",
+        "columns": [
+          "Control",
+          "What it changes",
+          "When to use it"
+        ],
+        "rows": [
+          {
+            "feature": "Diagnostics & feedback settings",
+            "values": [
+              "Controls optional diagnostic data and related user-facing diagnostic settings where available.",
+              "Best first step for a personal PC; the exact options depend on Windows edition and policy."
+            ]
+          },
+          {
+            "feature": "Diagnostic Data Viewer",
+            "values": [
+              "Lets a user inspect diagnostic events collected on the device.",
+              "Use when you need to understand what is being generated; turn it off after the review if you no longer need it."
+            ]
+          },
+          {
+            "feature": "Group Policy / device management",
+            "values": [
+              "Lets an administrator enforce diagnostic-data policy on supported editions and managed devices.",
+              "Use for managed fleets and document the policy scope before changing it."
+            ]
+          },
+          {
+            "feature": "Disabling DiagTrack directly",
+            "values": [
+              "Stops or restricts a Windows diagnostic component rather than simply reducing optional collection.",
+              "Not a routine speed tweak; it can reduce diagnostics and may be changed by servicing or policy."
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "If the svchost.exe instance associated with DiagTrack shows a sustained spike, capture its PID, CPU, disk and network activity, then compare the timestamp with Windows Update, Reliability Monitor and Event Viewer. Check whether another component is generating repeated crashes or logs. Do not attribute every crash dump to DiagTrack: Windows Error Reporting has its own service and reporting role."
+      },
+      {
         "type": "h3",
         "text": "The old service that still has a purpose",
         "id": "the-old-service-that-still-has-a-purpose"
@@ -4376,6 +4584,63 @@ export const BLOG_POSTS: BlogPost[] = [
         "text": "That is a much more reliable approach than applying a one-size-fits-all “Windows optimization” script."
       },
       {
+        "type": "h2",
+        "text": "SysMain, RAM Pressure and Storage: Separate Caching from Paging",
+        "id": "sysmain-ram-pressure-storage-diagnostics"
+      },
+      {
+        "type": "paragraph",
+        "text": "SysMain (formerly Superfetch) is a Windows performance-management service. Its presence on a system with an SSD is not a reason to disable it. The useful question is whether SysMain is generating repeatable activity at the same time as the slowdown, or whether memory pressure, paging, indexing, updates, storage health or thermal limits are responsible."
+      },
+      {
+        "type": "comparisonTable",
+        "title": "Hardware configuration changes the diagnosis",
+        "featureLabel": "Service / topic",
+        "columns": [
+          "System condition",
+          "What to measure",
+          "Better first response"
+        ],
+        "rows": [
+          {
+            "feature": "8 GB RAM with many browser tabs or heavy applications",
+            "values": [
+              "Memory in use, Available memory, Committed memory, Resource Monitor hard faults and disk activity.",
+              "Close or isolate the workload, keep the pagefile system-managed, and check whether a compatible RAM upgrade is possible."
+            ]
+          },
+          {
+            "feature": "16 GB or more with a healthy NVMe SSD",
+            "values": [
+              "Whether SysMain actually owns sustained I/O during the slowdown; compare matched tests before and after a temporary stop.",
+              "Keep SysMain enabled unless a repeatable test shows it contributes to the issue."
+            ]
+          },
+          {
+            "feature": "SATA SSD or hard drive with persistent 100% active time",
+            "values": [
+              "Drive response time, queue, throughput, SMART/health data and storage-controller events.",
+              "Check drive health, free space, firmware and drivers before blaming the cache service."
+            ]
+          },
+          {
+            "feature": "SSD close to full or under sustained write load",
+            "values": [
+              "Free capacity, temperature, sustained write activity and whether the slowdown coincides with paging or updates.",
+              "Reduce the workload and check drive health; stopping SysMain is not a substitute for resolving storage pressure."
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Standby memory is cache that Windows can reclaim when applications need RAM. Paging occurs when memory pressure causes Windows to move less-used pages to backing storage. Those are different mechanisms. A hard fault means Windows had to retrieve a memory page from storage; it is not automatically a hardware fault. Compare the timing and workload rather than treating one counter as a verdict."
+      },
+      {
+        "type": "paragraph",
+        "text": "For a controlled SysMain test, capture a baseline, stop only SysMain temporarily, reproduce the same workload, compare the same counters, and restore the original startup state if the result is not repeatable. Do not use a universal disk-latency threshold or RAM percentage as a pass/fail rule."
+      },
+      {
         "type": "h3",
         "text": "Useful for offline maps — irrelevant if you never use them",
         "id": "useful-for-offline-maps-irrelevant-if-you-never-use-them"
@@ -4446,6 +4711,383 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "paragraph",
         "text": "If you know the machine will never use the feature, disabling it is one of the less controversial service changes — but don't expect a dramatic performance improvement from doing so."
+      },
+      {
+        "type": "h2",
+        "text": "MapsBroker: Offline Maps, Delayed Start and Feature Trade-Offs",
+        "id": "mapsbroker-offline-maps-service-profile"
+      },
+      {
+        "type": "paragraph",
+        "text": "Downloaded Maps Manager (MapsBroker) supports offline map packages. Microsoft says the service runs occasionally to keep downloaded maps updated and normally uses few resources. Microsoft also documents that disabling it can cause the Windows Maps app to stop opening or display maps incorrectly. When troubleshooting the Maps app, Microsoft's support guidance uses Automatic (Delayed Start) for this service: https://support.microsoft.com/en-us/windows/apps/find-your-way-with-maps."
+      },
+      {
+        "type": "list",
+        "ordered": true,
+        "items": [
+          "Open Settings and review the Offline maps section; remove downloaded regions only if you no longer need them.",
+          "Check Downloaded Maps Manager in services.msc and record its current status and startup configuration.",
+          "If the Maps app is broken, follow Microsoft's service-recovery guidance rather than applying a debloat script.",
+          "If offline maps are never used, remember that leaving the service dormant is not a meaningful performance penalty on its own."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "A stopped service is not continuously consuming CPU. Do not expect a noticeable speed increase from disabling MapsBroker when it is already dormant."
+      },
+      {
+        "type": "h2",
+        "text": "Eight More Windows 11 Services Worth Auditing",
+        "id": "eight-more-windows-services-to-audit"
+      },
+      {
+        "type": "paragraph",
+        "text": "These services commonly appear in performance discussions, but their startup settings and exact hosting processes can vary. Treat the descriptions below as a diagnostic guide, not a universal disable list. The safe starting point is to change the feature setting that controls the workload, not to block a Windows service that another component may need."
+      },
+      {
+        "type": "h3",
+        "text": "1. Windows Search (WSearch)",
+        "id": "windows-search-wsearch"
+      },
+      {
+        "type": "paragraph",
+        "text": "WSearch supports Windows Search indexing for Start, File Explorer and supported app searches. The indexer can generate noticeable CPU or disk activity while building or repairing its database, particularly when a very large number of files are included. Microsoft says performance issues can appear as an index grows beyond roughly 400,000 items; Windows 11 stores the database as Windows.db, normally under C:\\ProgramData\\Microsoft\\Search\\Data\\Applications\\Windows. See https://learn.microsoft.com/en-us/troubleshoot/windows-client/shell-experience/windows-search-performance-issues."
+      },
+      {
+        "type": "paragraph",
+        "text": "Better first move: open Settings → Privacy & security → Searching Windows, exclude large developer, build-output or game-mod folders that do not need indexing, and rebuild the index only when troubleshooting indicates corruption. Do not disable WSearch just to make the Services list shorter."
+      },
+      {
+        "type": "h3",
+        "text": "2. Delivery Optimization (DoSvc)",
+        "id": "delivery-optimization-dosvc"
+      },
+      {
+        "type": "paragraph",
+        "text": "DoSvc manages download delivery for Windows and Microsoft Store content. Depending on the configured mode, Delivery Optimization can use Microsoft delivery infrastructure and peer-to-peer caching. Background downloads can coincide with network or disk activity, but stopping the service can interfere with update delivery."
+      },
+      {
+        "type": "paragraph",
+        "text": "Better first move: Settings → Windows Update → Advanced options → Delivery Optimization. Turn off downloads from other PCs if you do not want peer sharing, or set appropriate bandwidth limits. Microsoft's configuration reference explains the bandwidth controls: https://learn.microsoft.com/en-us/windows/deployment/do/waas-delivery-optimization-reference."
+      },
+      {
+        "type": "h3",
+        "text": "3. Microsoft GameInput Service (GameInputSvc)",
+        "id": "microsoft-gameinput-service"
+      },
+      {
+        "type": "paragraph",
+        "text": "GameInput provides a common input layer for games and applications using controllers and other input devices. Microsoft describes it as mediating access to input devices and providing filtering, synchronization and compatibility abstractions. Reference: https://learn.microsoft.com/en-us/gaming/gdk/docs/features/common/input/overviews/input-faq."
+      },
+      {
+        "type": "paragraph",
+        "text": "If a game reports a GameInput-related error, identify the exact application, package and event timestamp first. Check Windows, Gaming Services, the game and controller software for updates. Do not remove a runtime or assume that two similarly named files are a duplicate merely because the service appears in Task Manager."
+      },
+      {
+        "type": "h3",
+        "text": "4. Program Compatibility Assistant (PcaSvc)",
+        "id": "program-compatibility-assistant-pcasvc"
+      },
+      {
+        "type": "paragraph",
+        "text": "PcaSvc helps Windows detect application-compatibility problems and offer workarounds for older programs. Microsoft notes that the Program Compatibility Assistant depends on both the Program Compatibility Assistant Service and Diagnostic Policy Service. Disabling it may remove compatibility prompts without producing a useful day-to-day performance gain. Policy reference: https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-admx-appcompat."
+      },
+      {
+        "type": "paragraph",
+        "text": "Better first move: leave the service at its installed configuration. If an older application fails, check its compatibility settings and vendor support rather than removing the diagnostic service."
+      },
+      {
+        "type": "h3",
+        "text": "5. Windows Error Reporting (WerSvc)",
+        "id": "windows-error-reporting-wersvc"
+      },
+      {
+        "type": "paragraph",
+        "text": "WerSvc supports Windows error reporting when programs stop responding or crash. WerFault.exe or a reporting process may become visible after an application, driver or Windows component has already failed. The reporting activity is evidence to investigate, not proof that the reporter caused the original crash."
+      },
+      {
+        "type": "paragraph",
+        "text": "Better first move: open Reliability Monitor with perfmon /rel, match the failure timestamp, and identify the application, driver or system component named in the report. Keep error reporting available while diagnosing recurring instability."
+      },
+      {
+        "type": "h3",
+        "text": "6. Diagnostic Policy Service (DPS) and Diagnostic Service Host (WdiServiceHost)",
+        "id": "diagnostic-policy-dps-wdiservicehost"
+      },
+      {
+        "type": "paragraph",
+        "text": "DPS detects, troubleshoots and helps resolve Windows component problems. WdiServiceHost runs diagnostic components that need a Local Service context. Disabling these services can remove built-in troubleshooting capability. If either appears busy for an extended period, correlate the activity with Event Viewer and the diagnostic workload before changing it."
+      },
+      {
+        "type": "paragraph",
+        "text": "Do not delete or rename files in C:\\Windows\\System32\\sru as a performance experiment. If you suspect a damaged diagnostic database or repeated service failure, use supported Windows repair tools and preserve logs before escalating."
+      },
+      {
+        "type": "h3",
+        "text": "7. Microsoft Defender Antivirus (WinDefend)",
+        "id": "microsoft-defender-windefend"
+      },
+      {
+        "type": "paragraph",
+        "text": "WinDefend is part of Microsoft Defender Antivirus. MsMpEng.exe is commonly seen as Antimalware Service Executable during real-time protection or scheduled scanning. It is a security component, not a background service to strip out for a few points in Task Manager."
+      },
+      {
+        "type": "paragraph",
+        "text": "If scanning coincides with high CPU or disk activity, check Windows Security → Virus & threat protection → Protection history, confirm whether a scan is still running, and let it finish where practical. Avoid broad exclusions or disabling protection as a performance shortcut."
+      },
+      {
+        "type": "h3",
+        "text": "8. Print Spooler (Spooler) and Bluetooth Support (bthserv)",
+        "id": "print-spooler-and-bluetooth-support"
+      },
+      {
+        "type": "paragraph",
+        "text": "Spooler manages Windows print queues, including software and virtual printing paths. A computer that never prints may be able to use Manual startup or a controlled disabled configuration, but first confirm that no physical printer, network printer, PDF printer or business application depends on it. Print Spooler has a security history, so keep Windows patched and follow current Microsoft hardening guidance."
+      },
+      {
+        "type": "paragraph",
+        "text": "bthserv supports Bluetooth discovery and device association. If Bluetooth keyboards, mice, headsets, controllers or other accessories are used, keep the service available. A service that is Manual or trigger-start can remain dormant until needed; do not force it to Disabled simply because the PC is a desktop."
+      },
+      {
+        "type": "h2",
+        "text": "12-Service Windows 11 Audit Matrix",
+        "id": "windows-11-12-service-audit-matrix"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use this matrix to decide what to inspect first. Idle RAM and CPU figures are intentionally omitted because they vary with build, service state, workload and host isolation; a dormant trigger-start service may consume no active resources, while an automatic service may be busy during an update or scan."
+      },
+      {
+        "type": "comparisonTable",
+        "title": "The 12 service groups covered by this guide",
+        "featureLabel": "Service / topic",
+        "columns": [
+          "Service",
+          "Main role",
+          "Disable by default?",
+          "Best first diagnostic step"
+        ],
+        "rows": [
+          {
+            "feature": "WHESVC (whesvc)",
+            "values": [
+              "Windows health and optimized-experience diagnostics.",
+              "No.",
+              "Check Windows build, current patches, service presence and event timing."
+            ]
+          },
+          {
+            "feature": "Connected User Experiences and Telemetry (DiagTrack)",
+            "values": [
+              "Windows diagnostic events and logs.",
+              "No.",
+              "Review Diagnostics & feedback settings and correlate sustained activity."
+            ]
+          },
+          {
+            "feature": "SysMain",
+            "values": [
+              "Windows performance and prefetch management.",
+              "No.",
+              "Compare matched resource measurements before and during a temporary test."
+            ]
+          },
+          {
+            "feature": "Downloaded Maps Manager (MapsBroker)",
+            "values": [
+              "Offline map maintenance for supported Windows features.",
+              "Only if the feature is not used and no dependent app needs it.",
+              "Check offline map packages and follow Microsoft's Maps app guidance."
+            ]
+          },
+          {
+            "feature": "Windows Search (WSearch)",
+            "values": [
+              "Local search index for Windows and supported apps.",
+              "No.",
+              "Check index size and exclude high-churn folders before rebuilding."
+            ]
+          },
+          {
+            "feature": "Delivery Optimization (DoSvc)",
+            "values": [
+              "Windows and Store content delivery and caching.",
+              "No.",
+              "Use Windows Update Delivery Optimization settings and bandwidth limits."
+            ]
+          },
+          {
+            "feature": "Microsoft GameInput (GameInputSvc)",
+            "values": [
+              "Game-controller and input-device abstraction.",
+              "No.",
+              "Match the event to the game, runtime package and controller before changing anything."
+            ]
+          },
+          {
+            "feature": "Program Compatibility Assistant (PcaSvc)",
+            "values": [
+              "Detection and guidance for older application compatibility.",
+              "No.",
+              "Keep it available; investigate the legacy application that triggered it."
+            ]
+          },
+          {
+            "feature": "Windows Error Reporting (WerSvc)",
+            "values": [
+              "Crash and hang reporting.",
+              "No.",
+              "Use Reliability Monitor to identify the original crashing component."
+            ]
+          },
+          {
+            "feature": "Diagnostic Policy / Diagnostic Service Host (DPS / WdiServiceHost)",
+            "values": [
+              "Windows component diagnostics and hosted troubleshooters.",
+              "No.",
+              "Check diagnostic events and repair Windows components through supported tools."
+            ]
+          },
+          {
+            "feature": "Microsoft Defender Antivirus (WinDefend)",
+            "values": [
+              "Real-time and scheduled malware protection.",
+              "Never as a performance tweak.",
+              "Review scan activity and Protection history; keep protection enabled."
+            ]
+          },
+          {
+            "feature": "Print Spooler / Bluetooth Support (Spooler / bthserv)",
+            "values": [
+              "Print queue management and Bluetooth device support.",
+              "Conditional only when neither capability is used.",
+              "Check printers, PDF printing and paired Bluetooth devices before changing startup."
+            ]
+          }
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Read-Only PowerShell Audit Toolkit",
+        "id": "read-only-powershell-service-audit-toolkit"
+      },
+      {
+        "type": "paragraph",
+        "text": "These commands inspect Windows service configuration and event history. The baseline command writes one CSV report to your Desktop, but it does not start, stop, enable or disable any service. Run PowerShell as a normal user first; use an elevated shell only if a specific inspection is denied."
+      },
+      {
+        "type": "code",
+        "language": "powershell",
+        "title": "1. Check Windows build and the WHESVC service",
+        "code": "$os = Get-ItemProperty 'HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion'\n$svc = Get-CimInstance Win32_Service -Filter \"Name='whesvc'\" -ErrorAction SilentlyContinue\n\n[pscustomobject]@{\n    Edition        = $os.ProductName\n    DisplayVersion = $os.DisplayVersion\n    Build           = \"$($os.CurrentBuild).$($os.UBR)\"\n    ServiceFound    = [bool]$svc\n    State           = if ($svc) { $svc.State } else { 'Not installed / not exposed on this image' }\n    StartMode       = if ($svc) { $svc.StartMode } else { 'N/A' }\n    ProcessId       = if ($svc) { $svc.ProcessId } else { 0 }\n}"
+      },
+      {
+        "type": "code",
+        "language": "powershell",
+        "title": "2. Export a timestamped service baseline to CSV",
+        "code": "$desktop = [Environment]::GetFolderPath('Desktop')\n$folder = Join-Path $desktop 'Win11-Service-Audit'\nNew-Item -ItemType Directory -Path $folder -Force | Out-Null\n\n$report = Join-Path $folder (\"Services-{0}.csv\" -f (Get-Date -Format 'yyyyMMdd-HHmmss'))\nGet-CimInstance Win32_Service |\n    Sort-Object Name |\n    Select-Object Name, DisplayName, State, StartMode, ProcessId, PathName |\n    Export-Csv -Path $report -NoTypeInformation -Encoding UTF8\n\nWrite-Output \"Baseline saved to: $report\""
+      },
+      {
+        "type": "code",
+        "language": "powershell",
+        "title": "3. Map Service Host process IDs to Windows services",
+        "code": "$services = Get-CimInstance Win32_Service |\n    Where-Object { $_.ProcessId -gt 0 -and $_.PathName -match 'svchost\\.exe' }\n\n$services |\n    Group-Object ProcessId |\n    ForEach-Object {\n        $processId = [int]$_.Name\n        $process = Get-Process -Id $processId -ErrorAction SilentlyContinue\n\n        [pscustomobject]@{\n            PID       = $processId\n            MemoryMB  = if ($process) { [math]::Round($process.WorkingSet64 / 1MB, 1) } else { $null }\n            Services  = ($_.Group.Name -join ', ')\n        }\n    } |\n    Sort-Object MemoryMB -Descending |\n    Format-Table -AutoSize"
+      },
+      {
+        "type": "code",
+        "language": "powershell",
+        "title": "4. Review Service Control Manager errors from the last 48 hours",
+        "code": "$serviceErrorIds = 7000, 7001, 7009, 7023, 7031, 7034\n\nGet-WinEvent -FilterHashtable @{\n    LogName      = 'System'\n    ProviderName = 'Service Control Manager'\n    Id           = $serviceErrorIds\n    StartTime    = (Get-Date).AddHours(-48)\n} -ErrorAction SilentlyContinue |\n    Select-Object TimeCreated, Id, Message |\n    Format-List"
+      },
+      {
+        "type": "h3",
+        "text": "Safe rollback and WinRE recovery protocol",
+        "id": "safe-service-rollback-winre"
+      },
+      {
+        "type": "list",
+        "ordered": true,
+        "items": [
+          "Before changing a service, create a Windows restore point where System Protection is available. Save the CSV baseline and record the exact service name, previous startup mode, dependencies and trigger information. `sc.exe qtriggerinfo ServiceName` can display configured trigger information.",
+          "Change one service at a time. Do not bulk-disable services or modify WinDefend, core networking, storage, update, logon or diagnostic dependencies as a performance experiment.",
+          "If Windows still starts, open services.msc and restore only the service you changed to its recorded startup mode. For standard modes, use Set-Service -Name 'ServiceName' -StartupType Manual or Automatic. For a recorded delayed automatic service, use sc.exe config ServiceName start= delayed-auto. Verify the service starts and the original feature works.",
+          "The CSV is an audit record, not a complete restore script: it does not fully capture service trigger metadata, dependencies or every security descriptor. Do not import it blindly or run a bulk startup-type reset.",
+          "If the change prevents normal startup, enter Windows Recovery Environment from Advanced startup, choose Troubleshoot → Advanced options → System Restore if a suitable restore point exists. Safe Mode can help you undo a specific recent change. Use offline registry edits only when you know the exact service and have a recovery copy."
+        ]
+      },
+      {
+        "type": "callout",
+        "variant": "warning",
+        "title": "Rollback rule",
+        "text": "Restore the one setting you changed; do not apply a generic list of supposedly optimal Windows defaults. Service dependencies, trigger configuration and OEM features differ between machines."
+      },
+      {
+        "type": "h2",
+        "text": "Software vs. Hardware Bottleneck Triage",
+        "id": "software-vs-hardware-bottleneck-triage"
+      },
+      {
+        "type": "paragraph",
+        "text": "A service name is only one clue. Use the symptom, the process generating the work and the hardware measurements together. Disk active time, CPU utilization, temperature and paging describe different things and should not be treated as interchangeable indicators."
+      },
+      {
+        "type": "comparisonTable",
+        "title": "What to check before disabling another service",
+        "featureLabel": "Service / topic",
+        "columns": [
+          "Symptom",
+          "Software-side check",
+          "Hardware-side check",
+          "How to interpret it"
+        ],
+        "rows": [
+          {
+            "feature": "100% disk active time",
+            "values": [
+              "Identify the process and file activity in Task Manager and Resource Monitor; check Windows Update, Search indexing and background downloads.",
+              "Check SSD/HDD health, temperature, firmware, storage-controller events and response time.",
+              "High active time with low throughput or repeated I/O errors warrants storage diagnosis; do not assume SysMain is the cause."
+            ]
+          },
+          {
+            "feature": "Slow laptop with 8 GB RAM",
+            "values": [
+              "Check memory commit, available memory, app count, browser tabs and Resource Monitor hard faults.",
+              "Confirm upgradeable RAM capacity, module health and SSD condition.",
+              "Paging can make a healthy SSD look busy. Keep the pagefile system-managed and assess whether a compatible RAM upgrade is possible."
+            ]
+          },
+          {
+            "feature": "High temperature and falling performance",
+            "values": [
+              "Compare CPU utilization, effective clock, power limits and the application load.",
+              "Inspect fan operation, heatsink contact, dust blockage and thermal interface condition.",
+              "Thermal throttling usually reduces clock speed at a temperature or power limit; it is not the same thing as a CPU-usage spike."
+            ]
+          },
+          {
+            "feature": "Random freezes, restarts or application crashes",
+            "values": [
+              "Check Reliability Monitor, Event Viewer, driver history and the exact crash timestamp.",
+              "Test memory, storage health, cooling and power stability with appropriate diagnostics.",
+              "A reporting service may wake because a crash happened. Find the initiating driver or component before disabling the reporter."
+            ]
+          },
+          {
+            "feature": "Slow search or long application launches",
+            "values": [
+              "Check Search indexing status, update activity, startup applications and the same workload after a clean restart.",
+              "Check storage latency, free space, SSD health and system memory.",
+              "If indexing is the cause, narrow the indexed folders. If disk or memory health is poor, service changes will not repair it."
+            ]
+          }
+        ]
+      },
+      {
+        "type": "callout",
+        "variant": "expert",
+        "title": "KCROC hardware diagnostics in Kuwait",
+        "text": "Software tuning cannot repair a worn SSD, unstable RAM, a blocked cooling system, a failing fan or a motherboard power fault. KCROC's physical repair lab is at Al Mullah Complex, Ibn Khaldoun Street, Basement Shop 19, Hawalli, Kuwait. Hardware diagnosis and repairs take place at this workshop; free pickup and delivery can be arranged across Kuwait. To arrange collection, WhatsApp +965 55301913: https://wa.me/96555301913. Share the laptop model and measured symptoms so the device can be checked before paid work is recommended."
       },
       {
         "type": "paragraph",
@@ -4733,6 +5375,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "faq",
+        "display": "static",
         "items": [
           {
             "question": "Should I disable Windows 11 services to make my PC faster?",
@@ -4770,6 +5413,18 @@ export const BLOG_POSTS: BlogPost[] = [
             "question": "How can I find what is really slowing my computer?",
             "answer": "Start with Task Manager and Resource Monitor, then check storage health, memory usage, temperatures, startup software, Reliability Monitor and Windows system integrity. A proper diagnosis is more useful than blindly disabling services."
           }
+          {
+            "question": "Which Windows 11 background services can I disable safely?",
+            "answer": "There is no universal safe-disable list. MapsBroker is feature-dependent, and Print Spooler may be unnecessary only when the PC never uses physical, network or virtual printing. Keep security, update, diagnostics and device-support services available unless a documented administrative requirement says otherwise. Test one change at a time and keep a rollback path."
+          },
+          {
+            "question": "How do I identify which services are running inside svchost.exe?",
+            "answer": "In Task Manager, expand the Service Host group or use Go to services. In PowerShell, run tasklist.exe /svc /fi \"imagename eq svchost.exe\" to map process IDs to service names. Confirm the PID and service state before changing anything."
+          },
+          {
+            "question": "How can I restore a Windows service after a bad optimization?",
+            "answer": "Use the baseline you saved before the change to restore that service's previous startup mode in services.msc or with Set-Service. If Windows will not start normally, use Windows Recovery Environment and System Restore when a suitable restore point exists. A CSV snapshot is not a complete automatic restore because triggers and dependencies need separate verification."
+          },
         ]
       },
       {
@@ -4801,21 +5456,27 @@ export const BLOG_POSTS: BlogPost[] = [
     "image": "/images/blog/windows-11-background-services-audit-2026.png",
     "discoverImage": "/images/discover/windows-11-8gb-ram-performance-1200x675.webp",
     "date": "2026-09-05",
-    "technicalReviewDate": "2026-10-05",
+    "technicalReviewDate": "2026-11-15",
     "author": "KCROC Technical Team — Windows & Hardware Troubleshooting",
     "category": "Windows & Software",
-    "readTime": "9-11 min read",
+    "readTime": "22-26 min read",
     "tags": [
       "Windows 11",
+      "Windows 11 26H2",
       "Windows Services",
       "SysMain",
       "DiagTrack",
       "WHESVC",
       "MapsBroker",
+      "WSearch",
+      "Delivery Optimization",
+      "GameInput",
+      "PowerShell",
+      "svchost.exe",
       "Windows Troubleshooting",
     ],
-    "seoTitle": "WHESVC Explained: Windows Health and Optimized Experiences",
-    "seoDescription": "What is WHESVC in Windows 11? Learn what Windows Health and Optimized Experiences does, how to check its status, CVE-2025-59241, and safer troubleshooting.",
+    "seoTitle": "Windows 11 Background Services Audit 2026: Safe Settings",
+    "seoDescription": "Audit 12 Windows 11 background services, map svchost.exe with PowerShell, review safe startup choices, and separate service activity from RAM, SSD and thermal faults.",
     "contentType": "guide",
 
   },
