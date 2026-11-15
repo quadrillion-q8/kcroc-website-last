@@ -34,7 +34,7 @@ assert.ok(
   'The global article title is missing from initial HTML.',
 );
 assert.ok(
-  html.includes('PC Gaming Graphics Settings: Better Visuals Without Maxing Everything'),
+  html.includes('You Don’t Need Max Graphics Settings for Great PC Gaming Visuals (2026 FPS & 1% Lows Guide) | KCROC'),
   'The global SEO title is missing from initial HTML.',
 );
 assert.ok(
@@ -79,10 +79,26 @@ for (const marker of [
   'NVIDIA App',
   'VRAM',
   'FPS',
+  'GPU pipeline',
+  'Frame time',
+  '1% low',
+  'Volumetric fog',
+  'Shadow map',
+  'Ray tracing',
+  'Screen-Space Reflections',
+  'Practical VRAM texture starting points',
+  'Settings vs. hardware bottlenecks',
+  'Frequently asked questions about PC gaming graphics settings',
 ]) {
   assert.ok(articleHtml.includes(marker), 'Expected graphics-settings guidance is missing: ' + marker);
 }
 
+assert.ok(!articleHtml.includes('External source'), 'A generic external-source anchor remains in the article.');
+assert.ok(html.includes('"BlogPosting"'), 'BlogPosting structured data is missing from initial HTML.');
+assert.ok(html.includes('"FAQPage"'), 'FAQPage structured data is missing from initial HTML.');
+assert.ok(html.includes('Windows 11 Gaming Stutter &amp; FPS Drops') || html.includes('Windows 11 Gaming Stutter & FPS Drops'), 'The related gaming-stutter guide card is missing.');
+assert.ok(html.includes('10 Gaming PC Mistakes That Are Quietly Killing Your Performance (2026)'), 'The related gaming-PC mistakes guide is missing.');
+
 console.log(
-  'PC gaming graphics-settings SSG validation passed: stable canonical URL, English document language, no local author link or Kuwait-local article copy, and core graphics guidance in initial HTML.',
+  'PC gaming graphics-settings SSG validation passed: canonical URL retained, global article body kept free of local promotion, upgraded tuning sections and related guides are present, and BlogPosting/FAQPage structured data is emitted.',
 );
