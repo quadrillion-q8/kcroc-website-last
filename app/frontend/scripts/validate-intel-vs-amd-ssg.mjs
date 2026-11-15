@@ -15,7 +15,7 @@ assert.ok(
   'The existing canonical URL is missing from prerendered HTML',
 );
 assert.ok(html.includes('Intel Core Ultra vs. AMD Ryzen AI: What Actually Differs in a Laptop'), 'Article H1 is missing');
-assert.ok(html.includes('Updated November 9, 2026'), 'Visible Kuwait-local update date is missing');
+assert.ok(html.includes('Updated November 9, 2026'), 'Visible technical review date is missing');
 assert.ok(html.includes('2026-11-09T00:00:00+03:00') || html.includes('2026-11-08T21:00:00.000Z'), 'Article dateModified timestamp is missing');
 
 const faqStart = html.indexOf('id="faq"');
@@ -33,10 +33,10 @@ const expectedQuestions = [
   'What are Intel V-series Core Ultra chips?',
   'Is Ryzen AI better for programmers?',
   'Which is better for video editing?',
-  'Does Kuwait heat affect laptop performance?',
+  'Can high ambient temperatures affect laptop performance?',
   'Can I upgrade RAM on a Ryzen AI or Core Ultra laptop?',
   'Should I compare NPU TOPS?',
-  'What should I check before buying an Intel or AMD laptop in Kuwait?',
+  'What should I check before buying an Intel or AMD laptop?',
 ];
 
 for (const question of expectedQuestions) {
@@ -63,6 +63,7 @@ for (const sectionId of [
   'generation-matrix',
   'suffix-decoder',
   'power-delivery',
+  'environmental-conditions',
   'thermal-physics',
   'benchmark-red-flags',
   'exact-cpu',
@@ -94,7 +95,15 @@ assert.ok(html.includes('"@type":"TechArticle"') || html.includes('"@type": "Tec
 assert.ok(html.includes('"@type":"FAQPage"') || html.includes('"@type": "FAQPage"'), 'FAQPage JSON-LD is missing');
 assert.ok(html.includes('"@type":"BreadcrumbList"') || html.includes('"@type": "BreadcrumbList"'), 'BreadcrumbList JSON-LD is missing');
 
+const articleStart = html.indexOf('<article');
+const articleEnd = html.indexOf('</article>', articleStart);
+assert.ok(articleStart >= 0 && articleEnd > articleStart, 'Article content wrapper is missing');
+const articleHtml = html.slice(articleStart, articleEnd + '</article>'.length);
+for (const forbidden of [/Kuwait/i, /Hawalli/i, /KCROC/i, /wa\\.me/i, /pickup|delivery/i, /href="\\/(?:laptop-repair-kuwait|ssd-ram-upgrade-kuwait|laptop-overheating-kuwait)/i]) {
+  assert.ok(!forbidden.test(articleHtml), 'Global Intel vs AMD article contains a local business or sales trace: ' + forbidden);
+}
+
 const schemaQuestionCount = (html.match(/"@type"\s*:\s*"Question"/g) ?? []).length;
 assert.equal(schemaQuestionCount, 12, 'FAQPage JSON-LD should contain exactly the same 12 questions as the visible FAQ');
 
-console.log('Intel vs AMD SSG validation passed: canonical, Kuwait-local review date, 12 static FAQ answers and schema questions, generation matrix, suffix decoder, engineering sections, processor records and official references are present.');
+console.log('Intel vs AMD SSG validation passed: canonical, global editorial review date, 12 static FAQ answers and schema questions, generation matrix, suffix decoder, engineering sections, processor records and official references are present.');
