@@ -8852,51 +8852,118 @@ export const rawGraphData: RawGraphData = {
     } as ProblemEntity,
 
     'problem-slow': {
-      id: 'problem-slow', slug: 'laptop-running-very-slow', entityType: 'Problem', isActive: true,
-      title: 'Laptop Running Extremely Slow', primaryKeyword: "slow laptop repair Kuwait", secondaryKeywords: ["laptop running slow fix","computer slow after startup","SSD upgrade for slow laptop"],
-      description: 'Solutions for laptops that take minutes to boot up, freeze during basic tasks, or show 100% disk usage.',
-      symptom: 'The laptop takes over 2 minutes to reach the desktop, opening Chrome freezes the system, and Task Manager consistently shows 100% Disk Usage or 100% CPU Usage.',
-      causes: ['Failing mechanical Hard Drive (HDD)', 'Thermal throttling due to overheating', 'Insufficient RAM for Windows 11 (less than 8GB)', 'Severe malware or bloatware infection'],
-      doNotDo: 'Do not buy expensive "PC Cleaner" software subscriptions online. They rarely solve hardware bottlenecks and often act as malware themselves.',
-      solution: 'If the laptop has an old HDD, an SSD upgrade is the ultimate fix—it reduces boot times from minutes to seconds. We clone your exact system to a new SSD or perform a clean Windows installation.',
+      id: 'problem-slow',
+      slug: 'laptop-running-very-slow',
+      entityType: 'Problem',
+      isActive: true,
+      title: 'Laptop Running Extremely Slow',
+      primaryKeyword: 'slow laptop repair Kuwait',
+      secondaryKeywords: [
+        'laptop running slow fix',
+        'computer slow after startup',
+        'laptop SSD upgrade Kuwait',
+        'laptop RAM upgrade Kuwait',
+        'laptop overheating and slow performance',
+        'MacBook running slow Kuwait'
+      ],
+      description: 'Laptop taking minutes to boot, freezing during everyday tasks, running at 100% disk usage or slowing down under heat? Identify the real cause before replacing parts.',
+      symptom: 'Windows takes several minutes to reach the desktop, applications freeze during ordinary tasks, Task Manager repeatedly shows high Disk, Memory or CPU activity, or performance drops after the laptop heats up.',
+      causes: [
+        'A mechanical HDD that is slow, unhealthy or approaching failure',
+        'Insufficient available RAM for the applications and workload',
+        'Thermal throttling caused by restricted airflow, fan problems or poor thermal contact',
+        'A nearly full system drive or sustained background storage activity',
+        'Excessive startup applications, unwanted software, updates or malware',
+        'Power, firmware, driver or application-specific performance limits'
+      ],
+      doNotDo: 'Do not install unfamiliar PC Cleaner, registry-cleaning or driver-booster applications that promise instant speed improvements. Do not repeatedly force-shut down a frozen laptop or power-cycle a drive that is clicking or grinding. These actions can introduce software problems, interrupt writes or make a failing drive harder to assess.',
+      solution: 'KCROC checks storage health, memory pressure, temperatures, cooling behaviour and software activity before recommending a targeted repair. Depending on the findings and model compatibility, the appropriate option may be an SSD installation with migration from a healthy source drive, additional RAM, thermal service or Windows troubleshooting. We explain the findings and confirm the quote before paid work begins.',
       urgency: 'medium',
-      relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-ssd-ram'],
+      relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-gaming', 'srv-ssd-ram'],
       contentImages: [
-        { src: IMAGES.upgrades.hddSeagate.src, alt: IMAGES.upgrades.hddSeagate.alt, width: IMAGES.upgrades.hddSeagate.width, height: IMAGES.upgrades.hddSeagate.height, placement: 'causes', caption: 'An aging mechanical hard drive — one of the most common causes of a laptop that takes minutes to boot.' },
-        { src: IMAGES.upgrades.ssdSamsung2.src, alt: IMAGES.upgrades.ssdSamsung2.alt, width: IMAGES.upgrades.ssdSamsung2.width, height: IMAGES.upgrades.ssdSamsung2.height, placement: 'solution', caption: 'Cloning the system to a new SSD — the fix that cuts boot times from minutes to seconds.' },
+        { src: IMAGES.upgrades.hddSeagate.src, alt: IMAGES.upgrades.hddSeagate.alt, width: IMAGES.upgrades.hddSeagate.width, height: IMAGES.upgrades.hddSeagate.height, placement: 'causes', caption: 'A mechanical hard drive can become a storage bottleneck; its health must be checked before planning a migration.' },
+        { src: IMAGES.upgrades.ssdSamsung2.src, alt: IMAGES.upgrades.ssdSamsung2.alt, width: IMAGES.upgrades.ssdSamsung2.width, height: IMAGES.upgrades.ssdSamsung2.height, placement: 'solution', caption: 'A compatible SSD installation can improve boot and application-loading times when the original HDD is the limiting component.' }
       ],
       relatedResourcePaths: [
+        { label: 'SSD & RAM Upgrade Kuwait', path: '/ssd-ram-upgrade-kuwait' },
+        { label: 'MacBook Repair Kuwait', path: '/macbook-repair-kuwait' },
+        { label: 'Laptop Overheating: Technical Guide', path: '/guides/why-is-my-laptop-so-hot' },
         { label: 'Windows 11 100% Disk Usage: Causes & Solutions', path: '/blog/windows-11-100-disk-usage-causes-solutions' },
+        { label: 'Why 8GB RAM Is No Longer Enough', path: '/blog/why-8gb-ram-is-no-longer-enough-for-windows-11' },
+        { label: 'KCROC Repair Pricing', path: '/pricing' }
       ],
-      intro: "A laptop that takes minutes to start or freezes while you work is almost always held back by one of four things: an old hard drive, a nearly full drive, too little memory, or heat that forces the processor to slow itself down. Malware and heavy start-up programs can add to it. A short test of each tells us whether a clean-up, an SSD or something else will make the difference.",
+      intro: 'A laptop that takes minutes to start or freezes while you work is not a diagnosis by itself. The cause may be storage, memory, cooling, background software or a model-specific limitation. KCROC measures the relevant behaviour first, then recommends only the repair or upgrade supported by the findings.',
+      triageMatrix: [
+        { symptom: 'Windows takes minutes to start; Disk activity stays high', likelyCause: 'A mechanical HDD, unhealthy storage, a nearly full drive or persistent background activity.', nextStep: 'Check drive health and storage behaviour. Consider a compatible SSD only after confirming that the source drive is suitable for migration.', href: '/ssd-ram-upgrade-kuwait', linkLabel: 'SSD & RAM upgrade details' },
+        { symptom: 'Browser tabs, Teams and Office freeze during multitasking', likelyCause: 'Memory pressure, excessive paging, background CPU use or limited system resources.', nextStep: 'Measure memory and CPU usage, then check whether the exact laptop model has upgradeable RAM.' },
+        { symptom: 'The laptop slows down after several minutes and feels hot', likelyCause: 'Thermal throttling, restricted airflow, fan issues or another heat-related limit.', nextStep: 'Compare temperatures, clock behaviour and fan response under a consistent workload before recommending cooling service.', href: '/laptop-overheating-kuwait', linkLabel: 'Laptop overheating diagnosis' },
+        { symptom: 'Games or demanding applications lose performance over time', likelyCause: 'Cooling, power limits, drivers, memory pressure or application-specific behaviour.', nextStep: 'Check temperatures, clocks, power mode and system stability. Do not assume that adding RAM or replacing storage will fix every FPS drop.', href: '/gaming-pc-repair-kuwait', linkLabel: 'Gaming PC diagnosis' },
+        { symptom: 'MacBook performance has gradually declined', likelyCause: 'Low available storage, macOS background activity, thermal limits, battery or power behaviour.', nextStep: 'Check the exact MacBook model, macOS activity, storage headroom and cooling condition. Modern models commonly have soldered memory and storage.', href: '/macbook-repair-kuwait', linkLabel: 'MacBook repair details' },
+        { symptom: 'The drive clicks, grinds or repeatedly disappears', likelyCause: 'Possible mechanical or storage-device failure.', nextStep: 'Stop unnecessary use and repeated restarts. Tell the technician about the noise or disconnections before any migration or replacement is attempted.' }
+      ],
       diagnosticSteps: [
-        { step: 1, title: "Look at Task Manager", description: "Press Ctrl + Shift + Esc and watch the Performance tab. A disk sitting at or near 100 percent usage while you are doing little points to the drive. High memory usage points to too little RAM." },
-        { step: 2, title: "Check free storage", description: "If the drive is almost full, Windows has little room to work. Free up space or move files off the laptop and see if it improves." },
-        { step: 3, title: "Listen for the drive", description: "Clicking, grinding or long pauses from a mechanical hard drive can mean it is failing. Back up your files and stop heavy use." },
-        { step: 4, title: "Check temperature and fans", description: "If the laptop is very hot, the fan is loud or it slows down after a few minutes, thermal throttling may be the cause." },
-        { step: 5, title: "Review start-up programs and scan for malware", description: "Too many start-up programs slow down every boot, and unwanted software can use resources in the background." },
+        { step: 1, title: 'Observe Task Manager or Activity Monitor', description: 'On Windows, press Ctrl + Shift + Esc and review CPU, Memory and Disk activity while the slowdown occurs. On macOS, use Activity Monitor. High utilisation is a clue to investigate, not proof that a component has failed.' },
+        { step: 2, title: 'Check available storage', description: 'Look at free space on the system drive. A nearly full drive can complicate updates and everyday operations; do not delete unfamiliar system files to make room.' },
+        { step: 3, title: 'Note storage warnings or unusual sounds', description: 'Record drive-health warnings, disconnects or clicking and grinding noises. If a mechanical drive sounds abnormal, stop heavy use and avoid repeated power cycles.' },
+        { step: 4, title: 'Check ventilation and heat', description: 'Use the laptop on a hard, flat surface with vents unobstructed. Notice whether fan noise, heat and slower performance appear together under the same workload.' },
+        { step: 5, title: 'Review startup load and security', description: 'Check recognised startup applications and use built-in Windows Security tools where appropriate. Avoid installing unfamiliar cleaners or driver-updater utilities.' }
       ],
       decisionTree: [
-        { symptom: "Slow to start, disk at 100 percent, still using a hard drive", direction: "An SSD upgrade is the most effective fix." },
-        { symptom: "Slows down after a few minutes and runs hot", direction: "Cooling clean-up and fresh thermal paste, not storage." },
-        { symptom: "Memory usage always high", direction: "More RAM, if the model allows it." },
-        { symptom: "Clicking or grinding from the drive", direction: "Back up now. The drive may be failing and should be replaced." },
+        { symptom: 'Slow boot and sustained high Disk activity on a mechanical HDD', direction: 'Check storage health first. If the drive is healthy enough for migration and the laptop supports it, an SSD can remove the HDD bottleneck.', href: '/ssd-ram-upgrade-kuwait', linkLabel: 'SSD & RAM upgrade service' },
+        { symptom: 'High memory use during ordinary multitasking', direction: 'Check the exact RAM type, slot count, maximum capacity and whether memory is soldered before considering an upgrade.', href: '/ssd-ram-upgrade-kuwait', linkLabel: 'Check RAM upgrade compatibility' },
+        { symptom: 'Performance drops as the laptop heats up', direction: 'Investigate airflow, fan operation, thermal contact and power behaviour before deciding whether cleaning or another repair is appropriate.', href: '/laptop-overheating-kuwait', linkLabel: 'Laptop overheating guide' },
+        { symptom: 'MacBook feels slow and has no user-upgradeable RAM', direction: 'Check macOS activity, storage headroom, cooling and model-specific limits. Do not assume RAM or SSD replacement is possible.', href: '/macbook-repair-kuwait', linkLabel: 'MacBook repair Kuwait' },
+        { symptom: 'Clicking or grinding from a mechanical drive', direction: 'Stop unnecessary use and repeated restarts. Tell KCROC about the symptoms before any drive replacement or migration is considered.' }
       ],
       technicianMethod: [
-        { step: 1, title: "Test the drive", description: "We check the drive's health and read speed to find out whether it is failing or just slow." },
-        { step: 2, title: "Check temperatures and cooling", description: "We look at temperatures under load and check the fan and vents for dust and the thermal paste for age." },
-        { step: 3, title: "Upgrade or clean as needed", description: "Where it fits, we move your Windows installation and files to an SSD, add memory or clean the cooling, rather than recommending everything." },
-        { step: 4, title: "Measure the result", description: "We compare start-up time and responsiveness after the work, and the repair carries a 30-day warranty." },
+        { step: 1, title: 'Check storage and hardware evidence', description: 'We identify the storage type, review available drive-health information and performance, and check whether memory pressure or another hardware limit is present. A questionable source drive is not treated as suitable for routine cloning.' },
+        { step: 2, title: 'Assess temperatures and cooling', description: 'We inspect fan operation, heatsink and vent condition, then correlate temperature and clock behaviour with the reported workload where appropriate.' },
+        { step: 3, title: 'Select only the justified repair', description: 'When supported by the diagnosis, we discuss a compatible SSD or RAM installation, migration from a healthy source drive, internal cooling service or software troubleshooting. MacBook recommendations account for soldered components and model-specific limits.' },
+        { step: 4, title: 'Verify the completed work', description: 'We check that installed hardware is recognised, the system starts correctly and the original complaint has been retested where practical. The agreed repair is covered by KCROC’s 30-day repair warranty.' }
       ],
-      safetyNotes: ["Back up your files before any storage work if you can. If the drive is failing, tell us so we handle it carefully.", "Do not keep forcing a laptop off during updates or repeatedly power-cycling it, as that can corrupt the system files."],
+      safetyNotes: [
+        'If a laptop freezes before you can back up important files, stop repeated restarts and unnecessary use. Tell us the symptoms so the storage condition can be assessed before any replacement or migration is considered.',
+        'Do not force repeated shutdowns during Windows updates or active storage operations; interrupting writes can corrupt system files.',
+        'If a drive clicks, grinds or repeatedly disconnects, do not treat it like a healthy source drive for standard cloning.',
+        'Do not open the laptop or remove its internal battery unless you have the tools and experience to do so safely.'
+      ],
+      kuwaitContext: [
+        'Fine desert dust can collect around laptop intake grilles, fan blades and heatsink fins. As airflow becomes restricted, the cooling system may struggle to move heat away from the processor.',
+        'Kuwait’s high summer ambient temperatures reduce the cooling headroom available during sustained workloads. Heat-related throttling is more likely when the cooling path is already restricted or the system is working hard.',
+        'Thermal paste condition depends on age, formulation, operating temperatures and thermal cycling. The local climate alone does not prove that paste has dried out; KCROC inspects thermal contact and temperature behaviour before recommending replacement.'
+      ],
+      expertNotes: [
+        { title: 'A 100% Disk reading is not a component diagnosis', description: 'Task Manager reports active time, not simply transfer speed. Background updates, storage retries, paging and a failing drive can all produce high active time; the underlying cause must be identified before replacing the drive.' },
+        { title: 'SSD upgrades depend on source-drive condition', description: 'A healthy source drive may be suitable for cloning. If health checks or symptoms suggest failure, routine cloning may be inappropriate; the migration plan and data risk must be discussed before work.' },
+        { title: 'MacBook upgradeability is model-specific', description: 'Many newer MacBooks use soldered unified memory and storage. We verify the exact model before promising an upgrade and focus on supported diagnostics and maintenance where components cannot be replaced.' }
+      ],
+      priceEstimates: {
+        heading: 'Typical Repair & Upgrade Estimates',
+        intro: 'These are KCROC service and installation-labour references, not guaranteed all-inclusive prices. Compatible SSD or RAM parts are quoted separately, and migration scope depends on the condition of the existing drive.',
+        rows: [
+          { service: 'Laptop thermal cleaning and service', price: '15–20 KWD', details: 'Internal dust removal, heatsink and fan-path cleaning, with thermal paste service only where appropriate.', turnaround: 'Typically 24–48 hours, subject to inspection and scheduling.' },
+          { service: 'SSD installation and Windows migration assessment', price: '5–10 KWD installation labour + SSD cost', details: 'Compatibility checks and installation labour. Migration or cloning is considered only after the source drive has been assessed as suitable.', turnaround: 'Typically 24–48 hours; larger migrations or source-drive concerns may take longer.' },
+          { service: 'RAM upgrade', price: '5–10 KWD installation labour + RAM cost', details: 'Memory compatibility checks, installation and post-installation recognition testing. Upgradeability depends on the device model.', turnaround: 'Typically 24–48 hours, subject to compatible part availability.' }
+        ],
+        note: 'Initial diagnostic is free. KCROC confirms the exact scope and quote before paid work begins. No Fix, No Fee applies under the published policy.'
+      },
       faqs: [
-        { question: "How much faster will an SSD make my laptop?", answer: "The difference is usually large on a laptop that has a mechanical hard drive. Start-up and application loading are noticeably quicker. We tell you whether an SSD is the right fix after we test the drive." },
-        { question: "Will I lose my files and programs when you upgrade the drive?", answer: "In most cases we move your existing Windows installation and files onto the new SSD. It is still sensible to keep a backup of anything important." },
-        { question: "Can you add more RAM to my laptop?", answer: "It depends on the model. Some have slots, others have memory soldered to the board. We check what your laptop supports before suggesting an upgrade." },
-        { question: "My laptop is slow only when gaming or running heavy software. Is that the same problem?", answer: "Not necessarily. Heat is a common cause there. We check the temperatures and the cooling system before suggesting an upgrade." },
+        { question: 'Why is my laptop suddenly running very slowly?', answer: 'A sudden slowdown can result from a failing hard drive, insufficient RAM, overheating, background applications, Windows updates or malware. KCROC checks storage health, memory usage, temperatures and software activity before recommending a repair or upgrade.' },
+        { question: 'Will installing an SSD make my slow laptop faster?', answer: 'An SSD can significantly improve boot times and application loading when an old mechanical HDD is the main bottleneck. We first check the existing drive and system compatibility, then determine whether a safe Windows migration is appropriate.' },
+        { question: 'Can KCROC upgrade the RAM and SSD in my MacBook?', answer: 'It depends on the exact MacBook generation. Many modern MacBooks have soldered storage and unified memory that cannot be upgraded, so we check the model and recommend supported cooling maintenance, macOS optimization or other appropriate repairs instead.' },
+        { question: 'How much does it cost to repair a slow laptop in Kuwait, and how long does it take?', answer: 'KCROC provides a free initial diagnostic, with laptop thermal service listed at 15–20 KWD and SSD/RAM installation labour at 5–10 KWD, excluding parts. Typical repair turnaround is 24–48 hours, and you receive the confirmed quote before approving paid work.' }
       ],
-      seo: { title: 'Laptop Running Extremely Slow? SSD Upgrades Kuwait | KCROC', description: 'Laptop freezing or taking forever to turn on? An SSD upgrade and RAM boost will make it 10x faster. We migrate your data safely. Free diagnostic.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-running-very-slow', ogType: 'article', schemaTypes: ['Article', 'FAQPage'] },
-      navigationPriority: 30, popular: false
+      seo: {
+        title: 'Laptop Running Slow in Kuwait? Diagnosis & Upgrades | KCROC',
+        description: 'Laptop freezing, slow to boot or showing 100% disk usage? KCROC checks SSD, RAM, cooling and Windows faults. Free diagnostic and pickup across Kuwait.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-running-very-slow',
+        locale: 'en_KW',
+        ogType: 'article',
+        schemaTypes: ['Article', 'FAQPage'],
+        lastModified: '2026-11-16T00:00:00+03:00'
+      },
+      navigationPriority: 30,
+      popular: false
     } as ProblemEntity,
 
     'problem-hinge-break': {

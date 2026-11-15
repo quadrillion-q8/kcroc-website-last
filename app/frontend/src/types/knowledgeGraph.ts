@@ -553,6 +553,24 @@ export const ProblemSchema = RoutableEntitySchema.extend({
     href: z.string().optional(),
     linkLabel: z.string().optional(),
   })).optional(),
+  triageMatrix: z.array(z.object({
+    symptom: z.string(),
+    likelyCause: z.string(),
+    nextStep: z.string(),
+    href: z.string().optional(),
+    linkLabel: z.string().optional(),
+  })).optional(),
+  priceEstimates: z.object({
+    heading: z.string(),
+    intro: z.string(),
+    rows: z.array(z.object({
+      service: z.string(),
+      price: z.string(),
+      details: z.string(),
+      turnaround: z.string(),
+    })),
+    note: z.string(),
+  }).optional(),
   technicianMethod: z.array(z.object({
     step: z.number(),
     title: z.string(),
