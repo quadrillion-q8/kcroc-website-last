@@ -1,6 +1,6 @@
 // File: app/frontend/src/pages/DellLaptopOverheatingPage.tsx
 import { Head } from 'vite-react-ssg';
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
   AlertTriangle, CheckCircle2, XCircle, Thermometer, 
@@ -17,35 +17,6 @@ import { IMAGES } from '../constants/images';
 
 export const DellLaptopOverheatingPage = () => {
   const business = KCROC_GRAPH.business!;
-  const [selectedSymptom, setSelectedSymptom] = useState('fan-idle');
-  const symptomAdvice: Record<string, { title: string; advice: string; next: string }> = {
-    'fan-idle': {
-      title: 'Fan is loud during light work or at idle',
-      advice: 'Check Task Manager for sustained CPU activity, then confirm the Dell thermal profile is not set to a performance-oriented mode. If the fan remains loud with low workload, run F12 diagnostics and listen for grinding or clicking.',
-      next: 'If the fan test fails or the noise is mechanical, stop stress testing and arrange a fan/cooling inspection.',
-    },
-    'load-heat': {
-      title: 'Heat and fan speed rise during gaming or heavy work',
-      advice: 'A fan ramp-up under sustained CPU/GPU load can be normal. Check the active thermal profile, keep intake and exhaust vents unobstructed, and compare performance with the same workload after returning to the normal Optimized or Balanced profile.',
-      next: 'Investigate further if performance collapses, the laptop shuts down, or high fan speed continues after the workload ends.',
-    },
-    'shutdown': {
-      title: 'The Dell laptop shuts down or restarts under load',
-      advice: 'Save work and avoid repeated stress tests. Check the external vents, then run the F12 pre-boot diagnostics and record every error and validation code.',
-      next: 'Repeated thermal shutdowns need a cooling and power-path inspection even if a quick test reports no error.',
-    },
-    'fan-code': {
-      title: 'F12 diagnostics reports a fan code',
-      advice: 'Record the complete code. 2000-0511 means the fan did not respond correctly to the diagnostic test; 2000-0512 means the fan ran faster than expected. Neither code alone identifies the exact component to replace.',
-      next: 'Check for visible external obstruction and repeat the test. If the code returns, arrange model-specific inspection; do not open the laptop just to check the fan.',
-    },
-    throttling: {
-      title: 'Performance drops or the XPS slows down under sustained load',
-      advice: 'Check CPU/GPU utilization, clocks and the selected Dell thermal profile. Thin systems can reduce sustained power to control heat; compare behaviour with the exact model specification and the same workload.',
-      next: 'Persistent throttling during light work, sudden shutdowns or abnormal fan behaviour warrants diagnosis.',
-    },
-  };
-  const activeSymptomAdvice = symptomAdvice[selectedSymptom];
   const EN_PAGE_URL = `${business.websiteUrl}/guides/dell-laptop-overheating`;
   const AR_PAGE_URL = `${business.websiteUrl}/guides/ar/dell-laptop-overheating`;
   const PAGE_URL = EN_PAGE_URL;
@@ -54,8 +25,8 @@ export const DellLaptopOverheatingPage = () => {
   const DATE_MODIFIED = '2026-11-15';
   const LAST_UPDATED = 'November 15, 2026';
   const OG_IMAGE_URL = `${business.websiteUrl}${IMAGES.laptopHardware.cloggedFan.src}`;
-  const PAGE_TITLE = 'Dell Laptop Overheating: Diagnostics, Fan Noise & Fixes | KCROC';
-  const PAGE_DESCRIPTION = 'Dell laptop overheating, fan noise or shutdowns? Run F12 diagnostics, understand fan error codes, check thermal profiles and update BIOS safely.';
+  const PAGE_TITLE = 'Dell Laptop Overheating, Loud Fan & Thermal Shutdown Guide | KCROC';
+  const PAGE_DESCRIPTION = 'Diagnose Dell laptop overheating, loud fans and thermal shutdowns with F12 ePSA codes, Dell Optimizer and AWCC profiles, BIOS, charger-identification and sleep-state checks.';
   
 
   const FAQS = [
@@ -64,13 +35,18 @@ export const DellLaptopOverheatingPage = () => {
     { q: 'How do I stop my Dell laptop from overheating?', a: 'Start with the basics: use it on a hard, flat surface, keep the vents clear, and check Task Manager for processes using unusually high CPU. If temperatures stay high after that, the cooling system likely needs inspection.' },
     { q: 'Can dust cause a Dell laptop to overheat?', a: 'Yes. Dust restricts airflow through the heatsink and fan, which is one of the most common causes of overheating in laptops that have been used for a couple of years without internal cleaning.' },
     { q: 'Does replacing thermal paste fix laptop overheating?', a: "It can, if degraded thermal interface material is the actual cause — but not every overheating issue is a thermal paste problem. Diagnosing the cause first avoids paying for a repair that doesn't address the real issue." },
-    { q: 'Why is my Dell laptop fan so loud?', a: 'A loud fan is often the system compensating for higher internal temperatures. Grinding or clicking noises specifically usually point to a mechanical fan problem rather than a purely thermal one.' },
+    { q: 'Why is my Dell laptop fan so loud?', a: 'A loud fan is often the system compensating for higher internal temperatures or a performance profile. On some compatible G Series systems, Game Shift or G-Key mode can switch the system to a turbo performance preset and increase fan activity. Grinding or clicking noises specifically suggest a mechanical issue.' },
     { q: 'How do I run Dell laptop hardware diagnostics?', a: 'Restart or power on the Dell laptop, tap F12 repeatedly when the Dell logo appears, and choose Diagnostics from the One Time Boot Menu. The pre-boot test runs before Windows loads. Record the full error and validation codes if a test fails.' },
     { q: 'What does Dell fan error 2000-0511 mean?', a: 'Dell lists ePSA error 2000-0511 as a fan that failed to respond correctly to diagnostics. Check for external vent obstruction, repeat the test, and arrange model-specific inspection if the code returns. It does not identify the exact failed part by itself.' },
     { q: 'What does Dell fan error 2000-0512 mean?', a: 'Dell describes 2000-0512 as a fan running faster than expected. Dell notes that the cooling fan, temperature sensor or system board may be involved, so the code needs follow-up diagnosis rather than an automatic fan replacement.' },
     { q: 'Can a Dell thermal profile make the fan louder or the laptop warmer?', a: 'Yes. Supported Dell thermal profiles trade off processor performance, fan speed, noise and surface temperature. A Quiet profile can reduce fan and processor speeds, while Cool or Ultra Performance can change fan behaviour and system performance. Available modes vary by model and application.' },
     { q: 'Should I update my Dell BIOS to fix overheating?', a: 'Check the BIOS version and release notes for your exact Service Tag. Firmware updates can include platform-specific thermal or fan-control fixes, but they are not a substitute for clearing a blocked heatsink or repairing a failed fan. Follow Dell update precautions and do not interrupt the update.' },
     { q: 'When should I have my Dell laptop professionally inspected?', a: "If shutdowns are repeated, the fan sounds mechanically damaged, a pre-boot fan error returns, or temperatures stay high despite clear airflow and normal usage, have the exact cooling system inspected rather than continuing to run the machine hot." },
+    { q: 'Which Dell application controls thermal settings in 2026?', a: 'Dell Optimizer 6.x is the consolidated application for most compatible Dell computers. Dell has published end-of-life and end-of-support dates for legacy MyDell, Dell Power Manager and Dell Optimizer 4.2 or older. Older systems may still show a legacy app installed, but compatibility and available thermal modes depend on the exact model. G Series and Alienware gaming systems use Alienware Command Center where supported.' },
+    { q: 'Can Game Shift make a Dell G15 fan suddenly get louder?', a: 'Yes, on supported G Series models. Game Shift or G-Key mode switches to a turbo performance mode and can raise fan activity. The key combination is model-specific; some G15/G16 layouts use Fn + F9. Check the keyboard icon and the exact owner manual rather than assuming the shortcut applies to every Dell laptop.' },
+    { q: 'Why is my Dell CPU stuck at 0.39 GHz or another very low clock speed?', a: 'A very low clock is a symptom, not proof of CPU overheating. Check BIOS AC Adapter Type and wattage where available, the approved charger and connector, battery status, thermal profile and Windows power mode. Platform protection signals and power limits can reduce clock speed even when CPU core temperatures appear normal. Do not disable BD PROCHOT to mask the condition.' },
+    { q: 'Why is my Dell laptop hot after being closed in a backpack?', a: 'Some Dell laptops use Windows Modern Standby (S0 Low Power Idle), which permits limited background activity during sleep. Use powercfg /a to check supported sleep states and powercfg /sleepstudy to investigate long screen-off sessions or excessive battery drain. Until resolved, use Hibernate or Shut Down before carrying the laptop in a closed bag.' },
+    { q: 'Does Dell ePSA error 2000-0712 always mean a laptop fan or airflow fault?', a: 'No. Dell KB 000480910 describes a specific false fan-check condition on the Dell Tower DT1265 with BIOS 1.2.1 or 2.0.2, caused by a check for a second fan that was not installed in some configurations. Dell lists BIOS 2.2.1 or later as the fix for that desktop issue. Do not generalize it to Dell laptops.' },
   ];
 
   const GUIDE_SCHEMA = [
@@ -87,7 +63,7 @@ export const DellLaptopOverheatingPage = () => {
       '@context': 'https://schema.org',
       '@type': 'TechArticle',
       '@id': `${PAGE_URL}#article`,
-      headline: 'Dell Laptop Overheating: Diagnostics, Fan Noise & Safe Fixes',
+      headline: 'Dell Laptop Overheating, Loud Fan & Thermal Shutdown Guide',
       description: PAGE_DESCRIPTION,
       url: PAGE_URL,
       image: [OG_IMAGE_URL],
@@ -107,7 +83,10 @@ export const DellLaptopOverheatingPage = () => {
         'Dell XPS thermal throttling',
         'Dell fan error 2000-0511',
         'Dell fan error 2000-0512',
-        'Dell Power Manager thermal settings',
+        'Dell Optimizer 6.x thermal settings',
+        'Dell G15 Game Shift G-Mode',
+        'Dell laptop unknown AC adapter CPU throttling',
+        'Dell laptop Modern Standby overheating',
       ],
       about: [
         { '@type': 'Brand', name: 'Dell' },
@@ -213,7 +192,7 @@ export const DellLaptopOverheatingPage = () => {
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-6 tracking-tight">
             Dell Laptop <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400">
-              Overheating & Shutdown
+              Overheating, Loud Fan & Thermal Shutdown Guide
             </span>
           </h1>
           <p className="text-sm sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-8">
@@ -248,8 +227,26 @@ export const DellLaptopOverheatingPage = () => {
           </div>
         </section>
 
+        <section id="dell-quick-navigation" className="scroll-mt-28 rounded-3xl border border-slate-800 bg-slate-900/50 p-6 sm:p-8">
+          <div className="flex flex-wrap items-center gap-3 mb-3">
+            <Badge className="bg-cyan-500/10 text-cyan-300 border-cyan-500/20">Four-layer diagnostic workflow</Badge>
+            <span className="text-xs uppercase tracking-wider text-slate-500">Start with low-risk checks</span>
+          </div>
+          <h2 className="text-2xl font-bold text-white mb-4">Quick Navigation</h2>
+          <ol className="grid sm:grid-cols-2 gap-x-8 gap-y-3 text-sm leading-6">
+            <li><a href="#dell-preboot-diagnostics" className="text-cyan-300 hover:underline">1. Layer 1 — F12 pre-boot diagnostics and ePSA codes</a></li>
+            <li><a href="#dell-thermal-profiles" className="text-cyan-300 hover:underline">2. Layer 2 — Dell Optimizer, legacy utilities and AWCC profiles</a></li>
+            <li><a href="#dell-bios-updates" className="text-cyan-300 hover:underline">3. Layer 3 — BIOS, EC, charger ID and Modern Standby</a></li>
+            <li><a href="#dell-model-families" className="text-cyan-300 hover:underline">4. Layer 4 — Model-family cooling and hardware checks</a></li>
+            <li><a href="#dell-symptom-checker" className="text-cyan-300 hover:underline">Symptom-to-cause diagnostic matrix</a></li>
+            <li><a href="#dell-safe-checks" className="text-cyan-300 hover:underline">Safe DIY checks and escalation signs</a></li>
+            <li><a href="#dell-faq" className="text-cyan-300 hover:underline">Frequently asked questions</a></li>
+            <li><a href="#official-dell-references" className="text-cyan-300 hover:underline">Official technical references</a></li>
+          </ol>
+        </section>
+
         {/* Symptoms & Causes Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
+        <div id="dell-symptoms-and-causes" className="grid md:grid-cols-2 gap-6 scroll-mt-28">
           <Card className="bg-brand-dark/50 border-slate-800">
             <CardHeader className="border-b border-slate-800/50 pb-4">
               <CardTitle className="text-xl text-white flex items-center gap-2">
@@ -333,16 +330,31 @@ export const DellLaptopOverheatingPage = () => {
               <p className="text-sm leading-6 text-slate-400 mb-0">Dell notes possible fan, temperature-sensor or system-board involvement. Further diagnosis is needed before replacing hardware.</p>
             </div>
           </div>
+          <div className="mt-6 rounded-2xl border border-amber-500/25 bg-amber-500/5 p-5">
+            <h3 className="font-semibold text-amber-200 mb-2">Important boundary for error 2000-0712</h3>
+            <p className="text-sm leading-6 text-slate-300 mb-0">
+              Do not treat 2000-0712 as a universal Dell laptop airflow or shroud code. Dell KB 000480910 documents 2000-0712 together with 2000-0511 as a false fan-check issue on the <strong>Dell Tower DT1265</strong> with BIOS 1.2.1 or 2.0.2: the affected configuration checked for a second system fan that was not installed. Dell identifies BIOS 2.2.1 or later as the fix for that specific desktop issue. For a laptop, use the exact Service Tag and model-specific diagnostic guidance rather than applying this desktop exception.
+            </p>
+          </div>
           <p className="text-sm text-slate-400 leading-6 mt-5 mb-0">
             The Windows SupportAssist application can also offer hardware scans and update checks on supported systems. For a recorded pre-boot result, use the F12 Diagnostics path above. A passing quick test does not rule out every intermittent fan, airflow or thermal problem.
-          </p>
         </section>
 
         <section id="dell-thermal-profiles" className="scroll-mt-28">
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-5">Check Dell Thermal Profiles Before Assuming a Hardware Fault</h2>
           <p className="text-slate-300 leading-7 mb-5">
-            Dell utilities can change processor behaviour and cooling-fan response. Dell Power Manager functions are integrated into newer MyDell and Dell Optimizer applications on supported product families. The utility and labels available on your machine depend on its model and generation.
+            Dell thermal controls are model-dependent. Dell Optimizer 6.0 and newer consolidates features from several older applications on <strong>most compatible Dell computers</strong>, but it is not a universal utility for every Dell generation or product family. Dell's transition notice lists MyDell, Dell Power Manager and Dell Optimizer 4.2 and older as legacy applications with published end-of-life and end-of-support dates. An older laptop may still have one of these applications installed, but an installed legacy utility should not be described as currently supported.
           </p>
+          <div className="rounded-2xl border border-slate-700 bg-slate-950/60 p-5 mb-6">
+            <h3 className="font-semibold text-white mb-2">Dell utility lifecycle — verified dates</h3>
+            <ul className="list-disc pl-5 space-y-1 text-sm leading-6 text-slate-300">
+              <li><strong>MyDell:</strong> end of life June 23, 2025; end of support December 31, 2025.</li>
+              <li><strong>Dell Power Manager:</strong> end of life October 20, 2025; end of support December 31, 2025.</li>
+              <li><strong>Dell Optimizer 4.2 and older:</strong> end of life June 23, 2025; end of support June 30, 2026.</li>
+              <li><strong>Dell Optimizer 6.x:</strong> the current consolidated application for most compatible Dell systems; availability and individual features still depend on the exact model.</li>
+            </ul>
+            <p className="text-xs leading-5 text-slate-400 mt-3 mb-0">Source: Dell KB 000226259. Check the Service Tag on Dell Support before installing or replacing any OEM utility.</p>
+          </div>
           <div className="overflow-x-auto rounded-2xl border border-slate-800">
             <table className="w-full min-w-[640px] border-collapse text-left text-sm">
               <thead className="bg-slate-900 text-white">
@@ -363,7 +375,7 @@ export const DellLaptopOverheatingPage = () => {
           <div className="grid md:grid-cols-3 gap-4 mt-6">
             <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
               <h3 className="font-semibold text-white mb-2">XPS, Inspiron and Vostro</h3>
-              <p className="text-sm leading-6 text-slate-400 mb-0">Check MyDell or the Dell utility listed for the exact model. Dell says newer XPS, Inspiron and Vostro systems use MyDell for functions that were previously in Dell Power Manager.</p>
+              <p className="text-sm leading-6 text-slate-400 mb-0">Check the Dell Support software list for the exact Service Tag. Compatible newer systems may use Dell Optimizer 6.x; older models may still show a legacy MyDell or Dell Power Manager installation, whose published support periods have ended.</p>
             </div>
             <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
               <h3 className="font-semibold text-white mb-2">Latitude and Precision</h3>
@@ -371,26 +383,64 @@ export const DellLaptopOverheatingPage = () => {
             </div>
             <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
               <h3 className="font-semibold text-white mb-2">G Series and Alienware</h3>
-              <p className="text-sm leading-6 text-slate-400 mb-0">Alienware Command Center uses model-specific thermal profiles. Full Speed or Performance profiles can make fans noticeably louder; compare against Balanced or the model's normal profile.</p>
+              <p className="text-sm leading-6 text-slate-400 mb-0">Use Alienware Command Center (AWCC) and the profile supported by the exact model. Some G15/G16 keyboards include Game Shift / G-Key mode; on documented layouts such as the G15 5530, Fn + F9 toggles Game Shift (keyboard Fn-lock behaviour can affect the key). Dell describes G-Key mode as a turbo performance mode and notes that the predefined AWCC performance presets are unavailable while it is active. Higher performance can bring higher fan speed, so check this mode before diagnosing a sudden fan ramp as a fault. The shortcut is not universal across all Dell laptops.</p>
             </div>
           </div>
           <p className="text-xs leading-5 text-slate-500 mt-4">Important: profile names and availability are not universal across Dell models. Do not install a utility or force a profile intended for a different product.</p>
         </section>
 
         <section id="dell-bios-updates" className="scroll-mt-28 rounded-3xl border border-slate-800 bg-slate-900/50 p-6 sm:p-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Check the Exact Dell BIOS Version and Release Notes</h2>
+          <div className="flex flex-wrap items-center gap-3 mb-4">
+            <Badge className="bg-cyan-500/10 text-cyan-300 border-cyan-500/20">Layer 3 — firmware and platform checks</Badge>
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-5">BIOS, Embedded Controller, Charger Identification and Sleep-State Diagnostics</h2>
+
+          <h3 className="text-xl font-bold text-white mb-3">Check the exact Dell BIOS and embedded-controller behaviour</h3>
           <p className="text-slate-300 leading-7">
-            BIOS and embedded-controller firmware can influence fan curves, sensor handling and platform power behaviour on particular models. Before changing hardware, enter your Service Tag on Dell Support and compare the installed BIOS with the version listed for that exact system. Read the release notes: update only when the update applies to your model and addresses a relevant issue or security requirement.
+            BIOS firmware and the embedded controller (EC) participate in platform power, fan and thermal management. A firmware update can address a model-specific control issue, but it cannot clear compacted dust, repair a worn fan bearing or restore a damaged cable. Use only the BIOS package published for the exact Service Tag and read its release notes before updating.
           </p>
           <ol className="list-decimal pl-6 space-y-2 text-sm leading-6 text-slate-300 mt-4">
-            <li>Identify the full model and Service Tag from the laptop or Windows System Information.</li>
-            <li>Open Dell Drivers &amp; Downloads and select the correct device.</li>
-            <li>Review the BIOS release notes and Dell's precautions before downloading.</li>
-            <li>Connect reliable AC power, keep the laptop on a stable surface, and never interrupt a firmware update.</li>
-            <li>After restart, repeat the same workload or pre-boot test and compare the result.</li>
+            <li>Find the model and Service Tag on the chassis or in Dell BIOS Setup (<strong>F2</strong>).</li>
+            <li>In Windows, press <strong>Win + R</strong>, enter <code>msinfo32</code>, and record BIOS Version/Date.</li>
+            <li>Open Dell Drivers &amp; Downloads for that Service Tag and review the BIOS release notes and prerequisites.</li>
+            <li>Use reliable AC power, follow Dell's encryption and update precautions, and never interrupt a BIOS or firmware flash.</li>
+            <li>Repeat the same diagnostic test or workload afterward so the comparison is meaningful.</li>
           </ol>
-          <p className="text-sm leading-6 text-amber-200 mt-5 mb-0">
-            A BIOS update cannot clear compacted dust, repair a worn fan bearing or restore a damaged fan cable. If the diagnostics report a persistent fan error, investigate the cooling hardware as well.
+
+          <div className="grid md:grid-cols-2 gap-5 mt-7">
+            <div className="rounded-2xl border border-slate-700 bg-slate-950/60 p-5">
+              <h3 className="text-lg font-bold text-white mb-3">Very low CPU clocks with ordinary core temperatures</h3>
+              <p className="text-sm leading-6 text-slate-300">
+                A Dell processor that appears stuck around 0.39–0.79 GHz on some models is showing a symptom, not a diagnosis. Low clocks can result from thermal limits, platform power limits, an adapter that is not identified correctly, battery or charging faults, or an external platform-protection signal. A normal CPU core temperature does not rule out a VRM, adapter, battery or EC-related limit; the exact minimum clock varies by processor.
+              </p>
+              <ol className="list-decimal pl-5 space-y-2 text-sm leading-6 text-slate-300 mt-3">
+                <li>Restart and press <strong>F2</strong> to open BIOS Setup.</li>
+                <li>Where the BIOS exposes it, check <strong>AC Adapter Type</strong> or adapter wattage. An <strong>Unknown</strong> or incorrect value is a reason to investigate the charger-identification path.</li>
+                <li>Verify that the adapter is an appropriate Dell-compatible model and wattage; inspect the cable, barrel connector centre pin or USB-C port/cable for looseness or damage.</li>
+                <li>Check the battery health/status and compare behaviour on a known-good, correctly rated adapter. Do not assume the battery is the cause without testing.</li>
+                <li>Return the Dell thermal profile and Windows power mode to a normal baseline, then compare clocks and workload.</li>
+              </ol>
+              <p className="text-xs leading-5 text-amber-200 mt-4 mb-0">
+                PROCHOT# / BD PROCHOT is a platform protection mechanism, not an instruction to bypass throttling. An external platform signal can request a very low processor performance state. Do not disable BD PROCHOT, alter hidden throttle registers or use tuning software to force the CPU to ignore a protection signal; first find why the platform is asserting it.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-slate-700 bg-slate-950/60 p-5">
+              <h3 className="text-lg font-bold text-white mb-3">Laptop hot after being closed in a backpack</h3>
+              <p className="text-sm leading-6 text-slate-300">
+                Many newer Dell systems support Windows Modern Standby (S0 Low Power Idle). During this sleep model, the system can perform limited background activity and may briefly enter active screen-off phases. A laptop that is unexpectedly warm and has lost substantial battery charge after being carried may not have reached or remained in its low-power sleep phase. Modern Standby itself is not proof of a fault; inspect the recorded session.
+              </p>
+              <ol className="list-decimal pl-5 space-y-2 text-sm leading-6 text-slate-300 mt-3">
+                <li>Open Command Prompt and run <code>powercfg /a</code> to see whether <strong>Standby (S0 Low Power Idle)</strong> is supported.</li>
+                <li>Run <code>powercfg /sleepstudy</code> in an elevated Command Prompt and review the generated report for long screen-off sessions, high drain or activity that prevented low-power residency.</li>
+                <li>Check the Windows lid-close action, scheduled maintenance, connected USB devices and docking accessories if the laptop is waking or staying active.</li>
+                <li>Until the issue is understood, use <strong>Hibernate</strong> or a full shutdown before placing a warm laptop in a zipped bag or sleeve. Do not rely on the screen merely turning off.</li>
+              </ol>
+              <p className="text-xs leading-5 text-slate-400 mt-4 mb-0">Dell's Modern Standby troubleshooting guidance and Microsoft's SleepStudy documentation explain how to identify supported sleep states and investigate battery drain.</p>
+            </div>
+          </div>
+          <p className="text-sm leading-6 text-slate-400 mt-6 mb-0">
+            Firmware, adapter identification and sleep-state checks are model- and configuration-dependent. If BIOS does not show adapter identity, or a power/thermal lock persists after the correct adapter and normal profile are confirmed, stop repeated stress testing and arrange a model-specific power-path and board-level inspection.
           </p>
         </section>
 
@@ -431,20 +481,53 @@ export const DellLaptopOverheatingPage = () => {
         </section>
 
         <section id="dell-symptom-checker" className="scroll-mt-28 rounded-3xl border border-cyan-500/20 bg-slate-900/70 p-6 sm:p-9">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">Dell Overheating Symptom Checker</h2>
-          <p className="text-slate-400 text-sm leading-6 mb-5">Choose the symptom that best matches what you see. This is a first-step guide, not a remote hardware diagnosis.</p>
-          <label htmlFor="dell-symptom" className="block text-sm font-semibold text-slate-200 mb-2">What is your Dell laptop doing?</label>
-          <select id="dell-symptom" value={selectedSymptom} onChange={(event) => setSelectedSymptom(event.target.value)} className="w-full rounded-xl border border-slate-700 bg-slate-950 text-white p-4 focus:outline-none focus:ring-2 focus:ring-cyan-500">
-            <option value="fan-idle">Fan is loud during light work or at idle</option>
-            <option value="load-heat">Fan gets louder during gaming or heavy work</option>
-            <option value="shutdown">Laptop shuts down or restarts under load</option>
-            <option value="fan-code">F12 reports a fan error code</option>
-            <option value="throttling">Performance drops or XPS slows down under load</option>
-          </select>
-          <div className="mt-5 rounded-2xl border border-slate-700 bg-slate-950/70 p-5" aria-live="polite">
-            <h3 className="text-lg font-bold text-cyan-200 mb-2">{activeSymptomAdvice.title}</h3>
-            <p className="text-sm leading-7 text-slate-300">{activeSymptomAdvice.advice}</p>
-            <p className="text-sm leading-7 text-amber-200 mb-0"><strong>Next step:</strong> {activeSymptomAdvice.next}</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">Dell Overheating Symptom-to-Cause Diagnostic Matrix</h2>
+          <p className="text-slate-400 text-sm leading-6 mb-5">Every outcome below is rendered in the initial page HTML. Expand the symptom that best matches your Dell laptop. This is diagnostic triage, not a remote hardware diagnosis.</p>
+          <div className="space-y-3">
+            {[
+              {
+                title: '1. Fan is loud during light work or at idle',
+                diagnosis: 'Possible causes include a background process, an aggressive thermal profile, restricted airflow or a fan-control issue. A loud fan alone does not prove that the fan is defective.',
+                next: 'Check Task Manager for sustained CPU activity, return the supported Dell thermal profile to Optimized or Balanced, and check whether Game Shift is active on a compatible G Series model.',
+                escalate: 'Have the cooling system checked if fan speed stays high at low workload, or if the fan grinds, clicks or vibrates.'
+              },
+              {
+                title: '2. Fan gets louder during gaming or heavy work',
+                diagnosis: 'A fan ramp during combined CPU/GPU load is often normal. High ambient temperature, a performance profile or restricted intake/exhaust can increase the fan response.',
+                next: 'Use a hard, flat surface, keep all vents clear, check the selected Dell/AWCC profile and compare the same workload after returning to a normal profile.',
+                escalate: 'Investigate if performance collapses, the system becomes unstable, the fan continues at high speed after the workload ends or the laptop shuts down.'
+              },
+              {
+                title: '3. Laptop shuts down or restarts under load',
+                diagnosis: 'Possible causes include a thermal protection event, fan or heatsink failure, an adapter/battery problem, firmware behaviour or another motherboard power fault.',
+                next: 'Stop repeated stress testing. Save work, allow the system to cool in a ventilated place, then run F12 pre-boot diagnostics and record the complete error and validation code.',
+                escalate: 'Repeated unexpected shutdowns require prompt cooling-system and power-path inspection even if a quick test passes.'
+              },
+              {
+                title: '4. F12 reports a fan diagnostic code',
+                diagnosis: 'Dell lists 2000-0501 as a failed fan functional test, 2000-0511 as a fan that did not respond correctly, and 2000-0512 as a fan running faster than expected. These codes do not independently identify the exact replaceable part.',
+                next: 'Record the entire code and validation code, check for external vent obstruction, consult the Dell ePSA reference and check model-specific BIOS notes before repeating the test.',
+                escalate: 'If the code returns or the fan makes mechanical noise, the fan, cable, sensor or system-board control path needs model-specific inspection. Treat 2000-0712 separately as described in the ePSA section.'
+              },
+              {
+                title: '5. Performance drops or the CPU remains near 0.39–0.79 GHz',
+                diagnosis: 'A very low clock can be caused by thermal throttling, an adapter that is not identified correctly, platform power limits, battery/charging faults or an external protection signal. Normal CPU core temperatures do not rule out every platform-level problem.',
+                next: 'Check the Dell BIOS AC Adapter Type/wattage where available, verify the correct adapter and connection, review battery status, and compare clocks after returning thermal and Windows power modes to normal.',
+                escalate: 'If the correct adapter is recognized and severe throttling persists during light work, stop stress tests and have the charging, EC and board power paths inspected. Do not disable BD PROCHOT.'
+              }
+            ].map((item) => (
+              <details key={item.title} className="group rounded-2xl border border-slate-700 bg-slate-950/60 p-5">
+                <summary className="cursor-pointer list-none text-base font-bold text-cyan-200 marker:hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 rounded">
+                  <span className="flex items-start justify-between gap-4">
+                    <span>{item.title}</span>
+                    <span aria-hidden="true" className="text-cyan-400 transition-transform group-open:rotate-180">⌄</span>
+                  </span>
+                </summary>
+                <p className="text-sm leading-7 text-slate-300 mt-4 mb-2">{item.diagnosis}</p>
+                <p className="text-sm leading-7 text-slate-300 mb-2"><strong className="text-white">Safe next step:</strong> {item.next}</p>
+                <p className="text-sm leading-7 text-amber-200 mb-0"><strong>When to escalate:</strong> {item.escalate}</p>
+              </details>
+            ))}
           </div>
         </section>
 
@@ -490,7 +573,7 @@ export const DellLaptopOverheatingPage = () => {
         </section>
 
         {/* DIY Fixes & Warning */}
-        <section>
+        <section id="dell-safe-checks" className="scroll-mt-28">
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Safe DIY Checks You Can Try</h2>
           <div className="grid sm:grid-cols-3 gap-6 mb-8">
             <Card className="bg-slate-900/40 border-slate-800">
@@ -575,7 +658,7 @@ export const DellLaptopOverheatingPage = () => {
         />
 
         {/* FAQs */}
-        <section className="border-t border-slate-800 pt-12">
+        <section id="dell-faq" className="scroll-mt-28 border-t border-slate-800 pt-12">
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8 text-center">Frequently Asked Questions</h2>
           <div className="space-y-4">
             {FAQS.map((item, idx) => (
@@ -598,12 +681,15 @@ export const DellLaptopOverheatingPage = () => {
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-5">Official Dell References</h2>
           <p className="text-sm leading-6 text-slate-400 mb-5">Dell support instructions and utility availability can change by model and region. Use your exact Service Tag when opening product-specific downloads or manuals.</p>
           <ul className="space-y-3 text-sm leading-6">
-            <li><a href="https://www.dell.com/support/kbdoc/en-us/000181163/how-to-enter-the-built-in-diagnostics-32-bit-diagnostics-supportassist-epsa-epsa-and-psa" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">Dell: Run pre-boot diagnostics and hardware tests</a></li>
-            <li><a href="https://www.dell.com/support/kbdoc/en-us/000181167/reference-table-of-epsa-psa-error-codes-and-troubleshooting-steps-2000-0nnn-series" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">Dell: ePSA 2000-series error-code reference</a></li>
-            <li><a href="https://www.dell.com/support/contents/en-us/article/product-support/self-support-knowledgebase/software-and-downloads/dell-power-manager" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">Dell: Power Manager and newer MyDell / Dell Optimizer applications</a></li>
-            <li><a href="https://www.dell.com/support/kbdoc/en-us/000189990/alienware-m15-ryzen-edition-r5-thermal-measurement-guidance" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">Dell: Alienware Command Center thermal modes (model-specific example)</a></li>
-            <li><a href="https://www.dell.com/support/contents/en-us/article/product-support/self-support-knowledgebase/fix-common-issues/bios-uefi" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">Dell: BIOS / UEFI update guidance</a></li>
-            <li><a href="https://www.dell.com/support/kbdoc/en-us/000130867/how-to-troubleshoot-a-overheating-shutdown-or-thermal-issue-on-a-dell-pc" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">Dell: Overheating, shutdown and thermal troubleshooting</a></li>
+            <li><a href="https://www.dell.com/support/kbdoc/en-us/000181163/how-to-enter-the-built-in-diagnostics-32-bit-diagnostics-supportassist-epsa-epsa-and-psa" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">Dell KB 000181163 — Run pre-boot diagnostics and hardware tests (F12 / ePSA)</a></li>
+            <li><a href="https://www.dell.com/support/kbdoc/en-us/000181167/reference-table-of-epsa-psa-error-codes-and-troubleshooting-steps-2000-0nnn-series" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">Dell KB 000181167 — ePSA / PSA error-code reference (2000-0NNN series)</a></li>
+            <li><a href="https://www.dell.com/support/kbdoc/en-us/000226259/transition-to-the-new-dell-optimizer" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">Dell KB 000226259 — Transition to the new Dell Optimizer and legacy-app lifecycle dates</a></li>
+            <li><a href="https://www.dell.com/support/kbdoc/en-us/000123108/maximizing-your-gaming-performance" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">Dell KB 000123108 — Gaming performance, G-Key / Game Shift and AWCC</a></li>
+            <li><a href="https://www.dell.com/support/kbdoc/en-us/000124211/dell-bios-updates" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">Dell KB 000124211 — BIOS and UEFI update procedures and precautions</a></li>
+            <li><a href="https://www.dell.com/support/kbdoc/en-us/000149580/why-is-my-system-not-going-to-sleep-mode" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">Dell KB 000149580 — Sleep troubleshooting and Modern Standby on Dell systems</a></li>
+            <li><a href="https://www.dell.com/support/kbdoc/en-us/000480910/dell-pro-fan-error-message-after-reboot-following-windows-update" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">Dell KB 000480910 — DT1265-specific 2000-0511 / 2000-0712 false fan-error case</a></li>
+            <li><a href="https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/modern-standby-sleepstudy" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">Microsoft Learn — Modern Standby SleepStudy diagnostics</a></li>
+            <li><a href="https://edc.intel.com/content/www/us/en/design/products/platforms/details/meteor-lake-u-p/core-ultra-processor-datasheet-volume-1-of-2/001/bi-directional-prochot/" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">Intel — Bi-directional PROCHOT# and external platform protection signals</a></li>
           </ul>
         </section>
 
