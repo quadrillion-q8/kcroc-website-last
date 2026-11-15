@@ -3820,22 +3820,22 @@ export const BLOG_POSTS: BlogPost[] = [
     id: "blog-gaming-pc-mistakes-2026",
     slug: "gaming-pc-mistakes-kuwait",
     title: "10 Gaming PC Mistakes That Are Quietly Killing Your Performance (2026)",
-    excerpt: "That RTX 4080 shouldn't be stuttering. Most performance loss in gaming PCs isn't the hardware itself — it's a handful of setup and maintenance mistakes that get worse in Kuwait's climate.",
-    description: "The most common gaming PC mistakes we see on the repair bench in Kuwait — from dried thermal paste and bad airflow to bottlenecked builds and disabled XMP — and how to fix each one.",
+    excerpt: "That RTX 4080 shouldn't be stuttering. Many performance problems come from setup and maintenance mistakes rather than the hardware model alone.",
+    description: "Common gaming PC mistakes — from dried thermal paste and poor airflow to bottlenecked builds and disabled XMP — and how to identify them.",
     content: [
       "A gaming PC that stutters, throttles, or crashes may have a setup or maintenance problem, but software conflicts, power delivery, cooling faults and genuine hardware failure are also possible. Use this checklist to narrow the cause before replacing parts.",
-      "In Kuwait, warm ambient temperatures and airborne dust can reduce cooling headroom and accelerate buildup around filters, fans and heatsinks. These conditions make regular inspection important, but they do not prove that thermal paste or another single component is the cause of every performance problem.",
+      "Warm ambient temperatures and airborne dust can reduce cooling headroom and accelerate buildup around filters, fans and heatsinks. These conditions make inspection important, but they do not prove that thermal paste or another single component is the cause of every performance problem.",
       "Many common performance mistakes are inexpensive to investigate: airflow direction, cooling condition, RAM profile settings, driver health and PSU compatibility are useful checks before assuming a new GPU or CPU is defective."
     ],
     richContent: [
-      { type: 'paragraph', text: "A brand-new GPU that stutters. A CPU that throttles mid-match. A PC that ran perfectly for six months and now randomly restarts. Most of the time, none of this is a defective part — it's one of a handful of avoidable mistakes stacking up quietly in the background. We see the same patterns on the repair bench week after week, and almost all of them are fixable in under an hour." },
-      { type: 'callout', variant: 'didyouknow', title: 'Did You Know?', text: "Kuwait's summer ambient temperatures routinely exceed 45°C, and fine desert dust is small enough to work through standard case mesh filters. A gaming PC here can accumulate in six months the dust buildup a similar PC in a temperate climate takes two years to reach." },
+      { type: 'paragraph', text: "A brand-new GPU that stutters. A CPU that throttles mid-match. A PC that ran perfectly for six months and now randomly restarts. Most of the time, none of this is a defective part — it's one of a handful of avoidable mistakes stacking up quietly in the background. The same patterns appear across many builds, but the cause and time required to resolve them depend on the component, condition and test results." },
+      { type: 'callout', variant: 'didyouknow', title: 'Did You Know?', text: "In hot, dusty environments, elevated intake-air temperatures can reduce the margin available to the cooling system, while fine dust can pass through some mesh filters and accumulate on fans and heatsink fins. The rate varies with room conditions, placement, case design and usage; there is no universal six-month versus two-year comparison." },
       { type: 'callout', variant: 'info', title: 'How to use this checklist', text: "This article covers broad setup and performance mistakes. For a full desktop cooling diagnosis—including airflow, fans, coolers and thermal interfaces—see our dedicated gaming-PC overheating guide instead of repeating the same cooling procedure here." },
 
       { type: 'h2', text: '1. Letting Dust Choke Your Airflow', id: 'dust-buildup' },
       { type: 'paragraph', text: "Dust buildup is one possible performance and cooling problem. It can restrict airflow through heatsink fins and filters, forcing fans to work harder. The practical check is to inspect the actual cooling path rather than assume that every temperature problem is caused by dust." },
       { type: 'image', src: '/images/custom-gaming-pc-teardown-and-diagnostics-workbench.webp', alt: 'A gaming PC opened up on a diagnostics workbench for a full cleaning and inspection', caption: "A full teardown clean — radiators, heatsinks, fans, and dust filters — restores airflow that slowly disappears over months of normal use." },
-      { type: 'paragraph', text: "A proper clean isn't just wiping the outside of the case. It means pulling the GPU, removing fan shrouds where possible, and blowing compressed air through radiator fins from the clean side out, not just from the front. For many dusty or floor-level setups in Kuwait, inspecting filters and cooling every 3–6 months is a practical starting point. Clean when buildup or symptoms appear; no interval can guarantee that thermal throttling will be prevented." },
+      { type: 'paragraph', text: "A proper clean isn't just wiping the outside of the case. It means pulling the GPU, removing fan shrouds where possible, and blowing compressed air through radiator fins from the clean side out, not just from the front. For dusty or floor-level setups, inspect filters and cooling more frequently. Use visible buildup, fan behavior and temperature trends to decide when cleaning is needed; no fixed interval can guarantee that thermal throttling will be prevented." },
 
       { type: 'h2', text: '2. Never Replacing Thermal Paste', id: 'thermal-paste' },
       { type: 'paragraph', text: "Factory-applied thermal paste can remain effective for years, but its condition depends on the laptop or PC design, workload, thermal material, mounting pressure and service history. Degraded or poorly applied material can contribute to higher temperatures, but it should be considered alongside dust, airflow, fan condition and cooler contact rather than assumed from age alone." },
@@ -3848,13 +3848,13 @@ export const BLOG_POSTS: BlogPost[] = [
         { feature: 'Where dust enters', values: ['Filtered intake only', 'Every unfiltered gap and seam'] },
         { feature: 'Internal dust buildup', values: ['Slow, mostly on filters', 'Fast, coats every component'] },
         { feature: 'Best setup', values: ['More/stronger intake than exhaust', 'More exhaust than intake'] },
-        { feature: 'Recommended for Kuwait', values: ['Yes', 'Not recommended'] },
+        { feature: 'Recommended for dust-heavy environments', values: ['Yes', 'Not recommended'] },
       ]},
-      { type: 'paragraph', text: "The fix is usually just re-checking fan orientation (arrows on the fan frame show airflow direction) and making sure total intake CFM is slightly higher than total exhaust CFM. This alone can cut long-term dust accumulation dramatically without spending a single Dinar." },
+      { type: 'paragraph', text: "The fix is usually just re-checking fan orientation (arrows on the fan frame show airflow direction) and making sure total intake CFM is slightly higher than total exhaust CFM. This alone can cut long-term dust accumulation dramatically without buying unnecessary parts." },
 
       { type: 'h2', text: '4. Skipping BIOS Updates and Leaving XMP/EXPO Off', id: 'xmp-bios' },
       { type: 'paragraph', text: "New RAM kits are sold with an advertised speed — say 6000MHz — but out of the box, most motherboards run that same RAM at a conservative default like 4800MHz until you manually enable XMP (Intel) or EXPO (AMD) in the BIOS. That's not a minor detail: on modern platforms, especially AMD's Ryzen, RAM speed has a direct, measurable impact on gaming frame rates." },
-      { type: 'image', src: '/images/gaming-pc-build-bios-memory-setup-kuwait-1000.webp', alt: 'BIOS memory setup screen during a gaming PC build in Kuwait', caption: "Enabling XMP or EXPO in the BIOS is a two-minute change that unlocks the RAM speed you actually paid for." },
+      { type: 'image', src: '/images/custom-gaming-pc-msi-gpu-intel-cooler-build.webp', alt: 'Gaming PC motherboard and memory configuration during a system build', caption: "Enabling XMP or EXPO in the BIOS is a two-minute change that unlocks the RAM speed you actually paid for." },
       { type: 'callout', variant: 'info', title: 'Info', text: "Outdated BIOS and chipset firmware can also cause compatibility issues with newer CPUs, RAM kits, and even GPUs — showing up as random reboots or a PC that won't boot with new parts installed. A BIOS update is often the actual fix, not a hardware swap." },
 
       { type: 'h2', text: '5. Bottlenecking a Powerful GPU with a Weak CPU or Slow Storage', id: 'bottlenecking' },
@@ -3881,7 +3881,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: 'callout', variant: 'expert', title: 'Expert Advice', text: "If you overclock, monitor temperatures during an actual gaming session, not just a quick benchmark — sustained load over 30-60 minutes reveals thermal problems that a 2-minute stress test can miss entirely." },
 
       { type: 'h2', text: '9. Placing the PC Somewhere It Can\'t Breathe', id: 'placement' },
-      { type: 'paragraph', text: "Where the PC physically sits matters more than most people expect. A tower pushed flush against a wall, tucked inside a closed desk cabinet, sitting on thick carpet, or positioned in direct sunlight through a window all restrict intake airflow or add extra ambient heat the cooling system now has to fight against — on top of Kuwait's already-high indoor and outdoor temperatures during summer." },
+      { type: 'paragraph', text: "Where the PC physically sits matters more than most people expect. A tower pushed flush against a wall, tucked inside a closed desk cabinet, sitting on thick carpet, or positioned in direct sunlight through a window all restrict intake airflow or add extra ambient heat the cooling system now has to fight against — on top of elevated ambient temperatures during summer." },
       { type: 'image', src: '/images/rgb-gaming-pc-radiator-build-interior.webp', alt: 'A gaming PC with visible radiator and fan clearance for proper airflow', caption: "A few centimeters of clearance around intake and exhaust vents makes a measurable difference to sustained gaming temperatures." },
       { type: 'paragraph', text: "Leaving at least 10-15cm of clearance around intake and exhaust panels, avoiding enclosed cabinets without ventilation, and keeping the case out of direct sun solves this at zero cost — it's purely a placement decision." },
 
@@ -3903,7 +3903,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: 'h2', text: 'Frequently Asked Questions', id: 'faq' },
       { type: 'faq', items: [
         { question: 'Why is my gaming PC suddenly performing worse?', answer: 'Common causes include dust-choked cooling, cooling-interface problems, disabled XMP/EXPO settings, driver conflicts, background software and power-delivery issues. Do not rule out hardware failure without testing.' },
-        { question: 'How often should I clean a gaming PC in Kuwait?', answer: "Inspect filters and cooling every 3–6 months as a starting point, then adjust based on dust, placement, fan noise and temperature trends. Clean sooner when buildup or symptoms appear." },
+        { question: 'How often should I clean a gaming PC?', answer: "Inspect filters and cooling every 3–6 months as a starting point, then adjust based on dust, placement, fan noise and temperature trends. Clean sooner when buildup or symptoms appear." },
         { question: 'Does XMP actually make a difference for gaming?', answer: "Yes, particularly on AMD Ryzen platforms where memory speed directly affects the Infinity Fabric and, in turn, gaming frame rates. Leaving RAM at default JEDEC speeds instead of its rated XMP/EXPO profile can leave meaningful performance on the table." },
         { question: 'How do I know if my PSU is causing problems?', answer: "Random shutdowns or reboots specifically under heavy load (gaming, benchmarks) rather than at idle, GPU artifacting that comes and goes, and instability that started right after a GPU upgrade are all classic signs of insufficient PSU wattage or a degrading unit." },
         { question: 'Is overclocking safe for a gaming PC?', answer: "It can be, provided your cooling has real headroom and you monitor temperatures during actual sustained gameplay, not just a short benchmark. Overclocking on marginal cooling — especially with existing dust or airflow issues — increases the risk of instability and long-term wear." },
@@ -3916,11 +3916,11 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "/images/custom-gaming-pc-teardown-and-diagnostics-workbench.webp",
     discoverImage: "/images/discover/custom-gaming-pc-teardown-and-diagnostics-workbench-1200x675.webp",
     date: "2026-08-17",
-    author: "KCROC Gaming Specialists",
+    author: "Gaming Hardware Editorial Team",
     category: "Gaming",
     readTime: "9-11 min read",
-    tags: ["Gaming PC", "PC Maintenance", "Thermal Throttling", "XMP", "Gaming Performance", "Computer Repair Kuwait"],
-    clusterParent: "laptop-repair-kuwait-2026"
+    tags: ["Gaming PC", "PC Maintenance", "Thermal Throttling", "XMP", "Gaming Performance", "Gaming PC Maintenance"],
+
   },
 
   {
@@ -9163,13 +9163,13 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "paragraph",
-        text: "That's where proper PC diagnosis matters. KCROC troubleshoots gaming PCs from software and performance problems through to cooling, GPU, motherboard and component-level faults: https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait"
+        text: "That is where measurement matters. Compare frame-time logs, GPU/CPU utilization, temperatures, memory use, driver behavior and storage activity before deciding that a graphics setting or component is responsible."
       },
       {
         type: "callout",
         variant: "expert",
-        title: "Need help with an underperforming gaming PC?",
-        text: "KCROC can diagnose the actual problem instead of simply telling you to turn the graphics down. Use the gaming PC repair page when overheating, stuttering, crashing or unexplained performance loss continues after sensible tuning."
+        title: "When tuning is not enough",
+        text: "When performance remains inconsistent after sensible tuning, collect repeatable benchmark and frame-time evidence. The cause may be outside the graphics menu, including thermal throttling, driver faults, insufficient RAM, VRAM limits, storage latency or hardware instability."
       },
       {
         type: "h2",
@@ -9187,7 +9187,7 @@ export const BLOG_POSTS: BlogPost[] = [
       }
     ],
     image: "/images/geforce-rtx-gaming-pc-rgb-lighting.webp",
-    discoverImage: "/images/discover/gaming-pc-thermal-throttling-kuwait-1200x675.webp",
+    discoverImage: "/images/discover/custom-gaming-pc-teardown-and-diagnostics-workbench-1200x675.webp",
     date: "2026-10-05",
     technicalReviewDate: "October 5, 2026",
     author: "Imran Natiq",
@@ -9205,7 +9205,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "VRAM",
       "Gaming PC Performance"
     ],
-    seoTitle: "PC Gaming Graphics Settings: Better Visuals Without Maxing Everything | KCROC",
+    seoTitle: "PC Gaming Graphics Settings: Better Visuals Without Maxing Everything",
     seoDescription: "Which PC graphics settings are worth keeping high? Learn how to improve image quality without wasting GPU performance or FPS.",
     contentType: "blog"
   },
