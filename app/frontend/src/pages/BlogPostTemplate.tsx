@@ -8,7 +8,7 @@ import {
   ChevronDown, Link2, ArrowUp, Phone, MessageCircle, Check
 } from 'lucide-react';
 
-import { ROUTES, getBlogRoute, getContentRoute, isGlobalBlogEditorialPath } from '../constants/routes';
+import { ROUTES, getBlogRoute, getContentRoute, isGlobalBlogEditorialPath, KUWAIT_EDITORIAL_EXCEPTION_SLUGS } from '../constants/routes';
 import { BLOG_POSTS, BlogPost, ContentBlock } from '../constants/blogPosts';
 import { KCROC_GRAPH } from '../data/graph';
 import { AutoLink } from '../utils/linkGraph';
