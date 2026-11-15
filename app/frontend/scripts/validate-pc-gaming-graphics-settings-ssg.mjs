@@ -78,7 +78,7 @@ for (const marker of [
   'Radeon Image Sharpening',
   'NVIDIA App',
   'VRAM',
-  'frame rate',
+  'FPS',
 ]) {
   assert.ok(articleHtml.includes(marker), 'Expected graphics-settings guidance is missing: ' + marker);
 }
