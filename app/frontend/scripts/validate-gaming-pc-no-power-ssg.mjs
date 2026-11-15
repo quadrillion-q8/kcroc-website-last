@@ -62,10 +62,10 @@ for (const question of faqQuestions) {
   assert.ok(faqHtml.includes(question), 'FAQ question missing from prerendered HTML: ' + question);
 }
 const visibleFaqItems = faqHtml.match(
-  /<section\\b[^>]*>\\s*<h3\\b[^>]*>[\\s\\S]*?<\\/h3>\\s*<p\\b[^>]*>[\\s\\S]*?<\\/p>\\s*<\\/section>/g,
+  /<section\b[^>]*>\s*<h3\b[^>]*>[\s\S]*?<\/h3>\s*<p\b[^>]*>[\s\S]*?<\/p>\s*<\/section>/g,
 ) ?? [];
 assert.equal(visibleFaqItems.length, 11, 'Expected eleven complete static FAQ pairs; found ' + visibleFaqItems.length);
-assert.ok(!/<details\\b/i.test(faqHtml), 'The FAQ section is using collapsed disclosures instead of static answers.');
+assert.ok(!/<details\b/i.test(faqHtml), 'The FAQ section is using collapsed disclosures instead of static answers.');
 for (const faqItem of visibleFaqItems) {
   assert.ok(faqItem.replace(/<[^>]+>/g, '').trim().length > 80, 'A static FAQ card is empty or incomplete.');
 }
@@ -77,7 +77,7 @@ assert.ok(html.includes('"reviewedBy"'), 'Technical reviewer metadata is missing
 assert.ok(html.includes('Hardware Engineer and Technical Reviewer'), 'Neutral reviewer schema metadata is missing.');
 assert.ok(html.includes('2026-10-01'), 'The original article publication date is missing from structured data.');
 assert.ok(html.includes('2026-11-09'), 'The technical review date is missing from structured data.');
-const schemaQuestionCount = (html.match(/"@type"\\s*:\\s*"Question"/g) ?? []).length;
+const schemaQuestionCount = (html.match(/"@type"\s*:\s*"Question"/g) ?? []).length;
 assert.equal(schemaQuestionCount, 11, 'FAQPage JSON-LD must contain the same eleven questions as the static HTML.');
 
 for (const marker of [
@@ -95,15 +95,15 @@ for (const forbidden of [
   /Hawalli/i,
   /Kuwait/i,
   /pickup|pick-up|delivery/i,
-  /KWD|\\bKD\\b/i,
+  /KWD|\bKD\b/i,
   /No Fix, No Fee/i,
   /30-day (?:parts-and-labour )?warranty/i,
-  /\\+965|wa\\.me|tel:/i,
+  /\+965|wa\.me|tel:/i,
   /KCROC/i,
-  /href="\\/(?:gaming-pc-repair-kuwait|motherboard-repair-kuwait|contact|book)/i,
+  /href="\/(?:gaming-pc-repair-kuwait|motherboard-repair-kuwait|contact|book)/i,
 ]) {
   assert.ok(!forbidden.test(articleHtml), 'Global editorial article contains a local business or sales trace: ' + forbidden);
 }
-assert.ok(!/<li\\b[^>]*>\\s*<\\/li>/i.test(articleHtml), 'An empty list item remains in the prerendered page.');
+assert.ok(!/<li\b[^>]*>\s*<\/li>/i.test(articleHtml), 'An empty list item remains in the prerendered page.');
 
 console.log('Gaming PC no-power SSG validation passed: canonical URL, 11 visible FAQ answers and schema, board-level troubleshooting, safety guidance and global editorial scope.');
