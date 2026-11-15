@@ -1655,7 +1655,7 @@ export default function BlogPostTemplate() {
                       <p className="text-xs font-black uppercase tracking-wider text-cyan-400 mb-1">
                         Written &amp; technically reviewed by
                       </p>
-                      {isGlobalNewsArticle ? (
+                      {isGlobalEditorialArticle ? (
                         <p className="text-lg font-bold text-white">Imran Natiq</p>
                       ) : (
                         <Link to="/author/imran" className="text-lg font-bold text-white hover:text-cyan-400 transition-colors">
