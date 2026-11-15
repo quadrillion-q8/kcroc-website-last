@@ -57,6 +57,21 @@ const BIOS_UEFI_RECOVERY_GUIDE_CARD: BlogPost = {
   contentType: 'guide',
 };
 
+// Standalone Windows gaming stutter guide card for related-guide navigation.
+const WINDOWS_GAMING_STUTTER_GUIDE_CARD: BlogPost = {
+  id: 'guide-windows-gaming-stutter',
+  slug: 'windows-gaming-performance-stutter-fix',
+  title: 'Windows 11 Gaming Stutter & FPS Drops: Complete Fix Guide for 2026',
+  excerpt: 'Diagnose frame-time spikes, shaders, Game Bar, DPC latency, drivers, RAM, GPU limits and thermal throttling in Windows 11.',
+  content: [],
+  image: '/images/geforce-rtx-gaming-pc-rgb-lighting.webp',
+  date: '2026-09-29',
+  author: 'Imran Natiq',
+  category: 'Gaming Performance',
+  readTime: '10–12 min read',
+  contentType: 'guide',
+};
+
 // Keep company-specific privacy links out of global Windows/technical copy.
 const GLOBAL_EDITORIAL_AUTOLINK_EXCLUSIONS = ['page-privacy'];
 
@@ -375,7 +390,7 @@ const INTERNAL_LINK_LABELS: Record<string, string> = {
   'https://www.computerrepairkuwait.com/guides/dpc-latency-gaming-stutter':
     'DPC Latency & Gaming Stutter',
   'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait':
-    'Gaming PC & GPU Repair Kuwait',
+    'Gaming PC & GPU Repair',
   'https://www.computerrepairkuwait.com/guides/ssd-not-detected-windows-11':
     'SSD Not Detected Diagnostic Guide',
   'https://www.computerrepairkuwait.com/guides/why-is-my-laptop-so-hot':
@@ -554,6 +569,22 @@ const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
     'Intel Support — Intel VMD platforms and Intel RST driver guide',
   'https://www.dell.com/support/kbdoc/en-us/000188116/intel-11th-generation-processors-no-drives-can-be-found-during-windows-10-installation':
     'Dell Support — Intel VMD and missing drives during Windows installation',
+  'https://www.amd.com/en/resources/support-articles/faqs/DH3-012.html':
+    'AMD Support — Customize graphics settings in Adrenalin Edition',
+  'https://www.amd.com/en/products/software/adrenalin/radeon-image-sharpening.html':
+    'AMD — Radeon Image Sharpening overview',
+  'https://www.nvidia.com/en-us/geforce/news/nvidia-app-global-dlss-overrides-rtx-40-series-smooth-motion/':
+    'NVIDIA — App graphics and legacy driver settings',
+  'https://www.nvidia.com/en-us/geforce/news/nvidia-app-download-and-features/':
+    'NVIDIA — App overview, graphics controls and overlay',
+  'https://learn.microsoft.com/en-us/windows/win32/api/dxgi1_4/ns-dxgi1_4-dxgi_query_video_memory_info':
+    'Microsoft Learn — DXGI video-memory budget and CurrentUsage',
+  'https://www.nvidia.com/en-us/software/nvidia-app/release-highlights/':
+    'NVIDIA — App overlay and Game Filters release highlights',
+  'https://developer.nvidia.com/rtx/streamline/get-started':
+    'NVIDIA Developer — DLSS Frame Generation integration notes',
+  'https://docs.nvidia.com/nsight-systems/AnalysisGuide/':
+    'NVIDIA Nsight Systems — CPU-bound and GPU-bound frame analysis',
 };
 
 const getTechnicalSourceLabel = (url: string) => TECHNICAL_SOURCE_LABELS[url] ?? 'External source';
@@ -1081,7 +1112,7 @@ export default function BlogPostTemplate() {
     if (!post) return [];
     if (post.relatedPostSlugs?.length) {
       const postsBySlug = new Map(
-        [...BLOG_POSTS, GAMEBAR_PRESENCE_WRITER_GUIDE_CARD, BIOS_UEFI_RECOVERY_GUIDE_CARD].map((item) => [item.slug, item] as const)
+        [...BLOG_POSTS, GAMEBAR_PRESENCE_WRITER_GUIDE_CARD, BIOS_UEFI_RECOVERY_GUIDE_CARD, WINDOWS_GAMING_STUTTER_GUIDE_CARD].map((item) => [item.slug, item] as const)
       );
       return post.relatedPostSlugs
         .map((relatedSlug) => postsBySlug.get(relatedSlug))
@@ -1277,6 +1308,23 @@ export default function BlogPostTemplate() {
               { "@type": "Thing", "name": "Component-level laptop repair" }
             ]
           } : {}),
+          ...(post.slug === "pc-gaming-graphics-settings-better-visuals-fps" ? {
+            "articleSection": post.category,
+            "keywords": post.tags ?? [],
+            "isAccessibleForFree": true,
+            "proficiencyLevel": "Beginner to Advanced",
+            "reviewedBy": { "@id": `${AUTHOR_URL}#person` },
+            "about": [
+              { "@type": "Thing", "name": "PC graphics settings optimization" },
+              { "@type": "Thing", "name": "GPU rendering pipeline and frame time" },
+              { "@type": "Thing", "name": "Anisotropic filtering and texture sampling" },
+              { "@type": "Thing", "name": "Video memory budgets and texture residency" },
+              { "@type": "Thing", "name": "Screen-space ambient occlusion and reflections" },
+              { "@type": "Thing", "name": "Ray tracing and path tracing" },
+              { "@type": "Thing", "name": "DLSS, FSR and XeSS upscaling" },
+              { "@type": "Thing", "name": "Gaming frame-time and 1% low analysis" }
+            ]
+          } : {}),
           ...(post.slug === "nvidia-dlss-5-neural-rendering-explained" ? {
             "reviewedBy": {
               "@type": "Person",
@@ -1327,9 +1375,18 @@ export default function BlogPostTemplate() {
           "image": toAbsoluteAssetUrl(post.discoverImage || post.image),
           "datePublished": post.date,
           "dateModified": getModifiedDate(post),
-          "author": isGlobalEditorialArticle
-            ? { "@type": "Person", "name": post.author, "jobTitle": "Hardware Engineer and Technical Reviewer" }
-            : post.slug === "windows-11-26h2-iso-released"
+          "author": post.slug === "pc-gaming-graphics-settings-better-visuals-fps"
+            ? {
+                "@type": "Person",
+                "@id": `${AUTHOR_URL}#person`,
+                "name": "Imran Natiq",
+                "jobTitle": "Hardware Repair Engineer and Technical Reviewer",
+                "url": AUTHOR_URL,
+                "worksFor": { "@id": `${business.websiteUrl}/#business` }
+              }
+            : isGlobalEditorialArticle
+              ? { "@type": "Person", "name": post.author, "jobTitle": "Hardware Engineer and Technical Reviewer" }
+              : post.slug === "windows-11-26h2-iso-released"
               ? { "@id": `${AUTHOR_URL}#person` }
               : post.author === "Imran Natiq" ? {
                 "@type": "Person",
@@ -1345,9 +1402,11 @@ export default function BlogPostTemplate() {
                       "url": business.websiteUrl
                     }
               } : { "@type": "Organization", "name": post.author },
-          ...(isGlobalEditorialArticle ? {} : {
-            "publisher": ["windows-11-26h2-iso-released", "nvidia-dlss-5-neural-rendering-explained", "gaming-pc-not-turning-on-kuwait"].includes(post.slug)
+          ...(isGlobalEditorialArticle && post.slug !== "pc-gaming-graphics-settings-better-visuals-fps" ? {} : {
+            "publisher": post.slug === "pc-gaming-graphics-settings-better-visuals-fps"
               ? { "@id": `${business.websiteUrl}/#business` }
+              : ["windows-11-26h2-iso-released", "nvidia-dlss-5-neural-rendering-explained", "gaming-pc-not-turning-on-kuwait"].includes(post.slug)
+                ? { "@id": `${business.websiteUrl}/#business` }
               : {
                 "@type": "Organization",
                 "name": post.slug === "why-is-my-laptop-so-slow" ? "KCROC Hardware Engineering Lab" : business.legalName,
@@ -1794,6 +1853,14 @@ export default function BlogPostTemplate() {
               )}
             </section>
           </article>
+
+          {post.slug === 'pc-gaming-graphics-settings-better-visuals-fps' && (
+            <KuwaitLocalCTA
+              topic={post.title}
+              placement="pc_graphics_settings_diagnostic"
+              showWorkshopAddress
+            />
+          )}
 
           {!isNews && !isGlobalEditorialArticle && (
             isGamingNoDisplayGuide
