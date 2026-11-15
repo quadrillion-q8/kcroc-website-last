@@ -8,10 +8,7 @@ const candidates = [
   path.join(dist, 'guides', 'gaming-pc-not-turning-on-kuwait', 'index.html'),
 ];
 const articlePath = candidates.find((candidate) => existsSync(candidate));
-assert.ok(
-  articlePath,
-  'Gaming PC no-power guide SSG validation failed: expected prerendered .html or /index.html output.',
-);
+assert.ok(articlePath, 'Gaming PC no-power guide SSG validation failed: expected prerendered output.');
 const html = readFileSync(articlePath, 'utf8');
 
 assert.ok(
@@ -19,22 +16,17 @@ assert.ok(
   'The canonical guide URL is missing or the original slug changed.',
 );
 assert.ok(
-  html.includes('Gaming PC Won’t Turn On? Power, PSU') &&
-    html.includes('Motherboard Troubleshooting in Kuwait | KCROC'),
-  'The updated page title is missing from initial HTML.',
+  html.includes('Gaming PC Won’t Turn On? PSU, Power Rails and Motherboard Troubleshooting'),
+  'The global article title is missing from initial HTML.',
 );
 assert.ok(
-  html.includes('Gaming PC dead, clicking off after 1 second, or fans spinning with no POST? Follow Imran Natiq'),
-  'The updated page description is missing from initial HTML.',
+  html.includes('Learn how to separate PSU, ATX power-rail, motherboard, short-circuit and display-path faults'),
+  'The global article description is missing from initial HTML.',
 );
 assert.ok(html.includes('15–18 min read'), 'The expanded guide reading-time label is missing.');
-assert.ok(html.includes('November 12, 2026'), 'The visible technical-review date is missing.');
-assert.ok(
-  html.includes('KCROC Hardware Engineering Lab, Hawalli, Kuwait'),
-  'The Hawalli technical-review location is missing.',
-);
+assert.ok(html.includes('November 9, 2026'), 'The visible technical-review date is missing.');
+assert.ok(html.includes('Hardware Engineer and technical reviewer'), 'The neutral technical reviewer byline is missing.');
 
-// All original section headings must remain visible.
 for (const heading of [
   'First: Which “won’t turn on” problem do you actually have?',
   'Safe checks you can do before repair',
@@ -49,7 +41,6 @@ for (const heading of [
   assert.ok(html.includes(heading), 'An existing guide heading is missing: ' + heading);
 }
 
-// The FAQ block must be visible as complete question/answer pairs in static HTML.
 const faqHeading = html.indexOf('id="faq"');
 assert.ok(faqHeading >= 0, 'Visible FAQ heading is missing.');
 const articleEnd = html.indexOf('</article>', faqHeading);
@@ -63,99 +54,56 @@ const faqQuestions = [
   'Why does my gaming PC click once, flash its RGB or fans, and turn right back off?',
   'Can I test the PC by unplugging the graphics card or its power cable?',
   'Could a dead CMOS battery stop a gaming PC from turning on?',
-  'Do you repair a standalone graphics card if it is causing the short circuit?',
+  'Can a graphics card alone prevent a gaming PC from starting?',
   'Will a motherboard or PSU repair erase games and files on my SSD?',
-  'How does free pickup and delivery work for a heavy gaming PC in Kuwait?',
+  'What should I do if the PSU shuts down during a startup attempt?',
 ];
 for (const question of faqQuestions) {
   assert.ok(faqHtml.includes(question), 'FAQ question missing from prerendered HTML: ' + question);
 }
 const visibleFaqItems = faqHtml.match(
-  /<section\b[^>]*>\s*<h3\b[^>]*>[\s\S]*?<\/h3>\s*<p\b[^>]*>[\s\S]*?<\/p>\s*<\/section>/g,
+  /<section\\b[^>]*>\\s*<h3\\b[^>]*>[\\s\\S]*?<\\/h3>\\s*<p\\b[^>]*>[\\s\\S]*?<\\/p>\\s*<\\/section>/g,
 ) ?? [];
-assert.equal(
-  visibleFaqItems.length,
-  11,
-  'Expected eleven complete static FAQ pairs (four original plus eight added); found ' + visibleFaqItems.length,
-);
-assert.ok(!/<details\b/i.test(faqHtml), 'The FAQ section is using collapsed disclosures instead of static answers.');
+assert.equal(visibleFaqItems.length, 11, 'Expected eleven complete static FAQ pairs; found ' + visibleFaqItems.length);
+assert.ok(!/<details\\b/i.test(faqHtml), 'The FAQ section is using collapsed disclosures instead of static answers.');
 for (const faqItem of visibleFaqItems) {
   assert.ok(faqItem.replace(/<[^>]+>/g, '').trim().length > 80, 'A static FAQ card is empty or incomplete.');
 }
 
-// Article and FAQ structured data must describe the same eleven visible FAQs.
 for (const type of ['TechArticle', 'FAQPage', 'BreadcrumbList']) {
-  assert.ok(
-    html.includes('"@type":"' + type + '"') || html.includes('"@type": "' + type + '"'),
-    'Missing ' + type + ' structured data.',
-  );
+  assert.ok(html.includes('"@type":"' + type + '"') || html.includes('"@type": "' + type + '"'), 'Missing ' + type + ' structured data.');
 }
 assert.ok(html.includes('"reviewedBy"'), 'Technical reviewer metadata is missing.');
-assert.ok(html.includes('Lead Hardware Repair Engineer'), 'Lead Hardware Repair Engineer is missing from the schema/byline.');
-assert.ok(html.includes('KCROC Hardware Engineering Lab'), 'KCROC lab attribution is missing from the page/schema.');
+assert.ok(html.includes('Hardware Engineer and Technical Reviewer'), 'Neutral reviewer schema metadata is missing.');
 assert.ok(html.includes('2026-10-01'), 'The original article publication date is missing from structured data.');
-assert.ok(html.includes('2026-11-12'), 'The updated technical review date is missing from structured data.');
-const schemaQuestionCount = (html.match(/"@type"\s*:\s*"Question"/g) ?? []).length;
+assert.ok(html.includes('2026-11-09'), 'The technical review date is missing from structured data.');
+const schemaQuestionCount = (html.match(/"@type"\\s*:\\s*"Question"/g) ?? []).length;
 assert.equal(schemaQuestionCount, 11, 'FAQPage JSON-LD must contain the same eleven questions as the static HTML.');
 
-// Engineering and Kuwait-specific checks must survive prerendering.
 for (const marker of [
-  '+5VSB',
-  'PS_ON#',
-  'PWR_OK',
-  'DrMOS',
-  'SPS',
-  'Super I/O',
-  'RSMRST#',
-  'SLP_S3#',
-  'SCP',
-  'OCP',
-  'OPP',
-  '12VHPWR',
-  '12V-2x6',
-  'Type G',
-  'BS 1363',
-  '240V / 50Hz',
-  'Kuwait dust and humidity',
-  'modular PSU cables',
-  'Do not assume every PC cord must use a 13A fuse',
+  '+5VSB', 'PS_ON#', 'PWR_OK', 'DrMOS', 'SPS', 'Super I/O',
+  'RSMRST#', 'SLP_S3#', 'SCP', 'OCP', 'OPP', 'modular PSU cables',
 ]) {
-  assert.ok(html.includes(marker), 'Missing technical / local diagnostic detail: ' + marker);
+  assert.ok(html.includes(marker), 'Missing technical diagnostic detail: ' + marker);
 }
 
-// Conversion and scope guardrails.
-for (const phrase of [
-  'FREE initial diagnostic',
-  'repair from 25 KWD',
-  'No Fix, No Fee',
-  '30-day parts-and-labour warranty',
-  'Free pickup and delivery',
-  'Al Mullah Complex, Basement Shop 19',
-  '+965 55301913',
-  'does not accept loose standalone graphics cards',
-  'does not offer custom PC building',
-  'does not sell standalone data-recovery services',
+const articleStart = html.indexOf('<article');
+const articleEndTag = html.indexOf('</article>', articleStart);
+assert.ok(articleStart >= 0 && articleEndTag > articleStart, 'Article content wrapper is missing.');
+const articleHtml = html.slice(articleStart, articleEndTag + '</article>'.length);
+for (const forbidden of [
+  /Hawalli/i,
+  /Kuwait/i,
+  /pickup|pick-up|delivery/i,
+  /KWD|\\bKD\\b/i,
+  /No Fix, No Fee/i,
+  /30-day (?:parts-and-labour )?warranty/i,
+  /\\+965|wa\\.me|tel:/i,
+  /KCROC/i,
+  /href="\\/(?:gaming-pc-repair-kuwait|motherboard-repair-kuwait|contact|book)/i,
 ]) {
-  assert.ok(html.includes(phrase), 'Missing KCROC service term or scope guardrail: ' + phrase);
+  assert.ok(!forbidden.test(articleHtml), 'Global editorial article contains a local business or sales trace: ' + forbidden);
 }
+assert.ok(!/<li\\b[^>]*>\\s*<\\/li>/i.test(articleHtml), 'An empty list item remains in the prerendered page.');
 
-// Required contextual internal links and verified related-guide route.
-for (const expected of [
-  'href="/gaming-pc-repair-kuwait"',
-  'href="/motherboard-repair-kuwait"',
-  'href="https://www.computerrepairkuwait.com/guides/gaming-pc-black-screen-no-display-kuwait"',
-  'href="/guides/bios-uefi-recovery-kuwait"',
-]) {
-  assert.ok(html.includes(expected), 'Required internal or related-guide destination is missing: ' + expected);
-}
-assert.ok(
-  html.includes('Gaming PC Won’t Boot After a BIOS Update: Kuwait Recovery Guide'),
-  'The second related-guide sidebar entry is missing its verified BIOS recovery title.',
-);
-assert.ok(!/<li\b[^>]*>\s*<\/li>/i.test(html), 'An empty list item remains in the prerendered page.');
-
-console.log(
-  'Gaming PC no-power guide SSG validation passed: ' +
-    path.relative(process.cwd(), articlePath) +
-    ' — 12 static FAQs, matching FAQPage schema, technical sections, internal links and KCROC scope terms.',
-);
+console.log('Gaming PC no-power SSG validation passed: canonical URL, 11 visible FAQ answers and schema, board-level troubleshooting, safety guidance and global editorial scope.');
