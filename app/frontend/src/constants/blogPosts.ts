@@ -9187,7 +9187,7 @@ export const BLOG_POSTS: BlogPost[] = [
       }
     ],
     image: "/images/geforce-rtx-gaming-pc-rgb-lighting.webp",
-    discoverImage: "/images/discover/custom-gaming-pc-teardown-and-diagnostics-workbench-1200x675.webp",
+    discoverImage: "/images/geforce-rtx-gaming-pc-rgb-lighting.webp",
     date: "2026-10-05",
     technicalReviewDate: "October 5, 2026",
     author: "Imran Natiq",
@@ -9207,6 +9207,7 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     seoTitle: "PC Gaming Graphics Settings: Better Visuals Without Maxing Everything",
     seoDescription: "Which PC graphics settings are worth keeping high? Learn how to improve image quality without wasting GPU performance or FPS.",
+    isGlobalGuide: true,
     contentType: "blog"
   },
 
