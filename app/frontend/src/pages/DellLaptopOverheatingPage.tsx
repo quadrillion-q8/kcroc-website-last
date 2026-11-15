@@ -46,7 +46,6 @@ export const DellLaptopOverheatingPage = () => {
     },
   };
   const activeSymptomAdvice = symptomAdvice[selectedSymptom];
-  const PAGE_URL = `${business.websiteUrl}/guides/dell-laptop-overheating`;
   const EN_PAGE_URL = `${business.websiteUrl}/guides/dell-laptop-overheating`;
   const AR_PAGE_URL = `${business.websiteUrl}/guides/ar/dell-laptop-overheating`;
   const PAGE_URL = EN_PAGE_URL;
