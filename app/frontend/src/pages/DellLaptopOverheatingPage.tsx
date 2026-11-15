@@ -238,6 +238,7 @@ export const DellLaptopOverheatingPage = () => {
             <li><a href="#dell-thermal-profiles" className="text-cyan-300 hover:underline">2. Layer 2 — Dell Optimizer, legacy utilities and AWCC profiles</a></li>
             <li><a href="#dell-bios-updates" className="text-cyan-300 hover:underline">3. Layer 3 — BIOS, EC, charger ID and Modern Standby</a></li>
             <li><a href="#dell-model-families" className="text-cyan-300 hover:underline">4. Layer 4 — Model-family cooling and hardware checks</a></li>
+            <li><a href="#dell-symptoms-and-causes" className="text-cyan-300 hover:underline">Warning symptoms and common causes</a></li>
             <li><a href="#dell-symptom-checker" className="text-cyan-300 hover:underline">Symptom-to-cause diagnostic matrix</a></li>
             <li><a href="#dell-safe-checks" className="text-cyan-300 hover:underline">Safe DIY checks and escalation signs</a></li>
             <li><a href="#dell-faq" className="text-cyan-300 hover:underline">Frequently asked questions</a></li>
@@ -299,7 +300,7 @@ export const DellLaptopOverheatingPage = () => {
         {/* Dell-specific diagnosis: keep the broad temperature guidance in the universal guide. */}
         <section id="dell-preboot-diagnostics" className="scroll-mt-28 rounded-3xl border border-cyan-500/20 bg-slate-900/60 p-6 sm:p-9">
           <div className="flex flex-wrap items-center gap-3 mb-4">
-            <Badge className="bg-cyan-500/10 text-cyan-300 border-cyan-500/20">Dell-specific check</Badge>
+            <Badge className="bg-cyan-500/10 text-cyan-300 border-cyan-500/20">Layer 1 — pre-boot diagnostics</Badge>
             <span className="text-xs uppercase tracking-wider text-slate-500">Before opening Windows</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-5">Run Dell Pre-Boot Diagnostics (F12)</h2>
@@ -341,6 +342,7 @@ export const DellLaptopOverheatingPage = () => {
         </section>
 
         <section id="dell-thermal-profiles" className="scroll-mt-28">
+          <Badge className="bg-cyan-500/10 text-cyan-300 border-cyan-500/20 mb-3">Layer 2 — software and performance profiles</Badge>
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-5">Check Dell Thermal Profiles Before Assuming a Hardware Fault</h2>
           <p className="text-slate-300 leading-7 mb-5">
             Dell thermal controls are model-dependent. Dell Optimizer 6.0 and newer consolidates features from several older applications on <strong>most compatible Dell computers</strong>, but it is not a universal utility for every Dell generation or product family. Dell's transition notice lists MyDell, Dell Power Manager and Dell Optimizer 4.2 and older as legacy applications with published end-of-life and end-of-support dates. An older laptop may still have one of these applications installed, but an installed legacy utility should not be described as currently supported.
@@ -445,6 +447,7 @@ export const DellLaptopOverheatingPage = () => {
         </section>
 
         <section id="dell-model-families" className="scroll-mt-28">
+          <Badge className="bg-cyan-500/10 text-cyan-300 border-cyan-500/20 mb-3">Layer 4 — model-specific cooling checks</Badge>
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-5">Dell Model-Family Notes: What to Check First</h2>
           <div className="grid md:grid-cols-2 gap-5">
             <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-6">
@@ -685,6 +688,7 @@ export const DellLaptopOverheatingPage = () => {
             <li><a href="https://www.dell.com/support/kbdoc/en-us/000181167/reference-table-of-epsa-psa-error-codes-and-troubleshooting-steps-2000-0nnn-series" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">Dell KB 000181167 — ePSA / PSA error-code reference (2000-0NNN series)</a></li>
             <li><a href="https://www.dell.com/support/kbdoc/en-us/000226259/transition-to-the-new-dell-optimizer" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">Dell KB 000226259 — Transition to the new Dell Optimizer and legacy-app lifecycle dates</a></li>
             <li><a href="https://www.dell.com/support/kbdoc/en-us/000123108/maximizing-your-gaming-performance" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">Dell KB 000123108 — Gaming performance, G-Key / Game Shift and AWCC</a></li>
+            <li><a href="https://www.dell.com/support/product-details/en-us/product/g-series-15-5530-laptop/resources/manuals" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">Dell G15 5530 — Official owner manuals and model-specific keyboard shortcuts</a></li>
             <li><a href="https://www.dell.com/support/kbdoc/en-us/000124211/dell-bios-updates" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">Dell KB 000124211 — BIOS and UEFI update procedures and precautions</a></li>
             <li><a href="https://www.dell.com/support/kbdoc/en-us/000149580/why-is-my-system-not-going-to-sleep-mode" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">Dell KB 000149580 — Sleep troubleshooting and Modern Standby on Dell systems</a></li>
             <li><a href="https://www.dell.com/support/kbdoc/en-us/000480910/dell-pro-fan-error-message-after-reboot-following-windows-update" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">Dell KB 000480910 — DT1265-specific 2000-0511 / 2000-0712 false fan-error case</a></li>
