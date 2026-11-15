@@ -3,8 +3,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { KCROC_GRAPH } from '../src/data/graph.js';
-import { NAV_GRAPH } from '../src/data/navGraph.generated.js';
+import { KCROC_GRAPH } from '../src/data/graph';
+import { NAV_GRAPH } from '../src/data/navGraph.generated';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const activeLocations = (KCROC_GRAPH.locations ?? []).filter((location) => location.isActive !== false);
