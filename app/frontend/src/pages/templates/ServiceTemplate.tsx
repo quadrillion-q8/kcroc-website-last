@@ -220,9 +220,14 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 </Link>
               </div>
               {entity.id === 'srv-liquid-damage' && (
-                <p className="mb-6 max-w-3xl text-xs leading-6 text-slate-400">
-                  Fastest WhatsApp triage: send your exact laptop model, what spilled, when it happened and whether the device was powered on afterward. Keep it switched off and unplugged; do not test it.
-                </p>
+                <>
+                  <p className="mb-3 max-w-3xl text-xs leading-6 text-slate-400">
+                    Fastest WhatsApp triage: send your exact laptop model, what spilled, when it happened and whether the device was powered on afterward. Keep it switched off and unplugged; do not test it.
+                  </p>
+                  <p className="mb-6 max-w-3xl text-xs leading-6 text-slate-400">
+                    All repairs are carried out at our Hawalli workshop. Free pickup and delivery are available across Kuwait.
+                  </p>
+                </>
               )}
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 max-w-4xl">
@@ -580,10 +585,48 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
           </section>
         )}
 
+        {entity.id === 'srv-liquid-damage' && (
+          <section className="max-w-7xl mx-auto px-6 py-8 relative z-10" aria-labelledby="liquid-damage-emergency-cta-heading">
+            <div className="rounded-2xl border border-emerald-800/60 bg-slate-950/85 p-6 shadow-lg shadow-emerald-950/10 sm:flex sm:items-center sm:justify-between sm:gap-8 sm:p-7">
+              <div className="max-w-3xl">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-emerald-300">Need help after a spill?</p>
+                <h2 id="liquid-damage-emergency-cta-heading" className="mt-2 text-xl font-black text-white sm:text-2xl">
+                  Arrange a laptop liquid-damage inspection in Kuwait
+                </h2>
+                <p className="mt-2 text-sm leading-6 text-slate-300">
+                  Keep the laptop switched off and unplugged. Arrange free pickup across Kuwait or bring it to our Hawalli workshop for an inspection.
+                </p>
+              </div>
+              <div className="mt-5 flex shrink-0 flex-col gap-3 sm:mt-0 sm:min-w-56">
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackConversion('whatsapp_click', { cta_name: 'liquid_damage_inline_whatsapp', button_position: 'emergency_inline', entity_id: entity.id, entity_type: 'Service', entity_slug: entity.slug })}
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 py-3 text-sm font-extrabold text-slate-950 shadow-lg hover:brightness-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
+                >
+                  <MessageCircle className="h-5 w-5" aria-hidden="true" /> Message KCROC on WhatsApp
+                </a>
+                <Link
+                  to="/book"
+                  onClick={() => trackConversion('cta_click', { cta_name: 'liquid_damage_inline_book_pickup', button_position: 'emergency_inline', entity_id: entity.id, entity_type: 'Service', entity_slug: entity.slug })}
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-cyan-500/40 bg-cyan-500/10 px-5 py-3 text-sm font-extrabold text-cyan-200 hover:bg-cyan-500/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                >
+                  <ArrowRight className="h-5 w-5" aria-hidden="true" /> Book Free Pickup
+                </Link>
+              </div>
+            </div>
+          </section>
+        )}
+
         {entity.coreFeatures && entity.coreFeatures.length > 0 && (
           <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10" aria-labelledby="service-capabilities-heading">
             <h2 id="service-capabilities-heading" className="text-2xl font-bold mb-8 text-white">
-              {entity.id === 'srv-laptop' ? 'Repair Capabilities' : 'Service Capabilities'}
+              {entity.id === 'srv-liquid-damage'
+                  ? 'Laptop Water & Liquid-Damage Repair Capabilities'
+                  : entity.id === 'srv-laptop'
+                    ? 'Repair Capabilities'
+                    : 'Service Capabilities'}
             </h2>
             {getContentImage('coreFeatures') && <ContentImage image={getContentImage('coreFeatures')!} />}
             <ul role="list" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 list-none p-0 m-0">
@@ -715,7 +758,9 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
           >
             <h2 id="common-problems-heading" className="text-2xl font-bold mb-8 text-white flex items-center gap-3">
               <AlertTriangle className="w-6 h-6 text-cyan-400" aria-hidden="true" />
-              Common Problems We Fix
+              {entity.id === 'srv-liquid-damage'
+                ? 'Common Laptop Symptoms After a Water or Coffee Spill'
+                : 'Common Problems We Fix'}
             </h2>
             {getContentImage('commonIssues') && <ContentImage image={getContentImage('commonIssues')!} />}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
@@ -804,9 +849,12 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
             className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10"
             aria-labelledby="repair-process-heading"
           >
-            <h2 id="repair-process-heading" className="text-2xl font-bold mb-8 text-white">{entity.id === 'srv-charging-port' ? 'How Our Laptop Charging-Port Repair Process Works' : 'Our Repair Process'}</h2>
-            {' '}
-            {getContentImage('process') && <ContentImage image={getContentImage('process')!} />}
+            <h2 id="repair-process-heading" className="text-2xl font-bold mb-8 text-white">{entity.id === 'srv-liquid-damage'
+                ? 'Our Laptop Liquid-Damage Repair Process'
+                : entity.id === 'srv-charging-port'
+                  ? 'How Our Laptop Charging-Port Repair Process Works'
+                  : 'Our Repair Process'}</h2>
+            {entity.id !== 'srv-liquid-damage' && getContentImage('process') && <ContentImage image={getContentImage('process')!} />}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {entity.process.map((step) => (
                 <article key={step.step} className="relative bg-slate-900/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-800">

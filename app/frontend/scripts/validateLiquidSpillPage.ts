@@ -72,6 +72,7 @@ const projectedLiquidDamageService = SEO_GRAPH.routableEntities.find((item) => i
   faqs?: Array<{ title: string; answer: string }>;
 } | undefined;
 const serviceTemplateSource = readFileSync(new URL('../src/pages/templates/ServiceTemplate.tsx', import.meta.url), 'utf8');
+const footerSource = readFileSync(new URL('../src/core/components/layout/Footer.tsx', import.meta.url), 'utf8');
 check(Boolean(liquidDamageService && liquidDamageService.slug === 'laptop-liquid-damage-repair-kuwait'), 'English liquid-damage money page must remain registered as the existing service URL.');
 check((liquidDamageService?.commercialAnswers?.length ?? 0) === 4, 'English liquid-damage page must keep four visible Before you book answers.');
 check((liquidDamageService?.faqs?.length ?? 0) === 6, 'English liquid-damage page must keep six visible customer FAQs.');
@@ -81,6 +82,11 @@ check((liquidDamageService?.seo?.schemaTypes ?? []).includes('Service') && (liqu
 check(Boolean(projectedLiquidDamageService?.commercialAnswers?.length === 4 && projectedLiquidDamageService?.faqs?.length === 6), 'SEO projection must preserve all ten commercial Q&A entries for prerendering and FAQ schema.');
 check(serviceTemplateSource.includes("entity.id === 'srv-liquid-damage'") && serviceTemplateSource.includes('exact laptop model, what spilled'), 'Liquid-damage service must provide a model / spill / power-state WhatsApp intake prompt.');
 check(serviceTemplateSource.includes('entity.pricingGuide.rows.map') && serviceTemplateSource.includes('entity.faqs.map'), 'Liquid-damage pricing and answered FAQs must be rendered by the shared service template.');
+check(serviceTemplateSource.includes('id="liquid-damage-emergency-cta-heading"') && serviceTemplateSource.includes("button_position: 'emergency_inline'"), 'The English liquid-damage page must render a tracked mid-page emergency CTA.');
+check(serviceTemplateSource.includes('Laptop Water & Liquid-Damage Repair Capabilities') && serviceTemplateSource.includes('Common Laptop Symptoms After a Water or Coffee Spill') && serviceTemplateSource.includes('Our Laptop Liquid-Damage Repair Process'), 'Liquid-damage section headings must describe water / spill intent and the actual repair process.');
+check(serviceTemplateSource.includes("entity.id !== 'srv-liquid-damage' && getContentImage('process')"), 'The repeated process image must be omitted from the English liquid-damage service page.');
+check(serviceTemplateSource.includes('All repairs are carried out at our Hawalli workshop.'), 'The English liquid-damage hero must identify the Hawalli repair workshop.');
+check(footerSource.includes("link.path === '/laptop-liquid-damage-repair-kuwait'"), 'The global footer must retain the liquid-damage service in its visible service links.');
 
 const arabicLiquidPageSource = readFileSync(new URL('../src/pages/ArabicLiquidDamageRepairPage.tsx', import.meta.url), 'utf8');
 const appSource = readFileSync(new URL('../src/App.tsx', import.meta.url), 'utf8');
