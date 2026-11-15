@@ -35,16 +35,16 @@ const KUWAIT_EDITORIAL_EXCEPTION_SLUGS = new Set([
   'laptop-repair-kuwait-2026',
 ]);
 
-const LOCAL_EDITORIAL_TRACE = /\\b(?:Kuwait|Hawalli|Salmiya|Farwaniya|Jahra|Fahaheel|Mangaf|Ahmadi|Mubarak Al-Kabeer)\\b|\\bKWD\\b|\\b(?:free )?pickup and (?:return )?delivery\\b|computerrepairkuwait\\.com/i;
-const COMMERCIAL_EDITORIAL_TRACE = /\\bKCROC\\b|\\bKuwait Computer Repair On Call\\b|\\bNo Fix,? No Fee\\b|\\b(?:from|starts? at)\\s*\\d+\\s*(?:KWD|KD)\\b/i;
+const LOCAL_EDITORIAL_TRACE = /\b(?:Kuwait|Hawalli|Salmiya|Farwaniya|Jahra|Fahaheel|Mangaf|Ahmadi|Mubarak Al-Kabeer)\b|\bKWD\b|\b(?:free )?pickup and (?:return )?delivery\b|computerrepairkuwait\.com/i;
+const COMMERCIAL_EDITORIAL_TRACE = /\bKCROC\b|\bKuwait Computer Repair On Call\b|\bNo Fix,? No Fee\b|\b(?:from|starts? at)\s*\\d+\s*(?:KWD|KD)\b/i;
 
 const cleanGlobalEditorialText = (value: string) => value
-  .replace(/\\bKuwait(?:'s)?\\b/gi, '')
-  .replace(/\\bHawalli\\b/gi, '')
-  .replace(/\\s{2,}/g, ' ')
-  .replace(/\\s+([,.;:!?])/g, '$1')
-  .replace(/\\s+([?!])/g, '$1')
-  .replace(/([:—-])\\s*([,.;])/g, '$2')
+  .replace(/\bKuwait(?:'s)?\b/gi, '')
+  .replace(/\bHawalli\b/gi, '')
+  .replace(/\s{2,}/g, ' ')
+  .replace(/\s+([,.;:!?])/g, '$1')
+  .replace(/\s+([?!])/g, '$1')
+  .replace(/([:—-])\s*([,.;])/g, '$2')
   .trim();
 
 const sanitizeGlobalEditorialBlock = (block: ContentBlock): ContentBlock | null => {
