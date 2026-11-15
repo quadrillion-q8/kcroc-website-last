@@ -168,7 +168,7 @@ export default function Header() {
                   src="/logo-128.webp"
                   srcSet="/logo-128.webp 128w, /logo-256.webp 256w"
                   sizes="72px"
-                  alt={isGlobalSlowLaptopGuide || isGlobalTechnicalGuide ? "KCROC Hardware Engineering Lab" : "KCROC — Kuwait Computer Repair On Call"}
+                  alt={isGlobalEditorialArticle || isGlobalTechnicalGuide ? "KCROC Hardware Engineering Lab" : "KCROC — Kuwait Computer Repair On Call"}
                   width="72"
                   height="72"
                   decoding="async"
