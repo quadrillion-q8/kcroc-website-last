@@ -15,6 +15,12 @@ assert.ok(
 );
 
 const html = readFileSync(articlePath, 'utf8');
+// React/Helmet correctly escapes ampersands in HTML text and attributes.
+// Normalize common ampersand entities before asserting the exact SEO title.
+const normalizedHtml = html
+  .replace(/&amp;/gi, '&')
+  .replace(/&#x26;/gi, '&')
+  .replace(/&#0*38;/gi, '&');
 const articleStart = html.indexOf('<article');
 const articleEnd = html.indexOf('</article>', articleStart);
 assert.ok(articleStart >= 0 && articleEnd > articleStart, 'The article wrapper is missing from initial HTML.');
@@ -34,7 +40,7 @@ assert.ok(
   'The global article title is missing from initial HTML.',
 );
 assert.ok(
-  html.includes('You Don’t Need Max Graphics Settings for Great PC Gaming Visuals (2026 FPS & 1% Lows Guide) | KCROC'),
+  normalizedHtml.includes('You Don’t Need Max Graphics Settings for Great PC Gaming Visuals (2026 FPS & 1% Lows Guide) | KCROC'),
   'The global SEO title is missing from initial HTML.',
 );
 assert.ok(
