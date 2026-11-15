@@ -360,7 +360,7 @@ export default function IntelVsAmdGuide() {
             </Section>
 
             <Section id="exact-cpu" title="Exact-CPU comparison: what to record">
-              <P>For future KCROC comparisons, the useful unit of analysis is the <strong className="text-white">exact processor inside the exact laptop</strong>. A reusable comparison record should include:</P>
+              <P>For future processor comparisons, the useful unit of analysis is the <strong className="text-white">exact processor inside the exact laptop</strong>. A reusable comparison record should include:</P>
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {['Processor model', 'Architecture / generation', 'CPU cores and threads', 'NPU presence and published capability', 'Integrated GPU', 'Memory support / configuration', 'Power class / limits', 'Release generation', 'Target segment'].map(item => <div key={item} className="rounded-xl border border-slate-800 bg-slate-900/50 p-4 text-sm font-semibold text-slate-300"><Cpu size={15} className="mb-2 text-cyan-400" />{item}</div>)}
               </div>
@@ -432,7 +432,7 @@ export default function IntelVsAmdGuide() {
               <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
                 <p className="text-xs font-black uppercase tracking-wider text-slate-500">Reviewed by</p>
                 <Link to="/author/imran" className="mt-2 block font-bold text-white hover:text-cyan-300">Imran Natiq</Link>
-                <p className="mt-1 text-xs leading-5 text-slate-500">Founder & Lead Technician, KCROC</p>
+                <p className="mt-1 text-xs leading-5 text-slate-500">Hardware Repair Engineer and Technical Reviewer</p>
               </div>
             </div>
           </aside>
