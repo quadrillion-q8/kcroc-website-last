@@ -6,10 +6,12 @@ import { Head } from 'vite-react-ssg';
 import { Link } from 'react-router-dom';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { KCROC_GRAPH } from '../data/graph';
+import { IMAGES } from '../constants/images';
 
 const business = KCROC_GRAPH.business!;
 const PAGE_URL = `${business.websiteUrl}/guides/ar/dell-laptop-overheating`;
 const EN_PAGE_URL = `${business.websiteUrl}/guides/dell-laptop-overheating`;
+const OG_IMAGE_URL = `${business.websiteUrl}${IMAGES.laptopHardware.cloggedFan.src}`;
 const AUTHOR_ID = `${business.websiteUrl}/author/imran#person`;
 const DATE_MODIFIED = '2026-11-15';
 const LAST_UPDATED = '15 نوفمبر 2026';
@@ -92,6 +94,7 @@ export default function DellLaptopOverheatingPageAR() {
       <Head htmlAttributes={{ lang: 'ar', dir: 'rtl' }}>
         <title>لابتوب Dell يسخن؟ فحص F12 وأكواد المروحة والحلول | KCROC</title>
         <meta name="description" content="دليل عربي لحرارة لابتوبات Dell: فحص F12، معنى أكواد 2000-0511 و2000-0512، إعدادات MyDell وPower Manager وAlienware وتحديث BIOS." />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
         <link rel="canonical" href={PAGE_URL} />
         <link rel="alternate" hrefLang="ar-KW" href={PAGE_URL} />
         <link rel="alternate" hrefLang="en-KW" href={EN_PAGE_URL} />
@@ -99,6 +102,14 @@ export default function DellLaptopOverheatingPageAR() {
         <meta property="og:type" content="article" />
         <meta property="og:locale" content="ar_KW" />
         <meta property="og:title" content="لابتوب Dell يسخن؟ فحص F12 وأكواد المروحة والحلول" />
+        <meta property="og:description" content="دليل عربي لحرارة لابتوبات Dell: فحص F12، أكواد المروحة، إعدادات التبريد وتحديث BIOS حسب الموديل." />
+        <meta property="og:url" content={PAGE_URL} />
+        <meta property="og:image" content={OG_IMAGE_URL} />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="600" />
+        <meta property="og:image:alt" content="Dusty laptop cooling fan and heatsink airflow path" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content={OG_IMAGE_URL} />
       </Head>
       <SchemaMarkup schema={SCHEMA} />
       <div dir="rtl" className="min-h-screen bg-transparent text-slate-200 pt-28 pb-24">
