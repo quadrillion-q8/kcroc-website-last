@@ -73,9 +73,20 @@ assert.ok(html.includes('26300.9974'), 'November 2026 26H2 build number is missi
 assert.ok(html.includes('October 13, 2026'), '24H2 Home/Pro end-of-updates clarification is missing');
 assert.ok(html.includes('Windows.old') && html.includes('$windows.~bt'), 'Rollback-file requirements are missing');
 assert.ok(html.includes('November 14, 2026'), 'Updated technical review date is missing from prerendered HTML');
+// This article is explicitly marked as global editorial news. Its canonical URL
+// remains on the existing domain, but the page must not emit local-business identity
+// or Kuwait-specific Open Graph metadata.
 assert.ok(
-  html.includes('https://www.computerrepairkuwait.com/#business'),
-  'Canonical KCROC business entity reference is missing',
+  html.includes('"inLanguage":"en"') || html.includes('"inLanguage": "en"'),
+  'Global English article language metadata is missing',
+);
+assert.ok(
+  !html.includes('https://www.computerrepairkuwait.com/#business'),
+  'Global Windows 11 26H2 news must not emit the KCROC LocalBusiness entity reference',
+);
+assert.ok(
+  !html.includes('property="og:locale"'),
+  'Global Windows 11 26H2 news must not emit the Kuwait-specific Open Graph locale',
 );
 
 const decisionStart = html.indexOf('id="decision-tree"');
