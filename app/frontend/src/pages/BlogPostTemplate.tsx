@@ -79,7 +79,7 @@ const getTechnicalReviewDateLabel = (post: BlogPost, fallback: string) => {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
-    timeZone: 'Asia/Kuwait',
+    timeZone: 'UTC',
   }).format(parsed);
 };
 
@@ -1391,10 +1391,19 @@ export default function BlogPostTemplate() {
   // All hooks have now run unconditionally on every render — safe to bail out.
   if (!post) return <Navigate to={isNews ? ROUTES.NEWS : isGuide ? ROUTES.GUIDES : ROUTES.BLOG} replace />;
 
-  // These informational articles use the global editorial shell: local booking,
-  // pricing, location and commercial repair blocks are deliberately separated.
+  // Blog articles are global editorial content by default. Only the six
+  // explicitly retained Kuwait-market articles may show local conversion content.
+  // Their URLs and content remain unchanged; this list controls presentation only.
+  const KUWAIT_EDITORIAL_EXCEPTION_SLUGS = new Set([
+    'laptop-buying-guide-kuwait-2026',
+    'laptop-temperatures-kuwait-safe-cpu-gpu-temperatures',
+    'ar/laptop-buying-guide-kuwait-2026',
+    'ar/how-often-clean-laptop-replace-thermal-paste-kuwait',
+    'how-often-clean-laptop-replace-thermal-paste-kuwait',
+    'laptop-repair-kuwait-2026',
+  ]);
   const isGlobalEditorialArticle = isGuide || post.isGlobalGuide === true ||
-    post.slug === 'why-8gb-ram-is-no-longer-enough-for-windows-11';
+    (post.contentType !== 'news' && !KUWAIT_EDITORIAL_EXCEPTION_SLUGS.has(post.slug));
 
   const isGamingPerformanceGuide = [
     'gaming-pc-optimization-2026',
@@ -1565,7 +1574,7 @@ export default function BlogPostTemplate() {
                     <Network size={12} aria-hidden="true" /> Pillar Guide
                   </span>
                 )}
-                <span className="flex items-center gap-1.5 mt-1"><Calendar size={14} aria-hidden="true" /> {isWindows26H2Guide ? 'Published: ' : ''}{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'Asia/Kuwait' })}</span>
+                <span className="flex items-center gap-1.5 mt-1"><Calendar size={14} aria-hidden="true" /> {isWindows26H2Guide ? 'Published: ' : ''}{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</span>
                 {isWindows26H2Guide && post.technicalReviewDate && (
                   <span className="flex items-center gap-1.5 mt-1"><Calendar size={14} aria-hidden="true" /> Updated: {getTechnicalReviewDateLabel(post, 'November 14, 2026')}</span>
                 )}
