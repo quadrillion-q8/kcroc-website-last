@@ -146,13 +146,13 @@ const toAbsoluteAssetUrl = (value: string) =>
 
 const getModifiedDate = (post: BlogPost) => {
   if (!post.technicalReviewDate) return post.date;
-  const parsed = new Date(`${post.technicalReviewDate.slice(0, 10)}T12:00:00Z`);
+  const parsed = new Date(post.technicalReviewDate);
   return Number.isNaN(parsed.getTime()) ? post.date : parsed.toISOString();
 };
 
 const getTechnicalReviewDateLabel = (post: BlogPost, fallback: string) => {
   if (!post.technicalReviewDate) return fallback;
-  const parsed = new Date(post.technicalReviewDate);
+  const parsed = new Date(`${post.technicalReviewDate.slice(0, 10)}T12:00:00Z`);
   if (Number.isNaN(parsed.getTime())) return post.technicalReviewDate;
   return new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
@@ -1312,7 +1312,7 @@ export default function BlogPostTemplate() {
             ]
           } : {}),
           ...(post.slug === "gaming-pc-not-turning-on-kuwait" ? {
-            "inLanguage": "en-KW",
+            "inLanguage": isGlobalBlogArticle ? "en" : "en-KW",
             "articleSection": "Gaming Hardware Troubleshooting",
             "keywords": post.tags ?? [],
             "isAccessibleForFree": true,
@@ -1736,19 +1736,15 @@ export default function BlogPostTemplate() {
                       <p className="text-sm text-slate-400 mt-1 leading-relaxed">
                         {isGlobalNewsArticle
                           ? 'Technology writer and technical reviewer covering computer architecture, processors, computing platforms and consumer hardware.'
-                          : post.slug === 'gaming-pc-not-turning-on-kuwait'
-                            ? 'Lead Hardware Repair Engineer at Kuwait Computer Repair On Call (KCROC), Hawalli — focused on component-level motherboard diagnostics, ATX power-sequence analysis, firmware recovery and gaming desktop stability.'
-                            : post.slug === 'nvidia-dlss-5-neural-rendering-explained'
-                              ? 'Hardware Repair Engineer at KCROC — focused on laptop thermal diagnostics, GPU load testing, and component-level motherboard repair at our ESD-safe laboratory in Hawalli, Kuwait.'
-                              : isGlobalEditorialArticle
-                                ? 'Hardware Repair Engineer and technical reviewer focused on computer hardware, software troubleshooting, performance, firmware and diagnostics.'
-                                : 'Hardware Repair Engineer at KCROC, focused on laptop thermal troubleshooting, hardware testing and component-level repair in Kuwait.'}
+                          : isGlobalEditorialArticle
+                            ? 'Hardware Repair Engineer and technical reviewer focused on computer hardware, software troubleshooting, performance, firmware and diagnostics.'
+                            : 'Hardware Repair Engineer at KCROC, focused on laptop thermal troubleshooting, hardware testing and component-level repair in Kuwait.'}
                       </p>
                       <p className="text-xs text-slate-500 mt-2">
                         Technical review: {isGlobalNewsArticle
                           ? getTechnicalReviewDateLabel(post, 'November 14, 2026')
                           : isGlobalEditorialArticle
-                            ? `${getTechnicalReviewDateLabel(post, 'November 7, 2026')}${post.slug === 'gaming-pc-not-turning-on-kuwait' ? ' · KCROC Hardware Engineering Lab, Hawalli, Kuwait' : post.slug === 'nvidia-dlss-5-neural-rendering-explained' ? ' · Hawalli, Kuwait' : ''}`
+                            ? getTechnicalReviewDateLabel(post, 'November 7, 2026')
                             : `${getTechnicalReviewDateLabel(post, 'September 1, 2026')} · Hawalli, Kuwait`}
                       </p>
                     </div>
