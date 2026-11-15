@@ -26,6 +26,74 @@ import DLSS5BenchmarkExplorer from '@/components/content/DLSS5BenchmarkExplorer'
 // (Previously duplicated via constants/data.ts's BUSINESS_INFO.)
 const business = KCROC_GRAPH.business!;
 
+const KUWAIT_EDITORIAL_EXCEPTION_SLUGS = new Set([
+  'laptop-buying-guide-kuwait-2026',
+  'laptop-temperatures-kuwait-safe-cpu-gpu-temperatures',
+  'ar/laptop-buying-guide-kuwait-2026',
+  'ar/how-often-clean-laptop-replace-thermal-paste-kuwait',
+  'how-often-clean-laptop-replace-thermal-paste-kuwait',
+  'laptop-repair-kuwait-2026',
+]);
+
+const LOCAL_EDITORIAL_TRACE = /\\b(?:Kuwait|Hawalli|Salmiya|Farwaniya|Jahra|Fahaheel|Mangaf|Ahmadi|Mubarak Al-Kabeer)\\b|\\bKWD\\b|\\b(?:free )?pickup and (?:return )?delivery\\b|computerrepairkuwait\\.com\\/(?:gaming|laptop|motherboard|computer-repair|book|contact)/i;
+const COMMERCIAL_EDITORIAL_TRACE = /\\bKCROC\\b|\\bKuwait Computer Repair On Call\\b|\\bNo Fix,? No Fee\\b|\\b(?:from|starts? at)\\s*\\d+\\s*(?:KWD|KD)\\b/i;
+
+const cleanGlobalEditorialText = (value: string) => value
+  .replace(/\\bKuwait(?:'s)?\\b/gi, '')
+  .replace(/\\bHawalli\\b/gi, '')
+  .replace(/\\s{2,}/g, ' ')
+  .replace(/\\s+([,.;:!?])/g, '$1')
+  .replace(/([:—-])\\s*([,.;])/g, '$2')
+  .trim();
+
+const sanitizeGlobalEditorialBlock = (block: ContentBlock): ContentBlock | null => {
+  const containsLocalTrace = (value: string) => LOCAL_EDITORIAL_TRACE.test(value) || COMMERCIAL_EDITORIAL_TRACE.test(value);
+  switch (block.type) {
+    case 'h2':
+    case 'h3':
+      return containsLocalTrace(block.text) ? null : { ...block, text: cleanGlobalEditorialText(block.text) };
+    case 'paragraph':
+    case 'callout':
+    case 'quote':
+      return containsLocalTrace(block.text) ? null : { ...block, text: cleanGlobalEditorialText(block.text) };
+    case 'list': {
+      const items = block.items.filter((item) => !containsLocalTrace(item)).map(cleanGlobalEditorialText);
+      return items.length ? { ...block, items } : null;
+    }
+    case 'comparisonTable': {
+      const rows = block.rows.filter((row) => !containsLocalTrace(row.feature) && !row.values.some(containsLocalTrace));
+      return rows.length ? { ...block, rows: rows.map((row) => ({ ...row, feature: cleanGlobalEditorialText(row.feature), values: row.values.map(cleanGlobalEditorialText) })) } : null;
+    }
+    case 'timeline': {
+      const steps = block.steps.filter((step) => !containsLocalTrace(step.label) && !(step.note && containsLocalTrace(step.note)));
+      return steps.length ? { ...block, steps: steps.map((step) => ({ ...step, label: cleanGlobalEditorialText(step.label), note: step.note ? cleanGlobalEditorialText(step.note) : undefined })) } : null;
+    }
+    case 'faq': {
+      const items = block.items.filter((item) => !containsLocalTrace(item.question) && !containsLocalTrace(item.answer));
+      return items.length ? { ...block, items: items.map((item) => ({ question: cleanGlobalEditorialText(item.question), answer: cleanGlobalEditorialText(item.answer) })) } : null;
+    }
+    case 'image':
+      return { ...block, alt: cleanGlobalEditorialText(block.alt), caption: block.caption ? cleanGlobalEditorialText(block.caption) : undefined };
+    default:
+      return block;
+  }
+};
+
+const sanitizeGlobalEditorialPost = (post: BlogPost): BlogPost => ({
+  ...post,
+  title: cleanGlobalEditorialText(post.title),
+  excerpt: cleanGlobalEditorialText(post.excerpt),
+  description: post.description ? cleanGlobalEditorialText(post.description) : undefined,
+  seoTitle: post.seoTitle ? cleanGlobalEditorialText(post.seoTitle) : undefined,
+  seoDescription: post.seoDescription ? cleanGlobalEditorialText(post.seoDescription) : undefined,
+  imageAlt: post.imageAlt ? cleanGlobalEditorialText(post.imageAlt) : undefined,
+  imageCaption: post.imageCaption && !LOCAL_EDITORIAL_TRACE.test(post.imageCaption) ? cleanGlobalEditorialText(post.imageCaption) : undefined,
+  content: post.content.filter((paragraph) => !LOCAL_EDITORIAL_TRACE.test(paragraph) && !COMMERCIAL_EDITORIAL_TRACE.test(paragraph)),
+  richContent: post.richContent?.map(sanitizeGlobalEditorialBlock).filter((block): block is ContentBlock => Boolean(block)),
+  tags: post.tags?.filter((tag) => !LOCAL_EDITORIAL_TRACE.test(tag) && !COMMERCIAL_EDITORIAL_TRACE.test(tag)),
+  relatedPostSlugs: post.relatedPostSlugs?.filter((relatedSlug) => !/kuwait|repair|service|pickup|contact/i.test(relatedSlug)),
+});
+
 // Standalone guide pages are not BLOG_POSTS records. Add a lightweight card
 // record so editorial cluster links can point to the dedicated React route.
 const GAMEBAR_PRESENCE_WRITER_GUIDE_CARD: BlogPost = {
@@ -954,7 +1022,13 @@ export default function BlogPostTemplate() {
   const isNews = location.pathname.startsWith('/news/');
   const contentRoute = (post: BlogPost) =>
     getContentRoute(post.slug, post.contentType ?? 'blog');
-  const post = BLOG_POSTS.find((p) => p.slug === slug);
+  const rawPost = BLOG_POSTS.find((p) => p.slug === slug);
+  const isKuwaitEditorialException = Boolean(rawPost && KUWAIT_EDITORIAL_EXCEPTION_SLUGS.has(rawPost.slug));
+  const isGlobalBlogArticle = Boolean(rawPost && !isGuide && !isNews && !isKuwaitEditorialException);
+  const post = useMemo(
+    () => rawPost && isGlobalBlogArticle ? sanitizeGlobalEditorialPost(rawPost) : rawPost,
+    [rawPost, isGlobalBlogArticle]
+  );
   const currentGraphEntityId = useMemo(() => {
     if (!post) return undefined;
     const route = contentRoute(post);
@@ -1394,16 +1468,7 @@ export default function BlogPostTemplate() {
   // Blog articles are global editorial content by default. Only the six
   // explicitly retained Kuwait-market articles may show local conversion content.
   // Their URLs and content remain unchanged; this list controls presentation only.
-  const KUWAIT_EDITORIAL_EXCEPTION_SLUGS = new Set([
-    'laptop-buying-guide-kuwait-2026',
-    'laptop-temperatures-kuwait-safe-cpu-gpu-temperatures',
-    'ar/laptop-buying-guide-kuwait-2026',
-    'ar/how-often-clean-laptop-replace-thermal-paste-kuwait',
-    'how-often-clean-laptop-replace-thermal-paste-kuwait',
-    'laptop-repair-kuwait-2026',
-  ]);
-  const isGlobalEditorialArticle = isGuide || post.isGlobalGuide === true ||
-    (post.contentType !== 'news' && !KUWAIT_EDITORIAL_EXCEPTION_SLUGS.has(post.slug));
+  const isGlobalEditorialArticle = isGuide || post.isGlobalGuide === true || isGlobalBlogArticle;
 
   const isGamingPerformanceGuide = [
     'gaming-pc-optimization-2026',
