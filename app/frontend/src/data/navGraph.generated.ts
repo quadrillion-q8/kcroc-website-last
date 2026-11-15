@@ -183,24 +183,12 @@ export const NAV_GRAPH = {
         "path": "/location/abu-halifa"
       },
       {
-        "label": "Computer Repair Jabriya",
-        "path": "/location/jabriya"
-      },
-      {
         "label": "Computer Repair Mubarak Al-Kabeer",
         "path": "/location/mubarak-al-kabeer"
       },
       {
-        "label": "Computer Repair Fintas",
-        "path": "/location/fintas"
-      },
-      {
         "label": "Computer Repair Sabah Al-Salem",
         "path": "/location/sabah-al-salem"
-      },
-      {
-        "label": "Computer Repair Salwa",
-        "path": "/location/salwa"
       },
       {
         "label": "Computer Repair Rumaithiya",
@@ -219,20 +207,48 @@ export const NAV_GRAPH = {
         "path": "/location/riggae"
       },
       {
-        "label": "Computer Repair Ardiya",
-        "path": "/location/ardiya"
-      },
-      {
         "label": "Computer Repair Mahboula",
         "path": "/location/mahboula"
       },
       {
-        "label": "Computer Repair Rawda",
-        "path": "/location/rawda"
-      },
-      {
         "label": "Computer Repair Messila",
         "path": "/location/messila"
+      },
+      {
+        "label": "Computer Repair Shuwaikh Residential",
+        "path": "/location/shuwaikh-residential"
+      },
+      {
+        "label": "Computer Repair Abdullah Al-Salem",
+        "path": "/location/abdullah-al-salem"
+      },
+      {
+        "label": "Computer Repair Shamiya",
+        "path": "/location/shamiya"
+      },
+      {
+        "label": "Computer Repair Nuzha",
+        "path": "/location/nuzha"
+      },
+      {
+        "label": "Computer Repair Adailiya",
+        "path": "/location/adailiya"
+      },
+      {
+        "label": "Computer Repair Kaifan",
+        "path": "/location/kaifan"
+      },
+      {
+        "label": "Computer Repair Yarmouk",
+        "path": "/location/yarmouk"
+      },
+      {
+        "label": "Computer Repair Qortuba",
+        "path": "/location/qortuba"
+      },
+      {
+        "label": "Computer Repair Mishref",
+        "path": "/location/mishref"
       }
     ]
   },
@@ -679,19 +695,19 @@ export const NAV_GRAPH = {
     {
       "id": "loc-kuwait-city",
       "slug": "kuwait-city",
-      "title": "Kuwait City",
+      "title": "One repair lab, clear accountability",
       "navigationPriority": 95
     },
     {
       "id": "loc-salmiya",
       "slug": "salmiya",
-      "title": "Salmiya",
+      "title": "Hardware-first privacy and removable-storage option",
       "navigationPriority": 90
     },
     {
       "id": "loc-farwaniya",
       "slug": "farwaniya",
-      "title": "Farwaniya",
+      "title": "Every repair is completed at the Hawalli lab",
       "navigationPriority": 80
     },
     {
@@ -721,14 +737,8 @@ export const NAV_GRAPH = {
     {
       "id": "loc-abu-halifa",
       "slug": "abu-halifa",
-      "title": "Abu Halifa",
+      "title": "Recognisable Abu Halifa address references",
       "navigationPriority": 45
-    },
-    {
-      "id": "loc-jabriya",
-      "slug": "jabriya",
-      "title": "Jabriya",
-      "navigationPriority": 40
     },
     {
       "id": "loc-mubarak-al-kabeer",
@@ -737,70 +747,100 @@ export const NAV_GRAPH = {
       "navigationPriority": 35
     },
     {
-      "id": "loc-fintas",
-      "slug": "fintas",
-      "title": "Fintas",
-      "navigationPriority": 30
-    },
-    {
       "id": "loc-sabah-al-salem",
       "slug": "sabah-al-salem",
-      "title": "Sabah Al-Salem",
+      "title": "Diagnosis before paid work",
       "navigationPriority": 25
-    },
-    {
-      "id": "loc-salwa",
-      "slug": "salwa",
-      "title": "Salwa",
-      "navigationPriority": 80
     },
     {
       "id": "loc-rumaithiya",
       "slug": "rumaithiya",
-      "title": "Rumaithiya",
+      "title": "Privacy-conscious handling",
       "navigationPriority": 78
     },
     {
       "id": "loc-surra",
       "slug": "surra",
-      "title": "Surra",
-      "navigationPriority": 74
+      "title": "Shaab — Blocks 1–9 · 35900",
+      "navigationPriority": 86
     },
     {
       "id": "loc-khaitan",
       "slug": "khaitan",
-      "title": "Khaitan",
+      "title": "Motherboard repair",
       "navigationPriority": 72
     },
     {
       "id": "loc-riggae",
       "slug": "riggae",
-      "title": "Riggae",
+      "title": "Arrange a Riggae pickup",
       "navigationPriority": 70
-    },
-    {
-      "id": "loc-ardiya",
-      "slug": "ardiya",
-      "title": "Ardiya",
-      "navigationPriority": 68
     },
     {
       "id": "loc-mahboula",
       "slug": "mahboula",
-      "title": "Mahboula",
+      "title": "One repair workflow at the Hawalli laboratory",
       "navigationPriority": 64
-    },
-    {
-      "id": "loc-rawda",
-      "slug": "rawda",
-      "title": "Rawda",
-      "navigationPriority": 52
     },
     {
       "id": "loc-messila",
       "slug": "messila",
-      "title": "Messila",
+      "title": "No need to visit the lab",
       "navigationPriority": 50
+    },
+    {
+      "id": "loc-shuwaikh-residential",
+      "slug": "shuwaikh-residential",
+      "title": "Shuwaikh B coverage, clearly identified",
+      "navigationPriority": 92
+    },
+    {
+      "id": "loc-abdullah-al-salem",
+      "slug": "abdullah-al-salem",
+      "title": "Four-block Al-Dahiya collection coverage",
+      "navigationPriority": 93
+    },
+    {
+      "id": "loc-shamiya",
+      "slug": "shamiya",
+      "title": "Coverage across Shamiya Blocks 1–9",
+      "navigationPriority": 90
+    },
+    {
+      "id": "loc-nuzha",
+      "slug": "nuzha",
+      "title": "Coverage across all three Nuzha blocks",
+      "navigationPriority": 91
+    },
+    {
+      "id": "loc-adailiya",
+      "slug": "adailiya",
+      "title": "One collection service for two neighbouring suburbs",
+      "navigationPriority": 92
+    },
+    {
+      "id": "loc-kaifan",
+      "slug": "kaifan",
+      "title": "Seven-block Kaifan collection near the Second Ring Road",
+      "navigationPriority": 85
+    },
+    {
+      "id": "loc-yarmouk",
+      "slug": "yarmouk",
+      "title": "Workshop diagnosis in Hawalli",
+      "navigationPriority": 84
+    },
+    {
+      "id": "loc-qortuba",
+      "slug": "qortuba",
+      "title": "Quote before paid work",
+      "navigationPriority": 83
+    },
+    {
+      "id": "loc-mishref",
+      "slug": "mishref",
+      "title": "Clear approval and return delivery",
+      "navigationPriority": 82
     }
   ],
   "blogEntries": [
