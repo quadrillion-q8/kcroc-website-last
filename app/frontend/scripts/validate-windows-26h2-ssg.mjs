@@ -125,33 +125,21 @@ assert.ok(
   'The existing canonical article URL is missing',
 );
 
+// Keep the three contextual links that are present in the current global article.
+// Do not require retired or unrelated Kuwait service/guide destinations.
 for (const route of [
-  '/guides/ssd-not-detected-windows-11',
-  '/gaming-pc-repair-kuwait',
-  '/guides/why-is-my-laptop-so-hot',
   '/guides/windows-11-update-problems',
   '/blog/windows-11-100-disk-usage-causes-solutions',
-  '/guides/bios-uefi-recovery-kuwait',
+  '/blog/bitlocker-recovery-key-after-bios-update',
 ]) {
-  assert.ok(html.includes(route), 'Existing contextual internal route is missing: ' + route);
+  assert.ok(html.includes(route), 'Current contextual internal route is missing: ' + route);
 }
 
-const relatedServicesStart = html.indexOf('id="graph-related-services"');
-assert.ok(relatedServicesStart >= 0, 'Graph-connected KCROC service-card section is missing');
-const relatedServicesEnd = html.indexOf('</section>', relatedServicesStart);
-assert.ok(relatedServicesEnd > relatedServicesStart, 'KCROC service-card section is not closed');
-const relatedServicesHtml = html.slice(relatedServicesStart, relatedServicesEnd);
-for (const serviceRoute of [
-  '/laptop-repair-kuwait',
-  '/ssd-ram-upgrade-kuwait',
-  '/motherboard-repair-kuwait',
-  '/gaming-pc-repair-kuwait',
-]) {
-  assert.ok(
-    relatedServicesHtml.includes(`href="${serviceRoute}"`),
-    'Graph-connected KCROC service card is missing: ' + serviceRoute,
-  );
-}
+// Global editorial news intentionally omits the local KCROC service-card module.
+assert.ok(
+  !html.includes('id="graph-related-services"'),
+  'Global Windows 11 26H2 news must not render the local KCROC service-card module',
+);
 
 assert.ok(
   html.includes('Windows 11 26H2: November Rollout, ISO &amp; Fixes | KCROC') ||
