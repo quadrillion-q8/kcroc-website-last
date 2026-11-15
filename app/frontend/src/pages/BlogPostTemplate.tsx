@@ -138,7 +138,10 @@ const GLOBAL_EDITORIAL_AUTOLINK_EXCLUSIONS = [
   'page-privacy',
   ...KCROC_GRAPH.services.map((service) => service.id),
   ...KCROC_GRAPH.pages
-    .filter((page) => /\\b(?:service|location|pricing|booking)\\b|kuwait/i.test(page.seo.canonicalUrl))
+    .filter((page) => {
+      const pathname = page.seo.canonicalUrl.replace(/^https?:\/\/[^/]+/i, '');
+      return /(?:^|\/)(?:services?|location|pricing|book|contact)(?:\/|$)|kuwait/i.test(pathname);
+    })
     .map((page) => page.id),
 ];
 
