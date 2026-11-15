@@ -73,8 +73,16 @@ const getModifiedDate = (post: BlogPost) => {
 
 const getTechnicalReviewDateLabel = (post: BlogPost, fallback: string) => {
   if (!post.technicalReviewDate) return fallback;
-  const parsed = new Date(post.technicalReviewDate);
+
+  // Preserve the calendar date as authored. An ISO timestamp such as
+  // 2026-11-09T00:00:00+03:00 represents November 9 locally, but parsing it
+  // and formatting in UTC can incorrectly display November 8. Use the
+  // timestamp's explicit YYYY-MM-DD portion for the visible editorial date,
+  // while getModifiedDate continues to emit the normalized UTC schema value.
+  const authoredDate = post.technicalReviewDate.match(/^(\d{4}-\d{2}-\d{2})(?:T|$)/)?.[1];
+  const parsed = new Date(authoredDate ? `${authoredDate}T12:00:00.000Z` : post.technicalReviewDate);
   if (Number.isNaN(parsed.getTime())) return post.technicalReviewDate;
+
   return new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
     month: 'long',
