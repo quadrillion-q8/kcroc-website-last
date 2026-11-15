@@ -3520,20 +3520,20 @@ export const BLOG_POSTS: BlogPost[] = [
     id: "blog-screen-protect",
     slug: "how-to-protect-laptop-screen",
     title: "How to Protect Your Laptop Screen from Breaking",
-    excerpt: "A cracked laptop screen is one of the most common repairs in our Hawalli lab. Follow these habits to prevent expensive display damage.",
+    excerpt: "A cracked laptop screen can make a portable computer difficult or impossible to use. Follow these habits to reduce the risk of display damage.",
     content: [
       "Laptop screens are incredibly fragile, and modern bezel-less designs have only made them more vulnerable to physical stress and pressure cracks.",
       "The most common cause of screen damage isn't dropping the laptop—it's leaving an object on the keyboard (like a pen, earbuds, or a USB drive) and closing the lid. Even light pressure on a closed lid with an object inside will shatter the LCD instantly.",
       "Another major culprit is opening the laptop from the corner. Always open your laptop by lifting from the direct center of the bezel. Lifting from the corner twists the chassis, which can snap the internal hinges and subsequently crack the display glass.",
       "If you notice your hinges becoming incredibly stiff or hearing a cracking plastic sound when opening the lid, stop using it immediately. Have the hinges loosened and repaired before they rip through the display cable and screen panel."
     ],
-    image: "/images/blog/laptop-screen-protection-kuwait.webp",
-    discoverImage: "/images/discover/laptop-screen-protection-kuwait-1200x675.webp",
+    image: "/images/laptop-screen-assembly-disassembly-repair.webp",
+    discoverImage: "/images/laptop-screen-assembly-disassembly-repair.webp",
     date: "2026-07-02",
     author: "KCROC Repair Team",
     category: "Maintenance",
     readTime: "3 min read",
-    clusterParent: "laptop-repair-kuwait-2026"
+
   },
   {
     id: "blog-8gb-ram-2026",
@@ -4817,7 +4817,7 @@ export const BLOG_POSTS: BlogPost[] = [
     "seoTitle": "WHESVC Explained: Windows Health and Optimized Experiences",
     "seoDescription": "What is WHESVC in Windows 11? Learn what Windows Health and Optimized Experiences does, how to check its status, CVE-2025-59241, and safer troubleshooting.",
     "contentType": "guide",
-    "clusterParent": "laptop-repair-kuwait-2026"
+
   },
 
   {
@@ -5804,7 +5804,7 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     "seoTitle": "18 Windows 11 Tweaks for Better Privacy & Performance",
     "contentType": "guide",
-    "clusterParent": "laptop-repair-kuwait-2026"
+
   },
 
   {
@@ -7884,7 +7884,7 @@ export const BLOG_POSTS: BlogPost[] = [
     "slug": "gaming-pc-not-turning-on-kuwait",
     "title": "Gaming PC Won’t Turn On? Power, PSU & Motherboard Troubleshooting",
     "excerpt": "A gaming PC that is completely dead, powers on for a second, or starts only intermittently can have a PSU, motherboard, short-circuit, front-panel, GPU or power-delivery problem.",
-    "description": "Gaming PC dead, clicking off after 1 second, or fans spinning with no POST? Follow Imran Natiq’s PSU, ATX power rail and motherboard diagnostic guide, with free pickup across Kuwait.",
+    "description": "Gaming PC dead, clicking off after 1 second, or fans spinning with no POST? Follow a model-aware PSU, ATX power-rail and motherboard troubleshooting workflow before replacing parts.",
     "content": [
       "A gaming PC that suddenly becomes completely dead is one of the highest-intent repair problems because the symptom appears simple while the underlying fault can be anywhere along the power path.",
       "A full-size gaming tower contains several power, cooling and expansion components, so the symptom needs to be classified before any part is removed or replaced."
@@ -7985,12 +7985,12 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "h3",
-        "text": "Kuwait-specific checks for Type G mains and power accessories",
-        "id": "kuwait-power-checks"
+        "text": "Mains input and power accessories",
+        "id": "mains-input-checks"
       },
       {
         "type": "paragraph",
-        "text": "Kuwait's mains supply is commonly specified at 240V / 50Hz, and the familiar three-pin Type G plug is a fused BS 1363 design. With the PC unplugged from the wall, inspect the plug and cable for damage and check the fuse rating printed on the fuse against the PSU, cord and equipment instructions. Do not assume every PC cord must use a 13A fuse, and never fit a higher-rated fuse simply because the PC has a high-wattage PSU. If a correctly rated fuse blows again, stop testing and have the cord, PSU and outlet checked."
+        "text": "Mains voltage, plug type and fuse requirements vary by country and equipment. With the PC unplugged from the wall, inspect the plug and cable for damage and check the fuse rating against the PSU, cord and equipment instructions. Never assume a particular fuse rating or fit a higher-rated fuse simply because the PC has a high-wattage PSU. If a correctly rated fuse blows again, stop testing and have the cord, PSU and outlet checked by a qualified person."
       },
       {
         "type": "paragraph",
@@ -8002,7 +8002,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
-        "text": "For RTX 40- and 50-series systems, inspect the 12VHPWR / 12V-2x6 connector and any 8-pin PCIe plugs only with the PC shut down and AC disconnected. The 16-pin plug should be fully seated with no visible gap; follow the GPU and PSU manufacturer's cable-clearance and bend guidance, avoid side-loading the connector, and stop using any plug that is discoloured, softened or melted. Never force a connector or substitute an unapproved adapter."
+        "text": "For high-power graphics cards, inspect auxiliary power cables only with the PC shut down and AC disconnected. Follow the graphics-card and PSU manufacturers' seating, clearance and bend guidance; avoid side-loading connectors and stop using any plug that is discoloured, softened or melted. Never force a connector or substitute an unapproved adapter."
       },
       {
         "type": "h2",
@@ -8081,7 +8081,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "h3",
-        "text": "Common component-level motherboard faults we diagnose in Kuwait",
+        "text": "Common component-level motherboard power faults",
         "id": "motherboard-fault-paths"
       },
       {
@@ -8094,7 +8094,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
-        "text": "Kuwait dust and humidity: Fine dust can collect around VRM heatsinks, fan headers, Super I/O circuitry and connector areas. Dust alone is not automatically conductive, but moisture, salts, smoke residue, liquid contamination or cooler seepage can make surface contamination more electrically significant and promote leakage or corrosion. Intermittent faults need inspection for residue, oxidation and damaged solder mask—not an assumption that ordinary dust has shorted the board."
+        "text": "Environmental contamination: Fine dust can collect around VRM heatsinks, fan headers, Super I/O circuitry and connector areas. Dust alone is not automatically conductive, but moisture, salts, smoke residue, liquid contamination or cooler seepage can make surface contamination more electrically significant and promote leakage or corrosion. Intermittent faults need inspection for residue, oxidation and damaged solder mask—not an assumption that ordinary dust has shorted the board."
       },
       {
         "type": "paragraph",
@@ -8124,11 +8124,11 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
-        "text": "Check the display cable at the graphics card rather than assuming the motherboard HDMI or DisplayPort output is active. Many Intel F/KF processors and some AMD processor models lack integrated graphics. For 12VHPWR / 12V-2x6 or 8-pin PCIe checks, power down and disconnect AC first; do not reseat or unplug a GPU power connector while standby power is present."
+        "text": "Check the display cable at the graphics card rather than assuming the motherboard HDMI or DisplayPort output is active. Many Intel F/KF processors and some AMD processor models lack integrated graphics. For any auxiliary GPU power-cable check, power down and disconnect AC first; do not reseat or unplug a GPU power connector while standby power is present."
       },
       {
         "type": "paragraph",
-        "text": "If the PC's fans and RGB stay on but the monitor remains black, continue to our dedicated guide: https://www.computerrepairkuwait.com/guides/gaming-pc-black-screen-no-display-kuwait — Gaming PC Black Screen / No Display After Boot: Kuwait Repair Guide. For a confirmed component or system fault, see https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait — Gaming PC Repair Kuwait, or https://www.computerrepairkuwait.com/motherboard-repair-kuwait — Motherboard Repair Kuwait."
+        "text": "If the PC's fans and RGB stay on but the monitor remains black, treat it as a separate no-display/POST problem. Check the monitor and cable, the GPU output, motherboard POST indicators, memory training and firmware before assuming that the GPU or motherboard has failed."
       },
       {
         "type": "callout",
@@ -8147,12 +8147,12 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "h3",
-        "text": "How KCROC diagnoses and repairs dead gaming PCs in Kuwait",
-        "id": "kcroc-gaming-pc-diagnostic-process"
+        "text": "How a structured no-power diagnosis works",
+        "id": "structured-no-power-diagnosis"
       },
       {
         "type": "paragraph",
-        "text": "When safe external checks show that the outlet and power cord are working, repeated trial-and-error at home can put healthy components at risk—especially when a shorted motherboard power stage or GPU power path is causing the PSU to shut down. KCROC performs gaming desktop diagnostics and board-level repair at its grounded, ESD-safe laboratory in Hawalli: Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19. The workshop is the repair location; customers can arrange collection rather than expecting an at-home bench repair."
+        "text": "When safe external checks show that the outlet and power cord are working, repeated trial-and-error can put healthy components at risk—especially when a shorted motherboard power stage or GPU power path is causing the PSU to shut down. A controlled system-level assessment should identify where startup stops before any component is replaced."
       },
       {
         "type": "list",
@@ -8165,62 +8165,18 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "h3",
-        "text": "Complete gaming desktop systems only",
-        "id": "complete-gaming-desktop-policy"
+        "text": "Assess the complete system",
+        "id": "complete-system-context"
       },
       {
         "type": "paragraph",
-        "text": "KCROC diagnoses GPU power-delivery faults, shorted components and 12VHPWR / 12V-2x6 connector problems only when the graphics card is installed in a complete gaming desktop system. This allows the PSU, modular cables, motherboard PCIe slot, cooling and system stability to be assessed together. KCROC does not accept loose standalone graphics cards, does not offer custom PC building, and does not sell standalone data-recovery services."
-      },
-      {
-        "type": "comparisonTable",
-        "title": "KCROC gaming desktop diagnostic and repair terms",
-        "featureLabel": "Service term",
-        "columns": [
-          "What applies"
-        ],
-        "rows": [
-          {
-            "feature": "Initial hardware diagnostic",
-            "values": [
-              "FREE initial diagnostic to identify the reported fault and prepare a quote; no paid repair starts without your approval."
-            ]
-          },
-          {
-            "feature": "Published repair starting point",
-            "values": [
-              "Gaming PC and motherboard repair from 25 KWD. Final price depends on the confirmed fault, parts and repair scope."
-            ]
-          },
-          {
-            "feature": "Typical turnaround",
-            "values": [
-              "24–48 hours is a typical target for many gaming desktop diagnostics and component-level board repairs; complex faults, parts or extended testing can take longer."
-            ]
-          },
-          {
-            "feature": "Repair protection",
-            "values": [
-              "No Fix, No Fee policy and a 30-day parts-and-labour warranty on completed repairs, subject to the stated repair terms."
-            ]
-          },
-          {
-            "feature": "Kuwait-wide logistics",
-            "values": [
-              "Free pickup and delivery for complete desktop towers across the six governorates: Capital, Hawalli, Farwaniya, Ahmadi, Jahra and Mubarak Al-Kabeer. All bench work remains at the Hawalli lab."
-            ]
-          }
-        ]
+        "text": "A graphics-card power symptom should be assessed in the context of the complete desktop. The PSU, modular cables, PCIe slot, motherboard, cooling and system stability interact; a fault observed on one component does not identify the failed part without controlled isolation and measurements."
       },
       {
         "type": "callout",
         "variant": "expert",
-        "title": "Need a bench diagnosis?",
-        "text": `Call or WhatsApp KCROC at ${businessPhoneDisplay} with the symptom—for example, “no LEDs at all” or “clicks once and shuts off.” You can also review the Gaming PC Repair Kuwait service page. Send the symptom and PC model first; never send passwords or account sign-in codes.`
-      },
-      {
-        "type": "paragraph",
-        "text": `Service details and booking: https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait — Gaming PC Repair Kuwait · https://www.computerrepairkuwait.com/motherboard-repair-kuwait — Motherboard Repair Kuwait · https://wa.me/${businessPhone} — WhatsApp ${businessPhoneDisplay}.`
+        "title": "When to stop testing and seek qualified help",
+        "text": `Record the exact startup behavior, motherboard indicator, recent hardware changes and any unusual sound or smell. Do not share passwords or account sign-in codes with anyone; a diagnosis should never require them.`
       },
       {
         "type": "h2",
@@ -8263,16 +8219,16 @@ export const BLOG_POSTS: BlogPost[] = [
             "answer": "A weak CR2032 battery more commonly causes the clock, date and firmware settings to reset; it is not the usual explanation for a completely dead desktop with no standby signs. Replace it only when the symptoms and voltage check support that diagnosis, and do not treat it as a substitute for checking +5VSB and the power path."
           },
           {
-            "question": "Do you repair a standalone graphics card if it is causing the short circuit?",
-            "answer": "No. KCROC diagnoses GPU power-delivery faults and 12VHPWR / 12V-2x6 connector issues only as part of a complete gaming desktop system, so the PSU, cables, PCIe slot and cooling can be checked together. Loose standalone graphics cards are not accepted."
+            "question": "Can a graphics card alone prevent a gaming PC from starting?",
+            "answer": "Yes. A graphics-card fault or its power cable can prevent startup, but the same symptoms can also come from the PSU, PCIe slot or motherboard. Isolate components only with AC disconnected and with the exact manufacturer procedure; do not assume the GPU is defective from a single symptom."
           },
           {
             "question": "Will a motherboard or PSU repair erase games and files on my SSD?",
-            "answer": "A PSU or motherboard repair does not normally erase an SSD because it does not require formatting the drive. However, no repairer can guarantee files if the SSD itself was damaged by an electrical event or already has a fault. KCROC does not provide standalone data-recovery services; tell the technician if the drive contains important files before approving work."
+            "answer": "A PSU or motherboard repair does not normally require formatting an SSD, but no repair process can guarantee files if the drive itself was damaged by an electrical event or already has a fault. Keep a separate backup of important files and tell anyone handling the system that data preservation is a priority before work begins."
           },
           {
-            "question": "How does free pickup and delivery work for a heavy gaming PC in Kuwait?",
-            "answer": `Arrange collection by WhatsApp or phone at ${businessPhoneDisplay}. KCROC collects complete desktop towers across Kuwait, performs the initial diagnostic at its Hawalli lab (Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19), shares the repair quote for approval, then returns the system after appropriate testing. Pickup and delivery are free across all six governorates.`
+            "question": "What should I do if the PSU shuts down during a startup attempt?",
+            "answer": `Stop repeated power attempts. Disconnect AC power if it is safe to do so, do not open the PSU, and note which lights, fans or sounds appear during the attempt. A protection shutdown needs controlled diagnosis of the PSU and connected hardware rather than repeated resets.`
           }
         ],
         "display": "static"
@@ -8285,7 +8241,7 @@ export const BLOG_POSTS: BlogPost[] = [
     "author": "Imran Natiq",
     "category": "Gaming Hardware Troubleshooting",
     "readTime": "15–18 min read",
-    "clusterParent": "gaming-pc-repair-kuwait",
+
     "tags": [
       "Gaming PC Won't Turn On",
       "PC No Power",
@@ -8294,15 +8250,15 @@ export const BLOG_POSTS: BlogPost[] = [
       "ATX Power Sequencing",
       "PSU Short-Circuit Protection",
       "Motherboard VRM Diagnostics",
-      "Kuwait Gaming PC Repair"
+      "Gaming PC Power Diagnostics"
     ],
-    "seoTitle": "Gaming PC Won’t Turn On? Power, PSU & Motherboard Troubleshooting in Kuwait | KCROC",
-    "seoDescription": "Gaming PC dead, clicking off after 1 second, or fans spinning with no POST? Follow Imran Natiq’s PSU, ATX power rail, and motherboard diagnostic guide—plus free pickup across Kuwait.",
+    "seoTitle": "Gaming PC Won’t Turn On? PSU, Power Rails and Motherboard Troubleshooting",
+    "seoDescription": "Gaming PC dead, clicking off after 1 second, or fans spinning with no POST? Learn how to separate PSU, ATX power-rail, motherboard, short-circuit and display-path faults before replacing components.",
     "contentType": "guide",
     "relatedPostSlugs": [
-      "gaming-pc-black-screen-no-display-kuwait",
-      "bios-uefi-recovery-kuwait",
-      "gaming-pc-random-shutdown-kuwait"
+      "pc-gaming-graphics-settings-better-visuals-fps",
+      "bitlocker-recovery-key-after-bios-update",
+      "windows-11-100-disk-usage-causes-solutions"
     ]
   },
 
@@ -8595,7 +8551,7 @@ export const BLOG_POSTS: BlogPost[] = [
   "author": "Imran Natiq",
   "category": "Gaming Hardware Troubleshooting",
   "readTime": "8–10 min read",
-  "clusterParent": "gaming-pc-repair-kuwait",
+
   "tags": [
     "Gaming PC No Display",
     "Gaming PC Black Screen",
@@ -8715,14 +8671,14 @@ export const BLOG_POSTS: BlogPost[] = [
         ]
       }
     ],
-    "image": "/images/blog/gaming-pc-thermal-throttling-kuwait.webp",
+    "image": "/images/geforce-rtx-gpu-gaming-pc-rgb-fans.webp",
     "discoverImage": "/images/discover/custom-gaming-pc-teardown-and-diagnostics-workbench-1200x675.webp",
     "date": "2026-10-01",
     "technicalReviewDate": "October 1, 2026",
     "author": "Imran Natiq",
     "category": "Gaming Hardware Troubleshooting",
     "readTime": "8-10 min read",
-    "clusterParent": "gaming-pc-repair-kuwait",
+
     "tags": [
       "GPU Artifacting",
        
@@ -8848,13 +8804,13 @@ export const BLOG_POSTS: BlogPost[] = [
       }
     ],
     "image": "/images/gaming-pc-deepcool-aio-liquid-cooler-installation.webp",
-    "discoverImage": "/images/discover/gaming-pc-thermal-throttling-kuwait-1200x675.webp",
+    "discoverImage": "/images/discover/custom-gaming-pc-teardown-and-diagnostics-workbench-1200x675.webp",
     "date": "2026-10-01",
     "technicalReviewDate": "October 1, 2026",
     "author": "Imran Natiq",
     "category": "Gaming Hardware Troubleshooting",
     "readTime": "8-10 min read",
-    "clusterParent": "gaming-pc-repair-kuwait",
+
     "tags": [
       "Gaming PC Shuts Down",
       "Gaming PC Random Shutdown",
@@ -8904,7 +8860,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
-        "text": "To reach the BitLocker recovery screen, the firmware has to initialize the hardware, pass POST and start the boot manager. A machine that shows this screen is not suffering from corrupted firmware. If instead you get a black screen, no display or a boot loop after the update, that is a different problem. See the full guide to BIOS and UEFI failure and recovery: https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait"
+        "text": "To reach the BitLocker recovery screen, the firmware has to initialize the hardware, pass POST and start the boot manager. A machine that shows this screen is not suffering from corrupted firmware. If instead you get a black screen, no display or a boot loop after the update, that is a different problem. For a separate Windows update recovery question, consult Microsoft's current Windows release-health guidance."
       },
       {
         "type": "h2",
@@ -9026,10 +8982,10 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
-        "text": "Related guides: https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait"
+        "text": "Related topic: Windows feature-update and recovery guidance."
       }
     ],
-    "image": "/images/asus-ez-flash-bios-update-strix-z890f-kuwait-1000.webp",
+    "image": "/images/laptop-bios-diagnostic-screen-repair.webp",
     "discoverImage": "/images/discover/bios-hero-motherboard-1200x675.webp",
     "date": "2026-10-05",
     "technicalReviewDate": "October 5, 2026",
