@@ -59,6 +59,14 @@ const BIOS_UEFI_RECOVERY_GUIDE_CARD: BlogPost = {
 
 // Keep company-specific privacy links out of global Windows/technical copy.
 const GLOBAL_EDITORIAL_AUTOLINK_EXCLUSIONS = ['page-privacy'];
+const KUWAIT_EDITORIAL_EXCEPTION_SLUGS = new Set([
+  'laptop-buying-guide-kuwait-2026',
+  'laptop-temperatures-kuwait-safe-cpu-gpu-temperatures',
+  'ar/laptop-buying-guide-kuwait-2026',
+  'ar/how-often-clean-laptop-replace-thermal-paste-kuwait',
+  'how-often-clean-laptop-replace-thermal-paste-kuwait',
+  'laptop-repair-kuwait-2026',
+]);
 
 const toAbsoluteAssetUrl = (value: string) =>
   value.startsWith('http')
@@ -1083,24 +1091,32 @@ export default function BlogPostTemplate() {
 
   const relatedPosts = useMemo(() => {
     if (!post) return [];
+    const globalEditorialContext =
+      !KUWAIT_EDITORIAL_EXCEPTION_SLUGS.has(post.slug) &&
+      (post.contentType !== 'news' || post.isGlobalGuide === true);
+    const keepForAudience = (items: BlogPost[]) => globalEditorialContext
+      ? items.filter((item) => !item.slug.toLowerCase().includes('kuwait'))
+      : items;
+
     if (post.relatedPostSlugs?.length) {
       const postsBySlug = new Map(
         [...BLOG_POSTS, GAMEBAR_PRESENCE_WRITER_GUIDE_CARD, BIOS_UEFI_RECOVERY_GUIDE_CARD].map((item) => [item.slug, item] as const)
       );
-      return post.relatedPostSlugs
+      const selected = post.relatedPostSlugs
         .map((relatedSlug) => postsBySlug.get(relatedSlug))
         .filter((item): item is BlogPost => Boolean(
           item && !item.redirectTo &&
           typeof item.slug === 'string' && item.slug.trim() &&
           typeof item.title === 'string' && item.title.trim()
         ));
+      return keepForAudience(selected);
     }
     if (post.isPillar) {
-      return BLOG_POSTS.filter(p => p.clusterParent === post.slug).slice(0, 5);
+      return keepForAudience(BLOG_POSTS.filter(p => p.clusterParent === post.slug)).slice(0, 5);
     } else if (post.clusterParent) {
       const parent = BLOG_POSTS.find(p => p.slug === post.clusterParent);
       const siblings = BLOG_POSTS.filter(p => p.clusterParent === post.clusterParent && p.slug !== post.slug);
-      return [parent, ...siblings].filter(Boolean) as BlogPost[];
+      return keepForAudience([parent, ...siblings].filter(Boolean) as BlogPost[]);
     }
     return [];
   }, [post]);
@@ -1177,14 +1193,6 @@ export default function BlogPostTemplate() {
     }
   };
 
-  const KUWAIT_EDITORIAL_EXCEPTION_SLUGS = new Set([
-    'laptop-buying-guide-kuwait-2026',
-    'laptop-temperatures-kuwait-safe-cpu-gpu-temperatures',
-    'ar/laptop-buying-guide-kuwait-2026',
-    'ar/how-often-clean-laptop-replace-thermal-paste-kuwait',
-    'how-often-clean-laptop-replace-thermal-paste-kuwait',
-    'laptop-repair-kuwait-2026',
-  ]);
   const isNoPowerGuide = post?.slug === 'laptop-wont-turn-on';
   const isGlobalEditorialArticle = Boolean(
     post &&
@@ -1435,8 +1443,8 @@ export default function BlogPostTemplate() {
   return (
     <div className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
 
-      <Head htmlAttributes={isGuide || isGlobalNewsArticle ? { lang: 'en' } : undefined}>
-        <title>{post.seoTitle || `${post.title.length > 57 ? `${post.title.slice(0, 57)}…` : post.title}${isGlobalNewsArticle ? "" : " | KCROC"}`}</title>
+      <Head htmlAttributes={isGlobalEditorialArticle ? { lang: 'en' } : undefined}>
+        <title>{post.seoTitle || `${post.title.length > 57 ? `${post.title.slice(0, 57)}…` : post.title}${isGlobalEditorialArticle ? "" : " | KCROC"}`}</title>
         <meta name="description" content={post.seoDescription || (post.description || post.excerpt).slice(0, 155)} />
         <link rel="canonical" href={pageUrl} />
         <meta name="robots" content="index, follow, max-image-preview:large" />
@@ -1449,7 +1457,7 @@ export default function BlogPostTemplate() {
       <meta property="og:title" content={post.seoTitle || post.title} />
       <meta property="og:description" content={post.slug === 'why-is-my-laptop-so-slow' ? post.seoDescription || post.description || post.excerpt : post.description || post.excerpt} />
       <meta property="og:url" content={pageUrl} />
-      {!isGlobalNewsArticle && <meta property="og:site_name" content={isGlobalEditorialArticle ? "KCROC Hardware Engineering Lab" : business.legalName} />}
+      {!isGlobalEditorialArticle && <meta property="og:site_name" content={business.legalName} />}
       {!isGlobalEditorialArticle && <meta property="og:locale" content="en_KW" />}
       <meta property="og:image" content={socialImage} />
       {discoverReady && <meta property="og:image:width" content="1200" />}
@@ -1590,7 +1598,7 @@ export default function BlogPostTemplate() {
                 <span className="flex items-center gap-1.5 mt-1"><Clock size={14} aria-hidden="true" /> {post.readTime}</span>
                 <span className="flex items-center gap-1.5 mt-1">
                   <User size={14} aria-hidden="true" />
-                  {post.author === 'Imran Natiq' && !isGlobalNewsArticle ? (
+                  {post.author === 'Imran Natiq' && !isGlobalEditorialArticle ? (
                     <Link to="/author/imran" className="hover:text-cyan-400 transition-colors">
                       {post.author}
                     </Link>
@@ -1659,7 +1667,7 @@ export default function BlogPostTemplate() {
                       <p className="text-xs font-black uppercase tracking-wider text-cyan-400 mb-1">
                         Written &amp; technically reviewed by
                       </p>
-                      {isGlobalNewsArticle ? (
+                      {isGlobalEditorialArticle ? (
                         <p className="text-lg font-bold text-white">Imran Natiq</p>
                       ) : (
                         <Link to="/author/imran" className="text-lg font-bold text-white hover:text-cyan-400 transition-colors">
