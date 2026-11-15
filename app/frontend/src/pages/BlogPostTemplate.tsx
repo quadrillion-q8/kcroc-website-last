@@ -1177,8 +1177,21 @@ export default function BlogPostTemplate() {
     }
   };
 
+  const KUWAIT_EDITORIAL_EXCEPTION_SLUGS = new Set([
+    'laptop-buying-guide-kuwait-2026',
+    'laptop-temperatures-kuwait-safe-cpu-gpu-temperatures',
+    'ar/laptop-buying-guide-kuwait-2026',
+    'ar/how-often-clean-laptop-replace-thermal-paste-kuwait',
+    'how-often-clean-laptop-replace-thermal-paste-kuwait',
+    'laptop-repair-kuwait-2026',
+  ]);
   const isNoPowerGuide = post?.slug === 'laptop-wont-turn-on';
-  const isGlobalNewsArticle = Boolean(isNews && post?.isGlobalGuide === true);
+  const isGlobalEditorialArticle = Boolean(
+    post &&
+    !KUWAIT_EDITORIAL_EXCEPTION_SLUGS.has(post.slug) &&
+    (isGuide || post.isGlobalGuide === true || post.contentType !== 'news')
+  );
+  const isGlobalNewsArticle = Boolean(isNews && isGlobalEditorialArticle && post?.isGlobalGuide === true);
 
   // ─── SEO SCHEMA: WebPage + Article/TechArticle + optional FAQPage + Breadcrumb ───
   const SCHEMA_DATA = useMemo(() => {
@@ -1192,8 +1205,8 @@ export default function BlogPostTemplate() {
           "url": pageUrl,
           "name": post.title,
           "description": post.description || post.excerpt,
-          ...(isGuide ? { "inLanguage": "en" } : (["why-8gb-ram-is-no-longer-enough-for-windows-11", "why-is-my-laptop-so-slow"].includes(post.slug) || isNoPowerGuide ? { "inLanguage": "en-KW" } : {})),
-          ...(isGlobalNewsArticle ? {} : { "isPartOf": { "@id": `${business.websiteUrl}/#website` } })
+          ...(isGlobalEditorialArticle ? { "inLanguage": "en" } : (["why-8gb-ram-is-no-longer-enough-for-windows-11", "why-is-my-laptop-so-slow"].includes(post.slug) || isNoPowerGuide ? { "inLanguage": "en-KW" } : {})),
+          ...(isGlobalEditorialArticle ? {} : { "isPartOf": { "@id": `${business.websiteUrl}/#website` } })
         },
         {
           "@type": ["windows-11-26h2-iso-released", "nvidia-dlss-5-neural-rendering-explained"].includes(post.slug)
@@ -1202,9 +1215,9 @@ export default function BlogPostTemplate() {
           "@id": `${pageUrl}#article`,
           "headline": post.title,
           "description": post.excerpt,
-          ...(isGuide ? { "inLanguage": "en" } : {}),
+          ...(isGlobalEditorialArticle ? { "inLanguage": "en" } : {}),
           ...(isNews ? {
-            "inLanguage": isGlobalNewsArticle ? "en" : "en-KW",
+            "inLanguage": isGlobalEditorialArticle ? "en" : "en-KW",
             "articleSection": post.category,
             "keywords": post.tags ?? [],
             "isAccessibleForFree": true
@@ -1318,31 +1331,33 @@ export default function BlogPostTemplate() {
           "image": toAbsoluteAssetUrl(post.discoverImage || post.image),
           "datePublished": post.date,
           "dateModified": getModifiedDate(post),
-          "author": isGlobalNewsArticle ? { "@type": "Person", "name": post.author } : post.slug === "windows-11-26h2-iso-released"
-            ? { "@id": `${AUTHOR_URL}#person` }
-            : post.author === "Imran Natiq" ? {
-              "@type": "Person",
-              "@id": `${AUTHOR_URL}#person`,
-              "name": "Imran Natiq",
-              "url": AUTHOR_URL,
-              "jobTitle": post.slug === "gaming-pc-not-turning-on-kuwait" ? "Lead Hardware Repair Engineer" : "Hardware Repair Engineer",
-              "worksFor": post.slug === "gaming-pc-not-turning-on-kuwait"
-                ? { "@id": `${business.websiteUrl}/#business` }
-                : {
-                    "@type": "Organization",
-                    "name": post.slug === "why-is-my-laptop-so-slow" ? "KCROC Hardware Engineering Lab" : business.legalName,
-                    "url": business.websiteUrl
-                  }
-            } : { "@type": "Organization", "name": post.author },
-          ...(isGlobalNewsArticle ? {} : {
+          "author": isGlobalEditorialArticle
+            ? { "@type": "Person", "name": post.author, "jobTitle": "Hardware Engineer and Technical Reviewer" }
+            : post.slug === "windows-11-26h2-iso-released"
+              ? { "@id": `${AUTHOR_URL}#person` }
+              : post.author === "Imran Natiq" ? {
+                "@type": "Person",
+                "@id": `${AUTHOR_URL}#person`,
+                "name": "Imran Natiq",
+                "url": AUTHOR_URL,
+                "jobTitle": post.slug === "gaming-pc-not-turning-on-kuwait" ? "Lead Hardware Repair Engineer" : "Hardware Repair Engineer",
+                "worksFor": post.slug === "gaming-pc-not-turning-on-kuwait"
+                  ? { "@id": `${business.websiteUrl}/#business` }
+                  : {
+                      "@type": "Organization",
+                      "name": post.slug === "why-is-my-laptop-so-slow" ? "KCROC Hardware Engineering Lab" : business.legalName,
+                      "url": business.websiteUrl
+                    }
+              } : { "@type": "Organization", "name": post.author },
+          ...(isGlobalEditorialArticle ? {} : {
             "publisher": ["windows-11-26h2-iso-released", "nvidia-dlss-5-neural-rendering-explained", "gaming-pc-not-turning-on-kuwait"].includes(post.slug)
-            ? { "@id": `${business.websiteUrl}/#business` }
-            : {
-              "@type": "Organization",
-              "name": post.slug === "why-is-my-laptop-so-slow" ? "KCROC Hardware Engineering Lab" : business.legalName,
-              "url": business.websiteUrl,
-              "logo": { "@type": "ImageObject", "url": `${business.websiteUrl}/logo.webp`, "width": 1024, "height": 1024 }
-            }
+              ? { "@id": `${business.websiteUrl}/#business` }
+              : {
+                "@type": "Organization",
+                "name": post.slug === "why-is-my-laptop-so-slow" ? "KCROC Hardware Engineering Lab" : business.legalName,
+                "url": business.websiteUrl,
+                "logo": { "@type": "ImageObject", "url": `${business.websiteUrl}/logo.webp`, "width": 1024, "height": 1024 }
+              }
           }),
           "mainEntityOfPage": { "@id": `${pageUrl}#webpage` }
         },
@@ -1399,20 +1414,6 @@ export default function BlogPostTemplate() {
   // All hooks have now run unconditionally on every render — safe to bail out.
   if (!post) return <Navigate to={isNews ? ROUTES.NEWS : isGuide ? ROUTES.GUIDES : ROUTES.BLOG} replace />;
 
-  // Blog articles are global editorial content by default. Only the six
-  // explicitly retained Kuwait-market articles may show local conversion content.
-  // Their URLs and content remain unchanged; this list controls presentation only.
-  const KUWAIT_EDITORIAL_EXCEPTION_SLUGS = new Set([
-    'laptop-buying-guide-kuwait-2026',
-    'laptop-temperatures-kuwait-safe-cpu-gpu-temperatures',
-    'ar/laptop-buying-guide-kuwait-2026',
-    'ar/how-often-clean-laptop-replace-thermal-paste-kuwait',
-    'how-often-clean-laptop-replace-thermal-paste-kuwait',
-    'laptop-repair-kuwait-2026',
-  ]);
-  const isGlobalEditorialArticle = isGuide || post.isGlobalGuide === true ||
-    (post.contentType !== 'news' && !KUWAIT_EDITORIAL_EXCEPTION_SLUGS.has(post.slug));
-
   const isGamingPerformanceGuide = [
     'gaming-pc-optimization-2026',
     'windows-gaming-performance-stutter-fix',
@@ -1439,8 +1440,8 @@ export default function BlogPostTemplate() {
         <meta name="description" content={post.seoDescription || (post.description || post.excerpt).slice(0, 155)} />
         <link rel="canonical" href={pageUrl} />
         <meta name="robots" content="index, follow, max-image-preview:large" />
-        {post.arabicSlug && <link rel="alternate" hrefLang={isGuide ? "en" : "en-KW"} href={pageUrl} />}
-        {post.arabicSlug && <link rel="alternate" hrefLang="ar-KW" href={`${business.websiteUrl}${isNews ? '/news/' : '/blog/'}${post.arabicSlug}`} />}
+        {post.arabicSlug && <link rel="alternate" hrefLang={isGlobalEditorialArticle ? "en" : "en-KW"} href={pageUrl} />}
+        {post.arabicSlug && <link rel="alternate" hrefLang={isGlobalEditorialArticle ? "ar" : "ar-KW"} href={`${business.websiteUrl}${isNews ? '/news/' : '/blog/'}${post.arabicSlug}`} />}
         {post.arabicSlug && <link rel="alternate" hrefLang="x-default" href={pageUrl} />}
         {post.slug === 'why-is-my-laptop-so-slow' && <link rel="alternate" hrefLang="en" href={pageUrl} />}
         {post.slug === 'why-is-my-laptop-so-slow' && <link rel="alternate" hrefLang="x-default" href={pageUrl} />}
@@ -1677,11 +1678,9 @@ export default function BlogPostTemplate() {
                                 : 'Hardware Repair Engineer at KCROC, focused on laptop thermal troubleshooting, hardware testing and component-level repair in Kuwait.'}
                       </p>
                       <p className="text-xs text-slate-500 mt-2">
-                        Technical review: {isGlobalNewsArticle
-                          ? getTechnicalReviewDateLabel(post, 'November 14, 2026')
-                          : isGlobalEditorialArticle
-                            ? `${getTechnicalReviewDateLabel(post, 'November 7, 2026')}${post.slug === 'gaming-pc-not-turning-on-kuwait' ? ' · KCROC Hardware Engineering Lab, Hawalli, Kuwait' : post.slug === 'nvidia-dlss-5-neural-rendering-explained' ? ' · Hawalli, Kuwait' : ''}`
-                            : `${getTechnicalReviewDateLabel(post, 'September 1, 2026')} · Hawalli, Kuwait`}
+                        Technical review: {isGlobalEditorialArticle
+                          ? getTechnicalReviewDateLabel(post, isGlobalNewsArticle ? 'November 14, 2026' : 'November 7, 2026')
+                          : `${getTechnicalReviewDateLabel(post, 'September 1, 2026')} · Hawalli, Kuwait`}
                       </p>
                     </div>
                   </div>
