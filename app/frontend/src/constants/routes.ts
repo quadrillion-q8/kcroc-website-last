@@ -48,7 +48,7 @@ export const KUWAIT_EDITORIAL_EXCEPTION_SLUGS = new Set([
 
 export const isGlobalBlogEditorialPath = (pathname: string): boolean => {
   if (!pathname.startsWith('/blog/')) return false;
-  const slug = pathname.slice('/blog/'.length).replace(/\\/+$/, '');
+  const slug = pathname.slice('/blog/'.length).replace(/\/+$/, '');
   return !KUWAIT_EDITORIAL_EXCEPTION_SLUGS.has(slug);
 };
 
