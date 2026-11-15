@@ -1519,7 +1519,7 @@ export default function BlogPostTemplate() {
             <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
               <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-3">Author</p>
               <p className="font-bold text-white">{post.author}</p>
-              <p className="text-xs text-slate-500 mt-1">{isGlobalNewsArticle ? 'Global technology coverage' : post.slug === 'why-is-my-laptop-so-slow' || post.slug === 'gaming-pc-not-turning-on-kuwait' ? 'KCROC Hardware Engineering Lab · Hawalli, Kuwait' : isGlobalEditorialArticle ? 'KCROC Technical Editorial' : 'Kuwait Computer Repair On Call'}</p>
+              <p className="text-xs text-slate-500 mt-1">{isGlobalNewsArticle ? 'Global technology coverage' : post.slug === 'why-is-my-laptop-so-slow' || post.slug === 'gaming-pc-not-turning-on-kuwait' ? 'KCROC Hardware Engineering Lab · Hawalli, Kuwait' : isGlobalEditorialArticle ? 'Technical Editorial Team' : 'Kuwait Computer Repair On Call'}</p>
             </div>
 
             {(isGlobalEditorialArticle ? relatedPosts : recentPosts).length > 0 && (
@@ -1657,7 +1657,7 @@ export default function BlogPostTemplate() {
                     {!isGlobalNewsArticle && (
                       <img
                         src={AUTHOR_IMAGE_URL}
-                        alt={isGlobalEditorialArticle ? 'Imran Natiq — Hardware Repair Engineer' : 'Imran Natiq — Hardware Repair Engineer at KCROC'}
+                        alt={isGlobalEditorialArticle ? 'Imran Natiq — Hardware Engineer' : 'Imran Natiq — Hardware Repair Engineer at KCROC'}
                         className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl object-cover border border-slate-800 shrink-0"
                         loading="lazy"
                         decoding="async"
@@ -1682,7 +1682,7 @@ export default function BlogPostTemplate() {
                             : post.slug === 'nvidia-dlss-5-neural-rendering-explained'
                               ? 'Hardware Repair Engineer at KCROC — focused on laptop thermal diagnostics, GPU load testing, and component-level motherboard repair at our ESD-safe laboratory in Hawalli, Kuwait.'
                               : isGlobalEditorialArticle
-                                ? 'Hardware Repair Engineer and technical reviewer focused on computer hardware, software troubleshooting, performance, firmware and diagnostics.'
+                                ? 'Hardware Engineer and technical reviewer focused on computer hardware, software troubleshooting, performance, firmware and diagnostics.'
                                 : 'Hardware Repair Engineer at KCROC, focused on laptop thermal troubleshooting, hardware testing and component-level repair in Kuwait.'}
                       </p>
                       <p className="text-xs text-slate-500 mt-2">
