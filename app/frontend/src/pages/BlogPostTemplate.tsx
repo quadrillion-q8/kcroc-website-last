@@ -8,7 +8,7 @@ import {
   ChevronDown, Link2, ArrowUp, Phone, MessageCircle, Check
 } from 'lucide-react';
 
-import { ROUTES, getBlogRoute, getContentRoute } from '../constants/routes';
+import { ROUTES, getBlogRoute, getContentRoute, isGlobalBlogEditorialPath } from '../constants/routes';
 import { BLOG_POSTS, BlogPost, ContentBlock } from '../constants/blogPosts';
 import { KCROC_GRAPH } from '../data/graph';
 import { AutoLink } from '../utils/linkGraph';
@@ -25,15 +25,6 @@ import DLSS5BenchmarkExplorer from '@/components/content/DLSS5BenchmarkExplorer'
 // Single source of truth for business identity — see graph.ts 'biz-kcroc'.
 // (Previously duplicated via constants/data.ts's BUSINESS_INFO.)
 const business = KCROC_GRAPH.business!;
-
-const KUWAIT_EDITORIAL_EXCEPTION_SLUGS = new Set([
-  'laptop-buying-guide-kuwait-2026',
-  'laptop-temperatures-kuwait-safe-cpu-gpu-temperatures',
-  'ar/laptop-buying-guide-kuwait-2026',
-  'ar/how-often-clean-laptop-replace-thermal-paste-kuwait',
-  'how-often-clean-laptop-replace-thermal-paste-kuwait',
-  'laptop-repair-kuwait-2026',
-]);
 
 const LOCAL_EDITORIAL_TRACE = /\b(?:Kuwait|Hawalli|Salmiya|Farwaniya|Jahra|Fahaheel|Mangaf|Ahmadi|Mubarak Al-Kabeer)\b|\bKWD\b|\b(?:free )?pickup(?: and (?:return )?delivery)?\b|\b(?:local warranty|local availability|local support|local pricing)\b|computerrepairkuwait\.com/i;
 const COMMERCIAL_EDITORIAL_TRACE = /\bKCROC\b|\bKuwait Computer Repair On Call\b|\bNo Fix,? No Fee\b|\b(?:from|starts? at)\s*\\d+\s*(?:KWD|KD)\b/i;
@@ -1037,8 +1028,7 @@ export default function BlogPostTemplate() {
   const contentRoute = (post: BlogPost) =>
     getContentRoute(post.slug, post.contentType ?? 'blog');
   const rawPost = BLOG_POSTS.find((p) => p.slug === slug);
-  const isKuwaitEditorialException = Boolean(rawPost && KUWAIT_EDITORIAL_EXCEPTION_SLUGS.has(rawPost.slug));
-  const isGlobalBlogArticle = Boolean(rawPost && !isGuide && !isNews && !isKuwaitEditorialException);
+  const isGlobalBlogArticle = isGlobalBlogEditorialPath(location.pathname);
   const post = useMemo(
     () => rawPost && isGlobalBlogArticle ? sanitizeGlobalEditorialPost(rawPost) : rawPost,
     [rawPost, isGlobalBlogArticle]
