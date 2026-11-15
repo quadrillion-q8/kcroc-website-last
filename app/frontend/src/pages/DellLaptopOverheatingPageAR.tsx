@@ -101,7 +101,7 @@ export default function DellLaptopOverheatingPageAR() {
         <meta property="og:title" content="لابتوب Dell يسخن؟ فحص F12 وأكواد المروحة والحلول" />
       </Head>
       <SchemaMarkup schema={SCHEMA} />
-      <main dir="rtl" className="min-h-screen bg-transparent text-slate-200 pt-28 pb-24">
+      <div dir="rtl" className="min-h-screen bg-transparent text-slate-200 pt-28 pb-24">
         <article className="max-w-5xl mx-auto px-4 sm:px-6">
           <nav aria-label="مسار الصفحة" className="text-sm text-slate-400 mb-7">
             <Link to="/ar" className="hover:text-cyan-300">الرئيسية</Link>
@@ -235,7 +235,7 @@ export default function DellLaptopOverheatingPageAR() {
             هذا الدليل خاص بأجهزة Dell، مو بديل عن الدليل الشامل لكل الشركات. تقدر ترجع إلى <Link to="/guides/why-is-my-laptop-so-hot" className="text-cyan-300 hover:underline">الدليل العام لحرارة اللابتوبات</Link> إذا تبي شرح درجات الحرارة والحساسات بشكل أوسع.
           </p>
         </article>
-      </main>
+      </div>
     </>
   );
 }
