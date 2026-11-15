@@ -82,6 +82,7 @@ export const routes: RouteObject[] = [
           { path: 'guides/why-is-my-laptop-so-hot', lazy: async () => ({ Component: (await import('./pages/LaptopOverheatingGuide')).default }) },
           { path: 'guides/bios-uefi-recovery-kuwait', lazy: async () => ({ Component: (await import('./pages/BiosUefiRecoveryGuide')).default }) },
           { path: 'guides/ar/bios-uefi-recovery-kuwait', lazy: async () => ({ Component: (await import('./pages/BiosUefiRecoveryGuideAR')).default }) },
+          { path: 'guides/ar/dell-laptop-overheating', lazy: async () => ({ Component: (await import('./pages/DellLaptopOverheatingPageAR')).default }) },
           { path: 'guides/dell-laptop-overheating', lazy: async () => { const { DellLaptopOverheatingPage } = await import('./pages/DellLaptopOverheatingPage'); return { Component: DellLaptopOverheatingPage }; } },
           { path: 'guides/gamebar-presence-writer-fix', lazy: async () => ({ Component: (await import('./pages/GameBarPresenceWriterGuide')).default }) },
           { path: 'guides/windows-10-end-of-support', lazy: async () => ({ Component: (await import('./pages/Windows10EndOfSupportGuide')).default }) },
