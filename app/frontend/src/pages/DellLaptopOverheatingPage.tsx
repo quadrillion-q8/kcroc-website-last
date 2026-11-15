@@ -339,6 +339,7 @@ export const DellLaptopOverheatingPage = () => {
           </div>
           <p className="text-sm text-slate-400 leading-6 mt-5 mb-0">
             The Windows SupportAssist application can also offer hardware scans and update checks on supported systems. For a recorded pre-boot result, use the F12 Diagnostics path above. A passing quick test does not rule out every intermittent fan, airflow or thermal problem.
+          </p>
         </section>
 
         <section id="dell-thermal-profiles" className="scroll-mt-28">
