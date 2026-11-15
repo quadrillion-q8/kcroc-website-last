@@ -22,7 +22,7 @@ import {
 // ~190KB knowledge graph. NAV_GRAPH is a generated slim projection of
 // graph.ts (see scripts/generate-nav-data.ts) kept in sync automatically.
 import { NAV_GRAPH } from '../../../data/navGraph.generated';
-import { isEnglishTechnicalGuideRoute } from '../../../constants/routes';
+import { isEnglishTechnicalGuideRoute, isGlobalBlogEditorialPath } from '../../../constants/routes';
 import { openConsentPreferences } from '../../privacy/consent';
 
 const ARABIC_PATHS: Record<string, string> = {
@@ -118,7 +118,7 @@ export function Footer() {
   const isArabicRoute = location.pathname === '/ar' || location.pathname.startsWith('/ar/') || location.pathname.startsWith('/blog/ar/') || location.pathname.startsWith('/guides/ar/');
   const isHawalliLandingPage = location.pathname.replace(/\/+$/, '') === '/location/hawalli';
   const isWindowsBatteryPage = location.pathname === '/battery-replacement-kuwait' || location.pathname === '/ar/laptop-battery-replacement-kuwait';
-  const isGlobalEditorialArticle = location.pathname === '/blog/why-is-my-laptop-so-slow';
+  const isGlobalEditorialArticle = isGlobalBlogEditorialPath(location.pathname);
   const isGlobalTechnicalGuide = isEnglishTechnicalGuideRoute(location.pathname);
   const localizedPath = (path: string) => isArabicRoute ? (ARABIC_PATHS[path] ?? path) : path;
   const serviceLabel = (path: string, label: string) => isArabicRoute ? (ARABIC_SERVICE_LABELS[path] ?? label.replace(' Kuwait', '')) : label.replace(' Kuwait', '');
