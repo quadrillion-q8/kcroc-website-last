@@ -3530,7 +3530,7 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "/images/laptop-screen-assembly-disassembly-repair.webp",
     discoverImage: "/images/laptop-screen-assembly-disassembly-repair.webp",
     date: "2026-07-02",
-    author: "KCROC Repair Team",
+    author: "Hardware Maintenance Editorial Team",
     category: "Maintenance",
     readTime: "3 min read",
 
@@ -3665,7 +3665,7 @@ export const BLOG_POSTS: BlogPost[] = [
     discoverImage: "/images/discover/windows-11-8gb-ram-performance-1200x675.webp",
     date: "2026-07-30",
     technicalReviewDate: "November 6, 2026",
-    author: "KCROC Technical Team",
+    author: "Windows & Hardware Editorial Team",
     category: "Windows & Performance",
     readTime: "12-15 min read",
     tags: [
@@ -4121,7 +4121,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "callout",
         "variant": "recommendation",
-        "title": "KCROC recommendation",
+        "title": "Recommendation",
         "text": "Leave enabled by default."
       },
       {
@@ -4250,7 +4250,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "callout",
         "variant": "recommendation",
-        "title": "KCROC recommendation",
+        "title": "Recommendation",
         "text": "Review privacy settings first."
       },
       {
@@ -4364,7 +4364,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "callout",
         "variant": "recommendation",
-        "title": "KCROC recommendation",
+        "title": "Recommendation",
         "text": "Do not automatically disable SysMain just because you have an SSD."
       },
       {
@@ -4436,7 +4436,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "callout",
         "variant": "recommendation",
-        "title": "KCROC recommendation",
+        "title": "Recommendation",
         "text": "Optional."
       },
       {
@@ -4775,7 +4775,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "h2",
         "text": "Practical Engineering Takeaway",
-        "id": "kcroc-expert-advice"
+        "id": "engineering-takeaway"
       },
       {
         "type": "paragraph",
@@ -4802,7 +4802,7 @@ export const BLOG_POSTS: BlogPost[] = [
     "discoverImage": "/images/discover/windows-11-8gb-ram-performance-1200x675.webp",
     "date": "2026-09-05",
     "technicalReviewDate": "2026-10-05",
-    "author": "KCROC Technical Team — Windows & Hardware Troubleshooting",
+    "author": "Windows & Hardware Editorial Team",
     "category": "Windows & Software",
     "readTime": "9-11 min read",
     "tags": [
@@ -4828,7 +4828,7 @@ export const BLOG_POSTS: BlogPost[] = [
     "description": "An evidence-led review of Windows 11 settings for privacy, startup, battery life, gaming and security, with clear guidance on what each change does and its trade-offs.",
     "content": [
       "Windows 11 comes with many settings that affect privacy, usability, startup behavior, battery life, security and background activity.",
-      "This KCROC guide focuses on changing the right setting for the actual problem rather than treating every Windows switch as a performance boost."
+      "This guide focuses on changing the right setting for the actual problem rather than treating every Windows switch as a performance boost."
     ],
     "richContent": [
       {
@@ -4846,7 +4846,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "callout",
         "variant": "expert",
-        "title": "KCROC Technician Tip",
+        "title": "Technical tip",
         "text": "Windows 11 receives frequent feature and interface updates. A setting may move or have slightly different wording on your PC. If you cannot find an option in the path shown below, use the Windows Settings search box and search for the setting name."
       },
       {
@@ -4878,7 +4878,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "callout",
         "variant": "recommendation",
-        "title": "KCROC method",
+        "title": "Practical method",
         "text": "Identify the problem → change the relevant setting → test the result → keep or reverse the change."
       },
       {
@@ -4910,7 +4910,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
-        "text": "KCROC recommendation: If you use Windows professionally, keeping the Start menu focused on the applications you actually use is worthwhile. Do not expect a measurable FPS or CPU improvement from this change."
+        "text": "Recommendation: If you use Windows professionally, keeping the Start menu focused on the applications you actually use is worthwhile. Do not expect a measurable FPS or CPU improvement from this change."
       },
       {
         "type": "h2",
@@ -5002,7 +5002,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
-        "text": "KCROC's rule: Know what a setting actually does before calling it a performance tweak."
+        "text": "A useful rule: Know what a setting actually does before calling it a performance tweak."
       },
       {
         "type": "h2",
@@ -5089,7 +5089,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "callout",
         "variant": "expert",
-        "title": "KCROC privacy principle",
+        "title": "Privacy principle",
         "text": "Permissions should match the job an application actually performs. Do not disable important permissions just because they exist. Review them intelligently."
       },
       {
@@ -5156,7 +5156,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "callout",
         "variant": "recommendation",
-        "title": "KCROC recommendation",
+        "title": "Recommendation",
         "text": "The most important rule is not “Microsoft Store only.” It is: Know what you are installing and verify where it came from."
       },
       {
@@ -5234,7 +5234,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "callout",
         "variant": "recommendation",
-        "title": "KCROC recommendation",
+        "title": "Recommendation",
         "text": "Leave this enabled permanently. There is very little downside for most users."
       },
       {
@@ -5366,7 +5366,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "callout",
         "variant": "recommendation",
-        "title": "KCROC recommendation",
+        "title": "Recommendation",
         "text": "For normal Windows users, keeping UAC enabled is the sensible choice."
       },
       {
@@ -5647,8 +5647,8 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "h2",
-        "text": "The KCROC Windows Optimization Method",
-        "id": "kcroc-method"
+        "text": "A measured Windows Optimization Method",
+        "id": "optimization-method"
       },
       {
         "type": "paragraph",
@@ -5674,7 +5674,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "h2",
-        "text": "KCROC's Windows 11 Optimization Checklist",
+        "text": "Windows 11 Optimization Checklist",
         "id": "checklist"
       },
       {
@@ -5730,7 +5730,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "callout",
         "variant": "expert",
-        "title": "The KCROC principle",
+        "title": "Practical principle",
         "text": "Not every tweak makes Windows faster. The biggest performance improvements usually come from identifying the actual bottleneck. If your PC is slow because of excessive startup software, fix startup software. If it is overheating, investigate cooling. If storage is failing, address the storage problem. If malware is present, remove the underlying threat. If Windows is corrupted, repair Windows."
       },
       {
@@ -5781,7 +5781,7 @@ export const BLOG_POSTS: BlogPost[] = [
           },
           {
             "question": "Should I run a debloat script to speed up Windows 11?",
-            "answer": "KCROC does not recommend aggressive debloat scripts without a recovery plan and a clear understanding of every change. Services, registry entries, scheduled tasks, components, and privacy settings can interact in ways that make later troubleshooting harder."
+            "answer": "Avoid aggressive debloat scripts unless you have a recovery plan and understand every change. Services, registry entries, scheduled tasks, components, and privacy settings can interact in ways that make later troubleshooting harder. Services, registry entries, scheduled tasks, components, and privacy settings can interact in ways that make later troubleshooting harder."
           }
         ]
       }
@@ -5789,7 +5789,7 @@ export const BLOG_POSTS: BlogPost[] = [
     "image": "/images/windows-11-operating-system-installation-gaming-pc.webp",
     "discoverImage": "/images/discover/windows-11-laptop-multitasking-1200x675.webp",
     "date": "2026-09-08",
-    "author": "KCROC Technical Team — Windows & Hardware Troubleshooting",
+    "author": "Windows & Hardware Editorial Team",
     "category": "Windows & Software",
     "readTime": "15-18 min read",
     "tags": [
@@ -8561,7 +8561,7 @@ export const BLOG_POSTS: BlogPost[] = [
     "GPU No Signal",
      
   ],
-  "seoTitle": "Gaming PC Black Screen / No Display After Boot | POST & GPU Checks | KCROC",
+  "seoTitle": "Gaming PC Black Screen / No Display After Boot | POST & GPU Checks",
   "seoDescription": "Gaming PC powers on but shows no display? Read CPU, DRAM, VGA and BOOT LEDs, check DDR5 training, GPU power and BIOS safely before replacing parts.",
   "contentType": "guide"
 },
@@ -8686,7 +8686,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Graphics Card Black Screen",
       "Gaming Hardware Troubleshooting"
     ],
-    "seoTitle": "GPU Artifacting, Flickering & Black Screens Under Load | Diagnostic Guide | KCROC",
+    "seoTitle": "GPU Artifacting, Flickering & Black Screens Under Load | Diagnostic Guide",
     "seoDescription": "GPU artifacting, flickering or black screens under load? Separate driver, thermal, VRAM, power-delivery and display-path causes before replacing a graphics card.",
     "contentType": "guide"
   },
@@ -8818,7 +8818,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "VRM Failure",
        
     ],
-    "seoTitle": "Gaming PC Shuts Down While Gaming | PSU, Heat & VRM Guide | KCROC",
+    "seoTitle": "Gaming PC Shuts Down While Gaming | PSU, Heat & VRM Guide",
     "seoDescription": "Gaming PC shuts down under load? Separate PSU instability, overheating, VRM, GPU and software causes with a safe diagnosis path before replacing hardware.",
     "contentType": "guide"
   },
@@ -8999,7 +8999,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "TPM",
       "Secure Boot"
     ],
-    "seoTitle": "BitLocker Recovery Key After BIOS Update: Why & What to Do | KCROC",
+    "seoTitle": "BitLocker Recovery Key After BIOS Update: Why & What to Do",
     "seoDescription": "Windows asks for a BitLocker recovery key after a BIOS update? Learn why it happens, where to find the key, and how to suspend BitLocker before firmware updates.",
     "contentType": "guide"
   },
