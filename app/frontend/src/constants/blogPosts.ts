@@ -9683,6 +9683,54 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "h2",
+        text: "Quick answer: the 80/20 graphics settings rule",
+        id: "quick-answer"
+      },
+      {
+        type: "paragraph",
+        text: "Keep 16× Anisotropic Filtering, choose a texture tier that fits the game's real video-memory budget, retain a sensible screen-space ambient-occlusion option, and use one restrained sharpening pass at most. When more performance is needed, test volumetrics, shadows, reflections, ray tracing and view distance before sacrificing texture detail."
+      },
+      {
+        type: "callout",
+        variant: "tip",
+        title: "A balanced starting preset",
+        text: "Start with 16× AF, High textures when VRAM headroom permits, SSAO or GTAO on High, one upscaler at Quality when useful, and sharpening off until you can see that the image needs it. Change one setting at a time and keep only changes that improve the same repeatable scene."
+      },
+      {
+        type: "h2",
+        text: "How graphics settings affect the GPU pipeline and frame time",
+        id: "gpu-pipeline-frame-time"
+      },
+      {
+        type: "paragraph",
+        text: "A graphics preset is not one workload. Each option adds work at a different stage: the CPU prepares scene data and draw commands; geometry and level-of-detail determine what is submitted; rasterization creates fragments; pixel and compute shaders shade them; texture units sample surface data; lighting and reflection passes add more work; and post-processing applies effects to the finished image. Some costs land mainly on the GPU, while others increase CPU submission work or memory traffic."
+      },
+      {
+        type: "list",
+        items: [
+          "Geometry, object density and view distance: can increase CPU draw-call submission, visibility work and GPU geometry processing. They often matter most in crowded open-world scenes.",
+          "Texture quality and anisotropic filtering: affect texture residency, cache behaviour and texture sampling. Texture quality is primarily a memory-capacity choice until resources exceed the usable budget; AF is a sampling-quality choice.",
+          "Volumetrics, shadows, ambient occlusion and reflections: add lighting, sampling, filtering or shader work. Their exact cost depends on the engine, resolution, quality tier and implementation.",
+          "Ray tracing: adds ray-generation, acceleration-structure traversal, intersection and denoising work. Hardware RT units help, but they do not make the work free.",
+          "Upscaling and sharpening: upscaling changes the internal render resolution and reconstructs the output; sharpening is a separate image-processing pass that can restore perceived edge contrast but cannot recreate missing detail."
+        ]
+      },
+      {
+        type: "paragraph",
+        text: "Frame time is the time a frame takes to complete, measured in milliseconds. The simple relationship is 1,000 divided by frames per second: 60 FPS is about 16.67 ms per frame, 120 FPS is 8.33 ms, 144 FPS is 6.94 ms, and 240 FPS is 4.17 ms. At high refresh rates, a small delay becomes a large share of the frame budget."
+      },
+      {
+        type: "paragraph",
+        text: "Average FPS can conceal uneven delivery. The 1% low is a summary of the slowest part of a capture, although benchmark tools do not all calculate or label it identically. A system averaging 120 FPS can still feel uneven if occasional frames take 30–80 ms. Compare the frame-time graph, 1% lows and percentile frame times from the same route and capture method—not just the headline average."
+      },
+      {
+        type: "callout",
+        variant: "expert",
+        title: "Separate a GPU limit from a CPU limit",
+        text: "When the GPU is consistently busy and reducing resolution or GPU-heavy effects improves frame time, the scene is probably GPU-bound. When one critical CPU thread is saturated and the GPU has idle gaps, lowering resolution may barely help; test view distance, crowd density, simulation load and background processes instead. The bottleneck can change from one scene to another."
+      },
+      {
+        type: "h2",
         text: "1. Set Anisotropic Filtering to 16×",
         id: "anisotropic-filtering"
       },
@@ -9693,6 +9741,10 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         type: "paragraph",
         text: "On modern gaming hardware, Anisotropic Filtering generally has a relatively small performance cost, while the visual improvement can be easy to notice. AMD's current documentation says Anisotropic Filtering has a small FPS cost and offers levels up to 16×: https://www.amd.com/en/resources/support-articles/faqs/DH3-012.html"
+      },
+      {
+        type: "paragraph",
+        text: "The reason AF is usually inexpensive is that modern GPUs include dedicated texture-sampling hardware and filtering paths designed for this kind of work. That does not make 16× literally free on every GPU or game: bandwidth pressure, cache behaviour, an integrated GPU sharing system memory, or an unusual engine implementation can change the result. Treat the in-game benchmark as the final authority rather than assuming a fixed percentage."
       },
       {
         type: "callout",
@@ -9731,10 +9783,30 @@ export const BLOG_POSTS: BlogPost[] = [
         text: "That can lead to texture streaming problems, stuttering and inconsistent frame delivery as the system has to move data between different types of memory. So rather than automatically choosing Low or Medium textures to gain FPS, check your GPU's VRAM usage first."
       },
       {
+        type: "paragraph",
+        text: "One important distinction is VRAM allocation versus active use. A game or overlay may report memory reserved or allocated by the application; that number is not automatically the amount of data actively resident or proof that the card has run out of usable memory. On Windows, DirectX exposes a video-memory Budget and CurrentUsage value for the process. When current usage exceeds the operating-system budget, the application can encounter eviction, paging and stutter. Check budget pressure and frame-time spikes together rather than treating a single percentage of physical VRAM as a universal failure threshold. Microsoft documents these counters in its DXGI video-memory budget guidance: https://learn.microsoft.com/en-us/windows/win32/api/dxgi1_4/ns-dxgi1_4-dxgi_query_video_memory_info"
+      },
+      {
+        type: "comparisonTable",
+        title: "Practical VRAM texture starting points by resolution",
+        featureLabel: "GPU VRAM",
+        columns: ["1080p", "1440p", "4K", "Watch for"],
+        rows: [
+          { feature: "6 GB", values: ["Medium; High only in lighter titles", "Low–Medium", "Not a sensible default for demanding AAA games", "Avoid high-resolution texture packs; test without ray tracing or frame generation if hitching appears."] },
+          { feature: "8 GB", values: ["High in many games; Medium in memory-heavy releases", "Medium, adjusted per title", "Low–Medium in lighter games; otherwise reduce resolution or texture tier", "Large texture pools, RT and extra frame buffers can leave little headroom."] },
+          { feature: "12 GB", values: ["Ultra in most titles", "High–Ultra", "Medium–High, depending on the game", "A practical 1440p raster starting point; path tracing can still exceed the budget."] },
+          { feature: "16 GB or more", values: ["Ultra / high-resolution packs", "Ultra / high-resolution packs", "High–Ultra when the title's budget allows", "More capacity helps residency, but does not guarantee enough shader or ray-tracing performance."] }
+        ]
+      },
+      {
+        type: "paragraph",
+        text: "This is a starting matrix, not a compatibility rule. The same card can use very different amounts of memory in two games at the same resolution. Texture packs, render scale, ray tracing, frame generation buffers, other GPU applications and Windows desktop use all affect the available headroom. If camera turns produce hitches or textures stream in late, lower texture quality one step and repeat the same capture before changing several other settings."
+      },
+      {
         type: "callout",
         variant: "tip",
         title: "A good rule",
-        text: "Keep textures as high as your GPU's VRAM comfortably allows."
+        text: "Keep textures as high as your GPU's VRAM comfortably allows. If the operating-system video-memory budget is being exceeded or frame-time spikes line up with memory pressure, lower the texture tier and test again."
       },
       {
         type: "h2",
@@ -9752,6 +9824,23 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         type: "paragraph",
         text: "SSAO is usually a much better candidate for keeping enabled than some of the heavier lighting, shadow or ray-tracing options. The exact performance cost varies significantly between games and implementations, so there is no universal FPS number that applies to every PC."
+      },
+      {
+        type: "h3",
+        text: "SSAO, GTAO, HBAO+ and ray-traced ambient occlusion",
+        id: "ambient-occlusion-tiers"
+      },
+      {
+        type: "list",
+        items: [
+          "SSAO: uses screen-space depth and normal information to approximate contact shading. It is usually a sensible visual-quality starting point, but can miss off-screen geometry and may show halos or temporal artefacts.",
+          "GTAO or HBAO+: alternative screen-space techniques with different sampling and reconstruction approaches. A game may implement them at different quality and resolution levels, so compare the actual result rather than assuming the names have identical cost.",
+          "Ray-traced ambient occlusion: traces rays against scene geometry and can represent contact relationships that screen-space methods cannot see. It adds ray-tracing and often denoising work, so use it only when the visual improvement is worth the cost."
+        ]
+      },
+      {
+        type: "paragraph",
+        text: "If a game offers several ambient-occlusion choices and performance is tight, step down from ray-traced AO to GTAO, HBAO+ or SSAO before turning all contact shading off. There is no universal percentage cost: render resolution, ray count, denoising, GPU architecture and the scene all matter."
       },
       {
         type: "callout",
@@ -9777,10 +9866,78 @@ export const BLOG_POSTS: BlogPost[] = [
         text: "A useful approach is to start with a relatively low sharpening value and increase it gradually. Around 20–30% is a reasonable starting point, but the ideal value depends on the game, resolution, anti-aliasing method and monitor."
       },
       {
+        type: "paragraph",
+        text: "In games that already use DLSS, FSR, XeSS or another temporal upscaler, test the game's own sharpness control first. Adding Radeon Image Sharpening, a driver sharpening override or a separate Game Filter on top can stack multiple edge-enhancement passes. The result may show ringing, bright halos, exaggerated grain or shimmering foliage. A value such as 20–30% is only a starting experiment on a slider that uses a similar scale; percentages are not standardized between games and drivers."
+      },
+      {
+        type: "paragraph",
+        text: "NVIDIA App Game Filters and other overlay filters apply additional post-processing. Their impact depends on the filter, hardware and game. For a clean benchmark baseline, disable optional filters and overlays, capture the same scene, then enable one filter and compare frame-time and image quality on that system. Do not assume a universal FPS penalty or keep a filter that gives no visible benefit. NVIDIA describes its app overlay and Game Filters in the NVIDIA App release highlights: https://www.nvidia.com/en-us/software/nvidia-app/release-highlights/"
+      },
+      {
         type: "callout",
         variant: "warning",
         title: "More sharpening is not always better",
         text: "Too much sharpening can create halos around objects and make fine details look artificial. Judge it in motion at your normal resolution rather than from a paused screenshot."
+      },
+      {
+        type: "h2",
+        text: "5. The 5 Ultra settings to reduce first when you need more FPS",
+        id: "ultra-settings-to-lower-first"
+      },
+      {
+        type: "paragraph",
+        text: "After protecting the high-value image settings above, reduce the options that perform large amounts of lighting, sampling or scene-submission work for details that are hard to notice in motion. Test one tier at a time; the ranking below is a practical starting order, not a promise that every game will respond identically."
+      },
+      {
+        type: "h3",
+        text: "1. Volumetric fog, clouds and light shafts — Ultra to High",
+        id: "lower-volumetrics"
+      },
+      {
+        type: "paragraph",
+        text: "Volumetric effects approximate how light travels through fog, smoke, dust and cloud volumes. Depending on the engine, this can involve froxel grids, volume textures, ray marching, shadowed samples and temporal reconstruction. Higher quality can raise the number of samples or resolution used across the camera view, making the effect expensive at high output resolutions. Start at High; use Medium if the scene is still GPU-bound and the visual change is acceptable."
+      },
+      {
+        type: "h3",
+        text: "2. Shadow map quality, resolution and cascades — Ultra to High",
+        id: "lower-shadow-cascades"
+      },
+      {
+        type: "paragraph",
+        text: "Ultra shadow settings can increase shadow-map resolution, filtering quality, cascade count or the distance over which detailed shadows are rendered. These choices consume rendering work and memory bandwidth, and some games render large maps for scenery that is rarely inspected closely during movement. High often retains clean near-field character and object shadows while reducing the cost of distant detail. If shadows flicker or disappear, test cascade distance and filtering separately rather than changing every shadow control together."
+      },
+      {
+        type: "h3",
+        text: "3. Ray tracing and path tracing — selective or Off",
+        id: "lower-ray-tracing"
+      },
+      {
+        type: "paragraph",
+        text: "Ray-traced reflections, global illumination and path tracing add work for ray generation, acceleration-structure traversal, hit shading and denoising. Path tracing can be substantially more demanding than a selective ray-traced effect. If the base frame rate is already below the refresh target, test rasterized High lighting first, or enable only the ray-traced effect that produces the clearest visual benefit. Upscaling can reduce the raster workload, but it does not erase the ray-tracing cost."
+      },
+      {
+        type: "h3",
+        text: "4. Screen-Space Reflections — Ultra to High or Medium",
+        id: "lower-screen-space-reflections"
+      },
+      {
+        type: "paragraph",
+        text: "Screen-Space Reflections (SSR) estimate reflections from colour and depth already visible on the screen. Higher settings can increase trace distance, sample count, resolution, roughness handling and temporal filtering. SSR cannot reflect objects outside the view or behind the camera, and each engine makes different quality/performance trade-offs. Reduce it one step when wet surfaces, floors or metal reflections are consuming too much GPU time; keep a lower tier if temporal reconstruction still looks stable."
+      },
+      {
+        type: "h3",
+        text: "5. View distance, geometry LOD and crowd density — Ultra to High",
+        id: "lower-view-distance-lod"
+      },
+      {
+        type: "paragraph",
+        text: "Longer view distance and higher object density can increase visibility tests, draw-call submission, animation and geometry work. When average FPS barely changes as resolution is reduced but 1% lows fall in busy towns or large battles, check the CPU's critical game/render thread and try High view distance or lower crowd density. This is often a more useful test for a CPU/main-thread limit than reducing texture quality."
+      },
+      {
+        type: "callout",
+        variant: "tip",
+        title: "Clarity preference, not a guaranteed FPS upgrade",
+        text: "Disabling motion blur, chromatic aberration and film grain can make movement and fine detail easier to read. Treat these as image-preference controls; they do not guarantee a measurable performance gain in every game."
       },
       {
         type: "h2",
@@ -9790,6 +9947,26 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         type: "paragraph",
         text: "You don't have to choose between beautiful graphics and good FPS. Instead, prioritize the settings that give you the most visible improvement for their performance cost."
+      },
+      {
+        type: "h3",
+        text: "Use a repeatable tuning loop, not random preset changes",
+        id: "repeatable-tuning-loop"
+      },
+      {
+        type: "list",
+        ordered: true,
+        items: [
+          "Choose a repeatable scene or built-in benchmark and allow the game to finish shader compilation and initial asset loading before recording.",
+          "Capture a baseline for a consistent interval with the same resolution, upscaler, driver, overlay state and background applications.",
+          "Record average FPS, 1% lows or the tool's equivalent, the frame-time graph, GPU utilisation/clock, CPU per-core load, temperatures and VRAM budget/usage where available.",
+          "Change one graphics option by one tier, then replay the same scene and capture for the same duration. Keep the change only if frame pacing or image quality improves without an unacceptable trade-off.",
+          "Repeat the test after a warm-up run. A first traversal can include shader compilation and asset streaming that should not be mistaken for the steady-state cost of a graphics setting."
+        ]
+      },
+      {
+        type: "paragraph",
+        text: "For a useful comparison, do not mix native rendering, upscaling and frame generation into one unexplained FPS number. Record the render mode and whether the counter represents engine-rendered frames or generated/displayed frames. DLSS Frame Generation can add a finite compute cost, and counters can differ depending on whether they include the extra present calls; use the same measurement method before and after a change. NVIDIA's integration notes explain these frame-generation considerations: https://developer.nvidia.com/rtx/streamline/get-started"
       },
       {
         type: "comparisonTable",
@@ -9806,6 +9983,19 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         type: "paragraph",
         text: "The exact balance will depend on your GPU, CPU, resolution and the game itself."
+      },
+      {
+        type: "comparisonTable",
+        title: "Graphics settings: which part of the pipeline is doing the work?",
+        featureLabel: "Setting group",
+        columns: ["Main workload", "First test when GPU-bound", "First test when CPU-bound"],
+        rows: [
+          { feature: "Textures and AF", values: ["Texture residency, memory traffic and texture sampling", "Reduce texture tier only when VRAM budget pressure or streaming stutter is visible; keep AF at 16× initially.", "Usually not the first CPU-limit adjustment."] },
+          { feature: "Volumetrics, shadows and SSR", values: ["Pixel/compute shading, filtering, sampling and render-target traffic", "Reduce one effect tier at a time and compare GPU frame time.", "Usually lower priority unless the engine's CPU submission also changes."] },
+          { feature: "Ray tracing", values: ["RT traversal, hit shading and denoising", "Disable or reduce the most expensive RT effect; compare with rasterized High.", "Check CPU scene submission and the game's RT implementation; do not assume RT is always a CPU limit."] },
+          { feature: "View distance, geometry and crowds", values: ["Visibility, draw calls, geometry and simulation", "Lower only if GPU geometry work is contributing to the frame time.", "Reduce view distance/crowd density when the critical game thread is saturated and the GPU has idle gaps."] },
+          { feature: "Upscaling and sharpening", values: ["Internal render resolution and post-processing", "Test Quality or Balanced upscaling; use a single sharpening pass.", "Upscaling may not help a CPU-limited scene; compare base frames and generated frames separately."] }
+        ]
       },
       {
         type: "h2",
@@ -9828,6 +10018,68 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "h2",
+        text: "Settings vs. hardware bottlenecks: what the evidence suggests",
+        id: "settings-versus-hardware-diagnostics"
+      },
+      {
+        type: "paragraph",
+        text: "Use telemetry to decide whether another graphics-menu change is likely to help. Temperature limits are model-specific: compare clock behaviour and any reported thermal or power-limit flags with the exact CPU/GPU and system manufacturer's specifications instead of relying on a universal temperature threshold."
+      },
+      {
+        type: "comparisonTable",
+        title: "Diagnostic patterns: graphics preset limit or hardware/system bottleneck?",
+        featureLabel: "Observed symptom",
+        columns: ["Telemetry to verify", "Likely explanation", "Next useful test"],
+        rows: [
+          { feature: "Lowering resolution and GPU-heavy effects raises FPS", values: ["GPU stays highly utilised; GPU frame time falls when render scale, shadows or RT are reduced.", "GPU rendering limit in that scene.", "Use the High/Optimized settings matrix, then compare native rendering with DLSS/FSR/XeSS Quality."] },
+          { feature: "Ultra to Low barely changes FPS", values: ["One critical CPU/game thread is saturated while GPU utilisation has gaps; 1% lows remain weak.", "CPU/main-thread, simulation or memory-configuration limit.", "Reduce view distance or crowd density; check memory channel/configuration and background CPU work."] },
+          { feature: "Hitches when turning the camera or entering a new area", values: ["VRAM CurrentUsage approaches or exceeds the DXGI budget; frame-time spikes coincide with asset changes.", "VRAM residency, texture streaming or asset-loading pressure.", "Lower texture quality one step, close other GPU-heavy apps, and repeat the same route."] },
+          { feature: "Performance degrades after 10–20 minutes under load", values: ["CPU/GPU clocks fall as workload continues; monitoring reports thermal or power-limit flags, or power draw changes.", "Thermal, power-delivery or cooling limit.", "Check the exact component's documented limits, fan behaviour, heatsink airflow and repeat the test after a cool start."] },
+          { feature: "Short stutters mostly on first run or after a driver/game update", values: ["Spikes occur during first traversal or shader creation, then reduce on a warm repeat; storage activity may also rise.", "Shader compilation or asset streaming, sometimes compounded by storage latency.", "Compare cold and warm captures; inspect storage response time and game/driver shader-cache behaviour."] },
+          { feature: "Long freezes coincide with very high SSD activity", values: ["Storage active time and response latency spike at the same moment as frame-time stalls.", "Asset-loading or storage latency; SSD health/thermal issues should be ruled out.", "Check drive health and temperature, available free space, and repeat the same route while logging disk latency."] }
+        ]
+      },
+      {
+        type: "paragraph",
+        text: "A single sensor reading rarely proves the root cause. A useful diagnosis compares the same scene before and after one controlled change, records the time of every hitch, and checks whether GPU frame time, CPU thread load, memory budget, clocks or storage latency moved with it. For deeper frame-time analysis, see NVIDIA Nsight Systems' CPU-bound and GPU-bound workflow: https://docs.nvidia.com/nsight-systems/AnalysisGuide/"
+      },
+      {
+        type: "paragraph",
+        text: "When evidence points to a cooling, fan, power or component fault rather than a graphics setting, use a hardware diagnostic path instead of buying parts by guesswork. A technician can test gaming-laptop cooling and desktop GPU/PC stability separately; the visible symptom alone does not identify which component has failed."
+      },
+      {
+        type: "h2",
+        text: "Frequently asked questions about PC gaming graphics settings",
+        id: "graphics-settings-faq"
+      },
+      {
+        type: "faq",
+        display: "static",
+        items: [
+          {
+            question: "Does lowering Texture Quality increase FPS if my VRAM budget is not full?",
+            answer: "Usually not by much. Texture quality mainly changes the size and residency of texture resources; it is not automatically a large shader-compute cost. If the game stays within its video-memory budget and does not show texture-streaming stalls, lowering textures may make little difference to average FPS. Test a lower tier when frame-time spikes coincide with memory pressure, delayed texture loads or camera-turn hitches."
+          },
+          {
+            question: "Why does my game still stutter after I lower every graphics setting?",
+            answer: "The bottleneck may be outside the GPU shader workload. Check for a saturated CPU game thread, shader-compilation stutter, single-channel or unstable memory configuration, VRAM budget pressure, asset streaming, storage latency, background overlays and CPU/GPU thermal or power limits. Compare a warm repeat capture before deciding that a hardware component has failed."
+          },
+          {
+            question: "Should I set Anisotropic Filtering to 16× in the game or in the NVIDIA / AMD driver app?",
+            answer: "Prefer the game's own 16× option when it is available. Use a driver override mainly for older titles or games without a suitable in-game control, and verify that the driver setting actually applies to that graphics API and title."
+          },
+          {
+            question: "Which graphics setting drops FPS the most in modern PC games?",
+            answer: "There is no universal winner. Base resolution, path tracing and ray-traced effects can dominate on a GPU-limited system; volumetrics and shadow quality can also be expensive. In dense scenes, view distance, geometry and crowd density may instead expose a CPU/main-thread limit. Measure the scene you actually play."
+          },
+          {
+            question: "Does Frame Generation fix weak 1% lows or a CPU bottleneck?",
+            answer: "No. Frame Generation can increase the number of displayed frames, but it does not make the game simulation or base engine render faster. It has its own compute and latency trade-offs. Track base frame rate and generated/displayed frame rate separately, and solve severe frame-time spikes before using generated frames to mask them."
+          }
+        ]
+      },
+      {
+        type: "h2",
         text: "Official references",
         id: "official-references"
       },
@@ -9837,18 +10089,27 @@ export const BLOG_POSTS: BlogPost[] = [
           "AMD — Customize Graphics Settings with AMD Software: Adrenalin Edition: https://www.amd.com/en/resources/support-articles/faqs/DH3-012.html",
           "AMD — Radeon Image Sharpening: https://www.amd.com/en/products/software/adrenalin/radeon-image-sharpening.html",
           "NVIDIA — NVIDIA App graphics and legacy driver settings: https://www.nvidia.com/en-us/geforce/news/nvidia-app-global-dlss-overrides-rtx-40-series-smooth-motion/",
-          "NVIDIA — NVIDIA App overview and Graphics settings: https://www.nvidia.com/en-us/geforce/news/nvidia-app-download-and-features/"
+          "NVIDIA — NVIDIA App overview and Graphics settings: https://www.nvidia.com/en-us/geforce/news/nvidia-app-download-and-features/",
+          "Microsoft Learn — DXGI video-memory budget and current usage: https://learn.microsoft.com/en-us/windows/win32/api/dxgi1_4/ns-dxgi1_4-dxgi_query_video_memory_info",
+          "NVIDIA — NVIDIA App Game Filters and overlay release highlights: https://www.nvidia.com/en-us/software/nvidia-app/release-highlights/",
+          "NVIDIA Developer — DLSS Frame Generation integration and performance considerations: https://developer.nvidia.com/rtx/streamline/get-started",
+          "NVIDIA Nsight Systems — CPU-bound and GPU-bound frame analysis: https://docs.nvidia.com/nsight-systems/AnalysisGuide/"
         ]
       }
     ],
     image: "/images/geforce-rtx-gaming-pc-rgb-lighting.webp",
     discoverImage: "/images/geforce-rtx-gaming-pc-rgb-lighting.webp",
     date: "2026-10-05",
-    technicalReviewDate: "October 5, 2026",
+    technicalReviewDate: "November 15, 2026",
     author: "Imran Natiq",
     category: "Gaming Performance",
-    readTime: "3-4 min read",
+    readTime: "10–12 min read",
     clusterParent: "gaming-pc-optimization-2026",
+    relatedPostSlugs: [
+      "gaming-pc-optimization-2026",
+      "windows-gaming-performance-stutter-fix",
+      "gaming-pc-mistakes-kuwait"
+    ],
     tags: [
       "PC Gaming",
       "Graphics Settings",
@@ -9858,10 +10119,18 @@ export const BLOG_POSTS: BlogPost[] = [
       "Image Sharpening",
       "FPS Optimization",
       "VRAM",
-      "Gaming PC Performance"
+      "Gaming PC Performance",
+      "1% Lows",
+      "Frame Time",
+      "GPU Pipeline",
+      "DLSS",
+      "FSR",
+      "XeSS",
+      "Ray Tracing",
+      "VRAM Budget"
     ],
-    seoTitle: "PC Gaming Graphics Settings: Better Visuals Without Maxing Everything",
-    seoDescription: "Which PC graphics settings are worth keeping high? Learn how to improve image quality without wasting GPU performance or FPS.",
+    seoTitle: "You Don’t Need Max Graphics Settings for Great PC Gaming Visuals (2026 FPS & 1% Lows Guide) | KCROC",
+    seoDescription: "Tune PC graphics settings for better visuals, FPS and 1% lows. Learn what to keep high, what to lower first, and how to spot VRAM, CPU and thermal limits.",
     isGlobalGuide: true,
     contentType: "blog"
   },
