@@ -1431,7 +1431,7 @@ export default function BlogPostTemplate() {
   return (
     <div className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
 
-      <Head htmlAttributes={isGuide || isGlobalNewsArticle ? { lang: 'en' } : undefined}>
+      <Head htmlAttributes={isGuide || isGlobalEditorialArticle ? { lang: 'en' } : undefined}>
         <title>{post.seoTitle || `${post.title.length > 57 ? `${post.title.slice(0, 57)}…` : post.title}${isGlobalNewsArticle ? "" : " | KCROC"}`}</title>
         <meta name="description" content={post.seoDescription || (post.description || post.excerpt).slice(0, 155)} />
         <link rel="canonical" href={pageUrl} />
@@ -1586,7 +1586,7 @@ export default function BlogPostTemplate() {
                 <span className="flex items-center gap-1.5 mt-1"><Clock size={14} aria-hidden="true" /> {post.readTime}</span>
                 <span className="flex items-center gap-1.5 mt-1">
                   <User size={14} aria-hidden="true" />
-                  {post.author === 'Imran Natiq' && !isGlobalNewsArticle ? (
+                  {post.author === 'Imran Natiq' && !isGlobalEditorialArticle ? (
                     <Link to="/author/imran" className="hover:text-cyan-400 transition-colors">
                       {post.author}
                     </Link>
