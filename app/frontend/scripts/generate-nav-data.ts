@@ -172,7 +172,8 @@ const navData = {
   brands: (KCROC_GRAPH.brands ?? []).map(slimEntity),
   problems: (KCROC_GRAPH.problems ?? []).map(slimEntity),
   caseStudies: (KCROC_GRAPH.caseStudies ?? []).map(slimCaseStudy),
-  // Keep retired location entities out of the header count and dropdown.\n  locations: (KCROC_GRAPH.locations ?? []).filter((location) => location.isActive !== false).map(slimLocation),
+  // Keep retired location entities out of the header count and dropdown.
+  locations: (KCROC_GRAPH.locations ?? []).filter((location) => location.isActive !== false).map(slimLocation),
   blogEntries,
   guideEntries,
   newsEntries,
