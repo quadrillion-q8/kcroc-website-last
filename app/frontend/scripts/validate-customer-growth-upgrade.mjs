@@ -59,11 +59,12 @@ const [blogPosts, blogPostTemplate, macbookWhatsappIntent, brandsIndex] = await 
   read('pages/BrandsIndex.tsx'),
 ]);
 
-const [batteryHealthGuideSource, dellOverheatingGuideSource, gameBarGuideSource, windows10EndOfSupportGuideSource] = await Promise.all([
+const [batteryHealthGuideSource, dellOverheatingGuideSource, gameBarGuideSource, windows10EndOfSupportGuideSource, dellOverheatingGuideARSource] = await Promise.all([
   read('pages/BatteryHealthGuide.tsx'),
   read('pages/DellLaptopOverheatingPage.tsx'),
   read('pages/GameBarPresenceWriterGuide.tsx'),
   read('pages/Windows10EndOfSupportGuide.tsx'),
+  read('pages/DellLaptopOverheatingPageAR.tsx'),
 ]);
 
 const getGraphEntity = (id) => {
@@ -315,6 +316,24 @@ add('Battery, Dell overheating, GameBar and Windows 10 guides keep global copy, 
       schemaSource.includes('BreadcrumbList');
   }));
 
+const dellArabicEntity = getGraphEntity('guide-dell-laptop-overheating-ar');
+add('Dell overheating guide remains Dell-specific and has a complete English / Arabic diagnostic pair',
+  app.includes("path: 'guides/ar/dell-laptop-overheating'") &&
+  dellArabicEntity.includes("canonicalUrl: 'https://www.computerrepairkuwait.com/guides/ar/dell-laptop-overheating'") &&
+  dellArabicEntity.includes("locale: 'ar_KW'") &&
+  dellArabicEntity.includes("'en-KW': 'https://www.computerrepairkuwait.com/guides/dell-laptop-overheating'") &&
+  dellArabicEntity.includes("'ar-KW': 'https://www.computerrepairkuwait.com/guides/ar/dell-laptop-overheating'") &&
+  dellOverheatingGuideSource.includes('F12 repeatedly') &&
+  ['2000-0501', '2000-0511', '2000-0512'].every((code) => dellOverheatingGuideSource.includes(code)) &&
+  ['Optimized', 'Cool', 'Quiet', 'Ultra Performance'].every((mode) => dellOverheatingGuideSource.includes(mode)) &&
+  ['Dell XPS', 'Dell G Series and Alienware', 'Inspiron and Vostro', 'Latitude and Precision'].every((family) => dellOverheatingGuideSource.includes(family)) &&
+  dellOverheatingGuideSource.includes('/guides/why-is-my-laptop-so-hot') &&
+  dellOverheatingGuideSource.includes('hrefLang="ar-KW"') &&
+  dellOverheatingGuideARSource.includes('F12') &&
+  ['2000-0511', '2000-0512'].every((code) => dellOverheatingGuideARSource.includes(code)) &&
+  dellOverheatingGuideARSource.includes('hrefLang="en-KW"') &&
+  dellOverheatingGuideARSource.includes('hrefLang="ar-KW"') &&
+  dellOverheatingGuideARSource.includes('/guides/why-is-my-laptop-so-hot'));
 
 add('Laptop repair page has intent-matched symptom links to existing guides and services',
   graph.includes("symptomLinks: [") &&
