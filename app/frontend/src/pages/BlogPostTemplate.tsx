@@ -1161,16 +1161,21 @@ export default function BlogPostTemplate() {
         .map((relatedSlug) => postsBySlug.get(relatedSlug))
         .filter((item): item is BlogPost => Boolean(
           item && !item.redirectTo &&
+          (!isGlobalBlogArticle || (!KUWAIT_EDITORIAL_EXCEPTION_SLUGS.has(item.slug) && !/kuwait|repair|service|pickup|contact/i.test(item.slug))) &&
           typeof item.slug === 'string' && item.slug.trim() &&
           typeof item.title === 'string' && item.title.trim()
         ));
     }
     if (post.isPillar) {
-      return BLOG_POSTS.filter(p => p.clusterParent === post.slug).slice(0, 5);
+      return BLOG_POSTS.filter(p => p.clusterParent === post.slug)
+        .filter(p => !isGlobalBlogArticle || (!KUWAIT_EDITORIAL_EXCEPTION_SLUGS.has(p.slug) && !/kuwait|repair|service|pickup|contact/i.test(p.slug)))
+        .slice(0, 5);
     } else if (post.clusterParent) {
       const parent = BLOG_POSTS.find(p => p.slug === post.clusterParent);
       const siblings = BLOG_POSTS.filter(p => p.clusterParent === post.clusterParent && p.slug !== post.slug);
-      return [parent, ...siblings].filter(Boolean) as BlogPost[];
+      return [parent, ...siblings]
+        .filter((item): item is BlogPost => Boolean(item))
+        .filter((item) => !isGlobalBlogArticle || (!KUWAIT_EDITORIAL_EXCEPTION_SLUGS.has(item.slug) && !/kuwait|repair|service|pickup|contact/i.test(item.slug)));
     }
     return [];
   }, [post]);
