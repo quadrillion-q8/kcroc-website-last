@@ -183,24 +183,12 @@ export const NAV_GRAPH = {
         "path": "/location/abu-halifa"
       },
       {
-        "label": "Computer Repair Jabriya",
-        "path": "/location/jabriya"
-      },
-      {
         "label": "Computer Repair Mubarak Al-Kabeer",
         "path": "/location/mubarak-al-kabeer"
       },
       {
-        "label": "Computer Repair Fintas",
-        "path": "/location/fintas"
-      },
-      {
         "label": "Computer Repair Sabah Al-Salem",
         "path": "/location/sabah-al-salem"
-      },
-      {
-        "label": "Computer Repair Salwa",
-        "path": "/location/salwa"
       },
       {
         "label": "Computer Repair Rumaithiya",
@@ -219,20 +207,48 @@ export const NAV_GRAPH = {
         "path": "/location/riggae"
       },
       {
-        "label": "Computer Repair Ardiya",
-        "path": "/location/ardiya"
-      },
-      {
         "label": "Computer Repair Mahboula",
         "path": "/location/mahboula"
       },
       {
-        "label": "Computer Repair Rawda",
-        "path": "/location/rawda"
-      },
-      {
         "label": "Computer Repair Messila",
         "path": "/location/messila"
+      },
+      {
+        "label": "Computer Repair Shuwaikh Residential",
+        "path": "/location/shuwaikh-residential"
+      },
+      {
+        "label": "Computer Repair Abdullah Al-Salem",
+        "path": "/location/abdullah-al-salem"
+      },
+      {
+        "label": "Computer Repair Shamiya",
+        "path": "/location/shamiya"
+      },
+      {
+        "label": "Computer Repair Nuzha",
+        "path": "/location/nuzha"
+      },
+      {
+        "label": "Computer Repair Adailiya",
+        "path": "/location/adailiya"
+      },
+      {
+        "label": "Computer Repair Kaifan",
+        "path": "/location/kaifan"
+      },
+      {
+        "label": "Computer Repair Yarmouk",
+        "path": "/location/yarmouk"
+      },
+      {
+        "label": "Computer Repair Qortuba",
+        "path": "/location/qortuba"
+      },
+      {
+        "label": "Computer Repair Mishref",
+        "path": "/location/mishref"
       }
     ]
   },
@@ -725,34 +741,16 @@ export const NAV_GRAPH = {
       "navigationPriority": 45
     },
     {
-      "id": "loc-jabriya",
-      "slug": "jabriya",
-      "title": "Jabriya",
-      "navigationPriority": 40
-    },
-    {
       "id": "loc-mubarak-al-kabeer",
       "slug": "mubarak-al-kabeer",
       "title": "Mubarak Al-Kabeer",
       "navigationPriority": 35
     },
     {
-      "id": "loc-fintas",
-      "slug": "fintas",
-      "title": "Fintas",
-      "navigationPriority": 30
-    },
-    {
       "id": "loc-sabah-al-salem",
       "slug": "sabah-al-salem",
       "title": "Sabah Al-Salem",
       "navigationPriority": 25
-    },
-    {
-      "id": "loc-salwa",
-      "slug": "salwa",
-      "title": "Salwa",
-      "navigationPriority": 80
     },
     {
       "id": "loc-rumaithiya",
@@ -764,7 +762,7 @@ export const NAV_GRAPH = {
       "id": "loc-surra",
       "slug": "surra",
       "title": "Surra",
-      "navigationPriority": 74
+      "navigationPriority": 86
     },
     {
       "id": "loc-khaitan",
@@ -779,28 +777,70 @@ export const NAV_GRAPH = {
       "navigationPriority": 70
     },
     {
-      "id": "loc-ardiya",
-      "slug": "ardiya",
-      "title": "Ardiya",
-      "navigationPriority": 68
-    },
-    {
       "id": "loc-mahboula",
       "slug": "mahboula",
       "title": "Mahboula",
       "navigationPriority": 64
     },
     {
-      "id": "loc-rawda",
-      "slug": "rawda",
-      "title": "Rawda",
-      "navigationPriority": 52
-    },
-    {
       "id": "loc-messila",
       "slug": "messila",
       "title": "Messila",
       "navigationPriority": 50
+    },
+    {
+      "id": "loc-shuwaikh-residential",
+      "slug": "shuwaikh-residential",
+      "title": "Shuwaikh Residential",
+      "navigationPriority": 92
+    },
+    {
+      "id": "loc-abdullah-al-salem",
+      "slug": "abdullah-al-salem",
+      "title": "Abdullah Al-Salem",
+      "navigationPriority": 93
+    },
+    {
+      "id": "loc-shamiya",
+      "slug": "shamiya",
+      "title": "Shamiya",
+      "navigationPriority": 90
+    },
+    {
+      "id": "loc-nuzha",
+      "slug": "nuzha",
+      "title": "Nuzha",
+      "navigationPriority": 91
+    },
+    {
+      "id": "loc-adailiya",
+      "slug": "adailiya",
+      "title": "Adailiya",
+      "navigationPriority": 92
+    },
+    {
+      "id": "loc-kaifan",
+      "slug": "kaifan",
+      "title": "Kaifan",
+      "navigationPriority": 85
+    },
+    {
+      "id": "loc-yarmouk",
+      "slug": "yarmouk",
+      "title": "Yarmouk",
+      "navigationPriority": 84
+    },
+    {
+      "id": "loc-qortuba",
+      "slug": "qortuba",
+      "title": "Qortuba",
+      "navigationPriority": 83
+    },
+    {
+      "id": "loc-mishref",
+      "slug": "mishref",
+      "title": "Mishref",
+      "navigationPriority": 82
     }
   ],
   "blogEntries": [

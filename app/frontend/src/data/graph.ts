@@ -5150,7 +5150,35 @@ export const rawGraphData: RawGraphData = {
         { id: "faq-jahra-local-4", question: "My laptop switches itself off under load. Is it overheating or a motherboard fault?", answer: "It can be either. Overheating shutdowns are a protective cut-off, while a failing power circuit can look the same. We check temperatures under load first, then test the power path on the bench before suggesting board work." },
         { id: "faq-jahra-local-5", question: "Can you collect a laptop from Jahra if it will not turn on at all?", answer: "Yes. Tell us what happened before it stopped and what lights, if any, come on. Collection is free, and the motherboard is diagnosed at the lab. You pay nothing if we cannot fix it." },
         { id: "faq-jahra-local-6", question: "Where is my laptop repaired, and do I have to travel?", answer: "You do not need to travel. Jahra is a service area, not a branch, and devices are repaired at our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19). Repairs carry a 30-day warranty." },
-      ], title: 'Jahra', description: 'Comprehensive computer repair, thermal repasting, and motherboard diagnostics delivered directly to Jahra.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3370, lng: 47.6580 }, serviceRadiusKm: 40, serviceAreas: ['Jahra', 'Saad Al Abdullah', 'Naeem', 'Qasr', 'Taima'], relatedServiceIds: ['srv-laptop', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-gaming'], relatedProblemIds: ['problem-overheating', 'problem-no-power', 'problem-freezing-crashing', 'problem-bsod', 'problem-slow'], contentImage: { src: IMAGES.motherboard.thermalGrizzly1.src, alt: IMAGES.motherboard.thermalGrizzly1.alt, width: IMAGES.motherboard.thermalGrizzly1.width, height: IMAGES.motherboard.thermalGrizzly1.height, caption: 'Thermal repasting and motherboard diagnostics delivered directly to Jahra.' }, seo: { title: "Laptop & Computer Repair Jahra | Free Pickup | KCROC", description: "Laptop and computer repair for Jahra, Saad Al Abdullah, Naeem, Qasr and Taima. Free pickup to our Hawalli lab, with diagnosis and a quote before repair.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/jahra', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/location/jahra', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-jahra', 'x-default': 'https://www.computerrepairkuwait.com/location/jahra' }, ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-11-05T00:00:00+03:00' }, navigationPriority: 70 } as LocationEntity,
+      ], title: 'Jahra', description: 'Comprehensive computer repair, thermal repasting, and motherboard diagnostics delivered directly to Jahra.', localServiceCards: [
+      {
+        category: 'MacBook & Gaming Systems',
+        title: 'Gaming Laptop & PC Thermal Service',
+        summary: 'Cooling work is followed by temperature and stability checks.',
+        problem: 'A gaming laptop or desktop runs hot, its fans stay loud, performance drops during games, or the device shuts down under load.',
+        expertise: 'We inspect fans, airflow and heatsink contact, service the cooling system where needed, and check thermal behaviour after the work.',
+        solution: 'Arrange free collection from Jahra, Saad Al Abdullah, Naeem, Qasr or Taima. Cooling service is completed at the Hawalli lab and tested before return.',
+        serviceIds: ['srv-gaming-laptop-cleaning', 'srv-gaming'],
+      },
+      {
+        category: 'Board-Level & Micro-Soldering',
+        title: 'No-Power & Motherboard Fault Diagnosis',
+        summary: 'The battery, adapter and board power path are checked in sequence.',
+        problem: 'A laptop is completely dead, shows no charging response, or shuts down unexpectedly.',
+        expertise: 'We test the power source and charging path before tracing a confirmed board fault to the affected circuit or component.',
+        solution: 'Book pickup from the Jahra service area. The device is assessed at our Hawalli lab, with repair options and the quote explained before paid work.',
+        serviceIds: ['srv-laptop', 'srv-motherboard'],
+      },
+      {
+        category: 'Screens, Batteries & Upgrades',
+        title: 'Laptop Charging & Boot-Fault Assessment',
+        summary: 'Power symptoms are separated from Windows and storage problems.',
+        problem: 'A laptop powers on but will not complete startup, or it fails to charge reliably.',
+        expertise: 'We distinguish a hardware power or charging fault from a startup issue before recommending repair work or a separate software troubleshooting path.',
+        solution: 'Share the model and symptoms when arranging collection from Jahra. Diagnosis is performed at the Hawalli lab and the device is returned after approved work and testing.',
+        serviceIds: ['srv-laptop', 'srv-charging-port'],
+      }
+      ], landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.3370, lng: 47.6580 }, serviceRadiusKm: 40, serviceAreas: ['Jahra', 'Saad Al Abdullah', 'Naeem', 'Qasr', 'Taima'], relatedServiceIds: ['srv-laptop', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-gaming'], relatedProblemIds: ['problem-overheating', 'problem-no-power', 'problem-freezing-crashing', 'problem-bsod', 'problem-slow'], contentImage: { src: IMAGES.motherboard.thermalGrizzly1.src, alt: IMAGES.motherboard.thermalGrizzly1.alt, width: IMAGES.motherboard.thermalGrizzly1.width, height: IMAGES.motherboard.thermalGrizzly1.height, caption: 'Thermal repasting and motherboard diagnostics delivered directly to Jahra.' }, seo: { title: "Laptop & Computer Repair Jahra | Free Pickup | KCROC", description: "Laptop and computer repair for Jahra, Saad Al Abdullah, Naeem, Qasr and Taima. Free pickup to our Hawalli lab, with diagnosis and a quote before repair.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/jahra', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/location/jahra', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-jahra', 'x-default': 'https://www.computerrepairkuwait.com/location/jahra' }, ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-11-15T00:00:00+03:00' }, navigationPriority: 70 } as LocationEntity,
 
     'loc-saad-al-abdullah': {
       id: 'loc-saad-al-abdullah',
@@ -5208,7 +5236,35 @@ export const rawGraphData: RawGraphData = {
         { id: "faq-ahmadi-local-4", question: "My PC turns on but nothing appears on the monitor. What can I try first?", answer: "Check that the monitor cable is plugged into the graphics card and not the motherboard port, then try another cable or display. If there is still no picture, send us the details, including any beeps or lights. We diagnose before quoting." },
         { id: "faq-ahmadi-local-5", question: "My MacBook will not start or has no display. Can you diagnose it?", answer: "Yes. We trace MacBook power and display faults at component level where that is technically possible, and explain the diagnosis and repair path before any paid work." },
         { id: "faq-ahmadi-local-6", question: "Where do you repair devices collected from Ahmadi?", answer: "At our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), open daily from 10:00 AM to 10:00 PM. Ahmadi is a service area, not a branch, and repairs carry a 30-day warranty." },
-      ], title: 'Ahmadi', description: 'Premium gaming PC repair and Apple MacBook diagnostics serving Ahmadi and southern Kuwait.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.0833, lng: 48.0833 }, serviceRadiusKm: 30, serviceAreas: ['Ahmadi', 'Fahaheel', 'Mangaf', 'Mahboula', 'Sabahiya'], relatedServiceIds: ['srv-gaming', 'srv-macbook', 'srv-laptop', 'srv-motherboard', 'srv-gaming-laptop-cleaning'], relatedProblemIds: ['problem-overheating', 'problem-freezing-crashing', 'problem-no-power', 'problem-black-screen'], contentImage: {
+      ], title: 'Ahmadi', description: 'Premium gaming PC repair and Apple MacBook diagnostics serving Ahmadi and southern Kuwait.', localServiceCards: [
+      {
+        category: 'MacBook & Gaming Systems',
+        title: 'Gaming PC & Laptop Thermal Diagnostics',
+        summary: 'Heat, power and stability symptoms are checked together.',
+        problem: 'A gaming PC or laptop overheats, crashes, restarts or loses performance during a game.',
+        expertise: 'We inspect cooling, fan operation and thermal behaviour, then assess power and system stability under load instead of assuming every crash is caused by heat.',
+        solution: 'Arrange free collection from Ahmadi, Fahaheel, Mangaf, Mahboula or Sabahiya. The device is assessed at the Hawalli lab and returned after approved work and testing.',
+        serviceIds: ['srv-gaming', 'srv-gaming-laptop-cleaning'],
+      },
+      {
+        category: 'MacBook & Gaming Systems',
+        title: 'MacBook Power, Charging & Display Diagnosis',
+        summary: 'The exact fault is identified before a part or board repair is proposed.',
+        problem: 'A MacBook will not start, will not charge, has no display, or has developed a fault after liquid exposure.',
+        expertise: 'We assess the model, adapter, USB-C charging path, display symptoms and relevant logic-board circuitry before recommending a suitable repair.',
+        solution: 'Book collection from the Ahmadi pickup area. MacBook diagnosis and approved repairs are performed at the Hawalli lab, with a quote before paid work.',
+        serviceIds: ['srv-macbook', 'srv-motherboard'],
+      },
+      {
+        category: 'Board-Level & Micro-Soldering',
+        title: 'Desktop PC Crash & No-Display Diagnosis',
+        summary: 'The cause is isolated before components are replaced.',
+        problem: 'A desktop gaming PC restarts during games, powers on without displaying an image, or becomes unstable under load.',
+        expertise: 'We assess the display path, power delivery and system stability, then test likely causes such as cooling, memory or graphics-related faults.',
+        solution: 'Tell us the PC components and symptoms when arranging collection. The tower is diagnosed at the Hawalli lab and returned after the approved repair and checks.',
+        serviceIds: ['srv-gaming', 'srv-motherboard'],
+      }
+      ], landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.0833, lng: 48.0833 }, serviceRadiusKm: 30, serviceAreas: ['Ahmadi', 'Fahaheel', 'Mangaf', 'Mahboula', 'Sabahiya'], relatedServiceIds: ['srv-gaming', 'srv-macbook', 'srv-laptop', 'srv-motherboard', 'srv-gaming-laptop-cleaning'], relatedProblemIds: ['problem-overheating', 'problem-freezing-crashing', 'problem-no-power', 'problem-black-screen'], contentImage: {
       ...IMAGES.laptopHardware.desktopPcTowerRepairKuwait,
       alt: 'Desktop PC tower inspected for repair at the KCROC workshop',
       caption: 'Complete desktop PC diagnosis and repair for Ahmadi customers; all bench work is completed at the Hawalli lab.'
@@ -5246,7 +5302,35 @@ export const rawGraphData: RawGraphData = {
         { id: "faq-fahaheel-local-4", question: "I spilled a sweet drink on my laptop. Is that worse than water?", answer: "Yes, it can be. Sugar and milk residue stay on the board and keep causing damage after the liquid dries. Switch the laptop off, unplug it and message us as soon as possible, and do not try to power it on to check." },
         { id: "faq-fahaheel-local-5", question: "My laptop overheats and shuts down. Is it safe to keep using it?", answer: "It is better to stop. Repeated overheating shutdowns put stress on the board and battery. We clean the cooling system, replace the paste and test the machine under load before it is returned." },
         { id: "faq-fahaheel-local-6", question: "What should I send when arranging a pickup?", answer: "Send your device model and symptoms, your area, block, street and building number, and a WhatsApp location pin if possible. Tell us your preferred collection window between 10 AM and 10 PM; the team will confirm the available slot." },
-      ], title: 'Fahaheel', description: 'Free pickup and delivery for laptop, MacBook, and gaming PC repair across Fahaheel\'s residential and family communities, with every device diagnosed at KCROC\'s Hawalli lab.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.0810, lng: 48.1288 }, serviceRadiusKm: 20, serviceAreas: ['Fahaheel', 'Fintas', 'Mangaf', 'Abu Halifa', 'Sabah Al-Ahmad Sea City'], relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-gaming', 'srv-battery'], relatedProblemIds: ['problem-liquid-spill', 'problem-no-power', 'problem-overheating', 'problem-black-screen'], contentImage: { src: IMAGES.macbook.logicBoard.src, alt: IMAGES.macbook.logicBoard.alt, width: IMAGES.macbook.logicBoard.width, height: IMAGES.macbook.logicBoard.height, caption: 'MacBook motherboard repair for families and residents across Fahaheel.' }, seo: {
+      ], title: 'Fahaheel', description: 'Free pickup and delivery for laptop, MacBook, and gaming PC repair across Fahaheel\'s residential and family communities, with every device diagnosed at KCROC\'s Hawalli lab.', localServiceCards: [
+      {
+        category: 'Board-Level & Micro-Soldering',
+        title: 'Dead Laptop & Charging-Circuit Diagnosis',
+        summary: 'A no-power symptom can originate from several different components.',
+        problem: 'A laptop is completely dead, will not charge, or stopped charging after a different or faulty adapter was connected.',
+        expertise: 'We check the adapter, charging port, battery and power path before deciding whether the connector, charging circuit or motherboard needs repair.',
+        solution: 'Arrange collection from Fahaheel, Fintas, Mangaf or Abu Halifa. The device is diagnosed at our Hawalli lab and the full quote is confirmed before paid work.',
+        serviceIds: ['srv-laptop', 'srv-charging-port', 'srv-motherboard'],
+      },
+      {
+        category: 'MacBook & Gaming Systems',
+        title: 'Gaming Laptop Cooling & Liquid-Damage Assessment',
+        summary: 'Thermal and liquid-related symptoms receive different diagnostic paths.',
+        problem: 'A gaming laptop overheats or shuts down under load, or a laptop has been exposed to liquid.',
+        expertise: 'We inspect the cooling system for thermal faults and assess liquid exposure at board level where appropriate; the next step depends on the confirmed condition.',
+        solution: 'Switch off and unplug a device after a spill. Free pickup is available through the Fahaheel southern route, with diagnosis and repair at the Hawalli lab.',
+        serviceIds: ['srv-gaming-laptop-cleaning', 'srv-liquid-damage'],
+      },
+      {
+        category: 'MacBook & Gaming Systems',
+        title: 'MacBook & Gaming-System Hardware Repair',
+        summary: 'Device-specific diagnosis for power, charging and hardware faults.',
+        problem: 'A MacBook or gaming system has a power, charging, display or stability problem that needs a workshop assessment.',
+        expertise: 'We identify the device model and symptom first, then check the relevant hardware path before choosing component repair or a compatible replacement.',
+        solution: 'Arrange collection from Fahaheel or the surrounding southern pickup areas. Approved repairs are completed at the Hawalli lab and tested before return.',
+        serviceIds: ['srv-macbook', 'srv-gaming'],
+      }
+      ], landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.0810, lng: 48.1288 }, serviceRadiusKm: 20, serviceAreas: ['Fahaheel', 'Fintas', 'Mangaf', 'Abu Halifa', 'Sabah Al-Ahmad Sea City'], relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-gaming', 'srv-battery'], relatedProblemIds: ['problem-liquid-spill', 'problem-no-power', 'problem-overheating', 'problem-black-screen'], contentImage: { src: IMAGES.macbook.logicBoard.src, alt: IMAGES.macbook.logicBoard.alt, width: IMAGES.macbook.logicBoard.width, height: IMAGES.macbook.logicBoard.height, caption: 'MacBook motherboard repair for families and residents across Fahaheel.' }, seo: {
         title: "Computer Repair Fahaheel | Free Pickup | KCROC",
         description: "Free pickup and delivery for laptop, MacBook and gaming PC repair in Fahaheel, Mangaf and Abu Halifa. Repairs take place in Hawalli.",
         canonicalUrl: 'https://www.computerrepairkuwait.com/location/fahaheel',
@@ -5273,7 +5357,35 @@ export const rawGraphData: RawGraphData = {
         { id: "faq-mangaf-local-4", question: "My laptop was exposed to liquid. How quickly should I act?", answer: "As soon as possible. Switch it off, unplug it and message us before trying to power it on. Liquid damage gets worse over time, and early cleaning and board-level repair gives the best chance of saving it." },
         { id: "faq-mangaf-local-5", question: "Can you repair the motherboard of a MacBook or gaming laptop?", answer: "Yes, on many models. MacBooks and gaming laptops are among the devices we repair at component level. Whether it is possible depends on the fault, which we confirm after diagnosis." },
         { id: "faq-mangaf-local-6", question: "Do you collect from Abu Halifa and Ahmadi as well as Mangaf?", answer: "Yes. Mangaf, Fahaheel, Abu Halifa and Ahmadi are covered by free pickup and delivery. Message your area on WhatsApp to arrange collection." },
-      ], title: 'Mangaf', description: 'Component-level laptop, MacBook, gaming-laptop and motherboard repair for Mangaf households and nearby southern residents, with free pickup and return from our Hawalli lab.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.0975, lng: 48.1197 }, serviceRadiusKm: 20, serviceAreas: ['Mangaf', 'Fahaheel', 'Abu Halifa', 'Ahmadi'], relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-liquid-damage', 'srv-motherboard'], relatedProblemIds: ['problem-liquid-spill', 'problem-no-power', 'problem-not-charging', 'problem-overheating'], contentImage: {
+      ], title: 'Mangaf', description: 'Component-level laptop, MacBook, gaming-laptop and motherboard repair for Mangaf households and nearby southern residents, with free pickup and return from our Hawalli lab.', localServiceCards: [
+      {
+        category: 'Board-Level & Micro-Soldering',
+        title: 'Laptop, MacBook & Motherboard Fault Diagnosis',
+        summary: 'A power or charging symptom is not automatically a failed motherboard.',
+        problem: 'A laptop or MacBook shows a charger light but will not start, stops charging, or behaves as though its board has failed.',
+        expertise: 'We check the adapter, battery, charging connector and affected power circuitry before deciding whether a component-level board repair is technically suitable.',
+        solution: 'Arrange collection from Mangaf, Fahaheel, Abu Halifa or Ahmadi. Diagnosis and approved repair take place at the Hawalli lab, with the quote confirmed before paid work.',
+        serviceIds: ['srv-laptop', 'srv-macbook', 'srv-motherboard'],
+      },
+      {
+        category: 'MacBook & Gaming Systems',
+        title: 'Gaming Laptop Cooling & Performance Checks',
+        summary: 'Thermal problems are measured before a repair is recommended.',
+        problem: 'A gaming laptop gets hot, its fans become unusually loud, or performance drops during longer gaming sessions.',
+        expertise: 'We inspect cooling airflow, fan operation and heatsink contact, then assess temperatures and stability after the service.',
+        solution: 'Free pickup is available from the Mangaf service area. Cooling work is completed at the Hawalli lab and the system is checked before return delivery.',
+        serviceIds: ['srv-gaming-laptop-cleaning', 'srv-gaming-laptop'],
+      },
+      {
+        category: 'Board-Level & Micro-Soldering',
+        title: 'Liquid-Damage & No-Power Assessment',
+        summary: 'Early inspection helps avoid repeated power-on attempts after a spill.',
+        problem: 'A laptop has been exposed to liquid, will not power on, or has become unstable after a spill.',
+        expertise: 'We inspect the affected board and power path, and consider component-level repair only where the damage and device design make it viable.',
+        solution: 'Switch the device off, unplug it and do not try to charge it. Arrange collection from Mangaf and we will assess it at the Hawalli lab before quoting.',
+        serviceIds: ['srv-liquid-damage', 'srv-motherboard'],
+      }
+      ], landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.0975, lng: 48.1197 }, serviceRadiusKm: 20, serviceAreas: ['Mangaf', 'Fahaheel', 'Abu Halifa', 'Ahmadi'], relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-liquid-damage', 'srv-motherboard'], relatedProblemIds: ['problem-liquid-spill', 'problem-no-power', 'problem-not-charging', 'problem-overheating'], contentImage: {
       ...IMAGES.gaming.gamingPcThermalThrottlingKuwait,
       alt: 'Gaming desktop PC checked for heat-related performance problems',
       caption: 'Gaming PC thermal and stability diagnosis for Mangaf customers; repairs are completed at KCROC’s Hawalli lab.'
@@ -5507,11 +5619,39 @@ export const rawGraphData: RawGraphData = {
         { id: "faq-mubarak-al-kabeer-local-4", question: "Can you replace a battery that is built into the laptop?", answer: "In most cases, yes. Many thin laptops and MacBooks have internal batteries that need the case opened. Availability depends on the model, so send the exact model name on WhatsApp and we will confirm whether a suitable battery is available before you commit." },
         { id: "faq-mubarak-al-kabeer-local-5", question: "My motherboard has failed. Do I need a new laptop?", answer: "Not necessarily. We trace the fault to the failed component and repair it where that is technically possible, instead of automatically swapping the whole board. Diagnostics are free, and you pay nothing if we cannot fix it." },
         { id: "faq-mubarak-al-kabeer-local-6", question: "How can I get an idea of the cost without bringing the laptop in?", answer: "Send the model, the symptoms and a photo of any error on WhatsApp for a first opinion. A firm quote is confirmed after diagnosis and before any paid work, and repairs carry a 30-day warranty. Screen-replacement labor starts from 30 KWD plus the panel; component-level motherboard repair starts from 25 KWD." },
-      ], title: 'Mubarak Al-Kabeer', description: 'Component-level laptop and motherboard repair for residents across Mubarak Al-Kabeer Governorate, from Adan to Qurain, collected and delivered free of charge to KCROC\'s Hawalli lab.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.2436, lng: 48.0783 }, serviceRadiusKm: 25, serviceAreas: ['Mubarak Al-Kabeer', 'Adan', 'Qurain', 'Sabah Al-Salem', 'Qusour'], relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-ssd-ram', 'srv-battery'], relatedProblemIds: ['problem-slow', 'problem-no-power', 'problem-not-charging', 'problem-windows-wont-boot'], contentImage: {
+      ], title: 'Mubarak Al-Kabeer', description: 'Component-level laptop and motherboard repair for residents across Mubarak Al-Kabeer Governorate, from Adan to Qurain, collected and delivered free of charge to KCROC\'s Hawalli lab.', localServiceCards: [
+      {
+        category: 'Screens, Batteries & Upgrades',
+        title: 'Laptop Battery & Charging Diagnosis',
+        summary: 'Battery health and charging circuitry are checked before replacement.',
+        problem: 'A laptop battery drains quickly, the charge percentage changes unexpectedly, or the device shuts down while still showing remaining charge.',
+        expertise: 'We assess battery condition and the charging circuit so a charging fault is not mistaken for a failed battery. The compatible part is confirmed against the exact model.',
+        solution: 'Arrange pickup from Mubarak Al-Kabeer, Adan, Qurain, Qusour or Sabah Al-Salem. We confirm the parts and total quote before replacement work.',
+        serviceIds: ['srv-battery', 'srv-laptop'],
+      },
+      {
+        category: 'Screens, Batteries & Upgrades',
+        title: 'Laptop Screen & Display-Path Repair',
+        summary: 'Panel faults are distinguished from cable and connector problems.',
+        problem: 'A laptop has a cracked screen, flickering image, lines or a black display.',
+        expertise: 'We check the panel and display connection before recommending a model-matched screen replacement.',
+        solution: 'Free collection is available across the Mubarak Al-Kabeer service area. The panel and labour quote are confirmed before work at the Hawalli lab.',
+        serviceIds: ['srv-screen', 'srv-laptop'],
+      },
+      {
+        category: 'Board-Level & Micro-Soldering',
+        title: 'Component-Level Motherboard Repair',
+        summary: 'A failed board does not automatically mean the whole board must be replaced.',
+        problem: 'A laptop will not power on, has an intermittent charging fault, or has stopped responding after a hardware failure.',
+        expertise: 'We trace the affected power or charging circuit and consider a targeted component repair where the original board is technically repairable.',
+        solution: 'Arrange collection from Mubarak Al-Kabeer or its listed nearby areas. Diagnosis and approved repair are completed at the Hawalli lab with a 30-day warranty on covered repairs.',
+        serviceIds: ['srv-motherboard', 'srv-laptop'],
+      }
+      ], landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.2436, lng: 48.0783 }, serviceRadiusKm: 25, serviceAreas: ['Mubarak Al-Kabeer', 'Adan', 'Qurain', 'Sabah Al-Salem', 'Qusour'], relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-ssd-ram', 'srv-battery'], relatedProblemIds: ['problem-slow', 'problem-no-power', 'problem-not-charging', 'problem-windows-wont-boot'], contentImage: {
       ...IMAGES.gaming.gamingMotherboardCpuSocketPcieSlots,
       alt: 'Gaming desktop motherboard inspected during hardware diagnosis',
       caption: 'Gaming desktop motherboard and component diagnostics for Mubarak Al-Kabeer customers; all bench work is completed at the Hawalli lab.'
-    }, seo: { title: "Computer Repair Mubarak Al-Kabeer | Free Pickup | KCROC", description: "Laptop and motherboard repair across Mubarak Al-Kabeer, Adan, Qurain and Sabah Al-Salem, with free pickup to our Hawalli lab.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/mubarak-al-kabeer', ogType: 'website', schemaTypes: ['LocalBusiness'] }, navigationPriority: 35 } as LocationEntity,
+    }, seo: { title: "Computer Repair Mubarak Al-Kabeer | Free Pickup | KCROC", description: "Laptop and motherboard repair across Mubarak Al-Kabeer, Adan, Qurain and Sabah Al-Salem, with free pickup to our Hawalli lab.", canonicalUrl: 'https://www.computerrepairkuwait.com/location/mubarak-al-kabeer', ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-11-15T00:00:00+03:00'}, navigationPriority: 35 } as LocationEntity,
 
     'loc-fintas': { id: 'loc-fintas', slug: 'fintas', entityType: 'Location', isActive: false, isPhysicalLocation: false, localIntro: "Fintas and the surrounding coastal communities are served by free pickup, so a repair does not mean a drive to Hawalli. We collect, diagnose and repair at our lab, then return the device after testing. Gaming PCs, overheating and liquid damage are the focus of this page.", localHighlights: [
         { title: "Pickup from Fintas, Abu Halifa, Mangaf and Fahaheel", description: "Message us your area on WhatsApp and we will arrange free collection." },
