@@ -12,6 +12,13 @@ const html = readFileSync(pagePath, 'utf8');
 
 assert.ok(html.includes('https://www.computerrepairkuwait.com/laptop-liquid-damage-repair-kuwait'), 'Existing canonical URL is missing.');
 assert.ok(html.includes('Laptop Liquid Damage Repair in Kuwait'), 'Commercial H1 is missing from static HTML.');
+assert.ok(html.includes('Laptop Water &amp; Liquid-Damage Repair Capabilities'), 'Water / liquid-damage capabilities heading is missing from static HTML.');
+assert.ok(html.includes('Common Laptop Symptoms After a Water or Coffee Spill'), 'Water / coffee spill symptom heading is missing from static HTML.');
+assert.ok(html.includes('Our Laptop Liquid-Damage Repair Process'), 'Liquid-damage repair-process heading is missing from static HTML.');
+assert.ok(html.includes('id="liquid-damage-emergency-cta-heading"'), 'Mid-page emergency conversion CTA is missing from static HTML.');
+assert.ok(html.includes('Arrange a laptop liquid-damage inspection in Kuwait'), 'Emergency CTA heading is missing from static HTML.');
+assert.ok(html.includes('All repairs are carried out at our Hawalli workshop.'), 'Hawalli workshop positioning is missing from static HTML.');
+assert.ok(html.includes('Laptop Liquid Damage Repair') && html.includes('/laptop-liquid-damage-repair-kuwait'), 'Visible footer liquid-damage service link is missing from static HTML.');
 assert.ok(html.includes('From 35 KWD'), 'Published starting price is missing.');
 assert.ok(html.includes('45–65 KWD'), 'Tier 2 pricing range is missing.');
 assert.ok(html.includes('60–90+ KWD'), 'Tier 3 pricing range is missing.');
