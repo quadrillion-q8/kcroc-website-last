@@ -5081,7 +5081,7 @@ export const BLOG_POSTS: BlogPost[] = [
         "type": "callout",
         "variant": "expert",
         "title": "KCROC hardware diagnostics in Kuwait",
-        "text": "Software tuning cannot repair a worn SSD, unstable RAM, a blocked cooling system, a failing fan or a motherboard power fault. KCROC's physical repair lab is at Al Mullah Complex, Ibn Khaldoun Street, Basement Shop 19, Hawalli, Kuwait. Hardware diagnosis and repairs take place at this workshop; free pickup and delivery can be arranged across Kuwait. To arrange collection, WhatsApp +965 55301913: https://wa.me/96555301913. Share the laptop model and measured symptoms so the device can be checked before paid work is recommended."
+        "text": "Software tuning cannot repair a worn SSD, unstable RAM, a blocked cooling system, a failing fan or a motherboard power fault. KCROC's physical repair lab is at Al Mullah Complex, Ibn Khaldoun Street, Basement Shop 19, Hawalli, Kuwait. Hardware diagnosis and repairs take place at this workshop; free pickup and delivery can be arranged across Kuwait. To arrange collection, use the WhatsApp option on KCROC's contact page: https://www.computerrepairkuwait.com/contact. Share the laptop model and measured symptoms so the device can be checked before paid work is recommended."
       },
       {
         "type": "paragraph",
