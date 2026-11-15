@@ -14,6 +14,8 @@ const norm = (s) =>
     .replace(/\s+/g, ' ');
 const has = (source, needle) => norm(source).includes(norm(needle));
 
+const navigation = await read('data/navGraph.generated.ts');
+
 const [app, graph, seoProjection, locale, pricingPage, sitemap, hero, reviews, footer, header, mobileMenu, stickyMobileCTA, navigationCompiler, rootLayout, nearMe, nearMeAr, locations, locationDirectory, hawalli, computerRepair, about, booking, arabicCommercial, serviceAreas, englishPricing, serviceTemplate, brandTemplate, coreRepairPillars, macbookBatteryPage] = await Promise.all([
   read('App.tsx'),
   read('data/graph.ts'),
@@ -1428,8 +1430,12 @@ add('Arabic hinge page has no self-referencing related-service card',
   hingeArabicConfig.includes("serviceIds: ['srv-laptop', 'srv-screen', 'srv-charging-port']") &&
   !hingeArabicConfig.includes("'srv-hinge': {"));
 add('Hinge repair is visible in the footer directly below screen replacement',
-  footer.includes('services.slice(0, 10)') &&
-  has(graph, "{ label: 'Screen Replacement Kuwait', path: '/laptop-screen-repair-kuwait' }, { label: 'Laptop Hinge & Chassis Repair', path: '/laptop-hinge-repair-kuwait' }"));
+  footer.includes("index < 10 || link.path === '/laptop-liquid-damage-repair-kuwait'") &&
+  has(graph, "{ label: 'Screen Replacement Kuwait', path: '/laptop-screen-repair-kuwait' }, { label: 'Laptop Hinge & Chassis Repair', path: '/laptop-hinge-repair-kuwait' }") &&
+  has(navigation, '"label": "Laptop Hinge & Chassis Repair", "path": "/laptop-hinge-repair-kuwait"'));
+add('Liquid-damage repair is also included in the visible global footer services',
+  footer.includes("index < 10 || link.path === '/laptop-liquid-damage-repair-kuwait'") &&
+  has(navigation, '"label": "Laptop Liquid Damage Repair", "path": "/laptop-liquid-damage-repair-kuwait"'));
 add('All six supported laptop-brand hubs link to the hinge service',
   hingeServiceGraph.includes("relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-msi', 'brand-asus', 'brand-acer']") &&
   lenovoGraph.includes("'srv-hinge'") && asusGraph.includes("'srv-hinge'") &&
