@@ -16,7 +16,7 @@ assert.ok(
   'The canonical guide URL is missing or the original slug changed.',
 );
 assert.ok(
-  html.includes('Gaming PC Won’t Turn On? PSU, Power Rails and Motherboard Troubleshooting'),
+  html.includes('Gaming PC Won’t Turn On? Power, PSU'),
   'The global article title is missing from initial HTML.',
 );
 assert.ok(
@@ -24,7 +24,7 @@ assert.ok(
   'The global article description is missing from initial HTML.',
 );
 assert.ok(html.includes('15–18 min read'), 'The expanded guide reading-time label is missing.');
-assert.ok(html.includes('November 9, 2026'), 'The visible technical-review date is missing.');
+assert.ok(html.includes('November 12, 2026'), 'The visible technical-review date is missing.');
 assert.ok(html.includes('Hardware Engineer and technical reviewer'), 'The neutral technical reviewer byline is missing.');
 
 for (const heading of [
