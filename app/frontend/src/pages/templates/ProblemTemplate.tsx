@@ -212,7 +212,7 @@ const ProblemTemplate: React.FC = () => {
                 <span>30-Day Repair Warranty</span>
               </div>
               <p className="mt-3 text-xs leading-5 text-slate-400">
-                4.9 Google Rating · Free initial diagnostic · Pickup across 26 service areas in Kuwait · Hawalli repair lab open daily, 10:00 AM–10:00 PM
+                4.9 Google Rating · Free initial diagnostic · Free pickup and delivery across all six Kuwait governorates · Hawalli repair lab open daily, 10:00 AM–10:00 PM
               </p>
             </div>
           )}
