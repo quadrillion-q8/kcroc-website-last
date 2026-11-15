@@ -3492,11 +3492,11 @@ export const BLOG_POSTS: BlogPost[] = [
       "Cooling performance depends on the complete heat path: chip-to-cooler contact, heatsink or radiator capacity, fan and pump operation, and the movement of air through the case.",
       "Thermal paste and GPU thermal pads should be serviced only when inspection and measurements support it. There is no universal annual repaste interval, and pad thickness must match the exact graphics-card design."
     ],
-    image: "/images/blog/gaming-pc-thermal-throttling-kuwait.webp",
+    image: "/images/custom-gaming-pc-case-build-interior.webp",
     discoverImage: "/images/discover/custom-gaming-pc-teardown-and-diagnostics-workbench-1200x675.webp",
     date: "2026-06-22",
     technicalReviewDate: "November 6, 2026",
-    author: "KCROC Technical Editorial Team",
+    author: "Gaming Hardware Editorial Team",
     category: "Gaming Hardware",
     readTime: "10–12 min read",
     isPillar: true,
@@ -3513,7 +3513,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Thermal Paste",
       "GPU Hotspot"
     ],
-    seoTitle: "Gaming PC Cooling Guide: Overheating & Throttling | KCROC",
+    seoTitle: "Gaming PC Cooling Guide: Overheating & Throttling",
     seoDescription: "Why is your gaming PC overheating? Learn how to read CPU and GPU temperatures, diagnose thermal throttling, improve airflow, tune fan curves and choose air or liquid cooling."
   },
   {
@@ -3602,7 +3602,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: 'paragraph', text: "A faster SSD can reduce some of the delay when Windows needs data from storage, including during paging. It cannot match the responsiveness of physical RAM, and it cannot remove the underlying capacity limit. If the system is already using an SSD and becomes sluggish only when several applications are open together, investigate memory pressure. If it is still using a hard drive, the storage upgrade may be worthwhile for separate reasons—but do not treat it as a substitute for RAM." },
       { type: 'image', src: '/images/blog/windows-11-memory-performance.webp', alt: 'Laptop SSD storage and Windows virtual memory performance concept', caption: 'An SSD improves storage access; additional RAM increases the amount of active data the system can keep in physical memory.' },
       { type: 'paragraph', text: "Normal page-file activity is expected Windows behavior and is not, by itself, evidence that an SSD is being damaged. Do not disable virtual memory or buy a faster drive solely because Task Manager shows a page file. Microsoft's explanation of page-file sizing describes how the file supports system commit and crash-dump settings, and why sizing depends on the individual system: https://learn.microsoft.com/en-us/troubleshoot/windows-client/performance/how-to-determine-the-appropriate-page-file-size-for-64-bit-versions-of-windows." },
-      { type: 'paragraph', text: "For a separate storage problem, such as a drive that is missing or not detected, use the SSD diagnostic guide: https://www.computerrepairkuwait.com/guides/ssd-not-detected-windows-11. If disk usage—not memory pressure—is the symptom, compare the processes and causes in this guide: /blog/windows-11-100-disk-usage-causes-solutions." },
+      { type: 'paragraph', text: "For a separate storage problem, such as a drive that is missing or not detected, use the SSD diagnostic guide: /guides/ssd-not-detected-windows-11. If disk usage—not memory pressure—is the symptom, compare the processes and causes in this guide: /blog/windows-11-100-disk-usage-causes-solutions." },
       { type: 'h2', text: 'Before You Upgrade: Check Laptop RAM Compatibility', id: 'check-upgrade-compatibility' },
       { type: 'paragraph', text: "Not every laptop can be upgraded. Some models have removable SO-DIMM memory modules; others use memory soldered directly to the motherboard. Some combine soldered memory with one upgradeable slot. The exact model and motherboard configuration determine the supported capacity—not the laptop's appearance or the amount of RAM installed today." },
       { type: 'list', ordered: true, items: [
@@ -3637,7 +3637,7 @@ export const BLOG_POSTS: BlogPost[] = [
         "Install trusted Windows and driver updates, then retest. Avoid third-party 'RAM cleaners' and registry scripts that promise to free huge amounts of memory.",
         "If the slowdown remains, check CPU, storage activity, drive health and temperatures before assuming that memory is the only bottleneck."
       ]},
-      { type: 'paragraph', text: "If a high CPU reading accompanies the slowdown, this diagnostic guide can help separate heavy workloads from background processes and other causes: https://www.computerrepairkuwait.com/guides/windows-11-100-cpu-usage. For broader Windows symptoms, use the measurement-first troubleshooting framework: https://www.computerrepairkuwait.com/guides/windows-troubleshooting-complete-guide." },
+      { type: 'paragraph', text: "If a high CPU reading accompanies the slowdown, this diagnostic guide can help separate heavy workloads from background processes and other causes: /guides/windows-11-100-cpu-usage. For broader Windows symptoms, use the measurement-first troubleshooting framework: /guides/windows-troubleshooting-complete-guide." },
       { type: 'h2', text: 'Final Verdict: Is 8GB RAM Enough for Windows 11?', id: 'final-verdict' },
       { type: 'paragraph', text: "Yes—8GB can be enough for Windows 11 when the workload is light and expectations are realistic. It is not a universal failure point, and Windows 11 does not require 16GB to install or start. But 8GB leaves less room for simultaneous apps, demanding browser sessions and larger creative projects." },
       { type: 'paragraph', text: "For most people buying or upgrading a general-purpose laptop, 16GB is the more comfortable long-term target when the device supports it. Move to 32GB for workloads that can actually use the capacity. Before spending money, reproduce the slowdown, inspect Task Manager and confirm that RAM—not storage, CPU, thermals or software—is the limiting factor." },
@@ -6590,15 +6590,15 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "windows-11-wifi-keeps-disconnecting",
     title: "Windows 11 Wi-Fi Keeps Disconnecting: Complete Fix Guide for 2026",
     excerpt: "Windows 11 Wi-Fi that drops every few minutes can involve Windows, a driver, the router or the laptop's internal adapter and antenna. Use controlled tests to identify the layer before considering hardware diagnosis.",
-    description: "Separate Windows and router-side Wi-Fi problems from internal laptop adapter, antenna and board-side faults; KCROC service is limited to laptop hardware diagnosis.",
+    description: "Separate Windows and router-side Wi-Fi problems from internal laptop adapter, antenna and board-side faults. Test the layer that is actually failing before assuming the laptop itself is defective.",
     content: [
       "Wi-Fi disconnecting every few minutes is a symptom, not a diagnosis. The fastest route to a fix is to determine whether the laptop is losing the wireless link itself, losing access to the router, or staying connected to Wi-Fi while the internet path fails.",
       "Microsoft's current Windows 11 guidance starts with the built-in Network and Internet troubleshooter, checking for Windows updates, and using network reset only after less disruptive checks have failed."
     ],
     richContent: [
       { type: "paragraph", text: "If Windows 11 connects to Wi-Fi normally and then drops the connection repeatedly, do not start by reinstalling Windows or changing ten network settings at once. A repeatable disconnect pattern can come from the wireless adapter, its driver, power-management behavior, the access point or router, radio interference, VPN or security software, a damaged antenna path, or a broader Windows networking fault. The goal is to isolate the layer that is actually failing." },
-      { type: "callout", variant: "expert", title: "KCROC service scope", text: "This is an educational troubleshooting guide, not a router, ISP or home/office network service. KCROC does not configure routers, modems, VPNs or external networks. Our relevant repair scope is limited to diagnosing internal laptop hardware such as a wireless adapter, antenna, connector or board-side fault when the evidence shows the problem follows the laptop." },
-      { type: "callout", variant: "expert", title: "KCROC diagnostic principle", text: "Before changing anything, answer one question: does the laptop lose Wi-Fi completely, or does the Wi-Fi icon remain connected while only internet access disappears? Those are different fault paths." },
+      { type: "callout", variant: "expert", title: "Scope of this guide", text: "This guide covers laptop-side troubleshooting; it does not diagnose or configure a router, modem, ISP service, VPN or external network. Those systems require testing separately. Consider internal laptop hardware only when controlled tests show that the fault follows the device and points to its wireless adapter, antenna, connector or board-side circuitry." },
+      { type: "callout", variant: "expert", title: "Diagnostic principle", text: "Before changing anything, answer one question: does the laptop lose Wi-Fi completely, or does the Wi-Fi icon remain connected while only internet access disappears? Those are different fault paths." },
       { type: "image", src: "/images/laptop-wireless-network-card-replacement.webp", alt: "Laptop wireless network card and Wi-Fi hardware during repair", caption: "A wireless problem can be software, driver, radio, antenna or hardware related. Test the connection layer before replacing parts." },
       { type: "h2", text: "First: Identify What Is Actually Disconnecting", id: "identify-what-is-disconnecting" },
       { type: "paragraph", text: "When the problem occurs, look at the Windows network status and note what changed. If Wi-Fi itself disappears or shows disconnected, the wireless adapter, driver, signal or access point deserves attention. If Wi-Fi still says connected but websites stop loading, move your investigation toward the router, DNS, VPN, proxy or internet connection. If every device on the same network drops at the same moment, the laptop may not be the root cause at all." },
@@ -6661,7 +6661,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Windows Troubleshooting",
     readTime: "12-15 min read",
     tags: ["Windows 11", "Wi-Fi", "Wi-Fi Disconnecting", "Network Troubleshooting", "Wireless Adapter", "Driver Troubleshooting"],
-    seoTitle: "Windows 11 Wi-Fi Keeps Disconnecting: 10 Fixes & Diagnosis | KCROC",
+    seoTitle: "Windows 11 Wi-Fi Keeps Disconnecting: 10 Fixes & Diagnosis",
     seoDescription: "Windows 11 Wi-Fi keeps disconnecting? Diagnose drivers, power management, signal, router, VPN, network reset and hardware causes.",
     contentType: "guide"
   },
@@ -6678,7 +6678,7 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     richContent: [
       { type: "paragraph", text: "If Windows 11 says Connected to Wi-Fi but Edge, Chrome, apps or games cannot reach the internet, avoid treating the Wi-Fi icon as proof that the whole connection is healthy. The wireless link can be working while DNS, DHCP, routing, the gateway, a VPN, a proxy, or the ISP path is broken. Microsoft separates Wi-Fi connectivity troubleshooting from broader internet access issues for exactly this reason." },
-      { type: "callout", variant: "expert", title: "KCROC service scope", text: "This guide helps identify which layer is failing; it does not describe a KCROC networking service. KCROC does not repair or configure routers, modems, ISP connections, VPNs or home/office networks. We only consider internal laptop hardware diagnosis when controlled tests show the fault follows the laptop and points to its wireless adapter, antenna, connector or board." },
+      { type: "callout", variant: "expert", title: "Scope of this guide", text: "This guide helps identify which layer is failing. Router, modem, ISP, VPN and home/office network faults require testing at those layers. Consider the laptop's internal hardware only when controlled tests show the fault follows the device and points to its wireless adapter, antenna, connector or board." },
       { type: "image", src: "/images/laptop-wifi-network-card.webp", alt: "Laptop Wi-Fi network card used during connectivity troubleshooting", caption: "The wireless adapter is only one layer of the connection. Test the router and internet path before blaming the adapter." },
       { type: "h2", text: "Start With the Two-Device Test", id: "two-device-test" },
       { type: "paragraph", text: "Connect another phone or computer to the same Wi-Fi network. If both devices have no internet, the problem is probably above the individual Windows laptop: router, modem, access point or ISP. If other devices work normally and only this Windows PC is affected, focus on the laptop's DNS, DHCP, VPN, proxy, adapter, driver and Windows configuration." },
@@ -6742,7 +6742,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Windows Troubleshooting",
     readTime: "11-14 min read",
     tags: ["Windows 11", "No Internet", "Wi-Fi", "DNS", "Network Troubleshooting"],
-    seoTitle: "Connected to Wi-Fi but No Internet Windows 11: Fixes | KCROC",
+    seoTitle: "Connected to Wi-Fi but No Internet Windows 11: Fixes",
     seoDescription: "Connected to Wi-Fi but no internet in Windows 11? Diagnose router, DNS, DHCP, VPN, proxy, adapter and Windows networking problems.",
     contentType: "guide"
   },
@@ -6759,7 +6759,7 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     richContent: [
       { type: "paragraph", text: "When Task Manager shows 100% CPU, Windows may feel slow, fans may ramp up, frame rates can fall, and background work can appear to freeze the desktop. The percentage is a measurement, not a diagnosis. Microsoft recommends using Task Manager to identify processes and Startup apps that consume resources before applying performance changes. The same diagnosis-first idea matters here: find the workload before replacing a CPU, reinstalling Windows or disabling system services." },
-      { type: "image", src: "/images/asus-strix-z890f-cpu-installation-gaming-pc-kuwait-1000.webp", alt: "Desktop CPU and motherboard during professional computer repair", caption: "100% CPU usage can be workload-related, software-related or hardware-related. Measure the behavior before replacing components." },
+      { type: "image", src: "/images/custom-gaming-pc-msi-gpu-intel-cooler-build.webp", alt: "Desktop CPU and motherboard during professional computer repair", caption: "100% CPU usage can be workload-related, software-related or hardware-related. Measure the behavior before replacing components." },
       { type: "h2", text: "Is 100% CPU Usage Always Bad?", id: "always-bad" },
       { type: "paragraph", text: "No. A CPU can legitimately reach 100% while compiling code, rendering video, installing software, running a game, compressing files, performing an antivirus scan, or executing another demanding workload. The problem is when high CPU usage is unexpected, persistent at idle, accompanied by severe slowdown, or paired with instability, abnormal temperatures or crashes." },
       { type: "comparisonTable", title: "Read the CPU spike in context", columns: ["Pattern", "What it suggests", "Next check"], rows: [
@@ -6805,15 +6805,15 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "h2", text: "The Bottom Line", id: "bottom-line" },
       { type: "paragraph", text: "100% CPU usage is a measurement, not a diagnosis. Identify the process, reproduce the load, and compare CPU usage with temperature, clock speed, memory, disk and the exact task being performed. Many cases are normal workloads or software problems; the cases that need repair are the ones where instability, thermal behavior or hardware evidence survives proper troubleshooting." }
     ],
-    image: "/images/asus-strix-z890f-cpu-installation-gaming-pc-kuwait-1000.webp",
-    discoverImage: "/images/discover/asus-strix-z890f-cpu-installation-gaming-pc-kuwait-1000-1200x675.webp",
+    image: "/images/custom-gaming-pc-msi-gpu-intel-cooler-build.webp",
+    discoverImage: "/images/discover/custom-gaming-pc-teardown-and-diagnostics-workbench-1200x675.webp",
     date: "2026-09-29",
     technicalReviewDate: "September 29, 2026",
     author: "Imran Natiq",
     category: "Windows Troubleshooting",
     readTime: "11-14 min read",
     tags: ["Windows 11", "100% CPU", "Task Manager", "CPU Usage", "PC Performance"],
-    seoTitle: "Windows 11 100% CPU Usage: Causes & Safe Fixes | KCROC",
+    seoTitle: "Windows 11 100% CPU Usage: Causes & Safe Fixes",
     seoDescription: "Windows 11 100% CPU usage? Find the process, check thermals, startup apps, updates and malware, and diagnose hardware only when evidence supports it.",
     contentType: "guide"
   },
@@ -7522,7 +7522,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Windows Troubleshooting",
     readTime: "11-14 min read",
     tags: ["Windows 11", "Windows Update", "Update Error", "Driver Problems", "Windows Repair"],
-    seoTitle: "Windows 11 Update Problems: Failed Updates & Safe Fixes | KCROC",
+    seoTitle: "Windows 11 Update Problems: Failed Updates & Safe Fixes",
     seoDescription: "Windows 11 Update problems? Diagnose failed installs, error codes, storage, drivers, recovery and update rollbacks safely before reinstalling Windows.",
     contentType: "guide"
   },
@@ -7539,7 +7539,7 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
     richContent: [
       { type: "callout", variant: "info", title: "Quick answer", text: "Start with the exact symptom, decide which layer is failing (power, boot, Windows, drivers, apps or network), run the least destructive test, change one thing at a time, and confirm the fix under the same conditions. Use the triage table to jump straight to your problem." },
-      { type: "image", src: "/images/windows-os-software-repair-and-installation-kuwait.webp", alt: "Windows laptop displaying troubleshooting and system diagnostics", caption: "Good Windows troubleshooting starts by finding the failing layer, not by running a favorite repair command." },
+      { type: "image", src: "/images/windows-11-laptop-multitasking.webp", alt: "Windows laptop displaying troubleshooting and system diagnostics", caption: "Good Windows troubleshooting starts by finding the failing layer, not by running a favorite repair command." },
       { type: "h2", text: "Start Here: A Five-Minute Triage", id: "triage" },
       { type: "paragraph", text: "Windows problems often look alike, so begin with the exact symptom. Find yours in the table, run the first safe test, then follow the matching section. Every test in the second column is reversible and does not change your files." },
       { type: "comparisonTable", title: "Symptom-first triage: what to test first and which layer to suspect", columns: ["First safe test", "Layer to suspect"], rows: [
@@ -7866,15 +7866,15 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "h2", text: "The Bottom Line", id: "bottom-line" },
       { type: "paragraph", text: "Find the failing layer first, run the least destructive test, change one thing at a time and verify under the same conditions. When the evidence points to storage, memory, thermals or power, stop reinstalling Windows and get the hardware tested." }
     ],
-    "image": "/images/desktop-pc-tower-repair-kuwait.webp",
-    discoverImage: "/images/discover/windows-os-software-repair-and-installation-kuwait-1200x675.webp",
+    "image": "/images/custom-gaming-pc-case-build-interior.webp",
+    discoverImage: "/images/discover/windows-11-laptop-multitasking-1200x675.webp",
     date: "2026-10-06",
     technicalReviewDate: "October 6, 2026",
     author: "Imran Natiq",
     category: "Windows Troubleshooting",
     readTime: "24-28 min read",
     tags: ["Windows Troubleshooting", "Windows 11", "Windows 10", "Blue Screen", "Safe Mode", "SFC and DISM", "Windows Repair"],
-    seoTitle: "Windows Troubleshooting: Complete Guide to Fixing Problems | KCROC",
+    seoTitle: "Windows Troubleshooting: Complete Guide to Fixing Problems",
     seoDescription: "Complete Windows 11 and 10 troubleshooting guide: triage by symptom, read stop codes, use Safe Mode, DISM and SFC, and know when it is hardware.",
     contentType: "guide"
   },
