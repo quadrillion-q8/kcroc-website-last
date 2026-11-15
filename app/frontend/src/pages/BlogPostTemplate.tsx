@@ -382,8 +382,6 @@ const INTERNAL_LINK_LABELS: Record<string, string> = {
     'Laptop Overheating & Thermal Troubleshooting Guide',
   'https://www.computerrepairkuwait.com/motherboard-repair-kuwait':
     'Component-Level Motherboard Repair in Kuwait',
-  'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait':
-    'Gaming PC & GPU Repair Kuwait',
   'https://www.computerrepairkuwait.com/gaming-laptop-cleaning-kuwait':
     'Gaming Laptop Cleaning & Thermal Service',
   'https://www.computerrepairkuwait.com/contact':
@@ -489,8 +487,6 @@ const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
     'Microsoft Learn — DXGI video-memory budget and CurrentUsage',
   'https://www.intel.com/content/www/us/en/support/articles/000005597/processors.html':
     'Intel — Processor Tjunction temperature and thermal protection limits',
-  'https://www.intel.com/content/www/us/en/support/articles/000088048/processors.html':
-    'Intel — Thermal throttling and processor clock reduction',
   'https://www.hwinfo.com/download/':
     'HWiNFO — Hardware monitoring and sensor logging',
   'https://nvidia.custhelp.com/app/answers/detail/a_id/5157/~/what-is-multi-plane-overlay-%28mpo%29-in-windows-11':
@@ -1669,9 +1665,7 @@ export default function BlogPostTemplate() {
                       <p className="text-sm text-slate-400 mt-1 leading-relaxed">
                         {isGlobalNewsArticle
                           ? 'Technology writer and technical reviewer covering computer architecture, processors, computing platforms and consumer hardware.'
-                          : post.slug === 'gaming-pc-not-turning-on-kuwait'
-                            ? 'Lead Hardware Repair Engineer at Kuwait Computer Repair On Call (KCROC), Hawalli — focused on component-level motherboard diagnostics, ATX power-sequence analysis, firmware recovery and gaming desktop stability.'
-                            : post.slug === 'nvidia-dlss-5-neural-rendering-explained'
+                          : post.slug === 'nvidia-dlss-5-neural-rendering-explained'
                               ? 'Hardware Repair Engineer at KCROC — focused on laptop thermal diagnostics, GPU load testing, and component-level motherboard repair at our ESD-safe laboratory in Hawalli, Kuwait.'
                               : isGlobalEditorialArticle
                                 ? 'Hardware Repair Engineer and technical reviewer focused on computer hardware, software troubleshooting, performance, firmware and diagnostics.'
