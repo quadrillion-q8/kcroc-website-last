@@ -59,7 +59,7 @@ const ibmArticleStart = html.indexOf('<article');
 const ibmArticleEnd = html.indexOf('</article>', ibmArticleStart);
 assert.ok(ibmArticleStart >= 0 && ibmArticleEnd > ibmArticleStart, 'IBM article content wrapper is missing');
 const ibmArticleHtml = html.slice(ibmArticleStart, ibmArticleEnd + '</article>'.length);
-for (const forbidden of [/Kuwait/i, /Hawalli/i, /KCROC/i, /wa\\.me/i, /pickup|delivery/i, /href="\\/(?:motherboard-repair-kuwait|gaming-pc-repair-kuwait|gaming-laptop-cleaning-kuwait)/i]) {
+for (const forbidden of [/Kuwait/i, /Hawalli/i, /KCROC/i, /wa\.me/i, /pickup|delivery/i, /href="\/(?:motherboard-repair-kuwait|gaming-pc-repair-kuwait|gaming-laptop-cleaning-kuwait)/i]) {
   assert.ok(!forbidden.test(ibmArticleHtml), 'Global IBM article contains a local business or sales trace: ' + forbidden);
 }
 
@@ -145,7 +145,7 @@ const dlssArticleStart = dlssHtml.indexOf('<article');
 const dlssArticleEnd = dlssHtml.indexOf('</article>', dlssArticleStart);
 assert.ok(dlssArticleStart >= 0 && dlssArticleEnd > dlssArticleStart, 'DLSS article content wrapper is missing');
 const dlssArticleHtml = dlssHtml.slice(dlssArticleStart, dlssArticleEnd + '</article>'.length);
-for (const forbidden of [/Kuwait/i, /Hawalli/i, /KCROC/i, /wa\\.me/i, /pickup|delivery/i, /href="\\/(?:gaming-pc-repair-kuwait|gaming-laptop-cleaning-kuwait|contact|book)/i]) {
+for (const forbidden of [/Kuwait/i, /Hawalli/i, /KCROC/i, /wa\.me/i, /pickup|delivery/i, /href="\/(?:gaming-pc-repair-kuwait|gaming-laptop-cleaning-kuwait|contact|book)/i]) {
   assert.ok(!forbidden.test(dlssArticleHtml), 'Global DLSS article contains a local business or sales trace: ' + forbidden);
 }
 
