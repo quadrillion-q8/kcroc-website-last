@@ -5412,7 +5412,7 @@ export const BLOG_POSTS: BlogPost[] = [
           {
             "question": "How can I find what is really slowing my computer?",
             "answer": "Start with Task Manager and Resource Monitor, then check storage health, memory usage, temperatures, startup software, Reliability Monitor and Windows system integrity. A proper diagnosis is more useful than blindly disabling services."
-          }
+          },
           {
             "question": "Which Windows 11 background services can I disable safely?",
             "answer": "There is no universal safe-disable list. MapsBroker is feature-dependent, and Print Spooler may be unnecessary only when the PC never uses physical, network or virtual printing. Keep security, update, diagnostics and device-support services available unless a documented administrative requirement says otherwise. Test one change at a time and keep a rollback path."
