@@ -754,12 +754,12 @@ export const BLOG_POSTS: BlogPost[] = [
       "type": "callout",
       "variant": "info",
       "title": "Benchmark provenance and technical review",
-      "text": "The RTX 5090 FPS figures and Hogwarts Legacy visual observations in this article are attributed to ComputerBase's November 5, 2026 independent review; KCROC has not independently reproduced that benchmark. DLSS 5 feature behaviour, the Hogwarts Legacy patch requirements and NVIDIA's Driver 621.14 WHQL fix were cross-checked against NVIDIA and Warner Bros. / Portkey Games documentation. Written and technically reviewed by Imran Natiq at KCROC's Hawalli laboratory on November 9, 2026."
+      "text": "The RTX 5090 FPS figures and Hogwarts Legacy visual observations in this article are attributed to ComputerBase's November 5, 2026 independent review; This article does not claim independent reproduction of that benchmark. DLSS 5 feature behaviour, the Hogwarts Legacy patch requirements and NVIDIA's Driver 621.14 WHQL fix were cross-checked against NVIDIA and Warner Bros. / Portkey Games documentation. Written and technically reviewed by Imran Natiq on November 9, 2026."
     }
   ],
   "image": "/images/geforce-rtx-gpu-gaming-pc-rgb-fans.webp",
-  "imageAlt": "Gaming PC hardware being inspected on a technician's workbench at the KCROC workshop; illustrative hardware photo, not a DLSS 5 game screenshot.",
-  "imageCaption": "KCROC workshop photo showing gaming-PC hardware under inspection. This is an illustrative hardware image, not an in-game DLSS 5 comparison.",
+  "imageAlt": "Gaming PC hardware on a workbench; illustrative hardware photo, not a DLSS 5 game screenshot.",
+  "imageCaption": "Gaming PC hardware under inspection. This is an illustrative hardware image, not an in-game DLSS 5 comparison.",
   "discoverImage": "/images/discover/custom-gaming-pc-teardown-and-diagnostics-workbench-1200x675.webp",
   "date": "2026-11-09T00:00:00+03:00",
   "technicalReviewDate": "2026-11-09T21:00:00+03:00",
@@ -796,7 +796,7 @@ export const BLOG_POSTS: BlogPost[] = [
     "content": [
       "IBM unveiled an IBM Quantum System Two at the University of Chicago's Hyde Park Labs on November 6, 2026. The system is now operational and is powered by IBM Quantum Nighthawk r2, the company's most advanced quantum processor platform currently deployed.",
       "The important story is not simply the qubit count. Nighthawk r2 combines 120 programmable qubits with a denser connectivity layout and independent reset hardware, while the Chicago installation gives researchers and industry partners a working system inside a growing quantum-research ecosystem.",
-      "This KCROC analysis separates IBM's published specifications from what the announcement proves, explains the potential research uses, and clarifies why this does not mean ordinary PCs or laptops are about to be replaced."
+      "This analysis separates IBM's published specifications from what the announcement proves, explains the potential research uses, and clarifies why this does not mean ordinary PCs or laptops are about to be replaced."
     ],
     "richContent": [
       {
@@ -912,7 +912,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
-        "text": "Nighthawk r2 adds 120 independent reset elements, one for each programmable qubit. IBM's engineering explanation is precise: when the dissipative reset gadget is activated, the qubit's effective T1 falls from a median of about 200 microseconds to roughly 25 nanoseconds. That 25-nanosecond figure is not a 25-microsecond reset latency. IBM's platform documentation separately reports that the default repetition delay falls from 250 microseconds to 1 microsecond. Together, the reset architecture supports more than 100,000 circuits per second—up to 25 times Heron's roughly 4,000 circuits per second—and IBM reports around 25 times lower initialization error while maintaining Heron-class gate fidelity. These are IBM-published processor metrics, not independent KCROC benchmarks or a promise that every algorithm runs 25 times faster. https://www.ibm.com/quantum/blog/nighthawk-r2 https://quantum.cloud.ibm.com/docs/en/guides/changelog-quantum-compute-service"
+        "text": "Nighthawk r2 adds 120 independent reset elements, one for each programmable qubit. IBM's engineering explanation is precise: when the dissipative reset gadget is activated, the qubit's effective T1 falls from a median of about 200 microseconds to roughly 25 nanoseconds. That 25-nanosecond figure is not a 25-microsecond reset latency. IBM's platform documentation separately reports that the default repetition delay falls from 250 microseconds to 1 microsecond. Together, the reset architecture supports more than 100,000 circuits per second—up to 25 times Heron's roughly 4,000 circuits per second—and IBM reports around 25 times lower initialization error while maintaining Heron-class gate fidelity. These are IBM-published processor metrics, not independent benchmarks or a promise that every algorithm runs 25 times faster. https://www.ibm.com/quantum/blog/nighthawk-r2 https://quantum.cloud.ibm.com/docs/en/guides/changelog-quantum-compute-service"
       },
       {
         "type": "paragraph",
@@ -1094,8 +1094,8 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "callout",
         "variant": "info",
-        "title": "KCROC editorial note",
-        "text": "Written and technically reviewed by Imran Natiq, Hardware Repair Engineer at KCROC. This article separates the Chicago System Two deployment, IBM's published Nighthawk r2 platform specifications, the separate July 2026 logical-qubit research result, and the SC26 demonstration scheduled for November 17–19. IBM performance figures are attributed to IBM and its documentation. KCROC has not operated or independently benchmarked the quantum system."
+        "title": "Editorial note",
+        "text": "Written and technically reviewed by Imran Natiq, hardware engineer. This article separates the Chicago System Two deployment, IBM's published Nighthawk r2 platform specifications, the separate July 2026 logical-qubit research result, and the SC26 demonstration scheduled for November 17–19. IBM performance figures are attributed to IBM and its documentation. No independent operation or benchmarking of the quantum system is claimed here."
       }
     ],
     "image": "https://www.ibm.com/quantum/_next/image?q=75&url=https%3A%2F%2Fresearch-website-prod-cms-uploads.s3.us.cloud-object-storage.appdomain.cloud%2FChicago_blog_5d3b95a9b0.png&w=3840",
@@ -1132,12 +1132,12 @@ export const BLOG_POSTS: BlogPost[] = [
     "description": "Microsoft's October 7 Windows and Surface event puts on-device AI PCs, Surface hardware and NVIDIA RTX Spark technology in focus. Here is what was confirmed, what remained unknown, and what buyers should verify across markets.",
     "content": [
       "Microsoft's Windows and Surface event is scheduled for October 7, 2026 at 10 a.m. Pacific Time. The confirmed event is about Windows and Surface; a Windows 12 launch has not been announced in the event notice.",
-      "This KCROC News analysis separates confirmed announcements from pre-event expectations and focuses on the practical questions that matter when choosing, upgrading or maintaining a PC."
+      "This analysis separates confirmed announcements from pre-event expectations and focuses on practical questions that matter when choosing, upgrading or maintaining a PC."
     ],
     "richContent": [
       {
         "type": "image",
-        "src": "/images/news-microsoft-windows-surface-event-2026-kcroc.webp",
+        "src": "/images/windows-11-laptop-multitasking.webp",
         "alt": "Original illustration of a laptop running on-device AI workloads ahead of Microsoft's Windows and Surface event",
         "caption": "Illustration accompanying the October 7, 2026 Windows and Surface event coverage."
       },
@@ -1275,7 +1275,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
-        "text": "Qualcomm's September 23 Snapdragon Summit coverage independently describes the expanding Snapdragon X2 ecosystem and on-device AI focus. Because vendor pages use different test methods and comparison baselines, KCROC treats those numbers as manufacturer-reported figures rather than independent benchmarks. https://www.qualcomm.com/news/onq/2026/09/snapdragon-summit-agentic-ai-pcs-linux"
+        "text": "Qualcomm's September 23 Snapdragon Summit coverage independently describes the expanding Snapdragon X2 ecosystem and on-device AI focus. Because vendor pages use different test methods and comparison baselines, Those numbers are treated as manufacturer-reported figures rather than independent benchmarks. https://www.qualcomm.com/news/onq/2026/09/snapdragon-summit-agentic-ai-pcs-linux"
       },
       {
         "type": "paragraph",
@@ -1330,7 +1330,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "callout",
         "variant": "expert",
-        "title": "KCROC technician perspective",
+        "title": "Technical perspective",
         "text": "Do not buy a PC because a processor badge or AI number looks impressive. Match the machine to the workload, then check sustained performance, cooling, upgradeability, software compatibility, warranty and repairability."
       },
       {
@@ -1438,11 +1438,11 @@ export const BLOG_POSTS: BlogPost[] = [
         "type": "callout",
         "variant": "info",
         "title": "Publication status",
-        "text": "This KCROC News article was prepared before the scheduled October 7 event. Do not treat pre-event expectations as confirmed announcements. Update the article after the event with official specifications, pricing, availability and independent test results."
+        "text": "This article was prepared before the scheduled October 7 event. Do not treat pre-event expectations as confirmed announcements. Update the article after the event with official specifications, pricing, availability and independent test results."
       }
     ],
-    "image": "/images/news-microsoft-windows-surface-event-2026-kcroc.webp",
-    "discoverImage": "/images/news-microsoft-windows-surface-event-2026-kcroc.webp",
+    "image": "/images/windows-11-laptop-multitasking.webp",
+    "discoverImage": "/images/windows-11-laptop-multitasking.webp",
     "date": "2026-10-03",
     "technicalReviewDate": "October 3, 2026",
     "author": "Imran Natiq",
@@ -1471,7 +1471,7 @@ export const BLOG_POSTS: BlogPost[] = [
     "description": "Windows 11 26H2 November 2026 update: KB5132061 status, ISO installation steps, 10-day rollback limits, and practical checks for NVMe, RAM, drivers and cooling.",
     "content": [
       "Six weeks after Microsoft's September 29 announcement of Windows 11, version 26H2, the November 10, 2026 security update is KB5132061. Its 26H2 OS build is 26300.9974, while feature-update availability remains controlled and subject to device compatibility and safeguard holds.",
-      "This KCROC technician guide explains the current servicing position, official ISO and Windows Update paths, rollback limits, and how to investigate storage, driver, firmware, thermal or hardware symptoms without assuming that the Windows update caused them."
+      "This technical guide explains the current servicing position, official ISO and Windows Update paths, rollback limits, and how to investigate storage, driver, firmware, thermal or hardware symptoms without assuming that the Windows update caused them."
     ],
     "richContent": [
       {
@@ -1495,7 +1495,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "callout",
         "variant": "expert",
-        "title": "KCROC technician view",
+        "title": "Technical view",
         "text": "Treat Windows 11 26H2 as both a software update and a hardware stress test. A healthy laptop with enough storage, stable memory, working cooling and current drivers can take a very different path from a machine that already freezes, overheats, loses Wi-Fi, reports SSD errors or has firmware problems."
       },
       {
@@ -1678,7 +1678,7 @@ export const BLOG_POSTS: BlogPost[] = [
         "featureLabel": "Component",
         "columns": [
           "Microsoft minimum",
-          "What KCROC would check before installation"
+          "Checks before installation"
         ],
         "rows": [
           {
@@ -2258,7 +2258,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
-        "text": "For broader Windows update troubleshooting already published by KCROC, see: https://www.computerrepairkuwait.com/guides/windows-11-update-problems"
+        "text": "For current rollout status and known issues, consult Microsoft's Windows release-health dashboard: https://learn.microsoft.com/en-us/windows/release-health/"
       },
       {
         "type": "paragraph",
@@ -2387,7 +2387,7 @@ export const BLOG_POSTS: BlogPost[] = [
           },
           {
             "question": "How much free disk space should I have before installing Windows 11 26H2?",
-            "answer": "Microsoft's 64 GB figure is the minimum total storage-device capacity, not a recommended amount of free space. For an in-place feature update or repair install, KCROC recommends aiming for about 25–35 GB free on C: as a practical working buffer; the actual requirement varies with the device, update path and rollback files. A clean install has different target-drive requirements."
+            "answer": "Microsoft's 64 GB figure is the minimum total storage-device capacity, not a recommended amount of free space. For an in-place feature update or repair install, A practical planning buffer is about 25–35 GB free on C:; the actual requirement varies with the device, update path and rollback files. A clean install has different target-drive requirements."
           },
           {
             "question": "What does error 0xC1900101 mean during a Windows 11 26H2 upgrade?",
@@ -2476,7 +2476,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "SFC",
       "mbr2gpt"
     ],
-    "seoTitle": "Windows 11 26H2: November Rollout, ISO & Fixes | KCROC",
+    "seoTitle": "Windows 11 26H2: November Rollout, ISO & Fixes",
     "seoDescription": "Windows 11 26H2 November 2026 update: KB5132061 status, ISO install steps, 10-day rollback limits, and hardware checks for NVMe, RAM and cooling.",
     "isGlobalGuide": true,
     "contentType": "news"
