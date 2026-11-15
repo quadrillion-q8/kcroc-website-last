@@ -4033,9 +4033,8 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "comparisonTable",
         "title": "Startup settings: what each option actually means",
-        "featureLabel": "Service / topic",
+        "featureLabel": "Configuration",
         "columns": [
-          "Configuration",
           "When Windows starts it",
           "Practical meaning"
         ],
@@ -4231,9 +4230,8 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "comparisonTable",
         "title": "WHESVC: what to verify on the device",
-        "featureLabel": "Service / topic",
+        "featureLabel": "Attribute",
         "columns": [
-          "Attribute",
           "Technician check"
         ],
         "rows": [
@@ -4428,9 +4426,8 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "comparisonTable",
         "title": "Use the supported privacy control before changing the service",
-        "featureLabel": "Service / topic",
+        "featureLabel": "Control",
         "columns": [
-          "Control",
           "What it changes",
           "When to use it"
         ],
@@ -4595,9 +4592,8 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "comparisonTable",
         "title": "Hardware configuration changes the diagnosis",
-        "featureLabel": "Service / topic",
+        "featureLabel": "System condition",
         "columns": [
-          "System condition",
           "What to measure",
           "Better first response"
         ],
@@ -4860,9 +4856,8 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "comparisonTable",
         "title": "The 12 service groups covered by this guide",
-        "featureLabel": "Service / topic",
+        "featureLabel": "Service",
         "columns": [
-          "Service",
           "Main role",
           "Disable by default?",
           "Best first diagnostic step"
@@ -5033,9 +5028,8 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "comparisonTable",
         "title": "What to check before disabling another service",
-        "featureLabel": "Service / topic",
+        "featureLabel": "Symptom",
         "columns": [
-          "Symptom",
           "Software-side check",
           "Hardware-side check",
           "How to interpret it"
