@@ -458,7 +458,7 @@ export const rawGraphData: RawGraphData = {
           { name: 'تصليح كمبيوتر ولابتوب في الأحمدي', url: '/ar/computer-repair-ahmadi' }
         ]
       },
-      relatedServiceIds: ['srv-gaming', 'srv-macbook', 'srv-laptop', 'srv-motherboard']
+      relatedServiceIds: ['srv-gaming', 'srv-macbook', 'srv-laptop', 'srv-motherboard', 'srv-gaming-laptop-cleaning']
     } as WebPageEntity,
 
     'page-ar-hawalli-computer-repair': {
@@ -5169,7 +5169,7 @@ export const rawGraphData: RawGraphData = {
         { title: "Pickup from Ahmadi, Fahaheel, Mangaf, Mahboula and Sabahiya", description: "Message us your area and the fault and we will arrange free collection." },
         { title: "Gaming PC and gaming laptop service", description: "Overheating, crashes and performance drops are diagnosed on the bench, including cleaning and thermal work." },
         { title: "MacBook diagnostics", description: "Power, charging and liquid-damage faults are traced to the component level." },
-        { title: "Repaired in Hawalli", description: "Ahmadi is a service area. All work is done at our central lab and covered by our 30-day warranty." },
+        { title: "Repaired in Hawalli", description: "Ahmadi is a pickup-and-delivery service area, not a repair branch. All work is completed at our Hawalli lab, Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19, open daily 10 AM–10 PM; completed repairs carry a 30-day warranty under the service terms." },
       ], localFaqs: [
         { id: "faq-ahmadi-local-1", question: "Do you cover Mahboula and Sabahiya as part of Ahmadi?", answer: "Yes. Ahmadi, Fahaheel, Mangaf, Mahboula and Sabahiya are one pickup zone with free collection and delivery." },
         { id: "faq-ahmadi-local-2", question: "Can you collect a full gaming PC tower from Ahmadi?", answer: "Yes. Message us the main components, whether it has a liquid cooler, and what the PC is doing. We arrange collection of the whole machine, then diagnose and service it at the lab." },
@@ -5177,13 +5177,13 @@ export const rawGraphData: RawGraphData = {
         { id: "faq-ahmadi-local-4", question: "My PC turns on but nothing appears on the monitor. What can I try first?", answer: "Check that the monitor cable is plugged into the graphics card and not the motherboard port, then try another cable or display. If there is still no picture, send us the details, including any beeps or lights. We diagnose before quoting." },
         { id: "faq-ahmadi-local-5", question: "My MacBook will not start or has no display. Can you diagnose it?", answer: "Yes. We trace MacBook power and display faults at component level where that is technically possible, and explain the diagnosis and repair path before any paid work." },
         { id: "faq-ahmadi-local-6", question: "Where do you repair devices collected from Ahmadi?", answer: "At our Hawalli lab (Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19), open daily from 10:00 AM to 10:00 PM. Ahmadi is a service area, not a branch, and repairs carry a 30-day warranty." },
-      ], title: 'Ahmadi', description: 'Premium gaming PC repair and Apple MacBook diagnostics serving Ahmadi and southern Kuwait.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.0833, lng: 48.0833 }, serviceRadiusKm: 30, serviceAreas: ['Ahmadi', 'Fahaheel', 'Mangaf', 'Mahboula', 'Sabahiya'], relatedServiceIds: ['srv-gaming', 'srv-macbook', 'srv-laptop', 'srv-motherboard'], relatedProblemIds: ['problem-overheating', 'problem-freezing-crashing', 'problem-no-power', 'problem-black-screen'], contentImage: {
+      ], title: 'Ahmadi', description: 'Premium gaming PC repair and Apple MacBook diagnostics serving Ahmadi and southern Kuwait.', landmark: 'Mobile Dispatch Area (Equipment processed at our central Hawalli workshop: Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19)', coords: { lat: 29.0833, lng: 48.0833 }, serviceRadiusKm: 30, serviceAreas: ['Ahmadi', 'Fahaheel', 'Mangaf', 'Mahboula', 'Sabahiya'], relatedServiceIds: ['srv-gaming', 'srv-macbook', 'srv-laptop', 'srv-motherboard', 'srv-gaming-laptop-cleaning'], relatedProblemIds: ['problem-overheating', 'problem-freezing-crashing', 'problem-no-power', 'problem-black-screen'], contentImage: {
       ...IMAGES.laptopHardware.desktopPcTowerRepairKuwait,
       alt: 'Desktop PC tower inspected for repair at the KCROC workshop',
       caption: 'Complete desktop PC diagnosis and repair for Ahmadi customers; all bench work is completed at the Hawalli lab.'
     }, seo: {
       title: "Computer Repair Ahmadi | Free Pickup | KCROC",
-      description: "Laptop, MacBook and gaming PC repair for Ahmadi, Fahaheel, Mangaf and Mahboula. Free pickup and repair at our Hawalli lab.",
+      description: "Laptop, MacBook and gaming PC repair for Ahmadi, Fahaheel, Mangaf, Mahboula and Sabahiya. Free pickup and repair at our Hawalli lab.",
       canonicalUrl: 'https://www.computerrepairkuwait.com/location/ahmadi',
       locale: 'en_KW',
       alternates: {

@@ -32,6 +32,11 @@ const FAHAHEEL_LOCAL_LINKS = [
   { label: 'أبو حليفة', path: '/location/abu-halifa' }
 ];
 
+const AHMADI_LOCAL_LINKS = [
+  { label: 'الفحيحيل', path: '/ar/computer-repair-fahaheel' },
+  { label: 'المنقف', path: '/ar/computer-repair-mangaf' }
+];
+
 const AR_GUIDES = [
   { title: 'دليل شراء اللابتوب في الكويت 2026', path: '/blog/ar/laptop-buying-guide-kuwait-2026' },
   { title: 'متى تنظف اللابتوب وتغير المعجون الحراري؟', path: '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait' }
@@ -92,6 +97,35 @@ const FAHAHEEL_PROBLEM_LABELS: Record<string, string> = {
   'problem-overheating': 'اللابتوب يسخن أو يطفي فجأة',
   'problem-not-charging': 'اللابتوب مو قاعد يشحن',
   'problem-liquid-spill': 'انسكاب ماء أو مشروب على اللابتوب'
+};
+
+const AHMADI_WORKSHOP_GALLERY = [
+  { image: IMAGES.brand.shopInterior, alt: 'الجزء الداخلي من مختبر KCROC المركزي في حولي حيث يتم فحص أجهزة عملاء الأحمدي', caption: 'مختبر KCROC في حولي — هنا تتم أعمال الفحص والإصلاح للأجهزة المستلمة من الأحمدي وجنوب الكويت.' },
+  { image: IMAGES.brand.technicians, alt: 'فنيون يفحصون جهاز كمبيوتر داخل مختبر KCROC', caption: 'تسجيل الجهاز وفحص الأعراض قبل تحديد مسار الإصلاح والتكلفة.' },
+  { image: IMAGES.brand.leadTechnician, alt: 'فني مختبر يفحص لوحة إلكترونية على مستوى المكونات', caption: 'فحص اللوحات ودوائر الطاقة عندما تشير الأعراض إلى عطل على مستوى المكونات.' },
+  { image: IMAGES.brand.inventory, alt: 'مكونات وقطع بديلة محفوظة داخل مختبر KCROC', caption: 'نتحقق من توافق أي قطعة مع رقم موديل الجهاز قبل اعتمادها.' }
+];
+
+const AHMADI_PROCESS_STEPS = [
+  { step: 1, title: 'ترتيب الاستلام من موقعك', description: 'أرسل المنطقة والبلوك والشارع ورقم المبنى، مع موديل الجهاز ووصف العطل. شارك موقع واتساب المباشر والوقت المفضل بين 10 صباحًا و10 مساءً، ونؤكد لك موعد الاستلام المتاح.' },
+  { step: 2, title: 'فحص الجهاز في مختبر حولي', description: 'نفحص Gaming PC تحت الحمل بحسب الحالة، ونراجع الطاقة والحرارة والاستقرار. وفي MacBook نفحص التشغيل والشحن والعرض وآثار السوائل حسب الموديل، ثم نشرح النتيجة وخيارات الإصلاح والتكلفة قبل أي عمل مدفوع.' },
+  { step: 3, title: 'الإصلاح والاختبار ثم التوصيل', description: 'بعد موافقتك ننفذ الإصلاح المناسب ونختبر الجهاز، ثم ننسق إرجاعه إلى موقعك. وتطبق سياسة No Fix, No Fee وفق شروط الخدمة إذا تعذر إتمام الإصلاح.' }
+];
+
+const AHMADI_TRUST_CARDS = [
+  { title: 'فحص Gaming PC تحت الحمل', description: 'نراجع الحرارة والاستقرار ومزود الطاقة والذاكرة والأعراض أثناء اللعب، ونحدد سبب المشكلة قبل اقتراح تبديل أي قطعة.' },
+  { title: 'تشخيص MacBook حسب الموديل', description: 'نفحص أعطال التشغيل والشحن والعرض وآثار السوائل، ونقيّم إصلاح اللوحة على مستوى المكونات عندما تكون الحالة مناسبة فنيًا.' },
+  { title: 'خصوصية بياناتك', description: 'يركز فحص الهاردوير المعتاد على مكونات الجهاز ولا يتطلب تصفح ملفاتك الشخصية. نوضح لك مسبقًا أي خطوة قد تستلزم التعامل مع وحدة التخزين.' },
+  { title: 'استلام وتوصيل مجاني', description: 'ننسق استلام الجهاز من الأحمدي والفحيحيل والمنقف والمهبولة والصباحية، ونعيده بعد الإصلاح والاختبار من دون الحاجة إلى زيارة مختبر حولي لتسليمه.' },
+  { title: 'ضمان 30 يومًا', description: 'الإصلاحات المكتملة مشمولة بضمان 30 يومًا وفق شروط الخدمة، مع توضيح نطاق التغطية قبل التنفيذ.' },
+  { title: 'No Fix, No Fee', description: 'إذا تعذر إتمام الإصلاح، لا تُفرض أجرة الإصلاح وفق شروط السياسة. نوضح نتيجة الفحص وخياراتك قبل أي عمل مدفوع.' }
+];
+
+const AHMADI_PROBLEM_LABELS: Record<string, string> = {
+  'problem-overheating': 'ارتفاع حرارة الكمبيوتر أو اللابتوب',
+  'problem-freezing-crashing': 'تعليق الجهاز أو إعادة تشغيله أثناء اللعب',
+  'problem-no-power': 'الكمبيوتر أو اللابتوب ما يشتغل',
+  'problem-black-screen': 'الجهاز يشتغل لكن الشاشة سوداء'
 };
 
 const CONFIG: Record<string, {
@@ -612,7 +646,11 @@ const CONFIG: Record<string, {
       { q: 'الكمبيوتر يعيد التشغيل أو يعلق وقت اللعب، شنو السبب؟', a: 'ممكن تكون المشكلة من الحرارة أو مزود الطاقة أو الذاكرة أو مكوّن آخر. نفحص الجهاز تحت الحمل ونحدد السبب قبل اقتراح تبديل القطع، بدل التخمين.' },
       { q: 'الكمبيوتر يشتغل لكن الشاشة ما تعرض صورة، شنو أفحص؟', a: 'تأكد أن كيبل الشاشة موصول بالمنفذ الصحيح في كرت الشاشة إذا كان موجودًا، وجرب كيبلًا أو شاشة ثانية متوافقة. إذا استمرت المشكلة، أرسل لنا وصف الأضواء أو الأصوات والموديل؛ التشخيص النهائي يكون في المختبر.' },
       { q: 'هل تفحصون MacBook إذا ما يشتغل أو شاشته سوداء؟', a: 'نعم، نفحص أعطال تشغيل وعرض MacBook، ونقيّم إصلاح المكونات عندما تكون الحالة مناسبة فنيًا. نشرح نتيجة التشخيص وخيار الإصلاح قبل أي عمل مدفوع.' },
-      { q: 'وين يتم إصلاح الجهاز بعد استلامه من الأحمدي؟', a: 'الإصلاح يتم في مختبر KCROC بحولي، شارع ابن خلدون، مجمع الملا، البدروم، محل 19. الأحمدي منطقة خدمة وليست فرعًا، ونرجع الجهاز بعد الإصلاح والاختبار.' }
+      { q: 'وين يتم إصلاح الجهاز بعد استلامه من الأحمدي؟', a: 'الإصلاح يتم في مختبر KCROC بحولي، شارع ابن خلدون، مجمع الملا، السرداب، محل 19. المختبر يفتح يوميًا من 10 صباحًا إلى 10 مساءً. الأحمدي منطقة خدمة وليست فرعًا، ونرجع الجهاز بعد الإصلاح والاختبار.' },
+      { q: 'كم يكلف تصليح الكمبيوتر أو اللابتوب لعملاء الأحمدي؟', a: 'تبدأ بعض إصلاحات اللابتوب الشائعة من 15 د.ك، وأجرة عمل تبديل الشاشة من 30 د.ك بالإضافة إلى سعر الشاشة، وإصلاح المذربورد على مستوى المكونات من 25 د.ك. هذي أسعار إرشادية وليست عرضًا نهائيًا؛ السعر يعتمد على موديل الجهاز والعطل والقطعة المطلوبة ونطاق الفحص وأي رسوم تنطبق. نوضح لك التكلفة كاملة قبل بدء أي عمل مدفوع.' },
+      { q: 'كم يستغرق تصليح Gaming PC أو MacBook؟', a: 'المدة تعتمد على نوع الجهاز والعطل ونتيجة الفحص وتوفر القطع وضغط العمل في المختبر. بعض الأعطال البسيطة تنتهي أسرع، بينما قد تحتاج أعطال الحرارة أو الاستقرار أو اللوحة وقتًا أطول. نبلغك بتقدير واقعي بعد فحص الجهاز، ولا نحدد موعد تسليم نهائي قبل معرفة السبب.' },
+      { q: 'شنو المعلومات المطلوبة لترتيب استلام الجهاز من الأحمدي؟', a: 'أرسل نوع الجهاز والماركة والموديل ووصف الأعراض، والمنطقة والبلوك والشارع ورقم المبنى. إذا كان Gaming PC اذكر المواصفات الأساسية ونوع التبريد إن عرفت، وشارك موقع واتساب المباشر والوقت المفضل للاستلام بين 10 صباحًا و10 مساءً.' },
+      { q: 'انسكب ماي أو قهوة على MacBook أو اللابتوب، شنو أسوي؟', a: 'أوقف تشغيل الجهاز وافصل الشاحن إذا كان ذلك آمنًا، ولا تحاول تشغيله أو شحنه للتجربة. لا تستخدم مجفف شعر ولا تحط الجهاز في الرز. اذكر نوع السائل ووقت الانسكاب عند ترتيب الاستلام حتى نفحص آثار السائل والتآكل في المختبر.' }
     ],
     englishPath: '/location/ahmadi',
     arabicLinks: [
@@ -621,22 +659,25 @@ const CONFIG: Record<string, {
       { label: 'تصليح اللابتوب', path: '/ar/laptop-repair-kuwait' },
       { label: 'تصليح MacBook', path: '/ar/macbook-repair-kuwait' },
       { label: 'تصليح Gaming PC', path: '/ar/gaming-pc-repair-kuwait' },
+      { label: 'تنظيف وتبريد لابتوب الألعاب', path: '/ar/gaming-laptop-cleaning-kuwait' },
       { label: 'تصليح المذربورد', path: '/ar/motherboard-repair-kuwait' },
+      { label: 'أسعار التصليح في الكويت', path: '/ar/pricing' },
       { label: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' }
     ],
-    serviceIds: ['srv-gaming', 'srv-macbook', 'srv-laptop', 'srv-motherboard'],
+    serviceIds: ['srv-gaming', 'srv-macbook', 'srv-laptop', 'srv-motherboard', 'srv-gaming-laptop-cleaning'],
     areas: ['الأحمدي', 'الفحيحيل', 'المنقف', 'المهبولة', 'الصباحية'],
     highlights: [
       { title: 'تغطية مناطق جنوب الكويت', description: 'نرتب الاستلام من الأحمدي والفحيحيل والمنقف والمهبولة والصباحية، ثم ننقل الجهاز إلى مختبرنا بحولي للفحص والإصلاح.' },
       { title: 'كمبيوتر الألعاب والحرارة', description: 'نفحص ارتفاع الحرارة والتوقف وإعادة التشغيل ومشاكل الاستقرار تحت الحمل، ونحدد السبب قبل اقتراح الإصلاح.' },
       { title: 'تشخيص MacBook', description: 'نفحص مشاكل الطاقة والشحن والشاشة وآثار السوائل في أجهزة MacBook، ويعتمد مسار الإصلاح على الموديل ونتيجة التشخيص.' },
-      { title: 'الإصلاح في مختبر حولي', description: 'الأحمدي منطقة خدمة وليست فرعًا. جميع أعمال الفحص والإصلاح تتم في مختبر KCROC بحولي، مع ضمان 30 يومًا على الإصلاح المكتمل.' }
+      { title: 'مختبر KCROC الفعلي في حولي', description: 'عنوان المختبر: شارع ابن خلدون، مجمع الملا، السرداب، محل 19، حولي. نفتح يوميًا من 10 صباحًا إلى 10 مساءً. الأحمدي منطقة خدمة وليست فرعًا؛ نستلم الجهاز ونرجعه بعد الإصلاح والاختبار.' }
     ],
     serviceCardCopy: {
       'srv-gaming': { title: 'تصليح كمبيوتر الألعاب', description: 'تشخيص أعطال الحرارة والطاقة والتوقف ومشاكل الاستقرار تحت الحمل.' },
       'srv-macbook': { title: 'تصليح MacBook', description: 'فحص أعطال تشغيل وشحن وشاشة MacBook حسب الموديل.' },
       'srv-laptop': { title: 'تصليح اللابتوب', description: 'تشخيص مشاكل التشغيل والشحن والحرارة والشاشة قبل اقتراح القطع.' },
-      'srv-motherboard': { title: 'تصليح المذربورد', description: 'فحص دوائر الطاقة والمكونات وتقييم الإصلاح على مستوى القطعة حسب حالة اللوحة.' }
+      'srv-motherboard': { title: 'تصليح المذربورد', description: 'فحص دوائر الطاقة والمكونات وتقييم الإصلاح على مستوى القطعة حسب حالة اللوحة.' },
+      'srv-gaming-laptop-cleaning': { title: 'تنظيف وتبريد لابتوب الألعاب', description: 'فحص المراوح والمشتت وتدفق الهواء وتنظيف الغبار وفحص المواد الحرارية عند الحاجة.' }
     }
   },
   'macbook-repair-kuwait': {
@@ -2150,6 +2191,15 @@ export default function ArabicCommercialPage() {
   const fahaheelProblems = (fahaheelLocation?.relatedProblemIds ?? [])
     .map((id) => KCROC_GRAPH.problems.find((problem) => problem.id === id))
     .filter(Boolean);
+  const ahmadiLocation = slug === 'computer-repair-ahmadi'
+    ? KCROC_GRAPH.locations.find((location) => location.slug === 'ahmadi')
+    : undefined;
+  const ahmadiBrands = (ahmadiLocation?.relatedBrandIds ?? [])
+    .map((id) => KCROC_GRAPH.brands.find((brand) => brand.id === id))
+    .filter(Boolean);
+  const ahmadiProblems = (ahmadiLocation?.relatedProblemIds ?? [])
+    .map((id) => KCROC_GRAPH.problems.find((problem) => problem.id === id))
+    .filter(Boolean);
 
   // Reuse the corresponding English service's existing KCROC photography.
   // These are real first-party assets already assigned in the service graph.
@@ -2318,7 +2368,7 @@ export default function ArabicCommercialPage() {
               : slug === 'computer-repair-fahaheel'
                 ? 'السلام عليكم KCROC، أحتاج تصليح كمبيوتر أو لابتوب من الفحيحيل أو المناطق القريبة. المنطقة: الفحيحيل / فنطاس / المنقف / أبو حليفة / مدينة صباح الأحمد البحرية: ____. نوع الجهاز والموديل: ____. الأعراض: ____. أرجو تنسيق الاستلام والتوصيل المجاني وتأكيد التكلفة بعد الفحص وقبل الإصلاح.'
                 : slug === 'computer-repair-ahmadi'
-                  ? 'السلام عليكم KCROC، أحتاج فحص Gaming PC أو لابتوب أو MacBook من الأحمدي أو جنوب الكويت. المنطقة: الأحمدي / الفحيحيل / المنقف / المهبولة / الصباحية: ____. نوع الجهاز والموديل: ____. المشكلة: حرارة / إعادة تشغيل / لا يعمل / شاشة سوداء / شحن / أخرى: ____. أرجو تنسيق الاستلام المجاني وتوضيح نتيجة التشخيص والتكلفة قبل الإصلاح.'
+                  ? 'السلام عليكم KCROC، أحتاج فحص Gaming PC أو لابتوب أو MacBook من الأحمدي أو جنوب الكويت. المنطقة: الأحمدي / الفحيحيل / المنقف / المهبولة / الصباحية: ____. البلوك والشارع ورقم المبنى: ____. نوع الجهاز والماركة والموديل: ____. المشكلة والأعراض: حرارة / إعادة تشغيل / لا يعمل / شاشة سوداء / شحن / سائل / أخرى: ____. إذا كان Gaming PC أذكر المواصفات الأساسية ونوع التبريد إن عرفت. أقدر أشارك موقع واتساب المباشر. الوقت المفضل للاستلام بين 10 صباحًا و10 مساءً: ____. أرجو تأكيد الموعد المتاح ونتيجة التشخيص والتكلفة قبل أي إصلاح مدفوع.'
                   : `السلام عليكم KCROC، أحتاج ${cfg.h1}. أريد أعرف طريقة الاستلام والتشخيص.`;
   const macbookBatteryWhatsappMessage = 'السلام عليكم KCROC، أحتاج عرض سعر شامل لتشخيص أو تبديل بطارية MacBook. النوع: Air / Pro: ____. السنة أو الشريحة: Intel / M1 / M2 / M3 / M4 / غير متأكد: ____. رقم A-number إن توفر: ____. الأعراض: Service Recommended / البطارية تفضى بسرعة / متصل بالشاحن ولا يشحن أو واقف على 0% / انتفاخ أو ارتفاع التراك باد / أخرى: ____. المنطقة: ____. لا أحتاج إلى إرسال لقطة شاشة أو رقم تسلسلي لبدء التواصل. فضلاً ساعدوني في تحديد الموديل، وأكدوا فحص البطارية ودائرة الشحن وفئة القطعة والضمان والسعر الكامل شامل البطارية والتركيب والمدة قبل أي عمل مدفوع. إذا كان هناك انتفاخ، أرجو إرسال تعليمات التعامل والاستلام الآمن أولاً.';
   const macbookWhatsappMessage = 'السلام عليكم KCROC، أحتاج فحص وتصليح ماك بوك (MacBook) في الكويت. النوع: ماك بوك اير / ماك بوك برو (MacBook Air / Pro). الشريحة إن عُرفت: M1 / M2 / M3 / M4 / M5 / Intel: ____. رقم الموديل Axxxx أو رقم الموديل الظاهر في النظام: ____. الأعراض: لا يشتغل / لا يشحن USB‑C تايب سي أو MagSafe / شاشة سوداء / بطارية / كيبورد أو تراك باد / انسكاب سائل / ملفات مهمة. هل حصل سقوط أو انسكاب؟ ____. منطقتي بالكويت: ____. أستطيع إرسال صورة للموديل والعطل. إذا كانت البيانات مهمة سأوضح ذلك قبل الفحص. فضلاً أكدوا خيارات التشخيص والسعر النهائي والمدة المتوقعة قبل أي عمل مدفوع.';
@@ -4700,6 +4750,80 @@ export default function ArabicCommercialPage() {
           </section>
         )}
 
+        {slug === 'computer-repair-ahmadi' && (
+          <>
+            <section className="mt-12" aria-labelledby="ahmadi-supported-brands">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">الأجهزة والماركات</p>
+              <h2 id="ahmadi-supported-brands" className="mt-2 text-2xl font-black text-white sm:text-3xl">ماركات اللابتوبات والكمبيوتر التي نخدمها في الأحمدي</h2>
+              <p className="mt-3 max-w-3xl leading-8 text-slate-300">نفحص الأجهزة حسب الموديل والعطل وتوفر القطع، وتشمل الماركات التالية إضافة إلى أجهزة Apple MacBook:</p>
+              <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+                {ahmadiBrands.map((brand) => (
+                  <div key={brand.id} className="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-4 text-center font-bold text-white">
+                    {brand.brandName}
+                  </div>
+                ))}
+                <div className="rounded-xl border border-slate-800 bg-slate-900/45 px-4 py-4 text-center">
+                  <span className="block font-bold text-white">Apple</span>
+                  <span className="mt-1 block text-xs text-slate-400">MacBook Air / Pro</span>
+                </div>
+              </div>
+            </section>
+
+            <section className="mt-12" aria-labelledby="ahmadi-common-problems">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">مشاكل شائعة</p>
+              <h2 id="ahmadi-common-problems" className="mt-2 text-2xl font-black text-white sm:text-3xl">أعطال Gaming PC واللابتوب وMacBook التي نفحصها</h2>
+              <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                {ahmadiProblems.map((problem) => (
+                  <Link key={problem.id} to={`/${problem.slug}`} className="rounded-xl border border-slate-800 bg-slate-900/45 px-5 py-4 font-semibold text-slate-200 transition hover:border-cyan-500/40 hover:text-cyan-300">
+                    {AHMADI_PROBLEM_LABELS[problem.id] ?? problem.title}
+                  </Link>
+                ))}
+              </div>
+            </section>
+
+            <section className="mt-12" aria-labelledby="ahmadi-workshop-gallery">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">من داخل المختبر</p>
+              <h2 id="ahmadi-workshop-gallery" className="mt-2 text-2xl font-black text-white sm:text-3xl">وين يتم فحص وإصلاح جهازك؟</h2>
+              <p className="mt-3 max-w-3xl leading-8 text-slate-300">كل الأجهزة المستلمة من الأحمدي والمناطق القريبة تُفحص وتُصلح في مختبر KCROC المركزي في حولي، ثم ننسق إرجاعها بعد الاختبار.</p>
+              <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                {AHMADI_WORKSHOP_GALLERY.map((item) => (
+                  <figure key={item.image.src} className="overflow-hidden rounded-xl border border-slate-800 bg-slate-900/45">
+                    <img src={item.image.src} alt={item.alt} width={item.image.width} height={item.image.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                    <figcaption className="px-3 py-3 text-xs leading-6 text-slate-300">{item.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </section>
+
+            <section className="mt-12" aria-labelledby="ahmadi-repair-process">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">خطوات الخدمة</p>
+              <h2 id="ahmadi-repair-process" className="mt-2 text-2xl font-black text-white sm:text-3xl">شلون تتم خدمة التصليح من الأحمدي؟</h2>
+              <div className="mt-6 grid gap-4 sm:grid-cols-3">
+                {AHMADI_PROCESS_STEPS.map((step) => (
+                  <article key={step.step} className="rounded-2xl border border-slate-800 bg-slate-900/45 p-6">
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-cyan-500 text-sm font-black text-slate-950">{step.step}</span>
+                    <h3 className="mt-4 font-bold text-white">{step.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-400">{step.description}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section className="mt-12" aria-labelledby="ahmadi-trust-pillars">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">لماذا KCROC</p>
+              <h2 id="ahmadi-trust-pillars" className="mt-2 text-2xl font-black text-white sm:text-3xl">فحص واضح لجهازك من الاستلام إلى الإرجاع</h2>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {AHMADI_TRUST_CARDS.map((item) => (
+                  <article key={item.title} className="rounded-2xl border border-slate-800 bg-slate-900/45 p-5">
+                    <h3 className="font-bold text-white">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-400">{item.description}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+          </>
+        )}
+
         {slug === 'computer-repair-fahaheel' && (
           <>
             <section className="mt-12" aria-labelledby="fahaheel-supported-brands">
@@ -5207,15 +5331,15 @@ export default function ArabicCommercialPage() {
 
         <section className="mt-12" aria-labelledby="arabic-areas">
           <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">مناطق الخدمة</p>
-          <h2 id="arabic-areas" className="mt-2 text-2xl font-black text-white sm:text-3xl">{slug === 'computer-repair-fahaheel' ? 'المناطق القريبة من مسار استلام الفحيحيل' : 'خدمة الاستلام والتوصيل في مناطق الكويت'}</h2>
-          <div className={slug === 'gaming-laptop-cleaning-kuwait' || slug === 'computer-repair-fahaheel' ? "mt-6 flex flex-wrap gap-2" : "mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3"}>
-            {(slug === 'computer-repair-fahaheel' ? FAHAHEEL_LOCAL_LINKS : slug === 'gaming-laptop-cleaning-kuwait' ? KUWAIT_GOVERNORATE_LINKS : LOCAL_LINKS).map((item) => (
-              <Link key={item.path} to={item.path} className={slug === 'gaming-laptop-cleaning-kuwait' || slug === 'computer-repair-fahaheel' ? "rounded-full border border-slate-700 bg-slate-900/65 px-4 py-2 text-sm font-semibold text-slate-300 transition hover:border-cyan-500/40 hover:text-cyan-300" : "rounded-xl border border-slate-800 bg-slate-900/45 px-5 py-4 font-semibold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300"}>{item.label}</Link>
+          <h2 id="arabic-areas" className="mt-2 text-2xl font-black text-white sm:text-3xl">{slug === 'computer-repair-fahaheel' ? 'المناطق القريبة من مسار استلام الفحيحيل' : slug === 'computer-repair-ahmadi' ? 'مناطق جنوب الكويت القريبة من مسار استلام الأحمدي' : 'خدمة الاستلام والتوصيل في مناطق الكويت'}</h2>
+          <div className={slug === 'gaming-laptop-cleaning-kuwait' || slug === 'computer-repair-fahaheel' || slug === 'computer-repair-ahmadi' ? "mt-6 flex flex-wrap gap-2" : "mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3"}>
+            {(slug === 'computer-repair-fahaheel' ? FAHAHEEL_LOCAL_LINKS : slug === 'computer-repair-ahmadi' ? AHMADI_LOCAL_LINKS : slug === 'gaming-laptop-cleaning-kuwait' ? KUWAIT_GOVERNORATE_LINKS : LOCAL_LINKS).map((item) => (
+              <Link key={item.path} to={item.path} className={slug === 'gaming-laptop-cleaning-kuwait' || slug === 'computer-repair-fahaheel' || slug === 'computer-repair-ahmadi' ? "rounded-full border border-slate-700 bg-slate-900/65 px-4 py-2 text-sm font-semibold text-slate-300 transition hover:border-cyan-500/40 hover:text-cyan-300" : "rounded-xl border border-slate-800 bg-slate-900/45 px-5 py-4 font-semibold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300"}>{item.label}</Link>
             ))}
           </div>
         </section>
 
-        {slug !== 'computer-repair-fahaheel' && (
+        {slug !== 'computer-repair-fahaheel' && slug !== 'computer-repair-ahmadi' && (
         <section className="mt-12" aria-labelledby="arabic-guides">
           <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">{slug === 'laptop-keyboard-replacement-kuwait' ? 'خدمات ومراجع مرتبطة بالكيبورد' : slug === 'laptop-charging-port-repair-kuwait' ? 'مراجع وخدمات مرتبطة بمشكلة الشحن' : 'أدلة عربية مرتبطة'}</p>
           <h2 id="arabic-guides" className="mt-2 text-2xl font-black text-white sm:text-3xl">{slug === 'laptop-keyboard-replacement-kuwait' ? 'الخطوة التالية حسب العطل' : slug === 'laptop-charging-port-repair-kuwait' ? 'معلومات إضافية لتحديد سبب عدم الشحن' : 'معلومات تساعدك قبل قرار الإصلاح'}</h2>
