@@ -31,6 +31,8 @@ interface KuwaitLocalCTAProps {
   topic: string;
   /** Short label for analytics, e.g. "blog_post" or "gamebar_guide". */
   placement: string;
+  /** Show the verified workshop location and relevant gaming service paths. */
+  showWorkshopAddress?: boolean;
 }
 
 /**
@@ -38,7 +40,7 @@ interface KuwaitLocalCTAProps {
  * prerender and on the first client paint (so SSG output and hydration stay
  * identical for everyone), then appears only for Kuwait visitors.
  */
-export const KuwaitLocalCTA: React.FC<KuwaitLocalCTAProps> = ({ topic, placement }) => {
+export const KuwaitLocalCTA: React.FC<KuwaitLocalCTAProps> = ({ topic, placement, showWorkshopAddress = false }) => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -60,9 +62,24 @@ export const KuwaitLocalCTA: React.FC<KuwaitLocalCTAProps> = ({ topic, placement
         <MapPin size={16} aria-hidden="true" /> In Kuwait? We can fix this in person
       </p>
       <p className="mt-2 text-base text-slate-200">
-        Free pickup &amp; drop anywhere in Kuwait, No Fix No Fee, and a 30-day warranty. Our Hawalli
-        lab is open daily 10 AM to 10 PM.
+        Free pickup &amp; delivery across Kuwait, No Fix No Fee, and a 30-day warranty. Our Hawalli
+        workshop is open daily 10 AM to 10 PM.
       </p>
+      {showWorkshopAddress && (
+        <div className="mt-4 rounded-xl border border-cyan-500/20 bg-slate-950/40 p-4">
+          <p className="text-sm text-slate-200">
+            All repairs are completed at our Hawalli workshop: {business.streetAddress}, {business.addressLocality}, Kuwait.
+          </p>
+          <div className="mt-3 flex flex-wrap gap-3 text-sm font-bold">
+            <a href="/gaming-pc-repair-kuwait" className="text-cyan-300 underline underline-offset-4 hover:text-cyan-200">
+              Gaming PC &amp; GPU diagnostics
+            </a>
+            <a href="/gaming-laptop-cleaning-kuwait" className="text-cyan-300 underline underline-offset-4 hover:text-cyan-200">
+              Gaming laptop cleaning &amp; thermal service
+            </a>
+          </div>
+        </div>
+      )}
       <div className="mt-4 flex flex-col gap-3 sm:flex-row">
         <a
           href={waLink}
