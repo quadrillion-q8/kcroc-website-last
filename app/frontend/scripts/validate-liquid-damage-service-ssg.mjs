@@ -16,6 +16,13 @@ assert.ok(html.includes('Laptop Water &amp; Liquid-Damage Repair Capabilities'),
 assert.ok(html.includes('Common Laptop Symptoms After a Water or Coffee Spill'), 'Water / coffee spill symptom heading is missing from static HTML.');
 assert.ok(html.includes('Our Laptop Liquid-Damage Repair Process'), 'Liquid-damage repair-process heading is missing from static HTML.');
 assert.ok(html.includes('id="liquid-damage-emergency-cta-heading"'), 'Mid-page emergency conversion CTA is missing from static HTML.');
+const emergencyHeadingIndex = html.indexOf('What To Do Immediately After a Laptop Spill');
+const emergencyCtaIndex = html.indexOf('id="liquid-damage-emergency-cta-heading"');
+const capabilitiesHeadingIndex = html.indexOf('Laptop Water &amp; Liquid-Damage Repair Capabilities');
+assert.ok(
+  emergencyHeadingIndex >= 0 && emergencyCtaIndex > emergencyHeadingIndex && capabilitiesHeadingIndex > emergencyCtaIndex,
+  'Emergency CTA must follow the laptop-spill instructions and precede the service-capabilities section.'
+);
 assert.ok(html.includes('Arrange a laptop liquid-damage inspection in Kuwait'), 'Emergency CTA heading is missing from static HTML.');
 assert.ok(html.includes('All repairs are carried out at our Hawalli workshop.'), 'Hawalli workshop positioning is missing from static HTML.');
 assert.ok(html.includes('Laptop Liquid Damage Repair') && html.includes('/laptop-liquid-damage-repair-kuwait'), 'Visible footer liquid-damage service link is missing from static HTML.');
