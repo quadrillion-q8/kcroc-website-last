@@ -79,6 +79,10 @@ const ProblemTemplate: React.FC = () => {
 
   const isOverheating = problem.id === 'problem-overheating';
   const isLiquidSpill = problem.id === 'problem-liquid-spill';
+  const isSlowPerformance = problem.id === 'problem-slow';
+  const slowPerformanceWhatsAppHref = buildWhatsAppLink(
+    'Hi KCROC, my laptop is running very slowly. Device and exact model: ____. Main symptoms: ____. Pickup area in Kuwait: ____. Please advise the next step and a quick estimate after the initial assessment.'
+  );
   const selectedLiquidOption = LIQUID_TYPES.find((option) => option.id === selectedLiquid) ?? LIQUID_TYPES[0];
   const selectedLiquidDeviceOption = LIQUID_DEVICE_TYPES.find((option) => option.id === selectedLiquidDevice) ?? LIQUID_DEVICE_TYPES[0];
   const liquidTriageWhatsAppHref = buildWhatsAppLink(
@@ -144,6 +148,11 @@ const ProblemTemplate: React.FC = () => {
           <h1 className="text-4xl md:text-5xl font-black text-white mb-6">
             {problem.title}
           </h1>
+          {isSlowPerformance && problem.intro && (
+            <p className="mx-auto mb-6 max-w-3xl text-base leading-7 text-slate-300 md:text-lg">
+              {problem.intro}
+            </p>
+          )}
           {problem.emergencySteps && problem.emergencySteps.length > 0 && (
             <div role="alert" aria-labelledby="liquid-emergency-title" className="mb-7 rounded-2xl border-2 border-rose-500/80 bg-rose-950/80 p-5 text-left shadow-2xl md:p-7">
               <div className="flex items-start gap-3">
@@ -187,6 +196,26 @@ const ProblemTemplate: React.FC = () => {
             <span className="text-sm font-bold text-rose-400 uppercase tracking-wider block mb-1">Symptom</span>
             <p className="text-slate-300">{problem.symptom}</p>
           </div>
+          {isSlowPerformance && (
+            <div className="mx-auto mt-6 max-w-3xl rounded-2xl border border-cyan-800/60 bg-slate-950/90 p-5 text-left shadow-xl md:p-6">
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Link to="/book" className="inline-flex min-h-12 flex-1 items-center justify-center rounded-full bg-cyan-400 px-5 py-3 text-sm font-black text-slate-950 transition-colors hover:bg-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300">
+                  Book Free Pickup
+                </Link>
+                <a href={slowPerformanceWhatsAppHref} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 flex-1 items-center justify-center rounded-full border border-cyan-400/70 px-5 py-3 text-center text-sm font-bold text-cyan-100 transition-colors hover:bg-cyan-950/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300">
+                  Chat on WhatsApp for a Quick Estimate
+                </a>
+              </div>
+              <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-xs font-semibold text-slate-300">
+                <span>Free Pickup Across Kuwait</span>
+                <span>No Fix, No Fee</span>
+                <span>30-Day Repair Warranty</span>
+              </div>
+              <p className="mt-3 text-xs leading-5 text-slate-400">
+                4.9 Google Rating · Free initial diagnostic · Pickup across 26 service areas in Kuwait · Hawalli repair lab open daily, 10:00 AM–10:00 PM
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
@@ -227,7 +256,7 @@ const ProblemTemplate: React.FC = () => {
       <section className="py-16 px-6 max-w-7xl mx-auto relative z-10">
         <div className="space-y-14">
 
-          {problem.intro && (
+          {problem.intro && !isSlowPerformance && (
             <div className="max-w-3xl mx-auto">
               <p className="text-lg md:text-xl leading-8 text-slate-300">
                 {problem.intro}
@@ -241,6 +270,44 @@ const ProblemTemplate: React.FC = () => {
                 </span>
               </div>
             </div>
+          )}
+
+          {isSlowPerformance && problem.triageMatrix && problem.triageMatrix.length > 0 && (
+            <section aria-labelledby="slow-triage-title">
+              <div className="mb-6">
+                <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Symptom-to-solution matcher</p>
+                <h2 id="slow-triage-title" className="mt-2 text-3xl font-black text-white">What is actually making your laptop slow?</h2>
+                <p className="mt-3 max-w-3xl text-slate-400">Similar symptoms can come from different faults. Use this guide to choose the next diagnostic step, not to order a replacement part from one reading alone.</p>
+              </div>
+              <div className="overflow-x-auto rounded-2xl border border-slate-800">
+                <table className="w-full min-w-[760px] border-collapse text-left text-sm">
+                  <thead className="bg-slate-950 text-slate-200">
+                    <tr>
+                      <th scope="col" className="p-4 font-black">What you notice</th>
+                      <th scope="col" className="p-4 font-black">Possible cause</th>
+                      <th scope="col" className="p-4 font-black">What to check next</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-800 bg-slate-900/50">
+                    {problem.triageMatrix.map((item) => (
+                      <tr key={item.symptom}>
+                        <th scope="row" className="p-4 align-top font-bold text-white">{item.symptom}</th>
+                        <td className="p-4 align-top leading-6 text-slate-400">{item.likelyCause}</td>
+                        <td className="p-4 align-top leading-6 text-slate-300">
+                          {item.nextStep}
+                          {item.href && item.linkLabel && (
+                            <Link to={item.href} className="mt-2 inline-flex items-center gap-2 font-bold text-cyan-300 hover:text-cyan-200">
+                              {item.linkLabel} <ArrowRight aria-hidden="true" className="h-4 w-4" />
+                            </Link>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-3 text-xs leading-6 text-slate-500">MacBook note: many modern MacBooks use soldered unified memory and storage. Windows laptops and gaming PCs vary by model; KCROC checks RAM and SSD compatibility before recommending an upgrade.</p>
+            </section>
           )}
 
           {isLiquidSpill && (
@@ -512,6 +579,40 @@ const ProblemTemplate: React.FC = () => {
                   </div>
                 ))}
               </div>
+            </section>
+          )}
+
+          {isSlowPerformance && problem.priceEstimates && (
+            <section aria-labelledby="slow-price-estimates">
+              <div className="mb-6">
+                <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Transparent cost guidance</p>
+                <h2 id="slow-price-estimates" className="mt-2 text-3xl font-black text-white">{problem.priceEstimates.heading}</h2>
+                <p className="mt-3 max-w-3xl text-slate-400">{problem.priceEstimates.intro}</p>
+              </div>
+              <div className="overflow-x-auto rounded-2xl border border-slate-800">
+                <table className="w-full min-w-[720px] border-collapse text-left text-sm">
+                  <thead className="bg-slate-950 text-slate-200">
+                    <tr>
+                      <th scope="col" className="p-4 font-black">Service</th>
+                      <th scope="col" className="p-4 font-black">Price reference</th>
+                      <th scope="col" className="p-4 font-black">What is included</th>
+                      <th scope="col" className="p-4 font-black">Typical turnaround</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-800 bg-slate-900/50">
+                    {problem.priceEstimates.rows.map((row) => (
+                      <tr key={row.service}>
+                        <th scope="row" className="p-4 align-top font-bold text-white">{row.service}</th>
+                        <td className="p-4 align-top font-bold text-cyan-200">{row.price}</td>
+                        <td className="p-4 align-top leading-6 text-slate-400">{row.details}</td>
+                        <td className="p-4 align-top leading-6 text-slate-300">{row.turnaround}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-4 rounded-xl border border-slate-800 bg-slate-900/60 p-4 text-sm leading-6 text-slate-300">{problem.priceEstimates.note}</p>
+              <p className="mt-3 text-xs leading-6 text-slate-500">All estimates are confirmed after the free initial diagnostic. Parts are quoted separately where applicable; no paid repair begins without approval.</p>
             </section>
           )}
 
