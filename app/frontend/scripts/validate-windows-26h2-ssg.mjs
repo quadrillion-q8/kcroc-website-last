@@ -73,11 +73,6 @@ assert.ok(html.includes('26300.9974'), 'November 2026 26H2 build number is missi
 assert.ok(html.includes('October 13, 2026'), '24H2 Home/Pro end-of-updates clarification is missing');
 assert.ok(html.includes('Windows.old') && html.includes('$windows.~bt'), 'Rollback-file requirements are missing');
 assert.ok(html.includes('November 14, 2026'), 'Updated technical review date is missing from prerendered HTML');
-assert.ok(
-  html.includes('https://www.computerrepairkuwait.com/#business'),
-  'Canonical KCROC business entity reference is missing',
-);
-
 const decisionStart = html.indexOf('id="decision-tree"');
 assert.ok(decisionStart >= 0, 'Seven-step installation decision tree is missing');
 const decisionTree = html.slice(decisionStart, faqStart);
@@ -116,37 +111,25 @@ assert.ok(
 
 for (const route of [
   '/guides/ssd-not-detected-windows-11',
-  '/gaming-pc-repair-kuwait',
-  '/guides/why-is-my-laptop-so-hot',
-  '/guides/windows-11-update-problems',
   '/blog/windows-11-100-disk-usage-causes-solutions',
-  '/guides/bios-uefi-recovery-kuwait',
+  '/blog/bitlocker-recovery-key-after-bios-update',
 ]) {
-  assert.ok(html.includes(route), 'Existing contextual internal route is missing: ' + route);
-}
-
-const relatedServicesStart = html.indexOf('id="graph-related-services"');
-assert.ok(relatedServicesStart >= 0, 'Graph-connected KCROC service-card section is missing');
-const relatedServicesEnd = html.indexOf('</section>', relatedServicesStart);
-assert.ok(relatedServicesEnd > relatedServicesStart, 'KCROC service-card section is not closed');
-const relatedServicesHtml = html.slice(relatedServicesStart, relatedServicesEnd);
-for (const serviceRoute of [
-  '/laptop-repair-kuwait',
-  '/ssd-ram-upgrade-kuwait',
-  '/motherboard-repair-kuwait',
-  '/gaming-pc-repair-kuwait',
-]) {
-  assert.ok(
-    relatedServicesHtml.includes(`href="${serviceRoute}"`),
-    'Graph-connected KCROC service card is missing: ' + serviceRoute,
-  );
+  assert.ok(html.includes(route), 'Existing global technical-guide route is missing: ' + route);
 }
 
 assert.ok(
-  html.includes('Windows 11 26H2: November Rollout, ISO &amp; Fixes | KCROC') ||
-    html.includes('Windows 11 26H2: November Rollout, ISO & Fixes | KCROC'),
-  'Updated November 2026 SEO title is missing from the rendered page',
+  html.includes('Windows 11 26H2: November Rollout, ISO &amp; Fixes') ||
+    html.includes('Windows 11 26H2: November Rollout, ISO & Fixes'),
+  'Updated global November 2026 SEO title is missing from the rendered page',
 );
+
+const contentStart = html.indexOf('<article');
+const contentEnd = html.indexOf('</article>', contentStart);
+assert.ok(contentStart >= 0 && contentEnd > contentStart, 'Article content wrapper is missing');
+const articleHtml = html.slice(contentStart, contentEnd + '</article>'.length);
+for (const forbidden of [/Kuwait/i, /Hawalli/i, /KCROC/i, /wa\\.me/i, /pickup|delivery/i, /KWD|\\bKD\\b/i, /No Fix, No Fee/i, /30-day warranty/i, /\\+965|tel:/i, /href="\\/(?:laptop-repair-kuwait|ssd-ram-upgrade-kuwait|motherboard-repair-kuwait|gaming-pc-repair-kuwait|contact|book)/i]) {
+  assert.ok(!forbidden.test(articleHtml), 'Global Windows 11 26H2 article contains a local business or sales trace: ' + forbidden);
+}
 assert.ok(html.includes('max-image-preview:large'), 'Discover preview robots directive is missing');
 
 console.log(
