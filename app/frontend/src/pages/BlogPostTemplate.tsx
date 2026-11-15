@@ -146,7 +146,7 @@ const toAbsoluteAssetUrl = (value: string) =>
 
 const getModifiedDate = (post: BlogPost) => {
   if (!post.technicalReviewDate) return post.date;
-  const parsed = new Date(post.technicalReviewDate);
+  const parsed = new Date(`${post.technicalReviewDate.slice(0, 10)}T12:00:00Z`);
   return Number.isNaN(parsed.getTime()) ? post.date : parsed.toISOString();
 };
 
@@ -1281,7 +1281,7 @@ export default function BlogPostTemplate() {
           "description": post.excerpt,
           ...(isGuide ? { "inLanguage": "en" } : {}),
           ...(isNews ? {
-            "inLanguage": isGlobalNewsArticle ? "en" : "en-KW",
+            "inLanguage": isGlobalNewsArticle || isGlobalBlogArticle ? "en" : "en-KW",
             "articleSection": post.category,
             "keywords": post.tags ?? [],
             "isAccessibleForFree": true
@@ -1327,7 +1327,7 @@ export default function BlogPostTemplate() {
               { "@type": "Thing", "name": "Gaming PC power supply troubleshooting" },
               { "@type": "Thing", "name": "ATX motherboard power sequencing and PWR_OK" },
               { "@type": "Thing", "name": "Motherboard VRM, DrMOS and SPS diagnostics" },
-              { "@type": "Thing", "name": "Gaming PC repair in Kuwait" }
+              { "@type": "Thing", "name": "Gaming PC power and hardware troubleshooting" }
             ]
           } : {}),
           ...(isNoPowerGuide ? {
@@ -1503,11 +1503,11 @@ export default function BlogPostTemplate() {
     <div className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
 
       <Head htmlAttributes={isGuide || isGlobalNewsArticle ? { lang: 'en' } : undefined}>
-        <title>{post.seoTitle || `${post.title.length > 57 ? `${post.title.slice(0, 57)}…` : post.title}${isGlobalNewsArticle ? "" : " | KCROC"}`}</title>
+        <title>{post.seoTitle || `${post.title.length > 57 ? `${post.title.slice(0, 57)}…` : post.title}${isGlobalNewsArticle || isGlobalEditorialArticle ? "" : " | KCROC"}`}</title>
         <meta name="description" content={post.seoDescription || (post.description || post.excerpt).slice(0, 155)} />
         <link rel="canonical" href={pageUrl} />
         <meta name="robots" content="index, follow, max-image-preview:large" />
-        {post.arabicSlug && <link rel="alternate" hrefLang={isGuide ? "en" : "en-KW"} href={pageUrl} />}
+        {post.arabicSlug && <link rel="alternate" hrefLang={isGuide || isGlobalBlogArticle ? "en" : "en-KW"} href={pageUrl} />}
         {post.arabicSlug && <link rel="alternate" hrefLang="ar-KW" href={`${business.websiteUrl}${isNews ? '/news/' : '/blog/'}${post.arabicSlug}`} />}
         {post.arabicSlug && <link rel="alternate" hrefLang="x-default" href={pageUrl} />}
         {post.slug === 'why-is-my-laptop-so-slow' && <link rel="alternate" hrefLang="en" href={pageUrl} />}
@@ -1650,7 +1650,7 @@ export default function BlogPostTemplate() {
                     <Network size={12} aria-hidden="true" /> Pillar Guide
                   </span>
                 )}
-                <span className="flex items-center gap-1.5 mt-1"><Calendar size={14} aria-hidden="true" /> {isWindows26H2Guide ? 'Published: ' : ''}{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</span>
+                <span className="flex items-center gap-1.5 mt-1"><Calendar size={14} aria-hidden="true" /> {isWindows26H2Guide ? 'Published: ' : ''}{new Date(`${post.date.slice(0, 10)}T12:00:00Z`).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</span>
                 {isWindows26H2Guide && post.technicalReviewDate && (
                   <span className="flex items-center gap-1.5 mt-1"><Calendar size={14} aria-hidden="true" /> Updated: {getTechnicalReviewDateLabel(post, 'November 14, 2026')}</span>
                 )}
