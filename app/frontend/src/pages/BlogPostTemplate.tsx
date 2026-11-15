@@ -1674,7 +1674,7 @@ export default function BlogPostTemplate() {
                 <span className="flex items-center gap-1.5 mt-1"><Clock size={14} aria-hidden="true" /> {post.readTime}</span>
                 <span className="flex items-center gap-1.5 mt-1">
                   <User size={14} aria-hidden="true" />
-                  {post.author === 'Imran Natiq' && !isGlobalNewsArticle ? (
+                  {post.author === 'Imran Natiq' && !isGlobalNewsArticle && !isGlobalEditorialArticle ? (
                     <Link to="/author/imran" className="hover:text-cyan-400 transition-colors">
                       {post.author}
                     </Link>
