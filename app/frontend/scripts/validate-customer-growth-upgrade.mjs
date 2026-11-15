@@ -334,6 +334,10 @@ add('Dell overheating guide remains Dell-specific and has a complete English / A
   dellOverheatingGuideARSource.includes('hrefLang="en-KW"') &&
   dellOverheatingGuideARSource.includes('hrefLang="ar-KW"') &&
   dellOverheatingGuideARSource.includes('/guides/why-is-my-laptop-so-hot') &&
+  dellOverheatingGuideARSource.includes('max-image-preview:large') &&
+  dellOverheatingGuideARSource.includes('og:image:width') &&
+  dellOverheatingGuideARSource.includes('og:image:height') &&
+  dellOverheatingGuideARSource.includes('OG_IMAGE_URL') &&
   !dellOverheatingGuideARSource.includes('<main'));
 
 add('Laptop repair page has intent-matched symptom links to existing guides and services',
