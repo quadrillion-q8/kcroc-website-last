@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, Clock, List, MessageCircle, Share2, User, Check, ArrowRight, Cpu, Thermometer, Zap } from 'lucide-react';
+import { Calendar, Clock, List, Share2, User, Check, Cpu, Thermometer, Zap } from 'lucide-react';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { KCROC_GRAPH } from '../data/graph';
@@ -18,10 +18,9 @@ const faqItems = [
   ['What are Intel V-series Core Ultra chips?', 'The V suffix identifies Intel Core Ultra Series 2 Lunar Lake mobile processors, such as the Core Ultra 7 258V. These chips use on-package LPDDR5X memory rather than user-replaceable SO-DIMMs. That integration supports the platform design, but buyers must choose the required memory capacity at purchase; it is not a normal post-purchase RAM upgrade. Check the exact SKU and laptop specification before ordering.'],
   ['Is Ryzen AI better for programmers?', 'There is no reliable brand-only answer. For development, compare long-build performance, CPU core/thread configuration, sustained package power, cooling, RAM capacity, SSD performance and the workloads you actually run. A 12-core/24-thread Ryzen AI 9 HX 470 and a 16-core/16-thread Core Ultra X9 388H have different CPU topologies; benchmark the exact laptops with your compiler, containers or virtual machines before deciding.'],
   ['Which is better for video editing?', 'The editor, codec, bit depth, chroma format and project resolution determine the best fit. Check hardware decode/encode support (including Intel Quick Sync where present), GPU acceleration, VRAM or shared-memory capacity, RAM, SSD throughput, display quality and sustained cooling. A processor family name alone cannot predict export time or timeline smoothness; verify the exact software version and laptop configuration.'],
-  ['Does Kuwait heat affect laptop performance?', 'It can. Warmer intake air reduces the temperature margin available to a laptop cooling system, and accumulated dust can obstruct fan blades or heatsink fins and reduce airflow. The laptop may respond by increasing fan speed or reducing power and clock speed to remain within its configured limits. The effect varies with room temperature, chassis design, workload and firmware; heat or dust alone does not prove that the processor or motherboard is defective.'],
   ['Can I upgrade RAM on a Ryzen AI or Core Ultra laptop?', 'Check the exact laptop model and service manual. Core Ultra 200V Lunar Lake systems use on-package LPDDR5X and are not user-upgradeable. Other Core Ultra laptops vary by model. Ryzen AI 300/400 processors can support DDR5 or LPDDR5X, but the manufacturer decides whether a specific laptop uses replaceable modules or soldered memory. Ryzen AI Max systems use a high-bandwidth 256-bit LPDDR5X interface; treat the memory as a fixed configuration unless the OEM documentation for that exact machine says otherwise.'],
   ['Should I compare NPU TOPS?', 'Use NPU TOPS as one specification, not a speed ranking. Intel lists up to 50 NPU TOPS for the Core Ultra X9 388H; AMD lists up to 55 NPU TOPS for the Ryzen AI 9 HX 470 and 50 for the Ryzen AI Max+ 395. Those figures come from different platforms and do not by themselves describe application performance. Check the precision used, runtime support, software compatibility and whether the workload runs on the NPU, GPU or CPU. Do not confuse NPU TOPS with total platform TOPS.'],
-  ['What should I check before buying an Intel or AMD laptop in Kuwait?', 'Record the full CPU model and generation; confirm the laptop’s sustained and short-term power settings; check whether RAM is soldered, on-package or socketed; and verify the GPU model/TGP, cooling layout, battery capacity, display and SSD options. For Kuwait use, consider the operating environment and whether the fans and heatsink can be inspected and cleaned. Also confirm local warranty, parts availability and serviceability for the exact laptop model.']
+  ['What should I check before buying an Intel or AMD laptop?', 'Record the full CPU model and generation; confirm the laptop’s sustained and short-term power settings; check whether RAM is soldered, on-package or socketed; and verify the GPU model/TGP, cooling layout, battery capacity, display and SSD options. Consider the operating environment and whether the fans and heatsink can be inspected and cleaned. Also confirm warranty coverage, parts availability and serviceability for the exact laptop model.']
 ].map(([question, answer]) => ({ question, answer }));
 
 const comparisonRows = [
@@ -38,7 +37,7 @@ const comparisonRows = [
 ];
 
 const decisions = [
-  { audience: 'Students', priority: 'battery + RAM', guidance: 'Prioritize 16GB or more where possible, a comfortable display and keyboard, battery efficiency, weight and local warranty. Either platform can be a good fit.' },
+  { audience: 'Students', priority: 'battery + RAM', guidance: 'Prioritize 16GB or more where possible, a comfortable display and keyboard, battery efficiency, weight and warranty coverage. Either platform can be a good fit.' },
   { audience: 'Office users', priority: 'efficiency', guidance: 'A lower-power Core Ultra or Ryzen AI design can make sense. Spend more attention on battery life, fan noise, display quality and ports than on small CPU-brand differences.' },
   { audience: 'Programmers', priority: 'sustained CPU', guidance: 'Compare sustained multi-core performance, RAM, SSD and cooling. Large projects and long builds expose weak thermal designs that short benchmark bursts can hide.' },
   { audience: 'Developers', priority: 'RAM + thermals', guidance: 'Virtual machines, containers and IDEs reward memory capacity and sustained performance. 32GB can be more valuable than moving between two similarly positioned CPU families.' },
@@ -63,8 +62,7 @@ const checklist = [
   'Cooling system and reviews checked',
   'Battery capacity and laptop-level battery tests checked',
   'Display, ports and keyboard checked',
-  'Warranty and local support checked',
-  'Kuwait availability checked',
+  'Warranty coverage and regional support checked',
   'Repairability and serviceability considered'
 ];
 
@@ -89,8 +87,6 @@ export default function IntelVsAmdGuide() {
     ['amd-architecture', 'AMD Ryzen AI architecture'],
     ['brand-vs-laptop', 'CPU brand ≠ laptop performance'],
     ['power-delivery', 'Power limits and motherboard delivery'],
-    ['kuwait-climate', 'What Kuwait’s climate changes'],
-    ['thermal-physics', 'Kuwait thermal physics and maintenance'],
     ['benchmarks', 'How to read benchmarks'],
     ['benchmark-red-flags', 'Benchmark red flags'],
     ['hidden-variables', 'What manufacturers don’t tell you'],
@@ -150,7 +146,6 @@ export default function IntelVsAmdGuide() {
           <ol className="flex flex-wrap items-center gap-2">
             <li><Link to="/" className="hover:text-cyan-400">Home</Link></li><li>/</li>
             <li><Link to="/blog" className="hover:text-cyan-400">Blog</Link></li><li>/</li>
-            <li><Link to="/blog/laptop-buying-guide-kuwait-2026" className="hover:text-cyan-400">Laptop Buying Guide</Link></li><li>/</li>
             <li className="text-slate-300" aria-current="page">Intel Core Ultra vs AMD Ryzen AI</li>
           </ol>
         </nav>
@@ -177,7 +172,7 @@ export default function IntelVsAmdGuide() {
                 Intel Core Ultra vs. AMD Ryzen AI: What Actually Differs in a Laptop
               </h1>
               <p className="mt-6 max-w-4xl text-lg sm:text-xl leading-8 text-slate-300">
-                A practical, model-first comparison of CPU architecture, integrated graphics, NPUs, power limits and cooling — with a Kuwait-specific look at sustained laptop performance.
+                A practical, model-first comparison of CPU architecture, integrated graphics, NPUs, power limits and cooling across modern laptop designs.
               </p>
               <div className="mt-7 flex flex-wrap gap-x-5 gap-y-3 text-xs font-semibold text-slate-500">
                 <span className="flex items-center gap-1.5"><User size={14} /> Imran Natiq</span>
@@ -189,9 +184,6 @@ export default function IntelVsAmdGuide() {
                 <button onClick={copyLink} className="inline-flex min-h-10 items-center gap-2 rounded-full border border-slate-700 px-4 py-2 text-xs font-black text-slate-300 hover:border-cyan-500/50 hover:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400" aria-label="Copy article link">
                   {copied ? <Check size={14} /> : <Share2 size={14} />} {copied ? 'Copied' : 'Share / Copy link'}
                 </button>
-                <a href={`https://wa.me/${business.telephone}?text=${encodeURIComponent('Hi KCROC, I read your Intel vs AMD guide and would like help choosing or diagnosing a laptop.')}`} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-10 items-center gap-2 rounded-full border border-slate-700 px-4 py-2 text-xs font-black text-slate-300 hover:border-cyan-500/50 hover:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400">
-                  <MessageCircle size={14} /> Ask a technician
-                </a>
               </div>
               <figure className="mt-8 overflow-hidden rounded-3xl border border-slate-800 bg-slate-900">
                 <img src="/images/blog/intel-core-ultra-vs-amd-ryzen-ai-comparison.webp" alt="Intel Core Ultra versus AMD Ryzen AI laptop processor comparison" width="1200" height="630" loading="eager" fetchPriority="high" decoding="async" className="aspect-[1200/630] w-full object-cover" />
@@ -304,15 +296,9 @@ export default function IntelVsAmdGuide() {
               <p className="mt-5 rounded-xl border border-amber-500/30 bg-amber-500/5 p-5 text-sm leading-7 text-slate-300"><strong className="text-amber-200">Important:</strong> thermal or power limiting is often normal platform control. Board-level repair is justified by measured electrical or component faults, not by the presence of throttling alone.</p>
             </Section>
 
-            <Section id="kuwait-climate" title="What Kuwait’s climate changes">
-              <P>Kuwait’s summer environment adds another variable to laptop performance. When ambient temperatures reach the mid-40s °C or higher, a laptop starts with less temperature headroom than it would in a cooler room. The cooling system still has to move the same workload heat into a warmer environment.</P>
-              <P>Fine desert dust is a separate long-term concern. Dust accumulation on fans, filters and heatsink fins can reduce airflow. Air-conditioning cycles can also move a device between very different ambient conditions. None of this means every laptop will overheat or fail; it means <strong className="text-white">cooling design and maintenance deserve more attention in Kuwait</strong>, especially for sustained workloads.</P>
-              <ThermalDiagram />
+            <Section id="thermal-physics" title="Laptop thermal physics: temperature margin, dust and interface materials">
               <P>If a laptop repeatedly reaches its thermal limits, it may reduce clock frequency or power to remain within safe operating conditions. That is thermal throttling: a protective control mechanism, not proof that the processor itself is defective.</P>
-            </Section>
-
-
-            <Section id="thermal-physics" title="Kuwait thermal physics: temperature margin, dust and interface materials">
+              <ThermalDiagram />
               <P>A useful first approximation is the temperature margin between the processor’s configured thermal limit and the air entering the cooling system. If a hypothetical processor limit is 100°C, the simple margin is 78°C with 22°C intake air and 60°C with 40°C intake air. The 18°C reduction in margin is illustrative; it does not predict an exact throttle time or benchmark loss because heat load, fan curves, heatsink resistance, firmware and chassis airflow all matter.</P>
               <div className="my-7 rounded-2xl border border-cyan-500/30 bg-cyan-500/5 p-6">
                 <p className="text-xs font-black uppercase tracking-wider text-cyan-300">Illustrative thermal margin</p>
@@ -324,7 +310,6 @@ export default function IntelVsAmdGuide() {
               <h3 className="mb-3 text-lg font-black text-white">Thermal paste, phase-change material and liquid metal</h3>
               <P>Thermal interface materials are not interchangeable. Some laptops use conventional paste, some use phase-change material and a smaller number use liquid metal or a manufacturer-specific assembly. Repeated thermal cycling can contribute to paste displacement or aging in some designs, but there is no universal replacement interval or single material that suits every processor and heatsink.</P>
               <P>Phase-change materials such as PTM-style sheets can be appropriate on compatible surfaces when thickness, pressure and application method match the design. Liquid metal is electrically conductive and requires compatible surfaces and proper containment; it is not a generic drop-in upgrade. VRM thermal pads also require the correct thickness and compression so the components make proper contact with their heatsink.</P>
-              <p className="mt-5 rounded-xl border border-slate-800 bg-slate-900/50 p-5 text-sm leading-7 text-slate-300"><strong className="text-white">KCROC bench principle:</strong> inspect the actual cooling assembly, fan condition, fin blockage, contact pattern and component temperatures before selecting a cleaning or thermal-interface procedure.</p>
             </Section>
 
             <Section id="benchmarks" title="How to interpret laptop benchmarks">
@@ -432,25 +417,6 @@ export default function IntelVsAmdGuide() {
               </ul>
             </Section>
 
-            <section className="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 sm:p-8" aria-labelledby="continue-reading">
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-400">Continue the laptop research</p>
-              <h2 id="continue-reading" className="mt-2 text-2xl font-black text-white">Related KCROC resources</h2>
-              <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-400">These pages cover the next practical questions after comparing processor platforms: what laptop to buy, how upgradeable the machine is, and what to do when a system is running hot or needs hardware repair.</p>
-              <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                <Link to="/blog/laptop-buying-guide-kuwait-2026" className="rounded-xl border border-slate-800 bg-slate-900/60 p-4 font-bold text-white hover:border-cyan-500/40 hover:text-cyan-300">Laptop Buying Guide <ArrowRight className="ml-1 inline" size={15} /></Link>
-                <Link to="/ssd-ram-upgrade-kuwait" className="rounded-xl border border-slate-800 bg-slate-900/60 p-4 font-bold text-white hover:border-cyan-500/40 hover:text-cyan-300">SSD &amp; RAM Upgrades <ArrowRight className="ml-1 inline" size={15} /></Link>
-                <Link to="/laptop-overheating-kuwait" className="rounded-xl border border-slate-800 bg-slate-900/60 p-4 font-bold text-white hover:border-cyan-500/40 hover:text-cyan-300">Laptop Overheating Guide <ArrowRight className="ml-1 inline" size={15} /></Link>
-              </div>
-            </section>
-
-            <section className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 sm:p-8">
-              <h2 className="text-2xl font-black text-white">Need a second opinion on a laptop?</h2>
-              <p className="mt-3 max-w-2xl text-slate-400">KCROC can help diagnose whether a current laptop’s slowdown is related to RAM, storage, cooling or another hardware fault. We offer free pickup and delivery across Kuwait.</p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Link to="/book" className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-cyan-500 px-5 py-3 font-black text-slate-950 hover:bg-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-300">Book free pickup <ArrowRight size={16} /></Link>
-                <Link to="/laptop-repair-kuwait" className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-slate-700 px-5 py-3 font-black text-white hover:border-cyan-500/50 hover:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400">Laptop repair services</Link>
-              </div>
-            </section>
 
             <p className="mt-8 text-xs leading-6 text-slate-600">Editorial note: specifications in the reference tables were checked against the linked Intel and AMD product pages on November 9, 2026. Processor maximums are not a promise of sustained laptop performance; verify the OEM configuration, BIOS power policy and service manual before purchase.</p>
           </article>
