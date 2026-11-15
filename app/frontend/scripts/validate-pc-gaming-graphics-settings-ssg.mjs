@@ -26,7 +26,7 @@ assert.ok(
   'The existing canonical URL is missing or has changed.',
 );
 assert.ok(
-  /<html\\b[^>]*\\blang="en"/i.test(html),
+  /<html\b[^>]*\blang="en"/i.test(html),
   'Global article document language must be English, not the Kuwait locale.',
 );
 assert.ok(
