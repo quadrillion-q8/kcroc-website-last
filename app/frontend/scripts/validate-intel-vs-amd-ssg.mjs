@@ -99,7 +99,7 @@ const articleStart = html.indexOf('<article');
 const articleEnd = html.indexOf('</article>', articleStart);
 assert.ok(articleStart >= 0 && articleEnd > articleStart, 'Article content wrapper is missing');
 const articleHtml = html.slice(articleStart, articleEnd + '</article>'.length);
-for (const forbidden of [/Kuwait/i, /Hawalli/i, /KCROC/i, /wa\\.me/i, /pickup|delivery/i, /href="\\/(?:laptop-repair-kuwait|ssd-ram-upgrade-kuwait|laptop-overheating-kuwait)/i]) {
+for (const forbidden of [/Kuwait/i, /Hawalli/i, /KCROC/i, /wa\.me/i, /pickup|delivery/i, /href="\/(?:laptop-repair-kuwait|ssd-ram-upgrade-kuwait|laptop-overheating-kuwait)/i]) {
   assert.ok(!forbidden.test(articleHtml), 'Global Intel vs AMD article contains a local business or sales trace: ' + forbidden);
 }
 
