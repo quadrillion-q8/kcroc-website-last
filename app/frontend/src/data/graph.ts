@@ -1120,19 +1120,50 @@ export const rawGraphData: RawGraphData = {
       slug: 'guides/dell-laptop-overheating',
       entityType: 'WebPage',
       isActive: true,
-      title: 'Dell Laptop Overheating Guide',
-      description: 'Step-by-step thermal troubleshooting for Dell laptops, including Inspiron, Latitude, Vostro, XPS, Precision, G Series, and Alienware families.',
+      title: 'Dell Laptop Overheating: F12 Diagnostics, Fan Error Codes & Thermal Profiles',
+      description: 'Dell-specific troubleshooting for overheating, loud fans and shutdowns, with F12 pre-boot diagnostics, ePSA fan codes, thermal profiles, BIOS guidance and model-family notes.',
       seo: {
-        title: 'Dell Laptop Overheating | Causes & Fixes | KCROC',
-        description: 'Troubleshoot Dell laptop overheating, shutdowns and loud fans. Check airflow, fan behaviour and thermal throttling safely across Inspiron, Latitude, XPS and more.',
-        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/dell-laptop-overheating', locale: 'en',
+        title: 'Dell Laptop Overheating: Diagnostics & Fan Fixes | KCROC',
+        description: 'Dell laptop overheating? Run F12 diagnostics, decode fan errors 2000-0511 and 2000-0512, compare thermal modes and check BIOS guidance for your exact model.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/dell-laptop-overheating',
+        locale: 'en',
+        alternates: {
+          'en-KW': 'https://www.computerrepairkuwait.com/guides/dell-laptop-overheating',
+          'ar-KW': 'https://www.computerrepairkuwait.com/guides/ar/dell-laptop-overheating',
+          'x-default': 'https://www.computerrepairkuwait.com/guides/dell-laptop-overheating'
+        },
         ogType: 'article',
         schemaTypes: ['WebPage', 'BreadcrumbList'],
-        lastModified: '2026-09-27T00:00:00+03:00'
+        lastModified: '2026-11-15T00:00:00+03:00'
       },
-      navigationPriority: 90,
+      navigationPriority: 92,
       isFeatured: true,
       popular: true
+    } as WebPageEntity,
+    'guide-dell-laptop-overheating-ar': {
+      id: 'guide-dell-laptop-overheating-ar',
+      slug: 'guides/ar/dell-laptop-overheating',
+      entityType: 'WebPage',
+      isActive: true,
+      title: 'لابتوب Dell يسخن أو يطفّي؟ دليل التشخيص والمروحة',
+      description: 'دليل عربي متخصص لأعطال حرارة لابتوبات Dell، يشمل فحص F12 وأكواد المروحة 2000-0511 و2000-0512 وإعدادات التبريد وتحديث BIOS حسب الموديل.',
+      seo: {
+        title: 'لابتوب Dell يسخن؟ فحص F12 وأكواد المروحة والحلول',
+        description: 'تعرف على تشخيص حرارة لابتوبات Dell، فحص F12، معنى أكواد 2000-0511 و2000-0512، إعدادات MyDell وPower Manager وAlienware وBIOS.',
+        canonicalUrl: 'https://www.computerrepairkuwait.com/guides/ar/dell-laptop-overheating',
+        locale: 'ar_KW',
+        alternates: {
+          'ar-KW': 'https://www.computerrepairkuwait.com/guides/ar/dell-laptop-overheating',
+          'en-KW': 'https://www.computerrepairkuwait.com/guides/dell-laptop-overheating',
+          'x-default': 'https://www.computerrepairkuwait.com/guides/dell-laptop-overheating'
+        },
+        ogType: 'article',
+        schemaTypes: ['WebPage', 'BreadcrumbList'],
+        lastModified: '2026-11-15T00:00:00+03:00'
+      },
+      navigationPriority: 91,
+      isFeatured: false,
+      popular: false
     } as WebPageEntity,
 
     // 🚀 NEW: GameBarPresenceWriter.exe diagnostic guide. schemaTypes is
