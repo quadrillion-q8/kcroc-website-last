@@ -26,17 +26,20 @@ import DLSS5BenchmarkExplorer from '@/components/content/DLSS5BenchmarkExplorer'
 // (Previously duplicated via constants/data.ts's BUSINESS_INFO.)
 const business = KCROC_GRAPH.business!;
 
-const LOCAL_EDITORIAL_TRACE = /\b(?:Kuwait|Hawalli|Salmiya|Farwaniya|Jahra|Fahaheel|Mangaf|Ahmadi|Mubarak Al-Kabeer)\b|\bKWD\b|\b(?:free )?pickup(?: and (?:return )?delivery)?\b|\b(?:local warranty|local availability|local support|local pricing)\b|computerrepairkuwait\.com/i;
-const COMMERCIAL_EDITORIAL_TRACE = /\bKCROC\b|\bKuwait Computer Repair On Call\b|\bNo Fix,? No Fee\b|\b(?:from|starts? at)\s*\d+\s*(?:KWD|KD)\b/i;
+const LOCAL_EDITORIAL_TRACE = /\b(?:Kuwait|Kuwaiti|Hawalli|Salmiya|Farwaniya|Jahra|Fahaheel|Mangaf|Ahmadi|Mubarak Al-Kabeer|Ibn Khaldoun|Al Mullah|Shop 19)\b|\bKWD\b|\b(?:free )?pickup(?: and (?:return )?delivery)?\b|\bfree delivery\b|\b(?:six governorates|local warranty|local availability|local support|local pricing)\b|\+?965[\s-]?\d{8}|computerrepairkuwait\.com/i;
+const COMMERCIAL_EDITORIAL_TRACE = /\bKCROC\b|\bKuwait Computer Repair On Call\b|\bNo Fix,? No Fee\b|\b30[- ]day warranty\b|\b(?:from|starts? at)\s*\d+\s*(?:KWD|KD)\b/i;
 
 const cleanGlobalEditorialText = (value: string) => value
-  .replace(/\b(?:Kuwait|Hawalli|Salmiya|Farwaniya|Jahra|Fahaheel|Mangaf|Ahmadi|Mubarak Al-Kabeer)(?:'s)?\b/gi, '')
+  .replace(/\b(?:Kuwait|Kuwaiti|Hawalli|Salmiya|Farwaniya|Jahra|Fahaheel|Mangaf|Ahmadi|Mubarak Al-Kabeer|Ibn Khaldoun|Al Mullah|Shop 19)(?:'s)?\b/gi, '')
   .replace(/\bKWD\b/gi, '')
   .replace(/\b(?:free )?pickup(?: and (?:return )?delivery)?\b/gi, '')
+  .replace(/\bfree delivery\b/gi, '')
+  .replace(/\+?965[\s-]?\d{8}/g, '')
   .replace(/\b(?:local warranty|local availability|local support|local pricing)\b/gi, '')
   .replace(/\bKuwait Computer Repair On Call\b/gi, '')
   .replace(/\bKCROC\b/gi, '')
   .replace(/\bNo Fix,? No Fee\b/gi, '')
+  .replace(/\b30[- ]day warranty\b/gi, '')
   .replace(/\s{2,}/g, ' ')
   .replace(/\s+([,.;:!?])/g, '$1')
   .replace(/\s+([?!])/g, '$1')
