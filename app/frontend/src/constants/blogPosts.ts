@@ -6835,7 +6835,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "image",
-        "src": "/images/lexar-nvme-ssd-upgrade-pc-repair-kuwait-1000.webp",
+        "src": "/images/corsair-mp600-core-xt-nvme-ssd-upgrade.webp",
         "alt": "NVMe SSD shown during a computer storage upgrade",
         "caption": "First establish whether the SSD is visible to BIOS/UEFI, Windows Disk Management or neither. That distinction determines the next diagnostic step."
       },
@@ -7424,11 +7424,11 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         "type": "paragraph",
-        "text": "Related KCROC guide — BIOS and UEFI recovery: https://www.computerrepairkuwait.com/guides/bios-uefi-recovery-kuwait"
+        "text": "For firmware recovery, follow the manufacturer’s published procedure for the exact laptop or motherboard model. Do not copy a generic flash sequence or use a firmware image intended for a different revision."
       }
     ],
-    "image": "/images/lexar-nvme-ssd-upgrade-pc-repair-kuwait-1000.webp",
-    "discoverImage": "/images/discover/lexar-nvme-ssd-upgrade-pc-repair-kuwait-1000-1200x675.webp",
+    "image": "/images/corsair-mp600-core-xt-nvme-ssd-upgrade.webp",
+    "discoverImage": "/images/discover/bios-hero-motherboard-1200x675.webp",
     "date": "2026-09-29",
     "technicalReviewDate": "2026-11-10T02:00:00+03:00",
     "author": "Imran Natiq",
