@@ -334,6 +334,10 @@ requireContains(pricingPageCss, '@media (max-width: 1119px)', 'pages/PricingPage
 requireContains(pricingPageCss, 'grid-template-columns: minmax(0,1fr) minmax(0,1fr);', 'pages/PricingPage.css', 'mobile price cards must use a responsive two-column information layout.');
 requireContains(pricingPageCss, '[data-pricing-page="ar"] [data-pricing-category="ar"]', 'pages/PricingPage.css', 'Arabic price groups must receive the matching RTL-aware category styling.');
 requireContains(pricingPageCss, '@media (prefers-reduced-motion: reduce)', 'pages/PricingPage.css', 'pricing card interactions must respect reduced-motion preferences.');
+requireContains(pricingPage, 'pricing-page-shell', 'pages/Pricing.tsx', 'pricing pages must use the shared price-first flex layout.');
+requireContains(pricingPage, 'data-pricing-order="3"', 'pages/Pricing.tsx', 'the full price catalogue must appear immediately after the hero.');
+requireContains(pricingPageCss, '[data-pricing-page] > section[data-kcroc-editorial-panel]', 'pages/PricingPage.css', 'pricing must suppress the global cream panels and retain one graphite canvas.');
+requireContains(pricingPageCss, 'grid-template-columns: repeat(2,minmax(0,1fr));', 'pages/PricingPage.css', 'desktop pricing must display clear two-column service cards.');
 
 if (issues.length) {
   console.error('❌ Global UI/UX regression checks failed:');
