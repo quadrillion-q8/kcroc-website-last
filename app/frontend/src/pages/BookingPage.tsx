@@ -1,5 +1,6 @@
 // File: app/frontend/src/pages/BookingPage.tsx
 import React, { useRef, useState } from 'react';
+import './KCROCEditorialRollout.css';
 import { ShieldCheck, Truck, Clock, MapPin, MessageCircle, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -71,7 +72,7 @@ export default function BookingPage() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-transparent text-slate-100 font-sans pt-24 pb-16">
+    <div className="w-full min-h-screen bg-transparent text-slate-100 font-sans pt-24 pb-16" data-kcroc-rollout="booking">
       
       {/* SEOEngine (driven by the 'page-booking' graph entity) is the single authority
           for title/meta/canonical/WebPage/BreadcrumbList on this page. SchemaMarkup below
