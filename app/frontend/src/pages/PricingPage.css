@@ -182,7 +182,7 @@
   line-height: 1.28;
   font-variant-numeric: tabular-nums;
 }
-[data-pricing-page] [data-pricing-highlight] :is(span.text-white,span.group-hover\\:text-cyan-200) {
+[data-pricing-page] [data-pricing-highlight] :is(span.text-white,span.text-white) {
   color: var(--pricing-text) !important;
 }
 
