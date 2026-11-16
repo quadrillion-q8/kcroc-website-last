@@ -1,5 +1,6 @@
 // File: app/frontend/src/pages/templates/BrandTemplate.tsx
 import React from 'react';
+import '../KCROCEditorialRollout.css';
 import { useLocation, Navigate, Link } from 'react-router-dom';
 import { KCROC_GRAPH } from '../../data/graph';
 import { SEOEngine } from '../../core/components/SEOEngine';
@@ -91,7 +92,7 @@ const BrandTemplate: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-transparent text-slate-200">
+    <div className="min-h-screen bg-transparent text-slate-200" data-kcroc-rollout="brand">
       <SEOEngine entityId={brand.id} />
 
       {/* Premium brand hero */}
@@ -208,7 +209,7 @@ const BrandTemplate: React.FC = () => {
         </section>
       )}
 
-      <div className="mx-auto max-w-6xl px-6 py-16">
+      <div className="mx-auto max-w-6xl px-6 py-16" data-brand-content="true">
         {/* Brand families */}
         {familyGroups.length > 0 && (
           <section aria-labelledby="lenovo-families" className="mb-20">

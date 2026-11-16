@@ -17,6 +17,7 @@
 // to the central Hawalli workshop where devices are actually repaired, and
 // the copy leads with free pickup & delivery rather than a storefront visit.
 import React, { useState } from 'react';
+import './KCROCEditorialRollout.css';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import {
   MapPin, Truck, Shield, ShieldCheck, Zap, Cpu, Wrench, Laptop, Apple,
@@ -291,6 +292,7 @@ export default function LocationDeepTemplate() {
     <section
       aria-labelledby="location-local-pricing-anchors"
       data-location-pricing-section="true"
+      data-kcroc-editorial-panel="location-pricing-anchors"
       className={className}
     >
       <div className="container mx-auto max-w-6xl">
@@ -369,7 +371,7 @@ export default function LocationDeepTemplate() {
     });
 
   return (
-    <div className="w-full text-white font-sans selection:bg-cyan-500/30">
+    <div className="w-full text-white font-sans selection:bg-cyan-500/30" data-kcroc-rollout="location-area">
       <SEOEngine entityId={location.id} />
       <SchemaMarkup schema={FAQ_SCHEMA} />
 
@@ -526,7 +528,7 @@ export default function LocationDeepTemplate() {
       </section>
 
       {/* ─── LOCAL VALUE PROPOSITION ─── */}
-      <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
+      <section data-kcroc-editorial-panel="location-content" className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-2xl sm:text-3xl font-black text-white mb-4 tracking-tight">
             {location.localValueHeading || `Computer & Laptop Repair for ${location.title}`}
@@ -579,7 +581,7 @@ export default function LocationDeepTemplate() {
             location.localPricingAnchorsPlacement !== 'after-services' &&
             renderLocalPricingAnchors('mt-7')}
           {location.localPricingTable && (
-            <section aria-labelledby="local-pricing-table-heading" className="mt-8 rounded-2xl border border-slate-800 bg-slate-900/45 p-4 sm:p-6">
+            <section aria-labelledby="local-pricing-table-heading" data-kcroc-editorial-panel="local-pricing" className="mt-8 rounded-2xl border border-slate-800 bg-slate-900/45 p-4 sm:p-6">
               <div className="mb-4">
                 <h3 id="local-pricing-table-heading" className="text-xl sm:text-2xl font-black text-white">
                   {location.localPricingTable.heading}
@@ -740,7 +742,7 @@ export default function LocationDeepTemplate() {
       </section>
 
       {/* ─── SERVICES ─── */}
-      <section className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
+      <section data-kcroc-editorial-panel="location-content" className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
             {location.localServicesHeading || `Computer Repair Services in ${location.title}`}
@@ -853,6 +855,7 @@ export default function LocationDeepTemplate() {
         <section
           aria-labelledby="kuwait-city-repair-economics-heading"
           data-repair-economics-matrix="true"
+          data-kcroc-editorial-panel="location-economics"
           className="border-t border-slate-800/50 bg-slate-950/75 px-4 py-8 sm:px-6 sm:py-12"
         >
           <div className="container mx-auto max-w-6xl">
@@ -905,7 +908,7 @@ export default function LocationDeepTemplate() {
         renderLocalPricingAnchors('py-8 sm:py-10 px-4 sm:px-6 border-t border-slate-800/50')}
 
       {/* ─── PROBLEMS WE FIX ─── */}
-      <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
+      <section data-kcroc-editorial-panel="location-content" className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
             Common Computer &amp; Laptop Problems We Fix in {location.title}
@@ -980,7 +983,7 @@ export default function LocationDeepTemplate() {
       </section>
 
       {/* ─── BRANDS ─── */}
-      <section className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
+      <section data-kcroc-editorial-panel="location-content" className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
             Laptop Brands We Repair for {location.title} Customers
@@ -1015,7 +1018,7 @@ export default function LocationDeepTemplate() {
       </section>
 
       {/* ─── INSIDE OUR WORKSHOP (GALLERY) ─── */}
-      <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
+      <section data-kcroc-editorial-panel="location-content" className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
         <div className="container mx-auto max-w-6xl">
           <div className="flex items-end justify-between gap-4 mb-6 sm:mb-10">
             <div>
@@ -1071,7 +1074,7 @@ export default function LocationDeepTemplate() {
 
       {/* ─── HOW IT WORKS ─── */}
       {process && (
-        <section className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
+        <section data-kcroc-editorial-panel="location-content" className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
           <div className="container mx-auto max-w-6xl">
             <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
               How Computer Repair Works in {location.title}
@@ -1105,7 +1108,7 @@ export default function LocationDeepTemplate() {
       )}
 
       {/* ─── PICKUP COVERAGE ─── */}
-      <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
+      <section data-kcroc-editorial-panel="location-content" className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
             {location.localPickupHeading || `Free Pickup From ${location.title} — Repaired in Hawalli`}
@@ -1188,7 +1191,7 @@ export default function LocationDeepTemplate() {
 
       {/* ─── OTHER AREAS WE SERVE ─── */}
       {displayedOtherLocations.length > 0 && (
-        <section className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
+        <section data-kcroc-editorial-panel="location-content" className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
           <div className="container mx-auto max-w-6xl">
             <h2 className="text-2xl sm:text-3xl font-black mb-4 text-white tracking-tight">
               Free Pickup &amp; Delivery Across Kuwait
@@ -1213,7 +1216,7 @@ export default function LocationDeepTemplate() {
       )}
 
       {/* ─── WHY KCROC ─── */}
-      <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
+      <section data-kcroc-editorial-panel="location-content" className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
             Why KCROC
@@ -1271,7 +1274,7 @@ export default function LocationDeepTemplate() {
       </section>
 
       {location.localScopeNotice && (
-        <section aria-labelledby="local-scope-notice-heading" className="px-4 sm:px-6 pb-8">
+        <section aria-labelledby="local-scope-notice-heading" data-kcroc-editorial-panel="location-scope" className="px-4 sm:px-6 pb-8">
           <div className="container mx-auto max-w-6xl rounded-2xl border border-slate-700 bg-slate-900/45 p-5 sm:p-6">
             <h2 id="local-scope-notice-heading" className="text-lg font-black text-white">
               {location.localScopeNotice.heading}
@@ -1283,7 +1286,7 @@ export default function LocationDeepTemplate() {
 
       {/* ─── REVIEWS / SOCIAL PROOF (only if a review exists for this location) ─── */}
       {localReview && reviews && (
-        <section className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
+        <section data-kcroc-editorial-panel="location-content" className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
           <div className="container mx-auto max-w-3xl text-center">
             <div className="flex items-center justify-center gap-2 mb-6">
               <Star className="w-5 h-5 text-cyan-400 fill-cyan-400" aria-hidden="true" />
@@ -1307,6 +1310,7 @@ export default function LocationDeepTemplate() {
       {!localReview && location.reviewAttribution === 'central-hawalli-lab' && centralLabReviews.length > 0 && reviews && (
         <section
           data-central-lab-reviews="true"
+          data-kcroc-editorial-panel="location-reviews"
           className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50"
         >
           <div className="container mx-auto max-w-5xl">
@@ -1355,7 +1359,7 @@ export default function LocationDeepTemplate() {
       )}
 
       {/* ─── FAQ ─── */}
-      <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
+      <section data-kcroc-editorial-panel="location-content" className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
         <div className="container mx-auto max-w-3xl">
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white text-center tracking-tight">
             Frequently Asked Questions
@@ -1441,7 +1445,7 @@ export default function LocationDeepTemplate() {
       </section>
 
       {/* ─── FINAL CTA ─── */}
-      <section className="py-12 sm:py-20 px-4 sm:px-6 border-t border-slate-800/50 text-center">
+      <section data-kcroc-editorial-panel="location-conversion" className="py-12 sm:py-20 px-4 sm:px-6 border-t border-slate-800/50 text-center">
         <div className="container mx-auto max-w-4xl">
           <div className="bg-slate-900/40 backdrop-blur-lg border border-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl">
             <h2 className="text-2xl sm:text-3xl font-black text-white mb-4">
