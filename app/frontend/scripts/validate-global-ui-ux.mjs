@@ -89,6 +89,8 @@ const [faqPage, pricingPage, arabicPricingPage, brandsIndex, problemsIndex, serv
   read('pages/PrivacySecurity.tsx'),
 ]);
 
+const pricingPageCss = await read('pages/PricingPage.css');
+
 const issues = [];
 
 // Check the foreground/background pairs used by the warm editorial surfaces.
@@ -312,6 +314,26 @@ requireContains(privacyPolicyPage, 'onClick={openConsentPreferences}', 'pages/Pr
 requireContains(rolloutCss, '[data-kcroc-rollout="pricing"] [data-kcroc-editorial-panel]', 'pages/KCROCEditorialRollout.css', 'English pricing explanations must use the warm editorial palette.');
 requireContains(rolloutCss, '[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel]', 'pages/KCROCEditorialRollout.css', 'Arabic pricing explanations must use the warm editorial palette.');
 requireContains(rolloutCss, '[data-kcroc-rollout="privacy-security"]', 'pages/KCROCEditorialRollout.css', 'security and privacy pages must scope only their selected editorial sections.');
+
+// Pricing-page redesign: keep both language versions aligned, preserve every
+// live filter/quote action, and guard desktop + mobile price comparison layouts.
+requireContains(pricingPage, 'data-pricing-page="en"', 'pages/Pricing.tsx', 'the English pricing page must opt into its page-scoped design system.');
+requireContains(arabicPricingPage, 'data-pricing-page="ar"', 'pages/ArabicPricingPage.tsx', 'the Arabic pricing page must opt into its page-scoped design system.');
+requireContains(pricingPage, 'data-pricing-category={category.anchor}', 'pages/Pricing.tsx', 'each English pricing category must have a stable styling hook.');
+requireContains(pricingPage, 'data-pricing-row="true"', 'pages/Pricing.tsx', 'English pricing rows must remain available to users and assistive technology.');
+requireContains(pricingPage, 'setDeviceFilter(filter.value)', 'pages/Pricing.tsx', 'device filters must retain their state update behavior.');
+requireContains(pricingPage, 'setSymptomFilter(filter.value)', 'pages/Pricing.tsx', 'symptom filters must retain their state update behavior.');
+requireContains(pricingPage, 'buildWhatsAppLink(message)', 'pages/Pricing.tsx', 'each English price row must retain its exact-quote WhatsApp action.');
+requireContains(arabicPricingPage, 'data-pricing-category="ar"', 'pages/ArabicPricingPage.tsx', 'Arabic pricing groups must use the same visual category system.');
+requireContains(arabicPricingPage, 'data-pricing-row-ar', 'pages/ArabicPricingPage.tsx', 'Arabic pricing rows must retain their explicit reading structure.');
+requireContains(arabicPricingPage, 'data-pricing-value', 'pages/ArabicPricingPage.tsx', 'Arabic displayed prices must have a distinct visual treatment.');
+requireContains(arabicPricingPage, 'href={waQuote}', 'pages/ArabicPricingPage.tsx', 'Arabic price enquiry must retain its WhatsApp destination.');
+requireContains(arabicPricingPage, 'href={waPickup}', 'pages/ArabicPricingPage.tsx', 'Arabic pickup enquiry must retain its WhatsApp destination.');
+requireContains(pricingPageCss, '@media (min-width: 1120px)', 'pages/PricingPage.css', 'wide desktop pricing must retain the comparison-table layout.');
+requireContains(pricingPageCss, '@media (max-width: 1119px)', 'pages/PricingPage.css', 'tablet and mobile pricing must switch to readable service cards.');
+requireContains(pricingPageCss, 'grid-template-columns: minmax(0,1fr) minmax(0,1fr);', 'pages/PricingPage.css', 'mobile price cards must use a responsive two-column information layout.');
+requireContains(pricingPageCss, '[data-pricing-page="ar"] [data-pricing-category="ar"]', 'pages/PricingPage.css', 'Arabic price groups must receive the matching RTL-aware category styling.');
+requireContains(pricingPageCss, '@media (prefers-reduced-motion: reduce)', 'pages/PricingPage.css', 'pricing card interactions must respect reduced-motion preferences.');
 
 if (issues.length) {
   console.error('❌ Global UI/UX regression checks failed:');
