@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import './KCROCEditorialRollout.css';
+import './PricingPage.css';
 import { Link } from 'react-router-dom';
 import {
   Check,
@@ -236,7 +237,7 @@ export default function Pricing() {
   )}`;
 
   return (
-    <div className="w-full min-h-screen overflow-hidden bg-transparent font-sans text-slate-100 selection:bg-cyan-500/30" data-kcroc-rollout="pricing">
+    <div className="w-full min-h-screen overflow-hidden bg-transparent font-sans text-slate-100 selection:bg-cyan-500/30" data-kcroc-rollout="pricing" data-pricing-page="en">
       <SEOEngine entityId="page-pricing" />
       <SchemaMarkup schema={{ '@graph': PRICING_SCHEMA }} />
 
@@ -285,8 +286,8 @@ export default function Pricing() {
           HERO
       ───────────────────────────────────────────────────────────────────── */}
 
-      <section className="relative px-4 pb-12 text-center sm:px-6 sm:pb-16">
-        <div className="mx-auto max-w-4xl">
+      <section data-pricing-hero className="relative px-4 pb-12 text-center sm:px-6 sm:pb-16">
+        <div className="mx-auto max-w-4xl" data-pricing-hero-content>
           <Badge className="mb-5 border border-cyan-500/25 bg-cyan-500/10 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-cyan-400 sm:text-xs">
             Transparent Repair Pricing · Kuwait
           </Badge>
@@ -349,18 +350,18 @@ export default function Pricing() {
 
           <div className="mx-auto mt-8 max-w-5xl text-left" aria-label="Starting repair labor prices">
             <p className="mb-3 text-xs font-black uppercase tracking-[0.16em] text-cyan-300">Starting prices · parts charged separately where stated</p>
-            <div className="grid gap-3 sm:grid-cols-3">
-              <Link to="/laptop-screen-repair-kuwait" className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 transition-colors hover:border-cyan-500/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+            <div className="grid gap-3 sm:grid-cols-3" data-pricing-highlights>
+              <Link to="/laptop-screen-repair-kuwait" data-pricing-highlight className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 transition-colors hover:border-cyan-500/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
                 <span className="text-xs font-bold text-slate-400">Laptop screen labor</span>
                 <span className="mt-1 block text-xl font-black text-white">From 30 KWD + panel</span>
                 <span className="mt-1 block text-xs leading-5 text-slate-400">The replacement display panel is priced separately.</span>
               </Link>
-              <Link to="/battery-replacement-kuwait" className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 transition-colors hover:border-cyan-500/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+              <Link to="/battery-replacement-kuwait" data-pricing-highlight className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 transition-colors hover:border-cyan-500/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
                 <span className="text-xs font-bold text-slate-400">Laptop battery labor</span>
                 <span className="mt-1 block text-xl font-black text-white">From 8 KWD + battery</span>
                 <span className="mt-1 block text-xs leading-5 text-slate-400">Battery price depends on model and availability.</span>
               </Link>
-              <Link to="/ssd-ram-upgrade-kuwait" className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 transition-colors hover:border-cyan-500/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+              <Link to="/ssd-ram-upgrade-kuwait" data-pricing-highlight className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 transition-colors hover:border-cyan-500/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
                 <span className="text-xs font-bold text-slate-400">SSD / RAM installation labor</span>
                 <span className="mt-1 block text-xl font-black text-white">From 5 KWD</span>
                 <span className="mt-1 block text-xs leading-5 text-slate-400">Upgrade parts and data migration are separate where required.</span>
@@ -554,7 +555,7 @@ export default function Pricing() {
           PRICE MENU
       ───────────────────────────────────────────────────────────────────── */}
 
-      <section id="price-list" aria-labelledby="pricing-heading" className="px-4 pb-16 sm:px-6 sm:pb-24">
+      <section id="price-list" aria-labelledby="pricing-heading" data-pricing-explorer className="px-4 pb-16 sm:px-6 sm:pb-24">
         <div className="mx-auto max-w-6xl">
           <div className="mb-8 text-center sm:mb-12">
             <Badge className="mb-4 border border-cyan-500/20 bg-cyan-500/10 px-3 py-1.5 text-[10px] uppercase tracking-widest text-cyan-400">Service pricing</Badge>
@@ -562,7 +563,7 @@ export default function Pricing() {
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">Compare published guide prices, what each service covers and its typical turnaround. Your exact quote is confirmed after diagnosis and before paid work.</p>
           </div>
 
-          <nav aria-label="Pricing categories" className="mb-8 rounded-2xl border border-slate-800 bg-slate-900/35 p-4 sm:p-5">
+          <nav aria-label="Pricing categories" data-pricing-category-nav className="mb-8 rounded-2xl border border-slate-800 bg-slate-900/35 p-4 sm:p-5">
             <p className="mb-3 text-center text-xs font-black uppercase tracking-[0.15em] text-cyan-300">Jump to a price category</p>
             <div className="flex flex-nowrap gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:justify-center">
               <a href="#pricing-diagnostics" className="inline-flex min-h-10 shrink-0 items-center rounded-full border border-slate-700 bg-slate-950/70 px-4 py-2 text-xs font-bold text-slate-200 transition-colors hover:border-cyan-500/50 hover:text-cyan-200">Diagnostics &amp; Firmware</a>
@@ -572,7 +573,7 @@ export default function Pricing() {
             </div>
           </nav>
 
-          <div className="mb-8 space-y-5 rounded-3xl border border-slate-800 bg-slate-900/50 p-4 sm:p-6">
+          <div className="mb-8 space-y-5 rounded-3xl border border-slate-800 bg-slate-900/50 p-4 sm:p-6" data-pricing-filter-panel>
             <div><p className="mb-3 text-xs font-black uppercase tracking-[0.15em] text-cyan-300">Filter by device</p><div role="group" aria-label="Filter pricing by device" className="flex flex-wrap gap-2">
               {deviceFilters.map((filter) => <button key={filter.value} type="button" aria-pressed={deviceFilter===filter.value} onClick={() => setDeviceFilter(filter.value)} className={'min-h-10 rounded-full border px-3.5 py-2 text-xs font-bold transition-colors sm:text-sm '+(deviceFilter===filter.value?'border-cyan-400/60 bg-cyan-500/15 text-cyan-100':'border-slate-700 bg-slate-950/70 text-slate-300 hover:border-cyan-500/40 hover:text-cyan-200')}>{filter.label}</button>)}
             </div></div>
@@ -588,14 +589,14 @@ export default function Pricing() {
           <div className="space-y-6">
             {pricingCategories.map((category) => {
               const Icon=category.icon;
-              return <Card key={category.title} id={`pricing-${category.anchor}`} className={'scroll-mt-6 overflow-hidden border bg-slate-900/45 shadow-2xl backdrop-blur-xl '+(category.featured?'border-cyan-500/30 shadow-cyan-950/10':'border-slate-800')}>
-                <CardHeader className="border-b border-slate-800/70 p-5 sm:p-6"><div className="flex items-start justify-between gap-4"><div className="flex items-start gap-3"><div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-800 bg-brand-dark"><Icon className="h-5 w-5 text-cyan-400" aria-hidden="true" /></div><div><p className="mb-1 text-[10px] font-bold uppercase tracking-widest text-cyan-500">{category.eyebrow}</p><CardTitle className="text-lg font-black text-white sm:text-xl">{category.title}</CardTitle></div></div>{category.featured&&<Badge className="shrink-0 border border-cyan-500/20 bg-cyan-500/10 text-[9px] uppercase tracking-wider text-cyan-400">Specialist</Badge>}</div></CardHeader>
+              return <Card key={category.title} id={`pricing-${category.anchor}`} data-pricing-category={category.anchor} data-pricing-featured={category.featured ? 'true' : 'false'} className={'scroll-mt-6 overflow-hidden border bg-slate-900/45 shadow-2xl backdrop-blur-xl '+(category.featured?'border-cyan-500/30 shadow-cyan-950/10':'border-slate-800')}>
+                <CardHeader data-pricing-category-header className="border-b border-slate-800/70 p-5 sm:p-6"><div className="flex items-start justify-between gap-4"><div className="flex items-start gap-3"><div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-800 bg-brand-dark"><Icon className="h-5 w-5 text-cyan-400" aria-hidden="true" /></div><div><p className="mb-1 text-[10px] font-bold uppercase tracking-widest text-cyan-500">{category.eyebrow}</p><CardTitle className="text-lg font-black text-white sm:text-xl">{category.title}</CardTitle></div></div>{category.featured&&<Badge className="shrink-0 border border-cyan-500/20 bg-cyan-500/10 text-[9px] uppercase tracking-wider text-cyan-400">Specialist</Badge>}</div></CardHeader>
                 {category.featured&&<div className="grid gap-4 border-b border-cyan-500/15 bg-cyan-950/15 p-5 sm:grid-cols-2 sm:p-6">
                   <div className="rounded-2xl border border-slate-700/70 bg-slate-950/50 p-4"><p className="text-[10px] font-black uppercase tracking-[0.14em] text-slate-400">Whole-board replacement</p><h3 className="mt-2 text-base font-black text-white">Replace the complete assembly</h3><p className="mt-2 text-xs leading-6 text-slate-400">A full motherboard or logic-board assembly is a model-specific parts decision. Compatibility and part cost must be checked before it can be quoted.</p></div>
                   <div className="rounded-2xl border border-cyan-500/25 bg-cyan-950/20 p-4"><p className="text-[10px] font-black uppercase tracking-[0.14em] text-cyan-300">KCROC component-level approach</p><h3 className="mt-2 text-base font-black text-white">We fix the board where repair is viable.</h3><p className="mt-2 text-xs leading-6 text-slate-300">We trace the fault and consider a targeted connector, MOSFET, power IC or other component repair before recommending a whole-board replacement.</p><p className="mt-3 text-xs font-bold leading-5 text-cyan-200">Published guide ranges: 25–60 KWD component repair · 50–90+ KWD advanced board work · 45–100+ KWD MacBook logic-board repair.</p></div>
                   <p className="text-xs leading-5 text-slate-500 sm:col-span-2">Repairing the original board may help retain access to existing storage on some devices, but data access is not guaranteed. KCROC does not offer standalone data recovery.</p>
                 </div>}
-                <CardContent className="p-0">
+                <CardContent data-pricing-category-content className="p-0">
                   <table data-pricing-table={category.anchor} aria-label={category.title+' prices in Kuwaiti dinars'} className="block w-full text-left md:table">
                     <caption className="sr-only">{category.title}: service, scope and notes, typical turnaround, price in KWD and direct quote action.</caption>
                     <thead className="hidden bg-slate-950/70 text-[10px] uppercase tracking-[0.12em] text-slate-400 md:table-header-group"><tr><th scope="col" className="px-5 py-4 font-black">Service</th><th scope="col" className="px-5 py-4 font-black">Scope &amp; notes</th><th scope="col" className="px-5 py-4 font-black">Typical turnaround</th><th scope="col" className="px-5 py-4 font-black">Price (KWD)</th><th scope="col" className="px-5 py-4 text-right font-black">Action</th></tr></thead>
