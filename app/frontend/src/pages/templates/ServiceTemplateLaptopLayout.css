@@ -36,7 +36,7 @@
   padding: clamp(1.25rem, 3vw, 2.75rem);
   overflow: hidden;
   border: 1px solid var(--service-border-strong);
-  border-radius: 1.75rem;
+  border-radius: 1.4rem;
   background:
     radial-gradient(ellipse at 92% 8%, rgba(8, 145, 178, 0.17), transparent 40%),
     linear-gradient(135deg, rgba(15, 29, 48, 0.98), rgba(5, 13, 25, 0.97) 62%, rgba(8, 31, 45, 0.96));
@@ -1161,11 +1161,11 @@
 }
 
 
-/* Arabic bespoke service pages: extend the same warm editorial reading
-   surfaces to their route-specific process, benefits, service choices,
-   local-pickup and FAQ sections. Technical matrices and safety warnings are
-   deliberately not marked, so they retain their dark diagnostic treatment. */
-[data-service-layout="arabic"] section[data-service-editorial-panel] {
+/* Shared English and Arabic service-page editorial panels.
+   These are used for explanatory process, benefits, service choices,
+   local-pickup and FAQ sections. Technical matrices and safety warnings
+   remain unmarked, preserving their dark diagnostic treatment. */
+[data-service-layout] section[data-service-editorial-panel] {
   box-sizing: border-box;
   max-width: 100%;
   margin-block: clamp(1.5rem, 3vw, 2.5rem);
@@ -1177,19 +1177,27 @@
   box-shadow: 0 8px 28px rgba(18, 24, 27, 0.08);
 }
 
-[data-service-layout="arabic"] section[data-service-editorial-panel] :is(h2, h3, h4, th, strong) {
+[data-service-layout] section[data-service-editorial-panel] :is(h2, h3, h4, th, strong) {
   color: #172022 !important;
 }
 
-[data-service-layout="arabic"] section[data-service-editorial-panel] :is(p, li, td, summary, span, small, dd, dt) {
+[data-service-layout] section[data-service-editorial-panel] :is(p, li, td, summary, span, small, dd, dt) {
   color: #566467 !important;
 }
 
-[data-service-layout="arabic"] section[data-service-editorial-panel] :is(.text-cyan-400, .text-cyan-300, .text-cyan-200, svg.text-cyan-400) {
+[data-service-layout] section[data-service-editorial-panel] :is(.text-cyan-400, .text-cyan-300, .text-cyan-200, svg.text-cyan-400) {
   color: #8f4f2c !important;
 }
 
-[data-service-layout="arabic"] section[data-service-editorial-panel] :is(
+/* The numbered repair-process steps use a warm marker, not the old cyan pill. */
+[data-service-layout] section[data-service-editorial-panel][aria-labelledby="repair-process-heading"] article > span {
+  border: 1px solid rgba(143, 79, 44, 0.24);
+  background: #c9804d !important;
+  color: #17110c !important;
+  box-shadow: none;
+}
+
+[data-service-layout] section[data-service-editorial-panel] :is(
   article,
   details,
   .overflow-x-auto,
@@ -1201,47 +1209,47 @@
   box-shadow: 0 3px 14px rgba(32, 28, 24, 0.045);
 }
 
-[data-service-layout="arabic"] section[data-service-editorial-panel] table {
+[data-service-layout] section[data-service-editorial-panel] table {
   width: 100%;
   background: #ffffff;
   color: #344245;
 }
 
-[data-service-layout="arabic"] section[data-service-editorial-panel] thead {
+[data-service-layout] section[data-service-editorial-panel] thead {
   background: #ece4d9 !important;
   color: #172022 !important;
 }
 
-[data-service-layout="arabic"] section[data-service-editorial-panel] tbody tr:nth-child(even) {
+[data-service-layout] section[data-service-editorial-panel] tbody tr:nth-child(even) {
   background: #faf7f2 !important;
 }
 
-[data-service-layout="arabic"] section[data-service-editorial-panel] :is(thead th, tbody th, tbody td) {
+[data-service-layout] section[data-service-editorial-panel] :is(thead th, tbody th, tbody td) {
   border-color: #e9e1d7 !important;
   color: #344245 !important;
 }
 
-[data-service-layout="arabic"] section[data-service-editorial-panel] a:not([class*="bg-"]) {
+[data-service-layout] section[data-service-editorial-panel] a:not([class*="bg-"]) {
   color: #8f4f2c !important;
   text-decoration-color: rgba(143, 79, 44, 0.35);
 }
 
-[data-service-layout="arabic"] section[data-service-editorial-panel] a:not([class*="bg-"]):hover {
+[data-service-layout] section[data-service-editorial-panel] a:not([class*="bg-"]):hover {
   color: #6e3a20 !important;
 }
 
-[data-service-layout="arabic"] section[data-service-editorial-panel] :is(a, summary):focus-visible {
+[data-service-layout] section[data-service-editorial-panel] :is(a, summary):focus-visible {
   outline: 2px solid #8f4f2c !important;
   outline-offset: 3px;
 }
 
-[data-service-layout="arabic"] section[data-service-editorial-panel] details[open] {
+[data-service-layout] section[data-service-editorial-panel] details[open] {
   border-color: #c9804d !important;
   background: #fffaf4 !important;
 }
 
 @media (max-width: 767px) {
-  [data-service-layout="arabic"] section[data-service-editorial-panel] {
+  [data-service-layout] section[data-service-editorial-panel] {
     margin-block: 1.5rem;
     padding: 1.5rem 1rem !important;
     border-radius: 1.1rem;
