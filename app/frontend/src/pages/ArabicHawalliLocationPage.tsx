@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import './KCROCEditorialRollout.css';
 import {
   Apple,
   ArrowUpRight,
@@ -246,7 +247,7 @@ export default function ArabicHawalliLocationPage() {
     });
 
   return (
-    <div dir="rtl" lang="ar-KW" className="w-full text-white font-sans selection:bg-cyan-500/30">
+    <div dir="rtl" lang="ar-KW" className="w-full text-white font-sans selection:bg-cyan-500/30" data-kcroc-rollout="location-hawalli-ar">
       <SEOEngine entityId="page-ar-hawalli-computer-repair" />
       <SchemaMarkup schema={faqSchema} />
 
@@ -388,7 +389,7 @@ export default function ArabicHawalliLocationPage() {
         </div>
       </section>
 
-      <section className="border-y border-cyan-500/20 bg-slate-950 px-4 py-10 sm:px-6 sm:py-14">
+      <section data-kcroc-editorial-panel="hawalli-content" className="border-y border-cyan-500/20 bg-slate-950 px-4 py-10 sm:px-6 sm:py-14">
         <div className="container mx-auto max-w-6xl">
           <div className="mb-7 max-w-3xl">
             <p className="text-sm font-black text-cyan-300">منهج الإصلاح على مستوى المكونات</p>
@@ -446,7 +447,7 @@ export default function ArabicHawalliLocationPage() {
         </div>
       </section>
 
-      <section className="border-t border-slate-800/70 px-4 py-10 sm:px-6 sm:py-14">
+      <section data-kcroc-editorial-panel="hawalli-content" className="border-t border-slate-800/70 px-4 py-10 sm:px-6 sm:py-14">
         <div className="container mx-auto max-w-6xl">
           <div className="mb-7 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div><p className="text-sm font-black text-cyan-300">خدمات المختبر</p><h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">تصليح الكمبيوتر واللابتوب في حولي</h2></div>
@@ -511,7 +512,7 @@ export default function ArabicHawalliLocationPage() {
         </div>
       </section>
 
-      <section className="border-t border-slate-800/70 bg-slate-900/20 px-4 py-10 sm:px-6 sm:py-14">
+      <section data-kcroc-editorial-panel="hawalli-content" className="border-t border-slate-800/70 bg-slate-900/20 px-4 py-10 sm:px-6 sm:py-14">
         <div className="container mx-auto max-w-6xl">
           <div className="mb-7"><p className="text-sm font-black text-cyan-300">تعرف على مكان الإصلاح</p><h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">صور من مختبر KCROC في حولي</h2><p className="mt-2 max-w-3xl text-sm leading-7 text-slate-400">صور فعلية للمختبر ومساحة العمل والأدوات. عنواننا واحد في حولي؛ أما الاستلام والتوصيل فيغطي المناطق التي نخدمها.</p></div>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
