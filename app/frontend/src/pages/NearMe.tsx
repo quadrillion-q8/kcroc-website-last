@@ -4,6 +4,7 @@
 // Kuwait service-intent variations. This is intentionally one strong hub —
 // not a collection of doorway pages for every keyword variation.
 import React from 'react';
+import './KCROCEditorialRollout.css';
 import { Link } from 'react-router-dom';
 import {
   MapPin, Truck, ShieldCheck, Wrench, Laptop, Monitor, Cpu, Apple,
@@ -41,7 +42,7 @@ export default function NearMe() {
   const waLink = `https://wa.me/${phone}?text=${encodeURIComponent('Hi KCROC, I am looking for computer repair near me in Kuwait. I would like to arrange a pickup.')}`;
 
   return (
-    <div className="w-full min-h-screen bg-transparent text-slate-200">
+    <div className="w-full min-h-screen bg-transparent text-slate-200" data-kcroc-rollout="near-me">
       <SEOEngine entityId="page-near-me" />
 
       {/* Hero */}
@@ -102,7 +103,7 @@ export default function NearMe() {
       </section>
 
       {/* Trust / service model */}
-      <section className="border-b border-slate-800/60 px-4 py-12 sm:px-6 sm:py-20">
+      <section className="border-b border-slate-800/60 px-4 py-12 sm:px-6 sm:py-20" data-kcroc-editorial-panel="near-me-intro">
         <div className="mx-auto max-w-6xl">
           <div className="mb-10 max-w-3xl">
             <p className="mb-2 text-xs font-bold uppercase tracking-widest text-cyan-400">Local service, real repair capability</p>
@@ -122,7 +123,7 @@ export default function NearMe() {
       </section>
 
       {/* Area selector */}
-      <section className="border-b border-slate-800/60 bg-slate-900/30 px-4 py-12 sm:px-6 sm:py-20">
+      <section className="border-b border-slate-800/60 bg-slate-900/30 px-4 py-12 sm:px-6 sm:py-20" data-kcroc-editorial-panel="near-me-locations">
         <div className="mx-auto max-w-6xl">
           <div className="mb-10 text-center">
             <p className="mb-2 text-xs font-bold uppercase tracking-widest text-cyan-400">Find your service area</p>
@@ -150,7 +151,7 @@ export default function NearMe() {
       </section>
 
       {/* Services */}
-      <section className="px-4 py-12 sm:px-6 sm:py-20">
+      <section className="px-4 py-12 sm:px-6 sm:py-20" data-kcroc-editorial-panel="near-me-services">
         <div className="mx-auto max-w-6xl">
           <div className="mb-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
@@ -174,7 +175,7 @@ export default function NearMe() {
       </section>
 
       {/* How it works */}
-      <section className="border-y border-slate-800/60 bg-slate-900/40 px-4 py-12 sm:px-6 sm:py-20">
+      <section className="border-y border-slate-800/60 bg-slate-900/40 px-4 py-12 sm:px-6 sm:py-20" data-kcroc-editorial-panel="near-me-process">
         <div className="mx-auto max-w-6xl">
           <div className="mb-10 max-w-3xl">
             <p className="mb-2 text-xs font-bold uppercase tracking-widest text-cyan-400">Simple local logistics</p>
@@ -191,7 +192,7 @@ export default function NearMe() {
       </section>
 
       {/* Problems / intent expansion */}
-      <section className="px-4 py-12 sm:px-6 sm:py-20">
+      <section className="px-4 py-12 sm:px-6 sm:py-20" data-kcroc-editorial-panel="near-me-problems">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
             <div>
@@ -208,7 +209,7 @@ export default function NearMe() {
       </section>
 
       {/* Arabic local-intent section */}
-      <section lang="ar" dir="rtl" className="border-t border-slate-800/60 px-4 py-12 sm:px-6 sm:py-20">
+      <section lang="ar" dir="rtl" data-kcroc-editorial-panel="near-me-arabic" className="border-t border-slate-800/60 px-4 py-12 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-5xl rounded-3xl border border-slate-800 bg-brand-dark/60 p-6 sm:p-10">
           <p className="text-xs font-bold uppercase tracking-widest text-cyan-400">خدمة إصلاح محلية في الكويت</p>
           <h2 className="mt-2 text-3xl font-black text-white sm:text-4xl">فني كمبيوتر في الكويت وإصلاح لابتوب قريب منك</h2>
@@ -241,7 +242,7 @@ export default function NearMe() {
       </section>
 
       {/* FAQs */}
-      <section className="border-t border-slate-800/60 bg-slate-900/30 px-4 py-12 sm:px-6 sm:py-20">
+      <section className="border-t border-slate-800/60 bg-slate-900/30 px-4 py-12 sm:px-6 sm:py-20" data-kcroc-editorial-panel="near-me-faq">
         <div className="mx-auto max-w-4xl">
           <div className="mb-10 text-center"><p className="mb-2 text-xs font-bold uppercase tracking-widest text-cyan-400">Near-me questions</p><h2 className="text-3xl font-black text-white sm:text-4xl">Computer Repair Near Me — FAQs</h2></div>
           <div className="space-y-3">
@@ -251,7 +252,7 @@ export default function NearMe() {
       </section>
 
       {/* Final CTA */}
-      <section className="px-4 py-14 sm:px-6 sm:py-24">
+      <section className="px-4 py-14 sm:px-6 sm:py-24" data-kcroc-editorial-panel="near-me-cta">
         <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl border border-cyan-500/20 bg-slate-900/80 p-7 text-center shadow-2xl sm:p-12">
           <HomeIcon className="mx-auto h-8 w-8 text-cyan-400" aria-hidden="true" />
           <h2 className="mt-4 text-3xl font-black text-white sm:text-4xl">Need a computer technician near you?</h2>
