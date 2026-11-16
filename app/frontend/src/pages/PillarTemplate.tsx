@@ -1,6 +1,7 @@
 // File: app/frontend/src/pages/PillarTemplate.tsx
 import { Head } from 'vite-react-ssg';
 import React from 'react';
+import './KCROCEditorialRollout.css';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { ROUTES } from '../constants/routes';
@@ -24,7 +25,7 @@ export default function PillarTemplate() {
   const pageUrl = `https://www.computerrepairkuwait.com/pillar/${slug}`;
 
   return (
-    <div className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
+    <div className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24" data-kcroc-rollout="pillar-article">
       
       {/* 🚀 Explicit canonical tag (React 19 native head hoisting) */}
       <Head>
@@ -55,7 +56,7 @@ export default function PillarTemplate() {
           </p>
         </header>
 
-        <section className="prose prose-invert prose-lg max-w-none">
+        <section className="prose prose-invert prose-lg max-w-none" data-kcroc-editorial-panel="pillar-body">
           {/* Defensive rendering for the pillar content */}
           {pillarData.content?.length > 0 ? (
              pillarData.content.map((paragraph: string, index: number) => (
