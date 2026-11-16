@@ -50,6 +50,34 @@ const [arabicServicePage, arabicLiquidDamagePage, macbookBatteryPage] = await Pr
 ]);
 
 const issues = [];
+
+// Check the foreground/background pairs used by the warm editorial surfaces.
+const linearChannel = (value) => {
+  const channel = Number.parseInt(value, 16) / 255;
+  return channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4;
+};
+const relativeLuminance = (hex) => {
+  const value = hex.replace('#', '');
+  const red = linearChannel(value.slice(0, 2));
+  const green = linearChannel(value.slice(2, 4));
+  const blue = linearChannel(value.slice(4, 6));
+  return 0.2126 * red + 0.7152 * green + 0.0722 * blue;
+};
+const contrastRatio = (foreground, background) => {
+  const values = [relativeLuminance(foreground), relativeLuminance(background)].sort((a, b) => b - a);
+  return (values[0] + 0.05) / (values[1] + 0.05);
+};
+for (const [foreground, background, label] of [
+  ['#172022', '#f4efe7', 'editorial heading'],
+  ['#566467', '#f4efe7', 'editorial body text'],
+  ['#8f4f2c', '#f4efe7', 'editorial copper accent'],
+  ['#17110c', '#c9804d', 'repair-process number'],
+]) {
+  if (contrastRatio(foreground, background) < 4.5) {
+    issues.push(label + ': contrast is below 4.5:1.');
+  }
+}
+
 const requireContains = (content, text, file, description) => {
   if (!content.includes(text)) issues.push(`${file}: ${description}`);
 };
@@ -135,7 +163,15 @@ requireContains(serviceLayoutCss, '[data-service-layout="arabic-liquid-damage"]'
 requireContains(serviceLayoutCss, '[data-service-layout="macbook-battery"]', 'pages/templates/ServiceTemplateLaptopLayout.css', 'the standalone English MacBook battery service must share the editorial panel system.');
 
 requireContains(arabicServicePage, 'data-service-editorial-panel', 'pages/ArabicCommercialPage.tsx', 'route-specific Arabic service reading sections must opt into the shared editorial treatment.');
-requireContains(serviceLayoutCss, '[data-service-layout="arabic"] section[data-service-editorial-panel]', 'pages/templates/ServiceTemplateLaptopLayout.css', 'bespoke Arabic process, pricing, benefits and FAQ panels must use the shared editorial styling.');
+requireContains(serviceLayoutCss, '[data-service-layout] section[data-service-editorial-panel]', 'pages/templates/ServiceTemplateLaptopLayout.css', 'English and Arabic marked service reading sections must use the shared editorial styling.');
+requireContains(serviceTemplate, 'aria-labelledby="repair-process-heading"', 'pages/templates/ServiceTemplate.tsx', 'the English repair-process section must retain its accessible heading.');
+requireContains(serviceTemplate, 'data-service-editorial-panel', 'pages/templates/ServiceTemplate.tsx', 'the English repair-process section must opt into the shared editorial treatment.');
+requireContains(serviceLayoutCss, '[aria-labelledby="repair-process-heading"] article > span', 'pages/templates/ServiceTemplateLaptopLayout.css', 'repair-process step numbers must use the warm copper marker.');
+requireContains(serviceLayoutCss, 'background: #c9804d !important;', 'pages/templates/ServiceTemplateLaptopLayout.css', 'warm service-process markers must use KCROC copper.');
+requireContains(serviceLayoutCss, 'color: #17110c !important;', 'pages/templates/ServiceTemplateLaptopLayout.css', 'warm service-process markers must use a high-contrast dark foreground.');
+requireContains(serviceLayoutCss, 'border-radius: 1.4rem;', 'pages/templates/ServiceTemplateLaptopLayout.css', 'service hero corners must be restrained rather than oversized.');
+requireContains(globalCss, '"Noto Sans Arabic", "Noto Naskh Arabic", "Geeza Pro", Tahoma, Arial, sans-serif', 'index.css', 'Arabic reading areas must prefer an Arabic-capable system font stack.');
+requireContains(globalCss, '[dir="rtl"] :is(h1, h2, h3, h4)', 'index.css', 'Arabic headings must not inherit tight Latin tracking and must retain adequate line height.');
 requireContains(arabicServicePage, 'aria-labelledby="charging-port-repair-process" data-service-editorial-panel', 'pages/ArabicCommercialPage.tsx', 'Arabic charging-port process section must use the shared editorial panel.');
 requireContains(arabicServicePage, 'aria-labelledby="keyboard-repair-process" data-service-editorial-panel', 'pages/ArabicCommercialPage.tsx', 'Arabic keyboard process section must use the shared editorial panel.');
 requireContains(arabicServicePage, 'aria-labelledby="macbook-screen-process" data-service-editorial-panel', 'pages/ArabicCommercialPage.tsx', 'Arabic MacBook screen process section must use the shared editorial panel.');

@@ -848,6 +848,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
           <section
             className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10"
             aria-labelledby="repair-process-heading"
+            data-service-editorial-panel
           >
             <h2 id="repair-process-heading" className="text-2xl font-bold mb-8 text-white">{entity.id === 'srv-liquid-damage'
                 ? 'Our Laptop Liquid-Damage Repair Process'
