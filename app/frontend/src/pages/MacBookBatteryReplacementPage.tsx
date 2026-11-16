@@ -15,6 +15,7 @@ import { KCROC_GRAPH } from '../data/graph';
 import { IMAGES } from '../constants/images';
 import { SEOEngine } from '../core/components/SEOEngine';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
+import './templates/ServiceTemplateLaptopLayout.css';
 
 const MODEL_CHOICES = [
   'MacBook Air M1 · A2337',
@@ -201,7 +202,7 @@ export default function MacBookBatteryReplacementPage() {
       <SchemaMarkup schema={serviceSchema} />
       <SchemaMarkup schema={faqSchema} />
 
-      <div className="min-h-screen bg-transparent pb-20 pt-8 text-white sm:pt-16 lg:pt-24">
+      <div data-service-layout="macbook-battery" className="min-h-screen bg-transparent pb-20 pt-8 text-white sm:pt-16 lg:pt-24">
         <div className="mx-auto max-w-7xl px-6">
           <nav aria-label="Breadcrumb" className="mb-7 text-sm text-slate-500">
             <Link to="/" className="hover:text-cyan-300">Home</Link>

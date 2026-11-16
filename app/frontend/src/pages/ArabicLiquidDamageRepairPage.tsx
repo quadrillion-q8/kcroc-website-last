@@ -313,7 +313,7 @@ export default function ArabicLiquidDamageRepairPage() {
     <>
       <SEOEngine entityId="page-ar-liquid-damage-repair" />
       <SchemaMarkup schema={schema} />
-      <div dir="rtl" lang="ar-KW" className="min-h-screen bg-transparent pb-20 text-slate-100">
+      <div dir="rtl" lang="ar-KW" data-service-layout="arabic-liquid-damage" className="min-h-screen bg-transparent pb-20 text-slate-100">
         <div className="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6 sm:pt-12">
           <nav aria-label="مسار التنقل" className="mb-7 flex flex-wrap items-center gap-2 text-sm text-slate-500">
             <Link to="/ar" className="transition hover:text-cyan-300">الرئيسية</Link>

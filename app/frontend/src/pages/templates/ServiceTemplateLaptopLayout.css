@@ -1,6 +1,6 @@
 /*
- * Laptop service-page presentation layer.
- * Scoped to the /laptop-repair-kuwait route through [data-service-layout].
+ * Shared service-page presentation layer.
+ * Scoped through [data-service-layout] on the English, Arabic and standalone service templates.
  * This file changes layout and visual styling only; page copy, headings,
  * links, metadata, structured data and canonical graph content remain untouched.
  */
@@ -752,6 +752,408 @@
     [aria-labelledby="repair-service-areas-heading"]
   ) {
     width: calc(100% - 1.25rem);
+    border-radius: 1.1rem;
+    padding-inline: 1rem !important;
+    padding-block: 1.5rem !important;
+  }
+}
+
+
+/* ==========================================================================
+   KCROC SERVICE PAGE DESIGN PARITY — ARABIC + STANDALONE PAGES
+   Reuse the laptop-service editorial rhythm without changing copy, routes,
+   pricing, schema or page-specific diagnostic content. Arabic pages retain
+   their native RTL direction; technical and safety sections stay dark.
+   ========================================================================== */
+
+/* Shared right-to-left service reading surfaces. Location pages do not receive
+   this attribute, so their separate local landing-page design is unaffected. */
+[data-service-layout="arabic"] section:is(
+  [aria-labelledby="arabic-local-highlights"],
+  [aria-labelledby="arabic-local"],
+  [aria-labelledby="arabic-areas"],
+  [aria-labelledby="arabic-guides"],
+  [aria-labelledby="arabic-faq"],
+  [aria-labelledby="arabic-cluster"],
+  [aria-labelledby="arabic-services"],
+  [aria-labelledby="macbook-screen-price"],
+  [aria-labelledby="macbook-screen-kuwait-pickup"],
+  [aria-labelledby="laptop-screen-price-transparency"],
+  [aria-labelledby="charging-port-price-guide"],
+  [aria-labelledby="battery-installed-price-heading"]
+) {
+  box-sizing: border-box;
+  max-width: 100%;
+  border: 1px solid #e3dace !important;
+  border-radius: 1.35rem;
+  background: #f4efe7 !important;
+  margin-block: clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 3vw, 2.75rem) !important;
+  color: #172022 !important;
+  box-shadow: 0 8px 28px rgba(18, 24, 27, 0.08);
+}
+
+[data-service-layout="arabic"] section:is(
+  [aria-labelledby="arabic-local-highlights"],
+  [aria-labelledby="arabic-local"],
+  [aria-labelledby="arabic-areas"],
+  [aria-labelledby="arabic-guides"],
+  [aria-labelledby="arabic-faq"],
+  [aria-labelledby="arabic-cluster"],
+  [aria-labelledby="arabic-services"],
+  [aria-labelledby="macbook-screen-price"],
+  [aria-labelledby="macbook-screen-kuwait-pickup"],
+  [aria-labelledby="laptop-screen-price-transparency"],
+  [aria-labelledby="charging-port-price-guide"],
+  [aria-labelledby="battery-installed-price-heading"]
+) :is(h2, h3, h4, th, strong) {
+  color: #172022 !important;
+}
+
+[data-service-layout="arabic"] section:is(
+  [aria-labelledby="arabic-local-highlights"],
+  [aria-labelledby="arabic-local"],
+  [aria-labelledby="arabic-areas"],
+  [aria-labelledby="arabic-guides"],
+  [aria-labelledby="arabic-faq"],
+  [aria-labelledby="arabic-cluster"],
+  [aria-labelledby="arabic-services"],
+  [aria-labelledby="macbook-screen-price"],
+  [aria-labelledby="macbook-screen-kuwait-pickup"],
+  [aria-labelledby="laptop-screen-price-transparency"],
+  [aria-labelledby="charging-port-price-guide"],
+  [aria-labelledby="battery-installed-price-heading"]
+) :is(p, li, td, summary, span, small, dd, dt) {
+  color: #566467 !important;
+}
+
+[data-service-layout="arabic"] section:is(
+  [aria-labelledby="arabic-local-highlights"],
+  [aria-labelledby="arabic-local"],
+  [aria-labelledby="arabic-areas"],
+  [aria-labelledby="arabic-guides"],
+  [aria-labelledby="arabic-faq"],
+  [aria-labelledby="arabic-cluster"],
+  [aria-labelledby="arabic-services"],
+  [aria-labelledby="macbook-screen-price"],
+  [aria-labelledby="macbook-screen-kuwait-pickup"],
+  [aria-labelledby="laptop-screen-price-transparency"],
+  [aria-labelledby="charging-port-price-guide"],
+  [aria-labelledby="battery-installed-price-heading"]
+) :is(.text-cyan-400, .text-cyan-300, .text-cyan-200, svg.text-cyan-400) {
+  color: #8f4f2c !important;
+}
+
+[data-service-layout="arabic"] section:is(
+  [aria-labelledby="arabic-local-highlights"],
+  [aria-labelledby="arabic-local"],
+  [aria-labelledby="arabic-areas"],
+  [aria-labelledby="arabic-guides"],
+  [aria-labelledby="arabic-faq"],
+  [aria-labelledby="arabic-cluster"],
+  [aria-labelledby="arabic-services"],
+  [aria-labelledby="macbook-screen-price"],
+  [aria-labelledby="macbook-screen-kuwait-pickup"],
+  [aria-labelledby="laptop-screen-price-transparency"],
+  [aria-labelledby="charging-port-price-guide"],
+  [aria-labelledby="battery-installed-price-heading"]
+) :is(article, details, .overflow-x-auto, [class*="bg-slate-900"], [class*="bg-slate-950"]) {
+  border-color: #e3dace !important;
+  background: #ffffff !important;
+  box-shadow: 0 3px 14px rgba(32, 28, 24, 0.045);
+}
+
+[data-service-layout="arabic"] section:is(
+  [aria-labelledby="arabic-local-highlights"],
+  [aria-labelledby="arabic-local"],
+  [aria-labelledby="arabic-areas"],
+  [aria-labelledby="arabic-guides"],
+  [aria-labelledby="arabic-faq"],
+  [aria-labelledby="arabic-cluster"],
+  [aria-labelledby="arabic-services"],
+  [aria-labelledby="macbook-screen-price"],
+  [aria-labelledby="macbook-screen-kuwait-pickup"],
+  [aria-labelledby="laptop-screen-price-transparency"],
+  [aria-labelledby="charging-port-price-guide"],
+  [aria-labelledby="battery-installed-price-heading"]
+) a:not([class*="bg-"]) {
+  color: #8f4f2c !important;
+  text-decoration-color: rgba(143, 79, 44, 0.35);
+}
+
+[data-service-layout="arabic"] section:is(
+  [aria-labelledby="arabic-local-highlights"],
+  [aria-labelledby="arabic-local"],
+  [aria-labelledby="arabic-areas"],
+  [aria-labelledby="arabic-guides"],
+  [aria-labelledby="arabic-faq"],
+  [aria-labelledby="arabic-cluster"],
+  [aria-labelledby="arabic-services"],
+  [aria-labelledby="macbook-screen-price"],
+  [aria-labelledby="macbook-screen-kuwait-pickup"],
+  [aria-labelledby="laptop-screen-price-transparency"],
+  [aria-labelledby="charging-port-price-guide"],
+  [aria-labelledby="battery-installed-price-heading"]
+) a:not([class*="bg-"]):hover {
+  color: #6e3a20 !important;
+}
+
+[data-service-layout="arabic"] section:is(
+  [aria-labelledby="macbook-screen-price"],
+  [aria-labelledby="laptop-screen-price-transparency"],
+  [aria-labelledby="charging-port-price-guide"],
+  [aria-labelledby="battery-installed-price-heading"]
+) table {
+  width: 100%;
+  background: #ffffff;
+  color: #344245;
+}
+
+[data-service-layout="arabic"] section:is(
+  [aria-labelledby="macbook-screen-price"],
+  [aria-labelledby="laptop-screen-price-transparency"],
+  [aria-labelledby="charging-port-price-guide"],
+  [aria-labelledby="battery-installed-price-heading"]
+) thead {
+  background: #ece4d9 !important;
+  color: #172022 !important;
+}
+
+[data-service-layout="arabic"] section:is(
+  [aria-labelledby="macbook-screen-price"],
+  [aria-labelledby="laptop-screen-price-transparency"],
+  [aria-labelledby="charging-port-price-guide"],
+  [aria-labelledby="battery-installed-price-heading"]
+) tbody tr:nth-child(even) {
+  background: #faf7f2 !important;
+}
+
+[data-service-layout="arabic"] section:is(
+  [aria-labelledby="macbook-screen-price"],
+  [aria-labelledby="laptop-screen-price-transparency"],
+  [aria-labelledby="charging-port-price-guide"],
+  [aria-labelledby="battery-installed-price-heading"]
+) :is(thead th, tbody th, tbody td) {
+  border-color: #e9e1d7 !important;
+  color: #344245 !important;
+}
+
+[data-service-layout="arabic"] section[aria-labelledby="arabic-faq"] details[open] {
+  border-color: #c9804d !important;
+  background: #fffaf4 !important;
+}
+
+[data-service-layout="arabic"] section:is(
+  [aria-labelledby="arabic-faq"],
+  [aria-labelledby="arabic-areas"],
+  [aria-labelledby="arabic-guides"],
+  [aria-labelledby="arabic-cluster"],
+  [aria-labelledby="arabic-services"]
+) a:focus-visible,
+[data-service-layout="arabic"] section[aria-labelledby="arabic-faq"] summary:focus-visible {
+  outline: 2px solid #8f4f2c !important;
+  outline-offset: 3px;
+}
+
+@media (max-width: 767px) {
+  [data-service-layout="arabic"] section:is(
+    [aria-labelledby="arabic-local-highlights"],
+    [aria-labelledby="arabic-local"],
+    [aria-labelledby="arabic-areas"],
+    [aria-labelledby="arabic-guides"],
+    [aria-labelledby="arabic-faq"],
+    [aria-labelledby="arabic-cluster"],
+    [aria-labelledby="arabic-services"],
+    [aria-labelledby="macbook-screen-price"],
+    [aria-labelledby="macbook-screen-kuwait-pickup"],
+    [aria-labelledby="laptop-screen-price-transparency"],
+    [aria-labelledby="charging-port-price-guide"],
+    [aria-labelledby="battery-installed-price-heading"]
+  ) {
+    border-radius: 1.1rem;
+    padding-inline: 1rem !important;
+    padding-block: 1.5rem !important;
+  }
+}
+
+/* Arabic liquid-damage service: preserve the emergency/safety guidance in its
+   original dark warning treatment; warm only price, pickup, FAQ and next-step
+   reading surfaces. */
+[data-service-layout="arabic-liquid-damage"] section:is(
+  [aria-labelledby="spill-pricing-heading"],
+  [aria-labelledby="spill-pickup-heading"],
+  [aria-labelledby="spill-related-heading"],
+  [aria-labelledby="spill-faq-heading"],
+  [aria-labelledby="spill-next-step-heading"]
+) {
+  box-sizing: border-box;
+  max-width: 100%;
+  border: 1px solid #e3dace !important;
+  border-radius: 1.35rem;
+  background: #f4efe7 !important;
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 3vw, 2.75rem) !important;
+  color: #172022 !important;
+  box-shadow: 0 8px 28px rgba(18, 24, 27, 0.08);
+}
+
+[data-service-layout="arabic-liquid-damage"] section:is(
+  [aria-labelledby="spill-pricing-heading"],
+  [aria-labelledby="spill-pickup-heading"],
+  [aria-labelledby="spill-related-heading"],
+  [aria-labelledby="spill-faq-heading"],
+  [aria-labelledby="spill-next-step-heading"]
+) :is(h2, h3, h4, th, strong) {
+  color: #172022 !important;
+}
+
+[data-service-layout="arabic-liquid-damage"] section:is(
+  [aria-labelledby="spill-pricing-heading"],
+  [aria-labelledby="spill-pickup-heading"],
+  [aria-labelledby="spill-related-heading"],
+  [aria-labelledby="spill-faq-heading"],
+  [aria-labelledby="spill-next-step-heading"]
+) :is(p, li, td, summary, span, small, dd, dt) {
+  color: #566467 !important;
+}
+
+[data-service-layout="arabic-liquid-damage"] section:is(
+  [aria-labelledby="spill-pricing-heading"],
+  [aria-labelledby="spill-pickup-heading"],
+  [aria-labelledby="spill-related-heading"],
+  [aria-labelledby="spill-faq-heading"],
+  [aria-labelledby="spill-next-step-heading"]
+) :is(.text-cyan-400, .text-cyan-300, .text-cyan-200, svg.text-cyan-400) {
+  color: #8f4f2c !important;
+}
+
+[data-service-layout="arabic-liquid-damage"] section:is(
+  [aria-labelledby="spill-pricing-heading"],
+  [aria-labelledby="spill-pickup-heading"],
+  [aria-labelledby="spill-related-heading"],
+  [aria-labelledby="spill-faq-heading"],
+  [aria-labelledby="spill-next-step-heading"]
+) :is(article, details, .overflow-x-auto, [class*="bg-slate-900"], [class*="bg-slate-950"]) {
+  border-color: #e3dace !important;
+  background: #ffffff !important;
+  box-shadow: 0 3px 14px rgba(32, 28, 24, 0.045);
+}
+
+[data-service-layout="arabic-liquid-damage"] section[aria-labelledby="spill-pricing-heading"] table {
+  background: #ffffff;
+  color: #344245;
+}
+
+[data-service-layout="arabic-liquid-damage"] section[aria-labelledby="spill-pricing-heading"] thead {
+  background: #ece4d9 !important;
+  color: #172022 !important;
+}
+
+[data-service-layout="arabic-liquid-damage"] section[aria-labelledby="spill-pricing-heading"] tbody tr:nth-child(even) {
+  background: #faf7f2 !important;
+}
+
+[data-service-layout="arabic-liquid-damage"] section[aria-labelledby="spill-pricing-heading"] :is(thead th, tbody th, tbody td) {
+  border-color: #e9e1d7 !important;
+  color: #344245 !important;
+}
+
+[data-service-layout="arabic-liquid-damage"] section[aria-labelledby="spill-faq-heading"] details[open] {
+  border-color: #c9804d !important;
+  background: #fffaf4 !important;
+}
+
+@media (max-width: 767px) {
+  [data-service-layout="arabic-liquid-damage"] section:is(
+    [aria-labelledby="spill-pricing-heading"],
+    [aria-labelledby="spill-pickup-heading"],
+    [aria-labelledby="spill-related-heading"],
+    [aria-labelledby="spill-faq-heading"],
+    [aria-labelledby="spill-next-step-heading"]
+  ) {
+    border-radius: 1.1rem;
+    padding-inline: 1rem !important;
+    padding-block: 1.5rem !important;
+  }
+}
+
+/* Standalone English MacBook battery page: match the service-page reading
+   panels while keeping the quote selector, model/diagnostic tables and
+   swollen-battery warning in their existing dark/attention states. */
+[data-service-layout="macbook-battery"] > div > section:is(
+  [aria-label="Installed price and quote contents"],
+  [aria-label="Battery package, charging diagnosis and optional thermal care"],
+  [aria-labelledby="identify-heading"],
+  [aria-labelledby="macbook-battery-faqs"],
+  [aria-labelledby="book-macbook-battery"]
+) {
+  box-sizing: border-box;
+  border: 1px solid #e3dace !important;
+  border-radius: 1.35rem;
+  background: #f4efe7 !important;
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 3vw, 2.75rem) !important;
+  color: #172022 !important;
+  box-shadow: 0 8px 28px rgba(18, 24, 27, 0.08);
+}
+
+[data-service-layout="macbook-battery"] > div > section:is(
+  [aria-label="Installed price and quote contents"],
+  [aria-label="Battery package, charging diagnosis and optional thermal care"],
+  [aria-labelledby="identify-heading"],
+  [aria-labelledby="macbook-battery-faqs"],
+  [aria-labelledby="book-macbook-battery"]
+) :is(h2, h3, h4, th, strong) {
+  color: #172022 !important;
+}
+
+[data-service-layout="macbook-battery"] > div > section:is(
+  [aria-label="Installed price and quote contents"],
+  [aria-label="Battery package, charging diagnosis and optional thermal care"],
+  [aria-labelledby="identify-heading"],
+  [aria-labelledby="macbook-battery-faqs"],
+  [aria-labelledby="book-macbook-battery"]
+) :is(p, li, td, summary, span, small, dd, dt) {
+  color: #566467 !important;
+}
+
+[data-service-layout="macbook-battery"] > div > section:is(
+  [aria-label="Installed price and quote contents"],
+  [aria-label="Battery package, charging diagnosis and optional thermal care"],
+  [aria-labelledby="identify-heading"],
+  [aria-labelledby="macbook-battery-faqs"],
+  [aria-labelledby="book-macbook-battery"]
+) :is(.text-cyan-400, .text-cyan-300, .text-cyan-200, svg.text-cyan-400) {
+  color: #8f4f2c !important;
+}
+
+[data-service-layout="macbook-battery"] > div > section:is(
+  [aria-label="Installed price and quote contents"],
+  [aria-label="Battery package, charging diagnosis and optional thermal care"],
+  [aria-labelledby="identify-heading"],
+  [aria-labelledby="macbook-battery-faqs"],
+  [aria-labelledby="book-macbook-battery"]
+) :is(article, details, .overflow-x-auto, [class*="bg-slate-900"], [class*="bg-slate-950"]) {
+  border-color: #e3dace !important;
+  background: #ffffff !important;
+  box-shadow: 0 3px 14px rgba(32, 28, 24, 0.045);
+}
+
+[data-service-layout="macbook-battery"] > div > section[aria-labelledby="macbook-battery-faqs"] details[open] {
+  border-color: #c9804d !important;
+  background: #fffaf4 !important;
+}
+
+[data-service-layout="macbook-battery"] > div > section[aria-labelledby="book-macbook-battery"] a:not([class*="bg-"]) {
+  color: #8f4f2c !important;
+}
+
+@media (max-width: 767px) {
+  [data-service-layout="macbook-battery"] > div > section:is(
+    [aria-label="Installed price and quote contents"],
+    [aria-label="Battery package, charging diagnosis and optional thermal care"],
+    [aria-labelledby="identify-heading"],
+    [aria-labelledby="macbook-battery-faqs"],
+    [aria-labelledby="book-macbook-battery"]
+  ) {
     border-radius: 1.1rem;
     padding-inline: 1rem !important;
     padding-block: 1.5rem !important;
