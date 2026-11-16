@@ -1,5 +1,6 @@
 // File: app/frontend/src/pages/BrandsIndex.tsx
 import React from 'react';
+import './KCROCEditorialRollout.css';
 import { Link } from 'react-router-dom';
 import { Cpu, ChevronRight, Tag } from 'lucide-react';
 import { KCROC_GRAPH } from '../data/graph';
@@ -12,7 +13,7 @@ export default function BrandsIndex() {
     <>
       <SEOEngine entityId="page-brands" />
 
-      <div className="min-h-screen bg-transparent text-white pt-32 pb-24">
+      <div className="min-h-screen bg-transparent text-white pt-32 pb-24" data-kcroc-rollout="brands-index">
         <div className="max-w-7xl mx-auto px-6">
           <header className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
@@ -27,7 +28,7 @@ export default function BrandsIndex() {
             </Link>
           </header>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-kcroc-editorial-panel="brand-index-cards">
             {brands.map((brand) => {
               const modelPreview = (brand.commonModels ?? []).slice(0, 3);
               const issuePreview = (brand.commonIssues ?? []).slice(0, 2);
