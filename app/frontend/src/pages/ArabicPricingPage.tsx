@@ -1,5 +1,6 @@
 import React from 'react';
 import './KCROCEditorialRollout.css';
+import './PricingPage.css';
 import { Link } from 'react-router-dom';
 import {
   BadgeCheck, CheckCircle2, Clock3, MessageCircle, ShieldCheck,
@@ -171,13 +172,13 @@ const schema = {
 
 export default function ArabicPricingPage() {
   return (
-    <div dir="rtl" lang="ar-KW" className="min-h-screen bg-transparent text-slate-100" data-kcroc-rollout="pricing-ar">
+    <div dir="rtl" lang="ar-KW" className="min-h-screen bg-transparent text-slate-100" data-kcroc-rollout="pricing-ar" data-pricing-page="ar">
       <SEOEngine entityId="page-ar-pricing" />
       <SchemaMarkup schema={schema} />
 
-      <section className="relative overflow-hidden border-b border-slate-800 px-4 pb-12 pt-7 sm:px-6 sm:pb-16 sm:pt-10">
+      <section data-pricing-hero className="relative overflow-hidden border-b border-slate-800 px-4 pb-12 pt-7 sm:px-6 sm:pb-16 sm:pt-10">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_35%_0%,rgba(6,182,212,0.13),transparent_45%)]" />
-        <div className="relative mx-auto max-w-6xl">
+        <div className="relative mx-auto max-w-6xl" data-pricing-hero-content>
           <nav aria-label="مسار التنقل" className="mb-7 text-sm text-slate-500">
             <Link to="/" className="hover:text-cyan-300">الرئيسية</Link>
             <span className="mx-2" aria-hidden="true">/</span>
@@ -236,7 +237,7 @@ export default function ArabicPricingPage() {
         </div>
       </section>
 
-      <section className="px-4 py-12 sm:px-6 sm:py-16" aria-labelledby="arabic-pricing-list" data-kcroc-editorial-panel="arabic-pricing-list">
+      <section className="px-4 py-12 sm:px-6 sm:py-16" aria-labelledby="arabic-pricing-list" data-kcroc-editorial-panel="arabic-pricing-list" data-pricing-explorer="ar">
         <div className="mx-auto max-w-6xl">
           <div className="mb-8 max-w-3xl">
             <p className="text-xs font-black uppercase tracking-widest text-cyan-400">قائمة الأسعار</p>
@@ -244,9 +245,9 @@ export default function ArabicPricingPage() {
             <p className="mt-3 leading-7 text-slate-400">الأسعار بالدينار الكويتي، وهي أسعار بداية أو نطاقات إرشادية لخدمات KCROC وليست متوسط أسعار السوق. السعر الدقيق يعتمد على موديل الجهاز والعطل والقطعة المتوافقة. عبارة «+ القطعة» تعني أن أجرة العمل لا تشمل ثمن القطعة.</p>
           </div>
 
-          <div className="mb-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="mb-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-4" data-pricing-highlights>
             {PRICE_HIGHLIGHTS.map((item) => (
-              <Link key={item.href} to={item.href} className="group rounded-2xl border border-cyan-500/20 bg-slate-900/70 p-5 transition hover:border-cyan-400/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+              <Link key={item.href} to={item.href} data-pricing-highlight className="group rounded-2xl border border-cyan-500/20 bg-slate-900/70 p-5 transition hover:border-cyan-400/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
                 <span className="block text-sm font-bold text-slate-300">{item.label}</span>
                 <span className="mt-2 block text-xl font-black text-cyan-300">{item.price}</span>
                 <span className="mt-2 block text-xs leading-6 text-slate-400">{item.note}</span>
@@ -257,8 +258,8 @@ export default function ArabicPricingPage() {
 
           <div className="grid items-start gap-5 lg:grid-cols-2">
             {PRICE_GROUPS.map((group) => (
-              <section key={group.title} className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/45">
-                <div className="border-b border-slate-800 bg-slate-900/70 p-5 sm:p-6">
+              <section key={group.title} data-pricing-category="ar" className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/45">
+                <div data-pricing-category-header className="border-b border-slate-800 bg-slate-900/70 p-5 sm:p-6">
                   <div className="flex items-start gap-3">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-cyan-500/20 bg-cyan-500/10 text-cyan-300"><Wrench className="h-5 w-5" aria-hidden="true" /></div>
                     <div>
@@ -269,10 +270,10 @@ export default function ArabicPricingPage() {
                 </div>
                 <ul className="divide-y divide-slate-800/80">
                   {group.items.map((item) => (
-                    <li key={item.name} className="p-5 sm:p-6">
+                    <li key={item.name} data-pricing-row-ar className="p-5 sm:p-6">
                       <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
                         <h4 className="font-bold leading-6 text-slate-100">{item.name}</h4>
-                        <p className="shrink-0 text-base font-black text-cyan-300 sm:text-left">{item.price}</p>
+                        <p data-pricing-value className="shrink-0 text-base font-black text-cyan-300 sm:text-left">{item.price}</p>
                       </div>
                       <p className="mt-2 text-sm leading-6 text-slate-400">{item.note}</p>
                       {PRICE_LINKS[item.name] && (
