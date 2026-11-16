@@ -74,6 +74,21 @@ const [arabicServicePage, arabicLiquidDamagePage, macbookBatteryPage] = await Pr
   read('pages/MacBookBatteryReplacementPage.tsx'),
 ]);
 
+const [faqPage, pricingPage, arabicPricingPage, brandsIndex, problemsIndex, servicesIndex, nearMePage, authorPage, pillarPage, privacyPolicyPage, termsPage, privacySecurityPage] = await Promise.all([
+  read('pages/FAQ.tsx'),
+  read('pages/Pricing.tsx'),
+  read('pages/ArabicPricingPage.tsx'),
+  read('pages/BrandsIndex.tsx'),
+  read('pages/ProblemsIndex.tsx'),
+  read('pages/Services.tsx'),
+  read('pages/NearMe.tsx'),
+  read('pages/AuthorImran.tsx'),
+  read('pages/PillarTemplate.tsx'),
+  read('pages/PrivacyPolicy.tsx'),
+  read('pages/TermsOfService.tsx'),
+  read('pages/PrivacySecurity.tsx'),
+]);
+
 const issues = [];
 
 // Check the foreground/background pairs used by the warm editorial surfaces.
@@ -249,6 +264,54 @@ requireContains(contactPage, 'onSubmit={handleSubmit}', 'pages/Contact.tsx', 'th
 requireContains(arabicContactPage, 'onSubmit={handleSubmit}', 'pages/ArabicContactPage.tsx', 'the Arabic contact form submission behavior must remain intact.');
 requireContains(aboutPage, 'data-kcroc-editorial-panel="about-story"', 'pages/About.tsx', 'the About story must use the shared editorial treatment.');
 requireContains(galleryPage, 'data-kcroc-editorial-panel="gallery-conversion"', 'pages/Gallery.tsx', 'the Gallery enquiry panel must use the shared editorial treatment.');
+
+// Secondary customer-page families now share the KCROC editorial system.
+for (const [content, rootMarker, file] of [
+  [faqPage, 'data-kcroc-rollout="faq"', 'pages/FAQ.tsx'],
+  [pricingPage, 'data-kcroc-rollout="pricing"', 'pages/Pricing.tsx'],
+  [arabicPricingPage, 'data-kcroc-rollout="pricing-ar"', 'pages/ArabicPricingPage.tsx'],
+  [brandsIndex, 'data-kcroc-rollout="brands-index"', 'pages/BrandsIndex.tsx'],
+  [problemsIndex, 'data-kcroc-rollout="problems-index"', 'pages/ProblemsIndex.tsx'],
+  [servicesIndex, 'data-kcroc-rollout="services-index"', 'pages/Services.tsx'],
+  [nearMePage, 'data-kcroc-rollout="near-me"', 'pages/NearMe.tsx'],
+  [authorPage, 'data-kcroc-rollout="author"', 'pages/AuthorImran.tsx'],
+  [pillarPage, 'data-kcroc-rollout="pillar-article"', 'pages/PillarTemplate.tsx'],
+  [privacyPolicyPage, 'data-kcroc-rollout="legal"', 'pages/PrivacyPolicy.tsx'],
+  [termsPage, 'data-kcroc-rollout="legal"', 'pages/TermsOfService.tsx'],
+  [privacySecurityPage, 'data-kcroc-rollout="privacy-security"', 'pages/PrivacySecurity.tsx'],
+]) requireContains(content, rootMarker, file, 'this secondary page family must opt into the shared KCROC UI.');
+
+for (const [content, panelMarker, file] of [
+  [faqPage, 'data-kcroc-editorial-panel="faq-answers"', 'pages/FAQ.tsx'],
+  [pricingPage, 'data-kcroc-editorial-panel="pricing-process"', 'pages/Pricing.tsx'],
+  [pricingPage, 'data-kcroc-editorial-panel="price-factors"', 'pages/Pricing.tsx'],
+  [pricingPage, 'data-kcroc-editorial-panel="customer-protection"', 'pages/Pricing.tsx'],
+  [pricingPage, 'data-kcroc-editorial-panel="pricing-faq"', 'pages/Pricing.tsx'],
+  [arabicPricingPage, 'data-kcroc-editorial-panel="arabic-pricing-list"', 'pages/ArabicPricingPage.tsx'],
+  [arabicPricingPage, 'data-kcroc-editorial-panel="arabic-pricing-faq"', 'pages/ArabicPricingPage.tsx'],
+  [brandsIndex, 'data-kcroc-editorial-panel="brand-index-cards"', 'pages/BrandsIndex.tsx'],
+  [problemsIndex, 'data-kcroc-editorial-panel="problem-index-cards"', 'pages/ProblemsIndex.tsx'],
+  [servicesIndex, 'data-kcroc-editorial-panel="service-index-cards"', 'pages/Services.tsx'],
+  [nearMePage, 'data-kcroc-editorial-panel="near-me-arabic"', 'pages/NearMe.tsx'],
+  [authorPage, 'data-kcroc-editorial-panel="author-articles"', 'pages/AuthorImran.tsx'],
+  [pillarPage, 'data-kcroc-editorial-panel="pillar-body"', 'pages/PillarTemplate.tsx'],
+  [privacyPolicyPage, 'data-kcroc-editorial-panel="legal-body"', 'pages/PrivacyPolicy.tsx'],
+  [termsPage, 'data-kcroc-editorial-panel="legal-body"', 'pages/TermsOfService.tsx'],
+  [privacySecurityPage, 'data-kcroc-editorial-panel="security-related-services"', 'pages/PrivacySecurity.tsx'],
+]) requireContains(content, panelMarker, file, 'the relevant content section must use the shared editorial surface.');
+
+requireContains(faqPage, 'toggleFaq(faq.id, e)', 'pages/FAQ.tsx', 'FAQ accordions must retain their open-state interaction.');
+requireContains(faqPage, 'copyToClipboard(faq.id, e)', 'pages/FAQ.tsx', 'FAQ direct-link copying must remain available.');
+requireContains(pricingPage, 'setDeviceFilter(filter.value)', 'pages/Pricing.tsx', 'device pricing filters must remain functional.');
+requireContains(pricingPage, 'setSymptomFilter(filter.value)', 'pages/Pricing.tsx', 'symptom pricing filters must remain functional.');
+requireContains(pricingPage, 'data-pricing-table={category.anchor}', 'pages/Pricing.tsx', 'the price matrix must remain available in the page.');
+requireContains(problemsIndex, "high: 'text-red-400", 'pages/ProblemsIndex.tsx', 'high urgency must keep its red status treatment.');
+requireContains(problemsIndex, "medium: 'text-amber-400", 'pages/ProblemsIndex.tsx', 'medium urgency must keep its amber status treatment.');
+requireContains(nearMePage, 'one strong hub', 'pages/NearMe.tsx', 'the near-me page must remain one consolidated local-intent hub.');
+requireContains(privacyPolicyPage, 'onClick={openConsentPreferences}', 'pages/PrivacyPolicy.tsx', 'privacy consent settings must remain interactive.');
+requireContains(rolloutCss, '[data-kcroc-rollout="pricing"] [data-kcroc-editorial-panel]', 'pages/KCROCEditorialRollout.css', 'English pricing explanations must use the warm editorial palette.');
+requireContains(rolloutCss, '[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel]', 'pages/KCROCEditorialRollout.css', 'Arabic pricing explanations must use the warm editorial palette.');
+requireContains(rolloutCss, '[data-kcroc-rollout="privacy-security"]', 'pages/KCROCEditorialRollout.css', 'security and privacy pages must scope only their selected editorial sections.');
 
 if (issues.length) {
   console.error('❌ Global UI/UX regression checks failed:');
