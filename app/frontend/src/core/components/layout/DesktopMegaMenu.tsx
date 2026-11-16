@@ -362,15 +362,15 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
       className={`kcroc-mega-menu-scroll max-h-full overflow-x-hidden overflow-y-auto overscroll-contain transition-all duration-200 motion-reduce:transition-none origin-top ${isOpen ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-[0.985] pointer-events-none'}`}
     >
       <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_24px_70px_rgba(15,23,42,0.18)]">
-        <div className="pointer-events-none absolute -top-24 -right-16 h-64 w-64 rounded-full bg-blue-100/70 blur-3xl" />
+        <div className="pointer-events-none absolute -top-24 -right-16 h-64 w-64 rounded-full bg-[#f3e3d5]/70 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-28 -left-16 h-72 w-72 rounded-full bg-slate-100/70 blur-3xl" />
 
         <div className="relative border-b border-slate-200 px-5 py-4 lg:px-6 lg:py-5">
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div className="min-w-0 max-w-3xl">
               <div className="mb-2 flex flex-wrap items-center gap-2">
-                <span className="text-[11px] font-extrabold uppercase tracking-[0.16em] text-blue-700">{meta.eyebrow}</span>
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-100 bg-blue-50 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.14em] text-blue-700">
+                <span className="text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#8f4f2c]">{meta.eyebrow}</span>
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-[#ead8c7] bg-[#fbf5ef] px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.14em] text-[#8f4f2c]">
                   <Sparkles className="h-3 w-3" aria-hidden="true" />
                   Precision repair
                 </span>
@@ -388,7 +388,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                 trackConversion('cta_click', { cta_name: 'mega_menu_view_all', button_position: 'header' });
                 onClose();
               }}
-              className="group inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-extrabold text-slate-800 transition-all hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+              className="group inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-extrabold text-slate-800 transition-all hover:border-[#d7a982] hover:bg-[#fbf5ef] hover:text-[#8f4f2c] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8f4f2c]"
             >
               {allLabel}
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
@@ -419,15 +419,15 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                         trackConversion('cta_click', { cta_name: 'mega_menu_card', button_position: 'header' });
                         onClose();
                       }}
-                      className="group flex min-h-[100px] items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 shadow-sm transition-[transform,border-color,background-color] hover:-translate-y-px hover:border-blue-200 hover:bg-blue-50/60 motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                      className="group flex min-h-[100px] items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 shadow-sm transition-[transform,border-color,background-color] hover:-translate-y-px hover:border-[#e4c7ae] hover:bg-[#fbf5ef]/70 motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8f4f2c]"
                     >
-                      <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-700 transition-colors group-hover:bg-blue-100">
+                      <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#fbf5ef] text-[#8f4f2c] transition-colors group-hover:bg-[#f3e3d5]">
                         <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
                       </div>
                       <div className="min-w-0 flex-1">
                         <div className="flex items-start justify-between gap-2">
-                          <p className="pr-2 text-sm font-bold leading-5 text-slate-800 transition-colors group-hover:text-blue-700">{entity.title}</p>
-                          <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-slate-400 transition-transform group-hover:translate-x-0.5 group-hover:text-blue-700" aria-hidden="true" />
+                          <p className="pr-2 text-sm font-bold leading-5 text-slate-800 transition-colors group-hover:text-[#8f4f2c]">{entity.title}</p>
+                          <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-slate-400 transition-transform group-hover:translate-x-0.5 group-hover:text-[#8f4f2c]" aria-hidden="true" />
                         </div>
                         <p className="mt-1 text-xs leading-5 text-slate-600">{truncate(entity.description, 94)}</p>
                       </div>
@@ -443,7 +443,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                   <p id={`${config.id}-areas`} className="text-xs font-black uppercase tracking-[0.16em] text-slate-400">{config.sections[0]?.title ?? 'Service areas'}</p>
                   <p className="mt-1 text-xs text-slate-600">Pickup and delivery coverage across Kuwait.</p>
                 </div>
-                <MapPin className="h-4 w-4 text-blue-700" aria-hidden="true" />
+                <MapPin className="h-4 w-4 text-[#8f4f2c]" aria-hidden="true" />
               </div>
               <div className="grid max-h-[350px] grid-cols-2 gap-2 overflow-y-auto pr-1">
                 {(config.sections[0]?.items ?? []).map((entity) => (
@@ -457,10 +457,10 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                       trackConversion('cta_click', { cta_name: 'mega_menu_area', button_position: 'header' });
                       onClose();
                     }}
-                    className="group flex min-h-11 items-center justify-between gap-2 rounded-xl border border-transparent px-3 py-2.5 text-xs font-semibold text-slate-700 transition-colors hover:border-slate-200 hover:bg-white hover:text-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                    className="group flex min-h-11 items-center justify-between gap-2 rounded-xl border border-transparent px-3 py-2.5 text-xs font-semibold text-slate-700 transition-colors hover:border-slate-200 hover:bg-white hover:text-[#8f4f2c] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8f4f2c]"
                   >
                     <span className="truncate">{entity.title}</span>
-                    <ChevronRight className="h-3.5 w-3.5 shrink-0 text-slate-700 transition-transform group-hover:translate-x-0.5 group-hover:text-blue-700" aria-hidden="true" />
+                    <ChevronRight className="h-3.5 w-3.5 shrink-0 text-slate-700 transition-transform group-hover:translate-x-0.5 group-hover:text-[#8f4f2c]" aria-hidden="true" />
                   </Link>
                 ))}
               </div>
@@ -492,15 +492,15 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                           trackConversion('cta_click', { cta_name: 'mega_menu_featured', button_position: 'header' });
                           onClose();
                         }}
-                        className="group flex min-h-[104px] items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 shadow-sm transition-[transform,border-color,background-color] hover:-translate-y-px hover:border-blue-200 hover:bg-blue-50/60 motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                        className="group flex min-h-[104px] items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 shadow-sm transition-[transform,border-color,background-color] hover:-translate-y-px hover:border-[#e4c7ae] hover:bg-[#fbf5ef]/70 motion-reduce:transition-none motion-reduce:hover:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8f4f2c]"
                       >
-                        <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-700 transition-colors group-hover:bg-blue-100">
+                        <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#fbf5ef] text-[#8f4f2c] transition-colors group-hover:bg-[#f3e3d5]">
                           <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
                         </div>
                         <div className="min-w-0 flex-1">
                           <div className="flex items-start justify-between gap-2">
-                            <p className="pr-2 text-sm font-bold leading-5 text-slate-800 transition-colors group-hover:text-blue-700">{entity.title}</p>
-                            <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-slate-400 transition-transform group-hover:translate-x-0.5 group-hover:text-blue-700" aria-hidden="true" />
+                            <p className="pr-2 text-sm font-bold leading-5 text-slate-800 transition-colors group-hover:text-[#8f4f2c]">{entity.title}</p>
+                            <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-slate-400 transition-transform group-hover:translate-x-0.5 group-hover:text-[#8f4f2c]" aria-hidden="true" />
                           </div>
                           <p className="mt-1.5 line-clamp-2 text-xs leading-5 text-slate-600">{truncate(entity.description, 110)}</p>
                         </div>
@@ -534,11 +534,11 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                           trackConversion('cta_click', { cta_name: isIndex ? 'mega_menu_index' : 'mega_menu_link', button_position: 'header' });
                           onClose();
                         }}
-                        className={`group flex min-h-11 items-center gap-2.5 rounded-xl px-3 py-2.5 text-xs font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${isIndex ? 'border border-blue-100 bg-blue-50 text-blue-800 hover:border-blue-200 hover:bg-blue-100' : 'border border-transparent text-slate-700 hover:border-slate-200 hover:bg-slate-50 hover:text-blue-700'}`}
+                        className={`group flex min-h-11 items-center gap-2.5 rounded-xl px-3 py-2.5 text-xs font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8f4f2c] ${isIndex ? 'border border-[#ead8c7] bg-[#fbf5ef] text-[#633b26] hover:border-[#e4c7ae] hover:bg-[#f3e3d5]' : 'border border-transparent text-slate-700 hover:border-slate-200 hover:bg-slate-50 hover:text-[#8f4f2c]'}`}
                       >
-                        <Icon className={`h-3.5 w-3.5 shrink-0 ${isIndex ? 'text-blue-700' : 'text-slate-400 group-hover:text-blue-700'}`} aria-hidden="true" />
+                        <Icon className={`h-3.5 w-3.5 shrink-0 ${isIndex ? 'text-[#8f4f2c]' : 'text-slate-400 group-hover:text-[#8f4f2c]'}`} aria-hidden="true" />
                         <span className="min-w-0 flex-1 truncate">{entity.title}</span>
-                        <ChevronRight className="h-3.5 w-3.5 shrink-0 text-slate-700 transition-transform group-hover:translate-x-0.5 group-hover:text-blue-700" aria-hidden="true" />
+                        <ChevronRight className="h-3.5 w-3.5 shrink-0 text-slate-700 transition-transform group-hover:translate-x-0.5 group-hover:text-[#8f4f2c]" aria-hidden="true" />
                       </Link>
                     );
                   })}
@@ -550,7 +550,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
 
         <div className="relative flex flex-col gap-2.5 border-t border-slate-200 bg-slate-50 px-4 py-3.5 sm:flex-row sm:items-center sm:justify-between lg:px-5">
           <div className="flex items-start gap-3">
-            <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-blue-100 bg-blue-50 text-blue-700">
+            <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#ead8c7] bg-[#fbf5ef] text-[#8f4f2c]">
               <MessageCircle className="h-4 w-4" aria-hidden="true" />
             </div>
             <div>
