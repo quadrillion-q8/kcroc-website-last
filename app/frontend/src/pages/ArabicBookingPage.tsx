@@ -1,5 +1,6 @@
 // File: app/frontend/src/pages/ArabicBookingPage.tsx
 import React, { useRef, useState } from 'react';
+import './KCROCEditorialRollout.css';
 import { Clock, MapPin, MessageCircle, ShieldCheck, Truck } from 'lucide-react';
 import { SEOEngine } from '../core/components/SEOEngine';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
@@ -71,7 +72,7 @@ export default function ArabicBookingPage() {
   };
 
   return (
-    <div dir="rtl" lang="ar-KW" className="w-full min-h-screen bg-transparent font-sans text-slate-100 pb-16 pt-24">
+    <div dir="rtl" lang="ar-KW" className="w-full min-h-screen bg-transparent font-sans text-slate-100 pb-16 pt-24" data-kcroc-rollout="booking-ar">
       <SEOEngine entityId="page-ar-booking" />
       <SchemaMarkup schema={ARABIC_BOOKING_SCHEMA} />
 
