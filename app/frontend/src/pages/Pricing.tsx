@@ -202,8 +202,8 @@ function TrustItem({
 }) {
   return (
     <div className="flex items-start gap-3">
-      <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-cyan-500/20 bg-cyan-500/10">
-        <Icon className="h-4 w-4 text-cyan-400" aria-hidden="true" />
+      <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[#e3dace] bg-[#f4e6da]">
+        <Icon className="h-4 w-4 text-[#8f4f2c]" aria-hidden="true" />
       </div>
 
       <div>
@@ -448,276 +448,46 @@ export default function Pricing() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────────────
-          TRUST PROMISE
+          CUSTOMER TRUST — ONE CONSOLIDATED SECTION
       ───────────────────────────────────────────────────────────────────── */}
 
-      <section data-kcroc-editorial-panel="pricing-trust" className="px-4 pb-12 sm:px-6 sm:pb-16">
-        <div data-pricing-card="trust-promise" className="mx-auto max-w-6xl overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/45 shadow-2xl shadow-black/20 backdrop-blur-xl">
-          <div className="border-b border-slate-800 bg-brand-dark/50 px-5 py-5 sm:px-8">
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-emerald-500/20 bg-emerald-500/10">
-                <ShieldCheck
-                  className="h-5 w-5 text-emerald-400"
-                  aria-hidden="true"
-                />
-              </div>
-
-              <div>
-                <h2 className="text-base font-black text-white sm:text-lg">
-                  The KCROC Pricing Promise
-                </h2>
-                <p className="text-xs text-slate-500 sm:text-sm">
-                  Diagnose first. Quote second. Repair only with your approval.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid gap-6 p-5 sm:grid-cols-2 sm:p-8 lg:grid-cols-4">
-            <TrustItem
-              icon={Eye}
-              title="No Surprise Bill"
-              description="You receive the repair quote before repair work begins."
-            />
-
-            <TrustItem
-              icon={ClipboardCheck}
-              title="Your Approval Comes First"
-              description="You decide whether the quoted repair makes sense."
-            />
-
-            <TrustItem
-              icon={Scale}
-              title="Repair-or-Replace Advice"
-              description="The goal is to make the right financial decision for your device."
-            />
-
-            <TrustItem
-              icon={BadgeCheck}
-              title="Warranty Included"
-              description="Approved repairs are backed by the stated repair warranty."
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────────────
-          HOW PRICING WORKS
-      ───────────────────────────────────────────────────────────────────── */}
-
-      <section
-        aria-labelledby="pricing-process-heading" data-kcroc-editorial-panel="pricing-process"
-        className="px-4 pb-16 sm:px-6 sm:pb-24"
-      >
+      <section data-kcroc-editorial-panel="pricing-trust" className="px-4 py-14 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-6xl">
-          <div className="max-w-2xl">
-            <Badge className="mb-4 border border-blue-500/20 bg-blue-500/10 px-3 py-1.5 text-[10px] uppercase tracking-widest text-blue-400">
-              Simple process
+          <div className="mb-7 max-w-3xl">
+            <Badge className="mb-3 border border-amber-500/20 bg-amber-500/10 px-3 py-1.5 text-[10px] uppercase tracking-widest text-amber-700">
+              Customer protection
             </Badge>
-
-            <h2
-              id="pricing-process-heading"
-              className="text-3xl font-black tracking-tight text-white sm:text-4xl"
-            >
-              How your repair price is determined
+            <h2 id="pricing-trust-heading" className="text-2xl font-black tracking-tight text-white sm:text-3xl">
+              Clear terms before paid work begins
             </h2>
-
-            <p className="mt-4 text-sm leading-7 text-slate-400 sm:text-base">
-              Online pricing is useful for setting expectations. Your actual
-              quotation is based on the specific machine and fault—not a guess.
+            <p className="mt-3 text-sm leading-7 text-slate-400 sm:text-base">
+              We diagnose the reported fault, explain whether repair or replacement makes sense, and confirm the scope and total price. You decide whether to proceed; paid repair work starts only after your approval.
             </p>
           </div>
 
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                number: '01',
-                title: 'Tell us the problem',
-                desc: 'Send your device model and symptoms on WhatsApp.',
-                icon: MessageCircle,
-              },
-              {
-                number: '02',
-                title: 'Free diagnosis',
-                desc: 'We inspect the machine and identify the fault.',
-                icon: Search,
-              },
-              {
-                number: '03',
-                title: 'Fixed quotation',
-                desc: 'You receive the repair price before work begins.',
-                icon: FileCheck2,
-              },
-              {
-                number: '04',
-                title: 'Approve or decline',
-                desc: 'Repair starts only when you choose to proceed.',
-                icon: Check,
-              },
-            ].map((step) => {
-              const Icon = step.icon;
-
-              return (
-                <div
-                  key={step.number}
-                  className="relative rounded-2xl border border-slate-800 bg-slate-900/35 p-5"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-black tracking-widest text-cyan-500">
-                      {step.number}
-                    </span>
-
-                    <Icon
-                      className="h-5 w-5 text-slate-600"
-                      aria-hidden="true"
-                    />
-                  </div>
-
-                  <h3 className="mt-6 text-sm font-black text-white">
-                    {step.title}
-                  </h3>
-
-                  <p className="mt-2 text-xs leading-6 text-slate-500">
-                    {step.desc}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────────────
-          IMPORTANT PRICING NOTE
-      ───────────────────────────────────────────────────────────────────── */}
-
-      <section data-kcroc-editorial-panel="pricing-guidance" className="px-4 pb-12 sm:px-6 sm:pb-16">
-        <div data-pricing-card="pricing-guidance" className="mx-auto max-w-6xl rounded-3xl border border-cyan-500/15 bg-cyan-950/15 p-5 sm:p-8">
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-cyan-500/20 bg-cyan-500/10">
-              <ShieldAlert
-                className="h-5 w-5 text-cyan-400"
-                aria-hidden="true"
+          <div data-pricing-card="trust-promise" className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-7">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              <TrustItem
+                icon={Search}
+                title="Free initial diagnosis"
+                description="The initial diagnostic assessment is free and carries no obligation to proceed with a repair."
+              />
+              <TrustItem
+                icon={FileCheck2}
+                title="Written quote before work"
+                description="We explain the fault, parts and labour, then confirm the price before paid repair work begins."
+              />
+              <TrustItem
+                icon={ShieldCheck}
+                title="No Fix, No Fee"
+                description="Where a device is catastrophically damaged and genuinely beyond economical repair under the stated policy, no labour or diagnostic fee is charged."
+              />
+              <TrustItem
+                icon={BadgeCheck}
+                title="30-day parts & labour warranty"
+                description="Covered completed repairs carry the stated 30-day warranty on parts and workmanship, subject to confirmed repair terms."
               />
             </div>
-
-            <div>
-              <h2 className="text-lg font-black text-white sm:text-xl">
-                How to read these prices
-              </h2>
-
-              <p className="mt-2 text-sm leading-7 text-slate-300">
-                Prices below are starting rates or service ranges. The final
-                price depends on the exact device, fault, repair complexity and
-                part availability. For screen, battery and keyboard replacements,
-                the amount marked as labor plus a part does not include that component.
-              </p>
-
-              <p className="mt-3 text-sm leading-7 text-slate-300">
-                <strong className="text-white">
-                  You receive a fixed, no-obligation quotation after diagnosis
-                  and before repair begins.
-                </strong>{' '}
-                You are never required to approve a repair simply because the
-                device has been diagnosed.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────────────
-          WHAT AFFECTS PRICE
-      ───────────────────────────────────────────────────────────────────── */}
-
-      <section
-        aria-labelledby="price-factors-heading" data-kcroc-editorial-panel="price-factors"
-        className="border-y px-4 py-16 sm:px-6 sm:py-20"
-      >
-        <div className="mx-auto max-w-6xl">
-          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-            <div>
-              <Badge className="mb-4 border border-amber-500/20 bg-amber-500/10 px-3 py-1.5 text-[10px] uppercase tracking-widest text-amber-400">
-                No guesswork
-              </Badge>
-
-              <h2
-                id="price-factors-heading"
-                className="text-3xl font-black tracking-tight text-white sm:text-4xl"
-              >
-                What determines your final price?
-              </h2>
-
-              <p className="mt-4 text-sm leading-7 text-slate-400 sm:text-base">
-                Two devices can show the same symptom but require completely
-                different repairs. That's why we diagnose before giving the
-                final quotation.
-              </p>
-            </div>
-
-            <div className="grid gap-3 sm:grid-cols-2">
-              {[
-                {
-                  title: 'Device model',
-                  desc: 'Different machines use different components and construction methods.',
-                },
-                {
-                  title: 'Actual fault',
-                  desc: 'A charging problem may be a port, cable, fuse, IC or board-level fault.',
-                },
-                {
-                  title: 'Required part',
-                  desc: 'Part prices can vary substantially between models.',
-                },
-                {
-                  title: 'Repair complexity',
-                  desc: 'Component-level repairs range from straightforward to advanced board work.',
-                },
-                {
-                  title: 'Screen specifications',
-                  desc: 'Panel size, resolution, refresh rate and panel type can change replacement cost.',
-                },
-                {
-                  title: 'Part availability',
-                  desc: 'Availability can affect the final component price and repair route.',
-                },
-              ].map((factor) => (
-                <div
-                  key={factor.title}
-                  className="rounded-2xl border border-slate-800 bg-slate-900/45 p-5"
-                >
-                  <div className="flex items-center gap-2">
-                    <Sparkles
-                      className="h-4 w-4 text-cyan-400"
-                      aria-hidden="true"
-                    />
-                    <h3 className="text-sm font-black text-white">
-                      {factor.title}
-                    </h3>
-                  </div>
-
-                  <p className="mt-2 text-xs leading-6 text-slate-500">
-                    {factor.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────────────
-          CUSTOMER PROTECTION
-      ───────────────────────────────────────────────────────────────────── */}
-
-      <section aria-labelledby="customer-protection-heading" data-kcroc-editorial-panel="customer-protection" className="px-4 py-16 sm:px-6 sm:py-20">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-8 max-w-3xl"><Badge className="mb-4 border border-cyan-500/20 bg-cyan-500/10 px-3 py-1.5 text-[10px] uppercase tracking-widest text-cyan-400">Customer protection</Badge><h2 id="customer-protection-heading" className="text-3xl font-black tracking-tight text-white sm:text-4xl">Four clear commitments before you approve a repair</h2><p className="mt-4 text-sm leading-7 text-slate-400 sm:text-base">We diagnose the actual fault, explain whether repair or replacement is sensible, and let you decide. Paid work starts only after you approve the quoted scope and total.</p></div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/45 p-5 sm:p-6"><Search className="h-6 w-6 text-cyan-400" aria-hidden="true" /><h3 className="mt-4 text-sm font-black text-white">Free initial diagnosis</h3><p className="mt-2 text-xs leading-6 text-slate-400">The initial diagnostic assessment is free and carries no obligation to proceed with a repair.</p></div>
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/45 p-5 sm:p-6"><FileCheck2 className="h-6 w-6 text-cyan-400" aria-hidden="true" /><h3 className="mt-4 text-sm font-black text-white">Written quote before work</h3><p className="mt-2 text-xs leading-6 text-slate-400">We explain the fault, parts and labour, then confirm the price before paid repair work begins.</p></div>
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/45 p-5 sm:p-6"><ShieldCheck className="h-6 w-6 text-emerald-400" aria-hidden="true" /><h3 className="mt-4 text-sm font-black text-white">No Fix, No Fee</h3><p className="mt-2 text-xs leading-6 text-slate-400">Where a device is catastrophically damaged and genuinely beyond economical repair under the stated policy, no labour or diagnostic fee is charged.</p></div>
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/45 p-5 sm:p-6"><BadgeCheck className="h-6 w-6 text-cyan-400" aria-hidden="true" /><h3 className="mt-4 text-sm font-black text-white">30-day parts &amp; labour warranty</h3><p className="mt-2 text-xs leading-6 text-slate-400">Covered completed repairs carry the stated 30-day warranty on parts and workmanship, subject to confirmed repair terms.</p></div>
           </div>
         </div>
       </section>
@@ -775,35 +545,6 @@ export default function Pricing() {
                 </a>
               </Button>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Commercial repair paths */}
-      <section className="mx-auto max-w-6xl px-4 pb-10 sm:px-6" aria-labelledby="commercial-pricing-paths" data-kcroc-editorial-panel="commercial-pricing-paths">
-        <div data-pricing-card="commercial-paths" className="rounded-3xl border border-slate-800 bg-slate-900/45 p-6 sm:p-8">
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-400">Choose by repair need</p>
-          <h2 id="commercial-pricing-paths" className="mt-2 text-2xl font-black text-white sm:text-3xl">Laptop, gaming and specialist repair pricing</h2>
-          <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-400">
-            Pricing gives the starting point. The service pages explain what is actually repaired, what changes the quote and how pickup works.
-          </p>
-          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            <Link to="/laptop-repair-kuwait" className="rounded-2xl border border-slate-800 bg-brand-dark/60 p-4 transition-colors hover:border-cyan-500/30">
-              <span className="font-bold text-white">Laptop Repair Kuwait</span>
-              <span className="mt-1 block text-xs leading-5 text-slate-400">Screens, hinges, charging, batteries and motherboards.</span>
-            </Link>
-            <Link to="/gaming-pc-repair-kuwait" className="rounded-2xl border border-slate-800 bg-brand-dark/60 p-4 transition-colors hover:border-cyan-500/30">
-              <span className="font-bold text-white">Gaming PC Repair Kuwait</span>
-              <span className="mt-1 block text-xs leading-5 text-slate-400">GPU, thermal, VRM, BIOS/VBIOS and cooling diagnosis.</span>
-            </Link>
-            <Link to="/dell-laptop-repair-kuwait" className="rounded-2xl border border-slate-800 bg-brand-dark/60 p-4 transition-colors hover:border-cyan-500/30">
-              <span className="font-bold text-white">Dell Laptop Repair</span>
-              <span className="mt-1 block text-xs leading-5 text-slate-400">Inspiron, Latitude, XPS, G-series and Alienware.</span>
-            </Link>
-            <Link to="/hp-laptop-repair-kuwait" className="rounded-2xl border border-slate-800 bg-brand-dark/60 p-4 transition-colors hover:border-cyan-500/30">
-              <span className="font-bold text-white">HP Laptop Repair</span>
-              <span className="mt-1 block text-xs leading-5 text-slate-400">Pavilion, EliteBook, ProBook, Envy, OMEN and Victus.</span>
-            </Link>
           </div>
         </div>
       </section>
