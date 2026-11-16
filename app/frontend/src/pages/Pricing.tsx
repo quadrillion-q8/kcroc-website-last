@@ -430,7 +430,7 @@ export default function Pricing() {
       ───────────────────────────────────────────────────────────────────── */}
 
       <section
-        aria-labelledby="pricing-process-heading"
+        aria-labelledby="pricing-process-heading" data-kcroc-editorial-panel="pricing-process"
         className="px-4 pb-16 sm:px-6 sm:pb-24"
       >
         <div className="mx-auto max-w-6xl">
@@ -516,7 +516,7 @@ export default function Pricing() {
       ───────────────────────────────────────────────────────────────────── */}
 
       <section className="px-4 pb-12 sm:px-6 sm:pb-16">
-        <div className="mx-auto max-w-6xl rounded-3xl border border-cyan-500/15 bg-cyan-950/15 p-5 sm:p-8">
+        <div className="mx-auto max-w-6xl rounded-3xl border border-cyan-500/15 bg-cyan-950/15 p-5 sm:p-8" data-kcroc-editorial-panel="pricing-guidance">
           <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-cyan-500/20 bg-cyan-500/10">
               <ShieldAlert
@@ -629,7 +629,7 @@ export default function Pricing() {
       ───────────────────────────────────────────────────────────────────── */}
 
       <section
-        aria-labelledby="price-factors-heading"
+        aria-labelledby="price-factors-heading" data-kcroc-editorial-panel="price-factors"
         className="border-y border-slate-800/70 bg-brand-dark/35 px-4 py-16 sm:px-6 sm:py-20"
       >
         <div className="mx-auto max-w-6xl">
@@ -777,7 +777,7 @@ export default function Pricing() {
       </section>
 
       {/* Commercial repair paths */}
-      <section className="mx-auto max-w-6xl px-4 pb-10 sm:px-6" aria-labelledby="commercial-pricing-paths">
+      <section className="mx-auto max-w-6xl px-4 pb-10 sm:px-6" aria-labelledby="commercial-pricing-paths" data-kcroc-editorial-panel="commercial-pricing-paths">
         <div className="rounded-3xl border border-slate-800 bg-slate-900/45 p-6 sm:p-8">
           <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-400">Choose by repair need</p>
           <h2 id="commercial-pricing-paths" className="mt-2 text-2xl font-black text-white sm:text-3xl">Laptop, gaming and specialist repair pricing</h2>
@@ -826,7 +826,7 @@ export default function Pricing() {
       ───────────────────────────────────────────────────────────────────── */}
 
       <section
-        aria-labelledby="services-heading"
+        aria-labelledby="services-heading" data-kcroc-editorial-panel="pricing-services"
         className="border-t border-slate-800/70 px-4 py-16 sm:px-6 sm:py-20"
       >
         <div className="mx-auto max-w-6xl">
