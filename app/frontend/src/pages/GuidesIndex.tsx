@@ -2,6 +2,7 @@
 // The guide index derives its content metadata from KCROC_GRAPH + BLOG_POSTS
 // so the sitemap, navigation and index cannot drift into separate inventories.
 import React from 'react';
+import './KCROCEditorialRollout.css';
 import { Link } from 'react-router-dom';
 import { BatteryWarning, Cpu, HardDrive, Gamepad2, Shield, Power, Settings2, ChevronRight, MonitorUp, Wifi, Globe2, RefreshCcw } from 'lucide-react';
 import { SEOEngine } from '../core/components/SEOEngine';
@@ -103,7 +104,7 @@ export default function GuidesIndex() {
     <>
       <SEOEngine entityId="page-guides" />
 
-      <div className="min-h-screen bg-transparent text-white pt-32 pb-24">
+      <div className="min-h-screen bg-transparent text-white pt-32 pb-24" data-kcroc-rollout="guides-index">
         <div className="max-w-7xl mx-auto px-6">
           <header className="mb-16 text-center lg:text-left">
             <h1 className="text-4xl md:text-5xl font-black text-white mb-6">Technical Troubleshooting Guides</h1>
