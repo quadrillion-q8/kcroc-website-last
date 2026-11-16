@@ -1,6 +1,7 @@
 // File: app/frontend/src/pages/AuthorImran.tsx
 import { Head } from 'vite-react-ssg';
 import React from 'react';
+import './KCROCEditorialRollout.css';
 import { Link } from 'react-router-dom';
 import {
   MapPin, Wrench, Microscope, Shield, BookOpen, ArrowRight, MessageCircle,
@@ -64,7 +65,7 @@ export default function AuthorImran() {
   )}`;
 
   return (
-    <div className="w-full min-h-screen bg-gray-950 text-white font-sans selection:bg-cyan-500/30">
+    <div className="w-full min-h-screen bg-gray-950 text-white font-sans selection:bg-cyan-500/30" data-kcroc-rollout="author">
       <Head>
         <title>Imran Natiq — Hardware Repair Engineer at KCROC Kuwait</title>
         <meta
@@ -135,7 +136,7 @@ export default function AuthorImran() {
       </section>
 
       {/* Expertise */}
-      <section className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/30 border-y border-slate-800">
+      <section className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/30 border-y border-slate-800" data-kcroc-editorial-panel="author-expertise">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-lg sm:text-2xl font-bold text-white mb-6 flex items-center gap-2">
             <Microscope className="w-5 h-5 text-cyan-400" /> Areas of Expertise
@@ -159,7 +160,7 @@ export default function AuthorImran() {
       </section>
 
       {/* Articles */}
-      <section className="py-8 sm:py-16 px-4 sm:px-6">
+      <section className="py-8 sm:py-16 px-4 sm:px-6" data-kcroc-editorial-panel="author-articles">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-lg sm:text-2xl font-bold text-white mb-6 flex items-center gap-2">
             <BookOpen className="w-5 h-5 text-cyan-400" /> Articles by Imran
@@ -180,7 +181,7 @@ export default function AuthorImran() {
       </section>
 
       {/* CTA */}
-      <section className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/30 border-y border-slate-800">
+      <section className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/30 border-y border-slate-800" data-kcroc-editorial-panel="author-cta">
         <div className="container mx-auto max-w-4xl">
           <Card className="bg-gradient-to-bl from-cyan-600/20 via-blue-600/20 to-emerald-600/20 border-cyan-500/30 backdrop-blur-sm">
             <CardContent className="p-6 sm:p-10 text-center">
