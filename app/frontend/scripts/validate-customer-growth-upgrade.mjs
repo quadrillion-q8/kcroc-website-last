@@ -869,7 +869,7 @@ const arTitle = 'تصليح كمبيوتر في الكويت | استلام مج
 const arH1 = 'تصليح كمبيوتر ولابتوب في الكويت مع استلام مجاني';
 add('Arabic commercial page title leads with computer repair in Kuwait', has(graph, `title: '${arTitle}'`) && seoProjection.includes(arTitle));
 add('Arabic commercial metadata describes lab repair, free intake and customer approval', has(graph, `title: 'تصليح كمبيوتر ولابتوب في الكويت'`) && has(graph, `تحتاج تصليح كمبيوتر أو لابتوب في الكويت؟ فحص أولي مجاني واستلام من البيت أو المكتب، وإصلاح داخل مختبر KCROC بحولي بعد موافقتك، مع ضمان 30 يومًا.`) && seoProjection.includes(arTitle));
-add('Arabic computer-repair H1 names repair and pickup rather than an in-home technician visit', has(arabicCommercial, `h1: '${arH1}'`) && arabicCommercial.includes(`                ${arH1}\\n              </h1>`));
+add('Arabic computer-repair H1 names repair and pickup rather than an in-home technician visit', has(arabicCommercial, `h1: '${arH1}'`) && arabicCommercial.includes(`                ${arH1}\n              </h1>`));
 add('Arabic computer-repair hero clearly explains workshop-only repair and pickup from home or office', arabicCommercial.includes('الفحص والإصلاح يتمان داخل مختبرنا في حولي، مو داخل البيت') && arabicCommercial.includes('استلام وتوصيل مجاني في الكويت'));
 add('Arabic computer repair pricing distinguishes laptop starting prices from all desktop repairs', arabicCommercial.includes('ما فيه سعر بداية موحّد لكل كمبيوتر مكتبي') && arabicCommercial.includes('الأسعار المعروضة تخص خدمات محددة'));
 add('Arabic commercial FAQ explicitly states that repairs are workshop-only', arabicCommercial.includes('لا نقدم زيارة فني أو إصلاحًا داخل المنزل') && arabicCommercial.includes('مختبر KCROC في حولي'));
