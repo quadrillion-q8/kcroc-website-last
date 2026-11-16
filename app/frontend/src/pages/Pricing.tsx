@@ -1,6 +1,7 @@
 // File: app/frontend/src/pages/Pricing.tsx
 
 import React, { useState } from 'react';
+import './KCROCEditorialRollout.css';
 import { Link } from 'react-router-dom';
 import {
   Check,
@@ -235,7 +236,7 @@ export default function Pricing() {
   )}`;
 
   return (
-    <div className="w-full min-h-screen overflow-hidden bg-transparent font-sans text-slate-100 selection:bg-cyan-500/30">
+    <div className="w-full min-h-screen overflow-hidden bg-transparent font-sans text-slate-100 selection:bg-cyan-500/30" data-kcroc-rollout="pricing">
       <SEOEngine entityId="page-pricing" />
       <SchemaMarkup schema={{ '@graph': PRICING_SCHEMA }} />
 
@@ -707,7 +708,7 @@ export default function Pricing() {
           CUSTOMER PROTECTION
       ───────────────────────────────────────────────────────────────────── */}
 
-      <section aria-labelledby="customer-protection-heading" className="px-4 py-16 sm:px-6 sm:py-20">
+      <section aria-labelledby="customer-protection-heading" data-kcroc-editorial-panel="customer-protection" className="px-4 py-16 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-6xl">
           <div className="mb-8 max-w-3xl"><Badge className="mb-4 border border-cyan-500/20 bg-cyan-500/10 px-3 py-1.5 text-[10px] uppercase tracking-widest text-cyan-400">Customer protection</Badge><h2 id="customer-protection-heading" className="text-3xl font-black tracking-tight text-white sm:text-4xl">Four clear commitments before you approve a repair</h2><p className="mt-4 text-sm leading-7 text-slate-400 sm:text-base">We diagnose the actual fault, explain whether repair or replacement is sensible, and let you decide. Paid work starts only after you approve the quoted scope and total.</p></div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -808,7 +809,7 @@ export default function Pricing() {
           FAQ
       ───────────────────────────────────────────────────────────────────── */}
 
-      <section aria-labelledby="faq-heading" className="border-t border-slate-800/70 px-4 py-16 sm:px-6 sm:py-24">
+      <section aria-labelledby="faq-heading" data-kcroc-editorial-panel="pricing-faq" className="border-t border-slate-800/70 px-4 py-16 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-4xl">
           <div className="mb-8 text-center sm:mb-12"><Badge className="mb-4 border border-emerald-500/20 bg-emerald-500/10 px-3 py-1.5 text-[10px] uppercase tracking-widest text-emerald-400">Pricing questions</Badge><h2 id="faq-heading" className="text-3xl font-black tracking-tight text-white sm:text-4xl">Pricing FAQs</h2><p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-500">Clear answers before you hand over your device.</p></div>
           <div className="space-y-3">
