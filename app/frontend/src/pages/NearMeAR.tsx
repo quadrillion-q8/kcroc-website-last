@@ -2,7 +2,7 @@
 //
 // ARABIC NEAR-ME PAGE — /ar/near-me is intentionally focused on proximity,
 // pickup/delivery logistics, and the central Hawalli repair lab. The broad
-// technician/computer-repair intent is assigned to /ar/computer-repair-kuwait
+// national computer-repair intent is assigned to /ar/computer-repair-kuwait
 // and linked here so the two pages have clearer search intent and user paths.
 //
 // SEO wiring: `page-near-me-ar` in graph.ts has locale `ar_KW` and reciprocal
@@ -180,7 +180,7 @@ export default function NearMeAR() {
                   <a href={waLink} target="_blank" rel="noopener noreferrer"><MessageCircle className="ml-2 h-5 w-5" aria-hidden="true" /> تواصل عبر واتساب</a>
                 </Button>
               </div>
-              <Link to="/ar/computer-repair-kuwait" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-cyan-300 underline-offset-4 hover:text-cyan-200 hover:underline">فني كمبيوتر في الكويت لتصليح الكمبيوتر واللابتوب <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
+              <Link to="/ar/computer-repair-kuwait" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-cyan-300 underline-offset-4 hover:text-cyan-200 hover:underline">تصليح كمبيوتر ولابتوب في الكويت <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
               <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-400">
                 <span className="inline-flex items-center gap-1.5"><Star className="h-4 w-4 fill-current text-amber-400" aria-hidden="true" /> تقييم {business.aggregateRating.ratingValue}★</span>
                 <span>تقييم Google · شاهد التقييمات الحالية</span>

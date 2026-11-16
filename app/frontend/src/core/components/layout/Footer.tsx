@@ -78,7 +78,7 @@ const ARABIC_COMPANY_LABELS: Record<string, string> = {
   '/faq': 'الأسئلة الشائعة',
   '/pricing': 'الأسعار',
   '/computer-repair-kuwait': 'تصليح الكمبيوتر في الكويت',
-  '/near-me': 'فني كمبيوتر بالقرب منك',
+  '/near-me': 'تصليح كمبيوتر بالقرب منك',
   '/locations': 'مناطق الخدمة',
 };
 

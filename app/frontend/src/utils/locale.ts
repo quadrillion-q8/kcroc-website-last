@@ -1,8 +1,8 @@
 // File: app/frontend/src/utils/locale.ts
 //
 // Keep the language-switch routes reciprocal with each page's SEO alternate
-// configuration. The homepage is the English counterpart of /ar/computer-repair-kuwait;
-// Services and troubleshooting guides use explicit reciprocal pairs where a localized version exists.
+// configuration. The English computer-repair hub is the counterpart of
+// /ar/computer-repair-kuwait; Services and troubleshooting guides use explicit reciprocal pairs where localized versions exist.
 
 const ENGLISH_TO_ARABIC: Record<string, string> = {
   '/': '/ar',

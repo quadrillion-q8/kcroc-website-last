@@ -10,7 +10,7 @@ import { IMAGES } from '../constants/images.js';
 export const rawGraphData: RawGraphData = {
   metadata: {
     version: '3.8.5',
-    lastUpdated: '2026-11-15T00:00:00+03:00',
+    lastUpdated: '2026-11-16T00:00:00+03:00',
     environment: 'production'
   },
 
@@ -201,7 +201,7 @@ export const rawGraphData: RawGraphData = {
 
     // Arabic near-me page: standalone, crawlable, and language-linked to the
     // English near-me route. Keep this page focused on proximity and pickup /
-    // delivery intent; the broad high-value query “فني كمبيوتر” is assigned to
+    // delivery intent; the broad national repair query “تصليح كمبيوتر في الكويت” is assigned to
     // /ar/computer-repair-kuwait to reduce overlap between the two destinations.
     // Locale 'ar_KW' lets SEOEngine emit the appropriate language/direction.
     'page-near-me-ar': {
@@ -266,11 +266,11 @@ export const rawGraphData: RawGraphData = {
 
     'page-ar-computer-repair': {
       id: 'page-ar-computer-repair', slug: 'ar/computer-repair-kuwait', entityType: 'WebPage', isActive: true,
-      title: 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب',
-      description: 'خدمة فني كمبيوتر في الكويت للابتوب والكمبيوتر المكتبي وأجهزة ماك بوك وأجهزة الألعاب، مع فحص أولي مجاني واستلام وتوصيل من المنزل أو المكتب وإصلاح في مختبر KCROC بحولي.',
+      title: 'تصليح كمبيوتر ولابتوب في الكويت',
+      description: 'تصليح كمبيوتر ولابتوب في الكويت للكمبيوتر المكتبي وGaming PC وMacBook، مع فحص أولي مجاني واستلام من المنزل أو المكتب وإصلاح داخل مختبر KCROC في حولي بعد موافقتك.',
       seo: {
-        title: 'فني كمبيوتر في الكويت | فحص واستلام مجاني | KCROC',
-        description: 'تحتاج فني كمبيوتر في الكويت؟ استلام مجاني من المنزل أو المكتب وفحص أولي في مختبر حولي. بعض الإصلاحات تبدأ من 15 د.ك حسب الموديل والعطل، مع عرض سعر قبل العمل وضمان 30 يومًا.',
+        title: 'تصليح كمبيوتر في الكويت | استلام مجاني | KCROC',
+        description: 'تحتاج تصليح كمبيوتر أو لابتوب في الكويت؟ فحص أولي مجاني واستلام من البيت أو المكتب، وإصلاح داخل مختبر KCROC بحولي بعد موافقتك، مع ضمان 30 يومًا.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait',
         locale: 'ar_KW',
         alternates: {
@@ -279,7 +279,7 @@ export const rawGraphData: RawGraphData = {
           'x-default': 'https://www.computerrepairkuwait.com/computer-repair-kuwait'
         },
         ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service'],
-        lastModified: '2026-11-13T00:00:00+03:00',
+        lastModified: '2026-11-16T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح كمبيوتر في الكويت', url: '/ar/computer-repair-kuwait' }]
       },
       relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-gaming', 'srv-macbook', 'srv-screen']
@@ -7499,9 +7499,9 @@ export const rawGraphData: RawGraphData = {
     'faq-arabic-computer-technician': {
       id: 'faq-arabic-computer-technician', slug: 'arabic-computer-technician-kuwait', entityType: 'FAQ', isActive: true,
       title: 'هل يمكنني ترتيب استلام الكمبيوتر أو اللابتوب من المنزل؟',
-      description: 'معلومات عن خدمة فني الكمبيوتر وإصلاح اللابتوب والكمبيوتر في الكويت.',
+      description: 'معلومات عن استلام وتوصيل أجهزة الكمبيوتر واللابتوب في الكويت.',
       answer: 'نعم، نوفّر خدمة استلام وتوصيل مجانية من مناطق الخدمة في الكويت. يتم الفحص والإصلاح في مختبرنا المركزي في حولي، ثم نعيد الجهاز بعد الاختبار. لا نقدم إصلاحًا داخل المنزل أو زيارة فني للموقع؛ راسلنا على واتساب بذكر منطقتك ونوع الجهاز والمشكلة لتأكيد الاستلام.',
-      seo: { title: 'فني كمبيوتر في الكويت | إصلاح لابتوب وكمبيوتر', description: 'خدمة فني كمبيوتر وإصلاح لابتوب وكمبيوتر في الكويت مع استلام وتوصيل مجاني.', canonicalUrl: 'https://www.computerrepairkuwait.com/near-me#arabic-computer-technician', schemaTypes: ['FAQPage'] }
+      seo: { title: 'استلام كمبيوتر ولابتوب من المنزل | KCROC', description: 'استلام وتوصيل مجاني لأجهزة الكمبيوتر واللابتوب من المنزل أو المكتب في الكويت، مع الفحص والإصلاح داخل مختبر KCROC في حولي.', canonicalUrl: 'https://www.computerrepairkuwait.com/near-me#arabic-computer-technician', schemaTypes: ['FAQPage'] }
     } as FAQEntity,
 
     'faq-ar-hawalli-technician': {
