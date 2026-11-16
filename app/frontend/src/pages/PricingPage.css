@@ -24,8 +24,6 @@
 [data-pricing-page] {
   position: relative;
   isolation: isolate;
-  display: flex;
-  flex-direction: column;
   min-height: 100vh;
   background: var(--pricing-bg) !important;
   color: var(--pricing-text);
@@ -33,19 +31,6 @@
 [data-pricing-page] > * { min-width: 0; }
 [data-pricing-page] > section { width: 100%; }
 [data-pricing-page] > [data-pricing-background] { order: 0; }
-[data-pricing-page="en"] > [data-pricing-order="1"] { order: 1; }
-[data-pricing-page="en"] > [data-pricing-order="2"] { order: 2; }
-[data-pricing-page="en"] > [data-pricing-order="3"] { order: 3; }
-[data-pricing-page="en"] > [data-pricing-order="4"] { order: 4; }
-[data-pricing-page="en"] > [data-pricing-order="5"] { order: 5; }
-[data-pricing-page="en"] > [data-pricing-order="6"] { order: 6; }
-[data-pricing-page="en"] > [data-pricing-order="7"] { order: 7; }
-[data-pricing-page="en"] > [data-pricing-order="8"] { order: 8; }
-[data-pricing-page="en"] > [data-pricing-order="9"] { order: 9; }
-[data-pricing-page="en"] > [data-pricing-order="10"] { order: 10; }
-[data-pricing-page="en"] > [data-pricing-order="11"] { order: 11; }
-[data-pricing-page="en"] > [data-pricing-order="12"] { order: 12; }
-[data-pricing-page="en"] > [data-pricing-order="13"] { order: 13; }
 [data-pricing-page="en"] > nav[aria-label="Breadcrumb"] {
   width: min(100%, 80rem);
   margin-inline: auto;
