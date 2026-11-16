@@ -307,7 +307,7 @@ requireContains(pricingPage, 'setSymptomFilter(filter.value)', 'pages/Pricing.ts
 requireContains(pricingPage, 'data-pricing-table={category.anchor}', 'pages/Pricing.tsx', 'the price matrix must remain available in the page.');
 requireContains(problemsIndex, "high: 'text-red-400", 'pages/ProblemsIndex.tsx', 'high urgency must keep its red status treatment.');
 requireContains(problemsIndex, "medium: 'text-amber-400", 'pages/ProblemsIndex.tsx', 'medium urgency must keep its amber status treatment.');
-requireContains(nearMePage, 'single strong hub', 'pages/NearMe.tsx', 'the near-me page must remain one consolidated local-intent hub.');
+requireContains(nearMePage, 'one strong hub', 'pages/NearMe.tsx', 'the near-me page must remain one consolidated local-intent hub.');
 requireContains(privacyPolicyPage, 'onClick={openConsentPreferences}', 'pages/PrivacyPolicy.tsx', 'privacy consent settings must remain interactive.');
 requireContains(rolloutCss, '[data-kcroc-rollout="pricing"] [data-kcroc-editorial-panel]', 'pages/KCROCEditorialRollout.css', 'English pricing explanations must use the warm editorial palette.');
 requireContains(rolloutCss, '[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel]', 'pages/KCROCEditorialRollout.css', 'Arabic pricing explanations must use the warm editorial palette.');
