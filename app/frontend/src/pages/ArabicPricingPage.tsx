@@ -296,7 +296,7 @@ export default function ArabicPricingPage() {
       </section>
 
 
-      <section className="border-y border-slate-800 bg-slate-900/30 px-4 py-12 sm:px-6 sm:py-16" aria-labelledby="arabic-pricing-visual-guide">
+      <section data-pricing-technical="visual-guide" className="border-y border-slate-800 bg-slate-900/30 px-4 py-12 sm:px-6 sm:py-16" aria-labelledby="arabic-pricing-visual-guide">
         <div className="mx-auto max-w-6xl">
           <p className="text-xs font-black uppercase tracking-widest text-cyan-400">دليل بصري</p>
           <h2 id="arabic-pricing-visual-guide" className="mt-2 text-2xl font-black text-white sm:text-3xl">صور توضيحية لقطع وأعمال تؤثر في سعر الإصلاح</h2>
@@ -405,7 +405,7 @@ export default function ArabicPricingPage() {
       </section>
 
       <section className="px-4 pb-16 sm:px-6 sm:pb-20" data-kcroc-editorial-panel="arabic-pricing-cta">
-        <div className="mx-auto flex max-w-6xl flex-col gap-5 rounded-3xl border border-cyan-500/20 bg-gradient-to-l from-cyan-500/10 to-slate-900/70 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-9">
+        <div data-pricing-card="arabic-final-cta" className="mx-auto flex max-w-6xl flex-col gap-5 rounded-3xl border border-cyan-500/20 bg-gradient-to-l from-cyan-500/10 to-slate-900/70 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-9">
           <div className="max-w-2xl">
             <h2 className="text-2xl font-black text-white sm:text-3xl">تبي تعرف سعر جهازك بالتحديد؟</h2>
             <p className="mt-3 leading-7 text-slate-300">أرسل نوع الجهاز والموديل والعطل. نبدأ بالتشخيص ونوضح لك السعر قبل ما نبدأ الإصلاح.</p>
