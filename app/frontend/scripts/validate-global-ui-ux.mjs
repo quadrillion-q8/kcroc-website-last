@@ -43,6 +43,11 @@ const [serviceTemplate, graph, graphSchema, serviceLayoutCss] = await Promise.al
 ]);
 
 
+const [problemTemplate, problemLayoutCss] = await Promise.all([
+  read('pages/templates/ProblemTemplate.tsx'),
+  read('pages/templates/ProblemTemplate.css'),
+]);
+
 const [arabicServicePage, arabicLiquidDamagePage, macbookBatteryPage] = await Promise.all([
   read('pages/ArabicCommercialPage.tsx'),
   read('pages/ArabicLiquidDamageRepairPage.tsx'),
@@ -175,6 +180,17 @@ requireContains(globalCss, '[dir="rtl"] :is(h1, h2, h3, h4)', 'index.css', 'Arab
 requireContains(arabicServicePage, 'aria-labelledby="charging-port-repair-process" data-service-editorial-panel', 'pages/ArabicCommercialPage.tsx', 'Arabic charging-port process section must use the shared editorial panel.');
 requireContains(arabicServicePage, 'aria-labelledby="keyboard-repair-process" data-service-editorial-panel', 'pages/ArabicCommercialPage.tsx', 'Arabic keyboard process section must use the shared editorial panel.');
 requireContains(arabicServicePage, 'aria-labelledby="macbook-screen-process" data-service-editorial-panel', 'pages/ArabicCommercialPage.tsx', 'Arabic MacBook screen process section must use the shared editorial panel.');
+
+requireContains(problemTemplate, "import './ProblemTemplate.css';", 'pages/templates/ProblemTemplate.tsx', 'problem pages must load their scoped editorial styling.');
+requireContains(problemTemplate, 'data-problem-layout', 'pages/templates/ProblemTemplate.tsx', 'problem styling must be scoped to the problem template.');
+for (const panel of ['quick-answer', 'diagnostic-path', 'safe-checks', 'common-causes', 'kuwait-context', 'expert-notes', 'technician-diagnosis', 'price-estimates', 'kcroc-solution', 'brands-covered', 'handled-under', 'related-resources', 'technical-references', 'faq']) {
+  requireContains(problemTemplate, `data-problem-editorial-panel="${panel}"`, 'pages/templates/ProblemTemplate.tsx', `the ${panel} reading section must opt into the warm editorial treatment.`);
+}
+if (/aria-labelledby="safety"[^>]*data-problem-editorial-panel/.test(problemTemplate)) issues.push('pages/templates/ProblemTemplate.tsx: the safety warning section must retain its distinct high-attention treatment.');
+requireContains(problemLayoutCss, 'background: var(--problem-paper);', 'pages/templates/ProblemTemplate.css', 'marked problem sections must use the KCROC warm paper surface.');
+requireContains(problemLayoutCss, 'background: #c9804d !important;', 'pages/templates/ProblemTemplate.css', 'primary actions on editorial sections must use the KCROC copper accent.');
+requireContains(problemLayoutCss, '@media (max-width: 639px)', 'pages/templates/ProblemTemplate.css', 'editorial sections must have a dedicated compact mobile layout.');
+requireContains(problemLayoutCss, '@media (prefers-reduced-motion: reduce)', 'pages/templates/ProblemTemplate.css', 'editorial section interactions must respect reduced-motion preferences.');
 
 if (issues.length) {
   console.error('❌ Global UI/UX regression checks failed:');
