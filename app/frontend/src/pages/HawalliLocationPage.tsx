@@ -17,6 +17,7 @@
 // "can I bring my laptop to the Hawalli location") — each answer is
 // checked against KCROC_GRAPH facts, not invented independently of them.
 import React from 'react';
+import './KCROCEditorialRollout.css';
 import { Link } from 'react-router-dom';
 import {
   MapPin, Truck, Shield, ShieldCheck, Zap, Cpu, Wrench, Laptop, Apple,
@@ -270,7 +271,7 @@ export default function HawalliLocationPage() {
     });
 
   return (
-    <div className="w-full text-white font-sans selection:bg-cyan-500/30">
+    <div className="w-full text-white font-sans selection:bg-cyan-500/30" data-kcroc-rollout="location-hawalli">
       <SEOEngine entityId={location.id} />
       <SchemaMarkup schema={FAQ_SCHEMA} />
 
@@ -412,7 +413,7 @@ export default function HawalliLocationPage() {
       </section>
 
       {/* ─── FLAGSHIP HAWALLI LAB INTRODUCTION ─── */}
-      <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
+      <section data-kcroc-editorial-panel="hawalli-content" className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-2xl sm:text-3xl font-black text-white mb-4 tracking-tight">
             Computer &amp; Laptop Repair at Our Hawalli Micro-Soldering Lab
@@ -437,7 +438,7 @@ export default function HawalliLocationPage() {
       </section>
 
       {/* ─── SERVICES ─── */}
-      <section className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
+      <section data-kcroc-editorial-panel="hawalli-content" className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
             Computer Repair Services in Hawalli
@@ -487,7 +488,7 @@ export default function HawalliLocationPage() {
 
       {/* ─── REPAIR PRICING PATH ─── */}
       <section
-        id="hawalli-pricing-cta"
+        id="hawalli-pricing-cta" data-kcroc-editorial-panel="hawalli-pricing"
         aria-labelledby="hawalli-pricing-heading"
         className="px-4 py-6 sm:px-6 sm:py-8 border-t border-slate-800/50"
       >
@@ -551,7 +552,7 @@ export default function HawalliLocationPage() {
       </section>
 
       {/* ─── PROBLEMS WE FIX ─── */}
-      <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
+      <section data-kcroc-editorial-panel="hawalli-content" className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
             Common Computer &amp; Laptop Problems We Fix in Hawalli
@@ -572,7 +573,7 @@ export default function HawalliLocationPage() {
       </section>
 
       {/* ─── BRANDS ─── */}
-      <section className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
+      <section data-kcroc-editorial-panel="hawalli-content" className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
             Laptop Brands We Repair in Hawalli
@@ -598,7 +599,7 @@ export default function HawalliLocationPage() {
       </section>
 
       {/* ─── INSIDE THE HAWALLI LAB (GALLERY) ─── */}
-      <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
+      <section data-kcroc-editorial-panel="hawalli-content" className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
         <div className="container mx-auto max-w-6xl">
           <div className="flex items-end justify-between gap-4 mb-6 sm:mb-10">
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
@@ -642,7 +643,7 @@ export default function HawalliLocationPage() {
       </section>
 
       {/* ─── HAWALLI WALK-IN + PICKUP WORKFLOW ─── */}
-      <section className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
+      <section data-kcroc-editorial-panel="hawalli-content" className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-3xl font-black mb-3 text-white tracking-tight">
             How Computer Repair Works at Our Hawalli Lab
@@ -666,7 +667,7 @@ export default function HawalliLocationPage() {
       </section>
 
       {/* ─── PHYSICAL LOCATION ─── */}
-      <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
+      <section data-kcroc-editorial-panel="hawalli-content" className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
             Visit or Arrange Pickup From Our Hawalli Location
@@ -748,7 +749,7 @@ export default function HawalliLocationPage() {
 
       {/* ─── LOCAL COVERAGE ─── */}
       {otherLocations.length > 0 && (
-        <section className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
+        <section data-kcroc-editorial-panel="hawalli-content" className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
           <div className="container mx-auto max-w-6xl">
             <h2 className="text-2xl sm:text-3xl font-black mb-4 text-white tracking-tight">
               Hawalli-Based Repair With Kuwait-Wide Pickup & Delivery
@@ -772,7 +773,7 @@ export default function HawalliLocationPage() {
       )}
 
       {/* ─── WHY KCROC ─── */}
-      <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
+      <section data-kcroc-editorial-panel="hawalli-content" className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
             Why KCROC
@@ -831,7 +832,7 @@ export default function HawalliLocationPage() {
 
       {/* ─── LOCATION-VERIFIED GOOGLE REVIEWS ─── */}
       {hawalliReviews.length > 0 && reviews && (
-        <section className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
+        <section data-kcroc-editorial-panel="hawalli-content" className="py-8 sm:py-14 px-4 sm:px-6 bg-slate-900/20 border-t border-slate-800/50">
           <div className="container mx-auto max-w-5xl">
             <div className="text-center mb-7">
               <div className="flex items-center justify-center gap-2 mb-2">
@@ -877,7 +878,7 @@ export default function HawalliLocationPage() {
       )}
 
       {/* ─── FAQ ─── */}
-      <section className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
+      <section data-kcroc-editorial-panel="hawalli-content" className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
         <div className="container mx-auto max-w-3xl">
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white text-center tracking-tight">
             Frequently Asked Questions
@@ -929,7 +930,7 @@ export default function HawalliLocationPage() {
       </section>
 
       {/* ─── FINAL CTA ─── */}
-      <section className="py-12 sm:py-20 px-4 sm:px-6 border-t border-slate-800/50 text-center">
+      <section data-kcroc-editorial-panel="hawalli-conversion" className="py-12 sm:py-20 px-4 sm:px-6 border-t border-slate-800/50 text-center">
         <div className="container mx-auto max-w-4xl">
           <div className="bg-slate-900/40 backdrop-blur-lg border border-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl">
             <h2 className="text-2xl sm:text-3xl font-black text-white mb-4">
