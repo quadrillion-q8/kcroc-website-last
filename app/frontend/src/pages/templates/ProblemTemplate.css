@@ -1,0 +1,133 @@
+/*
+ * KCROC problem/diagnosis editorial treatment.
+ * Only sections explicitly marked in ProblemTemplate opt into the warm paper
+ * surface. Emergency handling and interactive triage tools remain on the
+ * graphite technical surface.
+ */
+
+[data-problem-layout] {
+  --problem-paper: #f4efe7;
+  --problem-paper-surface: #fffdf9;
+  --problem-paper-ink: #172022;
+  --problem-paper-muted: #566467;
+  --problem-paper-line: #e3dace;
+  --problem-copper: #8f4f2c;
+}
+
+[data-problem-layout] [data-problem-editorial-panel] {
+  box-sizing: border-box;
+  width: min(calc(100% - 1rem), 80rem);
+  margin-inline: auto;
+  padding: clamp(1.5rem, 3.4vw, 3rem);
+  border: 1px solid var(--problem-paper-line);
+  border-radius: 1.4rem;
+  background: var(--problem-paper);
+  color: var(--problem-paper-ink);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.12);
+}
+
+[data-problem-layout] [data-problem-editorial-panel] :is(h2, h3, h4) {
+  color: var(--problem-paper-ink) !important;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+[data-problem-layout] [data-problem-editorial-panel] :is(p, li, td, th, dd) {
+  color: var(--problem-paper-muted);
+}
+
+[data-problem-layout] [data-problem-editorial-panel] .text-white,
+[data-problem-layout] [data-problem-editorial-panel] .text-slate-200,
+[data-problem-layout] [data-problem-editorial-panel] .text-slate-300,
+[data-problem-layout] [data-problem-editorial-panel] .text-slate-400,
+[data-problem-layout] [data-problem-editorial-panel] .text-slate-500 {
+  color: var(--problem-paper-muted) !important;
+}
+
+[data-problem-layout] [data-problem-editorial-panel] :is(.text-cyan-200, .text-cyan-300, .text-cyan-400, .text-cyan-500) {
+  color: var(--problem-copper) !important;
+}
+
+[data-problem-layout] [data-problem-editorial-panel] :is(article, li, div, a)[class*="rounded-"][class*="border"]:not([class*="bg-cyan-"]) {
+  border-color: var(--problem-paper-line) !important;
+  background-color: var(--problem-paper-surface) !important;
+  box-shadow: 0 4px 16px rgba(33, 27, 22, 0.045);
+}
+
+[data-problem-layout] [data-problem-editorial-panel] table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+[data-problem-layout] [data-problem-editorial-panel] thead {
+  background: #e9dfd3 !important;
+}
+
+[data-problem-layout] [data-problem-editorial-panel] tbody {
+  background: var(--problem-paper-surface) !important;
+}
+
+[data-problem-layout] [data-problem-editorial-panel] :is(th, td) {
+  border-color: var(--problem-paper-line) !important;
+  color: var(--problem-paper-muted) !important;
+}
+
+[data-problem-layout] [data-problem-editorial-panel] tbody th {
+  color: var(--problem-paper-ink) !important;
+}
+
+[data-problem-layout] [data-problem-editorial-panel] a[class*="text-cyan-"] {
+  color: var(--problem-copper) !important;
+  text-decoration-color: rgba(143, 79, 44, 0.35);
+  text-underline-offset: 0.2em;
+}
+
+[data-problem-layout] [data-problem-editorial-panel] a[class*="bg-cyan-"] {
+  border-color: var(--problem-copper) !important;
+  background: #c9804d !important;
+  color: #17110c !important;
+}
+
+[data-problem-layout] [data-problem-editorial-panel] a[class*="bg-slate-"] {
+  background-color: var(--problem-paper-surface) !important;
+}
+
+[data-problem-layout] [data-problem-editorial-panel] a[class*="border-slate-"] {
+  border-color: #cbbcac !important;
+  color: var(--problem-paper-ink) !important;
+}
+
+[data-problem-layout] [data-problem-editorial-panel] details {
+  border-color: var(--problem-paper-line) !important;
+  background: var(--problem-paper-surface) !important;
+}
+
+[data-problem-layout] [data-problem-editorial-panel] summary {
+  color: var(--problem-paper-ink) !important;
+}
+
+[data-problem-layout] [data-problem-editorial-panel] :is(a, button, summary):focus-visible {
+  outline: 3px solid #8f4f2c;
+  outline-offset: 3px;
+}
+
+@media (max-width: 639px) {
+  [data-problem-layout] [data-problem-editorial-panel] {
+    width: calc(100% - 0.5rem);
+    padding: 1.25rem;
+    border-radius: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-problem-layout] [data-problem-editorial-panel] *,
+  [data-problem-layout] [data-problem-editorial-panel] *::before,
+  [data-problem-layout] [data-problem-editorial-panel] *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

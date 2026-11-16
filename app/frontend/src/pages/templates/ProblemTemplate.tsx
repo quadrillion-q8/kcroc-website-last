@@ -1,5 +1,6 @@
 // File: app/frontend/src/pages/templates/ProblemTemplate.tsx
 import React from 'react';
+import './ProblemTemplate.css';
 import { useLocation, Navigate, Link } from 'react-router-dom';
 import { KCROC_GRAPH } from '../../data/graph';
 import { SEOEngine } from '../../core/components/SEOEngine';
@@ -138,7 +139,7 @@ const ProblemTemplate: React.FC = () => {
 
   return (
     // ✅ FIXED: Changed bg-brand-dark to bg-transparent
-    <div className="bg-transparent min-h-screen text-slate-200">
+    <div className="bg-transparent min-h-screen text-slate-200" data-problem-layout>
       <SEOEngine entityId={problem.id} />
       
       {/* Hero Section - Added glass effect */}
@@ -220,7 +221,7 @@ const ProblemTemplate: React.FC = () => {
       </section>
 
       {problem.quickAnswer && (
-        <section id="keyboard-quick-answer" aria-labelledby="keyboard-quick-answer-title" className="relative z-10 mx-auto -mt-7 max-w-7xl px-6">
+        <section id="keyboard-quick-answer" aria-labelledby="keyboard-quick-answer-title" data-problem-editorial-panel="quick-answer" className="relative z-10 mx-auto -mt-7 max-w-7xl px-6">
           <div className="rounded-3xl border border-cyan-800/60 bg-slate-950/90 p-6 shadow-2xl md:p-8">
             <div className="max-w-4xl">
               <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-300">Quick diagnostic answer</p>
@@ -400,7 +401,7 @@ const ProblemTemplate: React.FC = () => {
           )}
 
           {problem.decisionTree && problem.decisionTree.length > 0 && (
-            <section aria-labelledby="diagnostic-path">
+            <section aria-labelledby="diagnostic-path" data-problem-editorial-panel="diagnostic-path">
               <div className="mb-6">
                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Start here</p>
                 <h2 id="diagnostic-path" className="text-3xl font-black text-white mt-2">
@@ -428,7 +429,7 @@ const ProblemTemplate: React.FC = () => {
             </section>
           )}
 
-          <section aria-labelledby="safe-checks">
+          <section aria-labelledby="safe-checks" data-problem-editorial-panel="safe-checks">
             <div className="mb-6">
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Safe troubleshooting</p>
               <h2 id="safe-checks" className="text-3xl font-black text-white mt-2">
@@ -480,7 +481,7 @@ const ProblemTemplate: React.FC = () => {
             </section>
           )}
 
-          <section aria-labelledby="common-causes">
+          <section aria-labelledby="common-causes" data-problem-editorial-panel="common-causes">
             <div className="mb-6">
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Root causes</p>
               <h2 id="common-causes" className="text-3xl font-black text-white mt-2">
@@ -519,7 +520,7 @@ const ProblemTemplate: React.FC = () => {
           )}
 
           {problem.kuwaitContext && problem.kuwaitContext.length > 0 && (
-            <section aria-labelledby="kuwait-context">
+            <section aria-labelledby="kuwait-context" data-problem-editorial-panel="kuwait-context">
               <div className="rounded-3xl border border-slate-800 bg-slate-900/50 p-7 md:p-9">
                 <div className="flex items-start gap-4">
                   <MapPin className="mt-1 h-7 w-7 flex-shrink-0 text-cyan-400" />
@@ -538,7 +539,7 @@ const ProblemTemplate: React.FC = () => {
           )}
 
           {problem.expertNotes && problem.expertNotes.length > 0 && (
-            <section aria-labelledby="expert-notes">
+            <section aria-labelledby="expert-notes" data-problem-editorial-panel="expert-notes">
               <div className="mb-6">
                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Technical context</p>
                 <h2 id="expert-notes" className="mt-2 text-3xl font-black text-white">What a reliable diagnosis should account for</h2>
@@ -558,7 +559,7 @@ const ProblemTemplate: React.FC = () => {
           )}
 
           {problem.technicianMethod && problem.technicianMethod.length > 0 && (
-            <section id="technician-diagnosis" aria-labelledby="technician-diagnosis-title">
+            <section id="technician-diagnosis" aria-labelledby="technician-diagnosis-title" data-problem-editorial-panel="technician-diagnosis">
               <div className="mb-7">
                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Inside the lab</p>
                 <h2 id="technician-diagnosis-title" className="mt-2 text-3xl font-black text-white">
@@ -583,7 +584,7 @@ const ProblemTemplate: React.FC = () => {
           )}
 
           {isSlowPerformance && problem.priceEstimates && (
-            <section aria-labelledby="slow-price-estimates">
+            <section aria-labelledby="slow-price-estimates" data-problem-editorial-panel="price-estimates">
               <div className="mb-6">
                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Transparent cost guidance</p>
                 <h2 id="slow-price-estimates" className="mt-2 text-3xl font-black text-white">{problem.priceEstimates.heading}</h2>
@@ -616,7 +617,7 @@ const ProblemTemplate: React.FC = () => {
             </section>
           )}
 
-          <section aria-labelledby="kcroc-solution">
+          <section aria-labelledby="kcroc-solution" data-problem-editorial-panel="kcroc-solution">
             <div className="rounded-3xl border border-cyan-900/50 bg-cyan-950/20 p-7 shadow-2xl md:p-9">
               <div className="flex items-start gap-4">
                 <CheckCircle2 className="mt-1 h-8 w-8 flex-shrink-0 text-cyan-400" />
@@ -641,7 +642,7 @@ const ProblemTemplate: React.FC = () => {
           </section>
 
           {((problem.coveredBrands && problem.coveredBrands.length > 0) || relatedBrands.length > 0) && (
-            <section aria-labelledby="brands-covered">
+            <section aria-labelledby="brands-covered" data-problem-editorial-panel="brands-covered">
               <h2 id="brands-covered" className="text-2xl font-black text-white">Brands and devices covered</h2>
               <p className="mt-2 text-slate-400">The diagnostic approach applies across major laptop designs; the exact hardware path varies by model.</p>
               <div className="mt-5 flex flex-wrap gap-3">
@@ -658,7 +659,7 @@ const ProblemTemplate: React.FC = () => {
           )}
 
           {relatedServices.length > 0 && (
-            <section aria-labelledby="handled-under">
+            <section aria-labelledby="handled-under" data-problem-editorial-panel="handled-under">
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Repair services</p>
               <h2 id="handled-under" className="mt-2 text-2xl font-black text-white">Handled under</h2>
               <div className="mt-4 flex flex-wrap gap-3">
@@ -672,7 +673,7 @@ const ProblemTemplate: React.FC = () => {
           )}
 
           {problem.relatedResourcePaths && problem.relatedResourcePaths.length > 0 && (
-            <section aria-labelledby="related-resources">
+            <section aria-labelledby="related-resources" data-problem-editorial-panel="related-resources">
               <div className="mb-5">
                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Continue the diagnosis</p>
                 <h2 id="related-resources" className="mt-2 text-2xl font-black text-white">Related guides and repair resources</h2>
@@ -692,7 +693,7 @@ const ProblemTemplate: React.FC = () => {
           )}
 
           {problem.technicalReferences && problem.technicalReferences.length > 0 && (
-            <section aria-labelledby="technical-references">
+            <section aria-labelledby="technical-references" data-problem-editorial-panel="technical-references">
               <div className="mb-5">
                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Evidence & further reading</p>
                 <h2 id="technical-references" className="mt-2 text-2xl font-black text-white">Manufacturer guidance and technical references</h2>
@@ -721,7 +722,7 @@ const ProblemTemplate: React.FC = () => {
           )}
 
           {problem.faqs && problem.faqs.length > 0 && (
-            <section aria-labelledby="faq">
+            <section aria-labelledby="faq" data-problem-editorial-panel="faq">
               <div className="mb-7">
                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">Questions customers ask</p>
                 <h2 id="faq" className="mt-2 text-3xl font-black text-white">
