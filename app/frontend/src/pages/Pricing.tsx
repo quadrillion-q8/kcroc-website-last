@@ -377,7 +377,7 @@ export default function Pricing() {
           PRICE MENU
       ───────────────────────────────────────────────────────────────────── */}
 
-      <section id="price-list" aria-labelledby="pricing-heading" data-pricing-explorer className="px-4 pb-16 sm:px-6 sm:pb-24">
+      <section id="price-list" aria-labelledby="pricing-heading" data-kcroc-editorial-panel="pricing-catalogue" data-pricing-explorer className="px-4 pb-16 sm:px-6 sm:pb-24">
         <div className="mx-auto max-w-6xl">
           <div className="mb-8 text-center sm:mb-12">
             <Badge className="mb-4 border border-cyan-500/20 bg-cyan-500/10 px-3 py-1.5 text-[10px] uppercase tracking-widest text-cyan-400">Service pricing</Badge>
@@ -451,8 +451,8 @@ export default function Pricing() {
           TRUST PROMISE
       ───────────────────────────────────────────────────────────────────── */}
 
-      <section className="px-4 pb-12 sm:px-6 sm:pb-16">
-        <div className="mx-auto max-w-6xl overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/45 shadow-2xl shadow-black/20 backdrop-blur-xl">
+      <section data-kcroc-editorial-panel="pricing-trust" className="px-4 pb-12 sm:px-6 sm:pb-16">
+        <div data-pricing-card="trust-promise" className="mx-auto max-w-6xl overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/45 shadow-2xl shadow-black/20 backdrop-blur-xl">
           <div className="border-b border-slate-800 bg-brand-dark/50 px-5 py-5 sm:px-8">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-emerald-500/20 bg-emerald-500/10">
@@ -591,8 +591,8 @@ export default function Pricing() {
           IMPORTANT PRICING NOTE
       ───────────────────────────────────────────────────────────────────── */}
 
-      <section className="px-4 pb-12 sm:px-6 sm:pb-16">
-        <div className="mx-auto max-w-6xl rounded-3xl border border-cyan-500/15 bg-cyan-950/15 p-5 sm:p-8" data-kcroc-editorial-panel="pricing-guidance">
+      <section data-kcroc-editorial-panel="pricing-guidance" className="px-4 pb-12 sm:px-6 sm:pb-16">
+        <div data-pricing-card="pricing-guidance" className="mx-auto max-w-6xl rounded-3xl border border-cyan-500/15 bg-cyan-950/15 p-5 sm:p-8">
           <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-cyan-500/20 bg-cyan-500/10">
               <ShieldAlert
@@ -632,7 +632,7 @@ export default function Pricing() {
 
       <section
         aria-labelledby="price-factors-heading" data-kcroc-editorial-panel="price-factors"
-        className="border-y border-slate-800/70 bg-brand-dark/35 px-4 py-16 sm:px-6 sm:py-20"
+        className="border-y px-4 py-16 sm:px-6 sm:py-20"
       >
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
@@ -728,11 +728,11 @@ export default function Pricing() {
 
       <section
         aria-labelledby="pickup-heading"
-       
+        data-kcroc-editorial-panel="pricing-pickup"
         className="px-4 py-16 sm:px-6 sm:py-20"
       >
         <div className="mx-auto max-w-6xl">
-          <div className="rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-9">
+          <div data-pricing-card="pickup" className="rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-9">
             <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
               <div>
                 <div className="flex items-center gap-3">
@@ -781,7 +781,7 @@ export default function Pricing() {
 
       {/* Commercial repair paths */}
       <section className="mx-auto max-w-6xl px-4 pb-10 sm:px-6" aria-labelledby="commercial-pricing-paths" data-kcroc-editorial-panel="commercial-pricing-paths">
-        <div className="rounded-3xl border border-slate-800 bg-slate-900/45 p-6 sm:p-8">
+        <div data-pricing-card="commercial-paths" className="rounded-3xl border border-slate-800 bg-slate-900/45 p-6 sm:p-8">
           <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-400">Choose by repair need</p>
           <h2 id="commercial-pricing-paths" className="mt-2 text-2xl font-black text-white sm:text-3xl">Laptop, gaming and specialist repair pricing</h2>
           <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-400">
@@ -829,7 +829,7 @@ export default function Pricing() {
       ───────────────────────────────────────────────────────────────────── */}
 
       <section
-        aria-labelledby="services-heading" data-kcroc-editorial-panel="pricing-services"
+        aria-labelledby="services-heading" data-pricing-technical="specialist"
         className="border-t border-slate-800/70 px-4 py-16 sm:px-6 sm:py-20"
       >
         <div className="mx-auto max-w-6xl">
@@ -917,8 +917,8 @@ export default function Pricing() {
           FINAL CTA
       ───────────────────────────────────────────────────────────────────── */}
 
-      <section className="px-4 pb-16 pt-4 sm:px-6 sm:pb-24">
-        <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-cyan-950/40 via-slate-900/70 to-blue-950/30 p-7 text-center shadow-2xl shadow-cyan-950/10 sm:p-12">
+      <section data-kcroc-editorial-panel="pricing-final-cta" className="px-4 pb-16 pt-4 sm:px-6 sm:pb-24">
+        <div data-pricing-card="final-cta" className="mx-auto max-w-5xl overflow-hidden rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-cyan-950/40 via-slate-900/70 to-blue-950/30 p-7 text-center shadow-2xl shadow-cyan-950/10 sm:p-12">
           <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-cyan-500/20 bg-cyan-500/10">
             <Wrench
               className="h-7 w-7 text-cyan-400"
