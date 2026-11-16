@@ -1011,3 +1011,21 @@ select {
     border-radius: 0;
   }
 }
+
+/* Arabic editorial typography: prefer fonts with Arabic glyphs when present,
+   then fall back to platform-native Arabic-capable fonts. No remote font or
+   extra font download is required; English-only pages retain Plus Jakarta Sans. */
+:lang(ar),
+[lang="ar"],
+[dir="rtl"] {
+  font-family: "Noto Sans Arabic", "Noto Naskh Arabic", "Geeza Pro", Tahoma, Arial, sans-serif;
+}
+
+[dir="rtl"] {
+  letter-spacing: normal;
+}
+
+[dir="rtl"] :is(h1, h2, h3, h4) {
+  letter-spacing: normal;
+  line-height: 1.35;
+}
