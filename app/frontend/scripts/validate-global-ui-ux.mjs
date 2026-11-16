@@ -336,7 +336,13 @@ requireContains(pricingPageCss, '[data-pricing-page="ar"] [data-pricing-category
 requireContains(pricingPageCss, '@media (prefers-reduced-motion: reduce)', 'pages/PricingPage.css', 'pricing card interactions must respect reduced-motion preferences.');
 requireContains(pricingPage, 'pricing-page-shell', 'pages/Pricing.tsx', 'pricing pages must use the shared page shell.');
 if (pricingPage.indexOf('data-pricing-hero') < 0 || pricingPage.indexOf('id="price-list"') < 0 || pricingPage.indexOf('data-pricing-hero') > pricingPage.indexOf('id="price-list"')) issues.push('pages/Pricing.tsx: the price catalogue must follow the hero in DOM order.');
-requireContains(pricingPageCss, '[data-pricing-page] > section[data-kcroc-editorial-panel]', 'pages/PricingPage.css', 'pricing must suppress the global cream panels and retain one graphite canvas.');
+requireContains(pricingPage, 'data-kcroc-editorial-panel="pricing-catalogue"', 'pages/Pricing.tsx', 'the English price catalogue must use the warm editorial surface.');
+requireContains(pricingPage, 'data-kcroc-editorial-panel="pricing-trust"', 'pages/Pricing.tsx', 'pricing trust signals must use the warm editorial surface.');
+requireContains(pricingPage, 'data-pricing-technical="specialist"', 'pages/Pricing.tsx', 'specialist repair capabilities must retain the dark technical surface.');
+requireContains(arabicPricingPage, 'data-pricing-technical="visual-guide"', 'pages/ArabicPricingPage.tsx', 'Arabic repair photography and technical explanation must retain the dark surface.');
+requireContains(pricingPageCss, '--pricing-paper: #f4efe7;', 'pages/PricingPage.css', 'pricing editorial sections must use the KCROC warm paper token.');
+requireContains(pricingPageCss, '[data-pricing-page] [data-pricing-card]', 'pages/PricingPage.css', 'conversion sections must use distinct white cards on warm paper.');
+requireContains(pricingPageCss, '[data-pricing-page] [data-pricing-technical]', 'pages/PricingPage.css', 'technical sections must retain graphite and contrast.');
 requireContains(pricingPageCss, 'grid-template-columns: repeat(2,minmax(0,1fr));', 'pages/PricingPage.css', 'desktop pricing must display clear two-column service cards.');
 
 if (issues.length) {
