@@ -2168,6 +2168,30 @@ function getArabicComputerPage() {
 
 type ArabicComputerPage = NonNullable<ReturnType<typeof getArabicComputerPage>>;
 
+/*
+ * Only Arabic service-detail routes receive the shared editorial panels.
+ * Arabic governorate/area pages remain on their own local-page presentation.
+ */
+const ARABIC_SERVICE_LAYOUT_SLUGS = new Set([
+  'computer-repair-kuwait',
+  'laptop-repair-kuwait',
+  'motherboard-repair-kuwait',
+  'gaming-pc-repair-kuwait',
+  'laptop-screen-repair-kuwait',
+  'desktop-pc-repair-kuwait',
+  'laptop-hinge-repair-kuwait',
+  'gaming-laptop-cleaning-kuwait',
+  'macbook-repair-kuwait',
+  'macbook-screen-replacement-kuwait',
+  'laptop-battery-replacement-kuwait',
+  'macbook-battery-replacement-kuwait',
+  'ssd-ram-upgrade-kuwait',
+  'laptop-charging-port-repair-kuwait',
+  'laptop-keyboard-replacement-kuwait',
+  'laptop-liquid-damage-repair-kuwait',
+  'gaming-laptop-repair-kuwait',
+]);
+
 export default function ArabicCommercialPage() {
   const { slug } = useParams<{ slug: string }>();
   const cfg = slug ? CONFIG[slug] : undefined;
@@ -3234,7 +3258,7 @@ export default function ArabicCommercialPage() {
   };
 
   return (
-    <div dir="rtl" lang="ar-KW" className="min-h-screen bg-transparent text-slate-100">
+    <div dir="rtl" lang="ar-KW" data-service-layout={slug && ARABIC_SERVICE_LAYOUT_SLUGS.has(slug) ? 'arabic' : undefined} className="min-h-screen bg-transparent text-slate-100">
       <SEOEngine entityId={page.id} />
       {laptopRepairServiceSchema && <SchemaMarkup schema={laptopRepairServiceSchema} />}
       {macbookServiceSchema && <SchemaMarkup schema={macbookServiceSchema} />}
