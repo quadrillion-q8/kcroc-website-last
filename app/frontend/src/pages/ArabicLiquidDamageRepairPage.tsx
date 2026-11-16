@@ -17,6 +17,7 @@ import {
 import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
+import './templates/ServiceTemplateLaptopLayout.css';
 import { buildWhatsAppLink } from '../utils/whatsappIntent';
 
 const business = KCROC_GRAPH.business!;
