@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 interface SectionHeaderProps {
   eyebrow?: string;
   /** Eyebrow accent within the KCROC metallic palette. */
-  tone?: 'copper' | 'gold';
+  tone?: 'copper' | 'gold' | 'ink';
   title: string;
   description?: string;
   align?: 'left' | 'center';
@@ -32,7 +32,7 @@ export function SectionHeader({
         <p
           className={cn(
             'text-[11px] font-bold uppercase tracking-[1px] mb-2 sm:mb-3',
-            tone === 'gold' ? 'text-[#dfa86f]' : 'text-[#c9804d]'
+            tone === 'ink' ? 'text-[#8f4f2c]' : tone === 'gold' ? 'text-[#dfa86f]' : 'text-[#c9804d]'
           )}
         >
           {eyebrow}
