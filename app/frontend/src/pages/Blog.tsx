@@ -1,6 +1,7 @@
 // File: app/frontend/src/pages/Blog.tsx
 
 import React, { useMemo } from 'react';
+import './KCROCEditorialRollout.css';
 import { Link } from 'react-router-dom';
 import { Calendar, Clock, ArrowRight, BookOpen } from 'lucide-react';
 
@@ -195,7 +196,7 @@ export default function Blog() {
   );
 
   return (
-    <div className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
+    <div className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24" data-kcroc-rollout="blog-index">
       <SEOEngine entityId="page-blog" />
 
       <SchemaMarkup schema={SCHEMA_DATA} />
