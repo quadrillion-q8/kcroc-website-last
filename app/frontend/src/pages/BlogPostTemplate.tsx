@@ -1,5 +1,6 @@
 // File: app/frontend/src/pages/BlogPostTemplate.tsx
 import { Head } from 'vite-react-ssg';
+import './KCROCEditorialRollout.css';
 import React, { useMemo, useState, useEffect, useRef, useCallback } from 'react';
 import { useParams, Navigate, Link, useLocation } from 'react-router-dom';
 import {
@@ -1488,7 +1489,7 @@ export default function BlogPostTemplate() {
   const discoverReady = Boolean(post.discoverImage);
 
   return (
-    <div className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
+    <div className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24" data-kcroc-rollout="article">
 
       <Head htmlAttributes={isGuide || isGlobalEditorialArticle ? { lang: 'en' } : undefined}>
         <title>{post.seoTitle || `${post.title.length > 57 ? `${post.title.slice(0, 57)}…` : post.title}${isGlobalNewsArticle ? "" : " | KCROC"}`}</title>
@@ -1693,7 +1694,7 @@ export default function BlogPostTemplate() {
             {/* Shown only to visitors browsing from Kuwait; see KuwaitLocalCTA. */}
             {!isGlobalEditorialArticle && <KuwaitLocalCTA topic={post.title} placement={isNews ? 'news_post' : isGuide ? 'guide_post' : 'blog_post'} />}
 
-            <section className="prose prose-invert prose-lg max-w-none prose-p:text-slate-300 prose-headings:text-white prose-a:text-cyan-400 mb-16">
+            <section className="prose prose-invert prose-lg max-w-none prose-p:text-slate-300 prose-headings:text-white prose-a:text-cyan-400 mb-16" data-kcroc-editorial-panel="article-body">
               <p className="text-xl md:text-2xl text-slate-300 font-medium leading-relaxed border-l-4 border-cyan-500 pl-6 mb-10">
                 {post.excerpt}
               </p>
