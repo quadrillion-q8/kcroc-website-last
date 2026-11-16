@@ -342,6 +342,17 @@ requireContains(pricingPage, 'data-pricing-technical="specialist"', 'pages/Prici
 requireContains(arabicPricingPage, 'data-pricing-technical="visual-guide"', 'pages/ArabicPricingPage.tsx', 'Arabic repair photography and technical explanation must retain the dark surface.');
 requireContains(pricingPageCss, '--pricing-paper: #f4efe7;', 'pages/PricingPage.css', 'pricing editorial sections must use the KCROC warm paper token.');
 requireContains(pricingPageCss, '[data-pricing-page] [data-pricing-card]', 'pages/PricingPage.css', 'conversion sections must use distinct white cards on warm paper.');
+requireContains(pricingPage, 'id="pricing-trust-heading"', 'pages/Pricing.tsx', 'pricing must use one consolidated customer-protection section after the catalogue.');
+for (const duplicateMarker of ['data-kcroc-editorial-panel="pricing-process"', 'data-kcroc-editorial-panel="pricing-guidance"', 'data-kcroc-editorial-panel="price-factors"', 'data-kcroc-editorial-panel="customer-protection"', 'data-kcroc-editorial-panel="commercial-pricing-paths"']) {
+  if (pricingPage.includes(duplicateMarker)) issues.push('pages/Pricing.tsx: duplicate lower-page pricing content must remain consolidated (' + duplicateMarker + ').');
+}
+if (pricingPageCss.includes('[data-pricing-page][data-kcroc-rollout] [data-kcroc-editorial-panel] :is(h1,h2,h3,h4,h5,strong)')) {
+  issues.push('pages/PricingPage.css: obsolete high-specificity dark heading rule overrides warm editorial text.');
+}
+if (pricingPageCss.includes('[data-pricing-page][data-kcroc-rollout] [data-kcroc-editorial-panel] :is(article,li,div,figure,a)[class*="rounded-"][class*="border"]')) {
+  issues.push('pages/PricingPage.css: obsolete high-specificity dark card rule overrides white conversion cards.');
+}
+
 requireContains(pricingPageCss, '[data-pricing-page] [data-pricing-technical]', 'pages/PricingPage.css', 'technical sections must retain graphite and contrast.');
 requireContains(pricingPageCss, 'grid-template-columns: repeat(2,minmax(0,1fr));', 'pages/PricingPage.css', 'desktop pricing must display clear two-column service cards.');
 
