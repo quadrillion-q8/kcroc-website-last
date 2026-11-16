@@ -4,6 +4,7 @@ import { ArrowLeft, BadgeCheck, BatteryCharging, CheckCircle2, CircleCheck, Clip
 import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
+import './templates/ServiceTemplateLaptopLayout.css';
 import { IMAGES } from '../constants/images';
 import { buildWhatsAppLink } from '../utils/whatsappIntent';
 import { ArabicHeadTermLinks } from '@/components/content/ArabicHeadTermLinks';
