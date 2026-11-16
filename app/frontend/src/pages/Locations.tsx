@@ -1,6 +1,7 @@
 // File: app/frontend/src/pages/Locations.tsx
 // Service-area hub for KCROC's dedicated Kuwait location pages.
 import React from 'react';
+import './KCROCEditorialRollout.css';
 import { Link } from 'react-router-dom';
 import { ArrowRight, MapPin, MessageCircle, ShieldCheck, Truck } from 'lucide-react';
 import { KCROC_GRAPH } from '../data/graph';
@@ -22,7 +23,7 @@ export default function Locations() {
     <>
       <SEOEngine entityId="page-locations" />
 
-      <div className="min-h-screen bg-transparent text-white pt-28 sm:pt-32 pb-24">
+      <div className="min-h-screen bg-transparent text-white pt-28 sm:pt-32 pb-24" data-kcroc-rollout="locations-index">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav aria-label="Breadcrumb" className="mb-8">
             <ol className="flex items-center gap-2 text-xs sm:text-sm text-slate-500">
@@ -45,7 +46,7 @@ export default function Locations() {
             </p>
           </header>
 
-          <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5" aria-label="KCROC service areas">
+          <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5" aria-label="KCROC service areas" data-kcroc-editorial-panel="service-area-cards">
             {locations.map((location) => {
               const name = location.title.replace(/ Repair Center$/i, '');
               return (
@@ -76,7 +77,7 @@ export default function Locations() {
             })}
           </section>
 
-          <section className="mt-14 grid lg:grid-cols-3 gap-5">
+          <section className="mt-14 grid lg:grid-cols-3 gap-5" data-kcroc-editorial-panel="locations-support">
             <div className="rounded-2xl border border-white/[0.08] bg-white/[0.025] p-6">
               <ShieldCheck className="w-6 h-6 text-[#dfa86f] mb-4" aria-hidden="true" />
               <h2 className="text-lg font-bold text-white mb-2">One clear service model</h2>
