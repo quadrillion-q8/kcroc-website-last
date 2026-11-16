@@ -43,6 +43,26 @@ const [serviceTemplate, graph, graphSchema, serviceLayoutCss] = await Promise.al
 ]);
 
 
+const [rolloutCss, locationLegacy, locationArea, hawalliLocation, arabicHawalliLocation, locationsIndex, brandTemplate, blogPostTemplate, blogIndex, guidesIndex, newsIndex, bookingPage, arabicBookingPage, contactPage, arabicContactPage, aboutPage, galleryPage] = await Promise.all([
+  read('pages/KCROCEditorialRollout.css'),
+  read('pages/LocationTemplate.tsx'),
+  read('pages/LocationDeepTemplate.tsx'),
+  read('pages/HawalliLocationPage.tsx'),
+  read('pages/ArabicHawalliLocationPage.tsx'),
+  read('pages/Locations.tsx'),
+  read('pages/templates/BrandTemplate.tsx'),
+  read('pages/BlogPostTemplate.tsx'),
+  read('pages/Blog.tsx'),
+  read('pages/GuidesIndex.tsx'),
+  read('pages/News.tsx'),
+  read('pages/BookingPage.tsx'),
+  read('pages/ArabicBookingPage.tsx'),
+  read('pages/Contact.tsx'),
+  read('pages/ArabicContactPage.tsx'),
+  read('pages/About.tsx'),
+  read('pages/Gallery.tsx'),
+]);
+
 const [problemTemplate, problemLayoutCss] = await Promise.all([
   read('pages/templates/ProblemTemplate.tsx'),
   read('pages/templates/ProblemTemplate.css'),
@@ -191,6 +211,44 @@ requireContains(problemLayoutCss, 'background: var(--problem-paper);', 'pages/te
 requireContains(problemLayoutCss, 'background: #c9804d !important;', 'pages/templates/ProblemTemplate.css', 'primary actions on editorial sections must use the KCROC copper accent.');
 requireContains(problemLayoutCss, '@media (max-width: 639px)', 'pages/templates/ProblemTemplate.css', 'editorial sections must have a dedicated compact mobile layout.');
 requireContains(problemLayoutCss, '@media (prefers-reduced-motion: reduce)', 'pages/templates/ProblemTemplate.css', 'editorial section interactions must respect reduced-motion preferences.');
+
+requireContains(rolloutCss, '--kcroc-rollout-paper: #f4efe7;', 'pages/KCROCEditorialRollout.css', 'website-wide templates must share the KCROC warm paper palette.');
+requireContains(rolloutCss, '--kcroc-rollout-copper: #8f4f2c;', 'pages/KCROCEditorialRollout.css', 'website-wide templates must share the copper editorial accent.');
+requireContains(rolloutCss, '@media (max-width: 639px)', 'pages/KCROCEditorialRollout.css', 'the shared treatment must include a compact mobile layout.');
+requireContains(rolloutCss, '@media (prefers-reduced-motion: reduce)', 'pages/KCROCEditorialRollout.css', 'the shared treatment must respect reduced-motion preferences.');
+
+for (const [content, marker, file] of [
+  [locationLegacy, 'data-kcroc-rollout="location-legacy"', 'pages/LocationTemplate.tsx'],
+  [locationArea, 'data-kcroc-rollout="location-area"', 'pages/LocationDeepTemplate.tsx'],
+  [hawalliLocation, 'data-kcroc-rollout="location-hawalli"', 'pages/HawalliLocationPage.tsx'],
+  [arabicHawalliLocation, 'data-kcroc-rollout="location-hawalli-ar"', 'pages/ArabicHawalliLocationPage.tsx'],
+  [locationsIndex, 'data-kcroc-rollout="locations-index"', 'pages/Locations.tsx'],
+  [brandTemplate, 'data-kcroc-rollout="brand"', 'pages/templates/BrandTemplate.tsx'],
+  [blogPostTemplate, 'data-kcroc-rollout="article"', 'pages/BlogPostTemplate.tsx'],
+  [blogIndex, 'data-kcroc-rollout="blog-index"', 'pages/Blog.tsx'],
+  [guidesIndex, 'data-kcroc-rollout="guides-index"', 'pages/GuidesIndex.tsx'],
+  [newsIndex, 'data-kcroc-rollout="news-index"', 'pages/News.tsx'],
+  [bookingPage, 'data-kcroc-rollout="booking"', 'pages/BookingPage.tsx'],
+  [arabicBookingPage, 'data-kcroc-rollout="booking-ar"', 'pages/ArabicBookingPage.tsx'],
+  [contactPage, 'data-kcroc-rollout="contact"', 'pages/Contact.tsx'],
+  [arabicContactPage, 'data-kcroc-rollout="contact-ar"', 'pages/ArabicContactPage.tsx'],
+  [aboutPage, 'data-kcroc-rollout="about"', 'pages/About.tsx'],
+  [galleryPage, 'data-kcroc-rollout="gallery"', 'pages/Gallery.tsx'],
+]) requireContains(content, marker, file, 'this page family must opt into the shared KCROC editorial rollout.');
+
+requireContains(locationArea, 'data-kcroc-editorial-panel="location-content"', 'pages/LocationDeepTemplate.tsx', 'service-area reading sections must use the shared editorial panels.');
+requireContains(locationArea, 'data-tower-handover-generator="true"', 'pages/LocationDeepTemplate.tsx', 'the live tower handover tool must remain present.');
+requireContains(locationArea, 'aria-labelledby="local-emergency-protocol"', 'pages/LocationDeepTemplate.tsx', 'the local emergency protocol must remain available separately.');
+requireContains(hawalliLocation, 'data-kcroc-editorial-panel="hawalli-content"', 'pages/HawalliLocationPage.tsx', 'Hawalli content sections must opt into the editorial treatment.');
+requireContains(arabicHawalliLocation, 'data-kcroc-editorial-panel="hawalli-content"', 'pages/ArabicHawalliLocationPage.tsx', 'Arabic Hawalli content sections must opt into the editorial treatment.');
+requireContains(brandTemplate, 'data-brand-content="true"', 'pages/templates/BrandTemplate.tsx', 'brand engineering content must use its explicit editorial scope.');
+requireContains(blogPostTemplate, 'data-kcroc-editorial-panel="article-body"', 'pages/BlogPostTemplate.tsx', 'the long-form article body must use the warm reading surface.');
+requireContains(bookingPage, 'onSubmit={handleWhatsAppRedirect}', 'pages/BookingPage.tsx', 'the English booking WhatsApp submission behavior must remain intact.');
+requireContains(arabicBookingPage, 'onSubmit={handleWhatsAppRedirect}', 'pages/ArabicBookingPage.tsx', 'the Arabic booking WhatsApp submission behavior must remain intact.');
+requireContains(contactPage, 'onSubmit={handleSubmit}', 'pages/Contact.tsx', 'the English contact form submission behavior must remain intact.');
+requireContains(arabicContactPage, 'onSubmit={handleSubmit}', 'pages/ArabicContactPage.tsx', 'the Arabic contact form submission behavior must remain intact.');
+requireContains(aboutPage, 'data-kcroc-editorial-panel="about-story"', 'pages/About.tsx', 'the About story must use the shared editorial treatment.');
+requireContains(galleryPage, 'data-kcroc-editorial-panel="gallery-conversion"', 'pages/Gallery.tsx', 'the Gallery enquiry panel must use the shared editorial treatment.');
 
 if (issues.length) {
   console.error('❌ Global UI/UX regression checks failed:');
