@@ -1,5 +1,6 @@
 // File: app/frontend/src/pages/Contact.tsx
 import React, { useMemo, useState } from 'react';
+import './KCROCEditorialRollout.css';
 import { Link } from 'react-router-dom';
 import {
   Phone, Mail, MapPin, Clock, MessageCircle, Send, Loader2, Navigation, ArrowUpRight
@@ -123,7 +124,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30 pt-8 sm:pt-16 lg:pt-32">
+    <div className="w-full min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30 pt-8 sm:pt-16 lg:pt-32" data-kcroc-rollout="contact">
       
       {/* 🚀 PHASE 2 AUTOMATION IN ACTION: Using the Hawalli Location Entity */}
       <SEOEngine entityId="page-contact" />
@@ -164,7 +165,7 @@ export default function Contact() {
       </section>
 
       {/* Form + Info */}
-      <section className="py-12 md:py-20 px-6 border-t border-slate-800/50 relative z-10">
+      <section className="py-12 md:py-20 px-6 border-t border-slate-800/50 relative z-10" data-kcroc-editorial-panel="contact-conversion">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
           
           {/* Glassmorphism Form Container */}
@@ -274,7 +275,7 @@ export default function Contact() {
       </section>
 
       {/* Real photos help visitors identify the actual complex, basement entrance and lab. */}
-      <section className="border-t border-slate-800/50 px-6 py-14 md:py-20" aria-labelledby="contact-location-photos">
+      <section className="border-t border-slate-800/50 px-6 py-14 md:py-20" aria-labelledby="contact-location-photos" data-kcroc-editorial-panel="contact-photos">
         <div className="mx-auto max-w-6xl">
           <div className="mb-8 text-center">
             <h2 id="contact-location-photos" className="text-2xl font-black text-white md:text-3xl">Find the KCROC Lab at Al Mullah Complex</h2>
@@ -318,7 +319,7 @@ export default function Contact() {
       </section>
 
       {/* Short, contact-specific answers; FAQPage markup is intentionally not added. */}
-      <section className="border-t border-slate-800/50 px-6 py-14" aria-labelledby="contact-questions">
+      <section className="border-t border-slate-800/50 px-6 py-14" aria-labelledby="contact-questions" data-kcroc-editorial-panel="contact-faq">
         <div className="mx-auto max-w-5xl">
           <h2 id="contact-questions" className="mb-6 text-center text-2xl font-black text-white">Visiting and Contact Questions</h2>
           <div className="grid gap-4 md:grid-cols-2">
@@ -342,7 +343,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="border-t border-slate-800/50 px-6 py-12" aria-labelledby="contact-helpful-pages">
+      <section className="border-t border-slate-800/50 px-6 py-12" aria-labelledby="contact-helpful-pages" data-kcroc-editorial-panel="contact-links">
         <div className="mx-auto max-w-6xl">
           <h2 id="contact-helpful-pages" className="mb-5 text-2xl font-black text-white">Explore KCROC Repair Services</h2>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
