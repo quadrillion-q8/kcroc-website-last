@@ -1,5 +1,6 @@
 // File: app/frontend/src/pages/Services.tsx
 import React from 'react';
+import './KCROCEditorialRollout.css';
 import { Link } from 'react-router-dom';
 import { Laptop, Apple, Gamepad2, Cpu, Monitor, Wrench, ChevronRight, MapPin, BookOpen, MessageCircle } from 'lucide-react';
 import { KCROC_GRAPH } from '../data/graph';
@@ -56,7 +57,7 @@ export default function Services() {
     <>
       <SEOEngine entityId="page-services" />
 
-      <div className="min-h-screen bg-transparent text-white pt-32 pb-24">
+      <div className="min-h-screen bg-transparent text-white pt-32 pb-24" data-kcroc-rollout="services-index">
         <div className="max-w-7xl mx-auto px-6">
           <header className="mb-12 max-w-4xl">
             <p className="text-xs uppercase tracking-[0.22em] font-bold text-emerald-400 mb-4">
@@ -78,7 +79,7 @@ export default function Services() {
             </div>
           </header>
 
-          <section aria-label="Core repair hubs" className="mb-12 grid gap-4 sm:grid-cols-3">
+          <section aria-label="Core repair hubs" data-kcroc-editorial-panel="core-repair-hubs" className="mb-12 grid gap-4 sm:grid-cols-3">
             <Link to="/computer-repair-kuwait" className="group rounded-2xl border border-slate-800 bg-slate-900/55 p-5 transition hover:border-emerald-500/50 hover:bg-slate-900">
               <h2 className="text-lg font-bold text-white group-hover:text-emerald-300">Computer Repair Kuwait</h2>
               <p className="mt-2 text-sm leading-relaxed text-slate-400">Start here for broader desktop, PC, gaming and component-level computer faults.</p>
@@ -96,7 +97,7 @@ export default function Services() {
             </Link>
           </section>
 
-          <section aria-labelledby="service-list-heading">
+          <section aria-labelledby="service-list-heading" data-kcroc-editorial-panel="service-index-cards">
             <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <h2 id="service-list-heading" className="text-2xl md:text-3xl font-black text-white">Browse repair services</h2>
@@ -135,7 +136,7 @@ export default function Services() {
             </div>
           </section>
 
-          <section aria-labelledby="service-faq-heading" className="mt-16 border-t border-slate-800 pt-10">
+          <section aria-labelledby="service-faq-heading" data-kcroc-editorial-panel="service-index-faq" className="mt-16 border-t border-slate-800 pt-10">
             <div className="mb-7 max-w-3xl">
               <h2 id="service-faq-heading" className="text-2xl font-black text-white md:text-3xl">Questions about computer repair services in Kuwait</h2>
               <p className="mt-3 leading-relaxed text-slate-400">Understand starting prices, pickup, warranty and the repair approval process before choosing a service.</p>
@@ -155,7 +156,7 @@ export default function Services() {
             </div>
           </section>
 
-          <section className="mt-16 grid gap-5 border-t border-slate-800 pt-10 md:grid-cols-3" aria-label="Find the right next step">
+          <section className="mt-16 grid gap-5 border-t border-slate-800 pt-10 md:grid-cols-3" aria-label="Find the right next step" data-kcroc-editorial-panel="service-index-next-steps">
             <Link to="/problems" className="group rounded-2xl border border-slate-800 bg-slate-900/50 p-6 transition hover:border-emerald-500/40">
               <Wrench className="mb-4 h-6 w-6 text-emerald-400" aria-hidden="true" />
               <h2 className="text-lg font-bold text-white group-hover:text-emerald-300">Start with a symptom</h2>

@@ -6,6 +6,7 @@
 // missing from the Problems mega menu dropdown (see NavigationCompiler.ts).
 // This page + its route in App.tsx fixes both.
 import React from 'react';
+import './KCROCEditorialRollout.css';
 import { Link } from 'react-router-dom';
 import { ShieldAlert, ChevronRight } from 'lucide-react';
 import { KCROC_GRAPH } from '../data/graph';
@@ -24,7 +25,7 @@ export default function ProblemsIndex() {
     <>
       <SEOEngine entityId="page-problems" />
 
-      <div className="min-h-screen bg-transparent text-white pt-32 pb-24">
+      <div className="min-h-screen bg-transparent text-white pt-32 pb-24" data-kcroc-rollout="problems-index">
         <div className="max-w-7xl mx-auto px-6">
           <header className="mb-16 text-center lg:text-left">
             <h1 className="text-4xl md:text-5xl font-black text-white mb-6">Common Problems</h1>
@@ -34,7 +35,7 @@ export default function ProblemsIndex() {
             </p>
           </header>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6" data-kcroc-editorial-panel="problem-index-cards">
             {problems.map((problem) => (
               <Link
                 key={problem.id}

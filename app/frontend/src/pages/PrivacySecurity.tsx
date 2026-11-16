@@ -1,5 +1,6 @@
 // File: app/frontend/src/pages/PrivacySecurity.tsx
 import React, { useMemo } from 'react';
+import './KCROCEditorialRollout.css';
 import { Link } from 'react-router-dom';
 import { 
   ShieldCheck, EyeOff, Truck, Lock, Cpu, Phone, 
@@ -88,7 +89,7 @@ export default function PrivacySecurity() {
   );
 
   return (
-    <div className="w-full min-h-screen bg-transparent text-slate-200 selection:bg-cyan-500/30 pt-32 pb-24 font-sans">
+    <div className="w-full min-h-screen bg-transparent text-slate-200 selection:bg-cyan-500/30 pt-32 pb-24 font-sans" data-kcroc-rollout="privacy-security">
       
       {/* 🚀 PHASE 2 AUTOMATION IN ACTION */}
       {/* 🔧 FIX: entityId now matches the 'page-privacy' entity registered in graph.ts —
@@ -175,7 +176,7 @@ export default function PrivacySecurity() {
       </section>
 
       {/* ─── INTERNAL LINKING CARDS ─── */}
-      <section aria-label="Related services" className="max-w-5xl mx-auto px-6 relative z-10 mb-24">
+      <section aria-label="Related services" data-kcroc-editorial-panel="security-related-services" className="max-w-5xl mx-auto px-6 relative z-10 mb-24">
         <div className="grid sm:grid-cols-2 gap-4">
           <Link to="/laptop-repair-kuwait" className="bg-slate-900/50 border border-slate-800 text-center font-bold py-6 px-6 rounded-2xl hover:bg-slate-800 hover:border-cyan-500/40 text-slate-300 transition-all">Laptop Repair</Link>
           <Link to="/macbook-repair-kuwait" className="bg-slate-900/50 border border-slate-800 text-center font-bold py-6 px-6 rounded-2xl hover:bg-slate-800 hover:border-cyan-500/40 text-slate-300 transition-all">MacBook Repair</Link>
@@ -185,7 +186,7 @@ export default function PrivacySecurity() {
       </section>
 
       {/* ─── CTA FOOTER ─── */}
-      <section aria-labelledby="cta-heading" className="max-w-4xl mx-auto px-6 relative z-10">
+      <section aria-labelledby="cta-heading" data-kcroc-editorial-panel="security-cta" className="max-w-4xl mx-auto px-6 relative z-10">
         <div className="bg-gradient-to-br from-cyan-900/40 to-slate-900/80 backdrop-blur-xl p-10 md:p-16 rounded-3xl border border-cyan-500/30 text-center shadow-[0_0_40px_rgba(34,211,238,0.1)]">
           <h2 id="cta-heading" className="text-3xl md:text-4xl font-black text-white mb-6 tracking-tight">
             Absolute Transparency. Total Peace of Mind.

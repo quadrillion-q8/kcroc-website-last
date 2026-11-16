@@ -1,4 +1,5 @@
 import React from 'react';
+import './KCROCEditorialRollout.css';
 import { Link } from 'react-router-dom';
 import {
   BadgeCheck, CheckCircle2, Clock3, MessageCircle, ShieldCheck,
@@ -170,7 +171,7 @@ const schema = {
 
 export default function ArabicPricingPage() {
   return (
-    <div dir="rtl" lang="ar-KW" className="min-h-screen bg-transparent text-slate-100">
+    <div dir="rtl" lang="ar-KW" className="min-h-screen bg-transparent text-slate-100" data-kcroc-rollout="pricing-ar">
       <SEOEngine entityId="page-ar-pricing" />
       <SchemaMarkup schema={schema} />
 
@@ -235,7 +236,7 @@ export default function ArabicPricingPage() {
         </div>
       </section>
 
-      <section className="px-4 py-12 sm:px-6 sm:py-16" aria-labelledby="arabic-pricing-list">
+      <section className="px-4 py-12 sm:px-6 sm:py-16" aria-labelledby="arabic-pricing-list" data-kcroc-editorial-panel="arabic-pricing-list">
         <div className="mx-auto max-w-6xl">
           <div className="mb-8 max-w-3xl">
             <p className="text-xs font-black uppercase tracking-widest text-cyan-400">قائمة الأسعار</p>
@@ -341,7 +342,7 @@ export default function ArabicPricingPage() {
         </div>
       </section>
 
-      <section className="px-4 py-12 sm:px-6 sm:py-16" aria-labelledby="arabic-pricing-cost-factors">
+      <section className="px-4 py-12 sm:px-6 sm:py-16" aria-labelledby="arabic-pricing-cost-factors" data-kcroc-editorial-panel="arabic-price-factors">
         <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-2">
           <div>
             <p className="text-xs font-black uppercase tracking-widest text-cyan-400">كيف نحسب التكلفة؟</p>
@@ -376,7 +377,7 @@ export default function ArabicPricingPage() {
         </div>
       </section>
 
-      <section className="border-y border-slate-800 bg-slate-900/30 px-4 py-12 sm:px-6 sm:py-16" aria-labelledby="arabic-pricing-trust">
+      <section className="border-y border-slate-800 bg-slate-900/30 px-4 py-12 sm:px-6 sm:py-16" aria-labelledby="arabic-pricing-trust" data-kcroc-editorial-panel="arabic-pricing-trust">
         <div className="mx-auto max-w-6xl">
           <h2 id="arabic-pricing-trust" className="text-2xl font-black text-white sm:text-3xl">ليش تختار KCROC؟</h2>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -393,7 +394,7 @@ export default function ArabicPricingPage() {
         </div>
       </section>
 
-      <section className="px-4 py-12 sm:px-6 sm:py-16" aria-labelledby="arabic-pricing-faq">
+      <section className="px-4 py-12 sm:px-6 sm:py-16" aria-labelledby="arabic-pricing-faq" data-kcroc-editorial-panel="arabic-pricing-faq">
         <div className="mx-auto max-w-4xl">
           <h2 id="arabic-pricing-faq" className="text-2xl font-black text-white sm:text-3xl">أسئلة شائعة عن أسعار التصليح</h2>
           <div className="mt-6 divide-y divide-slate-800 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/45">
@@ -402,7 +403,7 @@ export default function ArabicPricingPage() {
         </div>
       </section>
 
-      <section className="px-4 pb-16 sm:px-6 sm:pb-20">
+      <section className="px-4 pb-16 sm:px-6 sm:pb-20" data-kcroc-editorial-panel="arabic-pricing-cta">
         <div className="mx-auto flex max-w-6xl flex-col gap-5 rounded-3xl border border-cyan-500/20 bg-gradient-to-l from-cyan-500/10 to-slate-900/70 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-9">
           <div className="max-w-2xl">
             <h2 className="text-2xl font-black text-white sm:text-3xl">تبي تعرف سعر جهازك بالتحديد؟</h2>

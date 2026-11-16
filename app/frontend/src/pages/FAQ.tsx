@@ -1,5 +1,6 @@
 // File: app/frontend/src/pages/FAQ.tsx
 import React, { useState, useMemo, useEffect } from 'react';
+import './KCROCEditorialRollout.css';
 import { Link, useLocation } from 'react-router-dom';
 import {
   Search,
@@ -144,7 +145,7 @@ export default function FAQ() {
   }), [pageUrl]);
 
   return (
-    <div className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
+    <div className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24" data-kcroc-rollout="faq">
 
       {/* 🚀 PHASE 2 AUTOMATION IN ACTION: Basic Tags Handled */}
       <SEOEngine entityId="page-faq" />
@@ -196,7 +197,7 @@ export default function FAQ() {
       </section>
 
       {/* ─── SEARCH ─── */}
-      <div className="max-w-4xl mx-auto px-6 mb-12 relative z-10">
+      <div className="max-w-4xl mx-auto px-6 mb-12 relative z-10" data-kcroc-editorial-panel="faq-search">
         <div className="relative group">
           <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
             <Search className="text-slate-400 group-focus-within:text-cyan-400 transition-colors" size={20} aria-hidden="true" />
@@ -230,7 +231,7 @@ export default function FAQ() {
       )}
 
       {/* ─── FAQ ACCORDIONS ─── */}
-      <section aria-labelledby="faq-main-heading" className="max-w-4xl mx-auto px-6 relative z-10">
+      <section aria-labelledby="faq-main-heading" data-kcroc-editorial-panel="faq-answers" className="max-w-4xl mx-auto px-6 relative z-10">
         <h2 id="faq-main-heading" className="sr-only">All Questions</h2>
 
         {categories.length === 0 ? (
