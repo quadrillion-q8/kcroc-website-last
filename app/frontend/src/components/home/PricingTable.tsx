@@ -24,18 +24,19 @@ export const PricingTable = () => {
   return (
     <section
       aria-label="Transparent Pricing"
-      className="w-full border-t border-white/[0.08] bg-brand-dark/40 px-4 py-8 sm:px-6 sm:py-20"
+      className="kcroc-section-light kcroc-editorial-section w-full border-y border-[#e7ded3] px-4 py-10 sm:px-6 sm:py-16"
     >
       <div className="mx-auto w-full max-w-6xl">
         <SectionHeader
           eyebrow="No Hidden Fees"
+          tone="ink"
           title="Transparent Pricing"
           description="Free diagnostic. Fixed quote before we touch a tool. No Fix, No Fee."
           align="center"
           className="mb-6 sm:mb-10"
         />
 
-        <div className="grid grid-cols-1 gap-4 min-[420px]:grid-cols-2 sm:gap-6 xl:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 min-[560px]:grid-cols-2 sm:gap-6 xl:grid-cols-3">
           {services.map((service) => {
             const thumb = service.contentImages?.[0];
             const whatsappLink = buildWhatsAppLink(
@@ -50,9 +51,9 @@ export const PricingTable = () => {
             return (
               <article
                 key={service.id}
-                className="flex h-full min-h-[25rem] min-w-0 flex-col overflow-hidden rounded-2xl border border-white/[0.10] bg-white/[0.035] transition-colors hover:border-white/20"
+                className="flex h-full min-h-[25rem] min-w-0 flex-col overflow-hidden rounded-2xl border border-[#e3dace] bg-white shadow-sm transition-[border-color,box-shadow] hover:border-[#c9804d]/45 hover:shadow-md"
               >
-                <div className="flex aspect-[16/9] w-full shrink-0 items-center justify-center overflow-hidden border-b border-white/[0.08] bg-white/[0.025]">
+                <div className="flex aspect-[16/9] w-full shrink-0 items-center justify-center overflow-hidden border-b border-[#e8e0d6] bg-[#f4efe7]">
                   {thumb ? (
                     <img
                       src={thumb.src}
@@ -64,12 +65,12 @@ export const PricingTable = () => {
                       className="h-full w-full object-cover"
                     />
                   ) : (
-                    <Wrench className="h-8 w-8 text-[#C4CDD1]" aria-hidden="true" />
+                    <Wrench className="h-8 w-8 text-[#8f4f2c]" aria-hidden="true" />
                   )}
                 </div>
 
-                <div className="flex flex-1 flex-col p-4 sm:p-6 lg:p-8">
-                  <h3 className="min-h-12 text-base font-bold leading-snug text-white sm:text-lg">
+                <div className="flex flex-1 flex-col p-4 sm:p-5 lg:p-6">
+                  <h3 className="min-h-12 text-base font-bold leading-snug text-[#172022] sm:text-lg">
                     <Link
                       to={`/${service.slug}`}
                       onClick={() =>
@@ -86,19 +87,19 @@ export const PricingTable = () => {
                   </h3>
 
                   <div className="mt-3">
-                    <p className="text-xs font-bold uppercase tracking-wide text-[#B7C1C5]">
+                    <p className="text-xs font-bold uppercase tracking-wide text-[#5b6669]">
                       Typical turnaround
                     </p>
-                    <p className="mt-1 min-h-10 text-sm leading-5 text-[#C4CDD1] line-clamp-2">
+                    <p className="mt-1 min-h-10 text-sm leading-5 text-[#566467] line-clamp-2">
                       {conciseTurnaround(service.estimatedTurnaround)}
                     </p>
                   </div>
 
                   <div className="mt-3">
-                    <p className="text-xs font-bold uppercase tracking-wide text-[#B7C1C5]">
+                    <p className="text-xs font-bold uppercase tracking-wide text-[#5b6669]">
                       Starting price
                     </p>
-                    <span className="mt-1 flex min-h-12 max-w-full items-center rounded-lg border border-white/[0.12] bg-white/[0.045] px-3 py-2 text-sm font-extrabold leading-snug text-[#F2F4F5]">
+                    <span className="mt-1 flex min-h-12 max-w-full items-center rounded-lg border border-[#e3dace] bg-[#f7f3ed] px-3 py-2 text-sm font-extrabold leading-snug text-[#172022]">
                       {priceLabel}
                     </span>
                   </div>
@@ -115,7 +116,7 @@ export const PricingTable = () => {
                         service_id: service.id,
                       })
                     }
-                    className="mt-auto inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-3 py-3 text-sm font-extrabold text-[#062B15] transition-colors hover:bg-[#4AE487] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8BF0AD] focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+                    className="mt-auto inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-3 py-3 text-sm font-extrabold text-[#062B15] transition-colors hover:bg-[#4AE487] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8BF0AD] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                   >
                     <MessageCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
                     Ask about pricing
@@ -126,7 +127,7 @@ export const PricingTable = () => {
           })}
         </div>
 
-        <p className="mt-4 text-center text-sm leading-relaxed text-[#C4CDD1]">
+        <p className="mt-4 text-center text-sm leading-relaxed text-[#5b6669]">
           Prices shown are starting rates. The exact quote is confirmed after the free diagnosis, before any paid work.
         </p>
 
