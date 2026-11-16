@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './KCROCEditorialRollout.css';
 import { Link } from 'react-router-dom';
 import {
   Phone, Mail, MapPin, Clock, MessageCircle, Navigation, ArrowUpLeft, Send, Truck
@@ -78,7 +79,7 @@ export default function ArabicContactPage() {
   };
 
   return (
-    <div dir="rtl" lang="ar-KW" className="min-h-screen w-full bg-transparent pb-12 pt-8 font-sans text-white selection:bg-cyan-500/30 sm:pt-16 lg:pt-32">
+    <div dir="rtl" lang="ar-KW" className="min-h-screen w-full bg-transparent pb-12 pt-8 font-sans text-white selection:bg-cyan-500/30 sm:pt-16 lg:pt-32" data-kcroc-rollout="contact-ar">
       <SEOEngine entityId="page-ar-contact" />
 
       <nav aria-label="مسار التنقل" className="relative z-10 mx-auto mb-8 max-w-6xl px-6">
@@ -112,7 +113,7 @@ export default function ArabicContactPage() {
         <p className="mt-4 text-sm text-slate-400">مختبر KCROC الفعلي الوحيد في حولي، مع خدمة استلام وتوصيل مجانية في جميع مناطق الكويت.</p>
       </section>
 
-      <section className="relative z-10 border-t border-slate-800/50 px-6 py-12">
+      <section className="relative z-10 border-t border-slate-800/50 px-6 py-12" data-kcroc-editorial-panel="contact-conversion">
         <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-2">
           <div className="rounded-3xl border border-slate-700/50 bg-slate-900/40 p-6 backdrop-blur-xl sm:p-8">
             <h2 className="mb-6 text-2xl font-black text-white">أرسل تفاصيل طلب التصليح</h2>
@@ -181,7 +182,7 @@ export default function ArabicContactPage() {
         </div>
       </section>
 
-      <section className="border-t border-slate-800/50 px-6 py-14" aria-labelledby="ar-contact-photos">
+      <section className="border-t border-slate-800/50 px-6 py-14" aria-labelledby="ar-contact-photos" data-kcroc-editorial-panel="contact-photos">
         <div className="mx-auto max-w-6xl">
           <h2 id="ar-contact-photos" className="mb-3 text-center text-2xl font-black text-white sm:text-3xl">صور حقيقية لمجمع الملا ومختبر KCROC</h2>
           <p className="mx-auto mb-8 max-w-3xl text-center leading-7 text-slate-300">تساعدك هذه الصور على التعرف على المبنى ومدخل الطابق السفلي ومختبر الصيانة قبل زيارتنا في حولي.</p>
