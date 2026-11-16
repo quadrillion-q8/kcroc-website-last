@@ -465,7 +465,7 @@ export default function Pricing() {
             </p>
           </div>
 
-          <div data-pricing-card="trust-promise" className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-7">
+          <div data-pricing-card="customer-guarantees" className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-7">
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               <TrustItem
                 icon={Search}
