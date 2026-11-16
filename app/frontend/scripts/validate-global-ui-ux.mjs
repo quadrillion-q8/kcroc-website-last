@@ -42,6 +42,13 @@ const [serviceTemplate, graph, graphSchema, serviceLayoutCss] = await Promise.al
   read('pages/templates/ServiceTemplateLaptopLayout.css'),
 ]);
 
+
+const [arabicServicePage, arabicLiquidDamagePage, macbookBatteryPage] = await Promise.all([
+  read('pages/ArabicCommercialPage.tsx'),
+  read('pages/ArabicLiquidDamageRepairPage.tsx'),
+  read('pages/MacBookBatteryReplacementPage.tsx'),
+]);
+
 const issues = [];
 const requireContains = (content, text, file, description) => {
   if (!content.includes(text)) issues.push(`${file}: ${description}`);
@@ -117,6 +124,15 @@ requireContains(serviceLayoutCss, 'KCROC SERVICE EDITORIAL PANELS — 2026-11-16
 requireContains(serviceLayoutCss, '[aria-labelledby="laptop-repair-pricing-heading"]', 'pages/templates/ServiceTemplateLaptopLayout.css', 'service pricing must use the light editorial treatment.');
 requireContains(serviceLayoutCss, '[aria-labelledby="service-faqs-heading"]', 'pages/templates/ServiceTemplateLaptopLayout.css', 'service FAQs must use the light editorial treatment.');
 requireContains(serviceLayoutCss, 'background: #f4efe7 !important;', 'pages/templates/ServiceTemplateLaptopLayout.css', 'service editorial panels must use the KCROC warm neutral surface.');
+
+requireContains(arabicServicePage, 'ARABIC_SERVICE_LAYOUT_SLUGS', 'pages/ArabicCommercialPage.tsx', 'Arabic service-detail pages must be explicitly scoped without restyling area pages.');
+requireContains(arabicServicePage, "data-service-layout={slug && ARABIC_SERVICE_LAYOUT_SLUGS.has(slug) ? 'arabic' : undefined}", 'pages/ArabicCommercialPage.tsx', 'Arabic service pages must opt into the shared editorial treatment only on service routes.');
+requireContains(arabicLiquidDamagePage, 'data-service-layout="arabic-liquid-damage"', 'pages/ArabicLiquidDamageRepairPage.tsx', 'the separate Arabic liquid-damage service page must use the editorial service styling hooks.');
+requireContains(macbookBatteryPage, "import './templates/ServiceTemplateLaptopLayout.css';", 'pages/MacBookBatteryReplacementPage.tsx', 'the standalone MacBook battery page must load the shared service-page styling layer.');
+requireContains(macbookBatteryPage, 'data-service-layout="macbook-battery"', 'pages/MacBookBatteryReplacementPage.tsx', 'the standalone MacBook battery page must opt into its route-specific editorial panels.');
+requireContains(serviceLayoutCss, '[data-service-layout="arabic"]', 'pages/templates/ServiceTemplateLaptopLayout.css', 'Arabic service pages must have RTL-safe editorial panel styling.');
+requireContains(serviceLayoutCss, '[data-service-layout="arabic-liquid-damage"]', 'pages/templates/ServiceTemplateLaptopLayout.css', 'Arabic liquid-damage pricing and FAQs must use the warm editorial treatment while safety content stays separate.');
+requireContains(serviceLayoutCss, '[data-service-layout="macbook-battery"]', 'pages/templates/ServiceTemplateLaptopLayout.css', 'the standalone English MacBook battery service must share the editorial panel system.');
 
 if (issues.length) {
   console.error('❌ Global UI/UX regression checks failed:');
