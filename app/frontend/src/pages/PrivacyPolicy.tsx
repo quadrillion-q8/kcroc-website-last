@@ -1,5 +1,6 @@
 // File: app/frontend/src/pages/PrivacyPolicy.tsx
 import { Head } from 'vite-react-ssg';
+import './KCROCEditorialRollout.css';
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ShieldCheck, Mail, Phone, Settings2 } from 'lucide-react';
@@ -115,7 +116,7 @@ export default function PrivacyPolicy() {
   );
 
   return (
-    <div className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24">
+    <div className="w-full min-h-screen bg-transparent text-slate-200 pt-32 pb-24" data-kcroc-rollout="legal">
       <SEOEngine entityId="page-privacy-policy" />
       <Head>
         <title>Privacy Policy | KCROC Computer Repair Kuwait</title>
@@ -146,7 +147,7 @@ export default function PrivacyPolicy() {
         </ol>
       </nav>
 
-      <section className="max-w-3xl mx-auto px-6 relative z-10">
+      <section className="max-w-3xl mx-auto px-6 relative z-10" data-kcroc-editorial-panel="legal-body">
         <div className="flex items-center gap-3 mb-4">
           <div className="bg-cyan-500/10 p-2.5 rounded-xl border border-cyan-500/20">
             <ShieldCheck className="w-6 h-6 text-cyan-400" aria-hidden="true" />
