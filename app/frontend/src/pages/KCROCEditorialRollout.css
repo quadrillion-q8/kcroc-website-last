@@ -285,3 +285,246 @@
     animation-iteration-count: 1 !important;
   }
 }
+
+
+/* -------------------------------------------------------------------------
+   SECONDARY PAGE FAMILIES — FAQ, pricing, discovery, local-intent and policy
+   Interactive price filters/matrices, urgency tags and security protocols
+   intentionally retain their graphite/status surfaces.
+   ------------------------------------------------------------------------- */
+
+/* FAQ: keep the hero, category jump buttons and live search control clear;
+   present the answer library as the warm reading surface. */
+[data-kcroc-rollout="faq"] [data-kcroc-editorial-panel="faq-search"] {
+  padding: 1rem;
+  border: 1px solid var(--kcroc-rollout-line);
+  border-radius: 1.25rem;
+  background: var(--kcroc-rollout-paper);
+}
+[data-kcroc-rollout="faq"] [data-kcroc-editorial-panel="faq-search"] input {
+  border-color: #cbbcac !important;
+  background: var(--kcroc-rollout-white) !important;
+  color: var(--kcroc-rollout-ink) !important;
+  color-scheme: light;
+}
+[data-kcroc-rollout="faq"] [data-kcroc-editorial-panel="faq-search"] input::placeholder {
+  color: #687476 !important;
+  opacity: 1;
+}
+[data-kcroc-rollout="faq"] [data-kcroc-editorial-panel="faq-answers"] {
+  width: min(calc(100% - 1rem), 58rem);
+  margin-inline: auto;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--kcroc-rollout-line);
+  border-radius: 1.4rem;
+  background: var(--kcroc-rollout-paper);
+}
+[data-kcroc-rollout="faq"] [data-kcroc-editorial-panel="faq-answers"] details {
+  border-color: var(--kcroc-rollout-line) !important;
+  background: var(--kcroc-rollout-white) !important;
+  box-shadow: 0 4px 16px rgba(33, 27, 22, 0.04);
+}
+[data-kcroc-rollout="faq"] [data-kcroc-editorial-panel="faq-answers"] details summary h3,
+[data-kcroc-rollout="faq"] [data-kcroc-editorial-panel="faq-answers"] details summary {
+  color: var(--kcroc-rollout-ink) !important;
+}
+[data-kcroc-rollout="faq"] [data-kcroc-editorial-panel="faq-answers"] details > div {
+  border-color: var(--kcroc-rollout-line) !important;
+  color: var(--kcroc-rollout-muted) !important;
+}
+[data-kcroc-rollout="faq"] [data-kcroc-editorial-panel="faq-answers"] details button {
+  border-color: var(--kcroc-rollout-line) !important;
+  background: #f2ece3 !important;
+  color: var(--kcroc-rollout-muted) !important;
+}
+[data-kcroc-rollout="faq"] [data-kcroc-editorial-panel="faq-answers"] details button:hover {
+  border-color: var(--kcroc-rollout-copper) !important;
+  color: var(--kcroc-rollout-copper) !important;
+}
+
+/* Pricing: explanations, price-setting process, customer safeguards and FAQs
+   get the editorial frame. The live filter controls and price matrix remain dark. */
+[data-kcroc-rollout="pricing"] [data-kcroc-editorial-panel],
+[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel] {
+  border-color: var(--kcroc-rollout-line) !important;
+  border-radius: 1.4rem;
+  background: var(--kcroc-rollout-paper) !important;
+  color: var(--kcroc-rollout-ink) !important;
+  box-shadow: 0 10px 28px rgba(25, 29, 28, 0.06);
+}
+[data-kcroc-rollout="pricing"] [data-kcroc-editorial-panel] :is(h2,h3,h4,strong),
+[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel] :is(h2,h3,h4,strong) {
+  color: var(--kcroc-rollout-ink) !important;
+}
+[data-kcroc-rollout="pricing"] [data-kcroc-editorial-panel] :is(p,li,td,th,.text-slate-200,.text-slate-300,.text-slate-400,.text-slate-500),
+[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel] :is(p,li,td,th,.text-slate-200,.text-slate-300,.text-slate-400,.text-slate-500) {
+  color: var(--kcroc-rollout-muted) !important;
+}
+[data-kcroc-rollout="pricing"] [data-kcroc-editorial-panel] :is(.text-cyan-200,.text-cyan-300,.text-cyan-400,.text-cyan-500,.text-blue-400,.text-blue-500),
+[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel] :is(.text-cyan-200,.text-cyan-300,.text-cyan-400,.text-cyan-500) {
+  color: var(--kcroc-rollout-copper) !important;
+}
+[data-kcroc-rollout="pricing"] [data-kcroc-editorial-panel] :is(.text-emerald-300,.text-emerald-400),
+[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel] :is(.text-emerald-300,.text-emerald-400) {
+  color: #166534 !important;
+}
+[data-kcroc-rollout="pricing"] [data-kcroc-editorial-panel] :is(.text-amber-200,.text-amber-300,.text-amber-400),
+[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel] :is(.text-amber-200,.text-amber-300,.text-amber-400) {
+  color: #92400e !important;
+}
+[data-kcroc-rollout="pricing"] [data-kcroc-editorial-panel] :is(div,article,a)[class*="rounded-"][class*="border"],
+[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel] :is(div,article,a)[class*="rounded-"][class*="border"] {
+  border-color: var(--kcroc-rollout-line) !important;
+  background: var(--kcroc-rollout-white) !important;
+}
+[data-kcroc-rollout="pricing"] [data-kcroc-editorial-panel] a[class*="text-cyan-"],
+[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel] a[class*="text-cyan-"] {
+  color: var(--kcroc-rollout-copper) !important;
+}
+[data-kcroc-rollout="pricing"] [data-kcroc-editorial-panel] :is(a,button):focus-visible,
+[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel] :is(a,button,summary):focus-visible {
+  outline: 3px solid var(--kcroc-rollout-copper);
+  outline-offset: 3px;
+}
+[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel] {
+  text-align: start;
+}
+[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel] :is(h1,h2,h3,h4) {
+  letter-spacing: normal;
+  line-height: 1.35;
+}
+
+/* Discovery indexes: white cards become the surface for brand, problem and
+   service choices. Urgency indicators on ProblemsIndex keep their red/amber
+   semantics and are deliberately not recoloured. */
+[data-kcroc-rollout="brands-index"] [data-kcroc-editorial-panel="brand-index-cards"] > a,
+[data-kcroc-rollout="problems-index"] [data-kcroc-editorial-panel="problem-index-cards"] > a,
+[data-kcroc-rollout="services-index"] [data-kcroc-editorial-panel] > a,
+[data-kcroc-rollout="services-index"] [data-kcroc-editorial-panel] a[class*="rounded-2xl"] {
+  border-color: var(--kcroc-rollout-line) !important;
+  border-radius: 1.25rem;
+  background: var(--kcroc-rollout-white) !important;
+  color: var(--kcroc-rollout-ink) !important;
+  box-shadow: 0 6px 22px rgba(25, 29, 28, 0.05);
+}
+[data-kcroc-rollout="brands-index"] [data-kcroc-editorial-panel] :is(h2,h3),
+[data-kcroc-rollout="problems-index"] [data-kcroc-editorial-panel] :is(h2,h3),
+[data-kcroc-rollout="services-index"] [data-kcroc-editorial-panel] :is(h2,h3) {
+  color: var(--kcroc-rollout-ink) !important;
+}
+[data-kcroc-rollout="brands-index"] [data-kcroc-editorial-panel] :is(p,li,span:not([class*="bg-"])),
+[data-kcroc-rollout="problems-index"] [data-kcroc-editorial-panel] :is(p,li),
+[data-kcroc-rollout="services-index"] [data-kcroc-editorial-panel] :is(p,li) {
+  color: var(--kcroc-rollout-muted) !important;
+}
+[data-kcroc-rollout="brands-index"] [data-kcroc-editorial-panel] :is(.text-cyan-200,.text-cyan-300,.text-cyan-400,.text-cyan-500),
+[data-kcroc-rollout="problems-index"] [data-kcroc-editorial-panel] :is(.text-cyan-200,.text-cyan-300,.text-cyan-400,.text-cyan-500),
+[data-kcroc-rollout="services-index"] [data-kcroc-editorial-panel] :is(.text-cyan-200,.text-cyan-300,.text-cyan-400,.text-cyan-500) {
+  color: var(--kcroc-rollout-copper) !important;
+}
+
+/* Near-me remains a dark local-intent hero. Main explanation, local steps,
+   service choices, Arabic section, FAQs and conversion prompt use paper. */
+[data-kcroc-rollout="near-me"] [data-kcroc-editorial-panel] {
+  width: min(calc(100% - 1rem), 80rem);
+  margin-inline: auto;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  border-color: var(--kcroc-rollout-line) !important;
+  background: var(--kcroc-rollout-paper) !important;
+  border-radius: 1.4rem;
+  color: var(--kcroc-rollout-ink) !important;
+}
+[data-kcroc-rollout="near-me"] [data-kcroc-editorial-panel] :is(h2,h3,h4,strong) {
+  color: var(--kcroc-rollout-ink) !important;
+}
+[data-kcroc-rollout="near-me"] [data-kcroc-editorial-panel] :is(p,li,.text-slate-200,.text-slate-300,.text-slate-400,.text-slate-500) {
+  color: var(--kcroc-rollout-muted) !important;
+}
+[data-kcroc-rollout="near-me"] [data-kcroc-editorial-panel] :is(div,article,a)[class*="rounded-"][class*="border"] {
+  border-color: var(--kcroc-rollout-line) !important;
+  background: var(--kcroc-rollout-white) !important;
+}
+[data-kcroc-rollout="near-me"] [data-kcroc-editorial-panel] a[class*="text-cyan-"],
+[data-kcroc-rollout="near-me"] [data-kcroc-editorial-panel] a[class*="hover:text-cyan-"] {
+  color: var(--kcroc-rollout-copper) !important;
+}
+[data-kcroc-rollout="near-me"] [dir="rtl"] [data-kcroc-editorial-panel] {
+  text-align: start;
+}
+[data-kcroc-rollout="near-me"] [dir="rtl"] [data-kcroc-editorial-panel] :is(h2,h3,h4) {
+  letter-spacing: normal;
+  line-height: 1.35;
+}
+
+/* Author page: portrait hero stays graphite; expertise, writing and enquiry
+   sections use a calm editorial panel. */
+[data-kcroc-rollout="author"] [data-kcroc-editorial-panel] {
+  width: min(calc(100% - 1rem), 68rem);
+  margin-inline: auto;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  border: 1px solid var(--kcroc-rollout-line) !important;
+  border-radius: 1.4rem;
+  background: var(--kcroc-rollout-paper) !important;
+  color: var(--kcroc-rollout-ink) !important;
+}
+[data-kcroc-rollout="author"] [data-kcroc-editorial-panel] :is(h2,h3,h4,strong) {
+  color: var(--kcroc-rollout-ink) !important;
+}
+[data-kcroc-rollout="author"] [data-kcroc-editorial-panel] :is(p,li,.text-slate-200,.text-slate-300,.text-slate-400,.text-slate-500) {
+  color: var(--kcroc-rollout-muted) !important;
+}
+
+/* Pillar articles and legal documents share the same readable long-form
+   surface; metadata, canonical tags and document wording remain untouched. */
+[data-kcroc-rollout="pillar-article"] [data-kcroc-editorial-panel="pillar-body"],
+[data-kcroc-rollout="legal"] [data-kcroc-editorial-panel="legal-body"] {
+  max-width: none;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  border: 1px solid var(--kcroc-rollout-line) !important;
+  border-radius: 1.4rem;
+  background: var(--kcroc-rollout-paper) !important;
+  color: var(--kcroc-rollout-ink) !important;
+}
+[data-kcroc-rollout="pillar-article"] [data-kcroc-editorial-panel="pillar-body"] :is(h1,h2,h3,h4,strong,b),
+[data-kcroc-rollout="legal"] [data-kcroc-editorial-panel="legal-body"] :is(h1,h2,h3,h4,strong,b) {
+  color: var(--kcroc-rollout-ink) !important;
+}
+[data-kcroc-rollout="pillar-article"] [data-kcroc-editorial-panel="pillar-body"] :is(p,li,td,th),
+[data-kcroc-rollout="legal"] [data-kcroc-editorial-panel="legal-body"] :is(p,li,td,th) {
+  color: var(--kcroc-rollout-muted) !important;
+}
+[data-kcroc-rollout="legal"] [data-kcroc-editorial-panel="legal-body"] :is(a,.text-cyan-300,.text-cyan-400) {
+  color: var(--kcroc-rollout-copper) !important;
+}
+[data-kcroc-rollout="legal"] [data-kcroc-editorial-panel="legal-body"] button {
+  border-color: #cbbcac !important;
+  color: var(--kcroc-rollout-ink) !important;
+}
+
+/* Privacy/security protocol remains graphite to emphasize data handling;
+   only the related repair routes and contact prompt adopt editorial styling. */
+[data-kcroc-rollout="privacy-security"] [data-kcroc-editorial-panel] {
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  border: 1px solid var(--kcroc-rollout-line) !important;
+  border-radius: 1.4rem;
+  background: var(--kcroc-rollout-paper) !important;
+  color: var(--kcroc-rollout-ink) !important;
+}
+[data-kcroc-rollout="privacy-security"] [data-kcroc-editorial-panel] :is(h2,h3,h4,p) {
+  color: var(--kcroc-rollout-ink) !important;
+}
+[data-kcroc-rollout="privacy-security"] [data-kcroc-editorial-panel] a[class*="bg-cyan-"] {
+  background: var(--kcroc-rollout-copper-fill) !important;
+  color: #17110c !important;
+}
+
+@media (max-width: 639px) {
+  [data-kcroc-rollout="faq"] [data-kcroc-editorial-panel="faq-answers"],
+  [data-kcroc-rollout="near-me"] [data-kcroc-editorial-panel],
+  [data-kcroc-rollout="author"] [data-kcroc-editorial-panel],
+  [data-kcroc-rollout="pillar-article"] [data-kcroc-editorial-panel],
+  [data-kcroc-rollout="legal"] [data-kcroc-editorial-panel] {
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+}
