@@ -16,15 +16,10 @@ import {
   Thermometer,
   Wrench,
   Activity,
-  ShieldAlert,
   FileCheck2,
   BadgeCheck,
   CircleDollarSign,
-  Eye,
-  Scale,
   MessageCircle,
-  ClipboardCheck,
-  Sparkles,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
