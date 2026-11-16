@@ -134,6 +134,12 @@ requireContains(serviceLayoutCss, '[data-service-layout="arabic"]', 'pages/templ
 requireContains(serviceLayoutCss, '[data-service-layout="arabic-liquid-damage"]', 'pages/templates/ServiceTemplateLaptopLayout.css', 'Arabic liquid-damage pricing and FAQs must use the warm editorial treatment while safety content stays separate.');
 requireContains(serviceLayoutCss, '[data-service-layout="macbook-battery"]', 'pages/templates/ServiceTemplateLaptopLayout.css', 'the standalone English MacBook battery service must share the editorial panel system.');
 
+requireContains(arabicServicePage, 'data-service-editorial-panel', 'pages/ArabicCommercialPage.tsx', 'route-specific Arabic service reading sections must opt into the shared editorial treatment.');
+requireContains(serviceLayoutCss, '[data-service-layout="arabic"] section[data-service-editorial-panel]', 'pages/templates/ServiceTemplateLaptopLayout.css', 'bespoke Arabic process, pricing, benefits and FAQ panels must use the shared editorial styling.');
+requireContains(arabicServicePage, 'aria-labelledby="charging-port-repair-process" data-service-editorial-panel', 'pages/ArabicCommercialPage.tsx', 'Arabic charging-port process section must use the shared editorial panel.');
+requireContains(arabicServicePage, 'aria-labelledby="keyboard-repair-process" data-service-editorial-panel', 'pages/ArabicCommercialPage.tsx', 'Arabic keyboard process section must use the shared editorial panel.');
+requireContains(arabicServicePage, 'aria-labelledby="macbook-screen-process" data-service-editorial-panel', 'pages/ArabicCommercialPage.tsx', 'Arabic MacBook screen process section must use the shared editorial panel.');
+
 if (issues.length) {
   console.error('❌ Global UI/UX regression checks failed:');
   for (const issue of issues) console.error(`- ${issue}`);

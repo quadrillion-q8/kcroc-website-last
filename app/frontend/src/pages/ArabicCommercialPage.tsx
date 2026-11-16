@@ -1431,7 +1431,7 @@ function ArabicGamingPcRepairPage({
           </div>
         </section>
 
-        <section className="mt-10" aria-labelledby="gaming-services">
+        <section className="mt-10" aria-labelledby="gaming-services" data-service-editorial-panel>
           <div className="mb-7">
             <p className="text-sm font-black tracking-[0.08em] text-cyan-400">شنو نصلح؟</p>
             <h2 id="gaming-services" className="mt-2 text-3xl font-black text-white">خدمة Gaming PC عندنا تبدأ من المشكلة وتنتهي باختبار الجهاز</h2>
@@ -1514,7 +1514,7 @@ function ArabicGamingPcRepairPage({
           </div>
         </section>
 
-        <section className="mt-10 rounded-[1.75rem] border border-slate-800 bg-slate-900/45 p-6 sm:p-8" aria-labelledby="gaming-process">
+        <section className="mt-10 rounded-[1.75rem] border border-slate-800 bg-slate-900/45 p-6 sm:p-8" aria-labelledby="gaming-process" data-service-editorial-panel>
           <div className="mb-7">
             <p className="text-sm font-black tracking-[0.08em] text-cyan-400">من أول رسالة لين يرجع جهازك</p>
             <h2 id="gaming-process" className="mt-2 text-3xl font-black text-white">طريقة الشغل سهلة وواضحة</h2>
@@ -1535,7 +1535,7 @@ function ArabicGamingPcRepairPage({
           </div>
         </section>
 
-        <section className="mt-10 grid gap-6 lg:grid-cols-2" aria-labelledby="gaming-confidence">
+        <section className="mt-10 grid gap-6 lg:grid-cols-2" aria-labelledby="gaming-confidence" data-service-editorial-panel>
           <div className="rounded-[1.75rem] border border-slate-800 bg-slate-900/45 p-6 sm:p-8">
             <p className="text-sm font-black tracking-[0.08em] text-cyan-400">ليش KCROC؟</p>
             <h2 id="gaming-confidence" className="mt-2 text-3xl font-black text-white">هذي الأشياء تهمك قبل لا تسلمنا جهازك</h2>
@@ -1578,7 +1578,7 @@ function ArabicGamingPcRepairPage({
           </div>
         </section>
 
-        <section className="mt-10" aria-labelledby="gaming-faq">
+        <section className="mt-10" aria-labelledby="gaming-faq" data-service-editorial-panel>
           <div className="mb-7">
             <p className="text-sm font-black tracking-[0.08em] text-cyan-400">الأسئلة اللي نسأل عنها وايد</p>
             <h2 id="gaming-faq" className="mt-2 text-3xl font-black text-white sm:text-4xl">قبل لا تقول: "أبي أبدّل الكرت"</h2>
@@ -1886,7 +1886,7 @@ function ArabicComputerRepairPage({
           ))}
         </section>
 
-        <section className="mt-12" aria-labelledby="common-computer-problems">
+        <section className="mt-12" aria-labelledby="common-computer-problems" data-service-editorial-panel>
           <div className="mb-7 max-w-3xl">
             <p className="text-sm font-black tracking-[0.08em] text-cyan-400">تصليح كمبيوتر حسب العطل</p>
             <h2 id="common-computer-problems" className="mt-2 text-3xl font-black text-white sm:text-4xl">
@@ -1909,7 +1909,7 @@ function ArabicComputerRepairPage({
           </div>
         </section>
 
-        <section className="mt-12 rounded-[2rem] border border-cyan-500/15 bg-slate-900/35 p-6 sm:p-8" aria-labelledby="computer-repair-prices">
+        <section className="mt-12 rounded-[2rem] border border-cyan-500/15 bg-slate-900/35 p-6 sm:p-8" aria-labelledby="computer-repair-prices" data-service-editorial-panel>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-3xl">
               <p className="text-sm font-black tracking-[0.08em] text-cyan-400">أسعار واضحة قبل الإصلاح</p>
@@ -1933,7 +1933,7 @@ function ArabicComputerRepairPage({
           </div>
         </section>
 
-        <section className="mt-16" aria-labelledby="why-repair">
+        <section className="mt-16" aria-labelledby="why-repair" data-service-editorial-panel>
           <div className="max-w-3xl">
             <p className="text-sm font-black tracking-[0.08em] text-cyan-400">الفرق الحقيقي</p>
             <h2 id="why-repair" className="mt-2 text-3xl font-black text-white sm:text-4xl">مو كل مذربورد خربانة لازم تتبدل</h2>
@@ -1975,7 +1975,7 @@ function ArabicComputerRepairPage({
           </div>
         </section>
 
-        <section className="mt-16" aria-labelledby="repair-process">
+        <section className="mt-16" aria-labelledby="repair-process" data-service-editorial-panel>
           <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
               <p className="text-sm font-black tracking-[0.08em] text-cyan-400">من أول رسالة إلى تسليم الجهاز</p>
@@ -2000,7 +2000,7 @@ function ArabicComputerRepairPage({
           </div>
         </section>
 
-        <section className="mt-16" aria-labelledby="arabic-services-premium">
+        <section className="mt-16" aria-labelledby="arabic-services-premium" data-service-editorial-panel>
           <div className="mb-8">
             <p className="text-sm font-black tracking-[0.08em] text-cyan-400">الخدمات</p>
             <h2 id="arabic-services-premium" className="mt-2 text-3xl font-black text-white sm:text-4xl">الخدمة تبدأ من العطل الذي عندك</h2>
@@ -2049,7 +2049,7 @@ function ArabicComputerRepairPage({
           </div>
         </section>
 
-        <section className="mt-16" aria-labelledby="local-service">
+        <section className="mt-16" aria-labelledby="local-service" data-service-editorial-panel>
           <div className="grid gap-6 lg:grid-cols-[1fr_0.8fr]">
             <div className="rounded-3xl border border-slate-800 bg-slate-900/45 p-7 sm:p-9">
               <p className="text-sm font-black tracking-[0.08em] text-cyan-400">خدمة الكويت</p>
@@ -2071,7 +2071,7 @@ function ArabicComputerRepairPage({
           </div>
         </section>
 
-        <section className="mt-16" aria-labelledby="decision-help">
+        <section className="mt-16" aria-labelledby="decision-help" data-service-editorial-panel>
           <div className="grid gap-6 lg:grid-cols-2">
             <div className="rounded-3xl border border-slate-800 bg-slate-900/45 p-7 sm:p-9">
               <p className="text-sm font-black tracking-[0.08em] text-cyan-400">قبل قرار الإصلاح</p>
@@ -2104,7 +2104,7 @@ function ArabicComputerRepairPage({
           </div>
         </section>
 
-        <section className="mt-16" aria-labelledby="arabic-faq-premium">
+        <section className="mt-16" aria-labelledby="arabic-faq-premium" data-service-editorial-panel>
           <div className="mb-7 max-w-3xl">
             <p className="text-sm font-black tracking-[0.08em] text-cyan-400">الأسئلة الشائعة</p>
             <h2 id="arabic-faq-premium" className="mt-2 text-3xl font-black text-white sm:text-4xl">قبل لا ترسل جهازك</h2>
@@ -3547,7 +3547,7 @@ export default function ArabicCommercialPage() {
                 </div>
               </section>
 
-              <section className="mt-12" aria-labelledby="desktop-device-types">
+              <section className="mt-12" aria-labelledby="desktop-device-types" data-service-editorial-panel>
                 <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">أنواع الأجهزة</p><h2 id="desktop-device-types" className="mt-2 text-2xl font-black text-white sm:text-3xl">نفحص فئات الكمبيوتر المكتبي في الكويت</h2>
                 <div className="mt-6 grid gap-4 md:grid-cols-3">
                   <article className="rounded-2xl border border-slate-800 bg-slate-900/45 p-5"><h3 className="font-bold text-white">أبراج الكمبيوتر والتجميعات المكتبية</h3><p className="mt-2 text-sm leading-7 text-slate-400">أجهزة Tower الجاهزة والتجميعات المخصصة وأجهزة Gaming PC، مع فحص الطاقة والحرارة والاستقرار ومسار العرض.</p></article>
@@ -3556,7 +3556,7 @@ export default function ArabicCommercialPage() {
                 </div>
               </section>
 
-              <section className="mt-12 rounded-3xl border border-cyan-900/50 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="desktop-pickup-process">
+              <section className="mt-12 rounded-3xl border border-cyan-900/50 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="desktop-pickup-process" data-service-editorial-panel>
                 <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">استلام صندوق الكمبيوتر</p><h2 id="desktop-pickup-process" className="mt-2 text-2xl font-black text-white sm:text-3xl">استلام وتوصيل مجاني من البيت أو المكتب في الكويت</h2>
                 <p className="mt-4 leading-8 text-slate-300">لا تحتاج إلى نقل صندوق الكمبيوتر بنفسك إلى حولي. نسق الاستلام معنا، وسنوضح لك ما يلزم تسليمه بحسب نوع الجهاز.</p>
                 <ol className="mt-6 grid gap-4 md:grid-cols-3">
@@ -3627,7 +3627,7 @@ export default function ArabicCommercialPage() {
                 </tbody></table></div></div>
               </section>
               <section className="rounded-2xl border border-amber-500/25 bg-amber-950/15 p-6" aria-labelledby="keyboard-spill-guidance-ar"><h2 id="keyboard-spill-guidance-ar" className="text-xl font-black text-amber-100">إذا انكب سائل على الكيبورد، شنو تسوي؟</h2><ul className="mt-4 space-y-3 text-sm leading-7 text-slate-300"><li>طف الجهاز وافصل الشاحن إذا كان ذلك آمنًا، ولا تعاود تشغيله عشان تجرب الأزرار.</li><li>لا تستخدم السشوار ولا ترش كحول أو منظفات مباشرة فوق الأزرار؛ ممكن تدفع السائل والرواسب لداخل الجهاز.</li><li>لا تحاول تشيل أغطية الأزرار بأداة حادة؛ مشابك Scissor Clips تختلف وسهل تنكسر.</li><li>خل الجهاز مطفي ورتب فحصه في المختبر قبل إعادة توصيل الطاقة.</li></ul></section>
-              <section className="rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-5 sm:p-6" aria-labelledby="keyboard-thermal-option-ar"><p className="text-xs font-black uppercase tracking-[0.14em] text-cyan-300">خدمة اختيارية منفصلة</p><h2 id="keyboard-thermal-option-ar" className="mt-2 text-xl font-black text-white">هل يحتاج نظام التبريد تنظيفًا بعد فتح اللابتوب؟</h2><p className="mt-3 leading-7 text-slate-300">إذا كشف الفحص أن المراوح أو المشتت تحتاج تنظيفًا وصيانة حرارية، خدمة تنظيف وتبريد اللابتوب المنشورة لدينا تتراوح بين 15 و20 د.ك. هذي خدمة منفصلة وليست إضافة تلقائية على سعر الكيبورد؛ ما ننفذها إلا بعد توضيح السعر وأخذ موافقتك.</p><Link to="/ar/pricing" className="mt-4 inline-flex min-h-11 items-center justify-center rounded-full border border-cyan-500/30 px-5 py-2.5 text-sm font-bold text-cyan-300 hover:bg-cyan-500/10">راجع أسعار خدمات التبريد</Link></section>
+              <section className="rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-5 sm:p-6" aria-labelledby="keyboard-thermal-option-ar" data-service-editorial-panel><p className="text-xs font-black uppercase tracking-[0.14em] text-cyan-300">خدمة اختيارية منفصلة</p><h2 id="keyboard-thermal-option-ar" className="mt-2 text-xl font-black text-white">هل يحتاج نظام التبريد تنظيفًا بعد فتح اللابتوب؟</h2><p className="mt-3 leading-7 text-slate-300">إذا كشف الفحص أن المراوح أو المشتت تحتاج تنظيفًا وصيانة حرارية، خدمة تنظيف وتبريد اللابتوب المنشورة لدينا تتراوح بين 15 و20 د.ك. هذي خدمة منفصلة وليست إضافة تلقائية على سعر الكيبورد؛ ما ننفذها إلا بعد توضيح السعر وأخذ موافقتك.</p><Link to="/ar/pricing" className="mt-4 inline-flex min-h-11 items-center justify-center rounded-full border border-cyan-500/30 px-5 py-2.5 text-sm font-bold text-cyan-300 hover:bg-cyan-500/10">راجع أسعار خدمات التبريد</Link></section>
             </section>
           )}
           {slug === 'macbook-screen-replacement-kuwait' && (
@@ -3725,7 +3725,7 @@ export default function ArabicCommercialPage() {
               <a href={wa} target="_blank" rel="noreferrer" className="mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-cyan-500/30 px-5 py-3 font-bold text-cyan-300 hover:bg-cyan-500/10"><MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل صورة الجهاز لتحديد الموديل</a>
             </section>
 
-            <section className="rounded-3xl border border-slate-800 bg-slate-900/45 p-6 sm:p-8" aria-labelledby="macbook-screen-assembly-options">
+            <section className="rounded-3xl border border-slate-800 bg-slate-900/45 p-6 sm:p-8" aria-labelledby="macbook-screen-assembly-options" data-service-editorial-panel>
               <p className="text-sm font-bold tracking-wide text-cyan-300">خيارات الإصلاح</p>
               <h2 id="macbook-screen-assembly-options" className="mt-2 text-2xl font-black text-white sm:text-3xl">تبديل تجميعة الشاشة كاملة أم إصلاح اللوحة الداخلية؟</h2>
               <div className="mt-5 grid gap-4 md:grid-cols-2">
@@ -3752,7 +3752,7 @@ export default function ArabicCommercialPage() {
               <p className="mt-5 leading-8 text-slate-300">السعر النهائي يعتمد على تجميعة الشاشة المطلوبة وتوفر القطعة. أجرة العمل من 30 د.ك لا تشمل الشاشة نفسها. نرسل لك عرضًا واضحًا يشمل العمل والقطعة والمدة، ولا نبدأ الإصلاح المدفوع قبل موافقتك.</p>
             </section>
 
-            <section aria-labelledby="macbook-screen-process">
+            <section aria-labelledby="macbook-screen-process" data-service-editorial-panel>
               <h2 id="macbook-screen-process" className="text-2xl font-black text-white sm:text-3xl">من الاستلام إلى اختبار الشاشة بعد الإصلاح</h2>
               <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {[
@@ -4151,7 +4151,7 @@ export default function ArabicCommercialPage() {
             </section>
 
             {slug === 'laptop-screen-repair-kuwait' && (
-              <section className="mt-10 rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/5 via-slate-950/90 to-slate-950 p-6 sm:p-8" aria-labelledby="laptop-screen-brand-coverage">
+              <section className="mt-10 rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/5 via-slate-950/90 to-slate-950 p-6 sm:p-8" aria-labelledby="laptop-screen-brand-coverage" data-service-editorial-panel>
                 <p className="text-sm font-bold tracking-wide text-cyan-300">تغطية الماركات وأنواع الشاشات</p>
                 <h2 id="laptop-screen-brand-coverage" className="mt-2 text-2xl font-black text-white sm:text-3xl">تبديل شاشة لابتوب HP وDell وLenovo وبقية الماركات في الكويت</h2>
                 <p className="mt-3 max-w-4xl leading-8 text-slate-300">نحدد الشاشة من رقم الموديل ورقم القطعة ونراجع توفرها قبل اعتماد السعر. ذكر الماركة أو السلسلة لا يعني أن كل المقاسات أو القطع متوفرة فورًا؛ نؤكد التوافق والتوفر معك قبل الطلب.</p>
@@ -4211,7 +4211,7 @@ export default function ArabicCommercialPage() {
               </section>
             )}
 
-            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="laptop-screen-repair-process">
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="laptop-screen-repair-process" data-service-editorial-panel>
               <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">خطوات واضحة</p>
               <h2 id="laptop-screen-repair-process" className="mt-2 text-2xl font-black text-white sm:text-3xl">من فحص الشاشة إلى اختبار الصورة</h2>
               <p className="mt-3 max-w-3xl leading-8 text-slate-400">نوضح سبب المشكلة وخيارات الإصلاح وأجرة العمل وسعر الشاشة والتكلفة الإجمالية قبل طلب القطعة أو بدء أي عمل مدفوع.</p>
@@ -4237,7 +4237,7 @@ export default function ArabicCommercialPage() {
               </ol>
             </section>
 
-            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="screen-quote-checklist">
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="screen-quote-checklist" data-service-editorial-panel>
               <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">لتسريع عرض السعر</p>
               <h2 id="screen-quote-checklist" className="mt-2 text-2xl font-black text-white sm:text-3xl">شنو ترسل لنا على واتساب؟</h2>
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -4339,7 +4339,7 @@ export default function ArabicCommercialPage() {
               </section>
             </section>
 
-            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="macbook-repair-process">
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="macbook-repair-process" data-service-editorial-panel>
               <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">طريقة العمل</p>
               <h2 id="macbook-repair-process" className="mt-2 text-2xl font-black text-white sm:text-3xl">من الاستلام إلى اختبار MacBook</h2>
               <p className="mt-3 max-w-3xl leading-8 text-slate-400">الموديل والجيل مهمان لاختيار القطع وإجراءات التشخيص. نوضح نتيجة الفحص والتكلفة المتوقعة قبل بدء أي عمل مدفوع.</p>
@@ -4574,7 +4574,7 @@ export default function ArabicCommercialPage() {
               </ul>
               <p className="mt-4 text-xs leading-6 text-slate-500">الأسعار إرشادية وقد تختلف بحسب الموديل والقطعة والضرر الفعلي. الفحص الأولي مجاني، ولا يبدأ الإصلاح المدفوع قبل موافقتك.</p>
             </section>
-            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="charging-port-repair-process">
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="charging-port-repair-process" data-service-editorial-panel>
               <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">خطوات واضحة</p>
               <h2 id="charging-port-repair-process" className="mt-2 text-2xl font-black text-white sm:text-3xl">من الاستلام إلى اختبار الشحن</h2>
               <p className="mt-3 max-w-3xl leading-8 text-slate-400">تتغير خطوات الفحص حسب موديل اللابتوب ونوع المنفذ، لكن الإصلاح لا يبدأ قبل شرح النتيجة والسعر والحصول على موافقتك.</p>
@@ -4645,7 +4645,7 @@ export default function ArabicCommercialPage() {
           </>
         )}
         {slug === 'gaming-laptop-repair-kuwait' && (
-          <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="arabic-gaming-process">
+          <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="arabic-gaming-process" data-service-editorial-panel>
             <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">فحص قبل الإصلاح</p>
             <h2 id="arabic-gaming-process" className="mt-2 text-2xl font-black text-white sm:text-3xl">شلون نشخّص عطل Gaming Laptop؟</h2>
             <p className="mt-3 max-w-3xl leading-8 text-slate-400">الأعراض المتشابهة مو شرط يكون سببها واحد. نتبع خطوات واضحة عشان ما تطلب قطعة مو هي سبب المشكلة.</p>
@@ -4710,7 +4710,7 @@ export default function ArabicCommercialPage() {
               <a href={wa} target="_blank" rel="noreferrer" className="mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-400"><MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل وصف المشكلة وموديل اللابتوب</a>
             </section>
 
-            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="keyboard-repair-process">
+            <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="keyboard-repair-process" data-service-editorial-panel>
               <div className="grid items-start gap-7 lg:grid-cols-[0.9fr_1.1fr]">
                 <div>
                   <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">خطوات موضحة</p>
