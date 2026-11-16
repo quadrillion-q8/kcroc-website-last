@@ -167,26 +167,26 @@ export default function Header() {
     <>
 <header ref={headerRef} dir={isArabicRoute ? "rtl" : undefined} lang={isArabicRoute ? "ar-KW" : undefined} className={`sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-100 transition-shadow duration-200 ${scrolled ? 'shadow-sm' : ''}`}>
         <div className="kcroc-header-inner max-w-[1360px] mx-auto px-4 sm:px-6 xl:px-8 2xl:px-12">
-          <div className="flex min-h-[78px] flex-wrap items-center justify-between gap-x-3 gap-y-1 py-1">
+          <div className="flex min-h-[72px] flex-wrap items-center justify-between gap-x-3 gap-y-1 py-1">
             
-            <Link to="/" className="flex items-center shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-lg" aria-label={isArabicRoute ? "الصفحة الرئيسية لـ KCROC" : "KCROC Home"}>
+            <Link to="/" className="flex items-center shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8f4f2c] rounded-lg" aria-label={isArabicRoute ? "الصفحة الرئيسية لـ KCROC" : "KCROC Home"}>
               {!logoError ? (
                 <img
                   src="/logo-128.webp"
                   srcSet="/logo-128.webp 128w, /logo-256.webp 256w"
-                  sizes="72px"
+                  sizes="64px"
                   alt={isGlobalSlowLaptopGuide || isGlobalTechnicalGuide ? "KCROC Hardware Engineering Lab" : "KCROC — Kuwait Computer Repair On Call"}
-                  width="72"
-                  height="72"
+                  width="64"
+                  height="64"
                   decoding="async"
                   fetchPriority="high"
-                  className="h-[72px] w-[72px] object-contain drop-shadow-[0_8px_18px_rgba(37,99,235,0.12)]"
+                  className="h-16 w-16 object-contain drop-shadow-[0_8px_18px_rgba(143,79,44,0.10)]"
                   onError={() => setLogoError(true)}
                 />
               ) : (
                 <span className="flex items-center gap-2" aria-hidden="true">
-                  <Laptop className="w-6 h-6 text-blue-600" />
-                  <span className="font-black text-slate-900 text-[21px] tracking-[-0.04em]">KCROC<span className="text-blue-600">.</span></span>
+                  <Laptop className="w-6 h-6 text-[#8f4f2c]" />
+                  <span className="font-black text-slate-900 text-[21px] tracking-[-0.04em]">KCROC<span className="text-[#8f4f2c]">.</span></span>
                 </span>
               )}
             </Link>
@@ -211,17 +211,17 @@ export default function Header() {
                           setActiveMegaId(prev => prev === link.megaMenuId ? null : link.megaMenuId!);
                         }}
                         onKeyDown={e => handleMegaTriggerKeyDown(e, link.megaMenuId!)}
-                        className={`flex min-h-12 min-w-12 items-center justify-center gap-1.5 px-2.5 py-2 rounded-md whitespace-nowrap text-[13px] font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${isOpen || isGraphMatch ? 'text-blue-700 border-b border-blue-600' : 'text-slate-700 hover:text-blue-700'}`}
+                        className={`flex min-h-12 min-w-12 items-center justify-center gap-1.5 px-2.5 py-2 rounded-md whitespace-nowrap text-[13px] font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8f4f2c] ${isOpen || isGraphMatch ? 'text-[#8f4f2c] border-b border-[#c9804d]' : 'text-slate-700 hover:text-[#8f4f2c]'}`}
                       >
                         {link.label}
-                        <ChevronDown size={15} className={`transition-transform duration-200 ${isOpen ? 'rotate-180 text-blue-600' : ''}`} aria-hidden="true" />
+                        <ChevronDown size={15} className={`transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#8f4f2c]' : ''}`} aria-hidden="true" />
                       </button>
                     </div>
                   );
                 }
 
                 return (
-                  <Link key={link.id} to={link.href} aria-current={matchPath({ path: link.href, end: true }, location.pathname) ? 'page' : undefined} className={`inline-flex min-h-12 min-w-12 items-center justify-center px-2.5 py-2 rounded-md text-[13px] font-medium whitespace-nowrap transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${isGraphMatch ? 'text-blue-700 border-b border-blue-600' : 'text-slate-700 hover:text-blue-700'}`}>
+                  <Link key={link.id} to={link.href} aria-current={matchPath({ path: link.href, end: true }, location.pathname) ? 'page' : undefined} className={`inline-flex min-h-12 min-w-12 items-center justify-center px-2.5 py-2 rounded-md text-[13px] font-medium whitespace-nowrap transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8f4f2c] ${isGraphMatch ? 'text-[#8f4f2c] border-b border-[#c9804d]' : 'text-slate-700 hover:text-[#8f4f2c]'}`}>
                     {link.label}
                   </Link>
                 );
@@ -234,7 +234,7 @@ export default function Header() {
                 to={languageSwitch.href}
                 lang={languageSwitch.targetLanguage === 'ar' ? 'ar' : 'en'}
                 aria-label={isArabicRoute ? 'التبديل إلى الإنجليزية' : 'Switch to Arabic'}
-                className="inline-flex min-h-12 min-w-12 items-center justify-center rounded-md border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-black text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 hover:bg-blue-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                className="inline-flex min-h-12 min-w-12 items-center justify-center rounded-md border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-black text-slate-700 transition-colors hover:border-[#d7a982] hover:text-[#8f4f2c] hover:bg-[#fbf5ef] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8f4f2c]"
               >
                 {languageSwitch.targetLanguage === 'ar' ? 'عربي' : 'EN'}
               </Link>
@@ -248,20 +248,20 @@ export default function Header() {
                 aria-expanded={searchOpen}
                 aria-controls="header-search-panel"
                 aria-label={searchOpen ? (isArabicRoute ? 'إغلاق البحث' : 'Close search') : (isArabicRoute ? 'بحث' : 'Search')}
-                className={`min-h-12 min-w-12 flex items-center justify-center rounded-md transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${searchOpen ? 'text-blue-700 bg-blue-50' : 'text-slate-700 hover:text-blue-700 hover:bg-slate-100'}`}
+                className={`min-h-12 min-w-12 flex items-center justify-center rounded-md transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8f4f2c] ${searchOpen ? 'text-[#8f4f2c] bg-[#fbf5ef]' : 'text-slate-700 hover:text-[#8f4f2c] hover:bg-slate-100'}`}
               >
                 {searchOpen ? <X size={18} aria-hidden="true" /> : <Search size={18} aria-hidden="true" />}
               </button>
               {!hideConversionActions && (
                 <>
-                <a href={`tel:+${cleanTel}`} onClick={() => trackConversion('phone_call_click', { cta_name: 'header_phone', button_position: 'header' })} className="flex min-h-12 min-w-12 items-center justify-center gap-2 rounded-md text-sm font-medium text-slate-700 transition-colors hover:text-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
-                  <Phone size={15} className="text-blue-600" aria-hidden="true" />
+                <a href={`tel:+${cleanTel}`} onClick={() => trackConversion('phone_call_click', { cta_name: 'header_phone', button_position: 'header' })} className="flex min-h-12 min-w-12 items-center justify-center gap-2 rounded-md text-sm font-medium text-slate-700 transition-colors hover:text-[#8f4f2c] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8f4f2c]">
+                  <Phone size={15} className="text-[#8f4f2c]" aria-hidden="true" />
                   <span className="hidden kcroc-header-phone-number 2xl:block">{phoneDisplay}</span>
                 </a>
                 <Button
                   asChild
                   variant="ctaPrimary"
-                  className="min-h-12 max-w-full gap-2 rounded-lg bg-blue-600 px-3 py-2 text-center text-sm leading-tight text-white transition-colors hover:bg-blue-700 focus-visible:ring-2 focus-visible:ring-blue-600"
+                  className="min-h-12 max-w-full gap-2 rounded-lg bg-[#dfa86f] px-3 py-2 text-center text-sm leading-tight text-[#17110c] font-extrabold transition-colors hover:bg-[#efc697] focus-visible:ring-2 focus-visible:ring-[#8f4f2c]"
                 >
                   <Link to="/book" onClick={() => trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' })}>
                     <CalendarCheck size={15} aria-hidden="true" />
@@ -282,7 +282,7 @@ export default function Header() {
                 to={languageSwitch.href}
                 lang={languageSwitch.targetLanguage === 'ar' ? 'ar' : 'en'}
                 aria-label={isArabicRoute ? 'التبديل إلى الإنجليزية' : 'Switch to Arabic'}
-                className="min-h-12 min-w-12 flex items-center justify-center rounded-lg border border-slate-200 bg-white text-xs font-black text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                className="min-h-12 min-w-12 flex items-center justify-center rounded-lg border border-slate-200 bg-white text-xs font-black text-slate-700 transition-colors hover:border-[#d7a982] hover:text-[#8f4f2c] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8f4f2c]"
               >
                 {languageSwitch.targetLanguage === 'ar' ? 'عربي' : 'EN'}
               </Link>
@@ -292,7 +292,7 @@ export default function Header() {
                 // 🚀 TOUCH TARGET FIX: p-2 + a 20px icon was a ~36px hit area,
                 // under the 48×48px touch target. min-h/min-w-12 now provides a
                 // centered icon and enlarged hit area without changing the visible icon size.
-                className="min-h-12 min-w-12 flex items-center justify-center rounded-lg text-slate-700 hover:text-blue-700 hover:bg-slate-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                className="min-h-12 min-w-12 flex items-center justify-center rounded-lg text-slate-700 hover:text-[#8f4f2c] hover:bg-slate-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8f4f2c]"
                 onClick={() => {
                   setActiveMegaId(null);
                   setMobileOpen(false);
@@ -306,7 +306,7 @@ export default function Header() {
               </button>
               <button
                 ref={mobileToggleRef}
-                className="min-h-12 min-w-12 flex items-center justify-center rounded-lg text-slate-700 hover:text-blue-700 hover:bg-slate-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                className="min-h-12 min-w-12 flex items-center justify-center rounded-lg text-slate-700 hover:text-[#8f4f2c] hover:bg-slate-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8f4f2c]"
                 onClick={() => {
                   setActiveMegaId(null);
                   setSearchOpen(false);
