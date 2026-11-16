@@ -285,9 +285,10 @@ for (const [content, rootMarker, file] of [
 
 for (const [content, panelMarker, file] of [
   [faqPage, 'data-kcroc-editorial-panel="faq-answers"', 'pages/FAQ.tsx'],
-  [pricingPage, 'data-kcroc-editorial-panel="pricing-process"', 'pages/Pricing.tsx'],
-  [pricingPage, 'data-kcroc-editorial-panel="price-factors"', 'pages/Pricing.tsx'],
-  [pricingPage, 'data-kcroc-editorial-panel="customer-protection"', 'pages/Pricing.tsx'],
+  [pricingPage, 'data-kcroc-editorial-panel="pricing-trust"', 'pages/Pricing.tsx'],
+
+
+
   [pricingPage, 'data-kcroc-editorial-panel="pricing-faq"', 'pages/Pricing.tsx'],
   [arabicPricingPage, 'data-kcroc-editorial-panel="arabic-pricing-list"', 'pages/ArabicPricingPage.tsx'],
   [arabicPricingPage, 'data-kcroc-editorial-panel="arabic-pricing-faq"', 'pages/ArabicPricingPage.tsx'],
