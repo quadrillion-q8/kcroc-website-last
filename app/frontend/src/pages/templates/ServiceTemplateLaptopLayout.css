@@ -573,3 +573,187 @@
     animation-duration: 0.01ms !important;
   }
 }
+
+
+/* ==========================================================================
+   KCROC SERVICE EDITORIAL PANELS — 2026-11-16
+   Keep the service hero and technical diagnostic areas dark. Use warm,
+   high-contrast reading surfaces for pricing, customer answers, proof,
+   capability summaries, FAQs and service-area discovery.
+   ========================================================================== */
+[data-service-layout] > section:is(
+  [aria-labelledby="macbook-repair-options"],
+  [aria-labelledby="commercial-answers"],
+  [aria-labelledby="laptop-repair-pricing-heading"],
+  [aria-labelledby="why-choose-us-heading"],
+  [aria-labelledby="service-capabilities-heading"],
+  [aria-labelledby="service-faqs-heading"],
+  [aria-labelledby="repair-service-areas-heading"]
+) {
+  border: 1px solid #e3dace !important;
+  border-radius: 1.35rem;
+  background: #f4efe7 !important;
+  margin-block: clamp(1.5rem, 3vw, 2.5rem);
+  padding-block: clamp(1.5rem, 3vw, 2.5rem) !important;
+  padding-inline: clamp(1rem, 3vw, 2.75rem) !important;
+  color: #172022 !important;
+  box-shadow: 0 8px 28px rgba(18, 24, 27, 0.08);
+}
+
+[data-service-layout] > section:is(
+  [aria-labelledby="macbook-repair-options"],
+  [aria-labelledby="commercial-answers"],
+  [aria-labelledby="laptop-repair-pricing-heading"],
+  [aria-labelledby="why-choose-us-heading"],
+  [aria-labelledby="service-capabilities-heading"],
+  [aria-labelledby="service-faqs-heading"],
+  [aria-labelledby="repair-service-areas-heading"]
+) :is(h2, h3, h4, th) {
+  color: #172022 !important;
+}
+
+[data-service-layout] > section:is(
+  [aria-labelledby="macbook-repair-options"],
+  [aria-labelledby="commercial-answers"],
+  [aria-labelledby="laptop-repair-pricing-heading"],
+  [aria-labelledby="why-choose-us-heading"],
+  [aria-labelledby="service-capabilities-heading"],
+  [aria-labelledby="service-faqs-heading"],
+  [aria-labelledby="repair-service-areas-heading"]
+) :is(p, li, td, summary, span) {
+  color: #566467;
+}
+
+[data-service-layout] > section:is(
+  [aria-labelledby="macbook-repair-options"],
+  [aria-labelledby="commercial-answers"],
+  [aria-labelledby="laptop-repair-pricing-heading"],
+  [aria-labelledby="why-choose-us-heading"],
+  [aria-labelledby="service-capabilities-heading"],
+  [aria-labelledby="service-faqs-heading"],
+  [aria-labelledby="repair-service-areas-heading"]
+) :is(p.text-slate-400, p.text-slate-300, p.text-slate-500, li.text-slate-400) {
+  color: #566467 !important;
+}
+
+[data-service-layout] > section:is(
+  [aria-labelledby="macbook-repair-options"],
+  [aria-labelledby="commercial-answers"],
+  [aria-labelledby="laptop-repair-pricing-heading"],
+  [aria-labelledby="why-choose-us-heading"],
+  [aria-labelledby="service-capabilities-heading"],
+  [aria-labelledby="service-faqs-heading"],
+  [aria-labelledby="repair-service-areas-heading"]
+) :is(.text-cyan-400, .text-cyan-300, .text-cyan-200, svg.text-cyan-400) {
+  color: #8f4f2c !important;
+}
+
+[data-service-layout] > section:is(
+  [aria-labelledby="macbook-repair-options"],
+  [aria-labelledby="commercial-answers"],
+  [aria-labelledby="laptop-repair-pricing-heading"],
+  [aria-labelledby="why-choose-us-heading"],
+  [aria-labelledby="service-capabilities-heading"],
+  [aria-labelledby="service-faqs-heading"],
+  [aria-labelledby="repair-service-areas-heading"]
+) :is(article, details, .overflow-x-auto, [class*="bg-slate-900"], [class*="bg-slate-950"]) {
+  border-color: #e3dace !important;
+  background: #ffffff !important;
+  box-shadow: 0 3px 14px rgba(32, 28, 24, 0.045);
+}
+
+[data-service-layout] > section:is(
+  [aria-labelledby="macbook-repair-options"],
+  [aria-labelledby="commercial-answers"],
+  [aria-labelledby="laptop-repair-pricing-heading"]
+) table {
+  background: #ffffff;
+  color: #344245;
+}
+
+[data-service-layout] > section:is(
+  [aria-labelledby="macbook-repair-options"],
+  [aria-labelledby="commercial-answers"],
+  [aria-labelledby="laptop-repair-pricing-heading"]
+) thead {
+  background: #ece4d9 !important;
+  color: #172022 !important;
+}
+
+[data-service-layout] > section:is(
+  [aria-labelledby="macbook-repair-options"],
+  [aria-labelledby="commercial-answers"],
+  [aria-labelledby="laptop-repair-pricing-heading"]
+) tbody {
+  background: #ffffff !important;
+  color: #566467 !important;
+}
+
+[data-service-layout] > section:is(
+  [aria-labelledby="macbook-repair-options"],
+  [aria-labelledby="commercial-answers"],
+  [aria-labelledby="laptop-repair-pricing-heading"]
+) tbody tr:nth-child(even) {
+  background: #faf7f2 !important;
+}
+
+[data-service-layout] > section:is(
+  [aria-labelledby="macbook-repair-options"],
+  [aria-labelledby="commercial-answers"],
+  [aria-labelledby="laptop-repair-pricing-heading"]
+) tbody th,
+[data-service-layout] > section:is(
+  [aria-labelledby="macbook-repair-options"],
+  [aria-labelledby="commercial-answers"],
+  [aria-labelledby="laptop-repair-pricing-heading"]
+) tbody td {
+  border-color: #e9e1d7 !important;
+  color: #344245 !important;
+}
+
+[data-service-layout] > section[aria-labelledby="service-faqs-heading"] details[open] {
+  border-color: #c9804d !important;
+  background: #fffaf4 !important;
+}
+
+[data-service-layout] > section[aria-labelledby="service-faqs-heading"] summary:focus-visible,
+[data-service-layout] > section:is(
+  [aria-labelledby="macbook-repair-options"],
+  [aria-labelledby="commercial-answers"],
+  [aria-labelledby="laptop-repair-pricing-heading"],
+  [aria-labelledby="why-choose-us-heading"],
+  [aria-labelledby="service-capabilities-heading"],
+  [aria-labelledby="service-faqs-heading"],
+  [aria-labelledby="repair-service-areas-heading"]
+) a:focus-visible {
+  outline-color: #8f4f2c !important;
+}
+
+[data-service-layout] > section[aria-labelledby="repair-service-areas-heading"] nav a {
+  border-color: #e3dace !important;
+  background: #ffffff !important;
+  color: #344245 !important;
+}
+
+[data-service-layout] > section[aria-labelledby="repair-service-areas-heading"] nav a:hover {
+  border-color: rgba(201, 128, 77, 0.55) !important;
+  background: #fffaf4 !important;
+  color: #8f4f2c !important;
+}
+
+@media (max-width: 767px) {
+  [data-service-layout] > section:is(
+    [aria-labelledby="macbook-repair-options"],
+    [aria-labelledby="commercial-answers"],
+    [aria-labelledby="laptop-repair-pricing-heading"],
+    [aria-labelledby="why-choose-us-heading"],
+    [aria-labelledby="service-capabilities-heading"],
+    [aria-labelledby="service-faqs-heading"],
+    [aria-labelledby="repair-service-areas-heading"]
+  ) {
+    width: calc(100% - 1.25rem);
+    border-radius: 1.1rem;
+    padding-inline: 1rem !important;
+    padding-block: 1.5rem !important;
+  }
+}
