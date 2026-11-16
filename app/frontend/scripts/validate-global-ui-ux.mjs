@@ -35,10 +35,11 @@ const [button, header, footer, contact, cookie, hero, globalCss, legacyCss, sche
   read('components/ui/section-header.tsx'),
 ]);
 
-const [serviceTemplate, graph, graphSchema] = await Promise.all([
+const [serviceTemplate, graph, graphSchema, serviceLayoutCss] = await Promise.all([
   read('pages/templates/ServiceTemplate.tsx'),
   read('data/graph.ts'),
   read('types/knowledgeGraph.ts'),
+  read('pages/templates/ServiceTemplateLaptopLayout.css'),
 ]);
 
 const issues = [];
@@ -112,6 +113,10 @@ requireContains(serviceTemplate, '<details', 'pages/templates/ServiceTemplate.ts
 requireContains(serviceTemplate, 'onToggle={(event) => {', 'pages/templates/ServiceTemplate.tsx', 'opening a service FAQ must retain the analytics event.');
 requireContains(serviceTemplate, '.filter((feature) => feature.trim().length > 0)', 'pages/templates/ServiceTemplate.tsx', 'blank capability entries must not create empty list items.');
 requireContains(serviceTemplate, '.filter((item) => item.trim().length > 0)', 'pages/templates/ServiceTemplate.tsx', 'blank inspection entries must not create empty list items.');
+requireContains(serviceLayoutCss, 'KCROC SERVICE EDITORIAL PANELS — 2026-11-16', 'pages/templates/ServiceTemplateLaptopLayout.css', 'service pages must document the scoped editorial surface pass.');
+requireContains(serviceLayoutCss, '[aria-labelledby="laptop-repair-pricing-heading"]', 'pages/templates/ServiceTemplateLaptopLayout.css', 'service pricing must use the light editorial treatment.');
+requireContains(serviceLayoutCss, '[aria-labelledby="service-faqs-heading"]', 'pages/templates/ServiceTemplateLaptopLayout.css', 'service FAQs must use the light editorial treatment.');
+requireContains(serviceLayoutCss, 'background: #f4efe7 !important;', 'pages/templates/ServiceTemplateLaptopLayout.css', 'service editorial panels must use the KCROC warm neutral surface.');
 
 if (issues.length) {
   console.error('❌ Global UI/UX regression checks failed:');
