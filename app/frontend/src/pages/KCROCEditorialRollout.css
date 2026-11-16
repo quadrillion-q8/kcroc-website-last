@@ -412,7 +412,7 @@
 [data-kcroc-rollout="services-index"] [data-kcroc-editorial-panel] :is(h2,h3) {
   color: var(--kcroc-rollout-ink) !important;
 }
-[data-kcroc-rollout="brands-index"] [data-kcroc-editorial-panel] :is(p,span:not([class*="bg-"),li),
+[data-kcroc-rollout="brands-index"] [data-kcroc-editorial-panel] :is(p,li,span:not([class*="bg-"])),
 [data-kcroc-rollout="problems-index"] [data-kcroc-editorial-panel] :is(p,li),
 [data-kcroc-rollout="services-index"] [data-kcroc-editorial-panel] :is(p,li) {
   color: var(--kcroc-rollout-muted) !important;
@@ -421,10 +421,6 @@
 [data-kcroc-rollout="problems-index"] [data-kcroc-editorial-panel] :is(.text-cyan-200,.text-cyan-300,.text-cyan-400,.text-cyan-500),
 [data-kcroc-rollout="services-index"] [data-kcroc-editorial-panel] :is(.text-cyan-200,.text-cyan-300,.text-cyan-400,.text-cyan-500) {
   color: var(--kcroc-rollout-copper) !important;
-}
-[data-kcroc-rollout="problems-index"] [data-kcroc-editorial-panel] [class*="text-red-"],
-[data-kcroc-rollout="problems-index"] [data-kcroc-editorial-panel] [class*="text-amber-"] {
-  color: revert !important;
 }
 
 /* Near-me remains a dark local-intent hero. Main explanation, local steps,
