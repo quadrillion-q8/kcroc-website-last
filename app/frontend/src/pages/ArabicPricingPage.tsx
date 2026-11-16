@@ -172,7 +172,7 @@ const schema = {
 
 export default function ArabicPricingPage() {
   return (
-    <div dir="rtl" lang="ar-KW" className="min-h-screen bg-transparent text-slate-100" data-kcroc-rollout="pricing-ar" data-pricing-page="ar">
+    <div dir="rtl" lang="ar-KW" className="pricing-page-shell min-h-screen bg-transparent text-slate-100" data-kcroc-rollout="pricing-ar" data-pricing-page="ar">
       <SEOEngine entityId="page-ar-pricing" />
       <SchemaMarkup schema={schema} />
 
