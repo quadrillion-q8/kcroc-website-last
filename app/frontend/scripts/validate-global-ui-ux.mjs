@@ -15,7 +15,7 @@ async function walk(directory) {
 
 await walk(root);
 const read = (relativePath) => readFile(path.join(root, relativePath), 'utf8');
-const [button, header, footer, contact, cookie, hero, globalCss, legacyCss, schema, servicesGrid, booking, repairProof, stickyCta, leadMagnet, pricingTable] = await Promise.all([
+const [button, header, footer, contact, cookie, hero, globalCss, legacyCss, schema, servicesGrid, booking, repairProof, stickyCta, leadMagnet, pricingTable, desktopMegaMenu, sectionHeader] = await Promise.all([
   read('components/ui/button.tsx'),
   read('core/components/layout/Header.tsx'),
   read('core/components/layout/Footer.tsx'),
@@ -31,6 +31,8 @@ const [button, header, footer, contact, cookie, hero, globalCss, legacyCss, sche
   read('components/home/StickyMobileCTA.tsx'),
   read('components/home/LeadMagnet.tsx'),
   read('components/home/PricingTable.tsx'),
+  read('core/components/layout/DesktopMegaMenu.tsx'),
+  read('components/ui/section-header.tsx'),
 ]);
 
 const [serviceTemplate, graph, graphSchema] = await Promise.all([
@@ -83,6 +85,12 @@ requireContains(servicesGrid, 'aria-expanded={showAllServices}', 'components/hom
 requireContains(servicesGrid, 'aria-controls="homepage-services-grid"', 'components/home/ServicesGrid.tsx', 'the show-all-services control must identify the service grid it controls.');
 requireContains(servicesGrid, 'aspect-[16/9]', 'components/home/ServicesGrid.tsx', 'service thumbnails must reserve a consistent 16:9 aspect ratio.');
 requireContains(pricingTable, 'aspect-[16/9]', 'components/home/PricingTable.tsx', 'pricing thumbnails must reserve a consistent 16:9 aspect ratio.');
+requireContains(servicesGrid, 'kcroc-section-light kcroc-editorial-section', 'components/home/ServicesGrid.tsx', 'service discovery must use the scoped light editorial surface.');
+requireContains(pricingTable, 'kcroc-section-light kcroc-editorial-section', 'components/home/PricingTable.tsx', 'pricing must use the scoped light editorial surface.');
+requireContains(sectionHeader, "tone?: 'copper' | 'gold' | 'ink';", 'components/ui/section-header.tsx', 'shared section headers must support a high-contrast editorial accent.');
+requireContains(header, 'min-h-[72px]', 'core/components/layout/Header.tsx', 'the shared header must use the compact 72px content row.');
+requireContains(header, 'text-[#8f4f2c]', 'core/components/layout/Header.tsx', 'header emphasis must use the KCROC copper palette.');
+if (/blue-\d/.test(header + desktopMegaMenu)) issues.push('Header and desktop mega menu must not retain the former blue accent system.');
 requireContains(leadMagnet, 'min-h-[92px] min-w-12', 'components/home/LeadMagnet.tsx', 'Quick Repair Check option controls must have at least 48px minimum dimensions.');
 requireContains(leadMagnet, 'text-start', 'components/home/LeadMagnet.tsx', 'Quick Repair Check option labels must use logical text alignment.');
 requireContains(leadMagnet, 'end-3', 'components/home/LeadMagnet.tsx', 'selection indicators must use logical positioning for RTL layouts.');
