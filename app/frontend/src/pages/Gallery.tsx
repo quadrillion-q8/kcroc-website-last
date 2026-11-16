@@ -1,5 +1,6 @@
 // File: app/frontend/src/pages/Gallery.tsx
 import React, { useState, useMemo, useEffect, useCallback } from 'react';
+import './KCROCEditorialRollout.css';
 import { X, Maximize2, Phone, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import { GALLERY_ITEMS, galleryCategories } from '../constants/galleryData';
 import { SEOEngine } from '../core/components/SEOEngine';
@@ -66,7 +67,7 @@ export default function Gallery() {
   }, [selectedIndex, filteredItems]);
 
   return (
-    <div className="w-full min-h-screen bg-transparent text-white font-sans pt-8 sm:pt-16 lg:pt-24 pb-8 sm:pb-24 px-4 sm:px-6">
+    <div className="w-full min-h-screen bg-transparent text-white font-sans pt-8 sm:pt-16 lg:pt-24 pb-8 sm:pb-24 px-4 sm:px-6" data-kcroc-rollout="gallery">
       
       <SEOEngine entityId="page-gallery" />
 
@@ -193,7 +194,7 @@ export default function Gallery() {
         )}
 
         {/* CTA Footer */}
-        <section className="max-w-4xl mx-auto text-center">
+        <section className="max-w-4xl mx-auto text-center" data-kcroc-editorial-panel="gallery-conversion">
             <div className="bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl">
               <h2 className="text-xl sm:text-3xl font-black text-white mb-4 sm:mb-6">See a repair you need?</h2>
               <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">

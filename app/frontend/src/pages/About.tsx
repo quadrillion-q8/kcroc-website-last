@@ -1,5 +1,6 @@
 // File: app/frontend/src/pages/About.tsx
 import { Head } from 'vite-react-ssg';
+import './KCROCEditorialRollout.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -62,7 +63,7 @@ export default function About() {
   const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent('Hi KCROC, I am looking for a professional computer repair service.')}`;
 
   return (
-    <div className="w-full min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30">
+    <div className="w-full min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30" data-kcroc-rollout="about">
       
       {/* 🚀 Dynamic SEO Engine Integration */}
       <SEOEngine entityId="page-about" />
@@ -126,7 +127,7 @@ export default function About() {
       </section>
 
       {/* ─── STATS ─── */}
-      <section aria-labelledby="stats-heading" className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/50 backdrop-blur-sm relative z-10">
+      <section aria-labelledby="stats-heading" data-kcroc-editorial-panel="about-stats" className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/50 backdrop-blur-sm relative z-10">
         <h2 id="stats-heading" className="sr-only">KCROC by the Numbers</h2>
         <div className="container mx-auto max-w-6xl grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
           {stats.map((stat) => (
@@ -147,7 +148,7 @@ export default function About() {
       </section>
 
       {/* ─── OUR STORY ─── */}
-      <section id="our-story" className="py-8 sm:py-24 px-4 sm:px-6 border-t border-slate-800/50 relative z-10">
+      <section id="our-story" data-kcroc-editorial-panel="about-story" className="py-8 sm:py-24 px-4 sm:px-6 border-t border-slate-800/50 relative z-10">
         <div className="container mx-auto max-w-6xl grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           <div>
             {/* FIXED H2: Scaled to 24px (text-2xl) on mobile */}
@@ -172,7 +173,7 @@ export default function About() {
       </section>
 
       {/* ─── EEAT PROFILE: LEADERSHIP TEAM (.scroll-row on mobile) ─── */}
-      <section aria-labelledby="team-heading" className="py-8 sm:py-24 px-4 sm:px-6 bg-slate-900/30 border-y border-slate-800 relative z-10">
+      <section aria-labelledby="team-heading" data-kcroc-editorial-panel="about-team" className="py-8 sm:py-24 px-4 sm:px-6 bg-slate-900/30 border-y border-slate-800 relative z-10">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-8 sm:mb-16">
             <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/30 px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-3 sm:mb-4">
@@ -222,7 +223,7 @@ export default function About() {
       </section>
 
       {/* ─── VALUES (.scroll-row on mobile) ─── */}
-      <section aria-labelledby="values-heading" className="py-8 sm:py-24 px-4 sm:px-6 relative z-10 border-b border-slate-800/50">
+      <section aria-labelledby="values-heading" data-kcroc-editorial-panel="about-values" className="py-8 sm:py-24 px-4 sm:px-6 relative z-10 border-b border-slate-800/50">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-8 sm:mb-16">
             {/* FIXED H2: Scaled to 24px (text-2xl) on mobile */}
@@ -248,7 +249,7 @@ export default function About() {
       </section>
 
       {/* ─── CTA FOOTER ─── */}
-      <section aria-labelledby="cta-heading" className="py-8 sm:py-24 px-4 sm:px-6 relative z-10">
+      <section aria-labelledby="cta-heading" data-kcroc-editorial-panel="about-conversion" className="py-8 sm:py-24 px-4 sm:px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center bg-slate-900/20 backdrop-blur-md border border-slate-800 rounded-3xl p-6 sm:p-12 relative overflow-hidden shadow-2xl">
           <div
             className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-cyan-900/10 blur-[80px] rounded-full pointer-events-none"
