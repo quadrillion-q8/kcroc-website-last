@@ -961,3 +961,53 @@ select {
     padding: 0.875rem 0.625rem;
   }
 }
+
+
+/* ==========================================================================
+   KCROC EDITORIAL CLARITY PASS — 2026-11-16
+   Warm, high-contrast content surfaces complement the graphite/copper lab
+   identity. Scoped to explicitly marked editorial sections only.
+   ========================================================================== */
+:root {
+  --kcroc-paper: #f4efe7;
+  --kcroc-paper-surface: #ffffff;
+  --kcroc-paper-ink: #172022;
+  --kcroc-paper-muted: #566467;
+  --kcroc-paper-line: #e3dace;
+  --kcroc-paper-accent: #8f4f2c;
+}
+
+.kcroc-editorial-section {
+  background-color: var(--kcroc-paper);
+  color: var(--kcroc-paper-ink);
+}
+
+.kcroc-editorial-section :is(h1, h2, h3, h4) {
+  color: var(--kcroc-paper-ink);
+}
+
+.kcroc-editorial-section .text-slate-400,
+.kcroc-editorial-section .text-slate-500 {
+  color: var(--kcroc-paper-muted) !important;
+}
+
+#main-content[data-page-type="home"] .kcroc-editorial-section article[class*="rounded-"][class*="border"] {
+  background-color: var(--kcroc-paper-surface) !important;
+  border-color: var(--kcroc-paper-line) !important;
+  box-shadow: 0 4px 18px rgba(33, 27, 22, 0.04);
+}
+
+#main-content[data-page-type="home"] .kcroc-editorial-section article[class*="rounded-"][class*="border"]:hover {
+  border-color: rgba(201, 128, 77, 0.52) !important;
+  box-shadow: 0 12px 28px rgba(33, 27, 22, 0.075);
+}
+
+.kcroc-editorial-section :is(a, button):focus-visible {
+  outline-color: var(--kcroc-paper-accent);
+}
+
+@media (max-width: 639px) {
+  .kcroc-editorial-section {
+    border-radius: 0;
+  }
+}
