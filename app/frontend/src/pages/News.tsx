@@ -2,6 +2,7 @@
 // First-class KCROC News hub. Inventory is derived from BLOG_POSTS (news
 // articles) while the page identity/SEO comes from KCROC_GRAPH (page-news).
 import React, { useMemo } from 'react';
+import './KCROCEditorialRollout.css';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Calendar, ChevronRight, Cpu, Shield, Gamepad2, Apple, Bot, Newspaper } from 'lucide-react';
 import { SEOEngine } from '../core/components/SEOEngine';
@@ -39,7 +40,7 @@ export default function News() {
     <>
       <SEOEngine entityId={pageEntity?.id ?? 'page-news'} />
 
-      <div className="min-h-screen bg-transparent text-white pt-32 pb-24">
+      <div className="min-h-screen bg-transparent text-white pt-32 pb-24" data-kcroc-rollout="news-index">
         <div className="max-w-7xl mx-auto px-6">
           <nav aria-label="Breadcrumb" className="mb-8">
             <ol className="flex items-center gap-2 text-sm text-slate-400">
