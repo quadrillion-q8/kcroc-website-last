@@ -237,7 +237,7 @@ export default function Pricing() {
   )}`;
 
   return (
-    <div className="w-full min-h-screen overflow-hidden bg-transparent font-sans text-slate-100 selection:bg-cyan-500/30" data-kcroc-rollout="pricing" data-pricing-page="en">
+    <div className="pricing-page-shell w-full min-h-screen overflow-hidden bg-transparent font-sans text-slate-100 selection:bg-cyan-500/30" data-kcroc-rollout="pricing" data-pricing-page="en">
       <SEOEngine entityId="page-pricing" />
       <SchemaMarkup schema={{ '@graph': PRICING_SCHEMA }} />
 
@@ -260,6 +260,7 @@ export default function Pricing() {
 
       <nav
         aria-label="Breadcrumb"
+       
         className="mx-auto max-w-6xl px-4 pb-5 pt-8 sm:px-6 sm:pb-7 sm:pt-12"
       >
         <ol className="flex items-center gap-2 text-xs font-medium text-slate-500 sm:text-sm">
@@ -369,6 +370,80 @@ export default function Pricing() {
             </div>
             <p className="mt-3 text-xs leading-5 text-slate-500">A free initial diagnosis is available. You receive the repair quote and approve it before paid repair work begins.</p>
           </div>
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────────────────────────────
+          PRICE MENU
+      ───────────────────────────────────────────────────────────────────── */}
+
+      <section id="price-list" aria-labelledby="pricing-heading" data-pricing-explorer className="px-4 pb-16 sm:px-6 sm:pb-24">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-8 text-center sm:mb-12">
+            <Badge className="mb-4 border border-cyan-500/20 bg-cyan-500/10 px-3 py-1.5 text-[10px] uppercase tracking-widest text-cyan-400">Service pricing</Badge>
+            <h2 id="pricing-heading" className="text-3xl font-black tracking-tight text-white sm:text-4xl">Laptop, MacBook, Gaming PC &amp; Motherboard Repair Price List (KWD)</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">Compare published guide prices, what each service covers and its typical turnaround. Your exact quote is confirmed after diagnosis and before paid work.</p>
+          </div>
+
+          <nav aria-label="Pricing categories" data-pricing-category-nav className="mb-8 rounded-2xl border border-slate-800 bg-slate-900/35 p-4 sm:p-5">
+            <p className="mb-3 text-center text-xs font-black uppercase tracking-[0.15em] text-cyan-300">Jump to a price category</p>
+            <div className="flex flex-nowrap gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:justify-center">
+              <a href="#pricing-diagnostics" className="inline-flex min-h-10 shrink-0 items-center rounded-full border border-slate-700 bg-slate-950/70 px-4 py-2 text-xs font-bold text-slate-200 transition-colors hover:border-cyan-500/50 hover:text-cyan-200">Diagnostics &amp; Firmware</a>
+              <a href="#pricing-thermal" className="inline-flex min-h-10 shrink-0 items-center rounded-full border border-slate-700 bg-slate-950/70 px-4 py-2 text-xs font-bold text-slate-200 transition-colors hover:border-cyan-500/50 hover:text-cyan-200">Cooling &amp; Upgrades</a>
+              <a href="#pricing-hardware" className="inline-flex min-h-10 shrink-0 items-center rounded-full border border-slate-700 bg-slate-950/70 px-4 py-2 text-xs font-bold text-slate-200 transition-colors hover:border-cyan-500/50 hover:text-cyan-200">Hardware Replacements</a>
+              <a href="#pricing-motherboard" className="inline-flex min-h-10 shrink-0 items-center rounded-full border border-slate-700 bg-slate-950/70 px-4 py-2 text-xs font-bold text-slate-200 transition-colors hover:border-cyan-500/50 hover:text-cyan-200">Motherboard &amp; Logic Board</a>
+            </div>
+          </nav>
+
+          <div className="mb-8 space-y-5 rounded-3xl border border-slate-800 bg-slate-900/50 p-4 sm:p-6" data-pricing-filter-panel>
+            <div><p className="mb-3 text-xs font-black uppercase tracking-[0.15em] text-cyan-300">Filter by device</p><div role="group" aria-label="Filter pricing by device" className="flex flex-wrap gap-2">
+              {deviceFilters.map((filter) => <button key={filter.value} type="button" aria-pressed={deviceFilter===filter.value} onClick={() => setDeviceFilter(filter.value)} className={'min-h-10 rounded-full border px-3.5 py-2 text-xs font-bold transition-colors sm:text-sm '+(deviceFilter===filter.value?'border-cyan-400/60 bg-cyan-500/15 text-cyan-100':'border-slate-700 bg-slate-950/70 text-slate-300 hover:border-cyan-500/40 hover:text-cyan-200')}>{filter.label}</button>)}
+            </div></div>
+            <div><p className="mb-3 text-xs font-black uppercase tracking-[0.15em] text-cyan-300">Filter by symptom</p><div role="group" aria-label="Filter pricing by symptom" className="flex flex-wrap gap-2">
+              {symptomFilters.map((filter) => <button key={filter.value} type="button" aria-pressed={symptomFilter===filter.value} onClick={() => setSymptomFilter(filter.value)} className={'min-h-10 rounded-full border px-3.5 py-2 text-xs font-bold transition-colors sm:text-sm '+(symptomFilter===filter.value?'border-cyan-400/60 bg-cyan-500/15 text-cyan-100':'border-slate-700 bg-slate-950/70 text-slate-300 hover:border-cyan-500/40 hover:text-cyan-200')}>{filter.label}</button>)}
+            </div></div>
+            <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-800 pt-4">
+              <p aria-live="polite" className="text-xs leading-5 text-slate-400">{deviceFilter==='all'&&symptomFilter==='all'?'All 17 published services are shown.':pricingCategories.reduce((count,cat)=>count+cat.items.filter((item)=>(deviceFilter==='all'||item.devices.includes(deviceFilter))&&(symptomFilter==='all'||item.symptoms.includes(symptomFilter))).length,0)+' matching services highlighted. All 17 rows remain in the page.'}</p>
+              {(deviceFilter!=='all'||symptomFilter!=='all')&&<button type="button" onClick={()=>{setDeviceFilter('all');setSymptomFilter('all');}} className="min-h-9 rounded-lg border border-slate-700 px-3 py-1.5 text-xs font-bold text-cyan-300">Clear filters</button>}
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            {pricingCategories.map((category) => {
+              const Icon=category.icon;
+              return <Card key={category.title} id={`pricing-${category.anchor}`} data-pricing-category={category.anchor} data-pricing-featured={category.featured ? 'true' : 'false'} className={'scroll-mt-6 overflow-hidden border bg-slate-900/45 shadow-2xl backdrop-blur-xl '+(category.featured?'border-cyan-500/30 shadow-cyan-950/10':'border-slate-800')}>
+                <CardHeader data-pricing-category-header className="border-b border-slate-800/70 p-5 sm:p-6"><div className="flex items-start justify-between gap-4"><div className="flex items-start gap-3"><div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-800 bg-brand-dark"><Icon className="h-5 w-5 text-cyan-400" aria-hidden="true" /></div><div><p className="mb-1 text-[10px] font-bold uppercase tracking-widest text-cyan-500">{category.eyebrow}</p><CardTitle className="text-lg font-black text-white sm:text-xl">{category.title}</CardTitle></div></div>{category.featured&&<Badge className="shrink-0 border border-cyan-500/20 bg-cyan-500/10 text-[9px] uppercase tracking-wider text-cyan-400">Specialist</Badge>}</div></CardHeader>
+                {category.featured&&<div className="grid gap-4 border-b border-cyan-500/15 bg-cyan-950/15 p-5 sm:grid-cols-2 sm:p-6">
+                  <div className="rounded-2xl border border-slate-700/70 bg-slate-950/50 p-4"><p className="text-[10px] font-black uppercase tracking-[0.14em] text-slate-400">Whole-board replacement</p><h3 className="mt-2 text-base font-black text-white">Replace the complete assembly</h3><p className="mt-2 text-xs leading-6 text-slate-400">A full motherboard or logic-board assembly is a model-specific parts decision. Compatibility and part cost must be checked before it can be quoted.</p></div>
+                  <div className="rounded-2xl border border-cyan-500/25 bg-cyan-950/20 p-4"><p className="text-[10px] font-black uppercase tracking-[0.14em] text-cyan-300">KCROC component-level approach</p><h3 className="mt-2 text-base font-black text-white">We fix the board where repair is viable.</h3><p className="mt-2 text-xs leading-6 text-slate-300">We trace the fault and consider a targeted connector, MOSFET, power IC or other component repair before recommending a whole-board replacement.</p><p className="mt-3 text-xs font-bold leading-5 text-cyan-200">Published guide ranges: 25–60 KWD component repair · 50–90+ KWD advanced board work · 45–100+ KWD MacBook logic-board repair.</p></div>
+                  <p className="text-xs leading-5 text-slate-500 sm:col-span-2">Repairing the original board may help retain access to existing storage on some devices, but data access is not guaranteed. KCROC does not offer standalone data recovery.</p>
+                </div>}
+                <CardContent data-pricing-category-content className="p-0">
+                  <table data-pricing-table={category.anchor} aria-label={category.title+' prices in Kuwaiti dinars'} className="block w-full text-left md:table">
+                    <caption className="sr-only">{category.title}: service, scope and notes, typical turnaround, price in KWD and direct quote action.</caption>
+                    <thead className="hidden bg-slate-950/70 text-[10px] uppercase tracking-[0.12em] text-slate-400 md:table-header-group"><tr><th scope="col" className="px-5 py-4 font-black">Service</th><th scope="col" className="px-5 py-4 font-black">Scope &amp; notes</th><th scope="col" className="px-5 py-4 font-black">Typical turnaround</th><th scope="col" className="px-5 py-4 font-black">Price (KWD)</th><th scope="col" className="px-5 py-4 text-right font-black">Action</th></tr></thead>
+                    <tbody className="block divide-y divide-slate-800/80 md:table-row-group">
+                      {category.items.map((item) => {
+                        const matches=(deviceFilter==='all'||item.devices.includes(deviceFilter))&&(symptomFilter==='all'||item.symptoms.includes(symptomFilter));
+                        const hasFilter=deviceFilter!=='all'||symptomFilter!=='all';
+                        const message='Hello KCROC, I am checking '+item.name+'. Published price: '+item.price+(item.priceNote?'; '+item.priceNote:'')+'. My device model is: ____. Symptoms: ____. Kuwait area: ____. Please confirm the expected turnaround and total quote before any paid work.';
+                        return <tr key={item.name} data-pricing-row="true" data-filter-match={matches?'true':'false'} className={'block border-b border-slate-800/80 p-4 transition-opacity last:border-b-0 md:table-row md:border-b-0 md:p-0 '+(hasFilter?(matches?'bg-cyan-950/10 opacity-100':'bg-slate-950/20 opacity-45'):'hover:bg-brand-dark/25')}>
+                          <td className="block py-2 align-top md:table-cell md:w-[22%] md:px-5 md:py-5"><span className="mb-1 block text-[10px] font-black uppercase tracking-wider text-slate-500 md:hidden">Service</span><div className="text-sm font-black leading-6 text-slate-100"><Link to={item.href} className="underline decoration-slate-700 underline-offset-4 transition-colors hover:text-cyan-300 hover:decoration-cyan-400">{item.name}</Link></div>{item.secondaryLink&&<Link to={item.secondaryLink.href} className="mt-2 inline-flex text-xs font-bold text-cyan-300 underline-offset-4 hover:text-cyan-200 hover:underline">{item.secondaryLink.label} <ArrowRight className="ml-1 h-3.5 w-3.5" aria-hidden="true" /></Link>}</td>
+                          <td className="block py-2 align-top md:table-cell md:px-5 md:py-5"><span className="mb-1 block text-[10px] font-black uppercase tracking-wider text-slate-500 md:hidden">Scope &amp; notes</span><p className="text-xs leading-6 text-slate-300">{item.scope}</p>{item.note&&<p className="mt-2 text-[11px] leading-5 text-amber-200/80">{item.note}</p>}</td>
+                          <td className="block py-2 align-top md:table-cell md:w-[18%] md:px-5 md:py-5"><span className="mb-1 block text-[10px] font-black uppercase tracking-wider text-slate-500 md:hidden">Typical turnaround</span><span className="inline-flex rounded-lg border border-slate-700 bg-slate-950/60 px-2.5 py-1.5 text-xs font-semibold leading-5 text-slate-300">{item.turnaround}</span></td>
+                          <td className="block py-2 align-top md:table-cell md:w-[16%] md:px-5 md:py-5"><span className="mb-1 block text-[10px] font-black uppercase tracking-wider text-slate-500 md:hidden">Price (KWD)</span><div className="flex flex-wrap items-center gap-2 md:items-start"><span className="rounded-xl border border-cyan-500/20 bg-cyan-500/10 px-3 py-2 text-sm font-black tabular-nums text-cyan-300">{item.price}</span><span className="text-[9px] font-black uppercase tracking-wider text-slate-500">{item.priceKind}</span></div>{item.priceNote&&<p className="mt-2 max-w-[15rem] text-[11px] leading-5 text-slate-400">{item.priceNote}</p>}</td>
+                          <td className="block py-2 align-top md:table-cell md:px-5 md:py-5 md:text-right"><span className="mb-1 block text-[10px] font-black uppercase tracking-wider text-slate-500 md:hidden">Get an exact quote</span><a href={buildWhatsAppLink(message)} target="_blank" rel="noopener noreferrer" aria-label={'Get exact quote for '+item.name+' on WhatsApp'} className="inline-flex min-h-10 items-center justify-center gap-1.5 rounded-xl border border-emerald-500/25 bg-emerald-500/10 px-3 py-2 text-xs font-black text-emerald-200 transition-colors hover:border-emerald-400/50 hover:bg-emerald-500/15"><MessageCircle className="h-4 w-4" aria-hidden="true" />Get Exact Quote</a></td>
+                        </tr>;
+                      })}
+                    </tbody>
+                  </table>
+                </CardContent>
+              </Card>;
+            })}
+          </div>
+          <div className="mt-8 rounded-2xl border border-slate-800 bg-slate-900/30 p-5 sm:p-6"><div className="flex items-start gap-3"><CircleDollarSign className="mt-0.5 h-5 w-5 shrink-0 text-cyan-400" aria-hidden="true" /><div><h3 className="text-sm font-black text-white">Why some prices show labour + part</h3><p className="mt-2 text-xs leading-6 text-slate-500 sm:text-sm">Screen, battery, keyboard and upgrade parts vary by model and grade. The published labour figure is not the component price; we confirm the compatible part and complete total before paid work begins.</p></div></div></div>
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"><Button asChild className="h-12 w-full rounded-xl bg-cyan-500 px-7 font-black text-slate-950 hover:bg-cyan-400 sm:w-auto"><a href={whatsappUrl}><MessageCircle className="mr-2 h-5 w-5" aria-hidden="true" />Get My Exact Quote</a></Button><Link to="/services" className="inline-flex h-12 w-full items-center justify-center rounded-xl border border-slate-800 bg-slate-900/50 px-7 text-sm font-bold text-slate-300 transition-colors hover:border-cyan-500/40 hover:text-cyan-400 sm:w-auto">Browse All Services <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" /></Link></div>
+          <p className="mt-6 text-center text-xs leading-5 text-slate-500">Typical turnaround is an estimate after the device reaches our Hawalli lab. Confirmed timing depends on diagnosis, workload, compatible parts and the repair you approve.</p>
         </div>
       </section>
 
@@ -552,80 +627,6 @@ export default function Pricing() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────────────
-          PRICE MENU
-      ───────────────────────────────────────────────────────────────────── */}
-
-      <section id="price-list" aria-labelledby="pricing-heading" data-pricing-explorer className="px-4 pb-16 sm:px-6 sm:pb-24">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-8 text-center sm:mb-12">
-            <Badge className="mb-4 border border-cyan-500/20 bg-cyan-500/10 px-3 py-1.5 text-[10px] uppercase tracking-widest text-cyan-400">Service pricing</Badge>
-            <h2 id="pricing-heading" className="text-3xl font-black tracking-tight text-white sm:text-4xl">Laptop, MacBook, Gaming PC &amp; Motherboard Repair Price List (KWD)</h2>
-            <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">Compare published guide prices, what each service covers and its typical turnaround. Your exact quote is confirmed after diagnosis and before paid work.</p>
-          </div>
-
-          <nav aria-label="Pricing categories" data-pricing-category-nav className="mb-8 rounded-2xl border border-slate-800 bg-slate-900/35 p-4 sm:p-5">
-            <p className="mb-3 text-center text-xs font-black uppercase tracking-[0.15em] text-cyan-300">Jump to a price category</p>
-            <div className="flex flex-nowrap gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:justify-center">
-              <a href="#pricing-diagnostics" className="inline-flex min-h-10 shrink-0 items-center rounded-full border border-slate-700 bg-slate-950/70 px-4 py-2 text-xs font-bold text-slate-200 transition-colors hover:border-cyan-500/50 hover:text-cyan-200">Diagnostics &amp; Firmware</a>
-              <a href="#pricing-thermal" className="inline-flex min-h-10 shrink-0 items-center rounded-full border border-slate-700 bg-slate-950/70 px-4 py-2 text-xs font-bold text-slate-200 transition-colors hover:border-cyan-500/50 hover:text-cyan-200">Cooling &amp; Upgrades</a>
-              <a href="#pricing-hardware" className="inline-flex min-h-10 shrink-0 items-center rounded-full border border-slate-700 bg-slate-950/70 px-4 py-2 text-xs font-bold text-slate-200 transition-colors hover:border-cyan-500/50 hover:text-cyan-200">Hardware Replacements</a>
-              <a href="#pricing-motherboard" className="inline-flex min-h-10 shrink-0 items-center rounded-full border border-slate-700 bg-slate-950/70 px-4 py-2 text-xs font-bold text-slate-200 transition-colors hover:border-cyan-500/50 hover:text-cyan-200">Motherboard &amp; Logic Board</a>
-            </div>
-          </nav>
-
-          <div className="mb-8 space-y-5 rounded-3xl border border-slate-800 bg-slate-900/50 p-4 sm:p-6" data-pricing-filter-panel>
-            <div><p className="mb-3 text-xs font-black uppercase tracking-[0.15em] text-cyan-300">Filter by device</p><div role="group" aria-label="Filter pricing by device" className="flex flex-wrap gap-2">
-              {deviceFilters.map((filter) => <button key={filter.value} type="button" aria-pressed={deviceFilter===filter.value} onClick={() => setDeviceFilter(filter.value)} className={'min-h-10 rounded-full border px-3.5 py-2 text-xs font-bold transition-colors sm:text-sm '+(deviceFilter===filter.value?'border-cyan-400/60 bg-cyan-500/15 text-cyan-100':'border-slate-700 bg-slate-950/70 text-slate-300 hover:border-cyan-500/40 hover:text-cyan-200')}>{filter.label}</button>)}
-            </div></div>
-            <div><p className="mb-3 text-xs font-black uppercase tracking-[0.15em] text-cyan-300">Filter by symptom</p><div role="group" aria-label="Filter pricing by symptom" className="flex flex-wrap gap-2">
-              {symptomFilters.map((filter) => <button key={filter.value} type="button" aria-pressed={symptomFilter===filter.value} onClick={() => setSymptomFilter(filter.value)} className={'min-h-10 rounded-full border px-3.5 py-2 text-xs font-bold transition-colors sm:text-sm '+(symptomFilter===filter.value?'border-cyan-400/60 bg-cyan-500/15 text-cyan-100':'border-slate-700 bg-slate-950/70 text-slate-300 hover:border-cyan-500/40 hover:text-cyan-200')}>{filter.label}</button>)}
-            </div></div>
-            <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-800 pt-4">
-              <p aria-live="polite" className="text-xs leading-5 text-slate-400">{deviceFilter==='all'&&symptomFilter==='all'?'All 17 published services are shown.':pricingCategories.reduce((count,cat)=>count+cat.items.filter((item)=>(deviceFilter==='all'||item.devices.includes(deviceFilter))&&(symptomFilter==='all'||item.symptoms.includes(symptomFilter))).length,0)+' matching services highlighted. All 17 rows remain in the page.'}</p>
-              {(deviceFilter!=='all'||symptomFilter!=='all')&&<button type="button" onClick={()=>{setDeviceFilter('all');setSymptomFilter('all');}} className="min-h-9 rounded-lg border border-slate-700 px-3 py-1.5 text-xs font-bold text-cyan-300">Clear filters</button>}
-            </div>
-          </div>
-
-          <div className="space-y-6">
-            {pricingCategories.map((category) => {
-              const Icon=category.icon;
-              return <Card key={category.title} id={`pricing-${category.anchor}`} data-pricing-category={category.anchor} data-pricing-featured={category.featured ? 'true' : 'false'} className={'scroll-mt-6 overflow-hidden border bg-slate-900/45 shadow-2xl backdrop-blur-xl '+(category.featured?'border-cyan-500/30 shadow-cyan-950/10':'border-slate-800')}>
-                <CardHeader data-pricing-category-header className="border-b border-slate-800/70 p-5 sm:p-6"><div className="flex items-start justify-between gap-4"><div className="flex items-start gap-3"><div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-800 bg-brand-dark"><Icon className="h-5 w-5 text-cyan-400" aria-hidden="true" /></div><div><p className="mb-1 text-[10px] font-bold uppercase tracking-widest text-cyan-500">{category.eyebrow}</p><CardTitle className="text-lg font-black text-white sm:text-xl">{category.title}</CardTitle></div></div>{category.featured&&<Badge className="shrink-0 border border-cyan-500/20 bg-cyan-500/10 text-[9px] uppercase tracking-wider text-cyan-400">Specialist</Badge>}</div></CardHeader>
-                {category.featured&&<div className="grid gap-4 border-b border-cyan-500/15 bg-cyan-950/15 p-5 sm:grid-cols-2 sm:p-6">
-                  <div className="rounded-2xl border border-slate-700/70 bg-slate-950/50 p-4"><p className="text-[10px] font-black uppercase tracking-[0.14em] text-slate-400">Whole-board replacement</p><h3 className="mt-2 text-base font-black text-white">Replace the complete assembly</h3><p className="mt-2 text-xs leading-6 text-slate-400">A full motherboard or logic-board assembly is a model-specific parts decision. Compatibility and part cost must be checked before it can be quoted.</p></div>
-                  <div className="rounded-2xl border border-cyan-500/25 bg-cyan-950/20 p-4"><p className="text-[10px] font-black uppercase tracking-[0.14em] text-cyan-300">KCROC component-level approach</p><h3 className="mt-2 text-base font-black text-white">We fix the board where repair is viable.</h3><p className="mt-2 text-xs leading-6 text-slate-300">We trace the fault and consider a targeted connector, MOSFET, power IC or other component repair before recommending a whole-board replacement.</p><p className="mt-3 text-xs font-bold leading-5 text-cyan-200">Published guide ranges: 25–60 KWD component repair · 50–90+ KWD advanced board work · 45–100+ KWD MacBook logic-board repair.</p></div>
-                  <p className="text-xs leading-5 text-slate-500 sm:col-span-2">Repairing the original board may help retain access to existing storage on some devices, but data access is not guaranteed. KCROC does not offer standalone data recovery.</p>
-                </div>}
-                <CardContent data-pricing-category-content className="p-0">
-                  <table data-pricing-table={category.anchor} aria-label={category.title+' prices in Kuwaiti dinars'} className="block w-full text-left md:table">
-                    <caption className="sr-only">{category.title}: service, scope and notes, typical turnaround, price in KWD and direct quote action.</caption>
-                    <thead className="hidden bg-slate-950/70 text-[10px] uppercase tracking-[0.12em] text-slate-400 md:table-header-group"><tr><th scope="col" className="px-5 py-4 font-black">Service</th><th scope="col" className="px-5 py-4 font-black">Scope &amp; notes</th><th scope="col" className="px-5 py-4 font-black">Typical turnaround</th><th scope="col" className="px-5 py-4 font-black">Price (KWD)</th><th scope="col" className="px-5 py-4 text-right font-black">Action</th></tr></thead>
-                    <tbody className="block divide-y divide-slate-800/80 md:table-row-group">
-                      {category.items.map((item) => {
-                        const matches=(deviceFilter==='all'||item.devices.includes(deviceFilter))&&(symptomFilter==='all'||item.symptoms.includes(symptomFilter));
-                        const hasFilter=deviceFilter!=='all'||symptomFilter!=='all';
-                        const message='Hello KCROC, I am checking '+item.name+'. Published price: '+item.price+(item.priceNote?'; '+item.priceNote:'')+'. My device model is: ____. Symptoms: ____. Kuwait area: ____. Please confirm the expected turnaround and total quote before any paid work.';
-                        return <tr key={item.name} data-pricing-row="true" data-filter-match={matches?'true':'false'} className={'block border-b border-slate-800/80 p-4 transition-opacity last:border-b-0 md:table-row md:border-b-0 md:p-0 '+(hasFilter?(matches?'bg-cyan-950/10 opacity-100':'bg-slate-950/20 opacity-45'):'hover:bg-brand-dark/25')}>
-                          <td className="block py-2 align-top md:table-cell md:w-[22%] md:px-5 md:py-5"><span className="mb-1 block text-[10px] font-black uppercase tracking-wider text-slate-500 md:hidden">Service</span><div className="text-sm font-black leading-6 text-slate-100"><Link to={item.href} className="underline decoration-slate-700 underline-offset-4 transition-colors hover:text-cyan-300 hover:decoration-cyan-400">{item.name}</Link></div>{item.secondaryLink&&<Link to={item.secondaryLink.href} className="mt-2 inline-flex text-xs font-bold text-cyan-300 underline-offset-4 hover:text-cyan-200 hover:underline">{item.secondaryLink.label} <ArrowRight className="ml-1 h-3.5 w-3.5" aria-hidden="true" /></Link>}</td>
-                          <td className="block py-2 align-top md:table-cell md:px-5 md:py-5"><span className="mb-1 block text-[10px] font-black uppercase tracking-wider text-slate-500 md:hidden">Scope &amp; notes</span><p className="text-xs leading-6 text-slate-300">{item.scope}</p>{item.note&&<p className="mt-2 text-[11px] leading-5 text-amber-200/80">{item.note}</p>}</td>
-                          <td className="block py-2 align-top md:table-cell md:w-[18%] md:px-5 md:py-5"><span className="mb-1 block text-[10px] font-black uppercase tracking-wider text-slate-500 md:hidden">Typical turnaround</span><span className="inline-flex rounded-lg border border-slate-700 bg-slate-950/60 px-2.5 py-1.5 text-xs font-semibold leading-5 text-slate-300">{item.turnaround}</span></td>
-                          <td className="block py-2 align-top md:table-cell md:w-[16%] md:px-5 md:py-5"><span className="mb-1 block text-[10px] font-black uppercase tracking-wider text-slate-500 md:hidden">Price (KWD)</span><div className="flex flex-wrap items-center gap-2 md:items-start"><span className="rounded-xl border border-cyan-500/20 bg-cyan-500/10 px-3 py-2 text-sm font-black tabular-nums text-cyan-300">{item.price}</span><span className="text-[9px] font-black uppercase tracking-wider text-slate-500">{item.priceKind}</span></div>{item.priceNote&&<p className="mt-2 max-w-[15rem] text-[11px] leading-5 text-slate-400">{item.priceNote}</p>}</td>
-                          <td className="block py-2 align-top md:table-cell md:px-5 md:py-5 md:text-right"><span className="mb-1 block text-[10px] font-black uppercase tracking-wider text-slate-500 md:hidden">Get an exact quote</span><a href={buildWhatsAppLink(message)} target="_blank" rel="noopener noreferrer" aria-label={'Get exact quote for '+item.name+' on WhatsApp'} className="inline-flex min-h-10 items-center justify-center gap-1.5 rounded-xl border border-emerald-500/25 bg-emerald-500/10 px-3 py-2 text-xs font-black text-emerald-200 transition-colors hover:border-emerald-400/50 hover:bg-emerald-500/15"><MessageCircle className="h-4 w-4" aria-hidden="true" />Get Exact Quote</a></td>
-                        </tr>;
-                      })}
-                    </tbody>
-                  </table>
-                </CardContent>
-              </Card>;
-            })}
-          </div>
-          <div className="mt-8 rounded-2xl border border-slate-800 bg-slate-900/30 p-5 sm:p-6"><div className="flex items-start gap-3"><CircleDollarSign className="mt-0.5 h-5 w-5 shrink-0 text-cyan-400" aria-hidden="true" /><div><h3 className="text-sm font-black text-white">Why some prices show labour + part</h3><p className="mt-2 text-xs leading-6 text-slate-500 sm:text-sm">Screen, battery, keyboard and upgrade parts vary by model and grade. The published labour figure is not the component price; we confirm the compatible part and complete total before paid work begins.</p></div></div></div>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"><Button asChild className="h-12 w-full rounded-xl bg-cyan-500 px-7 font-black text-slate-950 hover:bg-cyan-400 sm:w-auto"><a href={whatsappUrl}><MessageCircle className="mr-2 h-5 w-5" aria-hidden="true" />Get My Exact Quote</a></Button><Link to="/services" className="inline-flex h-12 w-full items-center justify-center rounded-xl border border-slate-800 bg-slate-900/50 px-7 text-sm font-bold text-slate-300 transition-colors hover:border-cyan-500/40 hover:text-cyan-400 sm:w-auto">Browse All Services <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" /></Link></div>
-          <p className="mt-6 text-center text-xs leading-5 text-slate-500">Typical turnaround is an estimate after the device reaches our Hawalli lab. Confirmed timing depends on diagnosis, workload, compatible parts and the repair you approve.</p>
-        </div>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────────────
           WHAT AFFECTS PRICE
       ───────────────────────────────────────────────────────────────────── */}
 
@@ -727,6 +728,7 @@ export default function Pricing() {
 
       <section
         aria-labelledby="pickup-heading"
+       
         className="px-4 py-16 sm:px-6 sm:py-20"
       >
         <div className="mx-auto max-w-6xl">
