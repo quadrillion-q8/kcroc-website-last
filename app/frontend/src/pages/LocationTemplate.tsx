@@ -1,5 +1,6 @@
 // File: app/frontend/src/pages/LocationTemplate.tsx
 import { Head } from 'vite-react-ssg';
+import './KCROCEditorialRollout.css';
 import React, { useMemo } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { 
@@ -52,7 +53,7 @@ export default function LocationTemplate() {
   const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent(`Hi KCROC, I am located in ${location.title} and need a device repaired. Can we arrange a pickup?`)}`;
 
   return (
-    <div className="w-full min-h-screen bg-gray-950 text-white font-sans selection:bg-cyan-500/30">
+    <div className="w-full min-h-screen bg-gray-950 text-white font-sans selection:bg-cyan-500/30" data-kcroc-rollout="location-legacy">
       
       {/* 🚀 Dynamic SEO Engine automatically handles LocalBusiness/Service schema for this specific area */}
       <SEOEngine entityId={location.id} />
@@ -127,7 +128,7 @@ export default function LocationTemplate() {
       </section>
 
       {/* ─── VALUE PROPOSITION (.scroll-row on mobile) ─── */}
-      <section className="py-12 sm:py-24 px-4 sm:px-6 relative z-10 border-b border-slate-800/50">
+      <section data-kcroc-editorial-panel="location-content" className="py-12 sm:py-24 px-4 sm:px-6 relative z-10 border-b border-slate-800/50">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-10 sm:mb-16">
             <h2 className="text-2xl sm:text-4xl font-black text-white mb-3 tracking-tight">We Fix The Board. We Don't Just Swap It.</h2>
@@ -169,7 +170,7 @@ export default function LocationTemplate() {
       </section>
 
       {/* ─── LOCAL SERVICES GRID ─── */}
-      <section className="py-12 sm:py-24 px-4 sm:px-6 bg-slate-900/20">
+      <section data-kcroc-editorial-panel="location-services" className="py-12 sm:py-24 px-4 sm:px-6 bg-slate-900/20">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-4xl font-black mb-8 sm:mb-12 text-center text-white tracking-tight">Services Available in {location.title}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
