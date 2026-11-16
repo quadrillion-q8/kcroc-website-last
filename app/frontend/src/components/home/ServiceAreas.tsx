@@ -122,13 +122,13 @@ export const ServiceAreas = () => {
           className="mt-10 w-full min-w-0 max-w-full rounded-2xl border border-white/[0.10] bg-slate-950/40 p-4 text-start sm:p-6"
         >
           <p className="text-sm font-bold text-[#D4DBDE]">خدمة الكمبيوتر واللابتوب في الكويت</p>
-          <h3 id="ar-local-heading" className="mt-2 break-words text-xl font-black leading-snug text-white sm:text-2xl">تبحث عن فني كمبيوتر أو تصليح لابتوب؟</h3>
+          <h3 id="ar-local-heading" className="mt-2 break-words text-xl font-black leading-snug text-white sm:text-2xl">تحتاج تصليح كمبيوتر أو لابتوب؟</h3>
           <p className="mt-3 max-w-3xl break-words text-sm leading-7 text-[#D4DBDE]">
             نشخص أعطال الكمبيوتر واللابتوب قبل الإصلاح، ونرتب استلام الجهاز من المنزل أو المكتب وتوصيله من مختبرنا في حولي. اختر الخدمة المناسبة أو افتح صفحة المنطقة لمعرفة تفاصيل التغطية.
           </p>
           <ul className="mt-4 flex min-w-0 list-none flex-wrap gap-2 p-0">
             {[
-              { label: 'فني كمبيوتر في الكويت', path: '/ar/computer-repair-kuwait' },
+              { label: 'تصليح كمبيوتر في الكويت', path: '/ar/computer-repair-kuwait' },
               { label: 'تصليح كمبيوتر بالقرب مني', path: '/ar/near-me' },
               { label: 'تصليح كمبيوتر حولي', path: '/ar/computer-repair-hawalli' },
               { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },

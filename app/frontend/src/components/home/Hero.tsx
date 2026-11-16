@@ -126,7 +126,7 @@ export default function Hero() {
                 onClick={() => trackConversion('cta_click', { cta_name: 'hero_arabic_computer_repair', button_position: 'hero' })}
                 className="inline-flex min-h-12 max-w-full items-center justify-center rounded-lg px-3 py-2 text-center text-sm font-bold text-[#D4DBDE] underline decoration-white/35 underline-offset-4 transition-colors hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
               >
-                فني كمبيوتر في الكويت · تصليح كمبيوتر ولابتوب
+                تصليح كمبيوتر ولابتوب في الكويت · استلام مجاني
               </Link>
             </div>
 
