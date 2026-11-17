@@ -20,7 +20,7 @@ export default function BrandsIndex() {
               <p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-cyan-400">Device and repair coverage</p>
               <h1 className="text-4xl md:text-5xl font-black text-white mb-6">Laptop Brands We Repair in Kuwait</h1>
               <p className="text-lg leading-8 text-slate-400">
-                Explore supported model families, common hardware symptoms and the repair routes KCROC already provides. We confirm the exact model and fault before recommending parts or paid work.
+                Explore supported model families, common hardware symptoms and the repair routes KCROC already provides. For Apple laptops, see our <Link to="/macbook-repair-kuwait" className="font-semibold text-cyan-300 underline underline-offset-2 hover:text-cyan-200">MacBook Air and Pro repair service</Link>. We confirm the exact model and fault before recommending parts or paid work.
               </p>
             </div>
             <Link to="/pricing" className="inline-flex min-h-11 shrink-0 items-center gap-2 font-bold text-cyan-300 hover:text-cyan-200">
