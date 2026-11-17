@@ -138,7 +138,7 @@ export default function ServicesGrid() {
         {featuredServices.length > 0 && (
           <div className="mt-5 rounded-2xl border border-[#e3dace] bg-white px-4 py-4 shadow-sm sm:mt-7 sm:px-6">
             <p className="text-xs leading-relaxed text-[#566467] sm:text-sm">
-              Need a specific repair? Go directly to our main laptop repair service, dedicated screen repair, or laptop battery replacement page.
+              Not sure which service you need? Start with our <Link to="/computer-repair-kuwait" className="font-semibold text-[#8f4f2c] underline underline-offset-2">computer repair in Kuwait</Link> guide to repair options, or choose a laptop, screen or battery service below.
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
               {featuredServices.map((service) => (
