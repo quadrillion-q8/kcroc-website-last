@@ -317,7 +317,7 @@ export default function ComputerRepairKuwait() {
               Computer repair services in Kuwait
             </h2>
             <p className="mt-3 leading-7 text-slate-400">
-              Choose a service to see the relevant symptoms, repair scope and next steps. The final recommendation depends on diagnosis, not just the symptom.
+              Choose a service to see the relevant symptoms, repair scope and next steps. For model-specific laptop repair, explore {KCROC_GRAPH.brands.map((brand, index) => (<React.Fragment key={brand.id}>{index > 0 && ', '}<Link to={`/${brand.slug}`} className="font-semibold text-cyan-300 underline underline-offset-2 hover:text-cyan-200">{brand.brandName}</Link></React.Fragment>))}. The final recommendation depends on diagnosis, not just the symptom.
             </p>
           </div>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
