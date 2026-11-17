@@ -40,9 +40,66 @@
   outline-offset: 3px !important;
 }
 
-/* Editorial panel colours and cards are owned by the three-treatment system at the end of this file.
-   Avoid higher-specificity dark-only overrides here: they previously forced white text and graphite cards
-   onto the warm editorial surfaces, making the live page unreadable and visually inconsistent. */
+/* Disable the global cream editorial panels only on the two pricing pages. */
+[data-pricing-page] > section[data-kcroc-editorial-panel] {
+  border-color: transparent !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--pricing-text) !important;
+}
+[data-pricing-page] [data-kcroc-editorial-panel="pricing-guidance"] {
+  border: 1px solid var(--pricing-line) !important;
+  border-radius: 1.25rem !important;
+  background: linear-gradient(135deg, rgba(201,128,77,.09), rgba(20,30,34,.96)) !important;
+  box-shadow: none !important;
+  color: var(--pricing-text) !important;
+}
+[data-pricing-page][data-kcroc-rollout] [data-kcroc-editorial-panel] :is(h1,h2,h3,h4,h5,strong) {
+  color: var(--pricing-text) !important;
+}
+[data-pricing-page][data-kcroc-rollout] [data-kcroc-editorial-panel] :is(p,li,td,th,dd,figcaption) {
+  color: var(--pricing-muted) !important;
+}
+[data-pricing-page][data-kcroc-rollout] [data-kcroc-editorial-panel] :is(.text-white,.text-slate-100,.text-slate-200) {
+  color: var(--pricing-text) !important;
+}
+[data-pricing-page][data-kcroc-rollout] [data-kcroc-editorial-panel] :is(.text-slate-300,.text-slate-400) {
+  color: var(--pricing-muted) !important;
+}
+[data-pricing-page][data-kcroc-rollout] [data-kcroc-editorial-panel] :is(.text-slate-500,.text-slate-600) {
+  color: var(--pricing-subtle) !important;
+}
+[data-pricing-page][data-kcroc-rollout] [data-kcroc-editorial-panel] :is(.text-cyan-200,.text-cyan-300,.text-cyan-400,.text-cyan-500) {
+  color: var(--pricing-copper) !important;
+}
+[data-pricing-page][data-kcroc-rollout] [data-kcroc-editorial-panel] :is(.text-emerald-300,.text-emerald-400) {
+  color: var(--pricing-green) !important;
+}
+[data-pricing-page][data-kcroc-rollout] [data-kcroc-editorial-panel] :is(.text-amber-200,.text-amber-300,.text-amber-400) {
+  color: #e4b28c !important;
+}
+[data-pricing-page][data-kcroc-rollout] [data-kcroc-editorial-panel] :is(article,li,div,figure,a)[class*="rounded-"][class*="border"]:not([data-tower-handover-generator]):not([aria-labelledby="local-emergency-protocol"]) {
+  border-color: var(--pricing-line) !important;
+  background: var(--pricing-surface) !important;
+  box-shadow: none !important;
+  color: var(--pricing-text) !important;
+}
+[data-pricing-page][data-kcroc-rollout] [data-kcroc-editorial-panel] :is(thead,th[scope="col"]) {
+  border-color: var(--pricing-line) !important;
+  background: var(--pricing-surface-raised) !important;
+  color: var(--pricing-text) !important;
+}
+[data-pricing-page][data-kcroc-rollout] [data-kcroc-editorial-panel] :is(a,button)[class*="bg-cyan-"] {
+  border-color: #b9764c !important;
+  background: #d99a6a !important;
+  color: #17110c !important;
+}
+[data-pricing-page][data-kcroc-rollout] [data-kcroc-editorial-panel] :is(a[class*="text-cyan-"],a[class*="hover:text-cyan-"]) {
+  color: var(--pricing-copper) !important;
+  text-decoration-color: rgba(223,158,112,.4);
+  text-underline-offset: .2em;
+}
 
 /* Hero: dark technical panel, calm hierarchy and a visible copper CTA. */
 [data-pricing-page] [data-pricing-hero] { padding-top: clamp(.5rem,1vw,1rem); }
@@ -472,399 +529,4 @@
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
   }
-}
-
-
-/* -------------------------------------------------------------------------
-   KCROC THREE-TREATMENT PRICING SYSTEM
-   01 Technical identity: dark graphite for the hero and specialist work.
-   02 Editorial clarity: warm paper for prices, explanations, trust and FAQs.
-   03 Conversion: clean white cards and controls on the paper surfaces.
-   ------------------------------------------------------------------------- */
-[data-pricing-page="en"],
-[data-pricing-page="ar"] {
-  --pricing-paper: #f4efe7;
-  --pricing-white: #fffdf9;
-  --pricing-ink: #172022;
-  --pricing-muted-light: #566467;
-  --pricing-line-light: #e3dace;
-  --pricing-copper-ink: #8f4f2c;
-  --pricing-copper-fill: #c9804d;
-  --pricing-copper-soft-light: #f4e6da;
-  --pricing-green-ink: #166534;
-  --pricing-green-soft-light: #eaf4ed;
-}
-
-/* 01 — TECHNICAL IDENTITY */
-[data-pricing-page] { background: #0c1316 !important; color: #f4f6f5; }
-[data-pricing-page] [data-pricing-technical] {
-  border-color: #27363a !important;
-  background: #0c1316 !important;
-  color: #f4f6f5 !important;
-}
-[data-pricing-page] [data-pricing-technical] :is(h1,h2,h3,h4,strong,.text-white,.text-slate-100,.text-slate-200) {
-  color: #f4f6f5 !important;
-}
-[data-pricing-page] [data-pricing-technical] :is(p,li,figcaption,.text-slate-300,.text-slate-400,.text-slate-500) {
-  color: #aab7b8 !important;
-}
-[data-pricing-page] [data-pricing-technical] :is(.text-cyan-200,.text-cyan-300,.text-cyan-400,.text-cyan-500) {
-  color: #df9e70 !important;
-}
-[data-pricing-page] [data-pricing-technical] :is(article,div)[class*="rounded-"][class*="border"] {
-  border-color: #27363a !important;
-  background: #141e22 !important;
-  color: #f4f6f5 !important;
-  box-shadow: none !important;
-}
-[data-pricing-page] [data-pricing-technical] img {
-  border-radius: .9rem;
-}
-[data-pricing-page="en"] [data-pricing-technical="specialist"] {
-  padding-block: clamp(3rem,5vw,5rem);
-}
-[data-pricing-page="en"] [data-pricing-technical="specialist"] > div {
-  width: min(100%,80rem);
-}
-[data-pricing-page="en"] [data-pricing-technical="specialist"] a[class*="rounded-"][class*="border"] {
-  border-color: #e3dace !important;
-  background: #fffdf9 !important;
-  color: #172022 !important;
-  box-shadow: 0 8px 24px rgba(0,0,0,.13) !important;
-  text-decoration: none;
-}
-[data-pricing-page="en"] [data-pricing-technical="specialist"] a[class*="rounded-"][class*="border"] :is(h3,p,span,div) {
-  color: #566467 !important;
-}
-[data-pricing-page="en"] [data-pricing-technical="specialist"] a[class*="rounded-"][class*="border"] h3 {
-  color: #172022 !important;
-}
-[data-pricing-page="en"] [data-pricing-technical="specialist"] a[class*="rounded-"][class*="border"] svg {
-  color: #8f4f2c !important;
-}
-[data-pricing-page="ar"] [data-pricing-technical="visual-guide"] {
-  padding-block: clamp(3rem,5vw,5rem);
-}
-[data-pricing-page="ar"] [data-pricing-technical="visual-guide"] article {
-  overflow: hidden;
-  border: 1px solid #27363a !important;
-  border-radius: 1.2rem;
-  background: #141e22 !important;
-}
-[data-pricing-page="ar"] [data-pricing-technical="visual-guide"] article h3 { color: #f4f6f5 !important; }
-[data-pricing-page="ar"] [data-pricing-technical="visual-guide"] article p { color: #aab7b8 !important; }
-[data-pricing-page="ar"] [data-pricing-technical="visual-guide"] article a:not(:has(img)) { color: #df9e70 !important; }
-
-/* 02 — EDITORIAL CLARITY: restore warm light content surfaces. */
-[data-pricing-page] > section[data-kcroc-editorial-panel],
-[data-pricing-page] [data-kcroc-editorial-panel] {
-  border-color: var(--pricing-line-light) !important;
-  border-radius: 1.4rem;
-  background: var(--pricing-paper) !important;
-  color: var(--pricing-ink) !important;
-  box-shadow: none;
-}
-[data-pricing-page] > section[data-kcroc-editorial-panel] { width: 100%; }
-[data-pricing-page] [data-kcroc-editorial-panel] :is(h1,h2,h3,h4,h5,strong,b,summary) {
-  color: var(--pricing-ink) !important;
-  text-wrap: balance;
-}
-[data-pricing-page] [data-kcroc-editorial-panel] :is(p,li,td,th,dd,figcaption,label) {
-  color: var(--pricing-muted-light) !important;
-}
-[data-pricing-page] [data-kcroc-editorial-panel] :is(.text-white,.text-slate-100,.text-slate-200,.text-slate-300,.text-slate-400,.text-slate-500,.text-slate-600) {
-  color: var(--pricing-muted-light) !important;
-}
-[data-pricing-page] [data-kcroc-editorial-panel] :is(h1,h2,h3,h4,strong,b,.text-white,.text-slate-100) {
-  color: var(--pricing-ink) !important;
-}
-[data-pricing-page] [data-kcroc-editorial-panel] :is(.text-cyan-200,.text-cyan-300,.text-cyan-400,.text-cyan-500,.text-blue-400,.text-blue-500) {
-  color: var(--pricing-copper-ink) !important;
-}
-[data-pricing-page] [data-kcroc-editorial-panel] :is(.text-emerald-300,.text-emerald-400) {
-  color: var(--pricing-green-ink) !important;
-}
-[data-pricing-page] [data-kcroc-editorial-panel] :is(.text-amber-200,.text-amber-300,.text-amber-400) {
-  color: #8a4e23 !important;
-}
-[data-pricing-page] [data-kcroc-editorial-panel] :is(a[class*="text-cyan-"],a[class*="hover:text-cyan-"]) {
-  color: var(--pricing-copper-ink) !important;
-  text-decoration-color: rgba(143,79,44,.35);
-  text-underline-offset: .2em;
-}
-[data-pricing-page] [data-kcroc-editorial-panel] :is(a,button)[class*="bg-cyan-"] {
-  border-color: var(--pricing-copper-fill) !important;
-  background: var(--pricing-copper-fill) !important;
-  color: #17110c !important;
-}
-[data-pricing-page] [data-kcroc-editorial-panel] :is(a,button)[class*="border-slate-"] {
-  border-color: #cbbcac !important;
-  color: var(--pricing-ink) !important;
-}
-[data-pricing-page] [data-kcroc-editorial-panel] :is(div,article,aside,li,a)[class*="rounded-"][class*="border"]:not([data-tower-handover-generator]):not([aria-labelledby="local-emergency-protocol"]) {
-  border-color: var(--pricing-line-light) !important;
-  background: var(--pricing-white) !important;
-  color: var(--pricing-ink) !important;
-  box-shadow: 0 4px 18px rgba(33,27,22,.045) !important;
-}
-[data-pricing-page] [data-kcroc-editorial-panel] :is(div,article,aside,li,a)[class*="rounded-"][class*="border"] :is(h1,h2,h3,h4,strong,b,.text-white,.text-slate-100,.text-slate-200) {
-  color: var(--pricing-ink) !important;
-}
-[data-pricing-page] [data-kcroc-editorial-panel] :is(div,article,aside,li,a)[class*="rounded-"][class*="border"] :is(p,li,span,.text-slate-300,.text-slate-400,.text-slate-500) {
-  color: var(--pricing-muted-light) !important;
-}
-[data-pricing-page] [data-kcroc-editorial-panel] :is(input,select,textarea) {
-  border-color: #cbbcac !important;
-  background: var(--pricing-white) !important;
-  color: var(--pricing-ink) !important;
-  color-scheme: light;
-}
-[data-pricing-page] [data-kcroc-editorial-panel] details {
-  border-color: var(--pricing-line-light) !important;
-  background: var(--pricing-white) !important;
-}
-[data-pricing-page] [data-kcroc-editorial-panel] details summary { color: var(--pricing-ink) !important; }
-[data-pricing-page] [data-kcroc-editorial-panel] details p { color: var(--pricing-muted-light) !important; }
-
-/* 03 — CONVERSION: white cards and controls. */
-[data-pricing-page] [data-pricing-card] {
-  border-color: var(--pricing-line-light) !important;
-  border-radius: 1.25rem;
-  background: var(--pricing-white) !important;
-  color: var(--pricing-ink) !important;
-  box-shadow: 0 8px 24px rgba(37,30,24,.055) !important;
-}
-[data-pricing-page] [data-pricing-card] :is(h1,h2,h3,h4,strong,.text-white,.text-slate-100,.text-slate-200) {
-  color: var(--pricing-ink) !important;
-}
-[data-pricing-page] [data-pricing-card] :is(p,li,.text-slate-300,.text-slate-400,.text-slate-500) {
-  color: var(--pricing-muted-light) !important;
-}
-[data-pricing-page] [data-pricing-card] :is(.text-cyan-200,.text-cyan-300,.text-cyan-400,.text-cyan-500,a[class*="text-cyan-"]) {
-  color: var(--pricing-copper-ink) !important;
-}
-[data-pricing-page] [data-pricing-card] a[class*="bg-cyan-"],
-[data-pricing-page] [data-pricing-card] button[class*="bg-cyan-"] {
-  border-color: var(--pricing-copper-fill) !important;
-  background: var(--pricing-copper-fill) !important;
-  color: #17110c !important;
-}
-[data-pricing-page] [data-pricing-card] a[class*="border-slate-"],
-[data-pricing-page] [data-pricing-card] button[class*="border-slate-"] {
-  border-color: #cbbcac !important;
-  background: var(--pricing-white) !important;
-  color: var(--pricing-ink) !important;
-}
-[data-pricing-page] [data-pricing-card] :is(a,button):focus-visible {
-  outline: 3px solid var(--pricing-copper-ink) !important;
-  outline-offset: 3px !important;
-}
-
-/* Starting-price cards are the white conversion layer inside the dark hero. */
-[data-pricing-page] [data-pricing-highlight] {
-  border-color: var(--pricing-line-light) !important;
-  background: var(--pricing-white) !important;
-  color: var(--pricing-ink) !important;
-  box-shadow: 0 6px 20px rgba(0,0,0,.12) !important;
-}
-[data-pricing-page] [data-pricing-highlight] :is(span,p) { color: var(--pricing-muted-light) !important; }
-[data-pricing-page] [data-pricing-highlight] :is(span.text-xl,span.text-cyan-300) {
-  color: var(--pricing-copper-ink) !important;
-  font-variant-numeric: tabular-nums;
-}
-[data-pricing-page] [data-pricing-highlight] span:last-child { color: var(--pricing-ink) !important; }
-
-/* English catalogue: warm section, white navigation/filter controls and cards. */
-[data-pricing-page="en"] [data-pricing-explorer] {
-  background: var(--pricing-paper) !important;
-  color: var(--pricing-ink) !important;
-}
-[data-pricing-page="en"] [data-pricing-explorer] :is(h2,h3,strong,.text-white,.text-slate-100) { color: var(--pricing-ink) !important; }
-[data-pricing-page="en"] [data-pricing-explorer] :is(p,.text-slate-300,.text-slate-400,.text-slate-500) { color: var(--pricing-muted-light) !important; }
-[data-pricing-page="en"] [data-pricing-category-nav],
-[data-pricing-page="en"] [data-pricing-filter-panel] {
-  border-color: var(--pricing-line-light) !important;
-  background: var(--pricing-white) !important;
-  color: var(--pricing-ink) !important;
-  box-shadow: 0 4px 18px rgba(33,27,22,.045) !important;
-}
-[data-pricing-page="en"] [data-pricing-category-nav] > p,
-[data-pricing-page="en"] [data-pricing-filter-panel] > div > p { color: var(--pricing-copper-ink) !important; }
-[data-pricing-page="en"] [data-pricing-category-nav] a {
-  border-color: var(--pricing-line-light) !important;
-  background: #f6f1ea !important;
-  color: var(--pricing-ink) !important;
-}
-[data-pricing-page="en"] [data-pricing-category-nav] a:hover {
-  border-color: var(--pricing-copper-ink) !important;
-  background: var(--pricing-copper-soft-light) !important;
-  color: var(--pricing-copper-ink) !important;
-}
-[data-pricing-page="en"] [data-pricing-filter-panel] button {
-  border-color: #d6c9ba !important;
-  background: #f6f1ea !important;
-  color: var(--pricing-muted-light) !important;
-}
-[data-pricing-page="en"] [data-pricing-filter-panel] button:hover {
-  border-color: var(--pricing-copper-ink) !important;
-  color: var(--pricing-copper-ink) !important;
-}
-[data-pricing-page="en"] [data-pricing-filter-panel] button[aria-pressed="true"] {
-  border-color: var(--pricing-copper-fill) !important;
-  background: var(--pricing-copper-soft-light) !important;
-  color: var(--pricing-copper-ink) !important;
-  box-shadow: inset 0 0 0 1px rgba(143,79,44,.12);
-}
-[data-pricing-page="en"] [data-pricing-filter-panel] :is([aria-live="polite"],.text-slate-400,.text-slate-500) { color: var(--pricing-muted-light) !important; }
-[data-pricing-page="en"] [data-pricing-filter-panel] > div:last-child { border-color: var(--pricing-line-light) !important; }
-
-[data-pricing-page="en"] [data-pricing-category] {
-  border-color: var(--pricing-line-light) !important;
-  background: var(--pricing-white) !important;
-  box-shadow: 0 8px 24px rgba(37,30,24,.055) !important;
-}
-[data-pricing-page="en"] [data-pricing-category-header] {
-  border-color: var(--pricing-line-light) !important;
-  background: #eee5d9 !important;
-}
-[data-pricing-page="en"] [data-pricing-category-header] :is(h2,h3,[data-slot="card-title"]) { color: var(--pricing-ink) !important; }
-[data-pricing-page="en"] [data-pricing-category-header] p { color: var(--pricing-muted-light) !important; }
-[data-pricing-page="en"] [data-pricing-category-header] svg { color: var(--pricing-copper-ink) !important; }
-[data-pricing-page="en"] [data-pricing-category-content] { background: var(--pricing-white) !important; }
-
-[data-pricing-page="en"] [data-pricing-category][data-pricing-featured="true"] > .grid {
-  border-color: #27363a !important;
-  background: #0c1316 !important;
-}
-[data-pricing-page="en"] [data-pricing-category][data-pricing-featured="true"] > .grid > div {
-  border-color: #344349 !important;
-  background: #141e22 !important;
-  color: #f4f6f5 !important;
-  box-shadow: none !important;
-}
-[data-pricing-page="en"] [data-pricing-category][data-pricing-featured="true"] > .grid > div :is(h3,p) { color: #f4f6f5 !important; }
-[data-pricing-page="en"] [data-pricing-category][data-pricing-featured="true"] > .grid > div :is(.text-cyan-200,.text-cyan-300,.text-cyan-400) { color: #df9e70 !important; }
-[data-pricing-page="en"] [data-pricing-category][data-pricing-featured="true"] > .grid > div:nth-child(2) {
-  border-color: rgba(223,158,112,.38) !important;
-  background: #1a2428 !important;
-}
-
-[data-pricing-page="en"] [data-pricing-category] table[data-pricing-table] tbody tr {
-  border-color: var(--pricing-line-light) !important;
-  background: var(--pricing-white) !important;
-  box-shadow: 0 3px 12px rgba(37,30,24,.035) !important;
-}
-[data-pricing-page="en"] [data-pricing-category] table[data-pricing-table] tbody tr:hover {
-  border-color: #d0bdaa !important;
-  background: #fffdf9 !important;
-}
-[data-pricing-page="en"] [data-pricing-category] table[data-pricing-table] tbody tr[data-filter-match="false"] { background: #f1ece5 !important; }
-[data-pricing-page="en"] [data-pricing-category] table[data-pricing-table] tbody td { color: var(--pricing-muted-light) !important; }
-[data-pricing-page="en"] [data-pricing-category] table[data-pricing-table] tbody td:nth-child(1) a {
-  color: var(--pricing-ink) !important;
-  text-decoration-color: rgba(143,79,44,.28) !important;
-}
-[data-pricing-page="en"] [data-pricing-category] table[data-pricing-table] tbody td:nth-child(1) a:hover { color: var(--pricing-copper-ink) !important; }
-[data-pricing-page="en"] [data-pricing-category] table[data-pricing-table] tbody td:nth-child(2) p { color: var(--pricing-muted-light) !important; }
-[data-pricing-page="en"] [data-pricing-category] table[data-pricing-table] tbody td:nth-child(2) p + p { color: #8a4e23 !important; }
-[data-pricing-page="en"] [data-pricing-category] table[data-pricing-table] tbody td:nth-child(n+2) > span:first-child { color: #687476 !important; }
-[data-pricing-page="en"] [data-pricing-category] table[data-pricing-table] tbody td:nth-child(3) > span:last-child {
-  border-color: var(--pricing-line-light) !important;
-  background: #f5f0e9 !important;
-  color: var(--pricing-muted-light) !important;
-}
-[data-pricing-page="en"] [data-pricing-category] table[data-pricing-table] tbody td:nth-child(4) > div > span:first-child {
-  border-color: rgba(143,79,44,.24) !important;
-  background: var(--pricing-copper-soft-light) !important;
-  color: var(--pricing-copper-ink) !important;
-}
-[data-pricing-page="en"] [data-pricing-category] table[data-pricing-table] tbody td:nth-child(4) > div > span:last-child,
-[data-pricing-page="en"] [data-pricing-category] table[data-pricing-table] tbody td:nth-child(4) > p { color: var(--pricing-muted-light) !important; }
-[data-pricing-page="en"] [data-pricing-category] table[data-pricing-table] tbody td:nth-child(5) { border-color: var(--pricing-line-light) !important; }
-[data-pricing-page="en"] [data-pricing-category] table[data-pricing-table] tbody td:nth-child(5) a {
-  border-color: #b8d7c2 !important;
-  background: var(--pricing-green-soft-light) !important;
-  color: var(--pricing-green-ink) !important;
-}
-
-/* Arabic catalogue: warm paper, white cards and copper price labels. */
-[data-pricing-page="ar"] [data-pricing-explorer="ar"] {
-  border-color: transparent !important;
-  background: var(--pricing-paper) !important;
-  color: var(--pricing-ink) !important;
-}
-[data-pricing-page="ar"] [data-pricing-explorer="ar"] :is(h1,h2,h3,h4,strong,.text-white,.text-slate-100) { color: var(--pricing-ink) !important; }
-[data-pricing-page="ar"] [data-pricing-explorer="ar"] :is(p,.text-slate-300,.text-slate-400,.text-slate-500) { color: var(--pricing-muted-light) !important; }
-[data-pricing-page="ar"] [data-pricing-highlights] [data-pricing-highlight] {
-  border-color: var(--pricing-line-light) !important;
-  background: var(--pricing-white) !important;
-  color: var(--pricing-ink) !important;
-  box-shadow: 0 4px 18px rgba(33,27,22,.045) !important;
-}
-[data-pricing-page="ar"] [data-pricing-highlights] [data-pricing-highlight] :is(span,p) { color: var(--pricing-muted-light) !important; }
-[data-pricing-page="ar"] [data-pricing-highlights] [data-pricing-highlight] :is(span.text-xl,span.text-cyan-300) { color: var(--pricing-copper-ink) !important; }
-[data-pricing-page="ar"] [data-pricing-category="ar"] {
-  border-color: var(--pricing-line-light) !important;
-  background: var(--pricing-white) !important;
-  box-shadow: 0 8px 24px rgba(37,30,24,.055) !important;
-}
-[data-pricing-page="ar"] [data-pricing-category-header] {
-  border-color: var(--pricing-line-light) !important;
-  background: #eee5d9 !important;
-}
-[data-pricing-page="ar"] [data-pricing-category-header] h3 { color: var(--pricing-ink) !important; }
-[data-pricing-page="ar"] [data-pricing-category-header] p { color: var(--pricing-muted-light) !important; }
-[data-pricing-page="ar"] [data-pricing-category-header] svg { color: var(--pricing-copper-ink) !important; }
-[data-pricing-page="ar"] [data-pricing-category="ar"] ul { background: var(--pricing-white) !important; }
-[data-pricing-page="ar"] [data-pricing-row-ar] {
-  border-color: var(--pricing-line-light) !important;
-  background: var(--pricing-white) !important;
-  color: var(--pricing-ink) !important;
-}
-[data-pricing-page="ar"] [data-pricing-row-ar] h4 { color: var(--pricing-ink) !important; }
-[data-pricing-page="ar"] [data-pricing-row-ar] p { color: var(--pricing-muted-light) !important; }
-[data-pricing-page="ar"] [data-pricing-value] {
-  border-color: rgba(143,79,44,.24) !important;
-  background: var(--pricing-copper-soft-light) !important;
-  color: var(--pricing-copper-ink) !important;
-}
-[data-pricing-page="ar"] [data-pricing-row-ar] a { color: var(--pricing-copper-ink) !important; }
-[data-pricing-page="ar"] [data-pricing-explorer="ar"] > div > div:last-child {
-  border-color: #e4d4c2 !important;
-  background: #f8f1e8 !important;
-}
-[data-pricing-page="ar"] [data-pricing-explorer="ar"] > div > div:last-child :is(p,svg) { color: #8a4e23 !important; }
-
-/* Supporting trust, process, FAQs, service-area content and booking pathways. */
-[data-pricing-page] [data-pricing-card="trust-promise"] > div:first-child {
-  border-color: var(--pricing-line-light) !important;
-  background: #eee5d9 !important;
-}
-[data-pricing-page] [data-pricing-card="trust-promise"] > div:first-child :is(h2,p) { color: var(--pricing-ink) !important; }
-[data-pricing-page] [data-pricing-card="trust-promise"] > div:first-child svg { color: var(--pricing-copper-ink) !important; }
-[data-pricing-page="en"] [data-pricing-card="commercial-paths"] a {
-  border-color: var(--pricing-line-light) !important;
-  background: var(--pricing-white) !important;
-  color: var(--pricing-ink) !important;
-}
-[data-pricing-page="en"] [data-pricing-card="commercial-paths"] a :is(span,strong) { color: var(--pricing-ink) !important; }
-[data-pricing-page="en"] [data-pricing-card="commercial-paths"] a span + span { color: var(--pricing-muted-light) !important; }
-[data-pricing-page] [data-kcroc-editorial-panel] details {
-  border-color: var(--pricing-line-light) !important;
-  background: var(--pricing-white) !important;
-  box-shadow: 0 4px 16px rgba(33,27,22,.04);
-}
-[data-pricing-page] [data-kcroc-editorial-panel] details summary { color: var(--pricing-ink) !important; }
-[data-pricing-page] [data-kcroc-editorial-panel] details p { color: var(--pricing-muted-light) !important; }
-[data-pricing-page] [data-kcroc-editorial-panel] details > div { border-color: var(--pricing-line-light) !important; }
-
-/* Keyboard focus remains obvious on every light and dark surface. */
-[data-pricing-page] [data-kcroc-editorial-panel] :is(a,button,summary,input,select,textarea):focus-visible,
-[data-pricing-page] [data-pricing-card] :is(a,button,summary,input,select,textarea):focus-visible {
-  outline: 3px solid var(--pricing-copper-ink) !important;
-  outline-offset: 3px !important;
-}
-@media (max-width: 639px) {
-  [data-pricing-page] > section[data-kcroc-editorial-panel] { border-radius: 0; }
-  [data-pricing-page] [data-pricing-card] { border-radius: 1rem; }
 }
