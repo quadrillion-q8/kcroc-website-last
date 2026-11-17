@@ -865,10 +865,10 @@ add('Computer Repair Kuwait title, description, image and update date stay in th
 add('Unverified customer/repair totals removed from sales copy', !about.includes("number: '500+'") && !booking.includes('500+ professionals') && !arabicCommercial.includes("['500+', 'جهاز تم إصلاحه']"));
 
 // Arabic computer-repair intent: keep the national repair destination distinct from proximity and technician-visit intent.
-const arTitle = 'تصليح كمبيوتر في الكويت | استلام مجاني | KCROC';
+const arTitle = 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب | KCROC';
 const arH1 = 'تصليح كمبيوتر ولابتوب في الكويت مع استلام مجاني';
-add('Arabic commercial page title leads with computer repair in Kuwait', has(graph, `title: '${arTitle}'`) && seoProjection.includes(arTitle));
-add('Arabic commercial metadata describes lab repair, free intake and customer approval', has(graph, `title: 'تصليح كمبيوتر ولابتوب في الكويت'`) && has(graph, `تحتاج تصليح كمبيوتر أو لابتوب في الكويت؟ فحص أولي مجاني واستلام من البيت أو المكتب، وإصلاح داخل مختبر KCROC بحولي بعد موافقتك، مع ضمان 30 يومًا.`) && seoProjection.includes(arTitle));
+add('Arabic commercial page title targets technician and repair intent in Kuwait', has(graph, `title: '${arTitle}'`) && seoProjection.includes(arTitle));
+add('Arabic commercial metadata describes lab repair, free intake and customer approval', has(graph, `title: 'تصليح كمبيوتر ولابتوب في الكويت'`) && has(graph, `تبحث عن فني كمبيوتر في الكويت؟ فحص أولي مجاني وإصلاح داخل مختبر KCROC بحولي بعد موافقتك، مع استلام وتوصيل مجاني وضمان 30 يومًا.`) && seoProjection.includes(arTitle));
 add('Arabic computer-repair H1 names repair and pickup rather than an in-home technician visit', has(arabicCommercial, `h1: '${arH1}'`) && arabicCommercial.includes(`                ${arH1}\n              </h1>`));
 add('Arabic computer-repair hero clearly explains workshop-only repair and pickup from home or office', arabicCommercial.includes('الفحص والإصلاح يتمان داخل مختبرنا في حولي، مو داخل البيت') && arabicCommercial.includes('استلام وتوصيل مجاني في الكويت'));
 add('Arabic computer repair pricing distinguishes laptop starting prices from all desktop repairs', arabicCommercial.includes('ما فيه سعر بداية موحّد لكل كمبيوتر مكتبي') && arabicCommercial.includes('الأسعار المعروضة تخص خدمات محددة'));
@@ -879,8 +879,8 @@ add('Arabic Hawalli snippet reflects technician queries, the basement workshop, 
 add('HP laptop-repair snippet identifies an independent provider and a qualified from-price', graph.includes("title: 'HP Laptop Repair Kuwait | Independent Lab | KCROC'") && seoProjection.includes('HP Laptop Repair Kuwait | Independent Lab | KCROC') && graph.includes('not an official HP-authorized service center') && graph.includes('Selected repairs from 15 KWD where applicable'));
 
 add('Homepage metadata positions KCROC as the Hawalli repair lab while the dedicated computer page keeps the commercial hub title',
-  graph.includes("title: 'Kuwait Computer Repair Lab | Free Pickup & Delivery | KCROC'") &&
-  seoProjection.includes('"title": "Kuwait Computer Repair Lab | Free Pickup & Delivery | KCROC"') &&
+  graph.includes("title: 'Laptop & Computer Repair Kuwait | KCROC Repair Lab'") &&
+  seoProjection.includes('"title": "Laptop & Computer Repair Kuwait | KCROC Repair Lab"') &&
   seoProjection.includes('Computer and laptop repair at KCROC’s Hawalli component-level lab') &&
   graph.includes("title: 'Computer Repair Kuwait | PC, Laptop & MacBook | KCROC'"));
 add('Arabic homepage metadata keeps broad repair intent and states Hawalli lab, free pickup and 30-day warranty',
