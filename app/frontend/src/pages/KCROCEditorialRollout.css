@@ -342,58 +342,6 @@
   color: var(--kcroc-rollout-copper) !important;
 }
 
-/* Pricing: explanations, price-setting process, customer safeguards and FAQs
-   get the editorial frame. The live filter controls and price matrix remain dark. */
-[data-kcroc-rollout="pricing"] [data-kcroc-editorial-panel],
-[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel] {
-  border-color: var(--kcroc-rollout-line) !important;
-  border-radius: 1.4rem;
-  background: var(--kcroc-rollout-paper) !important;
-  color: var(--kcroc-rollout-ink) !important;
-  box-shadow: 0 10px 28px rgba(25, 29, 28, 0.06);
-}
-[data-kcroc-rollout="pricing"] [data-kcroc-editorial-panel] :is(h2,h3,h4,strong),
-[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel] :is(h2,h3,h4,strong) {
-  color: var(--kcroc-rollout-ink) !important;
-}
-[data-kcroc-rollout="pricing"] [data-kcroc-editorial-panel] :is(p,li,td,th,.text-slate-200,.text-slate-300,.text-slate-400,.text-slate-500),
-[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel] :is(p,li,td,th,.text-slate-200,.text-slate-300,.text-slate-400,.text-slate-500) {
-  color: var(--kcroc-rollout-muted) !important;
-}
-[data-kcroc-rollout="pricing"] [data-kcroc-editorial-panel] :is(.text-cyan-200,.text-cyan-300,.text-cyan-400,.text-cyan-500,.text-blue-400,.text-blue-500),
-[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel] :is(.text-cyan-200,.text-cyan-300,.text-cyan-400,.text-cyan-500) {
-  color: var(--kcroc-rollout-copper) !important;
-}
-[data-kcroc-rollout="pricing"] [data-kcroc-editorial-panel] :is(.text-emerald-300,.text-emerald-400),
-[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel] :is(.text-emerald-300,.text-emerald-400) {
-  color: #166534 !important;
-}
-[data-kcroc-rollout="pricing"] [data-kcroc-editorial-panel] :is(.text-amber-200,.text-amber-300,.text-amber-400),
-[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel] :is(.text-amber-200,.text-amber-300,.text-amber-400) {
-  color: #92400e !important;
-}
-[data-kcroc-rollout="pricing"] [data-kcroc-editorial-panel] :is(div,article,a)[class*="rounded-"][class*="border"],
-[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel] :is(div,article,a)[class*="rounded-"][class*="border"] {
-  border-color: var(--kcroc-rollout-line) !important;
-  background: var(--kcroc-rollout-white) !important;
-}
-[data-kcroc-rollout="pricing"] [data-kcroc-editorial-panel] a[class*="text-cyan-"],
-[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel] a[class*="text-cyan-"] {
-  color: var(--kcroc-rollout-copper) !important;
-}
-[data-kcroc-rollout="pricing"] [data-kcroc-editorial-panel] :is(a,button):focus-visible,
-[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel] :is(a,button,summary):focus-visible {
-  outline: 3px solid var(--kcroc-rollout-copper);
-  outline-offset: 3px;
-}
-[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel] {
-  text-align: start;
-}
-[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel] :is(h1,h2,h3,h4) {
-  letter-spacing: normal;
-  line-height: 1.35;
-}
-
 /* Discovery indexes: white cards become the surface for brand, problem and
    service choices. Urgency indicators on ProblemsIndex keep their red/amber
    semantics and are deliberately not recoloured. */
