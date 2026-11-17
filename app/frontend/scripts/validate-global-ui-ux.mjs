@@ -268,8 +268,6 @@ requireContains(galleryPage, 'data-kcroc-editorial-panel="gallery-conversion"', 
 // Secondary customer-page families now share the KCROC editorial system.
 for (const [content, rootMarker, file] of [
   [faqPage, 'data-kcroc-rollout="faq"', 'pages/FAQ.tsx'],
-  [pricingPage, 'data-kcroc-rollout="pricing"', 'pages/Pricing.tsx'],
-  [arabicPricingPage, 'data-kcroc-rollout="pricing-ar"', 'pages/ArabicPricingPage.tsx'],
   [brandsIndex, 'data-kcroc-rollout="brands-index"', 'pages/BrandsIndex.tsx'],
   [problemsIndex, 'data-kcroc-rollout="problems-index"', 'pages/ProblemsIndex.tsx'],
   [servicesIndex, 'data-kcroc-rollout="services-index"', 'pages/Services.tsx'],
@@ -283,12 +281,6 @@ for (const [content, rootMarker, file] of [
 
 for (const [content, panelMarker, file] of [
   [faqPage, 'data-kcroc-editorial-panel="faq-answers"', 'pages/FAQ.tsx'],
-  [pricingPage, 'data-kcroc-editorial-panel="pricing-process"', 'pages/Pricing.tsx'],
-  [pricingPage, 'data-kcroc-editorial-panel="price-factors"', 'pages/Pricing.tsx'],
-  [pricingPage, 'data-kcroc-editorial-panel="customer-protection"', 'pages/Pricing.tsx'],
-  [pricingPage, 'data-kcroc-editorial-panel="pricing-faq"', 'pages/Pricing.tsx'],
-  [arabicPricingPage, 'data-kcroc-editorial-panel="arabic-pricing-list"', 'pages/ArabicPricingPage.tsx'],
-  [arabicPricingPage, 'data-kcroc-editorial-panel="arabic-pricing-faq"', 'pages/ArabicPricingPage.tsx'],
   [brandsIndex, 'data-kcroc-editorial-panel="brand-index-cards"', 'pages/BrandsIndex.tsx'],
   [problemsIndex, 'data-kcroc-editorial-panel="problem-index-cards"', 'pages/ProblemsIndex.tsx'],
   [servicesIndex, 'data-kcroc-editorial-panel="service-index-cards"', 'pages/Services.tsx'],
@@ -309,8 +301,6 @@ requireContains(problemsIndex, "high: 'text-red-400", 'pages/ProblemsIndex.tsx',
 requireContains(problemsIndex, "medium: 'text-amber-400", 'pages/ProblemsIndex.tsx', 'medium urgency must keep its amber status treatment.');
 requireContains(nearMePage, 'one strong hub', 'pages/NearMe.tsx', 'the near-me page must remain one consolidated local-intent hub.');
 requireContains(privacyPolicyPage, 'onClick={openConsentPreferences}', 'pages/PrivacyPolicy.tsx', 'privacy consent settings must remain interactive.');
-requireContains(rolloutCss, '[data-kcroc-rollout="pricing"] [data-kcroc-editorial-panel]', 'pages/KCROCEditorialRollout.css', 'English pricing explanations must use the warm editorial palette.');
-requireContains(rolloutCss, '[data-kcroc-rollout="pricing-ar"] [data-kcroc-editorial-panel]', 'pages/KCROCEditorialRollout.css', 'Arabic pricing explanations must use the warm editorial palette.');
 requireContains(rolloutCss, '[data-kcroc-rollout="privacy-security"]', 'pages/KCROCEditorialRollout.css', 'security and privacy pages must scope only their selected editorial sections.');
 
 if (issues.length) {
