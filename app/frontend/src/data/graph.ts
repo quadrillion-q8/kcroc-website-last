@@ -78,7 +78,7 @@ export const rawGraphData: RawGraphData = {
     'page-home': {
       id: 'page-home', slug: '', entityType: 'WebPage', isActive: true,
       title: 'Home', description: 'KCROC Homepage — Component-level computer repair in Kuwait',
-      seo: { title: 'Kuwait Computer Repair Lab | Free Pickup & Delivery | KCROC', description: 'Computer and laptop repair at KCROC’s Hawalli component-level lab, with free Kuwait-wide pickup, a quote before paid work and a 30-day repair warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/', 'ar-KW': 'https://www.computerrepairkuwait.com/ar', 'x-default': 'https://www.computerrepairkuwait.com/' }, ogType: 'website', schemaTypes: ['LocalBusiness', 'WebSite', 'WebPage'], lastModified: '2026-11-13T00:00:00+03:00' },
+      seo: { title: 'Laptop & Computer Repair Kuwait | KCROC Repair Lab', description: 'Computer and laptop repair at KCROC’s Hawalli component-level lab, with free Kuwait-wide pickup, a quote before paid work and a 30-day repair warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/', 'ar-KW': 'https://www.computerrepairkuwait.com/ar', 'x-default': 'https://www.computerrepairkuwait.com/' }, ogType: 'website', schemaTypes: ['LocalBusiness', 'WebSite', 'WebPage'], lastModified: '2026-11-17T00:00:00+03:00' },
       hero: { headline: 'Expert Laptop & Computer Repair in Kuwait.', subheadline: 'We Fix the Board. We Don\'t Just Swap It.', description: 'We diagnose and repair failed components at board level — restoring devices that most repair shops in Kuwait would simply declare beyond repair.', primaryCTA: { text: 'WhatsApp a Technician', route: 'https://wa.me/96555301913' }, secondaryCTA: { text: 'View All Services', route: '/services' } },
       featuredFAQIds: [
         'faq-pick-and-drop', 
@@ -269,8 +269,8 @@ export const rawGraphData: RawGraphData = {
       title: 'تصليح كمبيوتر ولابتوب في الكويت',
       description: 'تصليح كمبيوتر ولابتوب في الكويت للكمبيوتر المكتبي وGaming PC وMacBook، مع فحص أولي مجاني واستلام من المنزل أو المكتب وإصلاح داخل مختبر KCROC في حولي بعد موافقتك.',
       seo: {
-        title: 'تصليح كمبيوتر في الكويت | استلام مجاني | KCROC',
-        description: 'تحتاج تصليح كمبيوتر أو لابتوب في الكويت؟ فحص أولي مجاني واستلام من البيت أو المكتب، وإصلاح داخل مختبر KCROC بحولي بعد موافقتك، مع ضمان 30 يومًا.',
+        title: 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب | KCROC',
+        description: 'تبحث عن فني كمبيوتر في الكويت؟ فحص أولي مجاني وإصلاح داخل مختبر KCROC بحولي بعد موافقتك، مع استلام وتوصيل مجاني وضمان 30 يومًا.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait',
         locale: 'ar_KW',
         alternates: {
@@ -279,7 +279,7 @@ export const rawGraphData: RawGraphData = {
           'x-default': 'https://www.computerrepairkuwait.com/computer-repair-kuwait'
         },
         ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service'],
-        lastModified: '2026-11-16T00:00:00+03:00',
+        lastModified: '2026-11-17T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح كمبيوتر في الكويت', url: '/ar/computer-repair-kuwait' }]
       },
       relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-gaming', 'srv-macbook', 'srv-screen']

@@ -110,7 +110,7 @@ export function ArabicHomePage() {
             <div>
               <p className="text-sm font-bold text-[#efc19c]">الخدمات الرئيسية</p>
               <h2 id="ar-home-services" className="mt-2 text-3xl font-black text-white sm:text-4xl">اختر الخدمة المناسبة لجهازك</h2>
-              <p className="mt-3 max-w-3xl leading-7 text-slate-400">إصلاحات مركّزة حسب نوع الجهاز والعطل، من المذربورد إلى الشاشات والترقيات.</p>
+              <p className="mt-3 max-w-3xl leading-7 text-slate-400">إصلاحات مركّزة حسب نوع الجهاز والعطل، من المذربورد إلى الشاشات والترقيات. تحتاج <Link to="/ar/computer-repair-kuwait" className="font-bold text-[#efc19c] underline underline-offset-2">فني كمبيوتر في الكويت</Link>؟ تعرّف على خيارات الإصلاح داخل مختبرنا.</p>
             </div>
             <Link to="/ar/services" className="inline-flex min-h-11 items-center gap-2 font-bold text-[#efc19c] hover:text-white">
               كل الخدمات <ArrowLeft className="h-4 w-4" aria-hidden="true" />
