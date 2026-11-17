@@ -18,7 +18,7 @@ assert.equal((html.match(/<details\b/gi)||[]).length,8,'Expected eight native st
 for(const q of ['Do you charge for diagnostics?','Will the final price always match the price shown here?','Why are some prices listed as','What happens if I do not approve the repair?','What if my device cannot be repaired?','Do you provide pickup and delivery?','How long does a motherboard repair take?','Is my personal data safe during repair?'])assert.ok(html.includes(q),'Missing static FAQ question: '+q);
 for(const answer of ['diagnostics are free','fixed, no-obligation total quote','panel, battery, keyboard or assembly itself','No Fix, No Fee policy','free, secure pickup and delivery','unnecessary access to your personal files'])assert.ok(html.toLowerCase().includes(answer.toLowerCase()),'Missing static FAQ answer: '+answer);
 assert.equal((html.match(/"@type"\s*:\s*"Question"/g)||[]).length,8,'FAQPage schema must contain eight questions');
-const start=html.indexOf('id="price-list"'),end=html.indexOf('id="pricing-trust-heading"',start);
+const start=html.indexOf('id="price-list"'),end=html.indexOf('id="price-factors-heading"',start);
 assert.ok(start>=0&&end>start,'Price list bounds missing');
 const menuHtml=html.slice(start,end);
 const pricingRows=[...menuHtml.matchAll(/<tr\b[^>]*data-pricing-row="true"[^>]*>[\s\S]*?<\/tr>/g)].map(([row])=>row);
