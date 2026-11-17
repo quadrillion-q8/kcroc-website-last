@@ -1951,6 +1951,41 @@ add('Mishref dispatch and walk-in copy name the central workshop and use clean p
   locations.includes('data-location-problem-link="true"') &&
   locations.includes('data-location-brand-link="true"'));
 
+// Phase 2: preserve laptop-specific graph relationships and reciprocal discovery.
+const brandServiceExpectations = {
+  'brand-dell': ['srv-gaming-laptop', 'srv-charging-port', 'srv-screen', 'srv-battery'],
+  'brand-hp': ['srv-gaming-laptop', 'srv-charging-port', 'srv-screen', 'srv-battery'],
+  'brand-lenovo': ['srv-gaming-laptop', 'srv-charging-port', 'srv-screen', 'srv-battery'],
+  'brand-asus': ['srv-gaming-laptop', 'srv-charging-port', 'srv-screen', 'srv-battery'],
+  'brand-acer': ['srv-gaming-laptop', 'srv-charging-port', 'srv-screen', 'srv-battery', 'srv-motherboard'],
+  'brand-msi': ['srv-gaming-laptop', 'srv-charging-port', 'srv-screen', 'srv-battery'],
+};
+const relationshipIds = (id, field) => {
+  const entity = getGraphEntity(id);
+  const match = entity.match(new RegExp(field + ': \\[([^\\]]*)\\]'));
+  return match ? [...match[1].matchAll(/'([^']+)'/g)].map((item) => item[1]) : [];
+};
+for (const [brandId, expectedServices] of Object.entries(brandServiceExpectations)) {
+  const actual = relationshipIds(brandId, 'relatedServiceIds');
+  add(brandId + ' links to laptop services, not desktop gaming repair',
+    !actual.includes('srv-gaming') && expectedServices.every((id) => actual.includes(id)) &&
+    new Set(actual).size === actual.length);
+  add(brandId + ' has reciprocal links for the targeted laptop service relationships',
+    expectedServices.every((id) => relationshipIds(id, 'relatedBrandIds').includes(brandId)));
+}
+add('Dell links to no-power diagnosis',
+  relationshipIds('brand-dell', 'relatedProblemIds').includes('problem-no-power'));
+add('ASUS and Acer fault descriptions require diagnosis rather than predetermined parts',
+  getGraphEntity('brand-asus').includes('only if the fault is confirmed and the exact laptop supports it') &&
+  !getGraphEntity('brand-asus').includes('requiring card upgrade to Intel AX series') &&
+  getGraphEntity('brand-acer').includes('confirm the cause before servicing'));
+add('Brand directory links to the existing MacBook service, without a duplicate brand route',
+  brandsIndex.includes('to="/macbook-repair-kuwait"') &&
+  getGraphEntity('srv-macbook').includes("path: '/macbook-battery-replacement-kuwait'"));
+add('Computer repair hub uses the active graph brand list for contextual discovery',
+  computerRepair.includes('KCROC_GRAPH.brands.map') &&
+  computerRepair.includes('to={`/${brand.slug}`}'));
+
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);
 const failed = checks.filter((check) => !check.pass);
 if (failed.length) process.exit(1);
