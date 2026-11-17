@@ -1601,7 +1601,7 @@ export const rawGraphData: RawGraphData = {
       ],
       relatedServiceIds: ['srv-battery', 'srv-motherboard', 'srv-laptop'],
       relatedProblemIds: ['problem-not-charging', 'problem-no-power'],
-      relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus'],
+      relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-acer', 'brand-msi'],
       relatedResourcePaths: [
         { label: 'Laptop Battery Warning Signs', path: '/guides/laptop-battery-warning-signs' }
       ],
@@ -3763,7 +3763,7 @@ export const rawGraphData: RawGraphData = {
       pricing: { startingFrom: 25, currency: 'KWD', quoteRequired: true, displayLabel: 'From 25 KWD — free diagnostic first' }, 
       relatedServiceIds: ['srv-laptop', 'srv-macbook', 'srv-charging-port', 'srv-liquid-damage', 'srv-gaming'],
       relatedProblemIds: ['problem-no-power', 'problem-not-charging', 'problem-black-screen', 'problem-liquid-spill'],
-      relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-msi'],
+      relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-msi', 'brand-acer'],
       relatedResourcePaths: [
         { label: 'BIOS / UEFI Recovery Guide', path: '/guides/bios-uefi-recovery-kuwait' },
         { label: "Laptop Won't Turn On? Complete Troubleshooting Guide", path: '/guides/laptop-wont-turn-on' },
@@ -4007,7 +4007,7 @@ export const rawGraphData: RawGraphData = {
       pricing: { startingFrom: 30, currency: 'KWD', quoteRequired: true, displayLabel: 'Labor from 30 KWD + panel' },
       relatedServiceIds: ['srv-laptop', 'srv-hinge'],
       relatedProblemIds: ['problem-cracked-screen', 'problem-black-screen'],
-      relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-msi'],
+      relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-msi', 'brand-acer'],
       relatedResourcePaths: [
         { label: 'How to Protect Your Laptop Screen', path: '/blog/how-to-protect-laptop-screen' },
       ],
@@ -7667,14 +7667,14 @@ export const rawGraphData: RawGraphData = {
       description: 'Dell laptops—including Inspiron, Latitude, XPS, G Series and Alienware—can develop charging, hinge, display, battery, cooling and motherboard faults. KCROC confirms the exact model, tests the reported symptom and explains repair versus part replacement before work. Memory and storage upgrade options vary by model, so compatibility is checked rather than assumed.',
       commonModels: ['Inspiron 15', 'Inspiron 14', 'Latitude 5420', 'XPS 13', 'XPS 15', 'G15 Gaming', 'Alienware m16'],
       commonIssues: [
-        { id: 'dell-hinge',    title: 'Hinge cracking the bezel',      severity: 'high',   description: 'Dell Inspiron hinges frequently crack the plastic chassis.' },
-        { id: 'dell-thermal',  title: 'CPU throttling under load',     severity: 'high',   description: 'Clogged heatsink fins in Kuwait dust conditions.' },
-        { id: 'dell-dc-jack',  title: 'Charging port loose or dead',   severity: 'medium', description: 'Dell barrel DC jack failure from heavy plug cycling.' },
-        { id: 'dell-screen',   title: 'Screen flickering or lines',    severity: 'medium', description: 'Display cable wear near the hinge.' },
-        { id: 'dell-battery',  title: 'Battery swollen',               severity: 'high',   description: 'Lithium degradation from Kuwait summer temperatures.' }
+        { id: 'dell-hinge',    title: 'Hinge cracking the bezel',      severity: 'high',   description: 'Stiff hinges or damaged mounting points can separate the bezel or crack the chassis; inspect the hinge and mounts before choosing a repair.' },
+        { id: 'dell-thermal',  title: 'CPU throttling under load',     severity: 'high',   description: 'Restricted airflow, dust, fan faults or thermal-interface condition can cause throttling; check temperatures and cooling operation.' },
+        { id: 'dell-dc-jack',  title: 'Charging port loose or dead',   severity: 'medium', description: 'A loose connector, damaged jack or input-circuit fault can interrupt charging; test the adapter and charging path.' },
+        { id: 'dell-screen',   title: 'Screen flickering or lines',    severity: 'medium', description: 'A panel, display cable, connector or board fault can cause flickering or lines; isolate the cause first.' },
+        { id: 'dell-battery',  title: 'Battery swollen',               severity: 'high',   description: 'A swollen lithium battery needs safe inspection. Stop using and charging the laptop; do not press or puncture the battery.' }
       ],
-      relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-hinge', 'srv-gaming-laptop-cleaning'],
-      relatedProblemIds: ['problem-hinge-break', 'problem-overheating', 'problem-not-charging', 'problem-black-screen'],
+      relatedServiceIds: ['srv-gaming-laptop', 'srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-hinge', 'srv-gaming-laptop-cleaning'],
+      relatedProblemIds: ['problem-hinge-break', 'problem-overheating', 'problem-not-charging', 'problem-black-screen', 'problem-no-power'],
       relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi'],
       relatedResourcePaths: [{ label: 'Dell laptop overheating guide', path: '/guides/dell-laptop-overheating' }],
       contentImages: [
@@ -7712,10 +7712,10 @@ export const rawGraphData: RawGraphData = {
       commonModels: ['Pavilion', 'EliteBook', 'ProBook', 'Spectre x360', 'Envy', 'OMEN', 'Victus'],
       commonIssues: [
         { id: 'hp-power', title: 'HP laptop no-power or power-management fault', severity: 'high', description: 'A no-power symptom can involve the adapter, input circuit, charging path, power-management IC or another board fault. Testing identifies the cause before a component or board replacement is recommended.' },
-        { id: 'hp-hinge', title: 'Hinge separation', severity: 'high', description: 'Envy and Pavilion hinge mounts breaking from chassis.' },
+        { id: 'hp-hinge', title: 'Hinge separation', severity: 'high', description: 'Stiff or damaged hinges can pull mounting points from the chassis; inspect the hinge, lid and mounts before choosing a repair.' },
         { id: 'hp-fan', title: 'Fan error or overheating at startup', severity: 'medium', description: 'A fan warning such as HP 90b can involve a failing fan, blocked airflow, a connector issue or sensor feedback. We inspect the cooling assembly before recommending a replacement.' }
       ],
-      relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard', 'srv-hinge', 'srv-gaming-laptop-cleaning'],
+      relatedServiceIds: ['srv-gaming-laptop', 'srv-laptop', 'srv-motherboard', 'srv-hinge', 'srv-gaming-laptop-cleaning', 'srv-charging-port', 'srv-screen', 'srv-battery'],
       relatedProblemIds: ['problem-no-power', 'problem-hinge-break', 'problem-overheating'],
       relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi'],
       contentImages: [
@@ -7842,7 +7842,7 @@ export const rawGraphData: RawGraphData = {
           repairFocus: ['USB-C', 'Charging', 'Display', 'Keyboard', 'Battery', 'Motherboard']
         }
       ],
-      relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-gaming-laptop-cleaning', 'srv-hinge'],
+      relatedServiceIds: ['srv-gaming-laptop', 'srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-gaming-laptop-cleaning', 'srv-hinge', 'srv-charging-port'],
       relatedProblemIds: [
         'problem-no-power', 'problem-not-charging', 'problem-overheating', 'problem-black-screen',
         'problem-hinge-break', 'problem-keyboard-fail', 'problem-wifi-fail', 'problem-slow',
@@ -7907,15 +7907,15 @@ export const rawGraphData: RawGraphData = {
     'brand-asus': {
       id: 'brand-asus', slug: 'asus-laptop-repair-kuwait', entityType: 'Brand', isActive: true,
       title: 'ASUS Laptop Repair Kuwait', brandName: 'ASUS', officialWebsite: 'https://www.asus.com',
-      description: 'ASUS Republic of Gamers (ROG) and TUF laptops are powerhouses, but Kuwait\'s heat pushes their liquid metal and thermal paste to the limit. We specialize in ASUS thermal recovery, ROG motherboard component-level repair, and TUF series screen and battery replacements.',
+      description: 'ASUS ROG, TUF, ZenBook and VivoBook laptops can develop cooling, charging, display, battery and motherboard faults. KCROC checks the exact model and cooling design before selecting thermal materials, component-level repair or compatible replacement parts.',
       commonModels: ['ROG Strix G15', 'ROG Zephyrus G14', 'TUF Gaming A15', 'ZenBook 14', 'VivoBook 15'],
       commonIssues: [
         { id: 'asus-liquid-metal', title: 'High temperatures or fan noise under load', severity: 'high', description: 'ROG and other gaming laptops can run hot due to workload, restricted airflow, fan faults, power settings or thermal-interface condition. We check temperatures and inspect the cooling path before recommending liquid-metal or thermal-paste service.' },
-        { id: 'asus-power', title: 'Dead motherboard (No power)', severity: 'high', description: 'TUF series input MOSFET or charging IC failure.' },
-        { id: 'asus-wifi', title: 'MediaTek WiFi dropping', severity: 'medium', description: 'Frequent WiFi drops requiring card upgrade to Intel AX series.' },
-        { id: 'asus-screen', title: 'Screen flickering', severity: 'medium', description: 'Display cable wear from Zephyrus "ErgoLift" hinge design.' }
+        { id: 'asus-power', title: 'Dead motherboard (No power)', severity: 'high', description: 'A no-power fault may involve the adapter, input circuit, charging IC or other board components. Test the power path before selecting a repair.' },
+        { id: 'asus-wifi', title: 'MediaTek WiFi dropping', severity: 'medium', description: 'Check device-side settings, drivers, antenna connections and wireless hardware first. A replacement card is considered only if the fault is confirmed and the exact laptop supports it; this is not a router or network repair service.' },
+        { id: 'asus-screen', title: 'Screen flickering', severity: 'medium', description: 'Screen flickering can involve the panel, cable, connector or board; inspect the display path and hinge area as appropriate.' }
       ],
-      relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-screen', 'srv-hinge'],
+      relatedServiceIds: ['srv-laptop', 'srv-gaming-laptop', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-screen', 'srv-hinge', 'srv-battery', 'srv-charging-port'],
       relatedProblemIds: ['problem-overheating', 'problem-no-power', 'problem-wifi-fail', 'problem-black-screen'],
       relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-ahmadi', 'loc-fahaheel'],
       contentImages: [
@@ -7947,14 +7947,14 @@ export const rawGraphData: RawGraphData = {
     'brand-acer': {
       id: 'brand-acer', slug: 'acer-laptop-repair-kuwait', entityType: 'Brand', isActive: true,
       title: 'Acer Laptop Repair Kuwait', brandName: 'Acer', officialWebsite: 'https://www.acer.com',
-      description: 'Acer Nitro and Predator gaming laptops offer great value but frequently suffer from DC charging jack failures and cooling system blockages in Kuwait. We provide comprehensive repair for Acer Aspire, Nitro, and Predator models, including motherboard diagnostics and screen replacements.',
+      description: 'Acer Aspire, Swift, Nitro and Predator laptops can develop charging, cooling, hinge, battery, display or motherboard faults. KCROC tests the exact model and symptom before recommending a repair or compatible replacement.',
       commonModels: ['Nitro 5', 'Predator Helios 300', 'Aspire 5', 'Aspire 3', 'Swift 3'],
       commonIssues: [
-        { id: 'acer-dc-jack', title: 'Charging port pushed in', severity: 'high', description: 'Nitro 5 DC jack breaking loose from its housing.' },
-        { id: 'acer-thermal', title: 'Loud fans & high temps', severity: 'medium', description: 'Predator cooling fins heavily blocked by dust.' },
-        { id: 'acer-hinge', title: 'Screen bezel separating', severity: 'medium', description: 'Aspire hinge stress causing the screen assembly to split.' }
+        { id: 'acer-dc-jack', title: 'Charging port pushed in', severity: 'high', description: 'A loose or displaced charging jack may involve damaged mounts, a connector or board solder joints; inspect the charging input and housing.' },
+        { id: 'acer-thermal', title: 'Loud fans & high temps', severity: 'medium', description: 'High temperatures or fan noise may involve airflow, dust, fan operation or thermal-interface condition; confirm the cause before servicing.' },
+        { id: 'acer-hinge', title: 'Screen bezel separating', severity: 'medium', description: 'A stiff hinge or damaged mount can separate the bezel; inspect the hinge, cover and display cable before repair.' }
       ],
-      relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-gaming-laptop-cleaning', 'srv-charging-port', 'srv-hinge', 'srv-motherboard'],
+      relatedServiceIds: ['srv-gaming-laptop', 'srv-laptop', 'srv-gaming-laptop-cleaning', 'srv-charging-port', 'srv-hinge', 'srv-motherboard', 'srv-screen', 'srv-battery'],
       relatedProblemIds: ['problem-not-charging', 'problem-overheating', 'problem-hinge-break'],
       relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi'],
       contentImages: [
@@ -7996,7 +7996,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'msi-black-screen', title: 'Power light on but MSI screen stays black', severity: 'high', description: 'Fans or keyboard lights may turn on while the screen remains black because of a display, memory, firmware, power-sequencing or motherboard fault. We check the external-display response, panel and cable connections, startup behaviour and board signals before choosing the repair path.' },
         { id: 'msi-battery', title: 'MSI battery swelling or rapid drain', severity: 'high', description: 'A raised trackpad, separating palm rest or bulging bottom cover can indicate a swollen lithium battery. Stop charging and using a visibly swollen device, do not press or puncture the battery, and arrange safe handling and model-compatible replacement.' }
       ],
-      relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-hinge', 'srv-charging-port', 'srv-battery'],
+      relatedServiceIds: ['srv-laptop', 'srv-gaming-laptop', 'srv-gaming-laptop-cleaning', 'srv-motherboard', 'srv-hinge', 'srv-charging-port', 'srv-battery', 'srv-screen'],
       relatedProblemIds: ['problem-hinge-break', 'problem-no-power', 'problem-not-charging', 'problem-overheating', 'problem-black-screen'],
       relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-ahmadi', 'loc-fahaheel'],
       relatedResourcePaths: [
