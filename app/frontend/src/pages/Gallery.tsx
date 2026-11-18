@@ -1,4 +1,5 @@
 // File: app/frontend/src/pages/Gallery.tsx
+import { useLocation } from 'react-router-dom';
 import React, { useState, useMemo, useEffect, useCallback } from 'react';
 import './KCROCEditorialRollout.css';
 import { X, Maximize2, Phone, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -22,6 +23,10 @@ const PAGE_SIZE = 72; // multiple of 2, 3 and 4 so every grid layout ends on a f
 const withSlash = (src: string) => (src.startsWith('/') ? src : `/${src}`);
 
 export default function Gallery() {
+  const ar=useLocation().pathname.startsWith('/ar/');
+  const labels: Record<string,string> = {'All':'الكل','Laptops':'لابتوبات','Motherboards':'مذربورد','Gaming PCs':'كمبيوتر ألعاب','Hardware Maintenance':'صيانة الهاردوير','Workshop':'المختبر'};
+  const categoryLabel=(cat:string)=>ar?(labels[cat]??cat):cat;
+  const photoAlt=(item:typeof GALLERY_ITEMS[number])=>ar?`صورة من مختبر KCROC — ${categoryLabel(item.category)}`:item.image.alt;
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [visibleCount, setVisibleCount] = useState<number>(PAGE_SIZE);
@@ -67,9 +72,9 @@ export default function Gallery() {
   }, [selectedIndex, filteredItems]);
 
   return (
-    <div className="w-full min-h-screen bg-transparent text-white font-sans pt-8 sm:pt-16 lg:pt-24 pb-8 sm:pb-24 px-4 sm:px-6" data-kcroc-rollout="gallery">
+    <div className="w-full min-h-screen bg-transparent text-white font-sans pt-8 sm:pt-16 lg:pt-24 pb-8 sm:pb-24 px-4 sm:px-6" data-kcroc-rollout="gallery" dir={ar?'rtl':undefined} lang={ar?'ar-KW':undefined}>
       
-      <SEOEngine entityId="page-gallery" />
+      <SEOEngine entityId={ar?"page-ar-gallery":"page-gallery"} />
 
       {/* Lightbox */}
       {selectedIndex !== null && (
@@ -77,12 +82,12 @@ export default function Gallery() {
           className="fixed inset-0 z-[100] flex items-center justify-center bg-brand-dark/95 backdrop-blur-sm p-4"
           role="dialog"
           aria-modal="true"
-          aria-label="Photo viewer"
+          aria-label={ar?"عارض الصور":"Photo viewer"}
           onClick={closeLightbox}
         >
           <button
             type="button"
-            aria-label="Close photo"
+            aria-label={ar?"إغلاق الصورة":"Close photo"}
             className="absolute top-4 sm:top-8 right-4 sm:right-8 text-white p-2 sm:p-3 bg-slate-900/50 rounded-full hover:bg-slate-800 transition-colors"
             onClick={closeLightbox}
           >
@@ -93,7 +98,7 @@ export default function Gallery() {
             <>
               <button
                 type="button"
-                aria-label="Previous photo"
+                aria-label={ar?"الصورة السابقة":"Previous photo"}
                 className="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 text-white p-2 sm:p-3 bg-slate-900/50 rounded-full hover:bg-slate-800 transition-colors"
                 onClick={(e) => { e.stopPropagation(); showPrev(); }}
               >
@@ -101,7 +106,7 @@ export default function Gallery() {
               </button>
               <button
                 type="button"
-                aria-label="Next photo"
+                aria-label={ar?"الصورة التالية":"Next photo"}
                 className="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 text-white p-2 sm:p-3 bg-slate-900/50 rounded-full hover:bg-slate-800 transition-colors"
                 onClick={(e) => { e.stopPropagation(); showNext(); }}
               >
@@ -112,7 +117,7 @@ export default function Gallery() {
 
           <img 
             src={withSlash(filteredItems[selectedIndex].image.src)} 
-            alt={filteredItems[selectedIndex].image.alt} 
+            alt={photoAlt(filteredItems[selectedIndex])} 
             className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl" 
             onClick={(e) => e.stopPropagation()}
           />
@@ -121,15 +126,15 @@ export default function Gallery() {
 
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-6 sm:mb-12 mt-4 sm:mt-0">
-          <h1 className="text-3xl sm:text-5xl font-black text-white mb-3 sm:mb-4">Repair <span className="text-cyan-400">Gallery</span></h1>
-          <p className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">View real examples of our component-level micro-soldering and lab environment.</p>
+          <h1 className="text-3xl sm:text-5xl font-black text-white mb-3 sm:mb-4">{ar?"معرض صور التصليح":<>Repair <span className="text-cyan-400">Gallery</span></>}</h1>
+          <p className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">{ar?"شوف صور فعلية من مختبرنا وأعمال اللحام الدقيق وتصليح المكونات.":"View real examples of our component-level micro-soldering and lab environment."}</p>
         </div>
 
         {/* Category Filter - Horizontal Scroll on Mobile */}
         <div className="scroll-row gap-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap sm:justify-center mb-6 sm:mb-10">
           {galleryCategories.map((cat) => (
             <button
-              key={cat}
+              key={categoryLabel(cat)}
               onClick={() => { setActiveCategory(cat); setVisibleCount(PAGE_SIZE); }}
               className={`scroll-row-item px-4 py-2 rounded-full text-[11px] sm:text-sm font-bold transition-colors whitespace-nowrap ${
                 activeCategory === cat
@@ -152,7 +157,7 @@ export default function Gallery() {
             >
               <img 
                 src={withSlash(item.image.thumb ?? item.image.src)}
-                alt={item.image.alt} 
+                alt={photoAlt(item)} 
                 width={item.image.thumb ? item.image.thumbWidth : item.image.width}
                 height={item.image.thumb ? item.image.thumbHeight : item.image.height}
                 loading={i < 4 ? 'eager' : 'lazy'}
@@ -168,7 +173,7 @@ export default function Gallery() {
               </div>
               
               <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="text-[10px] sm:text-xs font-bold text-cyan-400 uppercase tracking-wider">{item.category}</span>
+                  <span className="text-[10px] sm:text-xs font-bold text-cyan-400 uppercase tracking-wider">{categoryLabel(item.category)}</span>
               </div>
             </div>
           ))}
@@ -181,14 +186,14 @@ export default function Gallery() {
               onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
               className="px-8 py-3 rounded-full bg-slate-800 border border-slate-700 hover:border-cyan-500/50 text-white font-bold text-sm sm:text-base transition-colors"
             >
-              Load more photos ({remaining} left)
+              {ar?`عرض صور إضافية (باقي ${remaining})`:`Load more photos (${remaining} left)`}
             </button>
             <button
               type="button"
               onClick={() => setVisibleCount(filteredItems.length)}
               className="px-8 py-3 rounded-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-sm sm:text-base transition-colors"
             >
-              Load All photos ({filteredItems.length})
+              {ar?`عرض كل الصور (${filteredItems.length})`:`Load All photos (${filteredItems.length})`}
             </button>
           </div>
         )}
@@ -196,13 +201,13 @@ export default function Gallery() {
         {/* CTA Footer */}
         <section className="max-w-4xl mx-auto text-center" data-kcroc-editorial-panel="gallery-conversion">
             <div className="bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl">
-              <h2 className="text-xl sm:text-3xl font-black text-white mb-4 sm:mb-6">See a repair you need?</h2>
+              <h2 className="text-xl sm:text-3xl font-black text-white mb-4 sm:mb-6">{ar?"تحتاج تصليح جهازك؟":"See a repair you need?"}</h2>
               <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] w-full sm:w-auto text-sm sm:text-base">
-                  <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" /> Request Free Pickup
+                <a href={ar?buildWhatsAppLink("السلام عليكم، أبي أرتب استلام جهازي للفحص والتصليح."):WA_LINK} target="_blank" rel="noopener noreferrer" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] w-full sm:w-auto text-sm sm:text-base">
+                  <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" /> {ar?"اطلب استلام مجاني":"Request Free Pickup"}
                 </a>
                 <a href={CALL_LINK} className="bg-slate-800 border border-slate-700 hover:border-cyan-500/50 text-white font-bold px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl flex items-center justify-center gap-2 transition-colors w-full sm:w-auto text-sm sm:text-base">
-                  <Phone className="w-4 h-4 sm:w-5 sm:h-5" /> Call Technician
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5" /> {ar?"اتصل بالفني":"Call Technician"}
                 </a>
               </div>
             </div>
