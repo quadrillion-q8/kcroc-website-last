@@ -5,10 +5,25 @@ import { load } from 'cheerio';
 const root = process.cwd();
 const locale = fs.readFileSync(path.join(root,'src/utils/locale.ts'),'utf8');
 const mapping = locale.slice(locale.indexOf('export const ENGLISH_TO_ARABIC:'),locale.indexOf('export const ARABIC_TO_ENGLISH:'));
-const pairs = [...mapping.matchAll(/'([^']+)':\s*'([^']+)'/g)].map(m => [m[1],m[2]]).filter(([,ar])=> /^\/ar\/[^/]+-kuwait$/.test(ar) && !ar.includes('/ar/computer-repair-'));
-pairs.push(['/computer-repair-kuwait','/ar/computer-repair-kuwait']);
-assert.equal(pairs.length,17,'Expected 17 commercial repair pairs including the computer hub');
+const mappings = new Map([...mapping.matchAll(/'([^']+)':\s*'([^']+)'/g)].map(m => [m[1],m[2]]));
 const read = p=> { const slug=p.replace(/^\//,''); const filename=[slug+'.html',slug+'/index.html'].map(x=>path.join(root,'dist',x)).find(x=>fs.existsSync(x)); assert.ok(filename,p);return load(fs.readFileSync(filename,'utf8')); };
+// Service URLs are identified by actual graph-backed service cards, not by
+// "-kuwait" suffixes shared with problem pages.
+const englishDirectory=read('/services');
+const arabicDirectory=read('/ar/services');
+const cards=($)=>new Map($('main [data-service-id]').toArray().map(el=>[$(el).attr('data-service-id'),$(el).attr('href')]));
+const enCards=cards(englishDirectory), arCards=cards(arabicDirectory);
+assert.equal(enCards.size,16,'Expected 16 distinct repair service cards');
+assert.deepEqual([...arCards.keys()].sort(),[...enCards.keys()].sort(),'Matching service inventory');
+const pairs=[...enCards].map(([id,en])=>{
+  const ar=arCards.get(id);
+  assert.ok(en && ar && ar.startsWith('/ar/'),id+' localized service destination');
+  assert.equal(mappings.get(en),ar,id+' reciprocal service mapping');
+  return [en,ar];
+});
+assert.equal(mappings.get('/computer-repair-kuwait'),'/ar/computer-repair-kuwait');
+pairs.push(['/computer-repair-kuwait','/ar/computer-repair-kuwait']);
+assert.equal(new Set(pairs.map(([,ar])=>ar)).size,17,'Expected 17 distinct commercial repair pairs including the computer hub');
 for (const [en,ar] of pairs) {
   const e=read(en),a=read(ar);
   const main=a('main');
