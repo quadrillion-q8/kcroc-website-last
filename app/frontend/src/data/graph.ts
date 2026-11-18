@@ -2191,7 +2191,7 @@ export const rawGraphData: RawGraphData = {
         { family: 'Dell G Series / Alienware', models: 'G15/G16, Alienware m15/m16/m18 and x15/x16 families', diagnostics: 'Check adapter identification/sense path, input power, BIOS/UEFI state, fan and heatsink assembly, and the model-specific thermal interface.' },
         { family: 'Razer Blade', models: 'Blade 14/15/16/17/18 families', diagnostics: 'Inspect battery condition and any swelling, compact-board power rails, fans and vapor-chamber/heatsink cooling where fitted.' }
       ],
-      relatedServiceIds: ['srv-gaming', 'srv-gaming-laptop-cleaning', 'srv-laptop', 'srv-screen', 'srv-battery', 'srv-motherboard'],
+      relatedServiceIds: ['srv-gaming', 'srv-gaming-laptop-cleaning', 'srv-laptop', 'srv-screen', 'srv-battery', 'srv-motherboard', 'srv-charging-port', 'srv-hinge', 'srv-ssd-ram'],
       relatedProblemIds: ['problem-overheating', 'problem-black-screen', 'problem-no-power', 'problem-not-charging', 'problem-freezing-crashing'],
       relatedBrandIds: ['brand-asus', 'brand-lenovo', 'brand-msi', 'brand-hp', 'brand-dell', 'brand-acer'],
       relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi', 'loc-fahaheel'],
@@ -3035,7 +3035,7 @@ export const rawGraphData: RawGraphData = {
           }
         ]
       }, 
-      relatedServiceIds: ['srv-gaming', 'srv-macbook', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-gaming-laptop-cleaning'],
+      relatedServiceIds: ['srv-macbook', 'srv-motherboard', 'srv-screen', 'srv-battery', 'srv-charging-port', 'srv-gaming-laptop-cleaning', 'srv-gaming-laptop', 'srv-keyboard', 'srv-hinge', 'srv-ssd-ram', 'srv-liquid-damage'],
       relatedProblemIds: ['problem-no-power', 'problem-overheating', 'problem-black-screen', 'problem-not-charging', 'problem-slow', 'problem-freezing-crashing', 'problem-hinge-break', 'problem-cracked-screen', 'problem-windows-wont-boot'],
       relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-acer', 'brand-msi'],
       relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi', 'loc-fahaheel'],
@@ -3286,7 +3286,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'desktop-overheating', title: 'Desktop Overheats or Becomes Unstable', severity: 'high', description: 'Dust, failed fans, poor thermal contact, blocked airflow or component faults can cause throttling and shutdowns.' },
         { id: 'desktop-slow', title: 'Desktop Is Very Slow', severity: 'medium', description: 'Storage health, RAM, Windows load, background processes and thermal behaviour should be checked before assuming the CPU needs replacement.' }
       ],
-      relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-motherboard', 'srv-charging-port'],
+      relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-motherboard', 'srv-charging-port', 'srv-ssd-ram'],
       relatedProblemIds: ['problem-no-power', 'problem-black-screen', 'problem-overheating', 'problem-freezing-crashing'],
       relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-acer', 'brand-msi'],
       relatedResourcePaths: [
@@ -3376,7 +3376,7 @@ export const rawGraphData: RawGraphData = {
           { condition: 'A localised motherboard power or VRM fault is suspected.', action: 'We assess component-level repair before defaulting to a full motherboard replacement.' }
         ]
       },
-      relatedServiceIds: ['srv-gaming-laptop', 'srv-desktop-pc', 'srv-motherboard'],
+      relatedServiceIds: ['srv-gaming-laptop', 'srv-desktop-pc', 'srv-motherboard', 'srv-ssd-ram'],
       relatedProblemIds: [],
       relatedBrandIds: [],
       relatedLocationIds: ['loc-hawalli', 'loc-salmiya', 'loc-kuwait-city', 'loc-farwaniya', 'loc-jahra', 'loc-ahmadi', 'loc-fahaheel', 'loc-mangaf', 'loc-abu-halifa', 'loc-surra', 'loc-mubarak-al-kabeer', 'loc-mishref', 'loc-sabah-al-salem'],
@@ -3707,7 +3707,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'faq-turnaround', title: 'How long does gaming laptop thermal service take?', answer: 'Most gaming laptop cleaning and thermal service work is completed within 24-48 hours of us receiving the laptop, though this can vary depending on the model and whether any additional issue is found during inspection.' }
       ],
 
-      relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard'],
+      relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-gaming-laptop'],
       relatedProblemIds: ['problem-overheating', 'problem-freezing-crashing'],
       relatedBrandIds: ['brand-asus', 'brand-lenovo', 'brand-msi', 'brand-acer', 'brand-dell', 'brand-hp'],
       relatedResourcePaths: [
@@ -4005,7 +4005,7 @@ export const rawGraphData: RawGraphData = {
       repairLevel: 'panel-cable-backlight-diagnostics',
       estimatedTurnaround: 'Same day when the correct panel is available',
       pricing: { startingFrom: 30, currency: 'KWD', quoteRequired: true, displayLabel: 'Labor from 30 KWD + panel' },
-      relatedServiceIds: ['srv-laptop', 'srv-hinge'],
+      relatedServiceIds: ['srv-laptop', 'srv-hinge', 'srv-macbook-screen'],
       relatedProblemIds: ['problem-cracked-screen', 'problem-black-screen'],
       relatedBrandIds: ['brand-dell', 'brand-hp', 'brand-lenovo', 'brand-asus', 'brand-msi', 'brand-acer'],
       relatedResourcePaths: [

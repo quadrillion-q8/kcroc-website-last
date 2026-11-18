@@ -11,6 +11,8 @@ const ENGLISH_TO_ARABIC: Record<string, string> = {
   '/desktop-pc-repair-kuwait': '/ar/desktop-pc-repair-kuwait',
   '/near-me': '/ar/near-me',
   '/pricing': '/ar/pricing',
+  '/book': '/ar/book',
+  '/macbook-battery-replacement-kuwait': '/ar/macbook-battery-replacement-kuwait',
 
   '/laptop-repair-kuwait': '/ar/laptop-repair-kuwait',
   '/motherboard-repair-kuwait': '/ar/motherboard-repair-kuwait',
@@ -49,6 +51,8 @@ const ARABIC_TO_ENGLISH: Record<string, string> = {
   '/ar/desktop-pc-repair-kuwait': '/desktop-pc-repair-kuwait',
   '/ar/near-me': '/near-me',
   '/ar/pricing': '/pricing',
+  '/ar/book': '/book',
+  '/ar/macbook-battery-replacement-kuwait': '/macbook-battery-replacement-kuwait',
 
   '/ar/laptop-repair-kuwait': '/laptop-repair-kuwait',
   '/ar/motherboard-repair-kuwait': '/motherboard-repair-kuwait',

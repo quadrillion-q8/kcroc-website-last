@@ -198,7 +198,7 @@ export default function ArabicPricingPage() {
                 <a href={waQuote} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-cyan-500 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-400">
                   <MessageCircle className="h-5 w-5" aria-hidden="true" /> اسأل عن سعر جهازك
                 </a>
-                <Link to="/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-900/60 px-6 py-3 font-bold text-white transition hover:border-cyan-500/50 hover:text-cyan-200">
+                <Link to="/ar/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-900/60 px-6 py-3 font-bold text-white transition hover:border-cyan-500/50 hover:text-cyan-200">
                   <Truck className="h-5 w-5" aria-hidden="true" /> احجز استلامًا مجانيًا
                 </Link>
               </div>
@@ -288,7 +288,7 @@ export default function ArabicPricingPage() {
 
           <div className="mt-6 flex items-start gap-3 rounded-2xl border border-amber-500/20 bg-amber-500/5 p-4 sm:p-5">
             <CircleHelp className="mt-0.5 h-5 w-5 shrink-0 text-amber-300" aria-hidden="true" />
-            <p className="text-sm leading-7 text-slate-300">إذا ما لقيت العطل أو نوع جهازك في القائمة، راسلنا بالموديل وصورة العطل إن أمكن. نوضح لك الخطوة التالية والتكلفة المتوقعة قبل أي إصلاح مدفوع.</p>
+            <p className="text-sm leading-7 text-slate-300">إذا ما لقيت العطل أو نوع جهازك في القائمة، راسلنا بالموديل وصورة العطل إن أمكن. نوضح لك الخطوة التالية والتكلفة المتوقعة قبل أي إصلاح مدفوع. لأجهزة آبل، راجع <Link to="/ar/macbook-battery-replacement-kuwait" className="font-bold text-cyan-300 underline underline-offset-2 hover:text-cyan-200">سعر تبديل بطارية ماك بوك شامل التركيب</Link>.</p>
           </div>
         </div>
       </section>

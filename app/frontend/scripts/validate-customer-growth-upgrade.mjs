@@ -1986,6 +1986,56 @@ add('Computer repair hub uses the active graph brand list for contextual discove
   computerRepair.includes('KCROC_GRAPH.brands.map') &&
   computerRepair.includes('to={`/${brand.slug}`}'));
 
+// Phase 3: commercial route discovery, language continuity and quote events.
+const phase3Services = await read('pages/Services.tsx');
+const phase3ArabicDirectory = await read('pages/ArabicLocalizedPages.tsx');
+add('Arabic laptop battery service directory maps the canonical English service slug',
+  phase3ArabicDirectory.includes("'battery-replacement-kuwait': { title: 'تبديل بطارية اللابتوب'") &&
+  !phase3ArabicDirectory.includes("'laptop-battery-replacement-kuwait': { title: 'تبديل بطارية اللابتوب'"));
+add('Both service directories include active dedicated MacBook battery WebPage entities',
+  phase3Services.includes("page.id === 'page-macbook-battery-replacement' && page.isActive") &&
+  phase3ArabicDirectory.includes("page.id === 'page-ar-macbook-battery-replacement' && page.isActive"));
+add('MacBook battery symptom card targets MacBook rather than Windows',
+  arabicCommercial.includes("href: '/ar/macbook-battery-replacement-kuwait',\n                    link: 'تفاصيل خدمة البطارية'") &&
+  !arabicCommercial.includes("تبديل بطارية اللابتوب وماك بوك', path: '/ar/laptop-battery-replacement-kuwait'"));
+add('Arabic commercial and pricing booking links stay Arabic',
+  !arabicCommercial.includes('to="/book"') && !pricingPage.includes('to="/book"') &&
+  arabicCommercial.includes('to="/ar/book"') && pricingPage.includes('to="/ar/book"'));
+add('Arabic computer repair cards have localized destinations',
+  ['macbook-repair-kuwait', 'gaming-laptop-cleaning-kuwait', 'laptop-hinge-repair-kuwait', 'ssd-ram-upgrade-kuwait'].every((slug) =>
+    arabicCommercial.slice(arabicCommercial.indexOf('const AR_COMPUTER_SERVICE_CARDS = ['), arabicCommercial.indexOf('const AR_COMPUTER_PROOF_IMAGES')).includes("path: '/ar/" + slug + "'")));
+add('Arabic motherboard and SSD upgrades reuse existing English repair imagery',
+  arabicCommercial.includes("const servicePageImages = slug === 'motherboard-repair-kuwait'") &&
+  arabicCommercial.includes('image: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair') &&
+  arabicCommercial.includes("slug === 'ssd-ram-upgrade-kuwait'") &&
+  arabicCommercial.includes('image: IMAGES.upgrades.ssdM2Install'));
+add('Pricing pages link to the separate MacBook battery installed quote',
+  englishPricing.includes('to="/macbook-battery-replacement-kuwait"') && pricingPage.includes('to="/ar/macbook-battery-replacement-kuwait"'));
+add('MacBook battery and booking language switch is reciprocal',
+  locale.includes("'/macbook-battery-replacement-kuwait': '/ar/macbook-battery-replacement-kuwait'") &&
+  locale.includes("'/ar/macbook-battery-replacement-kuwait': '/macbook-battery-replacement-kuwait'") &&
+  locale.includes("'/book': '/ar/book'") && locale.includes("'/ar/book': '/book'"));
+add('MacBook battery CTAs use explicit non-PII service tracking',
+  macbookBatteryPage.includes('macbook_battery_quote_builder') &&
+  macbookBatteryPage.includes("entity_id: 'page-macbook-battery-replacement'") &&
+  arabicCommercial.includes('macbook_battery_ar_quick_quote_') &&
+  arabicCommercial.includes("entity_id: 'page-ar-macbook-battery-replacement'"));
+const phase3Relationships = {
+  'srv-laptop': ['srv-gaming-laptop', 'srv-keyboard', 'srv-hinge', 'srv-ssd-ram', 'srv-liquid-damage'],
+  'srv-gaming-laptop-cleaning': ['srv-gaming-laptop'],
+  'srv-gaming-laptop': ['srv-charging-port', 'srv-hinge', 'srv-ssd-ram'],
+  'srv-desktop-pc': ['srv-ssd-ram'],
+  'srv-screen': ['srv-macbook-screen'],
+  'srv-gaming': ['srv-ssd-ram'],
+};
+for (const [id, expected] of Object.entries(phase3Relationships)) {
+  const actual = relationshipIds(id, 'relatedServiceIds');
+  add(id + ' retains relevant specialist relationships', expected.every((target) => actual.includes(target)) && new Set(actual).size === actual.length);
+}
+add('Laptop and cooling related-service routes distinguish gaming laptops from desktop PCs',
+  !relationshipIds('srv-laptop', 'relatedServiceIds').includes('srv-gaming') &&
+  !relationshipIds('srv-gaming-laptop-cleaning', 'relatedServiceIds').includes('srv-gaming'));
+
 for (const check of checks) console.log(`${check.pass ? '✅' : '❌'} ${check.name}${!check.pass && check.detail ? ` — ${check.detail}` : ''}`);
 const failed = checks.filter((check) => !check.pass);
 if (failed.length) process.exit(1);
