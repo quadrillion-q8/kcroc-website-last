@@ -1,5 +1,6 @@
 // File: app/frontend/src/components/home/FAQSection.tsx
 import React, { useState } from 'react';
+import { useHomeLocale } from './homeLocale';
 import { Link } from 'react-router-dom';
 import { ChevronDown, ArrowRight } from 'lucide-react';
 import { KCROC_GRAPH } from '../../data/graph';
@@ -12,10 +13,11 @@ import { ROUTES } from '../../constants/routes';
  * which FAQs appear here and for each question/answer's content.
  */
 export default function FAQSection() {
+  const { ar, t, trackName } = useHomeLocale();
   const { trackConversion } = useAnalytics();
   const [openId, setOpenId] = useState<string | null>(null);
 
-  const homePage = KCROC_GRAPH.pages?.find((page) => page.id === 'page-home');
+  const homePage = KCROC_GRAPH.pages?.find((page) => page.id === (ar ? 'page-ar-home' : 'page-home'));
   const featuredIds = homePage?.featuredFAQIds ?? [];
   const faqs = featuredIds.length > 0
     ? featuredIds
@@ -31,16 +33,15 @@ export default function FAQSection() {
       className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6 sm:py-20"
     >
       <SectionHeader
-        title="Frequently Asked Questions"
+        title={t("Frequently Asked Questions","الأسئلة الشائعة")}
         align="center"
         className="mb-3 sm:mb-5"
       />
       <h2 id="homepage-faq-heading" className="sr-only">
-        Computer repair questions answered by KCROC
+        {t("Computer repair questions answered by KCROC","إجابات KCROC عن تصليح الكمبيوتر")}
       </h2>
       <p className="mx-auto mb-6 max-w-2xl text-center text-sm leading-6 text-slate-400 sm:mb-10 sm:text-base">
-        Clear answers about repair costs, pickup and delivery, turnaround times,
-        and how we protect your device.
+        {t("Clear answers about repair costs, pickup and delivery, turnaround times,\n        and how we protect your device.","إجابات واضحة عن أسعار التصليح والاستلام والتوصيل والمدة وخصوصية جهازك.")}
       </p>
 
       <div className="space-y-3 sm:space-y-4">
@@ -60,7 +61,7 @@ export default function FAQSection() {
                   aria-expanded={isOpen}
                   aria-controls={answerId}
                   onClick={() => setOpenId(isOpen ? null : faq.id)}
-                  className="flex min-h-12 w-full items-center justify-between gap-3 px-4 py-4 text-left outline-none transition-colors focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-cyan-400 sm:min-h-14 sm:px-6"
+                  className="flex min-h-12 w-full items-center justify-between gap-3 px-4 py-4 text-start outline-none transition-colors focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-cyan-400 sm:min-h-14 sm:px-6"
                 >
                   <span className="text-sm font-semibold leading-6 text-white sm:text-base">
                     {faq.title}
@@ -91,13 +92,13 @@ export default function FAQSection() {
         <Link
           to={ROUTES.FAQ}
           onClick={() => trackConversion('cta_click', {
-            cta_name: 'faq_view_all',
+            cta_name: trackName('faq_view_all'),
             button_position: 'faq_section',
           })}
           className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-cyan-400 underline decoration-cyan-400/50 underline-offset-4 transition-colors hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
         >
-          View all FAQs
-          <ArrowRight aria-hidden="true" className="h-4 w-4" />
+          {t("View all FAQs","كل الأسئلة الشائعة (بالإنجليزي)")}
+          <ArrowRight aria-hidden="true" className="h-4 w-4 rtl:rotate-180" />
         </Link>
       </div>
     </section>

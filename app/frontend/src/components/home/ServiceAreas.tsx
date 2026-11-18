@@ -1,5 +1,7 @@
 // File: app/frontend/src/components/home/ServiceAreas.tsx
 import React from 'react';
+import { useHomeLocale } from './homeLocale';
+import { arabicLocationInventory } from '../../utils/arabicLocationRoutes';
 import { KCROC_GRAPH } from '../../data/graph';
 import { MapPin, ShieldCheck, Truck, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -14,6 +16,7 @@ const GOVERNORATES = [
 ];
 
 export const ServiceAreas = () => {
+  const { ar, t, path } = useHomeLocale();
   const loc = KCROC_GRAPH.entities['loc-hawalli'] as any;
   const areas = loc?.serviceAreas || [];
 
@@ -23,32 +26,32 @@ export const ServiceAreas = () => {
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center mb-10 sm:mb-14">
           <div>
             <div className="mb-4 inline-flex min-h-10 items-center gap-2 rounded-lg border border-white/[0.12] bg-white/[0.04] px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#D4DBDE]">
-              <MapPin className="w-3.5 h-3.5" aria-hidden="true" /> Kuwait-Wide Pickup
+              <MapPin className="w-3.5 h-3.5" aria-hidden="true" /> {t("Kuwait-Wide Pickup","استلام من كل الكويت")}
             </div>
-            <h2 className="text-white text-3xl sm:text-4xl font-black mb-4">Free Pickup &amp; Delivery Across Kuwait</h2>
+            <h2 className="text-white text-3xl sm:text-4xl font-black mb-4">{t("Free Pickup & Delivery Across Kuwait","استلام وتوصيل مجاني بكل الكويت")}</h2>
             <p className="mb-6 text-base leading-relaxed text-[#C4CDD1]">
-              Based in Hawalli (Al-Mulla Complex), KCROC collects laptops, MacBooks, gaming PCs and other computers from homes and offices across Kuwait. Repairs are completed at the central lab, then the device is returned after testing. See our main pages for{' '}
-              <Link to="/laptop-repair-kuwait" className="font-semibold text-[#D4DBDE] underline decoration-white/35 underline-offset-4 hover:text-white">laptop repair in Kuwait</Link>
-              {' '}and{' '}
-              <Link to="/computer-repair-kuwait" className="font-semibold text-[#D4DBDE] underline decoration-white/35 underline-offset-4 hover:text-white">computer repair in Kuwait</Link>.
+              {t("Based in Hawalli (Al-Mulla Complex), KCROC collects laptops, MacBooks, gaming PCs and other computers from homes and offices across Kuwait. Repairs are completed at the central lab, then the device is returned after testing. See our main pages for","مختبرنا في مجمع الملا بحولي. نستلم اللابتوبات وماك بوك والكمبيوترات من البيت أو المكتب في كل الكويت، ونفحصها ونصلحها بالمختبر المركزي ونرجعها بعد الاختبار. شوف تفاصيل")}{' '}
+              <Link to={path("/laptop-repair-kuwait")} className="font-semibold text-[#D4DBDE] underline decoration-white/35 underline-offset-4 hover:text-white">{t("laptop repair in Kuwait","تصليح اللابتوب بالكويت")}</Link>
+              {' '}{t('and','و')}{' '}
+              <Link to={path("/computer-repair-kuwait")} className="font-semibold text-[#D4DBDE] underline decoration-white/35 underline-offset-4 hover:text-white">{t("computer repair in Kuwait","تصليح الكمبيوتر بالكويت")}</Link>.
             </p>
 
             <div className="mb-5 grid grid-cols-1 gap-3 min-[400px]:grid-cols-2">
-              {GOVERNORATES.map((gov) => (
+              {GOVERNORATES.map((gov, index) => (
                 <Link
                   key={gov.name}
-                  to={gov.path}
+                  to={path(gov.path)}
                   className="group min-h-[76px] rounded-2xl border border-white/[0.10] bg-white/[0.025] p-3.5 transition hover:border-white/20 hover:bg-white/[0.045] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-sm font-black text-white group-hover:text-cyan-300">{gov.name}</span>
-                        <span className="text-xs text-[#B7C1C5]">{gov.arabic}</span>
+                        <span className="text-sm font-black text-white group-hover:text-cyan-300">{ar ? gov.arabic : gov.name}</span>
+                        {!ar && <span className="text-xs text-[#B7C1C5]">{gov.arabic}</span>}
                       </div>
-                      <p className="mt-1 text-xs leading-5 text-[#B7C1C5] line-clamp-2">{gov.note}</p>
+                      <p className="mt-1 text-xs leading-5 text-[#B7C1C5] line-clamp-2">{ar ? ['مدينة الكويت والمناطق التجارية','المختبر المركزي والمناطق السكنية القريبة','الفروانية وخيطان والرقعي','الأحمدي والفحيحيل والمناطق الساحلية','الجهراء والمناطق المحيطة','العدان والقرين وصباح السالم — تفاصيل المنطقة بالإنجليزي'][index] : gov.note}</p>
                     </div>
-                    <ArrowUpRight className="mt-0.5 h-4 w-4 shrink-0 text-[#AAB5B9] group-hover:text-white" aria-hidden="true" />
+                    <ArrowUpRight className="mt-0.5 h-4 w-4 shrink-0 text-[#AAB5B9] group-hover:text-white rtl:-scale-x-100" aria-hidden="true" />
                   </div>
                 </Link>
               ))}
@@ -56,27 +59,27 @@ export const ServiceAreas = () => {
 
             <div className="mt-4">
               <Link
-                to="/locations"
+                to={path("/locations")}
                 className="inline-flex min-h-11 items-center gap-2 text-sm font-bold text-[#dfa86f] underline decoration-[#dfa86f]/40 underline-offset-4 transition hover:text-white"
               >
-                Browse all service areas <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                {t("Browse all service areas","شوف كل مناطق الخدمة")} <ArrowUpRight className="h-4 w-4 rtl:-scale-x-100" aria-hidden="true" />
               </Link>
             </div>
 
             <div className="mt-5 flex flex-col sm:flex-row gap-2.5">
-              <Link to="/near-me" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/[0.12] bg-white/[0.035] px-4 py-3 text-sm font-bold text-[#D4DBDE] transition hover:border-white/20 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]">
-                <MapPin className="h-4 w-4" aria-hidden="true" /> Find computer repair near you
+              <Link to={path("/near-me")} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/[0.12] bg-white/[0.035] px-4 py-3 text-sm font-bold text-[#D4DBDE] transition hover:border-white/20 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]">
+                <MapPin className="h-4 w-4" aria-hidden="true" /> {t("Find computer repair near you","تصليح كمبيوتر قريب منك")}
               </Link>
-              <Link to="/location/hawalli" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/[0.12] bg-white/[0.025] px-4 py-3 text-sm font-bold text-[#D4DBDE] transition hover:border-white/20 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]">
-                Computer Repair Hawalli <span aria-hidden="true">→</span>
+              <Link to={path("/location/hawalli")} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/[0.12] bg-white/[0.025] px-4 py-3 text-sm font-bold text-[#D4DBDE] transition hover:border-white/20 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]">
+                {t("Computer Repair Hawalli","تصليح كمبيوتر حولي")} <span aria-hidden="true">{t("→","←")}</span>
               </Link>
             </div>
             <div className="mt-4 grid grid-cols-1 gap-2.5 text-xs font-semibold text-[#C4CDD1] sm:flex sm:flex-wrap">
               <div className="flex min-h-12 items-center gap-2 rounded-xl border border-white/[0.10] bg-white/[0.035] px-3.5 py-2.5">
-                <Truck className="h-4 w-4 text-[#AAB5B9]" aria-hidden="true" /> Free Door-to-Door Collection
+                <Truck className="h-4 w-4 text-[#AAB5B9]" aria-hidden="true" /> {t("Free Door-to-Door Collection","استلام مجاني من عندك")}
               </div>
               <div className="flex min-h-12 items-center gap-2 rounded-xl border border-white/[0.10] bg-white/[0.035] px-3.5 py-2.5">
-                <ShieldCheck className="h-4 w-4 text-[#AAB5B9]" aria-hidden="true" /> Secure Transport
+                <ShieldCheck className="h-4 w-4 text-[#AAB5B9]" aria-hidden="true" /> {t("Secure Transport","نقل آمن للجهاز")}
               </div>
             </div>
           </div>
@@ -87,7 +90,7 @@ export const ServiceAreas = () => {
                 <source media="(max-width: 640px)" srcSet="/images/kcroc-pc-doctor-windows-repair-services.webp" />
                 <img
                   src="/images/kcroc-pc-doctor-windows-repair-services.webp"
-                  alt="KCROC computer repair technicians serving customers across Kuwait from the Hawalli lab"
+                  alt={t("KCROC computer repair technicians serving customers across Kuwait from the Hawalli lab","فنيو KCROC في مختبر حولي لخدمة مناطق الكويت")}
                   width="960"
                   height="524"
                   sizes="(max-width: 1023px) 100vw, 50vw"
@@ -98,15 +101,15 @@ export const ServiceAreas = () => {
               </picture>
               <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-70" />
               <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between rounded-xl border border-white/[0.12] bg-brand-dark/90 px-4 py-2 text-xs font-bold text-[#D4DBDE] backdrop-blur-md sm:bottom-4 sm:left-4 sm:right-4">
-                <span className="truncate">Hawalli Lab · Pickup &amp; Delivery</span>
-                <span className="text-[#D4DBDE]">Kuwait-wide</span>
+                <span className="truncate">{t("Hawalli Lab · Pickup & Delivery","مختبر حولي · استلام وتوصيل")}</span>
+                <span className="text-[#D4DBDE]">{t("Kuwait-wide","كل الكويت")}</span>
               </div>
             </div>
           </div>
         </div>
 
         <div className="grid grid-cols-1 gap-2 min-[400px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {areas.map((area: string) => (
+          {ar ? arabicLocationInventory().map((area) => <Link key={area.slug} to={area.path} className="flex min-h-12 min-w-0 items-center rounded-xl border border-white/[0.10] bg-white/[0.035] px-3 py-2 text-sm leading-snug text-[#D4DBDE] whitespace-normal break-words">{area.title}{!area.hasArabic && <span className="ms-2 text-[10px] text-slate-400">(بالإنجليزي)</span>}</Link>) : areas.map((area: string) => (
             <span key={area} className="flex min-h-12 min-w-0 items-center rounded-xl border border-white/[0.10] bg-white/[0.035] px-3 py-2 text-sm leading-snug text-[#D4DBDE] whitespace-normal break-words">
               {area}
             </span>

@@ -1,10 +1,12 @@
 // File: app/frontend/src/components/home/Process.tsx
 import React from 'react';
+import { useHomeLocale } from './homeLocale';
 import { KCROC_GRAPH } from '../../data/graph';
 import { ShieldCheck, Cpu } from 'lucide-react';
 import { SectionHeader } from '@/components/ui/section-header';
 
 export const Process = () => {
+  const { ar, t } = useHomeLocale();
   const processData = KCROC_GRAPH.processes.find((p) => p.id === 'proc-standard');
   if (!processData) return null;
 
@@ -16,9 +18,9 @@ export const Process = () => {
 
       <div className="max-w-6xl mx-auto relative z-10">
         <SectionHeader
-          eyebrow="How It Works"
-          title="How Our Repair Process Works"
-          description="From free door-to-door collection to precision board-level diagnostics and rigorous stress testing."
+          eyebrow={t("How It Works","شلون تتم الخدمة؟")}
+          title={t("How Our Repair Process Works","من الاستلام إلى التصليح والاختبار")}
+          description={t("From free door-to-door collection to precision board-level diagnostics and rigorous stress testing.","من الاستلام المجاني من البيت أو المكتب إلى فحص المذربورد واختبار الجهاز قبل تسليمه.")}
           align="center"
         />
 
@@ -29,7 +31,7 @@ export const Process = () => {
               <source media="(max-width: 640px)" srcSet="/images/kcroc-lead-technician-laptop-repair-workbench.webp" />
               <img
                 src="/images/kcroc-lead-technician-laptop-repair-workbench.webp"
-                alt="KCROC Computer Repair and Precision Diagnostic Process in Kuwait"
+                alt={t("KCROC Computer Repair and Precision Diagnostic Process in Kuwait","فني KCROC أثناء الفحص الدقيق للكمبيوتر في الكويت")}
                 width="960"
                 height="524"
                 sizes="(max-width: 640px) 100vw, (max-width: 1023px) 92vw, 960px"
@@ -43,11 +45,11 @@ export const Process = () => {
             <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-6 sm:right-6 flex flex-wrap items-center justify-between gap-2 sm:gap-4">
               <div className="flex items-center gap-1.5 text-[10px] sm:text-xs font-bold text-[#D4DBDE] bg-white/[0.04] backdrop-blur-md px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl border border-white/[0.12]">
                 <Cpu className="w-4 h-4 text-[#AAB5B9]" aria-hidden="true" />
-                <span>Thermal Imaging &amp; Motherboard Tracing</span>
+                <span>{t("Thermal Imaging & Motherboard Tracing","تصوير حراري وفحص مسارات المذربورد")}</span>
               </div>
               <div className="flex items-center gap-1.5 text-[10px] sm:text-xs font-bold text-[#D4DBDE] bg-white/[0.04] backdrop-blur-md px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl border border-white/[0.12]">
                 <ShieldCheck className="w-4 h-4 text-[#AAB5B9]" aria-hidden="true" />
-                <span>Data Privacy Guaranteed</span>
+                <span>{t("Data Privacy Guaranteed","خصوصية بياناتك")}</span>
               </div>
             </div>
           </div>
@@ -62,13 +64,13 @@ export const Process = () => {
               {idx > 0 && (
                 <span
                   aria-hidden="true"
-                  className="hidden md:block absolute right-1/2 top-[22px] -translate-y-1/2 w-full h-px bg-slate-800"
+                  className="hidden md:block absolute end-1/2 top-[22px] -translate-y-1/2 w-full h-px bg-slate-800"
                 />
               )}
               {idx < steps.length - 1 && (
                 <span
                   aria-hidden="true"
-                  className="hidden md:block absolute left-1/2 top-[22px] -translate-y-1/2 w-full h-px bg-slate-800"
+                  className="hidden md:block absolute start-1/2 top-[22px] -translate-y-1/2 w-full h-px bg-slate-800"
                 />
               )}
 
@@ -86,9 +88,9 @@ export const Process = () => {
                 </div>
 
                 <div className="md:text-center">
-                  <h3 className="mb-1 md:mb-2">{item.title}</h3>
+                  <h3 className="mb-1 md:mb-2">{ar ? ['استلام مجاني من عندك','فحص دقيق بدون تخمين','تصليح واختبار وتوصيل'][idx] : item.title}</h3>
                   <p className="text-slate-400 text-sm leading-relaxed md:max-w-[240px] md:mx-auto">
-                    {item.description}
+                    {ar ? ['احجز عبر واتساب أو الموقع. نستلم جهازك من البيت أو المكتب مجانًا ونسجل الجهاز للاستلام والتسليم.','نفحص الجهاز بمختبر حولي بأدوات القياس والتصوير الحراري حسب العطل. نوضح لك السبب والسعر قبل أي عمل مدفوع.','نصلح المكوّن أو نبدل القطعة حسب التشخيص والموافقة. نختبر الجهاز ونرجعه لك. إذا ما صلحناه، ما تدفع.'][idx] : item.description}
                   </p>
                 </div>
               </div>
