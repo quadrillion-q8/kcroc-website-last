@@ -309,7 +309,7 @@ export default function LaptopBuyingGuideAR() {
       {/* Breadcrumb */}
       <div className="pt-20 sm:pt-24 px-4 sm:px-6">
         <div className="container mx-auto max-w-6xl text-xs sm:text-sm text-slate-400 flex items-center gap-2">
-          <Link to="/" className="hover:text-cyan-400 transition-colors">الرئيسية</Link>
+          <Link to="/ar" className="hover:text-cyan-400 transition-colors">الرئيسية</Link>
           <ChevronLeft className="w-3 h-3 text-slate-600" />
           <Link to="/blog" className="hover:text-cyan-400 transition-colors">المدونة</Link>
           <ChevronLeft className="w-3 h-3 text-slate-600" />

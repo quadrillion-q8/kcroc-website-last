@@ -6,7 +6,8 @@
 // important items) instead of cards + sections, so the whole list fits inside
 // the panel without an inner or outer scrollbar.
 import React, { useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { isArabicPath, localizedSitePath } from '../../../utils/locale';
 import {
   Apple,
   ArrowUpRight,
@@ -71,6 +72,8 @@ interface Props {
 const COLUMNS = 3;
 
 export default function CompactMegaMenuContent({ config, meta, rootSlug, density, ctaName, isOpen, onClose }: Props) {
+  const { pathname } = useLocation();
+  const route = (path: string) => localizedSitePath(path, isArabicPath(pathname) ? 'ar' : 'en');
   const { trackConversion } = useAnalytics();
   const phoneDigits = NAV_GRAPH.business!.telephone.replace(/\D/g, '');
   const phoneDisplay = phoneDigits.startsWith('965') ? '+965 ' + phoneDigits.slice(3) : '+' + phoneDigits;
@@ -111,7 +114,7 @@ export default function CompactMegaMenuContent({ config, meta, rootSlug, density
           </h2>
         </div>
         <Link
-          to={meta.allHref}
+          to={route(meta.allHref)}
           tabIndex={isOpen ? 0 : -1}
           onMouseEnter={() => prefetchRoute(meta.allHref)}
           onClick={() => {
@@ -140,7 +143,7 @@ export default function CompactMegaMenuContent({ config, meta, rootSlug, density
           return (
             <li key={entity.id + '-' + entity.slug} className="min-w-0">
               <Link
-                to={href}
+                to={route(href)}
                 title={entity.title}
                 tabIndex={isOpen ? 0 : -1}
                 onMouseEnter={() => prefetchRoute(href)}
@@ -187,7 +190,7 @@ export default function CompactMegaMenuContent({ config, meta, rootSlug, density
             <Phone className="h-3.5 w-3.5 text-blue-600" aria-hidden="true" />{phoneDisplay}
           </a>
           <Link
-            to="/book"
+            to={route("/book")}
             tabIndex={isOpen ? 0 : -1}
             onClick={() => {
               trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' });

@@ -1255,7 +1255,7 @@ function ArabicGamingPcRepairPage({
 
       <div className="mx-auto max-w-6xl px-4 pb-16 pt-7 sm:px-6 sm:pt-10">
         <nav aria-label="مسار التنقل" className="mb-6 text-sm text-slate-500">
-          <Link to="/" className="hover:text-cyan-300">الرئيسية</Link>
+          <Link to="/ar" className="hover:text-cyan-300">الرئيسية</Link>
           <span className="mx-2">/</span>
           <span className="text-slate-300">تصليح Gaming PC وبي سي قيمنق بالكويت</span>
         </nav>
@@ -3329,7 +3329,7 @@ export default function ArabicCommercialPage() {
 
       <div className="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6 sm:pt-12">
         <nav aria-label="مسار التنقل" className="mb-8 text-sm text-slate-500">
-          <Link to="/" className="hover:text-cyan-300">الرئيسية</Link>
+          <Link to="/ar" className="hover:text-cyan-300">الرئيسية</Link>
           <span className="mx-2">/</span>
           <span className="text-slate-300">{cfg.h1}</span>
         </nav>

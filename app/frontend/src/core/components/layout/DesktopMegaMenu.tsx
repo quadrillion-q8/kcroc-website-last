@@ -1,6 +1,7 @@
 // File: app/frontend/src/core/components/layout/DesktopMegaMenu.tsx
 import React, { useEffect, useRef, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { isArabicPath, localizedSitePath } from '../../../utils/locale';
 import {
   Apple,
   Laptop,
@@ -183,6 +184,8 @@ interface Props {
 }
 
 export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnter, onMouseLeave, onClose }: Props) {
+  const { pathname } = useLocation();
+  const route = (path: string) => localizedSitePath(path, isArabicPath(pathname) ? 'ar' : 'en');
   const panelRef = useRef<HTMLDivElement>(null);
   const { trackConversion } = useAnalytics();
   const phoneDigits = NAV_GRAPH.business!.telephone.replace(/\D/g, '');
@@ -382,7 +385,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
             </div>
 
             <Link
-              to={allHref}
+              to={route(allHref)}
               onMouseEnter={() => prefetchRoute(allHref.replace(/^\//, ''))}
               onClick={() => {
                 trackConversion('cta_click', { cta_name: 'mega_menu_view_all', button_position: 'header' });
@@ -411,7 +414,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                   return (
                     <Link
                       key={entity.slug}
-                      to={getEntityHref(entity)}
+                      to={route(getEntityHref(entity))}
                      
                       tabIndex={isOpen ? 0 : -1}
                       onMouseEnter={() => prefetchRoute(entity.slug)}
@@ -449,7 +452,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                 {(config.sections[0]?.items ?? []).map((entity) => (
                   <Link
                     key={entity.slug}
-                    to={getEntityHref(entity)}
+                    to={route(getEntityHref(entity))}
                    
                     tabIndex={isOpen ? 0 : -1}
                     onMouseEnter={() => prefetchRoute(entity.slug)}
@@ -484,7 +487,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                     return (
                       <Link
                         key={entity.slug}
-                        to={getEntityHref(entity)}
+                        to={route(getEntityHref(entity))}
                        
                         tabIndex={isOpen ? 0 : -1}
                         onMouseEnter={() => prefetchRoute(entity.slug)}
@@ -527,7 +530,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
                     return (
                       <Link
                         key={entity.slug}
-                        to={getEntityHref(entity)}
+                        to={route(getEntityHref(entity))}
                         tabIndex={isOpen ? 0 : -1}
                         onMouseEnter={() => prefetchRoute(entity.slug)}
                         onClick={() => {

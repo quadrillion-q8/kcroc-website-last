@@ -134,7 +134,7 @@ export default function NearMeAR() {
         <div className="relative z-10 mx-auto max-w-6xl">
           <nav aria-label="Breadcrumb" className="mb-8 text-xs font-medium text-slate-400 sm:text-sm">
             <ol className="flex items-center gap-2">
-              <li><Link to="/" className="hover:text-cyan-400">الرئيسية</Link></li>
+              <li><Link to="/ar" className="hover:text-cyan-400">الرئيسية</Link></li>
               <li className="text-slate-600">/</li>
               <li aria-current="page" className="text-cyan-400">تصليح كمبيوتر بالقرب منك</li>
             </ol>
@@ -284,7 +284,7 @@ export default function NearMeAR() {
               <p className="mb-2 text-xs font-bold uppercase tracking-widest text-cyan-400">ماذا نصلح</p>
               <h2 className="text-3xl font-black text-white sm:text-4xl">خدمات تصليح الكمبيوتر واللابتوب</h2>
             </div>
-            <Link to="/services" className="inline-flex items-center text-sm font-bold text-cyan-400 hover:text-cyan-300">جميع الخدمات <ArrowRight className="mr-1 h-4 w-4 rotate-180" aria-hidden="true" /></Link>
+            <Link to="/ar/services" className="inline-flex items-center text-sm font-bold text-cyan-400 hover:text-cyan-300">جميع الخدمات <ArrowRight className="mr-1 h-4 w-4 rotate-180" aria-hidden="true" /></Link>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES_AR.map((service) => (

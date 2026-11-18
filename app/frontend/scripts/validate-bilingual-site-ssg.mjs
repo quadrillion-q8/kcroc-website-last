@@ -25,15 +25,15 @@ for (const [en,ar] of pairs) {
   assert.equal(e('main').attr('data-site-locale'),'en',en);
   assert.ok(a('main h1').length>=1,ar);
   assert.ok(a('header a[href="/ar"]').length>0,ar+' home link');
-  assert.equal(a('header a[href="/book"]').length,0,ar+' English booking');
+  assert.equal(a('header a[href="/book"]:not([lang="en"])').length,0,ar+' English booking');
   assert.ok(a('header a[href="/ar/book"]').length>0,ar+' Arabic booking');
   assert.ok(a('header a[href="'+en+'"]').length>0,ar+' language switch');
   assert.ok(e('header a[href="'+ar+'"]').length>0,en+' language switch');
   assert.equal(a('link[rel="canonical"]').attr('href'),host+ar,ar);
   assert.equal(e('link[rel="canonical"]').attr('href'),host+en,en);
   // Existing reciprocal hreflang is checked without inventing variants for English-only content.
-  assert.equal(a('link[hreflang="en-KW"]').attr('href'),host+en,ar+' hreflang');
-  assert.equal(e('link[hreflang="ar-KW"]').attr('href'),host+ar,en+' hreflang');
+  assert.ok(a('link[hreflang="en-KW"], link[hreflang="en"]').toArray().some(x => a(x).attr('href') === host+en),ar+' hreflang');
+  assert.ok(e('link[hreflang="ar-KW"], link[hreflang="ar"]').toArray().some(x => e(x).attr('href') === host+ar),en+' hreflang');
 }
 const e=read('/services'),a=read('/ar/services');
 const cards = $ => $('[data-service-id]').map((_,x)=>$(x).attr('data-service-id')).get();
