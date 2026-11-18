@@ -15,7 +15,7 @@ const canonical = 'https://www.computerrepairkuwait.com/location/mishref';
 assert.ok(html.includes(canonical), 'Mishref canonical URL is missing');
 assert.equal((html.match(/<h1\b/g) ?? []).length, 1, 'Mishref page must have exactly one H1');
 assert.ok(html.includes('Computer Repair in Mishref, Kuwait'), 'Mishref H1 is missing');
-assert.ok(!html.includes('hreflang="ar-KW"'), 'Do not add an Arabic alternate until a real Mishref Arabic page exists');
+assert.ok(/hreflang="ar-KW"/.test(html) && html.includes('https://www.computerrepairkuwait.com/ar/computer-repair-mishref'), 'Mishref must expose its real Arabic alternate');
 assert.ok(html.includes('We fix the board.'), 'Mishref hero must retain KCROC component-level positioning');
 assert.ok(html.includes('Prefer to hand over your device in person?'), 'Mishref hero should link to the real Hawalli walk-in lab');
 
