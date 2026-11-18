@@ -100,3 +100,12 @@ for(const el of problemDirectory('main [data-directory-item]').toArray()){
  assert.ok($('main a[href^="https://wa.me/"]').toArray().some(x=>/[\u0600-\u06ff]/.test(decodeURIComponent($(x).attr('href')||''))),route+' WhatsApp');
 }
 console.log('Phase 6.5B Arabic problem inventory checked.');
+
+const locationDirectory=read('/ar/locations');
+assert.equal(locationDirectory('main [data-directory-item][data-translated="true"]').length,26,'Every active location directory entry has an Arabic destination');
+for(const el of locationDirectory('main [data-directory-item]').toArray()){
+ const route=locationDirectory(el).attr('href');
+ assert.ok(route?.startsWith('/ar/computer-repair-'),route);
+ read(route);
+}
+console.log('Phase 6.5C: all 26 Arabic location destinations verified.');
