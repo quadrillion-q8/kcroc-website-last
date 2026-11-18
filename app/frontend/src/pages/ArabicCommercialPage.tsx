@@ -12,6 +12,9 @@ import { buildWhatsAppLink } from '../utils/whatsappIntent';
 import { ArabicHeadTermLinks } from '@/components/content/ArabicHeadTermLinks';
 import ServiceConversionActions from '../components/content/ServiceConversionActions';
 import { localizedSitePath } from '../utils/locale';
+import { arabicLocationDestination } from '../utils/arabicLocationRoutes';
+import LocationHeroActions from '../components/content/LocationHeroActions';
+import './KCROCEditorialRollout.css';
 
 const LOCAL_LINKS = [
   { label: 'حولي', path: arabicLocationPath('hawalli') },
@@ -2209,8 +2212,9 @@ export default function ArabicCommercialPage() {
   const { slug } = useParams<{ slug: string }>();
   const cfg = slug ? CONFIG[slug] : undefined;
   const locationProof = slug ? AR_LOCATION_PROOF[slug] : undefined;
-  const locationEntity = KCROC_GRAPH.locations.find((location) => slug === 'computer-repair-' + location.slug);
-  const trackLocationCta = (event: 'whatsapp_click' | 'phone_call_click' | 'book_pickup_click', position: string) => {
+  const locationEntity = KCROC_GRAPH.locations.find((location) => slug === 'computer-repair-' + location.slug && location.isActive !== false && !location.isPhysicalLocation);
+  const areaName = locationEntity ? arabicLocationDestination(locationEntity.slug).title : undefined;
+  const trackLocationCta = (event: 'whatsapp_click' | 'phone_call_click' | 'book_pickup_click' | 'faq_expand', position: string) => {
     if (!locationEntity) return;
     trackConversion(event, {
       cta_name: locationEntity.slug + '_ar_' + event,
@@ -2373,7 +2377,8 @@ export default function ArabicCommercialPage() {
 
   const pairedEnglishService = slug && ARABIC_SERVICE_LAYOUT_SLUGS.has(slug) ? KCROC_GRAPH.services.find(service => localizedSitePath('/' + service.slug, 'ar') === '/ar/' + slug) : undefined;
   const graphHeroImage = pairedEnglishService?.contentImages?.find(image => image.placement === 'hero') ?? pairedEnglishService?.contentImages?.[0];
-  const heroPageImage = servicePageImages[0] ?? (graphHeroImage && cfg ? { image: graphHeroImage, alt: 'صورة من فحص وتصليح الجهاز في مختبر KCROC بحولي — ' + cfg.eyebrow, caption: 'صورة من أعمال المختبر؛ يتم تحديد طريقة الإصلاح حسب الموديل ونتيجة الفحص.' } : undefined);
+  const areaHeroImage = locationEntity ? { image: locationEntity.contentImage ?? IMAGES.brand.technicians, alt: 'فحص الأجهزة المستلمة من ' + areaName + ' في مختبر KCROC بحولي', caption: 'صورة من أعمال ومرافق KCROC في حولي؛ ' + areaName + ' منطقة استلام وتوصيل وليست فرعاً للمختبر.' } : undefined;
+  const heroPageImage = servicePageImages[0] ?? areaHeroImage ?? (graphHeroImage && cfg ? { image: graphHeroImage, alt: 'صورة من فحص وتصليح الجهاز في مختبر KCROC بحولي — ' + cfg.eyebrow, caption: 'صورة من أعمال المختبر؛ يتم تحديد طريقة الإصلاح حسب الموديل ونتيجة الفحص.' } : undefined);
   const supportingPageImages = servicePageImages.slice(1);
 
   if (!cfg || !page || !business) return <Navigate to="/404" replace />;
@@ -3301,7 +3306,7 @@ export default function ArabicCommercialPage() {
   };
 
   return (
-    <div dir="rtl" lang="ar-KW" data-service-layout={slug && ARABIC_SERVICE_LAYOUT_SLUGS.has(slug) ? 'arabic' : undefined} className="min-h-screen bg-transparent text-slate-100">
+    <div dir="rtl" lang="ar-KW" data-service-layout={slug && ARABIC_SERVICE_LAYOUT_SLUGS.has(slug) ? 'arabic' : undefined} data-kcroc-rollout={locationEntity ? "location-area-ar" : undefined} data-location-scope={locationEntity ? "pickup-only" : undefined} className="min-h-screen bg-transparent text-slate-100">
       <SEOEngine entityId={page.id} />
       {laptopRepairServiceSchema && <SchemaMarkup schema={laptopRepairServiceSchema} />}
       {macbookServiceSchema && <SchemaMarkup schema={macbookServiceSchema} />}
@@ -3322,12 +3327,21 @@ export default function ArabicCommercialPage() {
           <span className="text-slate-300">{cfg.h1}</span>
         </nav>
 
-        <section className="rounded-3xl border border-cyan-900/50 bg-slate-900/45 p-6 shadow-2xl backdrop-blur-md sm:p-10">
+        <section data-location-hero={locationEntity ? "true" : undefined} className="rounded-3xl border border-cyan-900/50 bg-slate-900/45 p-6 shadow-2xl backdrop-blur-md sm:p-10">
           <p className="mb-3 text-sm font-black uppercase tracking-[0.14em] text-cyan-400">{cfg.eyebrow}</p>
           <div className={slug === 'laptop-battery-replacement-kuwait' || heroPageImage ? "grid items-center gap-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(280px,0.92fr)]" : ""}>
             <div className={heroPageImage ? "max-w-none" : "max-w-4xl"}>
               <h1 className="text-3xl font-black leading-tight text-white sm:text-5xl">{cfg.h1}</h1>
               <p className="mt-6 text-base leading-8 text-slate-300 sm:text-lg">{cfg.intro}</p>
+              {locationEntity && (
+                <>
+                  <LocationHeroActions locale="ar" locationSlug={locationEntity.slug} whatsappHref={wa} onBook={() => trackLocationCta('book_pickup_click', 'hero')} onWhatsApp={() => trackLocationCta('whatsapp_click', 'hero')} showPricing />
+                  <p data-location-scope-note="true" className="mt-4 text-sm leading-7 text-slate-300">
+                    الاستلام والتوصيل مجاني من {areaName}. الفحص والتصليح في <Link to="/ar/computer-repair-hawalli" className="font-bold text-cyan-300 underline underline-offset-4">مختبر KCROC الوحيد في حولي</Link>، وليس في فرع محلي بالمنطقة.
+                  </p>
+                  <a data-location-action="call" href={'tel:+' + business.telephone.replace(/^\+/, '')} onClick={() => trackLocationCta('phone_call_click', 'hero')} className="mt-2 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-slate-300 hover:text-cyan-300"><Phone className="h-4 w-4" aria-hidden="true" /> اتصل بنا <bdi dir="ltr">+{business.telephone.replace(/^\+/, '')}</bdi></a>
+                </>
+              )}
               {slug && ARABIC_SERVICE_LAYOUT_SLUGS.has(slug) && (<ServiceConversionActions locale="ar" entityId={pairedEnglishService?.id ?? page.id} whatsappHref={wa} whatsappLabel={slug === 'laptop-repair-kuwait' ? 'أرسل موديل اللابتوب والعطل على واتساب' : slug === 'laptop-screen-repair-kuwait' ? 'أرسل موديل اللابتوب واحصل على عرض سعر' : slug === 'gaming-laptop-repair-kuwait' ? 'أرسل الموديل والعطل على واتساب' : slug === 'laptop-keyboard-replacement-kuwait' ? 'أرسل موديل الجهاز وصورة الكيبورد على واتساب' : slug === 'laptop-charging-port-repair-kuwait' ? 'أرسل موديل الجهاز وصورة المنفذ على واتساب' : slug === 'computer-repair-farwaniya' ? 'رتب استلام مجاني من الفروانية' : 'واتساب KCROC'} showPricing className="mt-7 flex flex-wrap gap-3" />)}
               {(slug === 'laptop-battery-replacement-kuwait' || slug === 'macbook-battery-replacement-kuwait') && (
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -3428,16 +3442,7 @@ export default function ArabicCommercialPage() {
                   </Link>
                 </div>
               )}
-              {slug === 'computer-repair-kuwait-city' && (
-                <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <a href={wa} onClick={locationEntity ? () => trackLocationCta('whatsapp_click', 'hero') : undefined} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
-                    <MessageCircle className="h-5 w-5" aria-hidden="true" /> اطلب استلام جهازك من المكتب أو المنزل عبر واتساب
-                  </a>
-                  <Link to="/ar/book" onClick={locationEntity ? () => trackLocationCta('book_pickup_click', 'hero') : undefined} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
-                    <Truck className="h-5 w-5" aria-hidden="true" /> احجز استلامًا مجانيًا من مدينة الكويت والعاصمة
-                  </Link>
-                </div>
-              )}
+
               {slug === 'laptop-hinge-repair-kuwait' && (
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                   <a href={wa} onClick={locationEntity ? () => trackLocationCta('whatsapp_click', 'hero') : undefined} target="_blank" rel="noreferrer" aria-label="أرسل صورة مفصلة اللابتوب والهيكل عبر واتساب" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
@@ -3852,10 +3857,10 @@ export default function ArabicCommercialPage() {
               </Link>
             </div>
           )}
-          {slug && ARABIC_SERVICE_LAYOUT_SLUGS.has(slug) ? (
+          {(locationEntity || (slug && ARABIC_SERVICE_LAYOUT_SLUGS.has(slug))) ? (
             <div className="mt-5 flex flex-wrap gap-3">
               <Link to={cfg.englishPath} lang="en" className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-800 px-7 py-3.5 font-semibold text-slate-300 hover:text-white">
-              {slug === 'laptop-screen-repair-kuwait' ? 'الصفحة باللغة الإنجليزية' : slug === 'laptop-charging-port-repair-kuwait' ? 'صفحة إصلاح منفذ الشحن باللغة الإنجليزية' : 'English service page'} <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+              {locationEntity ? 'English location page' : slug === 'laptop-screen-repair-kuwait' ? 'الصفحة باللغة الإنجليزية' : slug === 'laptop-charging-port-repair-kuwait' ? 'صفحة إصلاح منفذ الشحن باللغة الإنجليزية' : 'English service page'} <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             </Link>
             </div>
           ) : (
@@ -4792,7 +4797,7 @@ export default function ArabicCommercialPage() {
         )}
 
         {cfg.highlights && cfg.highlights.length > 0 && (
-          <section className="mt-12" aria-labelledby="arabic-local-highlights">
+          <section className="mt-12" aria-labelledby="arabic-local-highlights" data-kcroc-editorial-panel={locationEntity ? "location-content" : undefined}>
             <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">خدمة محلية</p>
             <h2 id="arabic-local-highlights" className="mt-2 text-2xl font-black text-white sm:text-3xl">كيف نخدمك من منطقتك</h2>
             {cfg.areaGroups && cfg.areaGroups.length > 0 ? (
@@ -5268,7 +5273,7 @@ export default function ArabicCommercialPage() {
           </>
         )}
 
-        <section className="mt-12" aria-labelledby="arabic-services">
+        <section className="mt-12" aria-labelledby="arabic-services" data-kcroc-editorial-panel={locationEntity ? "location-content" : undefined}>
           <div className="mb-7">
             <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">الخدمات المرتبطة</p>
             <h2 id="arabic-services" className="mt-2 text-2xl font-black text-white sm:text-3xl">الخدمة تبدأ من العطل الذي عندك</h2>
@@ -5390,7 +5395,7 @@ export default function ArabicCommercialPage() {
         )}
 
         {locationProof && (
-          <section className="mt-12" aria-labelledby="ar-location-workshop-proof">
+          <section className="mt-12" aria-labelledby="ar-location-workshop-proof" data-kcroc-editorial-panel={locationEntity ? "location-content" : undefined}>
             <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">من داخل المختبر</p>
             <h2 id="ar-location-workshop-proof" className="mt-2 text-2xl font-black text-white sm:text-3xl">شلون نفحص جهازك من {locationProof.title}؟</h2>
             <p className="mt-3 max-w-3xl leading-8 text-slate-300">{locationProof.text}</p>
@@ -5409,7 +5414,7 @@ export default function ArabicCommercialPage() {
           </section>
         )}
 
-        <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="arabic-local">
+        <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="arabic-local" data-kcroc-editorial-panel={locationEntity ? "location-content" : undefined}>
           <div className="flex items-start gap-4">
             <MapPin className="mt-1 h-6 w-6 shrink-0 text-cyan-400" aria-hidden="true" />
             <div>
@@ -5425,18 +5430,18 @@ export default function ArabicCommercialPage() {
 
 
 
-        <section className="mt-12" aria-labelledby="arabic-areas">
+        <section className="mt-12" aria-labelledby="arabic-areas" data-kcroc-editorial-panel={locationEntity ? "location-content" : undefined}>
           <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">مناطق الخدمة</p>
           <h2 id="arabic-areas" className="mt-2 text-2xl font-black text-white sm:text-3xl">{slug === 'computer-repair-fahaheel' ? 'المناطق القريبة من مسار استلام الفحيحيل' : slug === 'computer-repair-ahmadi' ? 'مناطق جنوب الكويت القريبة من مسار استلام الأحمدي' : 'خدمة الاستلام والتوصيل في مناطق الكويت'}</h2>
           <div className={slug === 'gaming-laptop-cleaning-kuwait' || slug === 'computer-repair-fahaheel' || slug === 'computer-repair-ahmadi' ? "mt-6 flex flex-wrap gap-2" : "mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3"}>
             {(slug === 'computer-repair-fahaheel' ? FAHAHEEL_LOCAL_LINKS : slug === 'computer-repair-ahmadi' ? AHMADI_LOCAL_LINKS : slug === 'gaming-laptop-cleaning-kuwait' ? KUWAIT_GOVERNORATE_LINKS : LOCAL_LINKS).map((item) => (
-              <Link key={item.path} to={item.path} className={slug === 'gaming-laptop-cleaning-kuwait' || slug === 'computer-repair-fahaheel' || slug === 'computer-repair-ahmadi' ? "rounded-full border border-slate-700 bg-slate-900/65 px-4 py-2 text-sm font-semibold text-slate-300 transition hover:border-cyan-500/40 hover:text-cyan-300" : "rounded-xl border border-slate-800 bg-slate-900/45 px-5 py-4 font-semibold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300"}>{item.label}</Link>
+              <Link key={item.path} to={item.path} className={slug === 'gaming-laptop-cleaning-kuwait' || slug === 'computer-repair-fahaheel' || slug === 'computer-repair-ahmadi' ? "rounded-full border border-slate-700 bg-slate-900/65 px-4 py-2 text-sm font-semibold text-slate-300 transition hover:border-cyan-500/40 hover:text-cyan-300" : "rounded-xl border border-slate-800 bg-slate-900/45 px-5 py-4 font-semibold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300"}>{item.label}{locationEntity && !item.path.startsWith("/ar/") && <span className="ms-1 text-xs" lang="ar"> (بالإنجليزي)</span>}</Link>
             ))}
           </div>
         </section>
 
         {slug !== 'computer-repair-fahaheel' && slug !== 'computer-repair-ahmadi' && (
-        <section className="mt-12" aria-labelledby="arabic-guides">
+        <section className="mt-12" aria-labelledby="arabic-guides" data-kcroc-editorial-panel={locationEntity ? "location-content" : undefined}>
           <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">{slug === 'laptop-keyboard-replacement-kuwait' ? 'خدمات ومراجع مرتبطة بالكيبورد' : slug === 'laptop-charging-port-repair-kuwait' ? 'مراجع وخدمات مرتبطة بمشكلة الشحن' : 'أدلة عربية مرتبطة'}</p>
           <h2 id="arabic-guides" className="mt-2 text-2xl font-black text-white sm:text-3xl">{slug === 'laptop-keyboard-replacement-kuwait' ? 'الخطوة التالية حسب العطل' : slug === 'laptop-charging-port-repair-kuwait' ? 'معلومات إضافية لتحديد سبب عدم الشحن' : 'معلومات تساعدك قبل قرار الإصلاح'}</h2>
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -5447,7 +5452,7 @@ export default function ArabicCommercialPage() {
         </section>
         )}
 
-        <section className="mt-12" aria-labelledby="arabic-faq">
+        <section className="mt-12" aria-labelledby="arabic-faq" data-kcroc-editorial-panel={locationEntity ? "location-content" : undefined}>
           <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">الأسئلة الشائعة</p>
           <h2 id="arabic-faq" className="mt-2 text-2xl font-black text-white sm:text-3xl">قبل لا ترسل جهازك</h2>
           <div className="mt-6 divide-y divide-slate-800 overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/45">
@@ -5458,7 +5463,7 @@ export default function ArabicCommercialPage() {
                   <p className="mt-3 leading-7 text-slate-400">{item.a}</p>
                 </div>
               ) : (
-                <details key={item.q} className="p-6" open={slug === 'laptop-charging-port-repair-kuwait'}>
+                <details key={item.q} className="p-6" open={slug === 'laptop-charging-port-repair-kuwait'} onToggle={(event) => { if (locationEntity && event.currentTarget.open) trackLocationCta('faq_expand', 'faq'); }}>
                   <summary className="cursor-pointer font-bold text-white">{item.q}</summary>
                   <p className="mt-3 leading-7 text-slate-400">{item.a}</p>
                 </details>
@@ -5468,7 +5473,7 @@ export default function ArabicCommercialPage() {
         </section>
 
         {slug !== 'desktop-pc-repair-kuwait' && (
-          <section className="mt-12" aria-labelledby="arabic-cluster">
+          <section className="mt-12" aria-labelledby="arabic-cluster" data-kcroc-editorial-panel={locationEntity ? "location-content" : undefined}>
             <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">مجموعة خدمات KCROC بالعربي</p>
             <h2 id="arabic-cluster" className="mt-2 text-2xl font-black text-white sm:text-3xl">تكمل من الصفحة المناسبة لك</h2>
             <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -5479,12 +5484,13 @@ export default function ArabicCommercialPage() {
           </section>
         )}
 
-        <section className="mt-12 rounded-3xl border border-cyan-900/60 bg-cyan-950/25 p-8 text-center sm:p-10">
+        <section data-kcroc-editorial-panel={locationEntity ? "location-conversion" : undefined} className="mt-12 rounded-3xl border border-cyan-900/60 bg-cyan-950/25 p-8 text-center sm:p-10">
           <h2 className="text-2xl font-black text-white sm:text-3xl">قول لنا المشكلة مثل ما هي</h2>
           <p className="mx-auto mt-4 max-w-2xl leading-8 text-slate-300">{slug === 'laptop-hinge-repair-kuwait' ? 'أرسل الماركة والموديل وصورة واضحة للمفصلة وإطار الشاشة أو الغطاء، مع منطقتك ووصف مختصر للضرر. نراجع التفاصيل ونوضح لك الخطوة التالية قبل الإصلاح.' : 'ارسل موديل الجهاز، منطقتك، ووصف بسيط للعطل على واتساب. نبدأ من التشخيص ونوضح لك الخطوة التالية قبل الإصلاح.'}</p>
           <a href={wa} onClick={locationEntity ? () => trackLocationCta('whatsapp_click', 'bottom') : undefined} target="_blank" rel="noreferrer" className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-cyan-500 px-8 py-3.5 font-black text-slate-950 hover:bg-cyan-400">
             <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'laptop-hinge-repair-kuwait' ? 'أرسل صورة المفصلة والهيكل عبر واتساب' : slug === 'laptop-screen-repair-kuwait' ? 'أرسل صورة الشاشة والموديل عبر واتساب' : slug === 'gaming-laptop-repair-kuwait' ? 'أرسل الموديل والعطل على واتساب' : slug === 'computer-repair-farwaniya' ? 'رتب استلام الجهاز من الفروانية' : slug === 'desktop-pc-repair-kuwait' ? 'احجز استلام الكمبيوتر المكتبي عبر واتساب' : 'تواصل مع فني KCROC'}
           </a>
+          {locationEntity && <Link to="/ar/book" onClick={() => trackLocationCta('book_pickup_click', 'bottom')} className="ms-3 mt-7 inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 px-6 py-3 font-bold text-white hover:border-cyan-500/40"><Truck className="h-5 w-5" aria-hidden="true" /> احجز استلام مجاني</Link>}
         </section>
       </div>
       <ArabicHeadTermLinks />

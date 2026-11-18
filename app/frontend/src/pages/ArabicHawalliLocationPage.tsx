@@ -1,3 +1,4 @@
+import LocationHeroActions from '../components/content/LocationHeroActions';
 import { Link } from 'react-router-dom';
 import './KCROCEditorialRollout.css';
 import {
@@ -247,13 +248,13 @@ export default function ArabicHawalliLocationPage() {
     });
 
   return (
-    <div dir="rtl" lang="ar-KW" className="w-full text-white font-sans selection:bg-cyan-500/30" data-kcroc-rollout="location-hawalli-ar">
+    <div dir="rtl" lang="ar-KW" className="w-full text-white font-sans selection:bg-cyan-500/30" data-kcroc-rollout="location-hawalli-ar" data-location-scope="physical-lab">
       <SEOEngine entityId="page-ar-hawalli-computer-repair" />
       <SchemaMarkup schema={faqSchema} />
 
       <nav aria-label="مسار التنقل" className="max-w-6xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8">
         <ol className="flex flex-wrap items-center gap-x-2 text-xs sm:text-sm text-slate-400 font-medium">
-          <li><Link to="/ar/computer-repair-kuwait" className="hover:text-cyan-400 transition-colors">الرئيسية</Link></li>
+          <li><Link to="/ar" className="hover:text-cyan-400 transition-colors">الرئيسية</Link></li>
           <li aria-hidden="true" className="text-slate-600">/</li>
           <li aria-current="page" className="text-cyan-400">تصليح كمبيوتر حولي</li>
         </ol>
@@ -274,20 +275,7 @@ export default function ArabicHawalliLocationPage() {
                 تحتاج فني كمبيوتر في حولي؟ في KCROC نفحص الكمبيوتر واللابتوب ونحدد سبب العطل قبل اقتراح الإصلاح. تقدر تزور مختبرنا في مجمع الملا، أو ترتب استلام وتوصيل مجاني من البيت أو المكتب في مناطق الكويت التي نخدمها.
               </p>
 
-              <div className="grid gap-3 sm:grid-cols-2">
-                <Button size="lg" className="w-full bg-cyan-500 px-6 font-black text-slate-950 hover:bg-cyan-400" asChild>
-                  <Link to="/ar/book" onClick={() => track('book_pickup_click', 'hawalli_ar_book', 'hero')}>
-                    <Truck className="ml-2 h-5 w-5" aria-hidden="true" />
-                    احجز استلام مجاني
-                  </Link>
-                </Button>
-                <Button size="lg" variant="outline" className="w-full border-slate-700 text-white hover:bg-slate-800" asChild>
-                  <a href={waLink} target="_blank" rel="noopener noreferrer" onClick={() => track('whatsapp_click', 'hawalli_ar_whatsapp', 'hero')}>
-                    <MessageCircle className="ml-2 h-5 w-5" aria-hidden="true" />
-                    راسلنا على واتساب
-                  </a>
-                </Button>
-              </div>
+              <LocationHeroActions locale="ar" locationSlug="hawalli" whatsappHref={waLink} onBook={() => track('book_pickup_click', 'hawalli_ar_book', 'hero')} onWhatsApp={() => track('whatsapp_click', 'hawalli_ar_whatsapp', 'hero')} showPricing />
 
               <div className="flex flex-wrap gap-x-5 gap-y-3 text-sm">
                 <a href={'tel:+' + phone} onClick={() => track('phone_call_click', 'hawalli_ar_call', 'hero')} className="inline-flex min-h-11 items-center gap-2 text-slate-300 transition-colors hover:text-cyan-300">
