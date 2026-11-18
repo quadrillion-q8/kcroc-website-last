@@ -2,7 +2,7 @@
 import { Head } from 'vite-react-ssg';
 import React from 'react';
 import './KCROCEditorialRollout.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   MapPin, Wrench, Microscope, Shield, BookOpen, ArrowRight, MessageCircle,
 } from 'lucide-react';
@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
+import { buildWhatsAppLink } from '../utils/whatsappIntent';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { KCROC_GRAPH } from '../data/graph';
 
@@ -27,6 +28,7 @@ const PERSON_SCHEMA = [
   {
     '@context': 'https://schema.org',
     '@type': 'Person',
+    '@id': PAGE_URL + '#person',
     name: 'Imran Natiq',
     url: PAGE_URL,
     image: AUTHOR_IMAGE_URL,
@@ -60,37 +62,46 @@ const articles = [
 ];
 
 export default function AuthorImran() {
+  const ar = useLocation().pathname.startsWith('/ar/');
+  const url = ar ? business.websiteUrl + '/ar/author/imran' : PAGE_URL;
+  const title = ar ? 'عمران ناطق — مهندس تصليح الكمبيوتر ومؤسس KCROC' : 'Imran Natiq — Hardware Repair Engineer at KCROC Kuwait';
+  const description = ar ? 'تعرف على عمران ناطق، مؤسس KCROC والفني الرئيسي في مختبر حولي، المتخصص في تشخيص المذربورد واللحام الدقيق وتبريد اللابتوب.' : 'Imran Natiq is a hardware repair engineer and founder of KCROC in Hawalli, Kuwait, specializing in motherboard diagnostics, micro-soldering, and laptop thermal repair.';
+  const arabicArticles = [{...articles[0],title:'درجات حرارة اللابتوب في الكويت (بالإنجليزي)'},{...articles[1],title:'دليل شراء اللابتوب في الكويت 2026 (بالإنجليزي)'},articles[2]];
+  const schema = {'@graph':[PERSON_SCHEMA[0],{...PERSON_SCHEMA[1],itemListElement:[{'@type':'ListItem',position:1,name:ar?'الرئيسية':'Home',item:business.websiteUrl+(ar?'/ar':'')},{'@type':'ListItem',position:2,name:ar?'عمران ناطق':'Imran Natiq',item:url}]},{'@type':'ProfilePage','@id':url+'#webpage',url,inLanguage:ar?'ar-KW':'en-KW',name:title,mainEntity:{'@id':PAGE_URL+'#person'}}]};
   const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent(
     'Hi KCROC, I read one of Imran\'s guides and have a question before I buy or repair my laptop.'
   )}`;
 
   return (
-    <div className="w-full min-h-screen bg-gray-950 text-white font-sans selection:bg-cyan-500/30" data-kcroc-rollout="author">
+    <div className="w-full min-h-screen bg-gray-950 text-white font-sans selection:bg-cyan-500/30" data-kcroc-rollout="author" lang={ar?"ar-KW":"en-KW"} dir={ar?"rtl":"ltr"}>
       <Head>
-        <title>Imran Natiq — Hardware Repair Engineer at KCROC Kuwait</title>
+        <title>{title}</title>
         <meta
           name="description"
-          content="Imran Natiq is a hardware repair engineer and founder of KCROC in Hawalli, Kuwait, specializing in motherboard diagnostics, micro-soldering, and laptop thermal repair."
+          content={description}
         />
-        <link rel="canonical" href={PAGE_URL} />
+        <link rel="canonical" href={url} />
+        <link rel="alternate" hrefLang="en-KW" href={PAGE_URL}/>
+        <link rel="alternate" hrefLang="ar-KW" href={business.websiteUrl+"/ar/author/imran"}/>
+        <link rel="alternate" hrefLang="x-default" href={PAGE_URL}/>
         <meta name="robots" content="index, follow, max-image-preview:large" />
         <meta property="og:type" content="profile" />
-        <meta property="og:title" content="Imran Natiq — Hardware Repair Engineer at KCROC Kuwait" />
-        <meta property="og:description" content="Imran Natiq is a hardware repair engineer and founder of KCROC in Hawalli, Kuwait, specializing in motherboard diagnostics, micro-soldering, and laptop thermal repair." />
-        <meta property="og:url" content={PAGE_URL} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={url} />
         <meta property="og:image" content={`${business.websiteUrl}/logo.webp`} />
         <meta property="og:image:width" content="1024" />
         <meta property="og:image:height" content="1024" />
       </Head>
 
-      <SchemaMarkup schema={{ '@graph': PERSON_SCHEMA }} />
+      <SchemaMarkup schema={schema} />
 
       {/* Breadcrumb */}
       <div className="pt-24 sm:pt-28 px-4 sm:px-6">
         <div className="container mx-auto max-w-4xl text-xs sm:text-sm text-slate-400 flex items-center gap-2">
-          <Link to="/" className="hover:text-cyan-400 transition-colors">Home</Link>
+          <Link to={ar?"/ar":"/"} className="hover:text-cyan-400 transition-colors">{ar?"الرئيسية":"Home"}</Link>
           <span>/</span>
-          <span className="text-slate-300">Imran Natiq</span>
+          <span className="text-slate-300">{ar?"عمران ناطق":"Imran Natiq"}</span>
         </div>
       </div>
 
@@ -101,33 +112,30 @@ export default function AuthorImran() {
             <CardContent className="p-5 sm:p-10 flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
               <img
                 src={AUTHOR_IMAGE_URL}
-                alt="Imran Natiq — Founder & Lead Technician at KCROC Kuwait"
+                alt={ar?"عمران ناطق — المؤسس والفني الرئيسي في KCROC":"Imran Natiq — Founder & Lead Technician at KCROC Kuwait"}
                 loading="eager"
                 className="w-24 h-24 sm:w-36 sm:h-36 rounded-2xl object-cover border border-slate-800 flex-shrink-0"
                 onError={(e) => { e.currentTarget.src = 'https://ui-avatars.com/api/?name=Imran+Natiq&size=300&background=06b6d4&color=0A0A0A&bold=true'; }}
               />
               <div>
                 <Badge className="bg-cyan-500/10 text-cyan-400 border-cyan-500/30 px-3 py-1 text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-3">
-                  Founder &amp; Lead Technician
+                  {ar?"المؤسس والفني الرئيسي":"Founder & Lead Technician"}
                 </Badge>
                 <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight mb-3">
-                  Imran Natiq
+                  {ar?"عمران ناطق":"Imran Natiq"}
                 </h1>
                 <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-4">
-                  Senior technician with 20+ years of experience in Kuwait's enterprise hardware market.
-                  Specializes in advanced hardware testing, strict data safety protocols, and
-                  component-level motherboard recovery. Committed to transparent service and reclaiming
-                  hardware from the "beyond repair" category.
+                  {ar?"فني متخصص بخبرة أكثر من 20 سنة في مجال الهاردوير في الكويت. أركز على فحص الأجهزة واللحام الدقيق وتشخيص وإصلاح المذربورد على مستوى المكونات، مع مراعاة خصوصية البيانات وتوضيح خيارات الإصلاح قبل بدء العمل.":"Senior technician with 20+ years of experience in Kuwait's enterprise hardware market. Specializes in advanced hardware testing, strict data safety protocols, and component-level motherboard recovery. Committed to transparent service and reclaiming hardware from the beyond repair category."}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {['Hardware Testing', 'Data Safety', 'Micro-Soldering'].map((skill) => (
+                  {(ar?['فحص الهاردوير','خصوصية البيانات','اللحام الدقيق']:['Hardware Testing', 'Data Safety', 'Micro-Soldering']).map((skill) => (
                     <span key={skill} className="bg-brand-dark/80 border border-slate-800 text-slate-300 px-3 py-1 rounded-full text-[10px] sm:text-xs font-medium">
                       {skill}
                     </span>
                   ))}
                 </div>
                 <p className="text-slate-500 text-xs sm:text-sm flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5" /> Based in Hawalli, Kuwait
+                  <MapPin className="w-3.5 h-3.5" /> {ar?"حولي، الكويت":"Based in Hawalli, Kuwait"}
                 </p>
               </div>
             </CardContent>
@@ -139,15 +147,15 @@ export default function AuthorImran() {
       <section className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/30 border-y border-slate-800" data-kcroc-editorial-panel="author-expertise">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-lg sm:text-2xl font-bold text-white mb-6 flex items-center gap-2">
-            <Microscope className="w-5 h-5 text-cyan-400" /> Areas of Expertise
+            <Microscope className="w-5 h-5 text-cyan-400" /> {ar?"مجالات الخبرة":"Areas of Expertise"}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-            {[
+            {(ar?['تشخيص مذربورد اللابتوب','تصليح لوحة ماك بوك','اللحام الدقيق على مستوى المكونات','تشخيص حرارة لابتوبات الألعاب']:[
               'Laptop motherboard diagnostics',
               'MacBook motherboard repair',
               'Component-level micro-soldering',
               'Gaming laptop thermal troubleshooting',
-            ].map((item) => (
+            ]).map((item) => (
               <Card key={item} className="bg-brand-dark/40 border-slate-800">
                 <CardContent className="p-4 flex items-center gap-3 text-sm sm:text-base text-slate-300">
                   <Wrench className="w-4 h-4 text-cyan-400 flex-shrink-0" />
@@ -163,10 +171,10 @@ export default function AuthorImran() {
       <section className="py-8 sm:py-16 px-4 sm:px-6" data-kcroc-editorial-panel="author-articles">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-lg sm:text-2xl font-bold text-white mb-6 flex items-center gap-2">
-            <BookOpen className="w-5 h-5 text-cyan-400" /> Articles by Imran
+            <BookOpen className="w-5 h-5 text-cyan-400" /> {ar?"مقالات عمران":"Articles by Imran"}
           </h2>
           <div className="space-y-3">
-            {articles.map((a) => (
+            {(ar?arabicArticles:articles).map((a) => (
               <Link key={a.href} to={a.href}>
                 <Card className="bg-slate-900/50 border-slate-800 hover:border-cyan-500/40 transition-colors">
                   <CardContent className="p-4 sm:p-5 flex items-center justify-between text-sm sm:text-base text-slate-200">
@@ -186,23 +194,22 @@ export default function AuthorImran() {
           <Card className="bg-gradient-to-bl from-cyan-600/20 via-blue-600/20 to-emerald-600/20 border-cyan-500/30 backdrop-blur-sm">
             <CardContent className="p-6 sm:p-10 text-center">
               <h2 className="text-xl sm:text-3xl font-bold text-white mb-3">
-                Have a question for Imran?
+                {ar?"عندك سؤال لعمران؟":"Have a question for Imran?"}
               </h2>
               <p className="text-sm sm:text-base text-slate-300 mb-6 max-w-xl mx-auto">
-                Reach out on WhatsApp for advice before you buy, or to book a free pickup and diagnosis
-                anywhere in Kuwait.
+                {ar?"تواصل معانا على واتساب للاستفسار قبل الشراء أو لترتيب استلام وفحص مجاني في الكويت.":"Reach out on WhatsApp for advice before you buy, or to book a free pickup and diagnosis anywhere in Kuwait."}
               </p>
               <Button
                 size="lg"
                 className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black"
                 asChild
               >
-                <a href={WA_LINK} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="w-4 h-4 mr-2" /> Message on WhatsApp
+                <a href={ar?buildWhatsAppLink("السلام عليكم، قريت دليل عمران وعندي استفسار قبل شراء أو تصليح اللابتوب."):WA_LINK} target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="w-4 h-4 mr-2" /> {ar?"راسلنا على واتساب":"Message on WhatsApp"}
                 </a>
               </Button>
               <div className="mt-6 pt-6 border-t border-cyan-500/20 flex items-center justify-center gap-2 text-xs sm:text-sm text-slate-400">
-                <Shield className="w-3.5 h-3.5 text-cyan-400" /> Technical review by the KCROC diagnostics team
+                <Shield className="w-3.5 h-3.5 text-cyan-400" /> {ar?"مراجعة فنية من فريق تشخيص KCROC":"Technical review by the KCROC diagnostics team"}
               </div>
             </CardContent>
           </Card>
