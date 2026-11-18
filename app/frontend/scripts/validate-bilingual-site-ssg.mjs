@@ -80,3 +80,20 @@ for (const [route, count] of [['/ar/locations',26],['/ar/problems',14]]) {
  }
 }
 console.log('Phase 6.5 directory inventory checks passed.');
+
+const problemDirectory=read('/ar/problems');
+assert.equal(problemDirectory('main [data-directory-item][data-translated="true"]').length,14,'All problem entries have Arabic destinations');
+for(const el of problemDirectory('main [data-directory-item]').toArray()){
+ const route=problemDirectory(el).attr('href');
+ assert.ok(route?.startsWith('/ar/'),route);
+ const $=read(route);
+ assert.equal($('main h1').length,1,route+' H1');
+ assert.ok($('main a[href="/ar/book"]').length,route+' booking');
+ if(route==='/ar/laptop-plugged-in-not-charging') continue;
+ assert.equal($('main [data-arabic-problem]').length,1,route+' localized template');
+ assert.ok($('main [data-problem-editorial-panel]').length>=5,route+' content sections');
+ assert.ok($('main img').toArray().some(x=>/[\u0600-\u06ff]/.test($(x).attr('alt')||'')),route+' localized photo');
+ assert.ok($('main details').length>=3,route+' FAQ');
+ assert.ok($('main a[href^="https://wa.me/"]').toArray().some(x=>/[\u0600-\u06ff]/.test(decodeURIComponent($(x).attr('href')||''))),route+' WhatsApp');
+}
+console.log('Phase 6.5B Arabic problem inventory checked.');
