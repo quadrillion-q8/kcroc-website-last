@@ -11,6 +11,8 @@ import { KCROC_GRAPH } from '../data/graph';
 
 // 👈 Phase 2 SEO Engine Imported
 import { SEOEngine } from '../core/components/SEOEngine';
+import { useAnalytics } from '../core/analytics/AnalyticsProvider';
+import { buildWhatsAppLink, handoffWhatsApp } from '../utils/whatsappIntent';
 
 /* ─────────────────────────────────────────────────────────────────────────────
    1. PAGE DATA & CONSTANTS
@@ -22,7 +24,7 @@ const EMAIL = business.email;
 const PHONE_CLEAN = business.telephone.replace(/\D/g, '');
 const PHONE_DISPLAY = '+965 ' + PHONE_CLEAN.replace(/^965/, '');
 const MAPS_URL = business.socialLinks.googleMaps;
-const WHATSAPP_URL = 'https://wa.me/' + PHONE_CLEAN + '?text=' + encodeURIComponent(
+const WHATSAPP_URL = buildWhatsAppLink(
   'Hi KCROC, I would like to ask about computer or laptop repair in Kuwait. Please help me arrange a visit or free pickup.'
 );
 
@@ -73,6 +75,7 @@ const initialFormData: FormData = {
 ───────────────────────────────────────────────────────────────────────────── */
 
 export default function Contact() {
+  const { trackConversion } = useAnalytics();
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -110,9 +113,8 @@ export default function Contact() {
     }
     setIsSubmitting(true);
     try {
-      const url = `https://wa.me/${PHONE_CLEAN}?text=${encodeURIComponent(whatsappMessage)}`;
-      const popup = window.open(url, '_blank', 'noopener,noreferrer');
-      if (!popup) window.location.href = url;
+      trackConversion('whatsapp_click', { cta_name: 'contact_form_submit', button_position: 'contact_page' });
+      handoffWhatsApp(whatsappMessage);
     } finally {
       setTimeout(() => setIsSubmitting(false), 800);
     }
