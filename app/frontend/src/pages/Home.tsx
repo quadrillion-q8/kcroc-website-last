@@ -1,5 +1,7 @@
 // File: app/frontend/src/pages/Home.tsx
 import React from 'react';
+import { HomeLocaleContext } from '../components/home/homeLocale';
+import './BilingualHome.css';
 import { SEOEngine } from '../core/components/SEOEngine';
 import Hero from '../components/home/Hero';
 import { TrustBar } from '../components/home/TrustBar';
@@ -15,11 +17,13 @@ import { LeadMagnet } from '../components/home/LeadMagnet';
 import FAQSection from '../components/home/FAQSection';
 import { ServiceAreas } from '../components/home/ServiceAreas';
 
-export default function Home() {
+export default function Home({ locale = 'en' }: { locale?: 'en' | 'ar' } = {}) {
+  const ar = locale === 'ar';
   return (
     // ✅ FIXED: Changed bg-brand-dark to bg-transparent
-    <div className="w-full min-h-screen bg-transparent">
-      <SEOEngine entityId="page-home" />
+    <HomeLocaleContext.Provider value={locale}>
+    <div className="w-full min-h-screen bg-transparent" data-home-locale={locale} dir={ar ? "rtl" : undefined} lang={ar ? "ar-KW" : undefined}>
+      <SEOEngine entityId={ar ? "page-ar-home" : "page-home"} />
 
       {/* 1. Hero — primary CTA, first impression */}
       <Hero />
@@ -69,5 +73,6 @@ export default function Home() {
 
       {/* Footer is managed globally by RootLayout.tsx. */}
     </div>
+    </HomeLocaleContext.Provider>
   );
 }

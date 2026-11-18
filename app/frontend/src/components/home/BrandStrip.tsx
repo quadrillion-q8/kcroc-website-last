@@ -1,10 +1,12 @@
 // File: app/frontend/src/components/home/BrandStrip.tsx
 import React from 'react';
+import { useHomeLocale } from './homeLocale';
 import { Link } from 'react-router-dom';
 import { KCROC_GRAPH } from '../../data/graph';
 import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
 
 export const BrandStrip = () => {
+  const { ar, t, trackName } = useHomeLocale();
   // Pull real brand entities from the graph, sorted by navigationPriority
   const brands = [...KCROC_GRAPH.brands].sort(
     (a, b) => (b.navigationPriority ?? 0) - (a.navigationPriority ?? 0)
@@ -16,12 +18,12 @@ export const BrandStrip = () => {
 
   return (
     <section
-      aria-label="Brands we service"
+      aria-label={t("Brands we service","الماركات اللي نصلحها")}
       className="w-full border-b border-slate-800/50 bg-slate-900/20 py-3 sm:py-8"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <p className="text-center text-[10px] sm:text-xs font-bold text-[#dfa86f] uppercase tracking-wider mb-2 sm:mb-6">
-          Trusted Repair Partner For Every Major Brand
+          {t("Trusted Repair Partner For Every Major Brand","نصلح أشهر ماركات الكمبيوتر واللابتوب")}
         </p>
         {/* Mobile: horizontal touch-scroll strip. Desktop (sm+): wrapped, centered pills. */}
         <div className="scroll-row gap-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap sm:items-center sm:justify-center sm:overflow-visible">
@@ -29,11 +31,11 @@ export const BrandStrip = () => {
             <Link
               key={brand.id}
               to={`/${brand.slug}`}
-              aria-label={brand.title}
-              onClick={() => trackConversion('cta_click', { cta_name: 'brand_strip_click', button_position: 'brand_strip', brand: brand.brandName })}
+              aria-label={ar ? brand.brandName + ' — تفاصيل التصليح بالإنجليزي' : brand.title}
+              onClick={() => trackConversion('cta_click', { cta_name: trackName('brand_strip_click'), button_position: 'brand_strip', brand: brand.brandName })}
               className="scroll-row-item inline-flex min-h-12 items-center text-xs sm:text-sm font-semibold text-slate-400 hover:text-cyan-400 border border-slate-800 hover:border-cyan-500/30 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 transition-all whitespace-nowrap"
             >
-              {brand.title}
+              {ar ? brand.brandName + ' · التفاصيل بالإنجليزي' : brand.title}
             </Link>
           ))}
         </div>

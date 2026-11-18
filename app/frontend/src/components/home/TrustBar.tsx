@@ -1,5 +1,6 @@
 // File: app/frontend/src/components/home/TrustBar.tsx
 import React from 'react';
+import { useHomeLocale } from './homeLocale';
 import { KCROC_GRAPH } from '../../data/graph';
 import { ShieldCheck, Truck, Lock, Zap, Star } from 'lucide-react';
 
@@ -12,6 +13,7 @@ const ICON_MAP: Record<string, React.ElementType> = {
 };
 
 export const TrustBar = () => {
+  const { ar } = useHomeLocale();
   const badges = KCROC_GRAPH.trustBadges;
 
   return (
@@ -21,7 +23,7 @@ export const TrustBar = () => {
         return (
           <div key={badge.id} className="flex min-h-12 min-w-0 items-center justify-center gap-2 px-3 py-3.5 text-center text-xs font-semibold uppercase tracking-wide text-[#C4CDD1] sm:px-0 sm:py-5 sm:text-sm">
             {Icon && <Icon className="h-4 w-4 shrink-0 text-[#AAB5B9]" aria-hidden="true" />}
-            {badge.title}
+            {ar ? ({ 'badge-privacy': 'خصوصية بياناتك', 'badge-pickup': 'استلام وتوصيل مجاني', 'badge-warranty': 'ضمان 30 يوم', 'badge-esd': 'مختبر آمن من الكهرباء الساكنة' } as Record<string,string>)[badge.id] ?? badge.title : badge.title}
           </div>
         );
       })}
