@@ -27,9 +27,7 @@ export default function BrandsIndex() {
                 {ar ? <>تصفح الماركات والموديلات والأعطال الشائعة. لأجهزة Apple راجع <Link to="/ar/macbook-repair-kuwait" className="font-semibold text-cyan-300 underline">تصليح ماك بوك اير وبرو</Link>. نأكد الموديل والعطل قبل طلب القطعة أو أي شغل مدفوع.</> : <>                Explore supported model families, common hardware symptoms and the repair routes KCROC already provides. For Apple laptops, see our <Link to="/macbook-repair-kuwait" className="font-semibold text-cyan-300 underline underline-offset-2 hover:text-cyan-200">MacBook Air and Pro repair service</Link>. We confirm the exact model and fault before recommending parts or paid work.</>}
               </p>
             </div>
-            <Link to={ar ? "/ar/pricing" : "/pricing"} className="inline-flex min-h-11 shrink-0 items-center gap-2 font-bold text-cyan-300 hover:text-cyan-200">
-              {t("View repair pricing","راجع أسعار التصليح")} <ChevronRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
+            {ar ? <Link to="/ar/pricing" className="inline-flex min-h-11 shrink-0 items-center gap-2 font-bold text-cyan-300 hover:text-cyan-200">راجع أسعار التصليح <ChevronRight className="h-4 w-4 rotate-180" aria-hidden="true" /></Link> : <Link to="/pricing" className="inline-flex min-h-11 shrink-0 items-center gap-2 font-bold text-cyan-300 hover:text-cyan-200">View repair pricing <ChevronRight className="h-4 w-4" aria-hidden="true" /></Link>}
           </header>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-kcroc-editorial-panel="brand-index-cards">
