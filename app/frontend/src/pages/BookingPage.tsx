@@ -10,7 +10,7 @@ import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { KCROC_GRAPH } from '../data/graph';
 import { useAnalytics } from '../core/analytics/AnalyticsProvider';
-import { buildWhatsAppLink } from '../utils/whatsappIntent';
+import { handoffWhatsApp } from '../utils/whatsappIntent';
 
 /* ─────────────────────────────────────────────────────────────────────────────
    1. PAGE DATA & SEO CONSTANTS (Retained from your original file)
@@ -40,7 +40,7 @@ export default function BookingPage() {
   const { trackConversion } = useAnalytics();
   
   // Interactive Form State
-  const [deviceType, setDeviceType] = useState('MacBook / Apple');
+  const [deviceType, setDeviceType] = useState('Windows Laptop');
   const [issue, setIssue] = useState('');
   const [location, setLocation] = useState('');
   const [deviceModel, setDeviceModel] = useState('');
@@ -54,7 +54,7 @@ export default function BookingPage() {
     bookingStarted.current = true;
     trackConversion('begin_booking', {
       booking_type: 'pickup',
-      location_context: location.trim() || 'not_provided',
+      
       cta_name: 'booking_form_interaction',
       button_position: 'booking_page',
     });
@@ -67,8 +67,7 @@ export default function BookingPage() {
     trackConversion('whatsapp_click', { cta_name: 'booking_form_submit', button_position: 'booking_page' });
     
     const text = `*New Repair Inquiry*\n\n*Device:* ${deviceType}${deviceModel.trim() ? ` (${deviceModel.trim()})` : ''}\n*Location:* ${location.trim() || 'Not provided'}\n*Preferred pickup:* ${preferredPickup || 'Flexible / discuss on WhatsApp'}\n*Issue:* ${issue.trim() || 'Needs diagnostic'}\n\n_Hi KCROC, I would like to request free pickup and an initial diagnostic. Please confirm the pickup details with me._`;
-    const url = buildWhatsAppLink(text);
-    window.open(url, '_blank', 'noopener,noreferrer');
+    handoffWhatsApp(text);
   };
 
   return (
@@ -110,7 +109,7 @@ export default function BookingPage() {
                     What needs fixing?
                   </div>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3" role="group" aria-labelledby="device-type-label">
-                    {['MacBook / Apple', 'Gaming PC', 'Windows Laptop', 'Motherboard', 'Other'].map((type) => (
+                    {['Windows Laptop', 'MacBook / Apple', 'Desktop PC', 'Gaming PC', 'Motherboard', 'Other'].map((type) => (
                       <button
                         key={type}
                         type="button"

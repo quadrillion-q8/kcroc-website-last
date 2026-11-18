@@ -43,3 +43,27 @@ assert.equal(a('[data-service-id][href="/ar/laptop-battery-replacement-kuwait"]'
 assert.equal(a('[data-service-id][href="/ar/macbook-battery-replacement-kuwait"]').length,1);
 assert.equal(a('[data-directory-locale="ar"]').length,1);
 console.log('Phase 6 bilingual site: '+pairs.length+' reciprocal route pairs; '+cards(e).length+' shared service directory cards; canonical, hreflang, RTL, home and booking links verified.');
+
+ // Conversion parity: check actual prerendered form inventory, not only route links.
+const bookingEn = read('/book'), bookingAr = read('/ar/book');
+for (const $ of [bookingEn, bookingAr]) {
+  assert.equal($('main form button[aria-pressed]').length, 6, 'Booking categories');
+  assert.equal($('main form button[aria-pressed="true"]').length, 1, 'Default device');
+  for (const name of ['deviceModel','issue','location','preferredPickup']) {
+    assert.equal($('main form [name="'+name+'"]').length, 1, name);
+  }
+  assert.equal($('main form select[name="preferredPickup"] option').length,4);
+}
+for (const route of ['/contact','/ar/contact']) {
+  const $ = read(route);
+  assert.equal($('main form [required]').length,4,route+' required fields');
+  assert.equal($('main form select option').length,10,route+' area inventory');
+}
+for (const name of ['BookingPage','ArabicBookingPage','Contact','ArabicContactPage']) {
+  const source = fs.readFileSync(path.join(root,'src/pages',name+'.tsx'),'utf8');
+  assert.ok(source.includes('handoffWhatsApp('),name+' shared handoff');
+  assert.ok(source.includes("trackConversion('whatsapp_click'"),name+' tracking');
+  assert.ok(!source.includes('window.open('),name+' popup regression');
+  assert.ok(!source.includes('location_context: location.trim()'),name+' raw location analytics');
+}
+console.log('Phase 6.4 conversion parity checks passed.');
