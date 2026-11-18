@@ -1,8 +1,9 @@
 // File: app/frontend/src/pages/Gallery.tsx
 import { useLocation } from 'react-router-dom';
-import React, { useState, useMemo, useEffect, useCallback } from 'react';
+import React, { useState, useMemo, useEffect, useCallback, useRef } from 'react';
 import './KCROCEditorialRollout.css';
 import { X, Maximize2, Phone, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react';
+import { arabicGalleryAlt } from '../constants/galleryArabicAlt';
 import { GALLERY_ITEMS, galleryCategories } from '../constants/galleryData';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { buildWhatsAppLink } from '../utils/whatsappIntent';
@@ -26,10 +27,17 @@ export default function Gallery() {
   const ar=useLocation().pathname.startsWith('/ar/');
   const labels: Record<string,string> = {'All':'الكل','Laptops':'لابتوبات','Motherboards':'مذربورد','Gaming PCs':'كمبيوتر ألعاب','Hardware Maintenance':'صيانة الهاردوير','Workshop':'المختبر'};
   const categoryLabel=(cat:string)=>ar?(labels[cat]??cat):cat;
-  const photoAlt=(item:typeof GALLERY_ITEMS[number])=>ar?`صورة من مختبر KCROC — ${categoryLabel(item.category)}`:item.image.alt;
+  const photoAlt=(item:typeof GALLERY_ITEMS[number])=>ar?arabicGalleryAlt(item.image.alt,categoryLabel(item.category)):item.image.alt;
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [visibleCount, setVisibleCount] = useState<number>(PAGE_SIZE);
+  const dialogRef=useRef<HTMLDivElement>(null);
+  const closeRef=useRef<HTMLButtonElement>(null);
+  const openerRef=useRef<HTMLButtonElement|null>(null);
+  const galleryRef=useRef<HTMLDivElement>(null);
+  const isOpen=selectedIndex!==null;
+  const openPhoto=(index:number,button:HTMLButtonElement)=>{openerRef.current=button;setSelectedIndex(index)};
+  useEffect(()=>{if(!isOpen)return;const previousOverflow=document.body.style.overflow;document.body.style.overflow='hidden';closeRef.current?.focus();return ()=>{document.body.style.overflow=previousOverflow;openerRef.current?.focus();}},[isOpen]);
 
   const filteredItems = useMemo(() =>
       activeCategory === 'All'
@@ -52,15 +60,22 @@ export default function Gallery() {
 
   // Keyboard: Esc closes, arrow keys move. Only active while the lightbox is open.
   useEffect(() => {
-    if (selectedIndex === null) return;
+    if (!isOpen) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') closeLightbox();
-      else if (e.key === 'ArrowLeft') showPrev();
-      else if (e.key === 'ArrowRight') showNext();
+      if(e.key==='Tab'){
+        const controls=Array.from(dialogRef.current?.querySelectorAll<HTMLButtonElement>('button:not([disabled])')??[]);
+        if(!controls.length)return;
+        const first=controls[0],last=controls[controls.length-1];
+        if(e.shiftKey&&(document.activeElement===first||!dialogRef.current?.contains(document.activeElement))){e.preventDefault();last.focus();}
+        else if(!e.shiftKey&&(document.activeElement===last||!dialogRef.current?.contains(document.activeElement))){e.preventDefault();first.focus();}
+      }
+      else if(e.key==='Escape'){e.preventDefault();closeLightbox();}
+      else if(e.key==='ArrowLeft'){e.preventDefault(); ar?showNext():showPrev();}
+      else if(e.key==='ArrowRight'){e.preventDefault(); ar?showPrev():showNext();}
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [selectedIndex, closeLightbox, showPrev, showNext]);
+  }, [isOpen, ar, closeLightbox, showPrev, showNext]);
 
   // Preload only the next full-size photo so "next" feels instant without
   // downloading the whole set.
@@ -80,6 +95,7 @@ export default function Gallery() {
       {selectedIndex !== null && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-brand-dark/95 backdrop-blur-sm p-4"
+          ref={dialogRef}
           role="dialog"
           aria-modal="true"
           aria-label={ar?"عارض الصور":"Photo viewer"}
@@ -87,9 +103,10 @@ export default function Gallery() {
         >
           <button
             type="button"
+            ref={closeRef}
             aria-label={ar?"إغلاق الصورة":"Close photo"}
             className="absolute top-4 sm:top-8 right-4 sm:right-8 text-white p-2 sm:p-3 bg-slate-900/50 rounded-full hover:bg-slate-800 transition-colors"
-            onClick={closeLightbox}
+            onClick={(e)=>{e.stopPropagation();closeLightbox();}}
           >
             <X className="w-8 h-8 sm:w-10 sm:h-10" aria-hidden="true" />
           </button>
@@ -99,22 +116,23 @@ export default function Gallery() {
               <button
                 type="button"
                 aria-label={ar?"الصورة السابقة":"Previous photo"}
-                className="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 text-white p-2 sm:p-3 bg-slate-900/50 rounded-full hover:bg-slate-800 transition-colors"
+                className={`absolute ${ar?"right-2 sm:right-8":"left-2 sm:left-8"} top-1/2 -translate-y-1/2 text-white p-2 sm:p-3 bg-slate-900/50 rounded-full hover:bg-slate-800 transition-colors`}
                 onClick={(e) => { e.stopPropagation(); showPrev(); }}
               >
-                <ChevronLeft className="w-7 h-7 sm:w-9 sm:h-9" aria-hidden="true" />
+                {ar?<ChevronRight className="w-7 h-7 sm:w-9 sm:h-9" aria-hidden="true"/>:<ChevronLeft className="w-7 h-7 sm:w-9 sm:h-9" aria-hidden="true"/>}
               </button>
               <button
                 type="button"
                 aria-label={ar?"الصورة التالية":"Next photo"}
-                className="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 text-white p-2 sm:p-3 bg-slate-900/50 rounded-full hover:bg-slate-800 transition-colors"
+                className={`absolute ${ar?"left-2 sm:left-8":"right-2 sm:right-8"} top-1/2 -translate-y-1/2 text-white p-2 sm:p-3 bg-slate-900/50 rounded-full hover:bg-slate-800 transition-colors`}
                 onClick={(e) => { e.stopPropagation(); showNext(); }}
               >
-                <ChevronRight className="w-7 h-7 sm:w-9 sm:h-9" aria-hidden="true" />
+                {ar?<ChevronLeft className="w-7 h-7 sm:w-9 sm:h-9" aria-hidden="true"/>:<ChevronRight className="w-7 h-7 sm:w-9 sm:h-9" aria-hidden="true"/>}
               </button>
             </>
           )}
 
+          <span role="status" className="sr-only">{ar?`صورة ${selectedIndex+1} من ${filteredItems.length}`:`Photo ${selectedIndex+1} of ${filteredItems.length}`} — {photoAlt(filteredItems[selectedIndex])}</span>
           <img 
             src={withSlash(filteredItems[selectedIndex].image.src)} 
             alt={photoAlt(filteredItems[selectedIndex])} 
@@ -124,7 +142,7 @@ export default function Gallery() {
         </div>
       )}
 
-      <div className="max-w-7xl mx-auto">
+      <div ref={galleryRef} inert={isOpen?true:undefined} className="max-w-7xl mx-auto">
         <div className="text-center mb-6 sm:mb-12 mt-4 sm:mt-0">
           <h1 className="text-3xl sm:text-5xl font-black text-white mb-3 sm:mb-4">{ar?"معرض صور التصليح":<>Repair <span className="text-cyan-400">Gallery</span></>}</h1>
           <p className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">{ar?"شوف صور فعلية من مختبرنا وأعمال اللحام الدقيق وتصليح المكونات.":"View real examples of our component-level micro-soldering and lab environment."}</p>
@@ -151,10 +169,10 @@ export default function Gallery() {
         {/* Gallery Grid */}
         <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 mb-12 sm:mb-24">
           {visibleItems.map((item, i) => (
-            <div 
+            <button type="button" data-gallery-photo="true" aria-label={(ar?"افتح الصورة: ":"Open photo: ")+photoAlt(item)}
               key={item.image.src} 
-              onClick={() => setSelectedIndex(i)} 
-              className="group relative aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer border border-slate-800 bg-slate-900 shadow-xl"
+              onClick={(e) => openPhoto(i,e.currentTarget)} 
+              className="group relative aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer border border-slate-800 bg-slate-900 shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
             >
               <img 
                 src={withSlash(item.image.thumb ?? item.image.src)}
@@ -169,14 +187,14 @@ export default function Gallery() {
                   e.currentTarget.style.display = 'none';
                 }}
               />
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-cyan-950/60 backdrop-blur-sm">
+              <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-cyan-950/60 backdrop-blur-sm">
                 <Maximize2 className="text-white w-6 h-6 sm:w-8 sm:h-8" />
-              </div>
+              </span>
               
-              <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
+              <span aria-hidden="true" className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
                   <span className="text-[10px] sm:text-xs font-bold text-cyan-400 uppercase tracking-wider">{categoryLabel(item.category)}</span>
-              </div>
-            </div>
+              </span>
+            </button>
           ))}
         </section>
 
