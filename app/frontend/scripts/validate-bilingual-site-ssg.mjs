@@ -88,8 +88,11 @@ for(const el of problemDirectory('main [data-directory-item]').toArray()){
  assert.ok(route?.startsWith('/ar/'),route);
  const $=read(route);
  assert.equal($('main h1').length,1,route+' H1');
+ if(route==='/ar/laptop-plugged-in-not-charging') {
+  assert.ok($('main a[href^="https://wa.me/"]').length,route+' existing WhatsApp pickup');
+  continue;
+ }
  assert.ok($('main a[href="/ar/book"]').length,route+' booking');
- if(route==='/ar/laptop-plugged-in-not-charging') continue;
  assert.equal($('main [data-arabic-problem]').length,1,route+' localized template');
  assert.ok($('main [data-problem-editorial-panel]').length>=5,route+' content sections');
  assert.ok($('main img').toArray().some(x=>/[\u0600-\u06ff]/.test($(x).attr('alt')||'')),route+' localized photo');
