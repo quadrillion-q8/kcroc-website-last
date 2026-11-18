@@ -5,6 +5,13 @@
 // /ar/computer-repair-kuwait; Services and troubleshooting guides use explicit reciprocal pairs where localized versions exist.
 
 export const ENGLISH_TO_ARABIC: Record<string, string> = {
+  '/brands': '/ar/brands',
+  '/dell-laptop-repair-kuwait': '/ar/brands/dell-laptop-repair-kuwait',
+  '/hp-laptop-repair-kuwait': '/ar/brands/hp-laptop-repair-kuwait',
+  '/lenovo-laptop-repair-kuwait': '/ar/brands/lenovo-laptop-repair-kuwait',
+  '/asus-laptop-repair-kuwait': '/ar/brands/asus-laptop-repair-kuwait',
+  '/acer-laptop-repair-kuwait': '/ar/brands/acer-laptop-repair-kuwait',
+  '/msi-laptop-repair-kuwait': '/ar/brands/msi-laptop-repair-kuwait',
   '/guides/dell-laptop-overheating': '/guides/ar/dell-laptop-overheating',
   '/contact': '/ar/contact',
   '/': '/ar',
@@ -47,6 +54,13 @@ export const ENGLISH_TO_ARABIC: Record<string, string> = {
 };
 
 export const ARABIC_TO_ENGLISH: Record<string, string> = {
+  '/ar/brands': '/brands',
+  '/ar/brands/dell-laptop-repair-kuwait': '/dell-laptop-repair-kuwait',
+  '/ar/brands/hp-laptop-repair-kuwait': '/hp-laptop-repair-kuwait',
+  '/ar/brands/lenovo-laptop-repair-kuwait': '/lenovo-laptop-repair-kuwait',
+  '/ar/brands/asus-laptop-repair-kuwait': '/asus-laptop-repair-kuwait',
+  '/ar/brands/acer-laptop-repair-kuwait': '/acer-laptop-repair-kuwait',
+  '/ar/brands/msi-laptop-repair-kuwait': '/msi-laptop-repair-kuwait',
   '/guides/ar/dell-laptop-overheating': '/guides/dell-laptop-overheating',
   '/ar/contact': '/contact',
   '/ar': '/',

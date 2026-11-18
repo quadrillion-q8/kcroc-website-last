@@ -1,0 +1,27 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import {load} from 'cheerio';
+const read=p=>{const s=p.slice(1), files=[s+'.html',s+'/index.html'].map(x=>path.join(process.cwd(),'dist',x));const file=files.find(x=>fs.existsSync(x));assert.ok(file,p);return load(fs.readFileSync(file,'utf8'));};
+const ids=['dell','hp','lenovo','asus','acer','msi'];
+const directory=read('/ar/brands'),en=read('/brands');
+assert.equal(directory('[data-brand-card]').length,6);assert.deepEqual(directory('[data-brand-card]').map((_,x)=>directory(x).attr('data-brand-card')).get(),en('[data-brand-card]').map((_,x)=>en(x).attr('data-brand-card')).get());
+assert.equal(directory('main a[href="/ar/macbook-repair-kuwait"]').length,1);
+for(const id of ids){
+ const route='/ar/brands/'+id+'-laptop-repair-kuwait',e='/'+id+'-laptop-repair-kuwait',a=read(route),b=read(e),m=a('main');
+ assert.equal(m.find('h1').length,1,route);
+ assert.equal(m.find('[data-brand-id="brand-'+id+'"]').length,1,route);
+ assert.ok(m.find('[data-brand-model]').length>=5,route+' model families');
+ assert.ok(m.find('[data-brand-issue]').length>=3,route+' diagnostic coverage');
+ assert.ok(m.find('[data-brand-service]').length>=5,route+' service discovery');
+ assert.ok(m.find('[data-brand-faq]').length>=6,route+' localized FAQ');
+ assert.equal(m.find('[data-service-action="booking"]').attr('href'),'/ar/book',route);
+ assert.equal(m.find('[data-service-action="pricing"]').attr('href'),'/ar/pricing',route);
+ assert.ok(m.find('[data-service-action="whatsapp"]').attr('href')?.includes('wa.me/'),route);
+ assert.ok(m.find('img[alt]').length>=1,route);
+ assert.ok(m.find('a[href="/ar/computer-repair-hawalli"]').length>=1,route);
+ assert.equal(a('link[rel="canonical"]').attr('href'),'https://www.computerrepairkuwait.com'+route,route);
+ assert.equal(b('link[rel="canonical"]').attr('href'),'https://www.computerrepairkuwait.com'+e,e);
+ assert.equal(directory('[data-brand-card="brand-'+id+'"]').attr('href'),route,route+' directory destination');
+}
+console.log('Brand bilingual parity: six manufacturer counterparts and shared directory; localized repair relationships, symptoms, models, FAQ, photos and conversion links verified.');

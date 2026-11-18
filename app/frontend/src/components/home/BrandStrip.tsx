@@ -6,7 +6,7 @@ import { KCROC_GRAPH } from '../../data/graph';
 import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
 
 export const BrandStrip = () => {
-  const { ar, t, trackName } = useHomeLocale();
+  const { ar, t, trackName, path } = useHomeLocale();
   // Pull real brand entities from the graph, sorted by navigationPriority
   const brands = [...KCROC_GRAPH.brands].sort(
     (a, b) => (b.navigationPriority ?? 0) - (a.navigationPriority ?? 0)
@@ -30,12 +30,12 @@ export const BrandStrip = () => {
           {brands.map((brand) => (
             <Link
               key={brand.id}
-              to={`/${brand.slug}`}
-              aria-label={ar ? brand.brandName + ' — تفاصيل التصليح بالإنجليزي' : brand.title}
+              to={path(`/${brand.slug}`)}
+              aria-label={ar ? 'تصليح لابتوب '+brand.brandName : brand.title}
               onClick={() => trackConversion('cta_click', { cta_name: trackName('brand_strip_click'), button_position: 'brand_strip', brand: brand.brandName })}
               className="scroll-row-item inline-flex min-h-12 items-center text-xs sm:text-sm font-semibold text-slate-400 hover:text-cyan-400 border border-slate-800 hover:border-cyan-500/30 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 transition-all whitespace-nowrap"
             >
-              {ar ? brand.brandName + ' · التفاصيل بالإنجليزي' : brand.title}
+              {ar ? brand.brandName : brand.title}
             </Link>
           ))}
         </div>
