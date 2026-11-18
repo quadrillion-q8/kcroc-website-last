@@ -7,12 +7,14 @@ import {
 import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine';
 import MapComponent from '../components/MapComponent';
+import { useAnalytics } from '../core/analytics/AnalyticsProvider';
+import { buildWhatsAppLink, handoffWhatsApp } from '../utils/whatsappIntent';
 
 const business = KCROC_GRAPH.business!;
-const phone = business.telephone;
+const phone = business.telephone.replace(/\D/g, '');
 const phoneDisplay = phone.startsWith('965') ? '+965 ' + phone.slice(3) : '+' + phone;
 const mapsUrl = business.socialLinks.googleMaps;
-const whatsappUrl = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(
+const whatsappUrl = buildWhatsAppLink(
   'السلام عليكم KCROC، أحتاج إلى تصليح كمبيوتر أو لابتوب. أرجو مساعدتي في ترتيب زيارة المختبر أو الاستلام المجاني.'
 );
 
@@ -54,6 +56,7 @@ type Enquiry = {
 const initialEnquiry: Enquiry = { name: '', device: '', area: '', fault: '' };
 
 export default function ArabicContactPage() {
+  const { trackConversion } = useAnalytics();
   const [enquiry, setEnquiry] = useState<Enquiry>(initialEnquiry);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -73,9 +76,8 @@ export default function ArabicContactPage() {
       'المنطقة: ' + enquiry.area,
       'العطل: ' + enquiry.fault,
     ].join('\n');
-    const url = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(message);
-    const popup = window.open(url, '_blank', 'noopener,noreferrer');
-    if (!popup) window.location.href = url;
+    trackConversion('whatsapp_click', { cta_name: 'arabic_contact_form_submit', button_position: 'arabic_contact_page' });
+    handoffWhatsApp(message);
   };
 
   return (
@@ -136,6 +138,8 @@ export default function ArabicContactPage() {
                   <option value="الفروانية">الفروانية</option>
                   <option value="الأحمدي">الأحمدي</option>
                   <option value="الجهراء">الجهراء</option>
+                  <option value="الفحيحيل">الفحيحيل</option>
+                  <option value="المنقف">المنقف</option>
                   <option value="منطقة أخرى في الكويت">منطقة أخرى في الكويت</option>
                 </select>
               </div>
