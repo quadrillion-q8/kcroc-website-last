@@ -66,11 +66,9 @@ export default function AuthorImran() {
   const url = ar ? business.websiteUrl + '/ar/author/imran' : PAGE_URL;
   const title = ar ? 'عمران ناطق — مهندس تصليح الكمبيوتر ومؤسس KCROC' : 'Imran Natiq — Hardware Repair Engineer at KCROC Kuwait';
   const description = ar ? 'تعرف على عمران ناطق، مؤسس KCROC والفني الرئيسي في مختبر حولي، المتخصص في تشخيص المذربورد واللحام الدقيق وتبريد اللابتوب.' : 'Imran Natiq is a hardware repair engineer and founder of KCROC in Hawalli, Kuwait, specializing in motherboard diagnostics, micro-soldering, and laptop thermal repair.';
-  const arabicArticles = [{...articles[0],title:'درجات حرارة اللابتوب في الكويت (بالإنجليزي)'},{...articles[1],title:'دليل شراء اللابتوب في الكويت 2026 (بالإنجليزي)'},articles[2]];
+  const arabicArticles = [articles[2],{...articles[0],title:'درجات حرارة اللابتوب في الكويت (بالإنجليزي)'},{...articles[1],title:'دليل شراء اللابتوب في الكويت 2026 (بالإنجليزي)'}];
   const schema = {'@graph':[PERSON_SCHEMA[0],{...PERSON_SCHEMA[1],itemListElement:[{'@type':'ListItem',position:1,name:ar?'الرئيسية':'Home',item:business.websiteUrl+(ar?'/ar':'')},{'@type':'ListItem',position:2,name:ar?'عمران ناطق':'Imran Natiq',item:url}]},{'@type':'ProfilePage','@id':url+'#webpage',url,inLanguage:ar?'ar-KW':'en-KW',name:title,mainEntity:{'@id':PAGE_URL+'#person'}}]};
-  const WA_LINK = `https://wa.me/${business.telephone}?text=${encodeURIComponent(
-    'Hi KCROC, I read one of Imran\'s guides and have a question before I buy or repair my laptop.'
-  )}`;
+  const WA_LINK = buildWhatsAppLink("Hi KCROC, I read one of Imran's guides and have a question before I buy or repair my laptop.");
 
   return (
     <div className="w-full min-h-screen bg-gray-950 text-white font-sans selection:bg-cyan-500/30" data-kcroc-rollout="author" lang={ar?"ar-KW":"en-KW"} dir={ar?"rtl":"ltr"}>
@@ -86,6 +84,8 @@ export default function AuthorImran() {
         <link rel="alternate" hrefLang="x-default" href={PAGE_URL}/>
         <meta name="robots" content="index, follow, max-image-preview:large" />
         <meta property="og:type" content="profile" />
+        <meta property="og:locale" content={ar?"ar_KW":"en_KW"}/>
+        <meta property="og:locale:alternate" content={ar?"en_KW":"ar_KW"}/>
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={url} />
@@ -175,11 +175,11 @@ export default function AuthorImran() {
           </h2>
           <div className="space-y-3">
             {(ar?arabicArticles:articles).map((a) => (
-              <Link key={a.href} to={a.href}>
+              <Link key={a.href} to={a.href} lang={a.href.startsWith('/blog/ar/')?'ar':ar?'ar':'en'} data-author-article-language={a.href.startsWith('/blog/ar/')?'ar':'en'} className="block rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300">
                 <Card className="bg-slate-900/50 border-slate-800 hover:border-cyan-500/40 transition-colors">
                   <CardContent className="p-4 sm:p-5 flex items-center justify-between text-sm sm:text-base text-slate-200">
                     {a.title}
-                    <ArrowRight className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+                    <ArrowRight className={"w-4 h-4 text-cyan-400 flex-shrink-0 "+(ar?"rotate-180":"")} aria-hidden="true"/>
                   </CardContent>
                 </Card>
               </Link>
@@ -205,9 +205,10 @@ export default function AuthorImran() {
                 asChild
               >
                 <a href={ar?buildWhatsAppLink("السلام عليكم، قريت دليل عمران وعندي استفسار قبل شراء أو تصليح اللابتوب."):WA_LINK} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="w-4 h-4 mr-2" /> {ar?"راسلنا على واتساب":"Message on WhatsApp"}
+                  <MessageCircle className="w-4 h-4 me-2" aria-hidden="true"/> {ar?"راسلنا على واتساب":"Message on WhatsApp"}
                 </a>
               </Button>
+              <div className="mt-4 flex flex-wrap justify-center gap-4"><Link to={ar?"/ar/book":"/book"} className="text-cyan-300 underline">{ar?"احجز استلام مجاني":"Book free pickup"}</Link><Link to={ar?"/ar/about":"/about"} className="text-cyan-300 underline">{ar?"عن مختبر KCROC":"About the KCROC lab"}</Link></div>
               <div className="mt-6 pt-6 border-t border-cyan-500/20 flex items-center justify-center gap-2 text-xs sm:text-sm text-slate-400">
                 <Shield className="w-3.5 h-3.5 text-cyan-400" /> {ar?"مراجعة فنية من فريق تشخيص KCROC":"Technical review by the KCROC diagnostics team"}
               </div>
