@@ -98,7 +98,10 @@ for (const [source, target] of [['farwaniya', 'riggae'], ['riggae', 'farwaniya']
   assert.ok(activeLocations.find((location) => location.slug === source)?.relatedLocationIds?.includes('loc-' + target), 'Missing Phase 4 geographic edge: ' + source + ' -> ' + target);
 }
 const hawalliArSource = fs.readFileSync(path.resolve(here, '../src/pages/ArabicHawalliLocationPage.tsx'), 'utf8');
-assert.equal((hawalliArSource.match(/to="\/ar\/book"/g) ?? []).length, 3);
+assert.equal((hawalliArSource.match(/to="\/ar\/book"/g) ?? []).length, 2);
+assert.ok(hawalliArSource.includes('<LocationHeroActions locale="ar" locationSlug="hawalli"'), 'Shared hero must provide the third Arabic booking link');
+const locationHeroSource = fs.readFileSync(path.resolve(here, '../src/components/content/LocationHeroActions.tsx'), 'utf8');
+assert.ok(locationHeroSource.includes("localizedSitePath('/book', locale)"));
 assert.ok(!hawalliArSource.includes('to="/book"'));
 const nearMeSource = fs.readFileSync(path.resolve(here, '../src/pages/NearMeAR.tsx'), 'utf8');
 assert.ok(nearMeSource.includes('const AREAS_AR = arabicLocationInventory()'));
