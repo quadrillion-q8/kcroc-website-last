@@ -5,6 +5,19 @@
 // /ar/computer-repair-kuwait; Services and troubleshooting guides use explicit reciprocal pairs where localized versions exist.
 
 export const ENGLISH_TO_ARABIC: Record<string, string> = {
+  '/laptop-wont-turn-on': '/ar/laptop-wont-turn-on',
+  '/laptop-overheating-kuwait': '/ar/laptop-overheating-kuwait',
+  '/laptop-black-screen-kuwait': '/ar/laptop-black-screen-kuwait',
+  '/spilled-water-on-laptop': '/ar/spilled-water-on-laptop',
+  '/laptop-keyboard-not-working': '/ar/laptop-keyboard-not-working',
+  '/laptop-wifi-not-connecting': '/ar/laptop-wifi-not-connecting',
+  '/laptop-running-very-slow': '/ar/laptop-running-very-slow',
+  '/laptop-hinge-broken': '/ar/laptop-hinge-broken',
+  '/laptop-screen-cracked-kuwait': '/ar/laptop-screen-cracked-kuwait',
+  '/windows-wont-boot-kuwait': '/ar/windows-wont-boot-kuwait',
+  '/blue-screen-of-death-bsod-fix-kuwait': '/ar/blue-screen-of-death-bsod-fix-kuwait',
+  '/computer-freezing-crashing-kuwait': '/ar/computer-freezing-crashing-kuwait',
+  '/virus-malware-removal-kuwait': '/ar/virus-malware-removal-kuwait',
   '/locations': '/ar/locations',
   '/problems': '/ar/problems',
   '/brands': '/ar/brands',
@@ -56,6 +69,19 @@ export const ENGLISH_TO_ARABIC: Record<string, string> = {
 };
 
 export const ARABIC_TO_ENGLISH: Record<string, string> = {
+  '/ar/laptop-wont-turn-on': '/laptop-wont-turn-on',
+  '/ar/laptop-overheating-kuwait': '/laptop-overheating-kuwait',
+  '/ar/laptop-black-screen-kuwait': '/laptop-black-screen-kuwait',
+  '/ar/spilled-water-on-laptop': '/spilled-water-on-laptop',
+  '/ar/laptop-keyboard-not-working': '/laptop-keyboard-not-working',
+  '/ar/laptop-wifi-not-connecting': '/laptop-wifi-not-connecting',
+  '/ar/laptop-running-very-slow': '/laptop-running-very-slow',
+  '/ar/laptop-hinge-broken': '/laptop-hinge-broken',
+  '/ar/laptop-screen-cracked-kuwait': '/laptop-screen-cracked-kuwait',
+  '/ar/windows-wont-boot-kuwait': '/windows-wont-boot-kuwait',
+  '/ar/blue-screen-of-death-bsod-fix-kuwait': '/blue-screen-of-death-bsod-fix-kuwait',
+  '/ar/computer-freezing-crashing-kuwait': '/computer-freezing-crashing-kuwait',
+  '/ar/virus-malware-removal-kuwait': '/virus-malware-removal-kuwait',
   '/ar/locations': '/locations',
   '/ar/problems': '/problems',
   '/ar/brands': '/brands',
