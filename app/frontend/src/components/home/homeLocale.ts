@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react';
 import type { ServiceEntity } from '../../types/knowledgeGraph';
-import { arabicLocationPath } from '../../utils/arabicLocationRoutes';
+import { localizedSitePath } from '../../utils/locale';
 export const HomeLocaleContext = createContext<'en' | 'ar'>('en');
 export const ARABIC_SERVICE_COPY: Record<string, { title: string; description: string; href: string }> = {
   'laptop-repair-kuwait': { title: 'تصليح اللابتوب في الكويت', description: 'تشخيص أعطال التشغيل والشحن والحرارة والشاشة والبطارية ومكونات الجهاز.', href: '/ar/laptop-repair-kuwait' },
@@ -19,7 +19,7 @@ export const ARABIC_SERVICE_COPY: Record<string, { title: string; description: s
   'laptop-keyboard-replacement-kuwait': { title: 'تبديل كيبورد اللابتوب', description: 'تحديد العطل وموديل الكيبورد والتكلفة قبل تنفيذ الاستبدال.', href: '/ar/laptop-keyboard-replacement-kuwait' },
   'laptop-liquid-damage-repair-kuwait': { title: 'تصليح اللابتوب بعد انسكاب الماي', description: 'انكب ماي أو قهوة؟ خلّ الجهاز مطفي وخلّنا نفحص الكيبورد والموصلات والمذربورد قبل لا تشغّله مرة ثانية.', href: '/ar/laptop-liquid-damage-repair-kuwait' },
 };
-export function arabicHomePrice(service: ServiceEntity): string {
+export function arabicHomePrice(service: Pick<ServiceEntity, 'pricing'>): string {
   const label = service.pricing?.displayLabel?.split(' — ')[0];
   if (label) {
     const translated = label.replace(/Labor from /gi,'أجرة العمل من ').replace(/From /gi,'من ').replace(/KWD/gi,'د.ك')
@@ -32,11 +32,8 @@ export function arabicHomePrice(service: ServiceEntity): string {
   }
   return service.pricing?.startingFrom != null ? 'من ' + service.pricing.startingFrom + ' د.ك — نأكد العرض بعد الفحص' : 'السعر بعد الفحص';
 }
-const corePaths: Record<string,string> = {'/':'/ar','/book':'/ar/book','/contact':'/ar/contact','/services':'/ar/services','/pricing':'/ar/pricing','/near-me':'/ar/near-me','/locations':'/ar/near-me','/computer-repair-kuwait':'/ar/computer-repair-kuwait','/macbook-battery-replacement-kuwait':'/ar/macbook-battery-replacement-kuwait'};
-export function arabicHomePath(english:string):string {
- if(corePaths[english]) return corePaths[english];
- if(english.startsWith('/location/')) return arabicLocationPath(english.slice('/location/'.length));
- return ARABIC_SERVICE_COPY[english.slice(1)]?.href ?? english;
+export function arabicHomePath(english: string): string {
+  return localizedSitePath(english, 'ar');
 }
 export function useHomeLocale() {
  const ar = useContext(HomeLocaleContext) === 'ar';

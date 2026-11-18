@@ -1,0 +1,4 @@
+/* Arabic service directory uses the existing English editorial rollout. */
+[data-directory-locale="ar"] :is(h1,h2,h3,p,span,a,button,summary) { letter-spacing: normal; }
+[data-directory-locale="ar"] :is(h1,h2,h3) { line-height: 1.35; }
+[data-directory-locale="ar"] [data-service-id] { min-width: 0; overflow-wrap: anywhere; }

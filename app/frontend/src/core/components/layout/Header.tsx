@@ -7,7 +7,7 @@ import { COMPILED_NAVIGATION, getLocalizedNavigation } from '../../navigation/Na
 import { useAnalytics } from '../../analytics/AnalyticsProvider';
 import { Button } from '@/components/ui/button';
 import MobileMenu from './MobileMenu';
-import { getLanguageSwitchPath } from '../../../utils/locale';
+import { getLanguageSwitchPath, isArabicPath, localizedSitePath } from '../../../utils/locale';
 import { isEnglishTechnicalGuideRoute } from '../../../constants/routes';
 
 const DesktopMegaMenu = React.lazy(() => import('./DesktopMegaMenu'));
@@ -46,7 +46,7 @@ export default function Header() {
   const isGlobalSlowLaptopGuide = location.pathname === '/blog/why-is-my-laptop-so-slow';
   const isGlobalTechnicalGuide = isEnglishTechnicalGuideRoute(location.pathname);
   const hideConversionActions = isGlobalEditorialArticle || isGlobalTechnicalGuide;
-  const isArabicRoute = location.pathname === '/ar' || location.pathname.startsWith('/ar/') || location.pathname.startsWith('/blog/ar/') || location.pathname.startsWith('/guides/ar/');
+  const isArabicRoute = isArabicPath(location.pathname);
   const { trackConversion } = useAnalytics();
   
   const baseNavModel = getLocalizedNavigation(location.pathname);
@@ -169,7 +169,7 @@ export default function Header() {
         <div className="kcroc-header-inner max-w-[1360px] mx-auto px-4 sm:px-6 xl:px-8 2xl:px-12">
           <div className="flex min-h-[72px] flex-wrap items-center justify-between gap-x-3 gap-y-1 py-1">
             
-            <Link to="/" className="flex items-center shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8f4f2c] rounded-lg" aria-label={isArabicRoute ? "الصفحة الرئيسية لـ KCROC" : "KCROC Home"}>
+            <Link to={isArabicRoute ? "/ar" : "/"} className="flex items-center shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8f4f2c] rounded-lg" aria-label={isArabicRoute ? "الصفحة الرئيسية لـ KCROC" : "KCROC Home"}>
               {!logoError ? (
                 <img
                   src="/logo-128.webp"
@@ -263,7 +263,7 @@ export default function Header() {
                   variant="ctaPrimary"
                   className="min-h-12 max-w-full gap-2 rounded-lg bg-[#dfa86f] px-3 py-2 text-center text-sm leading-tight text-[#17110c] font-extrabold transition-colors hover:bg-[#efc697] focus-visible:ring-2 focus-visible:ring-[#8f4f2c]"
                 >
-                  <Link to="/book" onClick={() => trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' })}>
+                  <Link to={localizedSitePath("/book", isArabicRoute ? "ar" : "en")} onClick={() => trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' })}>
                     <CalendarCheck size={15} aria-hidden="true" />
                     <span className="flex min-w-0 flex-col items-start leading-tight">
                       <span>{isArabicRoute ? 'احجز استلام مجاني' : 'Book Free Pickup'}</span>

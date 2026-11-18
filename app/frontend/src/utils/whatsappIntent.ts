@@ -1,5 +1,6 @@
 // File: src/utils/whatsappIntent.ts
 import { KCROC_GRAPH } from '../data/graph';
+import { isArabicPath } from './locale';
 
 const business = KCROC_GRAPH.business!;
 
@@ -69,9 +70,15 @@ export const getPageWhatsAppLink = (pathname: string): string => {
     return buildWhatsAppLink('Hi KCROC, I need computer repair in Kuwait. I would like to arrange diagnosis and free pickup.');
   }
 
-  if (path === '/ar' || path.startsWith('/ar/')) {
+  if (isArabicPath(path)) {
     const slug = path.replace(/^\/ar\//, '');
     const arabicNames: Record<string, string> = {
+      'macbook-battery-replacement-kuwait': 'تبديل بطارية ماك بوك',
+      'laptop-liquid-damage-repair-kuwait': 'فحص أضرار السوائل باللابتوب',
+      'laptop-charging-port-repair-kuwait': 'فحص مدخل الشحن',
+      'laptop-keyboard-replacement-kuwait': 'تبديل كيبورد اللابتوب',
+      'desktop-pc-repair-kuwait': 'تصليح الكمبيوتر المكتبي',
+      'gaming-laptop-cleaning-kuwait': 'تنظيف لابتوب الألعاب وفحص التبريد',
       'laptop-repair-kuwait': 'تصليح لابتوب في الكويت',
       'computer-repair-kuwait': 'تصليح كمبيوتر في الكويت',
       'pricing': 'أسعار تصليح الكمبيوتر واللابتوب في الكويت',

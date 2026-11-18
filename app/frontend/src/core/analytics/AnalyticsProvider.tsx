@@ -12,6 +12,7 @@ import { useLocation } from 'react-router-dom';
 // ever reads entity.id/slug/title, so we look those up directly against the
 // already-slim NAV_GRAPH instead of the full graph.
 import { NAV_GRAPH } from '../../data/navGraph.generated';
+import { isArabicPath, localizedSitePath } from '../../utils/locale';
 import { trackEvent, buildEntityPayload } from './index';
 import { getLastContactConversionAt } from './core';
 import { AnalyticsEvent, BaseEventPayload, BookingEvent } from './types';
@@ -36,7 +37,8 @@ export const AnalyticsProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   // 1. Core Entity Memoization Vector
   const currentEntity = useMemo(() => {
     const pathParts = location.pathname.split('/').filter(Boolean);
-    const slug = pathParts[pathParts.length - 1];
+    const canonicalPath = localizedSitePath(location.pathname, 'en');
+    const slug = canonicalPath.split('/').filter(Boolean).at(-1) ?? pathParts[pathParts.length - 1];
     return NAV_GRAPH.services.find(s => s.slug === slug) || null;
   }, [location.pathname]);
 
@@ -48,6 +50,7 @@ export const AnalyticsProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       trackEvent('page_view', {
         page_path: location.pathname + location.search,
         page_title: document.title,
+        language: isArabicPath(location.pathname) ? 'ar' : 'en',
       });
     }, 100);
 
@@ -56,7 +59,7 @@ export const AnalyticsProvider: React.FC<{ children: React.ReactNode }> = ({ chi
 
   // 3. Conversion Tracking Pipeline
   const trackConversion = (event: AnalyticsEvent | BookingEvent, payload: BaseEventPayload) => {
-    const entityContext = currentEntity ? buildEntityPayload(currentEntity, 'Service') : {};
+    const entityContext = { language: isArabicPath(location.pathname) ? 'ar' : 'en', ...(currentEntity ? buildEntityPayload(currentEntity, 'Service') : {}) };
 
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
@@ -97,7 +100,7 @@ export const AnalyticsProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     document.addEventListener('click', onClick);
     return () => document.removeEventListener('click', onClick);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentEntity]);
+  }, [currentEntity, location.pathname]);
 
   return (
     <AnalyticsContext.Provider value={{ currentEntity, trackConversion }}>

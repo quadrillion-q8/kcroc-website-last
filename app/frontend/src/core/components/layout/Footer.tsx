@@ -1,5 +1,6 @@
 // File: app/frontend/src/core/components/layout/Footer.tsx
 import React, { useState } from 'react';
+import { isArabicPath, localizedSitePath } from '../../../utils/locale';
 import { Link, useLocation } from 'react-router-dom';
 import {
   MapPin,
@@ -25,34 +26,9 @@ import { NAV_GRAPH } from '../../../data/navGraph.generated';
 import { isEnglishTechnicalGuideRoute } from '../../../constants/routes';
 import { openConsentPreferences } from '../../privacy/consent';
 
-const ARABIC_PATHS: Record<string, string> = {
-  '/services': '/ar/services',
-  '/desktop-pc-repair-kuwait': '/ar/desktop-pc-repair-kuwait',
-  '/laptop-hinge-repair-kuwait': '/ar/laptop-hinge-repair-kuwait',
-  '/gaming-laptop-cleaning-kuwait': '/ar/gaming-laptop-cleaning-kuwait',
-  '/laptop-repair-kuwait': '/ar/laptop-repair-kuwait',
-  '/macbook-repair-kuwait': '/ar/macbook-repair-kuwait',
-  '/gaming-pc-repair-kuwait': '/ar/gaming-pc-repair-kuwait',
-  '/macbook-screen-replacement-kuwait': '/ar/macbook-screen-replacement-kuwait',
-  '/motherboard-repair-kuwait': '/ar/motherboard-repair-kuwait',
-  '/laptop-screen-repair-kuwait': '/ar/laptop-screen-repair-kuwait',
-  '/battery-replacement-kuwait': '/ar/laptop-battery-replacement-kuwait',
-  '/laptop-charging-port-repair-kuwait': '/ar/laptop-charging-port-repair-kuwait',
-  '/laptop-keyboard-replacement-kuwait': '/ar/laptop-keyboard-replacement-kuwait',
-  '/ssd-ram-upgrade-kuwait': '/ar/ssd-ram-upgrade-kuwait',
-  '/laptop-liquid-damage-repair-kuwait': '/ar/laptop-liquid-damage-repair-kuwait',
-  '/computer-repair-kuwait': '/ar/computer-repair-kuwait',
-  '/near-me': '/ar/near-me',
-  '/locations': '/ar/near-me',
-  '/pricing': '/ar/pricing',
-  '/location/hawalli': '/ar/computer-repair-hawalli',
-  '/location/salmiya': '/ar/computer-repair-salmiya',
-  '/location/kuwait-city': '/ar/computer-repair-kuwait-city',
-  '/location/farwaniya': '/ar/computer-repair-farwaniya',
-  '/location/jahra': '/ar/computer-repair-jahra',
-};
-
 const ARABIC_SERVICE_LABELS: Record<string, string> = {
+  '/gaming-laptop-repair-kuwait': 'تصليح لابتوب الألعاب',
+  '/macbook-battery-replacement-kuwait': 'تبديل بطارية ماك بوك',
   '/desktop-pc-repair-kuwait': 'تصليح الكمبيوتر المكتبي',
   '/laptop-repair-kuwait': 'تصليح اللابتوب',
   '/macbook-repair-kuwait': 'تصليح MacBook',
@@ -115,12 +91,12 @@ function isValidFooterLink<T extends { path?: string | null; label?: string | nu
 
 export function Footer() {
   const location = useLocation();
-  const isArabicRoute = location.pathname === '/ar' || location.pathname.startsWith('/ar/') || location.pathname.startsWith('/blog/ar/') || location.pathname.startsWith('/guides/ar/');
+  const isArabicRoute = isArabicPath(location.pathname);
   const isHawalliLandingPage = location.pathname.replace(/\/+$/, '') === '/location/hawalli';
   const isWindowsBatteryPage = location.pathname === '/battery-replacement-kuwait' || location.pathname === '/ar/laptop-battery-replacement-kuwait';
   const isGlobalEditorialArticle = location.pathname === '/blog/why-is-my-laptop-so-slow';
   const isGlobalTechnicalGuide = isEnglishTechnicalGuideRoute(location.pathname);
-  const localizedPath = (path: string) => isArabicRoute ? (ARABIC_PATHS[path] ?? path) : path;
+  const localizedPath = (path: string) => localizedSitePath(path, isArabicRoute ? 'ar' : 'en');
   const serviceLabel = (path: string, label: string) => isArabicRoute ? (ARABIC_SERVICE_LABELS[path] ?? label.replace(' Kuwait', '')) : label.replace(' Kuwait', '');
   const companyLabel = (path: string, label: string) => isArabicRoute ? (ARABIC_COMPANY_LABELS[path] ?? label) : label;
   const areaLabel = (path: string, label: string) => isArabicRoute ? (ARABIC_AREA_LABELS[path] ?? label.replace('Computer Repair ', '')) : label.replace('Computer Repair ', '');
@@ -227,7 +203,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-12">
           {/* Brand */}
           <div>
-            <Link to="/" className="inline-flex items-center mb-5" aria-label="Return to KCROC home page">
+            <Link to={isArabicRoute ? "/ar" : "/"} className="inline-flex items-center mb-5" aria-label={isArabicRoute ? "العودة للرئيسية" : "Return to KCROC home page"}>
               {!logoError ? (
                 <img
                   src="/logo-128.webp"

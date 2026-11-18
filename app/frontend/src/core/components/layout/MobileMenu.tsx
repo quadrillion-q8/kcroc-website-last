@@ -26,7 +26,7 @@ import {
 } from 'lucide-react';
 import { CompiledNavigationModel, MegaMenuConfig } from '../../navigation/types';
 import { useAnalytics } from '../../analytics/AnalyticsProvider';
-import { getLanguageSwitchPath } from '../../../utils/locale';
+import { getLanguageSwitchPath, isArabicPath, localizedSitePath } from '../../../utils/locale';
 import { buildWhatsAppLink } from '../../../utils/whatsappIntent';
 
 const ICON_REGISTRY: Record<string, React.ElementType> = {
@@ -82,7 +82,7 @@ interface MobileMenuProps {
 export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, cleanTel, phoneDisplay, hideConversionActions = false, triggerRef }: MobileMenuProps) {
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
   const location = useLocation();
-  const isArabicRoute = location.pathname === '/ar' || location.pathname.startsWith('/ar/') || location.pathname.startsWith('/blog/ar/') || location.pathname.startsWith('/guides/ar/');
+  const isArabicRoute = isArabicPath(location.pathname);
   const languageSwitch = getLanguageSwitchPath(location.pathname);
   const { trackConversion } = useAnalytics();
   const mobileMenuWhatsAppLink = buildWhatsAppLink(
@@ -211,7 +211,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
               <span className="flex items-center justify-center gap-1.5"><MessageCircle className="h-3.5 w-3.5" aria-hidden="true" /> {isArabicRoute ? "واتساب" : "WhatsApp"}</span>
             </a>
             <Link
-              to="/book"
+              to={localizedSitePath("/book", isArabicRoute ? "ar" : "en")}
               onClick={() => trackConversion('cta_click', { cta_name: 'mobile_menu_quick_book', button_position: 'mobile_menu' })}
               tabIndex={isOpen ? 0 : -1}
               className="min-h-12 rounded-xl bg-[#c9804d] px-2.5 py-2 text-center text-xs font-black text-[#100d0a] transition-colors hover:bg-[#dfa86f] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
