@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './KCROCEditorialRollout.css';
 import { Link } from 'react-router-dom';
 import {
@@ -58,6 +58,11 @@ const initialEnquiry: Enquiry = { name: '', device: '', area: '', fault: '' };
 export default function ArabicContactPage() {
   const { trackConversion } = useAnalytics();
   const [enquiry, setEnquiry] = useState<Enquiry>(initialEnquiry);
+  const [isSubmitting,setIsSubmitting]=useState(false);
+  const [handoffError,setHandoffError]=useState(false);
+  const submitting=useRef(false);
+  const timer=useRef<ReturnType<typeof setTimeout>|null>(null);
+  useEffect(()=>()=>{if(timer.current)clearTimeout(timer.current)},[]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = event.target;
@@ -66,7 +71,7 @@ export default function ArabicContactPage() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!enquiry.name.trim() || !enquiry.device.trim() || !enquiry.area.trim() || !enquiry.fault.trim()) return;
+    if (submitting.current || !enquiry.name.trim() || !enquiry.device.trim() || !enquiry.area.trim() || !enquiry.fault.trim()) return;
 
     const message = [
       'طلب تصليح جديد من صفحة اتصل بنا',
@@ -76,8 +81,14 @@ export default function ArabicContactPage() {
       'المنطقة: ' + enquiry.area,
       'العطل: ' + enquiry.fault,
     ].join('\n');
-    trackConversion('whatsapp_click', { cta_name: 'arabic_contact_form_submit', button_position: 'arabic_contact_page' });
-    handoffWhatsApp(message);
+    submitting.current=true;
+    setIsSubmitting(true);
+    setHandoffError(false);
+    try {
+      trackConversion('whatsapp_click', { cta_name: 'arabic_contact_form_submit', button_position: 'arabic_contact_page' });
+      handoffWhatsApp(message);
+    } catch { setHandoffError(true); }
+    finally { timer.current=setTimeout(()=>{submitting.current=false;setIsSubmitting(false)},800); }
   };
 
   return (
@@ -147,9 +158,11 @@ export default function ArabicContactPage() {
                 <label htmlFor="ar-contact-fault" className="mb-2 block text-sm font-semibold text-slate-200">وصف العطل</label>
                 <textarea id="ar-contact-fault" name="fault" value={enquiry.fault} onChange={handleChange} required rows={4} className="w-full resize-y rounded-xl border border-slate-700 bg-brand-dark/50 px-4 py-3 text-white placeholder:text-slate-500 focus:border-cyan-500 focus:outline-none" placeholder="اكتب المشكلة التي تواجه الجهاز" />
               </div>
-              <button type="submit" className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-cyan-500 px-5 py-3 font-black text-slate-950 transition-colors hover:bg-cyan-400">
-                <Send size={19} aria-hidden="true" /> إرسال التفاصيل عبر واتساب
+              <button type="submit" disabled={isSubmitting} aria-busy={isSubmitting} className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-cyan-500 px-5 py-3 font-black text-slate-950 transition-colors hover:bg-cyan-400">
+                <Send size={19} aria-hidden="true" /> {isSubmitting?"جاري تجهيز رسالة واتساب…":"إرسال التفاصيل عبر واتساب"}
               </button>
+              <p className="sr-only" role="status">{isSubmitting?"جاري تجهيز طلب التصليح على واتساب":""}</p>
+              {handoffError&&<p role="alert" className="text-rose-300">تعذر فتح واتساب. تقدر تحاول مرة ثانية أو <a className="underline" href={whatsappUrl} target="_blank" rel="noopener noreferrer">تفتح واتساب مباشرة</a>.</p>}
               <p className="text-xs leading-6 text-slate-400">سيتم فتح واتساب برسالة جاهزة لمراجعتها وإرسالها بنفسك.</p>
             </form>
           </div>
@@ -218,7 +231,8 @@ export default function ArabicContactPage() {
         </div>
       </section>
 
-      <section className="border-t border-slate-800/50 px-6 py-12">
+      <section className="border-t border-slate-800/50 px-6 py-12" aria-labelledby="ar-contact-questions" data-kcroc-editorial-panel="contact-faq">
+        <h2 id="ar-contact-questions" className="mb-6 text-center text-2xl font-black text-white">أسئلة عن زيارة المختبر والتواصل</h2>
         <div className="mx-auto grid max-w-5xl gap-4 md:grid-cols-2">
           <details className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
             <summary className="cursor-pointer font-bold text-white">هل يمكن زيارة مختبر KCROC مباشرة؟</summary>
@@ -228,16 +242,20 @@ export default function ArabicContactPage() {
             <summary className="cursor-pointer font-bold text-white">هل توفرون استلام اللابتوب من خارج حولي؟</summary>
             <p className="mt-3 leading-7 text-slate-300">نعم، نقدم خدمة استلام وتوصيل مجانية من مناطق الكويت التي نخدمها. مختبرنا الفعلي الوحيد موجود في حولي.</p>
           </details>
+          <details className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5"><summary className="cursor-pointer font-bold text-white">أقدر أرتب الاستلام بدون زيارة المختبر؟</summary><p className="mt-3 leading-7 text-slate-300">إي، استخدم واتساب أو <Link to="/ar/book" className="text-cyan-300 underline">صفحة الحجز</Link> وأرسل الموديل والعطل والمنطقة لتنسيق الاستلام المجاني.</p></details>
+          <details className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5"><summary className="cursor-pointer font-bold text-white">شنو أرسل للفني قبل ما أتواصل؟</summary><p className="mt-3 leading-7 text-slate-300">أرسل الماركة والموديل ووصف مختصر للعطل ومنطقتك. لا ترسل كلمات مرور أو مفاتيح الاسترداد. النموذج فوق يجهز لك الرسالة قبل إرسالها.</p></details>
         </div>
       </section>
 
-      <section className="border-t border-slate-800/50 px-6 py-12">
+      <section className="border-t border-slate-800/50 px-6 py-12" data-kcroc-editorial-panel="contact-links" aria-labelledby="ar-contact-links">
         <div className="mx-auto max-w-6xl">
-          <h2 className="mb-5 text-2xl font-black text-white">صفحات قد تساعدك</h2>
+          <h2 id="ar-contact-links" className="mb-5 text-2xl font-black text-white">صفحات قد تساعدك</h2>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             <Link to="/ar/computer-repair-hawalli" className="rounded-xl border border-slate-800 bg-slate-900/40 p-4 font-semibold text-cyan-300 hover:border-cyan-500/50">تصليح الكمبيوتر واللابتوب في حولي</Link>
             <Link to="/ar/book" className="rounded-xl border border-slate-800 bg-slate-900/40 p-4 font-semibold text-cyan-300 hover:border-cyan-500/50">احجز استلامًا مجانيًا</Link>
             <Link to="/ar/pricing" className="rounded-xl border border-slate-800 bg-slate-900/40 p-4 font-semibold text-cyan-300 hover:border-cyan-500/50">أسعار خدمات التصليح</Link>
+            <Link to="/ar/computer-repair-kuwait" className="rounded-xl border border-slate-800 bg-slate-900/40 p-4 font-semibold text-cyan-300 hover:border-cyan-500/50">تصليح الكمبيوتر في الكويت</Link>
+            <Link to="/ar/laptop-repair-kuwait" className="rounded-xl border border-slate-800 bg-slate-900/40 p-4 font-semibold text-cyan-300 hover:border-cyan-500/50">تصليح اللابتوب في الكويت</Link>
             <Link to="/ar/near-me" className="rounded-xl border border-slate-800 bg-slate-900/40 p-4 font-semibold text-cyan-300 hover:border-cyan-500/50">خدمة التصليح والاستلام في الكويت</Link>
           </div>
         </div>
