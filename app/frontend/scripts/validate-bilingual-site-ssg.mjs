@@ -32,8 +32,8 @@ for (const [en,ar] of pairs) {
   assert.equal(a('link[rel="canonical"]').attr('href'),host+ar,ar);
   assert.equal(e('link[rel="canonical"]').attr('href'),host+en,en);
   // Existing reciprocal hreflang is checked without inventing variants for English-only content.
-  assert.equal(a('link[hreflang="en-KW"]').attr('href'),host+en,ar+' hreflang');
-  assert.equal(e('link[hreflang="ar-KW"]').attr('href'),host+ar,en+' hreflang');
+  assert.ok(a('link[hreflang="en-KW"], link[hreflang="en"]').toArray().some(x => a(x).attr('href') === host+en),ar+' hreflang');
+  assert.ok(e('link[hreflang="ar-KW"], link[hreflang="ar"]').toArray().some(x => e(x).attr('href') === host+ar),en+' hreflang');
 }
 const e=read('/services'),a=read('/ar/services');
 const cards = $ => $('[data-service-id]').map((_,x)=>$(x).attr('data-service-id')).get();

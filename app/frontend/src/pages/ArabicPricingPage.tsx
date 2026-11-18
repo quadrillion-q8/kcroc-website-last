@@ -178,7 +178,7 @@ export default function ArabicPricingPage() {
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_35%_0%,rgba(6,182,212,0.13),transparent_45%)]" />
         <div className="relative mx-auto max-w-6xl">
           <nav aria-label="مسار التنقل" className="mb-7 text-sm text-slate-500">
-            <Link to="/" className="hover:text-cyan-300">الرئيسية</Link>
+            <Link to="/ar" className="hover:text-cyan-300">الرئيسية</Link>
             <span className="mx-2" aria-hidden="true">/</span>
             <span aria-current="page" className="text-slate-300">أسعار التصليح</span>
           </nav>
