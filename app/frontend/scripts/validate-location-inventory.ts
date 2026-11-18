@@ -80,7 +80,7 @@ console.log(
 
 const arInventory = arabicLocationInventory();
 assert.deepEqual(arInventory.map((entry) => entry.slug).sort(), activeLocations.map((entry) => entry.slug).sort());
-assert.equal(arInventory.filter((entry) => entry.hasArabic).length, 8, 'Existing Arabic location parity changed unexpectedly.');
+assert.equal(arInventory.filter((entry) => entry.hasArabic).length, activeLocations.length, 'Every active location must have an Arabic twin.');
 for (const entry of arInventory) {
   assert.equal(entry.path, entry.hasArabic ? '/ar/computer-repair-' + entry.slug : '/location/' + entry.slug);
 }

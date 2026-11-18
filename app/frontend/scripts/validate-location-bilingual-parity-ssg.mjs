@@ -6,7 +6,7 @@ const root = process.cwd();
 const registry=fs.readFileSync(path.join(root,'src/utils/locale.ts'),'utf8');
 const map=registry.slice(registry.indexOf('export const ENGLISH_TO_ARABIC:'),registry.indexOf('export const ARABIC_TO_ENGLISH:'));
 const pairs=[...map.matchAll(/'([^']+)':\s*'([^']+)'/g)].map(m=>[m[1],m[2]]).filter(([en])=>en.startsWith('/location/'));
-assert.equal(pairs.length,8,'Expected eight existing location counterparts');
+assert.equal(pairs.length,26,'All 26 active locations must have Arabic twins');
 const read = p => {
   const slug=p.slice(1);const file=[slug+'.html',slug+'/index.html'].map(x=>path.join(root,'dist',x)).find(x=>fs.existsSync(x));
   assert.ok(file,p);return load(fs.readFileSync(file,'utf8'));
