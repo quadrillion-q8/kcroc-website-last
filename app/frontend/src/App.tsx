@@ -118,6 +118,7 @@ export const routes: RouteObject[] = [
           // fallbacks; production also gets permanent server redirects below.
           { path: 'blog/laptop-wont-turn-on', element: <Navigate to="/laptop-wont-turn-on" replace /> },
           { path: 'blog/laptop-wont-turn-on-causes-fixes', element: <Navigate to="/laptop-wont-turn-on" replace /> },
+          { path: 'ar/author/imran', lazy: async () => ({ Component: (await import('./pages/AuthorImran')).default }) },
           { path: 'author/imran', lazy: async () => ({ Component: (await import('./pages/AuthorImran')).default }) },
           { path: 'guides/laptop-battery-warning-signs', lazy: async () => ({ Component: (await import('./pages/BatteryHealthGuide')).default }) },
           { path: 'guides/why-is-my-laptop-so-hot', lazy: async () => ({ Component: (await import('./pages/LaptopOverheatingGuide')).default }) },
