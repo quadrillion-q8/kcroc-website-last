@@ -31,6 +31,12 @@ export const buildWhatsAppLink = (message?: string, phone?: string): string => {
  * Dynamically generates WhatsApp links based on user context
  * for hyper-targeted sales conversions.
  */
+// Navigate in the current tab: avoids popup blocking and duplicate tabs caused
+// by window.open with noopener (which can return null even on success).
+export const handoffWhatsApp = (message: string): void => {
+  window.location.assign(buildWhatsAppLink(message));
+};
+
 export const getIntentWhatsAppLink = (context: IntentContext, entityName?: string): string => {
   let message = "";
 
