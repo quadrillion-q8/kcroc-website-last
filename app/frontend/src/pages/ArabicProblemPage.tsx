@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Navigate, useParams } from 'react-router-dom';
+import { Link, Navigate, useLocation } from 'react-router-dom';
 import { KCROC_GRAPH } from '../data/graph';
 import { ARABIC_PROBLEMS } from '../data/arabicProblems';
 import { SEOEngine } from '../core/components/SEOEngine';
@@ -13,7 +13,7 @@ const serviceLabels: Record<string,string> = {
  'srv-laptop':'تصليح لابتوب','srv-motherboard':'تصليح مذربورد','srv-charging-port':'تصليح مدخل الشحن','srv-liquid-damage':'تصليح أضرار السوائل','srv-gaming-laptop':'تصليح لابتوب ألعاب','srv-gaming-laptop-cleaning':'تنظيف لابتوب الألعاب والتبريد','srv-screen':'تبديل شاشة اللابتوب','srv-macbook':'تصليح ماك بوك','srv-keyboard':'تبديل كيبورد اللابتوب','srv-battery':'تبديل بطارية اللابتوب','srv-gaming':'تصليح كمبيوتر ألعاب','srv-ssd-ram':'ترقية SSD وRAM','srv-hinge':'تصليح المفصلات',
 };
 export default function ArabicProblemPage() {
- const {slug}=useParams();
+ const slug=useLocation().pathname.replace(/^\/ar\//,'').replace(/\/+$/,'');
  const {trackConversion}=useAnalytics();
  const problem=KCROC_GRAPH.problems.find(p=>p.slug===slug);
  const copy=slug?ARABIC_PROBLEMS[slug]:undefined;
