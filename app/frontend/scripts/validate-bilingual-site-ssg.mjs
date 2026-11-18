@@ -131,3 +131,22 @@ for(const [slug,count] of [['privacy-policy',8],['terms-of-service',9],['privacy
  assert.equal($('main [data-legal-section]').length,count,slug+' full legal section inventory');
 }
 console.log('Phase 6.5D: Arabic business and legal routes, FAQ IDs, gallery inventory and localized legal navigation verified.');
+
+const sitemapXml=fs.readFileSync(path.join(root,'public/sitemap.xml'),'utf8');
+const sitemapPaths=[...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>new URL(m[1]).pathname.replace(/\/+$/,'')||'/');
+const editorial=p=>/^\/(?:ar\/)?(?:blog|guides|news)(?:\/|$)/.test(p);
+const pairedEnglish=new Map(pairs);
+const pairedArabic=new Map(pairs.map(([en,ar])=>[ar,en]));
+const eligible=sitemapPaths.filter(p=>!editorial(p)&&p!=='/404');
+for(const route of eligible){
+ const ar=route==='/ar'||route.startsWith('/ar/');
+ const twin=(ar?pairedArabic:pairedEnglish).get(route);
+ assert.ok(twin&&sitemapPaths.includes(twin),route+' requires indexed language counterpart');
+}
+const authorEN=read('/author/imran'),authorAR=read('/ar/author/imran');
+for(const $ of [authorEN,authorAR]){
+ assert.ok($('script[type="application/ld+json"]').toArray().some(x=>$(x).text().includes('https://www.computerrepairkuwait.com/author/imran#person')),'Shared author identity');
+ assert.equal($('main h1').length,1);
+}
+assert.ok(read('/ar/about')('main a[href="/ar/author/imran"]').length,'Arabic author discovery');
+console.log('Phase 6.5E: '+eligible.length+' non-editorial sitemap URLs have reciprocal language twins.');
