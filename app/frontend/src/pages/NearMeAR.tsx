@@ -19,17 +19,10 @@ import { Badge } from '@/components/ui/badge';
 import { SEOEngine } from '../core/components/SEOEngine';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { KCROC_GRAPH } from '../data/graph';
+import { arabicLocationInventory } from '../utils/arabicLocationRoutes';
 import { IMAGES } from '../constants/images';
 import { ArabicHeadTermLinks } from '@/components/content/ArabicHeadTermLinks';
 
-// Service areas with a dedicated Arabic page link there; others fall back to English.
-const AR_LOCATION_PATHS: Record<string, string> = {
-  hawalli: '/ar/computer-repair-hawalli',
-  salmiya: '/ar/computer-repair-salmiya',
-  farwaniya: '/ar/computer-repair-farwaniya',
-  'kuwait-city': '/ar/computer-repair-kuwait-city',
-  jahra: '/ar/computer-repair-jahra',
-};
 
 // Arabic labels for existing (English-slugged) service pages — the
 // underlying service pages stay English for now, but Arabic visitors get
@@ -47,21 +40,7 @@ const SERVICES_AR: { path: string; icon: React.ElementType; title: string; descr
   { path: '/ar/laptop-charging-port-repair-kuwait', icon: Cpu, title: 'إصلاح مدخل الشحن', description: 'تشخيص منفذ الشحن ودوائر الطاقة، مع إصلاح المنفذ أو العطل على مستوى اللوحة عندما يكون ذلك ممكنًا.' },
 ];
 
-const AREAS_AR = [
-  { slug: 'hawalli', title: 'حولي' },
-  { slug: 'salmiya', title: 'السالمية' },
-  { slug: 'farwaniya', title: 'الفروانية' },
-  { slug: 'kuwait-city', title: 'مدينة الكويت' },
-  { slug: 'jahra', title: 'الجهراء' },
-  { slug: 'ahmadi', title: 'الأحمدي' },
-  { slug: 'fahaheel', title: 'الفحيحيل' },
-  { slug: 'mangaf', title: 'المنقف' },
-  { slug: 'abu-halifa', title: 'أبو حليفة' },
-  { slug: 'jabriya', title: 'الجابرية' },
-  { slug: 'fintas', title: 'الفنطاس' },
-  { slug: 'mubarak-al-kabeer', title: 'مبارك الكبير' },
-  { slug: 'sabah-al-salem', title: 'صباح السالم' },
-];
+const AREAS_AR = arabicLocationInventory();
 
 const AR_COMMERCIAL_CLUSTER = [
   { href: '/ar/computer-repair-kuwait', title: 'تصليح كمبيوتر في الكويت', desc: 'صفحة الخدمة العامة للكمبيوتر واللابتوب واللوحة الأم.' },
@@ -282,11 +261,12 @@ export default function NearMeAR() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {AREAS_AR.map((area) => (
-              <Link key={area.slug} to={AR_LOCATION_PATHS[area.slug] ?? `/location/${area.slug}`} className="group rounded-2xl border border-slate-800 bg-brand-dark/70 p-5 transition hover:border-cyan-500/50 hover:bg-slate-900">
+              <Link key={area.slug} to={area.path} className="group rounded-2xl border border-slate-800 bg-brand-dark/70 p-5 transition hover:border-cyan-500/50 hover:bg-slate-900">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <div className="flex items-center gap-2 text-cyan-400"><MapPin className="h-4 w-4" aria-hidden="true" /><span className="text-xs font-bold uppercase tracking-wider">منطقة خدمة</span></div>
+                    <div className="flex items-center gap-2 text-cyan-400"><MapPin className="h-4 w-4" aria-hidden="true" /><span className="text-xs font-bold uppercase tracking-wider">{area.isPhysicalLocation ? 'المختبر الفعلي' : 'منطقة خدمة'}</span></div>
                     <h3 className="mt-2 text-xl font-black text-white">تصليح كمبيوتر {area.title}</h3>
+                    {!area.hasArabic && <span className="mt-1 block text-xs text-slate-400" lang="ar-KW">تفاصيل الخدمة بالإنجليزي</span>}
                   </div>
                   <ArrowRight className="mt-1 h-5 w-5 shrink-0 rotate-180 text-slate-600 transition group-hover:-translate-x-1 group-hover:text-cyan-400" aria-hidden="true" />
                 </div>

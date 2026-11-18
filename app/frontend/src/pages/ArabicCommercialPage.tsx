@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft, BadgeCheck, BatteryCharging, CheckCircle2, CircleCheck, ClipboardCheck, Cpu, Gauge, MapPin, MessageCircle, Microscope, MonitorCog, Phone, Power, ShieldCheck, Star, Thermometer, Truck, Wrench } from 'lucide-react';
 import { KCROC_GRAPH } from '../data/graph';
+import { arabicLocationPath } from '../utils/arabicLocationRoutes';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { useAnalytics } from '../core/analytics/AnalyticsProvider';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
@@ -11,32 +12,32 @@ import { buildWhatsAppLink } from '../utils/whatsappIntent';
 import { ArabicHeadTermLinks } from '@/components/content/ArabicHeadTermLinks';
 
 const LOCAL_LINKS = [
-  { label: 'حولي', path: '/ar/computer-repair-hawalli' },
-  { label: 'الفروانية', path: '/ar/computer-repair-farwaniya' },
-  { label: 'السالمية', path: '/ar/computer-repair-salmiya' },
-  { label: 'الجهراء', path: '/ar/computer-repair-jahra' },
-  { label: 'الأحمدي', path: '/location/ahmadi' },
-  { label: 'مدينة الكويت', path: '/ar/computer-repair-kuwait-city' }
+  { label: 'حولي', path: arabicLocationPath('hawalli') },
+  { label: 'الفروانية', path: arabicLocationPath('farwaniya') },
+  { label: 'السالمية', path: arabicLocationPath('salmiya') },
+  { label: 'الجهراء', path: arabicLocationPath('jahra') },
+  { label: 'الأحمدي', path: arabicLocationPath('ahmadi') },
+  { label: 'مدينة الكويت', path: arabicLocationPath('kuwait-city') }
 ];
 
 const KUWAIT_GOVERNORATE_LINKS = [
-  { label: 'حولي', path: '/ar/computer-repair-hawalli' },
-  { label: 'العاصمة', path: '/ar/computer-repair-kuwait-city' },
-  { label: 'الفروانية', path: '/ar/computer-repair-farwaniya' },
-  { label: 'الجهراء', path: '/ar/computer-repair-jahra' },
-  { label: 'الأحمدي', path: '/location/ahmadi' },
-  { label: 'مبارك الكبير', path: '/location/mubarak-al-kabeer' }
+  { label: 'حولي', path: arabicLocationPath('hawalli') },
+  { label: 'العاصمة', path: arabicLocationPath('kuwait-city') },
+  { label: 'الفروانية', path: arabicLocationPath('farwaniya') },
+  { label: 'الجهراء', path: arabicLocationPath('jahra') },
+  { label: 'الأحمدي', path: arabicLocationPath('ahmadi') },
+  { label: 'مبارك الكبير', path: arabicLocationPath('mubarak-al-kabeer') }
 ];
 
 const FAHAHEEL_LOCAL_LINKS = [
-  { label: 'المنقف', path: '/ar/computer-repair-mangaf' },
-  { label: 'الأحمدي', path: '/ar/computer-repair-ahmadi' },
-  { label: 'أبو حليفة', path: '/location/abu-halifa' }
+  { label: 'المنقف', path: arabicLocationPath('mangaf') },
+  { label: 'الأحمدي', path: arabicLocationPath('ahmadi') },
+  { label: 'أبو حليفة', path: arabicLocationPath('abu-halifa') }
 ];
 
 const AHMADI_LOCAL_LINKS = [
-  { label: 'الفحيحيل', path: '/ar/computer-repair-fahaheel' },
-  { label: 'المنقف', path: '/ar/computer-repair-mangaf' }
+  { label: 'الفحيحيل', path: arabicLocationPath('fahaheel') },
+  { label: 'المنقف', path: arabicLocationPath('mangaf') }
 ];
 
 const AR_GUIDES = [
@@ -166,7 +167,7 @@ const CONFIG: Record<string, {
       { label: 'تبديل بطارية اللابتوب', path: '/ar/laptop-battery-replacement-kuwait' },
       { label: 'ترقية SSD وRAM', path: '/ar/ssd-ram-upgrade-kuwait' },
       { label: 'تصليح Gaming Laptop', path: '/ar/gaming-laptop-repair-kuwait' },
-      { label: 'تصليح كمبيوتر حولي', path: '/ar/computer-repair-hawalli' },
+      { label: 'تصليح كمبيوتر حولي', path: arabicLocationPath('hawalli') },
       { label: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' }
     ],
     serviceIds: ['srv-laptop', 'srv-motherboard', 'srv-gaming', 'srv-macbook', 'srv-screen']
@@ -555,9 +556,9 @@ const CONFIG: Record<string, {
     ],
     englishPath: '/location/mangaf',
     arabicLinks: [
-      { label: 'تصليح كمبيوتر في الفحيحيل', path: '/ar/computer-repair-fahaheel' },
-      { label: 'تصليح كمبيوتر في أبو حليفة', path: '/location/abu-halifa' },
-      { label: 'تصليح كمبيوتر في الأحمدي', path: '/ar/computer-repair-ahmadi' },
+      { label: 'تصليح كمبيوتر في الفحيحيل', path: arabicLocationPath('fahaheel') },
+      { label: 'تصليح كمبيوتر في أبو حليفة', path: arabicLocationPath('abu-halifa') },
+      { label: 'تصليح كمبيوتر في الأحمدي', path: arabicLocationPath('ahmadi') },
       { label: 'تصليح اللابتوب', path: '/ar/laptop-repair-kuwait' },
       { label: 'تصليح المذربورد', path: '/ar/motherboard-repair-kuwait' },
       { label: 'تصليح MacBook', path: '/ar/macbook-repair-kuwait' },
@@ -605,9 +606,9 @@ const CONFIG: Record<string, {
     ],
     englishPath: '/location/fahaheel',
     arabicLinks: [
-      { label: 'تصليح كمبيوتر في المنقف', path: '/ar/computer-repair-mangaf' },
-      { label: 'تصليح كمبيوتر في الأحمدي', path: '/ar/computer-repair-ahmadi' },
-      { label: 'تصليح كمبيوتر في أبو حليفة', path: '/location/abu-halifa' },
+      { label: 'تصليح كمبيوتر في المنقف', path: arabicLocationPath('mangaf') },
+      { label: 'تصليح كمبيوتر في الأحمدي', path: arabicLocationPath('ahmadi') },
+      { label: 'تصليح كمبيوتر في أبو حليفة', path: arabicLocationPath('abu-halifa') },
       { label: 'تصليح اللابتوب', path: '/ar/laptop-repair-kuwait' },
       { label: 'تصليح المذربورد', path: '/ar/motherboard-repair-kuwait' },
       { label: 'تصليح مدخل شحن اللابتوب', path: '/ar/laptop-charging-port-repair-kuwait' },
@@ -657,8 +658,8 @@ const CONFIG: Record<string, {
     ],
     englishPath: '/location/ahmadi',
     arabicLinks: [
-      { label: 'تصليح كمبيوتر في الفحيحيل', path: '/ar/computer-repair-fahaheel' },
-      { label: 'تصليح كمبيوتر في المنقف', path: '/ar/computer-repair-mangaf' },
+      { label: 'تصليح كمبيوتر في الفحيحيل', path: arabicLocationPath('fahaheel') },
+      { label: 'تصليح كمبيوتر في المنقف', path: arabicLocationPath('mangaf') },
       { label: 'تصليح اللابتوب', path: '/ar/laptop-repair-kuwait' },
       { label: 'تصليح MacBook', path: '/ar/macbook-repair-kuwait' },
       { label: 'تصليح Gaming PC', path: '/ar/gaming-pc-repair-kuwait' },
@@ -778,7 +779,7 @@ const CONFIG: Record<string, {
       { label: 'إصلاح منفذ الشحن ودائرة الطاقة', path: '/ar/laptop-charging-port-repair-kuwait' },
       { label: 'ترقية SSD وRAM', path: '/ar/ssd-ram-upgrade-kuwait' },
       { label: 'أسعار التصليح في الكويت', path: '/ar/pricing' },
-      { label: 'تصليح كمبيوتر حولي', path: '/ar/computer-repair-hawalli' }
+      { label: 'تصليح كمبيوتر حولي', path: arabicLocationPath('hawalli') }
     ],
     serviceIds: ['srv-laptop', 'srv-charging-port', 'srv-motherboard']
   },
@@ -842,7 +843,7 @@ const CONFIG: Record<string, {
       { label: 'تبديل البطارية', path: '/ar/laptop-battery-replacement-kuwait' },
       { label: 'تصليح Gaming Laptop', path: '/ar/gaming-laptop-repair-kuwait' },
       { label: 'دليل اللابتوب البطيء', path: '/blog/why-is-my-laptop-so-slow-2026' },
-      { label: 'تصليح كمبيوتر حولي', path: '/ar/computer-repair-hawalli' }
+      { label: 'تصليح كمبيوتر حولي', path: arabicLocationPath('hawalli') }
     ],
     serviceIds: ['srv-ssd-ram', 'srv-laptop', 'srv-gaming-laptop']
   },
@@ -955,7 +956,7 @@ const CONFIG: Record<string, {
       { label: 'تصليح Gaming PC', path: '/ar/gaming-pc-repair-kuwait' },
       { label: 'تصليح لابتوب', path: '/ar/laptop-repair-kuwait' },
       { label: 'ترقية SSD وRAM', path: '/ar/ssd-ram-upgrade-kuwait' },
-      { label: 'تصليح كمبيوتر حولي', path: '/ar/computer-repair-hawalli' }
+      { label: 'تصليح كمبيوتر حولي', path: arabicLocationPath('hawalli') }
     ],
     serviceIds: ['srv-gaming-laptop-cleaning', 'srv-gaming', 'srv-laptop', 'srv-motherboard', 'srv-screen', 'srv-battery']
   }
@@ -1116,19 +1117,17 @@ const GAMING_AR_BRANDS = [
 ];
 
 const GAMING_AR_AREAS = [
-  { label: 'حولي', path: '/ar/computer-repair-hawalli' },
-  { label: 'السالمية', path: '/ar/computer-repair-salmiya' },
-  { label: 'مدينة الكويت', path: '/ar/computer-repair-kuwait-city' },
-  { label: 'الفروانية', path: '/ar/computer-repair-farwaniya' },
-  { label: 'الجهراء', path: '/ar/computer-repair-jahra' },
-  { label: 'الأحمدي', path: '/location/ahmadi' },
-  { label: 'الفحيحيل', path: '/location/fahaheel' },
-  { label: 'المنقف', path: '/location/mangaf' },
-  { label: 'أبو حليفة', path: '/location/abu-halifa' },
-  { label: 'جابرية', path: '/location/jabriya' },
-  { label: 'مبارك الكبير', path: '/location/mubarak-al-kabeer' },
-  { label: 'الفنطاس', path: '/location/fintas' },
-  { label: 'صباح السالم', path: '/location/sabah-al-salem' },
+  { label: 'حولي', path: arabicLocationPath('hawalli') },
+  { label: 'السالمية', path: arabicLocationPath('salmiya') },
+  { label: 'مدينة الكويت', path: arabicLocationPath('kuwait-city') },
+  { label: 'الفروانية', path: arabicLocationPath('farwaniya') },
+  { label: 'الجهراء', path: arabicLocationPath('jahra') },
+  { label: 'الأحمدي', path: arabicLocationPath('ahmadi') },
+  { label: 'الفحيحيل', path: arabicLocationPath('fahaheel') },
+  { label: 'المنقف', path: arabicLocationPath('mangaf') },
+  { label: 'أبو حليفة', path: arabicLocationPath('abu-halifa') },
+  { label: 'مبارك الكبير', path: arabicLocationPath('mubarak-al-kabeer') },
+  { label: 'صباح السالم', path: arabicLocationPath('sabah-al-salem') },
 ];
 
 const GAMING_AR_FAQ = [
@@ -2195,10 +2194,46 @@ const ARABIC_SERVICE_LAYOUT_SLUGS = new Set([
   'gaming-laptop-repair-kuwait',
 ]);
 
+const AR_LOCATION_PROOF: Record<string, { title: string; text: string; images: { image: { src: string; width: number; height: number }; alt: string; caption: string }[]; services: { label: string; path: string }[] }> = {
+  'computer-repair-salmiya': { title: "السالمية", text: "إذا انسكبت قهوة أو ماي على اللابتوب، لا تعيد تشغيله ولا تشحنه. عند الاستلام من السالمية ننسق نقطة التسليم عند مدخل العمارة أو المكتب، ونفحص آثار السوائل والتآكل ومسار الطاقة في مختبر حولي قبل اقتراح تبديل أي قطعة.", images: [
+    { image: IMAGES.services.laptopRepair, alt: "فحص لابتوب داخل مختبر KCROC بحولي", caption: "تشخيص أعطال اللابتوب وفحص اللوحة قبل تحديد القطعة المطلوبة." },
+    { image: IMAGES.brand.shopInterior, alt: "داخل مختبر KCROC المركزي في حولي", caption: "مكان الفحص والإصلاح الفعلي في حولي." },
+    { image: IMAGES.brand.technicians, alt: "فنيو KCROC أثناء فحص جهاز", caption: "تشخيص العطل قبل أي إصلاح مدفوع." },
+    { image: IMAGES.brand.leadTechnician, alt: "فني يعمل على جهاز في طاولة الإصلاح", caption: "فحص المكونات على طاولة المختبر." },
+    { image: IMAGES.brand.inventory, alt: "قطع غيار اللابتوب في مختبر KCROC", caption: "نتأكد من توافق القطعة وتوفرها قبل الطلب." }
+  ], services: [{"label":"تصليح أضرار السوائل","path":"/ar/laptop-liquid-damage-repair-kuwait"},{"label":"تصليح المذربورد","path":"/ar/motherboard-repair-kuwait"},{"label":"تصليح ماك بوك","path":"/ar/macbook-repair-kuwait"}] },
+  'computer-repair-jahra': { title: "الجهراء", text: "لتوفير مشوار الجهراء إلى حولي، أرسل المنطقة والقطعة وموقع الاستلام وموديل الجهاز. إذا اللابتوب يطفي أثناء اللعب، نفحص الحرارة والمراوح والمشتت تحت الحمل، ونفصل مشاكل التبريد عن أعطال دائرة الطاقة قبل تحديد الإصلاح.", images: [
+    { image: IMAGES.motherboard.thermalGrizzly1, alt: "وضع المعجون الحراري على شريحة أثناء صيانة التبريد", caption: "فحص التبريد وخدمة المعجون الحراري حسب تشخيص الجهاز." },
+    { image: IMAGES.brand.shopInterior, alt: "داخل مختبر KCROC المركزي في حولي", caption: "مكان الفحص والإصلاح الفعلي في حولي." },
+    { image: IMAGES.brand.technicians, alt: "فنيو KCROC أثناء فحص جهاز", caption: "تشخيص العطل قبل أي إصلاح مدفوع." },
+    { image: IMAGES.brand.leadTechnician, alt: "فني يعمل على جهاز في طاولة الإصلاح", caption: "فحص المكونات على طاولة المختبر." },
+    { image: IMAGES.brand.inventory, alt: "قطع غيار اللابتوب في مختبر KCROC", caption: "نتأكد من توافق القطعة وتوفرها قبل الطلب." }
+  ], services: [{"label":"تنظيف لابتوب الألعاب","path":"/ar/gaming-laptop-cleaning-kuwait"},{"label":"تصليح المذربورد","path":"/ar/motherboard-repair-kuwait"},{"label":"تصليح كمبيوتر ألعاب","path":"/ar/gaming-pc-repair-kuwait"}] },
+  'computer-repair-kuwait-city': { title: "مدينة الكويت", text: "إذا الجهاز من مكتب أو برج في شرق أو القبلة أو المرقاب، نسق معانا نقطة التسليم المناسبة عند الاستقبال ووقت وجود الشخص المخوّل بالتسليم. نفحص شحن اللابتوب وشاشته واللوحة الأم حسب العطل، ونوضح السعر قبل العمل المدفوع؛ كل التصليح يتم بمختبر حولي.", images: [
+    { image: IMAGES.brand.technicians, alt: "فنيو KCROC يفحصون الأجهزة في مختبر حولي", caption: "فحص أجهزة العمل داخل المختبر المركزي." },
+    { image: IMAGES.brand.shopInterior, alt: "داخل مختبر KCROC المركزي في حولي", caption: "مكان الفحص والإصلاح الفعلي في حولي." },
+    { image: IMAGES.services.laptopRepair, alt: "لابتوب أثناء الفحص في المختبر", caption: "مثال على فحص جهاز قبل تحديد الإصلاح." },
+    { image: IMAGES.brand.leadTechnician, alt: "فني يعمل على جهاز في طاولة الإصلاح", caption: "فحص المكونات على طاولة المختبر." },
+    { image: IMAGES.brand.inventory, alt: "قطع غيار اللابتوب في مختبر KCROC", caption: "نتأكد من توافق القطعة وتوفرها قبل الطلب." }
+  ], services: [{"label":"تصليح لابتوب","path":"/ar/laptop-repair-kuwait"},{"label":"تصليح مدخل الشحن","path":"/ar/laptop-charging-port-repair-kuwait"},{"label":"تصليح شاشة لابتوب","path":"/ar/laptop-screen-repair-kuwait"}] },
+};
+
 export default function ArabicCommercialPage() {
   const { trackConversion } = useAnalytics();
   const { slug } = useParams<{ slug: string }>();
   const cfg = slug ? CONFIG[slug] : undefined;
+  const locationProof = slug ? AR_LOCATION_PROOF[slug] : undefined;
+  const locationEntity = KCROC_GRAPH.locations.find((location) => slug === 'computer-repair-' + location.slug);
+  const trackLocationCta = (event: 'whatsapp_click' | 'phone_call_click' | 'book_pickup_click', position: string) => {
+    if (!locationEntity) return;
+    trackConversion(event, {
+      cta_name: locationEntity.slug + '_ar_' + event,
+      button_position: position,
+      entity_id: locationEntity.id,
+      entity_type: 'Location',
+      entity_slug: locationEntity.slug,
+    });
+  };
   const page = slug ? KCROC_GRAPH.pages.find((item) => item.slug === `ar/${slug}`) : undefined;
   const business = KCROC_GRAPH.business;
   const mangafLocation = slug === 'computer-repair-mangaf'
@@ -3339,7 +3374,7 @@ export default function ArabicCommercialPage() {
                 </div>
               )}
               {slug === 'laptop-keyboard-replacement-kuwait' && (
-                <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap"><a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300"><MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل موديل اللابتوب ومشكلة الكيبورد عبر واتساب</a><Link to="/ar/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-bold text-white transition hover:border-cyan-500/40 hover:text-cyan-300"><Truck className="h-5 w-5" aria-hidden="true" /> اطلب استلامًا مجانيًا من منطقتك</Link></div>
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap"><a href={wa} onClick={locationEntity ? () => trackLocationCta('whatsapp_click', 'hero') : undefined} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300"><MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل موديل اللابتوب ومشكلة الكيبورد عبر واتساب</a><Link to="/ar/book" onClick={locationEntity ? () => trackLocationCta('book_pickup_click', 'hero') : undefined} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-bold text-white transition hover:border-cyan-500/40 hover:text-cyan-300"><Truck className="h-5 w-5" aria-hidden="true" /> اطلب استلامًا مجانيًا من منطقتك</Link></div>
               )}
               {slug === 'laptop-keyboard-replacement-kuwait' && (
                 <div id="keyboard-symptom-triage" className="mt-6 rounded-2xl border border-cyan-900/60 bg-slate-950/75 p-4 sm:p-5" role="group" aria-labelledby="keyboard-symptom-triage-heading"><p className="text-xs font-black uppercase tracking-[0.14em] text-cyan-300">تحديد العَرَض وبدء التشخيص</p><h2 id="keyboard-symptom-triage-heading" className="mt-2 text-lg font-black text-white">شنو مشكلة الكيبورد عندك؟</h2><p className="mt-2 text-sm leading-6 text-slate-400">اختَر أقرب وصف، وتفتح لك رسالة واتساب فيها الأسئلة الأولية عن الموديل والعطل. راجع الرسالة وأضف منطقتك قبل الإرسال.</p><div className="mt-4 grid gap-2 sm:grid-cols-2">{keyboardSymptomLinks.map((item, index) => <a key={item.label} href={item.href} target="_blank" rel="noreferrer" className={index === 0 ? 'flex min-h-14 items-center rounded-xl border border-amber-600/50 bg-amber-950/25 px-4 py-3 text-sm font-bold leading-6 text-amber-100 transition hover:border-amber-400/70' : 'flex min-h-14 items-center rounded-xl border border-slate-700 bg-slate-900/70 px-4 py-3 text-sm font-bold leading-6 text-slate-200 transition hover:border-cyan-500/60 hover:text-cyan-200'}>{item.label}</a>)}</div><p className="mt-3 text-xs leading-5 text-slate-500">إذا انكب سائل، خل الجهاز مطفي ولا تعاود تشغيله للتجربة، ولا تستخدم السشوار أو ترش منظفات على الأزرار.</p></div>
@@ -3364,7 +3399,7 @@ export default function ArabicCommercialPage() {
               )}
               {slug === 'gaming-laptop-cleaning-kuwait' && (
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <a href={wa} target="_blank" rel="noreferrer" aria-label="احجز تنظيف وصيانة تبريد لابتوب الألعاب عبر واتساب" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
+                  <a href={wa} onClick={locationEntity ? () => trackLocationCta('whatsapp_click', 'hero') : undefined} target="_blank" rel="noreferrer" aria-label="احجز تنظيف وصيانة تبريد لابتوب الألعاب عبر واتساب" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
                     <MessageCircle className="h-5 w-5" aria-hidden="true" /> احجز تنظيف وصيانة تبريد لابتوب الألعاب عبر واتساب
                   </a>
                   <Link to="/ar/pricing" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 px-6 py-3 font-bold text-white transition hover:border-cyan-500/40 hover:text-cyan-300">مراجعة الأسعار</Link>
@@ -3372,7 +3407,7 @@ export default function ArabicCommercialPage() {
               )}
               {slug === 'desktop-pc-repair-kuwait' && (
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
+                  <a href={wa} onClick={locationEntity ? () => trackLocationCta('whatsapp_click', 'hero') : undefined} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
                     <MessageCircle className="h-5 w-5" aria-hidden="true" /> واتساب KCROC — احجز استلام مجاني
                   </a>
                   <Link to="/ar/pricing" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 px-6 py-3 font-bold text-white transition hover:border-cyan-500/40 hover:text-cyan-300">مراجعة أسعار الإصلاح</Link>
@@ -3380,10 +3415,10 @@ export default function ArabicCommercialPage() {
               )}
               {slug === 'macbook-repair-kuwait' && (
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
+                  <a href={wa} onClick={locationEntity ? () => trackLocationCta('whatsapp_click', 'hero') : undefined} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
                     <MessageCircle className="h-5 w-5" aria-hidden="true" /> تواصل مع فني ماك بوك عبر واتساب
                   </a>
-                  <Link to="/ar/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
+                  <Link to="/ar/book" onClick={locationEntity ? () => trackLocationCta('book_pickup_click', 'hero') : undefined} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
                     <Truck className="h-5 w-5" aria-hidden="true" /> احجز استلام مجاني من منطقتك
                   </Link>
                   <Link to="/ar/macbook-screen-replacement-kuwait" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-cyan-500/30 px-6 py-3 font-bold text-cyan-300 transition hover:bg-cyan-500/10">
@@ -3393,10 +3428,10 @@ export default function ArabicCommercialPage() {
               )}
               {slug === 'macbook-screen-replacement-kuwait' && (
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <a href={wa} target="_blank" rel="noreferrer" aria-label="أرسل صورة شاشة MacBook عبر واتساب" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
+                  <a href={wa} onClick={locationEntity ? () => trackLocationCta('whatsapp_click', 'hero') : undefined} target="_blank" rel="noreferrer" aria-label="أرسل صورة شاشة MacBook عبر واتساب" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
                     <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل صورة الشاشة والجهاز عبر واتساب
                   </a>
-                  <Link to="/ar/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
+                  <Link to="/ar/book" onClick={locationEntity ? () => trackLocationCta('book_pickup_click', 'hero') : undefined} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
                     <Truck className="h-5 w-5" aria-hidden="true" /> اطلب استلامًا مجانيًا
                   </Link>
                   <Link to="/ar/macbook-repair-kuwait" className="inline-flex min-h-12 items-center justify-center px-3 py-3 text-sm font-bold text-cyan-300 hover:text-cyan-200">
@@ -3406,29 +3441,29 @@ export default function ArabicCommercialPage() {
               )}
               {slug === 'computer-repair-kuwait-city' && (
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
+                  <a href={wa} onClick={locationEntity ? () => trackLocationCta('whatsapp_click', 'hero') : undefined} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
                     <MessageCircle className="h-5 w-5" aria-hidden="true" /> اطلب استلام جهازك من المكتب أو المنزل عبر واتساب
                   </a>
-                  <Link to="/ar/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
+                  <Link to="/ar/book" onClick={locationEntity ? () => trackLocationCta('book_pickup_click', 'hero') : undefined} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
                     <Truck className="h-5 w-5" aria-hidden="true" /> احجز استلامًا مجانيًا من مدينة الكويت والعاصمة
                   </Link>
                 </div>
               )}
               {slug === 'laptop-hinge-repair-kuwait' && (
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <a href={wa} target="_blank" rel="noreferrer" aria-label="أرسل صورة مفصلة اللابتوب والهيكل عبر واتساب" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
+                  <a href={wa} onClick={locationEntity ? () => trackLocationCta('whatsapp_click', 'hero') : undefined} target="_blank" rel="noreferrer" aria-label="أرسل صورة مفصلة اللابتوب والهيكل عبر واتساب" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
                     <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل صورة المفصلة والهيكل عبر واتساب
                   </a>
                   <Link to="/ar/pricing" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 px-6 py-3 font-bold text-white transition hover:border-cyan-500/40 hover:text-cyan-300">مراجعة أسعار الإصلاح</Link>
-                  <Link to="/ar/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 px-6 py-3 font-bold text-white transition hover:border-cyan-500/40 hover:text-cyan-300"><Truck className="h-5 w-5" aria-hidden="true" /> اطلب استلامًا مجانيًا</Link>
+                  <Link to="/ar/book" onClick={locationEntity ? () => trackLocationCta('book_pickup_click', 'hero') : undefined} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 px-6 py-3 font-bold text-white transition hover:border-cyan-500/40 hover:text-cyan-300"><Truck className="h-5 w-5" aria-hidden="true" /> اطلب استلامًا مجانيًا</Link>
                 </div>
               )}
               {slug === 'laptop-screen-repair-kuwait' && (
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
+                  <a href={wa} onClick={locationEntity ? () => trackLocationCta('whatsapp_click', 'hero') : undefined} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
                     <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل صورة الشاشة والموديل عبر واتساب
                   </a>
-                  <Link to="/ar/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
+                  <Link to="/ar/book" onClick={locationEntity ? () => trackLocationCta('book_pickup_click', 'hero') : undefined} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
                     <Truck className="h-5 w-5" aria-hidden="true" /> احجز استلام مجاني من منطقتك
                   </Link>
                 </div>
@@ -3583,7 +3618,7 @@ export default function ArabicCommercialPage() {
                   <li className="rounded-2xl border border-slate-800 bg-slate-950/45 p-5"><span className="flex h-9 w-9 items-center justify-center rounded-full bg-cyan-500/15 font-black text-cyan-300">٢</span><h3 className="mt-4 font-bold text-white">جهّز الجهاز للاستلام</h3><p className="mt-2 text-sm leading-7 text-slate-400">في أجهزة Tower افصل الكابلات الخارجية واترك الشاشة والكيبورد والملحقات في مكانها؛ نستلم الصندوق الرئيسي فقط. أما All-in-One فيُستلم كجهاز كامل.</p></li>
                   <li className="rounded-2xl border border-slate-800 bg-slate-950/45 p-5"><span className="flex h-9 w-9 items-center justify-center rounded-full bg-cyan-500/15 font-black text-cyan-300">٣</span><h3 className="mt-4 font-bold text-white">الفحص والموافقة ثم الإرجاع</h3><p className="mt-2 text-sm leading-7 text-slate-400">نفحص الجهاز في مختبر حولي ونبلغك بالتكلفة قبل العمل المدفوع. بعد موافقتك والإصلاح والاختبار، نعيد الجهاز إليك مع ضمان 30 يومًا على الإصلاحات المشمولة.</p></li>
                 </ol>
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row"><a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300"><MessageCircle className="h-5 w-5" aria-hidden="true" /> اطلب استلام الكمبيوتر المكتبي</a><Link to="/ar/pricing" className="inline-flex min-h-12 items-center justify-center rounded-full border border-slate-700 px-6 py-3 font-bold text-white hover:border-cyan-500/40">راجع أسعار الإصلاح</Link></div>
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row"><a href={wa} onClick={locationEntity ? () => trackLocationCta('whatsapp_click', 'hero') : undefined} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300"><MessageCircle className="h-5 w-5" aria-hidden="true" /> اطلب استلام الكمبيوتر المكتبي</a><Link to="/ar/pricing" className="inline-flex min-h-12 items-center justify-center rounded-full border border-slate-700 px-6 py-3 font-bold text-white hover:border-cyan-500/40">راجع أسعار الإصلاح</Link></div>
               </section>
             </>
           )}
@@ -3741,7 +3776,7 @@ export default function ArabicCommercialPage() {
                 </table>
               </div>
               <p className="mt-4 text-sm leading-7 text-slate-400">إذا كانت الشاشة سوداء، لا تحتاج إلى تشغيل MacBook أو فتح قائمة About This Mac. أرسل صورة للشاشة والجهاز، وصورة للرقم أسفل الجهاز إذا كان واضحًا فقط. لا ترسل الرقم التسلسلي أو أي بيانات دخول.</p>
-              <a href={wa} target="_blank" rel="noreferrer" className="mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-cyan-500/30 px-5 py-3 font-bold text-cyan-300 hover:bg-cyan-500/10"><MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل صورة الجهاز لتحديد الموديل</a>
+              <a href={wa} onClick={locationEntity ? () => trackLocationCta('whatsapp_click', 'hero') : undefined} target="_blank" rel="noreferrer" className="mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-cyan-500/30 px-5 py-3 font-bold text-cyan-300 hover:bg-cyan-500/10"><MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل صورة الجهاز لتحديد الموديل</a>
             </section>
 
             <section className="rounded-3xl border border-slate-800 bg-slate-900/45 p-6 sm:p-8" aria-labelledby="macbook-screen-assembly-options" data-service-editorial-panel>
@@ -3809,7 +3844,7 @@ export default function ArabicCommercialPage() {
                   <li key={item} className="rounded-2xl border border-amber-500/15 bg-slate-950/50 p-4 text-sm leading-7 text-slate-200">{item}</li>
                 ))}
               </ul>
-              <a href={wa} target="_blank" rel="noreferrer" className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
+              <a href={wa} onClick={locationEntity ? () => trackLocationCta('whatsapp_click', 'hero') : undefined} target="_blank" rel="noreferrer" className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
                 <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل صورة الشاشة والجهاز عبر واتساب
               </a>
             </section>
@@ -3829,10 +3864,10 @@ export default function ArabicCommercialPage() {
             </div>
           )}
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-7 py-3.5 font-black text-slate-950 hover:bg-cyan-400">
+            <a href={wa} onClick={locationEntity ? () => trackLocationCta('whatsapp_click', 'hero') : undefined} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-7 py-3.5 font-black text-slate-950 hover:bg-cyan-400">
               <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'laptop-repair-kuwait' ? 'أرسل موديل اللابتوب والعطل على واتساب' : slug === 'laptop-screen-repair-kuwait' ? 'أرسل موديل اللابتوب واحصل على عرض سعر' : slug === 'gaming-laptop-repair-kuwait' ? 'أرسل الموديل والعطل على واتساب' : slug === 'laptop-keyboard-replacement-kuwait' ? 'أرسل موديل الجهاز وصورة الكيبورد على واتساب' : slug === 'laptop-charging-port-repair-kuwait' ? 'أرسل موديل الجهاز وصورة المنفذ على واتساب' : slug === 'computer-repair-farwaniya' ? 'رتب استلام مجاني من الفروانية' : 'واتساب KCROC'}
             </a>
-            <Link to="/ar/book" className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-600 px-7 py-3.5 font-bold text-white hover:border-cyan-700 hover:text-cyan-300">
+            <Link to="/ar/book" onClick={locationEntity ? () => trackLocationCta('book_pickup_click', 'hero') : undefined} className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-600 px-7 py-3.5 font-bold text-white hover:border-cyan-700 hover:text-cyan-300">
               <ShieldCheck className="h-5 w-5" aria-hidden="true" /> احجز استلام الجهاز
             </Link>
             <Link to={cfg.englishPath} className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-800 px-7 py-3.5 font-semibold text-slate-300 hover:text-white">
@@ -4097,7 +4132,7 @@ export default function ArabicCommercialPage() {
                 </div>
               </div>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-400">
+                <a href={wa} onClick={locationEntity ? () => trackLocationCta('whatsapp_click', 'body') : undefined} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-400">
                   <MessageCircle className="h-5 w-5" aria-hidden="true" /> رتب استلام مجاني من الفروانية
                 </a>
                 <Link to="/ar/pricing" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 px-6 py-3 font-bold text-cyan-300 hover:border-cyan-500/40">
@@ -4275,7 +4310,7 @@ export default function ArabicCommercialPage() {
                 ))}
               </div>
               <p className="mt-5 text-sm leading-7 text-slate-400">لا ترسل كلمة مرور جهازك في رسالة عرض السعر. نحدد معك أي حاجة لفحص إضافي بعد الاستلام وبموافقتك.</p>
-              <a href={wa} target="_blank" rel="noreferrer" className="mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-400">
+              <a href={wa} onClick={locationEntity ? () => trackLocationCta('whatsapp_click', 'body') : undefined} target="_blank" rel="noreferrer" className="mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-400">
                 <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل موديل الجهاز وصورة الشاشة
               </a>
             </section>
@@ -4631,7 +4666,7 @@ export default function ArabicCommercialPage() {
                 ))}
               </ul>
               <p className="mt-5 text-sm leading-7 text-slate-400">لا تواصل تحريك الكابل بحثًا عن زاوية شحن، ولا تفتح الجهاز وهو متصل بالكهرباء. أرسل موديل اللابتوب وصورة واضحة للمنفذ والشاحن على واتساب لتسريع تحديد الخطوة التالية.</p>
-              <a href={wa} target="_blank" rel="noreferrer" className="mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-400">
+              <a href={wa} onClick={locationEntity ? () => trackLocationCta('whatsapp_click', 'body') : undefined} target="_blank" rel="noreferrer" className="mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-400">
                 <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل صورة المنفذ والشاحن
               </a>
             </section>
@@ -4657,7 +4692,7 @@ export default function ArabicCommercialPage() {
                   <p className="mt-2 text-sm leading-7 text-slate-400">اذكر هل الشحن متقطع أو لا يبدأ أو تظهر رسالة خطأ، مع منطقتك في الكويت.</p>
                 </li>
               </ol>
-              <a href={wa} target="_blank" rel="noreferrer" className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200">
+              <a href={wa} onClick={locationEntity ? () => trackLocationCta('whatsapp_click', 'body') : undefined} target="_blank" rel="noreferrer" className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200">
                 <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل تفاصيل جهازك على واتساب
               </a>
             </section>
@@ -4726,7 +4761,7 @@ export default function ArabicCommercialPage() {
                 ].map((item) => (<li key={item} className="flex gap-3 rounded-2xl border border-slate-800 bg-slate-950/50 p-4 text-sm leading-7 text-slate-300"><CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-cyan-400" aria-hidden="true" /><span>{item}</span></li>))}
               </ul>
               <p className="mt-5 text-sm leading-7 text-slate-400">إذا ظهرت حرارة غير طبيعية أو دخان أو رائحة احتراق، لا تعاود توصيل الطاقة. افصل الكهرباء فقط إذا كان ذلك آمنًا واتبع احتياطات السلامة.</p>
-              <a href={wa} target="_blank" rel="noreferrer" className="mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-400"><MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل وصف المشكلة وموديل اللابتوب</a>
+              <a href={wa} onClick={locationEntity ? () => trackLocationCta('whatsapp_click', 'body') : undefined} target="_blank" rel="noreferrer" className="mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-400"><MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل وصف المشكلة وموديل اللابتوب</a>
             </section>
 
             <section className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="keyboard-repair-process" data-service-editorial-panel>
@@ -5357,6 +5392,26 @@ export default function ArabicCommercialPage() {
           </div>
         )}
 
+        {locationProof && (
+          <section className="mt-12" aria-labelledby="ar-location-workshop-proof">
+            <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">من داخل المختبر</p>
+            <h2 id="ar-location-workshop-proof" className="mt-2 text-2xl font-black text-white sm:text-3xl">شلون نفحص جهازك من {locationProof.title}؟</h2>
+            <p className="mt-3 max-w-3xl leading-8 text-slate-300">{locationProof.text}</p>
+            <p className="mt-2 text-sm leading-7 text-slate-400">الصور من أعمال ومرافق مختبر KCROC في حولي، وليست من فرع في {locationProof.title}.</p>
+            <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+              {locationProof.images.map((item) => (
+                <figure key={item.image.src} className="overflow-hidden rounded-xl border border-slate-800 bg-slate-900/45">
+                  <img src={item.image.src} alt={item.alt} width={item.image.width} height={item.image.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                  <figcaption className="px-3 py-3 text-xs leading-6 text-slate-300">{item.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+            <div className="mt-6 flex flex-wrap gap-3">
+              {locationProof.services.map((item) => <Link key={item.path} to={item.path} className="rounded-full border border-slate-700 px-4 py-2 text-sm font-semibold text-cyan-300 hover:border-cyan-500/40">{item.label}</Link>)}
+            </div>
+          </section>
+        )}
+
         <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="arabic-local">
           <div className="flex items-start gap-4">
             <MapPin className="mt-1 h-6 w-6 shrink-0 text-cyan-400" aria-hidden="true" />
@@ -5430,7 +5485,7 @@ export default function ArabicCommercialPage() {
         <section className="mt-12 rounded-3xl border border-cyan-900/60 bg-cyan-950/25 p-8 text-center sm:p-10">
           <h2 className="text-2xl font-black text-white sm:text-3xl">قول لنا المشكلة مثل ما هي</h2>
           <p className="mx-auto mt-4 max-w-2xl leading-8 text-slate-300">{slug === 'laptop-hinge-repair-kuwait' ? 'أرسل الماركة والموديل وصورة واضحة للمفصلة وإطار الشاشة أو الغطاء، مع منطقتك ووصف مختصر للضرر. نراجع التفاصيل ونوضح لك الخطوة التالية قبل الإصلاح.' : 'ارسل موديل الجهاز، منطقتك، ووصف بسيط للعطل على واتساب. نبدأ من التشخيص ونوضح لك الخطوة التالية قبل الإصلاح.'}</p>
-          <a href={wa} target="_blank" rel="noreferrer" className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-cyan-500 px-8 py-3.5 font-black text-slate-950 hover:bg-cyan-400">
+          <a href={wa} onClick={locationEntity ? () => trackLocationCta('whatsapp_click', 'bottom') : undefined} target="_blank" rel="noreferrer" className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-cyan-500 px-8 py-3.5 font-black text-slate-950 hover:bg-cyan-400">
             <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'laptop-hinge-repair-kuwait' ? 'أرسل صورة المفصلة والهيكل عبر واتساب' : slug === 'laptop-screen-repair-kuwait' ? 'أرسل صورة الشاشة والموديل عبر واتساب' : slug === 'gaming-laptop-repair-kuwait' ? 'أرسل الموديل والعطل على واتساب' : slug === 'computer-repair-farwaniya' ? 'رتب استلام الجهاز من الفروانية' : slug === 'desktop-pc-repair-kuwait' ? 'احجز استلام الكمبيوتر المكتبي عبر واتساب' : 'تواصل مع فني KCROC'}
           </a>
         </section>
