@@ -1513,9 +1513,9 @@ const arabicGovernorateLinks = arabicGovernorateStart >= 0 && arabicGovernorateE
   : '';
 add('Arabic gaming-laptop cooling page uses six existing governorate destinations without changing other pages’ local-area links',
   ['حولي', 'العاصمة', 'الفروانية', 'الجهراء', 'الأحمدي', 'مبارك الكبير'].every((name) => arabicGovernorateLinks.includes(name)) &&
-  ['/ar/computer-repair-hawalli', '/ar/computer-repair-kuwait-city', '/ar/computer-repair-farwaniya', '/ar/computer-repair-jahra', '/location/ahmadi', '/location/mubarak-al-kabeer'].every((path) => arabicGovernorateLinks.includes(path)) &&
+  ['hawalli', 'kuwait-city', 'farwaniya', 'jahra', 'ahmadi', 'mubarak-al-kabeer'].every((slug) => arabicGovernorateLinks.includes(`arabicLocationPath('${slug}')`)) &&
   arabicCommercial.includes("slug === 'gaming-laptop-cleaning-kuwait' ? KUWAIT_GOVERNORATE_LINKS : LOCAL_LINKS") &&
-  arabicCommercial.includes("{ label: 'السالمية', path: '/ar/computer-repair-salmiya' }"));
+  arabicCommercial.includes("{ label: 'السالمية', path: arabicLocationPath('salmiya') }"));
 
 
 const arabicBatteryPageStart = graph.indexOf("    'page-ar-battery-replacement': {");
