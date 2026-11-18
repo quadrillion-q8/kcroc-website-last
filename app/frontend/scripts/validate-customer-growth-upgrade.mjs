@@ -1741,7 +1741,7 @@ add('Arabic MacBook battery page has four model and symptom specific prefilled W
   arabicCommercial.includes('بطارية منتفخة · التراك باد مرتفع') &&
   arabicCommercial.includes('متصل بالشاحن ولا يشحن · فحص المذربورد') &&
   arabicCommercial.includes("href: 'https://wa.me/' + business.telephone") &&
-  arabicCommercial.includes('macbookBatteryQuickQuotes.map((item)'));
+  arabicCommercial.includes('macbookBatteryQuickQuotes.map((item, index)'));
 
 add('Arabic MacBook swollen-battery section prioritises safety and does not promise emergency courier collection',
   arabicCommercial.includes('macbook-swollen-battery') &&
