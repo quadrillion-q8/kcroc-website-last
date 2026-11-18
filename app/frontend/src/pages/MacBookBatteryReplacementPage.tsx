@@ -14,6 +14,7 @@ import {
 import { KCROC_GRAPH } from '../data/graph';
 import { IMAGES } from '../constants/images';
 import { SEOEngine } from '../core/components/SEOEngine';
+import { useAnalytics } from '../core/analytics/AnalyticsProvider';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import './templates/ServiceTemplateLaptopLayout.css';
 
@@ -102,6 +103,11 @@ const FAQS = [
 ];
 
 export default function MacBookBatteryReplacementPage() {
+  const { trackConversion } = useAnalytics();
+  const trackBatteryCta = (cta: string, booking = false) => trackConversion(booking ? 'cta_click' : 'whatsapp_click', {
+    entity_id: 'page-macbook-battery-replacement', entity_type: 'Service', entity_slug: 'macbook-battery-replacement-kuwait',
+    cta_name: cta, button_position: 'body',
+  });
   const page = KCROC_GRAPH.pages.find((entry) => entry.id === 'page-macbook-battery-replacement');
   const business = KCROC_GRAPH.business;
   const [selectedModel, setSelectedModel] = useState<string>(MODEL_CHOICES[7]);
@@ -220,10 +226,10 @@ export default function MacBookBatteryReplacementPage() {
                 Seeing Service Recommended, losing charge quickly, shutting down early, or stuck at 1%? Before fitting a battery, KCROC checks the battery and the relevant USB-C or MagSafe charging path. We match the replacement to your MacBook, explain the available part grade and send the complete installed price before you approve paid work.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 py-3 font-extrabold text-slate-950 hover:brightness-95">
+                <a href={whatsappUrl} onClick={() => trackBatteryCta('macbook_battery_hero_whatsapp')} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 py-3 font-extrabold text-slate-950 hover:brightness-95">
                   <MessageCircle className="h-5 w-5" aria-hidden="true" /> Get My Installed Quote
                 </a>
-                <Link to="/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-950/50 px-5 py-3 font-bold text-white hover:border-cyan-500/50">
+                <Link to="/book" onClick={() => trackBatteryCta('macbook_battery_hero_booking', true)} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-950/50 px-5 py-3 font-bold text-white hover:border-cyan-500/50">
                   <Truck className="h-5 w-5" aria-hidden="true" /> Arrange Free Kuwait Pickup
                 </Link>
               </div>
@@ -304,7 +310,7 @@ export default function MacBookBatteryReplacementPage() {
                 <span className="text-sm font-bold text-white">3. Your Kuwait pickup area (optional)</span>
                 <input value={pickupArea} onChange={(event) => setPickupArea(event.target.value)} placeholder="e.g. Salmiya, Mishref, Kuwait City" className="mt-2 min-h-12 w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none placeholder:text-slate-500 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20" />
               </label>
-              <a href={isSwollen ? swollenUrl : whatsappUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 py-3 font-extrabold text-slate-950 hover:brightness-95">
+              <a href={isSwollen ? swollenUrl : whatsappUrl} onClick={() => trackBatteryCta('macbook_battery_quote_builder')} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 py-3 font-extrabold text-slate-950 hover:brightness-95">
                 <MessageCircle className="h-5 w-5" aria-hidden="true" /> {isSwollen ? 'Ask for Safe Swollen-Battery Pickup' : 'Send My MacBook Quote Request'}
               </a>
             </div>
@@ -408,7 +414,7 @@ export default function MacBookBatteryReplacementPage() {
               <h2 id="swollen-heading" className="mt-2 text-2xl font-black text-amber-100">Swollen battery or lifting trackpad? Stop using the MacBook.</h2>
               <p className="mt-4 leading-7 text-amber-50/90">A swollen pack can press against the trackpad, keyboard and internal components. Stop using and charging the device. Disconnect the charger only if safe; do not press the case, close it against resistance, puncture the pack or try to open the device yourself.</p>
               <p className="mt-3 leading-7 text-amber-50/90">Contact KCROC first for safety instructions. We will confirm whether and how a safe collection can be arranged for your area; do not place a visibly damaged battery into ordinary courier transport without prior instructions.</p>
-              <a href={swollenUrl} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-amber-300 px-5 py-3 font-extrabold text-amber-950 hover:brightness-95">
+              <a href={swollenUrl} onClick={() => trackBatteryCta('macbook_battery_swollen_safety')} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-amber-300 px-5 py-3 font-extrabold text-amber-950 hover:brightness-95">
                 <MessageCircle className="h-5 w-5" aria-hidden="true" /> Request Swollen-Battery Safety Advice
               </a>
             </div>
@@ -449,8 +455,8 @@ export default function MacBookBatteryReplacementPage() {
             <h2 id="book-macbook-battery" className="mt-2 text-2xl font-black text-white sm:text-3xl">Get the correct battery and the complete price before you book</h2>
             <p className="mx-auto mt-4 max-w-3xl leading-7 text-slate-400">Choose your model and symptom above or send us a message with “I am not sure”. We will check the diagnosis and compatible part, then confirm the installed total, warranty and expected timing before paid work.</p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
-              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-[#25D366] px-6 py-3 font-bold text-slate-950"><MessageCircle className="h-5 w-5" aria-hidden="true" /> WhatsApp for Installed Price</a>
-              <Link to="/book" className="inline-flex min-h-12 items-center gap-2 rounded-xl border border-slate-700 px-6 py-3 font-bold text-white"><Truck className="h-5 w-5" aria-hidden="true" /> Book Free Pickup</Link>
+              <a href={whatsappUrl} onClick={() => trackBatteryCta('macbook_battery_footer_whatsapp')} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-[#25D366] px-6 py-3 font-bold text-slate-950"><MessageCircle className="h-5 w-5" aria-hidden="true" /> WhatsApp for Installed Price</a>
+              <Link to="/book" onClick={() => trackBatteryCta('macbook_battery_footer_booking', true)} className="inline-flex min-h-12 items-center gap-2 rounded-xl border border-slate-700 px-6 py-3 font-bold text-white"><Truck className="h-5 w-5" aria-hidden="true" /> Book Free Pickup</Link>
             </div>
             <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-semibold text-slate-400">
               <span className="inline-flex items-center gap-2"><Zap className="h-4 w-4 text-cyan-300" /> Free initial diagnosis</span>

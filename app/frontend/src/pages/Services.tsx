@@ -16,6 +16,7 @@ const CORE_SERVICE_ORDER = [
   'srv-motherboard',
   'srv-screen',
   'srv-battery',
+  'page-macbook-battery-replacement',
   'srv-charging-port',
   'srv-ssd-ram',
   'srv-gaming-laptop-cleaning',
@@ -23,7 +24,7 @@ const CORE_SERVICE_ORDER = [
 
 const SERVICE_FAQ_IDS = ['faq-cost', 'faq-pick-and-drop', 'faq-warranty', 'faq-no-fix'] as const;
 
-const getServiceSummary = (service: (typeof KCROC_GRAPH.services)[number]) => {
+const getServiceSummary = (service: { shortDescription?: string; description?: string }) => {
   const source = (service.shortDescription || service.description || '').trim();
   const sentences = source.match(/[^.!?]+[.!?]?/g) || [source];
   const summary = sentences.slice(0, 2).join('').trim();
@@ -42,7 +43,11 @@ const ICON_MAP: Record<string, React.ElementType> = {
 };
 
 export default function Services() {
-  const services = [...KCROC_GRAPH.services.filter((service) => service.isActive)].sort((a, b) => {
+  const macbookBattery = KCROC_GRAPH.pages.find((page) => page.id === 'page-macbook-battery-replacement' && page.isActive);
+  const services = [
+    ...KCROC_GRAPH.services.filter((service) => service.isActive),
+    ...(macbookBattery ? [{ id: macbookBattery.id, slug: macbookBattery.slug, title: macbookBattery.title, description: macbookBattery.description, shortDescription: undefined, iconKey: 'apple', pricing: undefined }] : []),
+  ].sort((a, b) => {
     const rank = (id: string) => {
       const index = CORE_SERVICE_ORDER.indexOf(id);
       return index < 0 ? CORE_SERVICE_ORDER.length : index;

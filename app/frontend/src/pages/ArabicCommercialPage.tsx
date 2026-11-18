@@ -3,6 +3,7 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft, BadgeCheck, BatteryCharging, CheckCircle2, CircleCheck, ClipboardCheck, Cpu, Gauge, MapPin, MessageCircle, Microscope, MonitorCog, Phone, Power, ShieldCheck, Star, Thermometer, Truck, Wrench } from 'lucide-react';
 import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine';
+import { useAnalytics } from '../core/analytics/AnalyticsProvider';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import './templates/ServiceTemplateLaptopLayout.css';
 import { IMAGES } from '../constants/images';
@@ -253,7 +254,7 @@ const CONFIG: Record<string, {
     arabicLinks: [
       { label: 'تبديل شاشة MacBook Air وMacBook Pro', path: '/ar/macbook-screen-replacement-kuwait' },
       { label: 'تصليح اللابتوب في الكويت', path: '/ar/laptop-repair-kuwait' },
-      { label: 'تصليح مفصلات وهيكل اللابتوب', path: '/laptop-hinge-repair-kuwait' },
+      { label: 'تصليح مفصلات وهيكل اللابتوب', path: '/ar/laptop-hinge-repair-kuwait' },
       { label: 'تصليح المذربورد واللوحة الأم', path: '/ar/motherboard-repair-kuwait' },
       { label: 'أسعار تصليح الكمبيوتر واللابتوب', path: '/ar/pricing' },
       { label: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' }
@@ -499,7 +500,8 @@ const CONFIG: Record<string, {
       { label: 'تصليح كمبيوتر قيمنق', path: '/ar/gaming-pc-repair-kuwait' },
       { label: 'تصليح المذربورد واللوحة الأم', path: '/ar/motherboard-repair-kuwait' },
       { label: 'تبديل شاشة اللابتوب', path: '/ar/laptop-screen-repair-kuwait' },
-      { label: 'تبديل بطارية اللابتوب وماك بوك', path: '/ar/laptop-battery-replacement-kuwait' },
+      { label: 'تبديل بطارية اللابتوب Windows', path: '/ar/laptop-battery-replacement-kuwait' },
+      { label: 'تبديل بطارية ماك بوك', path: '/ar/macbook-battery-replacement-kuwait' },
       { label: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' },
       { label: 'أسعار التصليح بالدينار الكويتي', path: '/ar/pricing' }
     ],
@@ -982,7 +984,7 @@ const AR_COMPUTER_SERVICE_CARDS = [
   {
     title: 'تصليح MacBook',
     description: 'تشخيص أعطال MacBook والطاقة واللوحة الداخلية وبعض أضرار السوائل دون القفز مباشرة إلى استبدال اللوحة.',
-    path: '/macbook-repair-kuwait',
+    path: '/ar/macbook-repair-kuwait',
     image: IMAGES.macbook.diagnostics,
   },
   {
@@ -994,19 +996,19 @@ const AR_COMPUTER_SERVICE_CARDS = [
   {
     title: 'تبريد وتنظيف اللابتوب',
     description: 'تنظيف داخلي وفحص الحرارة والمراوح والمعجون الحراري للحالات التي تعاني من سخونة أو هبوط أداء.',
-    path: '/gaming-laptop-cleaning-kuwait',
+    path: '/ar/gaming-laptop-cleaning-kuwait',
     image: IMAGES.services.thermalService,
   },
   {
     title: 'إصلاح المفصلات والهيكل',
     description: 'معالجة مشاكل المفصلات والهيكل قبل أن تتطور إلى ضرر في الشاشة أو الكابلات الداخلية.',
-    path: '/laptop-hinge-repair-kuwait',
+    path: '/ar/laptop-hinge-repair-kuwait',
     image: IMAGES.laptopHardware.brokenHinge,
   },
   {
     title: 'ترقية SSD وRAM',
     description: 'اقتراح وتركيب ترقيات مناسبة بعد التأكد من التوافق لتحسين سرعة الإقلاع والاستجابة والاستخدام اليومي.',
-    path: '/ssd-ram-upgrade-kuwait',
+    path: '/ar/ssd-ram-upgrade-kuwait',
     image: IMAGES.upgrades.ram8gb,
   },
 ] as const;
@@ -1295,7 +1297,7 @@ function ArabicGamingPcRepairPage({
                   <MessageCircle className="h-5 w-5" aria-hidden="true" />
                   أرسل مشكلة الـGaming PC على الواتساب
                 </a>
-                <Link to="/book" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-900/70 px-7 py-4 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
+                <Link to="/ar/book" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-900/70 px-7 py-4 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
                   <Truck className="h-5 w-5" aria-hidden="true" />
                   رتب استلام الـGaming PC من منطقتك
                 </Link>
@@ -1421,7 +1423,7 @@ function ArabicGamingPcRepairPage({
           <div className="mt-6">
             <h3 className="font-black text-white">خدمات وأدلة مرتبطة</h3>
             <div className="mt-3 flex flex-wrap gap-2">
-              <Link to="/desktop-pc-repair-kuwait" className="rounded-full border border-slate-700 px-4 py-2 text-sm font-bold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300">تصليح الكمبيوتر المكتبي والبرج</Link>
+              <Link to="/ar/desktop-pc-repair-kuwait" className="rounded-full border border-slate-700 px-4 py-2 text-sm font-bold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300">تصليح الكمبيوتر المكتبي والبرج</Link>
               <Link to="/ar/motherboard-repair-kuwait" className="rounded-full border border-slate-700 px-4 py-2 text-sm font-bold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300">تصليح المذربورد والدوائر الإلكترونية</Link>
               <Link to="/ar/gaming-laptop-repair-kuwait" className="rounded-full border border-slate-700 px-4 py-2 text-sm font-bold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300">تصليح اللابتوب القيمنق</Link>
               <Link to="/guides/gaming-pc-not-turning-on-kuwait" className="rounded-full border border-slate-700 px-4 py-2 text-sm font-bold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300">دليل الكمبيوتر الذي لا يعمل (بالإنجليزية)</Link>
@@ -1616,7 +1618,7 @@ function ArabicGamingPcRepairPage({
                 <MessageCircle className="h-5 w-5" aria-hidden="true" />
                 دز واتساب لفني KCROC
               </a>
-              <Link to="/book" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-7 py-4 font-black text-white hover:border-cyan-500/40 hover:text-cyan-300">
+              <Link to="/ar/book" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-7 py-4 font-black text-white hover:border-cyan-500/40 hover:text-cyan-300">
                 <Truck className="h-5 w-5" aria-hidden="true" />
                 رتب الاستلام
               </Link>
@@ -1627,7 +1629,7 @@ function ArabicGamingPcRepairPage({
         <div className="mt-8 flex flex-wrap gap-3 border-t border-slate-800/70 pt-7">
           <Link to="/ar/computer-repair-kuwait" className="rounded-full border border-slate-800 px-4 py-2 text-sm font-bold text-slate-300 hover:border-cyan-500/40 hover:text-cyan-300">تصليح كمبيوتر</Link>
           <Link to="/ar/motherboard-repair-kuwait" className="rounded-full border border-slate-800 px-4 py-2 text-sm font-bold text-slate-300 hover:border-cyan-500/40 hover:text-cyan-300">تصليح مذربورد</Link>
-          <Link to="/gaming-laptop-cleaning-kuwait" className="rounded-full border border-slate-800 px-4 py-2 text-sm font-bold text-slate-300 hover:border-cyan-500/40 hover:text-cyan-300">تنظيف Gaming Laptop</Link>
+          <Link to="/ar/gaming-laptop-cleaning-kuwait" className="rounded-full border border-slate-800 px-4 py-2 text-sm font-bold text-slate-300 hover:border-cyan-500/40 hover:text-cyan-300">تنظيف Gaming Laptop</Link>
           <Link to="/blog/gaming-pc-cooling" className="rounded-full border border-slate-800 px-4 py-2 text-sm font-bold text-slate-300 hover:border-cyan-500/40 hover:text-cyan-300">دليل تبريد Gaming PC</Link>
           <Link to="/guides/bios-uefi-recovery-kuwait" className="rounded-full border border-slate-800 px-4 py-2 text-sm font-bold text-slate-300 hover:border-cyan-500/40 hover:text-cyan-300">دليل BIOS / UEFI</Link>
         </div>
@@ -1829,7 +1831,7 @@ function ArabicComputerRepairPage({
                   <MessageCircle className="h-5 w-5" aria-hidden="true" />
                   راسلنا عبر واتساب
                 </a>
-                <Link to="/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-600 bg-slate-900/50 px-7 py-3.5 font-black text-white transition hover:border-cyan-500/50 hover:text-cyan-300">
+                <Link to="/ar/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-600 bg-slate-900/50 px-7 py-3.5 font-black text-white transition hover:border-cyan-500/50 hover:text-cyan-300">
                   <Truck className="h-5 w-5" aria-hidden="true" />
                   احجز استلام الجهاز
                 </Link>
@@ -1981,7 +1983,7 @@ function ArabicComputerRepairPage({
               <p className="text-sm font-black tracking-[0.08em] text-cyan-400">من أول رسالة إلى تسليم الجهاز</p>
               <h2 id="repair-process" className="mt-2 text-3xl font-black text-white sm:text-4xl">كيف يتم الإصلاح في KCROC؟</h2>
             </div>
-            <Link to="/book" className="inline-flex items-center gap-2 text-sm font-black text-cyan-300 hover:text-cyan-200">
+            <Link to="/ar/book" className="inline-flex items-center gap-2 text-sm font-black text-cyan-300 hover:text-cyan-200">
               رتب الاستلام <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
@@ -2139,7 +2141,7 @@ function ArabicComputerRepairPage({
                 <MessageCircle className="h-5 w-5" aria-hidden="true" />
                 تواصل مع فني KCROC
               </a>
-              <Link to="/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-7 py-3.5 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
+              <Link to="/ar/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-7 py-3.5 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
                 <Truck className="h-5 w-5" aria-hidden="true" />
                 رتب الاستلام المجاني
               </Link>
@@ -2194,6 +2196,7 @@ const ARABIC_SERVICE_LAYOUT_SLUGS = new Set([
 ]);
 
 export default function ArabicCommercialPage() {
+  const { trackConversion } = useAnalytics();
   const { slug } = useParams<{ slug: string }>();
   const cfg = slug ? CONFIG[slug] : undefined;
   const page = slug ? KCROC_GRAPH.pages.find((item) => item.slug === `ar/${slug}`) : undefined;
@@ -2228,7 +2231,19 @@ export default function ArabicCommercialPage() {
 
   // Reuse the corresponding English service's existing KCROC photography.
   // These are real first-party assets already assigned in the service graph.
-  const servicePageImages = slug === 'laptop-keyboard-replacement-kuwait'
+  const servicePageImages = slug === 'motherboard-repair-kuwait'
+    ? [
+        { image: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair, alt: 'مذربورد لابتوب على طاولة الفحص في مختبر KCROC', caption: 'نفحص اللوحة ومسار الطاقة قبل تحديد المكوّن المتسبب بالعطل.' },
+        { image: IMAGES.motherboard.breadboarding, alt: 'تجهيز لوحة أم للفحص خارج الهيكل', caption: 'فحص اللوحة لتحديد سبب أعطال التشغيل والطاقة.' },
+        { image: IMAGES.motherboard.gigabyteAorus, alt: 'لوحة أم ومكوناتها أثناء الفحص', caption: 'نتحقق من حالة المكونات قبل اقتراح الإصلاح أو الاستبدال.' }
+      ]
+    : slug === 'ssd-ram-upgrade-kuwait'
+    ? [
+        { image: IMAGES.upgrades.ssdM2Install, alt: 'تركيب وحدة تخزين M.2 SSD داخل لابتوب', caption: 'نطابق نوع ومقاس وحدة التخزين مع موديل اللابتوب قبل التركيب.' },
+        { image: IMAGES.upgrades.laptopRamSticksComparisonUpgrade, alt: 'مقارنة شرائح RAM للابتوب قبل الترقية', caption: 'نتحقق من نوع الذاكرة والسعة المدعومة قبل اختيار القطعة.' },
+        { image: IMAGES.upgrades.laptopMotherboardDualM2SsdSlots, alt: 'منافذ M.2 على اللوحة الداخلية للابتوب', caption: 'نفحص المنافذ المتاحة وتوافق وحدة التخزين مع الجهاز.' }
+      ]
+    : slug === 'laptop-keyboard-replacement-kuwait'
     ? [
         { image: { src: '/images/gallery/laptop-keyboard-replacement-removed-keyboard-top-case-kuwait.webp', width: 800, height: 600 }, alt: 'إزالة لوحة مفاتيح اللابتوب وتجميعة الغطاء العلوي أثناء فحص التوصيلات داخل مختبر KCROC', caption: 'صورة من أعمال فحص لوحة المفاتيح والغطاء العلوي قبل تحديد هل المطلوب إصلاح التوصيل أو تبديل التجميعة.' },
         { image: { src: '/images/gallery/replacement-laptop-keyboards-new-stock-kuwait.webp', width: 800, height: 600 }, alt: 'نماذج من كيبوردات لابتوب بديلة للتحقق من اختلاف الموديل والتخطيط', caption: 'تختلف قطع الكيبورد حسب الموديل وتخطيط اللغة والإضاءة؛ يتم التأكد من رقم القطعة قبل الطلب.' },
@@ -2419,6 +2434,10 @@ export default function ArabicCommercialPage() {
     href: 'https://wa.me/' + business.telephone + '?text=' + encodeURIComponent(item.message)
   }));
   const wa = 'https://wa.me/' + business.telephone + '?text=' + encodeURIComponent(slug === 'macbook-battery-replacement-kuwait' ? macbookBatteryWhatsappMessage : slug === 'macbook-repair-kuwait' ? macbookWhatsappMessage : whatsappMessage);
+  const trackMacbookBatteryCta = (cta: string, booking = false) => trackConversion(booking ? 'cta_click' : 'whatsapp_click', {
+    entity_id: 'page-ar-macbook-battery-replacement', entity_type: 'Service', entity_slug: 'ar/macbook-battery-replacement-kuwait',
+    cta_name: cta, button_position: 'body',
+  });
 
   if (slug === 'computer-repair-kuwait') {
     return <ArabicComputerRepairPage page={page as ArabicComputerPage} business={business} wa={wa} />;
@@ -3288,10 +3307,10 @@ export default function ArabicCommercialPage() {
               <p className="mt-6 text-base leading-8 text-slate-300 sm:text-lg">{cfg.intro}</p>
               {(slug === 'laptop-battery-replacement-kuwait' || slug === 'macbook-battery-replacement-kuwait') && (
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <a href={wa} target="_blank" rel="noreferrer" aria-label={slug === 'macbook-battery-replacement-kuwait' ? 'أرسل موديل MacBook وأعراض البطارية إلى KCROC عبر واتساب' : 'أرسل موديل اللابتوب وأعراض البطارية إلى KCROC عبر واتساب'} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
+                  <a href={wa} onClick={slug === 'macbook-battery-replacement-kuwait' ? () => trackMacbookBatteryCta('macbook_battery_ar_hero_whatsapp') : undefined} target="_blank" rel="noreferrer" aria-label={slug === 'macbook-battery-replacement-kuwait' ? 'أرسل موديل MacBook وأعراض البطارية إلى KCROC عبر واتساب' : 'أرسل موديل اللابتوب وأعراض البطارية إلى KCROC عبر واتساب'} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
                     <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'macbook-battery-replacement-kuwait' ? 'أرسل موديل MacBook وأعراض البطارية عبر واتساب' : 'أرسل موديل اللابتوب وأعراض البطارية عبر واتساب'}
                   </a>
-                  <Link to="/ar/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-bold text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
+                  <Link to="/ar/book" onClick={slug === 'macbook-battery-replacement-kuwait' ? () => trackMacbookBatteryCta('macbook_battery_ar_book_pickup', true) : undefined} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-bold text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
                     <Truck className="h-5 w-5" aria-hidden="true" /> احجز استلامًا مجانيًا من منطقتك
                   </Link>
                 </div>
@@ -3329,8 +3348,8 @@ export default function ArabicCommercialPage() {
                 <div className="mt-5">
                   <p className="mb-3 text-sm font-bold text-slate-300">اختر نوع الاستفسار لإرسال رسالة عربية جاهزة عبر واتساب:</p>
                   <div className="flex flex-wrap gap-2">
-                    {macbookBatteryQuickQuotes.map((item) => (
-                      <a key={item.label} href={item.href} target="_blank" rel="noreferrer" className="rounded-full border border-cyan-500/30 bg-slate-950/60 px-4 py-2.5 text-sm font-semibold text-cyan-200 transition hover:border-cyan-300 hover:bg-cyan-500/10">
+                    {macbookBatteryQuickQuotes.map((item, index) => (
+                      <a key={item.label} href={item.href} onClick={() => trackMacbookBatteryCta('macbook_battery_ar_quick_quote_' + index)} target="_blank" rel="noreferrer" className="rounded-full border border-cyan-500/30 bg-slate-950/60 px-4 py-2.5 text-sm font-semibold text-cyan-200 transition hover:border-cyan-300 hover:bg-cyan-500/10">
                         {item.label}
                       </a>
                     ))}
@@ -3364,7 +3383,7 @@ export default function ArabicCommercialPage() {
                   <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
                     <MessageCircle className="h-5 w-5" aria-hidden="true" /> تواصل مع فني ماك بوك عبر واتساب
                   </a>
-                  <Link to="/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
+                  <Link to="/ar/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
                     <Truck className="h-5 w-5" aria-hidden="true" /> احجز استلام مجاني من منطقتك
                   </Link>
                   <Link to="/ar/macbook-screen-replacement-kuwait" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-cyan-500/30 px-6 py-3 font-bold text-cyan-300 transition hover:bg-cyan-500/10">
@@ -3377,7 +3396,7 @@ export default function ArabicCommercialPage() {
                   <a href={wa} target="_blank" rel="noreferrer" aria-label="أرسل صورة شاشة MacBook عبر واتساب" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
                     <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل صورة الشاشة والجهاز عبر واتساب
                   </a>
-                  <Link to="/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
+                  <Link to="/ar/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
                     <Truck className="h-5 w-5" aria-hidden="true" /> اطلب استلامًا مجانيًا
                   </Link>
                   <Link to="/ar/macbook-repair-kuwait" className="inline-flex min-h-12 items-center justify-center px-3 py-3 text-sm font-bold text-cyan-300 hover:text-cyan-200">
@@ -3390,7 +3409,7 @@ export default function ArabicCommercialPage() {
                   <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
                     <MessageCircle className="h-5 w-5" aria-hidden="true" /> اطلب استلام جهازك من المكتب أو المنزل عبر واتساب
                   </a>
-                  <Link to="/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
+                  <Link to="/ar/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
                     <Truck className="h-5 w-5" aria-hidden="true" /> احجز استلامًا مجانيًا من مدينة الكويت والعاصمة
                   </Link>
                 </div>
@@ -3409,7 +3428,7 @@ export default function ArabicCommercialPage() {
                   <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
                     <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل صورة الشاشة والموديل عبر واتساب
                   </a>
-                  <Link to="/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
+                  <Link to="/ar/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 px-6 py-3 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
                     <Truck className="h-5 w-5" aria-hidden="true" /> احجز استلام مجاني من منطقتك
                   </Link>
                 </div>
@@ -3813,7 +3832,7 @@ export default function ArabicCommercialPage() {
             <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-7 py-3.5 font-black text-slate-950 hover:bg-cyan-400">
               <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'laptop-repair-kuwait' ? 'أرسل موديل اللابتوب والعطل على واتساب' : slug === 'laptop-screen-repair-kuwait' ? 'أرسل موديل اللابتوب واحصل على عرض سعر' : slug === 'gaming-laptop-repair-kuwait' ? 'أرسل الموديل والعطل على واتساب' : slug === 'laptop-keyboard-replacement-kuwait' ? 'أرسل موديل الجهاز وصورة الكيبورد على واتساب' : slug === 'laptop-charging-port-repair-kuwait' ? 'أرسل موديل الجهاز وصورة المنفذ على واتساب' : slug === 'computer-repair-farwaniya' ? 'رتب استلام مجاني من الفروانية' : 'واتساب KCROC'}
             </a>
-            <Link to="/book" className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-600 px-7 py-3.5 font-bold text-white hover:border-cyan-700 hover:text-cyan-300">
+            <Link to="/ar/book" className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-600 px-7 py-3.5 font-bold text-white hover:border-cyan-700 hover:text-cyan-300">
               <ShieldCheck className="h-5 w-5" aria-hidden="true" /> احجز استلام الجهاز
             </Link>
             <Link to={cfg.englishPath} className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-800 px-7 py-3.5 font-semibold text-slate-300 hover:text-white">
@@ -4284,7 +4303,7 @@ export default function ArabicCommercialPage() {
                     alt: 'بطارية MacBook منتفخة تحتاج إلى تعامل آمن وفحص مختص',
                     title: 'بطارية منتفخة أو ضعيفة',
                     description: 'التورم أو ارتفاع الهيكل قد يشير إلى انتفاخ البطارية. أوقف الاستخدام ولا تضغط على الجهاز أو تحاول فك البطارية بنفسك.',
-                    href: '/ar/laptop-battery-replacement-kuwait',
+                    href: '/ar/macbook-battery-replacement-kuwait',
                     link: 'تفاصيل خدمة البطارية',
                   },
                   {
@@ -5209,7 +5228,7 @@ export default function ArabicCommercialPage() {
                 <h2 id="macbook-swollen-battery" className="mt-2 text-2xl font-black text-amber-100">بطارية MacBook منتفخة أو التراك باد مرتفع؟ أوقف الاستخدام والشحن.</h2>
                 <p className="mt-4 leading-8 text-amber-50/90">انتفاخ بطارية الليثيوم قد يضغط على التراك باد والهيكل والكابلات الداخلية. أوقف تشغيل الجهاز والشحن، وافصل المحول إذا كان ذلك آمنًا. لا تضغط على التراك باد ولا تحاول إغلاق الغطاء بالقوة أو ثقب البطارية أو فتح الجهاز بنفسك.</p>
                 <p className="mt-3 leading-8 text-amber-50/90">تواصل معنا أولًا للحصول على تعليمات التعامل والترتيب الآمن للاستلام من منطقتك. لا تضع جهازًا ببطارية منتفخة في ناقل أو شحنة عادية قبل الاتفاق على طريقة نقل مناسبة.</p>
-                <a href={macbookBatteryQuickQuotes[2].href} target="_blank" rel="noreferrer" className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-amber-300 px-5 py-3 font-extrabold text-amber-950 hover:brightness-95">
+                <a href={macbookBatteryQuickQuotes[2].href} onClick={() => trackMacbookBatteryCta('macbook_battery_ar_swollen_safety')} target="_blank" rel="noreferrer" className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-amber-300 px-5 py-3 font-extrabold text-amber-950 hover:brightness-95">
                   <MessageCircle className="h-5 w-5" aria-hidden="true" /> اطلب تعليمات الاستلام الآمن لبطارية منتفخة
                 </a>
               </div>

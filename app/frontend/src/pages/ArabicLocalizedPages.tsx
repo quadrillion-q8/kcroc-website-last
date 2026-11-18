@@ -20,6 +20,7 @@ const ARABIC_SERVICES_CORE_ORDER = [
   'srv-motherboard',
   'srv-screen',
   'srv-battery',
+  'page-ar-macbook-battery-replacement',
   'srv-charging-port',
   'srv-gaming-laptop-cleaning',
   'srv-ssd-ram',
@@ -224,7 +225,7 @@ const ARABIC_SERVICE_COPY: Record<string, { title: string; description: string; 
   'laptop-screen-repair-kuwait': { title: 'تصليح شاشة اللابتوب', description: 'فحص الشاشة السوداء أو المكسورة أو الوامضة والكابل قبل تحديد الحل.', href: '/ar/laptop-screen-repair-kuwait' },
   'macbook-repair-kuwait': { title: 'تصليح MacBook', description: 'فحص أعطال الطاقة والشحن واللوحة والشاشة والبطارية حسب الموديل.', href: '/ar/macbook-repair-kuwait' },
   'macbook-screen-replacement-kuwait': { title: 'تبديل شاشة MacBook', description: 'تحديد موديل الجهاز ومواصفات الشاشة والتكلفة قبل الموافقة على العمل.', href: '/ar/macbook-screen-replacement-kuwait' },
-  'laptop-battery-replacement-kuwait': { title: 'تبديل بطارية اللابتوب', description: 'فحص أعراض ضعف البطارية والتحقق من توافق القطعة مع موديل الجهاز.', href: '/ar/laptop-battery-replacement-kuwait' },
+  'battery-replacement-kuwait': { title: 'تبديل بطارية اللابتوب', description: 'فحص أعراض ضعف البطارية والتحقق من توافق القطعة مع موديل الجهاز.', href: '/ar/laptop-battery-replacement-kuwait' },
   'ssd-ram-upgrade-kuwait': { title: 'ترقية SSD وRAM', description: 'ترقية التخزين أو الذاكرة عند توافقها مع الجهاز، مع توضيح تكلفة القطع والعمل.', href: '/ar/ssd-ram-upgrade-kuwait' },
   'gaming-laptop-repair-kuwait': { title: 'تصليح Gaming Laptop', description: 'تشخيص مشاكل الحرارة والطاقة والأداء والشاشة في أجهزة الألعاب المحمولة.', href: '/ar/gaming-laptop-repair-kuwait' },
   'laptop-charging-port-repair-kuwait': { title: 'إصلاح منفذ شحن اللابتوب', description: 'فحص الشاحن والمنفذ ومسار الطاقة لتحديد سبب عدم الشحن.', href: '/ar/laptop-charging-port-repair-kuwait' },
@@ -242,10 +243,14 @@ const SERVICE_ICON_MAP: Record<string, React.ElementType> = {
 };
 
 export function ArabicServicesPage() {
-  const services = KCROC_GRAPH.services.flatMap((service) => {
-    const copy = ARABIC_SERVICE_COPY[service.slug];
-    return copy ? [{ service, copy }] : [];
-  }).sort((a, b) => {
+  const macbookBattery = KCROC_GRAPH.pages.find((page) => page.id === 'page-ar-macbook-battery-replacement' && page.isActive);
+  const services = [
+    ...KCROC_GRAPH.services.filter((service) => service.isActive).flatMap((service) => {
+      const copy = ARABIC_SERVICE_COPY[service.slug];
+      return copy ? [{ service: { id: service.id, iconKey: service.iconKey }, copy }] : [];
+    }),
+    ...(macbookBattery ? [{ service: { id: macbookBattery.id, iconKey: 'apple' }, copy: { title: macbookBattery.title, description: macbookBattery.description, href: '/' + macbookBattery.slug } }] : []),
+  ].sort((a, b) => {
     const rank = (id: string) => {
       const index = ARABIC_SERVICES_CORE_ORDER.indexOf(id);
       return index < 0 ? ARABIC_SERVICES_CORE_ORDER.length : index;
