@@ -44,7 +44,7 @@ const panel='rounded-2xl border border-slate-800 bg-slate-900/50 p-5 sm:p-7 mt-6
 const districtNames:Record<string,string>={'Sharq':'شرق','Qibla / Jibla':'القبلة / جبلة','Mirqab':'المرقاب','Dasman':'دسمان','Bneid Al-Gar':'بنيد القار','Safat':'الصفاة','Al-Sawaber':'الصوابر'};
 function TowerHandover({location}:{location:LocationEntry}){
  const {trackConversion}=useAnalytics();
- const zones=[...(location.additionalAreaPostalCodes??[]).filter(z=>Object.hasOwn(districtNames,z.name)),{name:'Al-Sawaber',postalCode:'15300'}];
+ const zones=(location.additionalAreaPostalCodes??[]).filter(z=>Object.prototype.hasOwnProperty.call(districtNames,z.name));
  const [district,setDistrict]=useState('Sharq');
  const [fields,setFields]=useState({building:'',floor:'',contact:'',model:'',fault:''});
  const fieldLabels={building:'القطعة / الشارع / المبنى',floor:'البرج / الدور / المكتب',contact:'اسم المسؤول أو الاستقبال',model:'نوع الجهاز والموديل',fault:'العطل أو الأعراض'};
