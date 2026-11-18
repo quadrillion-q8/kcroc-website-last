@@ -11,6 +11,7 @@ const files = {
   cookie: 'core/components/CookieConsentBanner.tsx',
   css: 'index.css',
   booking: 'pages/BookingPage.tsx',
+  whatsappIntent: 'utils/whatsappIntent.ts',
   mobileMenu: 'core/components/layout/MobileMenu.tsx',
 };
 const source = {};
@@ -51,7 +52,9 @@ requireText('css', 'overflow-y: auto;', 'the consent panel must scroll when shor
 requireText('booking', 'onSubmit={handleWhatsAppRedirect}', 'the booking form must submit through a semantic form handler.');
 requireText('booking', "trackConversion('begin_booking'", 'the booking funnel must record a begin_booking event.');
 requireText('booking', "trackConversion('whatsapp_click'", 'the WhatsApp handoff click must remain measurable.');
-requireText('booking', "import { buildWhatsAppLink }", 'the booking form must use the shared normalized WhatsApp link builder.');
+requireText('booking', "import { handoffWhatsApp } from '../utils/whatsappIntent'", 'the booking form must import the shared WhatsApp handoff.');
+requireText('booking', 'handoffWhatsApp(text)', 'the booking form must call the shared WhatsApp handoff.');
+requireText('whatsappIntent', 'window.location.assign(buildWhatsAppLink(message))', 'the shared handoff must navigate through the normalized WhatsApp link builder.');
 requireText('booking', 'htmlFor="booking-issue"', 'the issue textarea must have an associated label.');
 requireText('booking', 'htmlFor="booking-location"', 'the location input must have an associated label.');
 requireText('booking', 'aria-pressed={deviceType === type}', 'device-choice buttons must expose their selected state.');
