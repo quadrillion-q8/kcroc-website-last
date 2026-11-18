@@ -174,3 +174,32 @@ assert.equal(slow('[data-diagnostic-row]').length,6);
 assert.ok(slow('[data-problem-editorial-panel="price-estimates"]').text().includes('15–20'));
 assert.ok(read('/ar/laptop-keyboard-not-working')('[data-problem-editorial-panel="quick-answer"]').length);
 console.log('Phase 7A: thirteen Arabic problem pages, static diagnostic cases, interactive control inventory and visible FAQ schema verified.');
+
+const locationRoutes=locationDirectory('main [data-directory-item]').toArray().map(el=>locationDirectory(el).attr('href'));
+assert.equal(locationRoutes.length,26);
+for(const route of locationRoutes){
+ const $=read(route);
+ if(route==='/ar/computer-repair-hawalli') continue;
+ assert.equal($('main [data-ar-location-quality]').length,1,route+' technical location quality module');
+ assert.ok($('main [data-location-service-card-ar]').length>0,route+' service cards');
+ if($('main [data-location-price-row-ar]').length) assert.ok($('main [data-location-pricing-ar] a[href="/ar/pricing"]').length,route+' pricing link');
+}
+for(const [slug,count] of [['abu-halifa',5],['surra',5],['riggae',7],['mahboula',9],['qortuba',6],['mishref',6],['salmiya',4],['farwaniya',10]]){
+ const $=read('/ar/computer-repair-'+slug);
+ assert.equal($('main [data-location-price-row-ar]').length,count,slug+' published price row parity');
+}
+for(const slug of ['riggae','salmiya'])assert.equal(read('/ar/computer-repair-'+slug)('[data-location-emergency-ar]').length,1);
+const tower=read('/ar/computer-repair-kuwait-city');
+assert.equal(tower('[data-tower-handover-generator] input').length,5);
+assert.equal(tower('[data-tower-handover-generator] select option').length,7);
+assert.ok(tower('[data-tower-handover-generator] a[href^="https://wa.me/"]').length);
+for(const route of locationRoutes){
+ const $=read(route);
+ if(!$('main [data-location-scope="pickup-only"] [data-ar-location-quality]').length)continue;
+ const faqs=$('main [data-location-scope="pickup-only"] details').toArray().map(x=>$(x).find('summary').text().trim());
+ if(faqs.length===0)continue;
+ const schema=$('script[type="application/ld+json"]').toArray().flatMap(x=>{try{const v=JSON.parse($(x).text());return Array.isArray(v)?v:v['@graph']??[v]}catch{return []}}).find(x=>x['@type']==='FAQPage'&&String(x['@id']).endsWith('#faq'));
+ assert.ok(schema,route+' FAQ schema');
+ assert.ok(faqs.every(q=>schema.mainEntity.some(x=>x.name===q)),route+' visible FAQ schema');
+}
+console.log('Phase 7B: Arabic location quality modules, price rows, emergency protocols and office handover inventory verified.');
