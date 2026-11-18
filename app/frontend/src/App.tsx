@@ -29,6 +29,8 @@ export const routes: RouteObject[] = [
         children: [
           { index: true, lazy: async () => ({ Component: (await import('./pages/Home')).default }) },
           { path: 'ar', lazy: async () => ({ Component: (await import('./pages/ArabicLocalizedPages')).ArabicHomePage }) },
+          { path: 'ar/brands', lazy: async () => ({ Component: (await import('./pages/BrandsIndex')).default }) },
+          { path: 'ar/brands/:slug', lazy: async () => ({ Component: (await import('./pages/templates/BrandTemplate')).default }) },
           { path: 'ar/services', lazy: async () => ({ Component: (await import('./pages/ArabicLocalizedPages')).ArabicServicesPage }) },
           { path: 'near-me', lazy: async () => ({ Component: (await import('./pages/NearMe')).default }) },
           { path: 'ar/near-me', lazy: async () => ({ Component: (await import('./pages/NearMeAR')).default }) },

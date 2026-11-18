@@ -6,6 +6,7 @@ import { KCROC_GRAPH } from '../../data/graph';
 import { SEOEngine } from '../../core/components/SEOEngine';
 import { buildWhatsAppLink, getIntentWhatsAppLink } from '../../utils/whatsappIntent';
 import CoreRepairPillars from '../../components/content/CoreRepairPillars';
+import ArabicBrandContent from './ArabicBrandContent';
 import {
   Wrench,
   CheckCircle,
@@ -21,10 +22,12 @@ import {
 
 const BrandTemplate: React.FC = () => {
   const location = useLocation();
-  const slug = location.pathname.replace(/^\/+/, '');
+  const ar = location.pathname.startsWith('/ar/brands/');
+  const slug = location.pathname.replace(/^\/+/, '').replace(/^ar\/brands\//, '');
   const brand = KCROC_GRAPH.brands.find((b) => b.slug === slug);
 
   if (!brand) return <Navigate to="/404" replace />;
+  if (ar) return <ArabicBrandContent brand={brand} />;
 
   // Rich-brand hub fields are optional in the graph, so the template remains
   // null-safe while allowing each supported brand to carry its own family,
