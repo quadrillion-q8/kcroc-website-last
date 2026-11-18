@@ -27,6 +27,7 @@ for (const [en,ar] of pairs) {
       assert.equal(controls.find('[data-location-action="pricing"]').attr('href'),'/ar/pricing',route+' Arabic pricing');
       assert.equal(main.attr('dir'),'rtl',route+' RTL');
       assert.ok(main.find('img').toArray().some(x=>/[\u0600-\u06ff]/.test($(x).attr('alt')||'')),route+' Arabic photo');
+      if (physical) assert.ok(main.find('a[href="/ar/book"]').length >= 3,route+' all three Hawalli booking CTAs');
       if (!physical) {
         const hero=main.find('[data-location-hero="true"]');
         assert.equal(hero.find('[data-location-scope-note="true"] a[href="/ar/computer-repair-hawalli"]').length,1,route+' central lab');
