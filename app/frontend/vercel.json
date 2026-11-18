@@ -125,11 +125,6 @@
       "permanent": true
     },
     {
-      "source": "/ar/gallery",
-      "destination": "/gallery",
-      "permanent": true
-    },
-    {
       "source": "/data-security",
       "destination": "/privacy-security-kuwait",
       "permanent": true
