@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { isArabicPath, localizedSitePath } from '../../../utils/locale';
 import {
   Apple,
   ArrowUpRight,
@@ -283,6 +284,8 @@ interface Props {
 }
 
 export default function StructuredMegaMenuContent({ config, meta, isOpen, onClose }: Props) {
+  const { pathname } = useLocation();
+  const route = (path: string) => localizedSitePath(path, isArabicPath(pathname) ? 'ar' : 'en');
   const { trackConversion } = useAnalytics();
   const phoneDigits = NAV_GRAPH.business!.telephone.replace(/\D/g, '');
   const phoneDisplay = phoneDigits.startsWith('965') ? '+965 ' + phoneDigits.slice(3) : '+' + phoneDigits;
@@ -312,7 +315,7 @@ export default function StructuredMegaMenuContent({ config, meta, isOpen, onClos
           <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">{structuredConfig.subheading}</p>
         </div>
         <Link
-          to={structuredConfig.viewAllHref}
+          to={route(structuredConfig.viewAllHref)}
           tabIndex={isOpen ? 0 : -1}
           onMouseEnter={() => prefetchRoute(structuredConfig.viewAllHref)}
           onClick={() => {
@@ -352,7 +355,7 @@ export default function StructuredMegaMenuContent({ config, meta, isOpen, onClos
                     return (
                       <Link
                         key={item.href + '-' + item.title + '-' + itemIndex}
-                        to={item.href}
+                        to={route(item.href)}
                         tabIndex={isOpen ? 0 : -1}
                         onMouseEnter={() => prefetchRoute(item.href)}
                         onClick={() => {
@@ -404,7 +407,7 @@ export default function StructuredMegaMenuContent({ config, meta, isOpen, onClos
             <Phone className="h-4 w-4 text-blue-600" aria-hidden="true" />{phoneDisplay}
           </a>
           <Link
-            to="/book"
+            to={route("/book")}
             onClick={() => {
               trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' });
               onClose();

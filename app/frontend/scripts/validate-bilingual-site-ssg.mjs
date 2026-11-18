@@ -25,7 +25,7 @@ for (const [en,ar] of pairs) {
   assert.equal(e('main').attr('data-site-locale'),'en',en);
   assert.ok(a('main h1').length>=1,ar);
   assert.ok(a('header a[href="/ar"]').length>0,ar+' home link');
-  assert.equal(a('header a[href="/book"]').length,0,ar+' English booking');
+  assert.equal(a('header a[href="/book"]:not([lang="en"])').length,0,ar+' English booking');
   assert.ok(a('header a[href="/ar/book"]').length>0,ar+' Arabic booking');
   assert.ok(a('header a[href="'+en+'"]').length>0,ar+' language switch');
   assert.ok(e('header a[href="'+ar+'"]').length>0,en+' language switch');

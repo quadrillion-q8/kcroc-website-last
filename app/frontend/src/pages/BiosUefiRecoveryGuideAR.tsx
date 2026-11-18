@@ -246,7 +246,7 @@ export default function BiosUefiRecoveryGuideAR() {
 
       <article className="max-w-5xl mx-auto px-4 sm:px-6">
         <nav className="text-sm text-slate-500 mb-8 flex flex-wrap items-center gap-2" aria-label="مسار التنقل">
-          <Link to="/" className="hover:text-cyan-400">الرئيسية</Link>
+          <Link to="/ar" className="hover:text-cyan-400">الرئيسية</Link>
           <span>/</span>
           <Link to="/guides" className="hover:text-cyan-400">الأدلة</Link>
           <span>/</span>

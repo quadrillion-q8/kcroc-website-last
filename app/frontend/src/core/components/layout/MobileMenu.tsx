@@ -269,7 +269,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
                               <p className="mt-1 text-xs leading-5 text-slate-400">{copy.subtitle}</p>
                             </div>
                             <Link
-                              to={allHref}
+                              to={localizedSitePath(allHref, isArabicRoute ? 'ar' : 'en')}
                               onClick={() => onClose()}
                               tabIndex={isOpen && isExpanded ? 0 : -1}
                               className="inline-flex min-h-12 shrink-0 items-center gap-1 rounded-lg border border-white/[0.08] bg-black/10 px-3 text-xs font-extrabold text-white hover:border-[#c9804d]/30 hover:text-[#efc19c] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
@@ -291,7 +291,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
                                   return (
                                     <Link
                                       key={entity.slug}
-                                      to={`/${entity.slug}`}
+                                      to={localizedSitePath(`/${entity.slug}`, isArabicRoute ? 'ar' : 'en')}
                                       onClick={() => trackConversion('cta_click', { cta_name: 'mobile_mega_featured', button_position: 'mobile_menu' })}
                                       tabIndex={isOpen && isExpanded ? 0 : -1}
                                       className="group flex min-h-14 items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.018] px-3 py-2.5 transition-colors hover:border-[#c9804d]/25 hover:bg-[#c9804d]/[0.045] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
@@ -320,7 +320,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
                                   return (
                                     <Link
                                       key={entity.slug}
-                                      to={`/${entity.slug}`}
+                                      to={localizedSitePath(`/${entity.slug}`, isArabicRoute ? 'ar' : 'en')}
                                       onClick={() => trackConversion('cta_click', { cta_name: 'mobile_mega_link', button_position: 'mobile_menu' })}
                                       tabIndex={isOpen && isExpanded ? 0 : -1}
                                       className="group flex min-h-12 items-center gap-2.5 rounded-xl border border-transparent px-3 py-2.5 text-xs font-semibold text-slate-400 transition-colors hover:border-white/[0.06] hover:bg-white/[0.035] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
