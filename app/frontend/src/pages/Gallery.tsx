@@ -134,7 +134,8 @@ export default function Gallery() {
         <div className="scroll-row gap-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap sm:justify-center mb-6 sm:mb-10">
           {galleryCategories.map((cat) => (
             <button
-              key={categoryLabel(cat)}
+              key={cat}
+              aria-pressed={activeCategory===cat}
               onClick={() => { setActiveCategory(cat); setVisibleCount(PAGE_SIZE); }}
               className={`scroll-row-item px-4 py-2 rounded-full text-[11px] sm:text-sm font-bold transition-colors whitespace-nowrap ${
                 activeCategory === cat
@@ -142,7 +143,7 @@ export default function Gallery() {
                   : 'bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700'
               }`}
             >
-              {cat}
+              {categoryLabel(cat)}
             </button>
           ))}
         </div>

@@ -5,6 +5,12 @@
 // /ar/computer-repair-kuwait; Services and troubleshooting guides use explicit reciprocal pairs where localized versions exist.
 
 export const ENGLISH_TO_ARABIC: Record<string, string> = {
+  '/about': '/ar/about',
+  '/gallery': '/ar/gallery',
+  '/faq': '/ar/faq',
+  '/privacy-policy': '/ar/privacy-policy',
+  '/terms-of-service': '/ar/terms-of-service',
+  '/privacy-security-kuwait': '/ar/privacy-security-kuwait',
   '/location/abu-halifa': '/ar/computer-repair-abu-halifa',
   '/location/mubarak-al-kabeer': '/ar/computer-repair-mubarak-al-kabeer',
   '/location/sabah-al-salem': '/ar/computer-repair-sabah-al-salem',
@@ -87,6 +93,12 @@ export const ENGLISH_TO_ARABIC: Record<string, string> = {
 };
 
 export const ARABIC_TO_ENGLISH: Record<string, string> = {
+  '/ar/about': '/about',
+  '/ar/gallery': '/gallery',
+  '/ar/faq': '/faq',
+  '/ar/privacy-policy': '/privacy-policy',
+  '/ar/terms-of-service': '/terms-of-service',
+  '/ar/privacy-security-kuwait': '/privacy-security-kuwait',
   '/ar/computer-repair-abu-halifa': '/location/abu-halifa',
   '/ar/computer-repair-mubarak-al-kabeer': '/location/mubarak-al-kabeer',
   '/ar/computer-repair-sabah-al-salem': '/location/sabah-al-salem',

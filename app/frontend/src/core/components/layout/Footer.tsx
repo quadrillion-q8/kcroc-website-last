@@ -122,9 +122,9 @@ export function Footer() {
           <nav aria-label="Editorial links" className="flex flex-wrap gap-x-5 gap-y-3 text-sm text-slate-400">
             <Link to="/blog" className="hover:text-white">Articles</Link>
             <Link to="/guides" className="hover:text-white">Technical Guides</Link>
-            <Link to="/about" className="hover:text-white">About the Lab</Link>
-            <Link to="/privacy-policy" className="hover:text-white">Privacy</Link>
-            <Link to="/terms-of-service" className="hover:text-white">Terms</Link>
+            <Link to={localizedPath("/about")} className="hover:text-white">{isArabicRoute?"عن المختبر":"About the Lab"}</Link>
+            <Link to={localizedPath("/privacy-policy")} className="hover:text-white">{isArabicRoute?"الخصوصية":"Privacy"}</Link>
+            <Link to={localizedPath("/terms-of-service")} className="hover:text-white">{isArabicRoute?"الشروط":"Terms"}</Link>
           </nav>
         </div>
       </footer>
@@ -413,11 +413,11 @@ export function Footer() {
           </p>
           <div role="group" aria-label={isArabicRoute ? "سياسات وإعدادات الموقع" : "Site policies and settings"} className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
             <span className="inline-flex items-center gap-3">
-              <Link to="/privacy-policy" className="min-h-12 inline-flex items-center text-slate-400 hover:text-white text-xs sm:text-sm transition-colors" aria-label={isArabicRoute ? "سياسة الخصوصية" : "Privacy Policy"}>{isArabicRoute ? "سياسة الخصوصية" : "Privacy Policy"}</Link>
+              <Link to={localizedPath("/privacy-policy")} className="min-h-12 inline-flex items-center text-slate-400 hover:text-white text-xs sm:text-sm transition-colors" aria-label={isArabicRoute ? "سياسة الخصوصية" : "Privacy Policy"}>{isArabicRoute ? "سياسة الخصوصية" : "Privacy Policy"}</Link>
               <span aria-hidden="true" className="text-slate-700">·</span>
             </span>
             <span className="inline-flex items-center gap-3">
-              <Link to="/terms-of-service" className="min-h-12 inline-flex items-center text-slate-400 hover:text-white text-xs sm:text-sm transition-colors" aria-label={isArabicRoute ? "شروط الخدمة" : "Terms of Service"}>{isArabicRoute ? "شروط الخدمة" : "Terms of Service"}</Link>
+              <Link to={localizedPath("/terms-of-service")} className="min-h-12 inline-flex items-center text-slate-400 hover:text-white text-xs sm:text-sm transition-colors" aria-label={isArabicRoute ? "شروط الخدمة" : "Terms of Service"}>{isArabicRoute ? "شروط الخدمة" : "Terms of Service"}</Link>
               <span aria-hidden="true" className="text-slate-700">·</span>
             </span>
             <button type="button" onClick={openConsentPreferences} className="min-h-12 inline-flex items-center text-slate-400 hover:text-white text-xs sm:text-sm transition-colors" aria-label={isArabicRoute ? "إعدادات ملفات الارتباط" : "Cookie Settings"}>{isArabicRoute ? "إعدادات ملفات الارتباط" : "Cookie Settings"}</button>

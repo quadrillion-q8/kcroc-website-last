@@ -109,3 +109,25 @@ for(const el of locationDirectory('main [data-directory-item]').toArray()){
  read(route);
 }
 console.log('Phase 6.5C: all 26 Arabic location destinations verified.');
+
+const businessPages=['about','gallery','faq','privacy-policy','terms-of-service','privacy-security-kuwait'];
+for(const slug of businessPages){
+ const $=read('/ar/'+slug);
+ assert.equal($('main h1').length,1,slug+' H1');
+ assert.ok(/[\u0600-\u06ff]/.test($('main h1').text()),slug+' Arabic H1');
+ assert.equal($('link[rel="canonical"]').attr('href'),'https://www.computerrepairkuwait.com/ar/'+slug,slug+' canonical');
+ assert.ok($('footer a[href="/ar/privacy-policy"]').length,slug+' Arabic privacy footer');
+ assert.ok($('footer a[href="/ar/terms-of-service"]').length,slug+' Arabic terms footer');
+}
+const arFaq=read('/ar/faq'), enFaq=read('/faq');
+assert.equal(arFaq('main details').length,enFaq('main details').length,'Matching FAQ inventory');
+assert.deepEqual(arFaq('main details').map((_,x)=>arFaq(x).attr('id')).get().sort(),enFaq('main details').map((_,x)=>enFaq(x).attr('id')).get().sort(),'Stable FAQ IDs');
+assert.equal(arFaq('main input[type="search"]').length,1,'Arabic FAQ search');
+const arGallery=read('/ar/gallery'), enGallery=read('/gallery');
+assert.deepEqual(arGallery('main img').map((_,x)=>arGallery(x).attr('src')).get(),enGallery('main img').map((_,x)=>enGallery(x).attr('src')).get(),'Identical gallery image inventory');
+assert.equal(arGallery('main button[aria-pressed]').length,6,'Arabic gallery filters');
+for(const [slug,count] of [['privacy-policy',8],['terms-of-service',9],['privacy-security-kuwait',4]]){
+ const $=read('/ar/'+slug);
+ assert.equal($('main [data-legal-section]').length,count,slug+' full legal section inventory');
+}
+console.log('Phase 6.5D: Arabic business and legal routes, FAQ IDs, gallery inventory and localized legal navigation verified.');
