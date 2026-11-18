@@ -1,3 +1,4 @@
+import LocationHeroActions from '../components/content/LocationHeroActions';
 // File: app/frontend/src/pages/HawalliLocationPage.tsx
 //
 // 🚀 DEDICATED PRODUCTION PAGE — /location/hawalli
@@ -271,7 +272,7 @@ export default function HawalliLocationPage() {
     });
 
   return (
-    <div className="w-full text-white font-sans selection:bg-cyan-500/30" data-kcroc-rollout="location-hawalli">
+    <div className="w-full text-white font-sans selection:bg-cyan-500/30" data-kcroc-rollout="location-hawalli" data-location-scope="physical-lab">
       <SEOEngine entityId={location.id} />
       <SchemaMarkup schema={FAQ_SCHEMA} />
 
@@ -309,18 +310,7 @@ export default function HawalliLocationPage() {
                 .
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                <Button size="lg" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-8 w-full sm:w-auto shadow-[0_0_20px_rgba(6,182,212,0.3)]" asChild>
-                  <Link to="/book" onClick={() => handleBookClick('hero_primary')}>
-                    <Truck className="mr-2 h-5 w-5" aria-hidden="true" /> Book Free Pickup
-                  </Link>
-                </Button>
-                <Button size="lg" variant="outline" className="border-slate-700 text-white hover:bg-slate-800 w-full sm:w-auto" asChild>
-                  <a href={WA_LINK} target="_blank" rel="noopener noreferrer" onClick={() => handleWhatsAppClick('hero_secondary')}>
-                    <MessageCircle className="mr-2 h-5 w-5" aria-hidden="true" /> WhatsApp KCROC
-                  </a>
-                </Button>
-              </div>
+              <LocationHeroActions locale="en" locationSlug={location.slug} whatsappHref={WA_LINK} onBook={() => handleBookClick('hero_primary')} onWhatsApp={() => handleWhatsAppClick('hero_secondary')} />
               <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
                 <a
                   href={`tel:+${phone}`}

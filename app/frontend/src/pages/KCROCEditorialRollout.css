@@ -476,3 +476,25 @@
     padding: 1rem;
   }
 }
+
+/* Phase 6.2: Arabic service-area counterparts use the same editorial tokens.
+   Only explicitly opted-in reading sections are styled; heroes and specialized
+   operational/safety modules retain their existing dark presentation. */
+[data-kcroc-rollout="location-area-ar"] [data-kcroc-editorial-panel] {
+  width: 100%;
+  text-align: start;
+}
+[data-kcroc-rollout="location-area-ar"] [data-kcroc-editorial-panel] :is(a,details)[class*="rounded-"][class*="border"]:not([class*="bg-cyan-"]) {
+  background: var(--kcroc-rollout-white) !important;
+  border-color: var(--kcroc-rollout-line) !important;
+  color: var(--kcroc-rollout-ink) !important;
+}
+[data-kcroc-rollout="location-area-ar"] [data-kcroc-editorial-panel] summary {
+  color: var(--kcroc-rollout-ink) !important;
+  line-height: 1.7;
+}
+[data-kcroc-rollout="location-area-ar"] [data-kcroc-editorial-panel] :is(.divide-slate-800,.border-slate-800) {
+  border-color: var(--kcroc-rollout-line) !important;
+}
+[data-kcroc-rollout="location-area-ar"] [data-kcroc-editorial-panel="location-conversion"] { text-align: center; }
+[data-kcroc-rollout="location-area-ar"] [data-location-hero="true"] { text-align: start; }
