@@ -166,6 +166,8 @@ const salmiyaRelationship =
 const url = 'https://www.computerrepairkuwait.com/ar/pricing';
 const arabicHomeSource = await read('pages/ArabicLocalizedPages.tsx');
 const sharedHomeSource = await read('pages/Home.tsx');
+const sharedServicesSource = await read('pages/Services.tsx');
+const sharedServiceCopy = await read('components/home/homeLocale.ts');
 add('Arabic pricing route is registered', app.includes("path: 'ar/pricing'"));
 add('Arabic pricing page exists and has a native Arabic H1', pricingPage.includes('export default function ArabicPricingPage') && pricingPage.includes('أسعار تصليح الكمبيوتر واللابتوب في الكويت'));
 add('Arabic pricing SEO entity and canonical URL are present', graph.includes("id: 'page-ar-pricing'") && graph.includes(`canonicalUrl: '${url}'`));
@@ -825,8 +827,8 @@ add('Arabic localized homepage and services hub have dedicated content and local
   hero.includes('تصليح وصيانة الكمبيوتر واللابتوب في الكويت') &&
   arabicHomeSource.includes('<Home locale="ar" />') && sharedHomeSource.includes('dir={ar ? "rtl" : undefined}') &&
   arabicHomeSource.includes('export function ArabicServicesPage') &&
-  arabicHomeSource.includes('خدمات تصليح الكمبيوتر واللابتوب في الكويت') &&
-  arabicHomeSource.includes("'laptop-liquid-damage-repair-kuwait':") && arabicHomeSource.includes("'/ar/laptop-liquid-damage-repair-kuwait'"));
+  arabicHomeSource.includes('<Services locale="ar" />') && sharedServicesSource.includes('خدمات تصليح الكمبيوتر واللابتوب في الكويت') &&
+  sharedServiceCopy.includes("'laptop-liquid-damage-repair-kuwait':") && sharedServiceCopy.includes("'/ar/laptop-liquid-damage-repair-kuwait'"));
 add('Arabic homepage and services hub are included in generated SEO and sitemap output',
   seoProjection.includes('"id": "page-ar-home"') &&
   seoProjection.includes('"id": "page-ar-services"') &&
@@ -951,7 +953,7 @@ add('Arabic MacBook model table includes Air, Apple Silicon Pro and legacy Intel
 add('Arabic MacBook service schema uses canonical business entity and labor-only AggregateOffer/catalog', arabicCommercial.includes("name: 'تبديل وتصليح شاشة ماك بوك (MacBook) في الكويت'") && arabicCommercial.includes("'@type': 'AggregateOffer'") && arabicCommercial.includes('lowPrice: 30') && arabicCommercial.includes('hasOfferCatalog') && arabicCommercial.includes("provider: { '@id': `${business.websiteUrl}/#business` }") && arabicCommercial.includes('تبديل شاشة MacBook Air') && arabicCommercial.includes('تبديل شاشة MacBook Pro') && arabicCommercial.includes('دائرة الإضاءة الخلفية'));
 add('Arabic MacBook page image captions distinguish the MacBook diagnostic photo from generic laptop screen work', arabicCommercial.includes('فني يفحص جهاز MacBook مفتوحًا في مختبر KCROC بحولي') && arabicCommercial.includes('صورة توضيحية لفك وفحص تجميعة شاشة لابتوب') && arabicCommercial.includes('loading="lazy"'));
 add('Arabic routes localize the visible desktop header, pickup CTA, and skip link with RTL language context', header.includes("isArabicRoute ? 'احجز استلام مجاني' : 'Book Free Pickup'") && header.includes('dir={isArabicRoute ? "rtl" : undefined}') && navigationCompiler.includes("nav_pricing: { label: 'الأسعار'") && navigationCompiler.includes("nav_locations: { label: 'مناطق الخدمة'") && rootLayout.includes('تخطي إلى المحتوى الرئيسي'));
-add('Arabic routes localize mobile navigation, sticky contact CTA and footer links/address', mobileMenu.includes('راسل فنيًا عبر واتساب') && mobileMenu.includes('dir={isArabicRoute ? "rtl" : undefined}') && stickyMobileCTA.includes('سعر تبديل شاشة ماك بوك') && stickyMobileCTA.includes('اتصل بـ KCROC') && footer.includes('تبديل شاشة ماك بوك') && footer.includes('شارع ابن خلدون، مجمع الملا، السرداب، محل 19، حولي، الكويت') && footer.includes('عرض جميع الخدمات') && footer.includes("'/gaming-pc-repair-kuwait': '/ar/gaming-pc-repair-kuwait'"));
+add('Arabic routes localize mobile navigation, sticky contact CTA and footer links/address', mobileMenu.includes('راسل فنيًا عبر واتساب') && mobileMenu.includes('dir={isArabicRoute ? "rtl" : undefined}') && stickyMobileCTA.includes('سعر تبديل شاشة ماك بوك') && stickyMobileCTA.includes('اتصل بـ KCROC') && footer.includes('تبديل شاشة ماك بوك') && footer.includes('شارع ابن خلدون، مجمع الملا، السرداب، محل 19، حولي، الكويت') && footer.includes('عرض جميع الخدمات') && locale.includes("'/gaming-pc-repair-kuwait': '/ar/gaming-pc-repair-kuwait'") && footer.includes('localizedSitePath(path,'));
 
 add('Arabic Farwaniya service-area structured data points to the Hawalli workshop, not a fake branch', arabicCommercial.includes("const farwaniyaServiceSchema = slug === 'computer-repair-farwaniya'") && arabicCommercial.includes("name: 'KCROC repair workshop — Hawalli'") && arabicCommercial.includes("name: 'Al Farwaniyah Governorate, Kuwait'") && graph.includes('title: "تصليح كمبيوتر الفروانية | فحص مجاني واستلام | KCROC"'));
 add('Farwaniya metadata, pickup-only entity and existing Arabic alternate stay synchronized',
@@ -1991,11 +1993,11 @@ add('Computer repair hub uses the active graph brand list for contextual discove
 const phase3Services = await read('pages/Services.tsx');
 const phase3ArabicDirectory = await read('pages/ArabicLocalizedPages.tsx');
 add('Arabic laptop battery service directory maps the canonical English service slug',
-  phase3ArabicDirectory.includes("'battery-replacement-kuwait': { title: 'تبديل بطارية اللابتوب'") &&
-  !phase3ArabicDirectory.includes("'laptop-battery-replacement-kuwait': { title: 'تبديل بطارية اللابتوب'"));
+  sharedServiceCopy.includes("'battery-replacement-kuwait': { title: 'تبديل بطارية اللابتوب'") &&
+  !sharedServiceCopy.includes("'laptop-battery-replacement-kuwait': { title: 'تبديل بطارية اللابتوب'"));
 add('Both service directories include active dedicated MacBook battery WebPage entities',
   phase3Services.includes("page.id === 'page-macbook-battery-replacement' && page.isActive") &&
-  phase3ArabicDirectory.includes("page.id === 'page-ar-macbook-battery-replacement' && page.isActive"));
+  sharedServicesSource.includes("page.id === 'page-ar-macbook-battery-replacement' && page.isActive"));
 add('MacBook battery symptom card targets MacBook rather than Windows',
   arabicCommercial.includes("href: '/ar/macbook-battery-replacement-kuwait',\n                    link: 'تفاصيل خدمة البطارية'") &&
   !arabicCommercial.includes("تبديل بطارية اللابتوب وماك بوك', path: '/ar/laptop-battery-replacement-kuwait'"));

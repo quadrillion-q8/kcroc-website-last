@@ -1,5 +1,6 @@
 // File: app/frontend/src/core/components/layout/RootLayout.tsx
 import React, { Suspense, lazy, useEffect, useState } from 'react';
+import { isArabicPath } from '../../../utils/locale';
 import { Outlet, useLocation } from 'react-router-dom';
 
 import Header from './Header';
@@ -81,7 +82,7 @@ export const RootLayout: React.FC = () => {
   const { pathname } = useLocation();
   const isGlobalEditorialArticle = pathname === '/blog/why-8gb-ram-is-no-longer-enough-for-windows-11' || pathname === '/blog/why-is-my-laptop-so-slow';
   const hideConversionActions = isGlobalEditorialArticle || isEnglishTechnicalGuideRoute(pathname);
-  const isArabicRoute = pathname === '/ar' || pathname.startsWith('/ar/') || pathname.startsWith('/blog/ar/') || pathname.startsWith('/guides/ar/');
+  const isArabicRoute = isArabicPath(pathname);
   const showAnimatedBackground = shouldShowAnimatedBackground(pathname);
   const [decorativeBackgroundReady, setDecorativeBackgroundReady] = useState(false);
 
@@ -142,7 +143,10 @@ export const RootLayout: React.FC = () => {
           {/* Wrapper for all page content. Must remain transparent. */}
           <main
             id="main-content"
-            data-page-type={pathname === '/' ? 'home' : 'inner'}
+            data-page-type={pathname === '/' || pathname === '/ar' ? 'home' : 'inner'}
+            data-site-locale={isArabicRoute ? 'ar' : 'en'}
+            lang={isArabicRoute ? 'ar-KW' : undefined}
+            dir={isArabicRoute ? 'rtl' : undefined}
             className="relative z-10 flex-grow flex flex-col bg-transparent pt-0"
           >
             {/* 🚀 Protects the entire routing tree from white-screen crashes */}

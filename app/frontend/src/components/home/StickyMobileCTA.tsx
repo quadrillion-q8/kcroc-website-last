@@ -1,5 +1,6 @@
 // File: app/frontend/src/components/home/StickyMobileCTA.tsx
 import React from 'react';
+import { isArabicPath } from '../../utils/locale';
 import { useLocation } from 'react-router-dom';
 import { NAV_GRAPH } from '../../data/navGraph.generated';
 import { buildWhatsAppLink, getPageWhatsAppLink } from '../../utils/whatsappIntent';
@@ -17,7 +18,7 @@ export const StickyMobileCTA = () => {
   // Keep the visible promise identical to the action behind it. The sticky
   // bar always opens WhatsApp, so location pages explicitly say "via WhatsApp"
   // rather than implying a direct booking-form submission.
-  const isArabicRoute = pathname === '/ar' || pathname.startsWith('/ar/') || pathname.startsWith('/blog/ar/') || pathname.startsWith('/guides/ar/');
+  const isArabicRoute = isArabicPath(pathname);
   const ctaLabel = isArabicRoute
     ? pathname.includes('macbook') && pathname.includes('screen') ? 'سعر تبديل شاشة ماك بوك' :
       pathname.includes('hinge') ? 'أرسل صورة المفصلة' :

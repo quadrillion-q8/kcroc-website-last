@@ -4,7 +4,9 @@
 // configuration. The English computer-repair hub is the counterpart of
 // /ar/computer-repair-kuwait; Services and troubleshooting guides use explicit reciprocal pairs where localized versions exist.
 
-const ENGLISH_TO_ARABIC: Record<string, string> = {
+export const ENGLISH_TO_ARABIC: Record<string, string> = {
+  '/guides/dell-laptop-overheating': '/guides/ar/dell-laptop-overheating',
+  '/contact': '/ar/contact',
   '/': '/ar',
   '/services': '/ar/services',
   '/computer-repair-kuwait': '/ar/computer-repair-kuwait',
@@ -44,7 +46,9 @@ const ENGLISH_TO_ARABIC: Record<string, string> = {
   '/blog/how-often-clean-laptop-replace-thermal-paste-kuwait': '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait',
 };
 
-const ARABIC_TO_ENGLISH: Record<string, string> = {
+export const ARABIC_TO_ENGLISH: Record<string, string> = {
+  '/guides/ar/dell-laptop-overheating': '/guides/dell-laptop-overheating',
+  '/ar/contact': '/contact',
   '/ar': '/',
   '/ar/services': '/services',
   '/ar/computer-repair-kuwait': '/computer-repair-kuwait',
@@ -83,6 +87,25 @@ const ARABIC_TO_ENGLISH: Record<string, string> = {
   '/blog/ar/laptop-buying-guide-kuwait-2026': '/blog/laptop-buying-guide-kuwait-2026',
   '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait': '/blog/how-often-clean-laptop-replace-thermal-paste-kuwait',
 };
+
+export type SiteLocale = 'en' | 'ar';
+
+export function isArabicPath(pathname: string): boolean {
+  const normalized = pathname.replace(/\/+$/, '') || '/';
+  return normalized === '/ar' || normalized.startsWith('/ar/') || normalized.startsWith('/blog/ar/') || normalized.startsWith('/guides/ar/');
+}
+
+// For a link inside translated content, preserve the real English route if no translation exists.
+// This intentionally differs from the language-switch fallback, which takes users to the Arabic hub.
+export function localizedSitePath(pathname: string, locale: SiteLocale): string {
+  const normalized = pathname.replace(/\/+$/, '') || '/';
+  if (locale === 'ar') return ENGLISH_TO_ARABIC[normalized] ?? (normalized === '/locations' ? '/ar/near-me' : pathname);
+  return ARABIC_TO_ENGLISH[normalized] ?? pathname;
+}
+
+export function hasArabicCounterpart(pathname: string): boolean {
+  return Boolean(ENGLISH_TO_ARABIC[pathname.replace(/\/+$/, '') || '/']);
+}
 
 export function getLanguageSwitchPath(pathname: string): { href: string; targetLanguage: 'ar' | 'en' } {
   const normalized = pathname.replace(/\/+$/, '') || '/';

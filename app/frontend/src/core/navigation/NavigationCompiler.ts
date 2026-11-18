@@ -9,6 +9,7 @@
 // etc.) out of their import chain matters: it's the difference between one
 // small nav dataset shipping on every page vs. the entire content graph.
 import { NAV_GRAPH } from '../../data/navGraph.generated';
+import { isArabicPath } from '../../utils/locale';
 import { CompiledNavigationModel, NavEntity, MegaMenuConfig } from './types';
 
 interface NavSourceEntity {
@@ -555,7 +556,7 @@ const ARABIC_HEADER_VARIANTS: Record<string, { label: string; href?: string }> =
 };
 
 export function getLocalizedNavigation(pathname: string): CompiledNavigationModel {
-  const isArabicRoute = pathname === '/ar' || pathname.startsWith('/ar/') || pathname.startsWith('/blog/ar/') || pathname.startsWith('/guides/ar/');
+  const isArabicRoute = isArabicPath(pathname);
 
   if (!isArabicRoute) return COMPILED_NAVIGATION;
 
