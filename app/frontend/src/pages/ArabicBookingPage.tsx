@@ -6,7 +6,7 @@ import { SEOEngine } from '../core/components/SEOEngine';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { KCROC_GRAPH } from '../data/graph';
 import { useAnalytics } from '../core/analytics/AnalyticsProvider';
-import { buildWhatsAppLink } from '../utils/whatsappIntent';
+import { handoffWhatsApp } from '../utils/whatsappIntent';
 
 const business = KCROC_GRAPH.business!;
 const BASE_URL = business.websiteUrl;
@@ -47,7 +47,7 @@ export default function ArabicBookingPage() {
     bookingStarted.current = true;
     trackConversion('begin_booking', {
       booking_type: 'pickup',
-      location_context: location.trim() || 'not_provided',
+      
       cta_name: 'arabic_booking_form_interaction',
       button_position: 'arabic_booking_page'
     });
@@ -68,7 +68,7 @@ export default function ArabicBookingPage() {
       '*الوقت المفضل للاستلام:* ' + (preferredPickup || 'مرن / يتم التنسيق عبر واتساب') + '\n' +
       '*العطل:* ' + (issue.trim() || 'أحتاج إلى فحص وتشخيص') + '\n\n' +
       'مرحبًا KCROC، أريد طلب استلام مجاني للجهاز وفحصه مبدئيًا. يرجى التواصل معي لتأكيد تفاصيل الاستلام.';
-    window.open(buildWhatsAppLink(message), '_blank', 'noopener,noreferrer');
+    handoffWhatsApp(message);
   };
 
   return (
@@ -163,9 +163,9 @@ export default function ArabicBookingPage() {
                     onChange={(event) => setPreferredPickup(event.target.value)}
                   >
                     <option value="">مرن / يتم التنسيق عبر واتساب</option>
-                    <option value="Morning (10 AM–1 PM)">صباحًا (10 صباحًا–1 ظهرًا)</option>
-                    <option value="Afternoon (1 PM–5 PM)">بعد الظهر (1–5 مساءً)</option>
-                    <option value="Evening (5 PM–10 PM)">مساءً (5–10 مساءً)</option>
+                    <option value="صباحًا (10 صباحًا–1 ظهرًا)">صباحًا (10 صباحًا–1 ظهرًا)</option>
+                    <option value="بعد الظهر (1–5 مساءً)">بعد الظهر (1–5 مساءً)</option>
+                    <option value="مساءً (5–10 مساءً)">مساءً (5–10 مساءً)</option>
                   </select>
                   <p className="text-xs leading-relaxed text-slate-500">الوقت المفضل ليس موعدًا مؤكدًا؛ سيؤكد الفريق التوفر عبر واتساب.</p>
                 </div>
