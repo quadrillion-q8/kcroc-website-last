@@ -67,3 +67,16 @@ for (const name of ['BookingPage','ArabicBookingPage','Contact','ArabicContactPa
   assert.ok(!source.includes('location_context: location.trim()'),name+' raw location analytics');
 }
 console.log('Phase 6.4 conversion parity checks passed.');
+
+for (const [route, count] of [['/ar/locations',26],['/ar/problems',14]]) {
+ const $ = read(route);
+ const cards = $('main [data-directory-item]');
+ assert.equal(cards.length,count,route+' directory inventory');
+ assert.equal(new Set(cards.map((_,x)=>$(x).attr('data-directory-item')).get()).size,count,route+' distinct cards');
+ assert.ok($('main a[href="/ar/book"]').length,route+' booking CTA');
+ for (const x of cards.toArray()) {
+  const card=$(x);
+  if(card.attr('data-translated')==='false') assert.ok(card.text().includes('بالإنجليزي'),route+' explicit untranslated destination');
+ }
+}
+console.log('Phase 6.5 directory inventory checks passed.');
