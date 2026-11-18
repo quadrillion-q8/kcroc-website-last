@@ -1,0 +1,110 @@
+// Descriptions translated from the English photo catalog, not inferred from a repair outcome.
+const exact:Record<string,string>={
+  "Tiny SMD IC chip from a laptop motherboard held in a technician's palm in Kuwait": "شريحة SMD صغيرة من مذربورد لابتوب في يد الفني",
+  "Pair of MacBook internal speakers removed for replacement in Kuwait": "سماعتان داخليتان لماك بوك بعد الفك للاستبدال",
+  "SanDisk 256GB MacBook SSD next to an aftermarket blade SSD in Kuwait": "وحدة تخزين SanDisk 256GB لماك بوك بجانب وحدة بديلة من نوع Blade",
+  "Samsung MZ-JPV256S 256GB MacBook SSD with label visible in Kuwait": "وحدة تخزين Samsung MZ-JPV256S بسعة 256GB لماك بوك مع ملصق المواصفات",
+  "KCROC computer repair technician portrait in Kuwait": "صورة فني تصليح الكمبيوتر في KCROC",
+  "MacBook Pro aluminium unibody with Arabic keyboard powered on in Kuwait": "ماك بوك برو بهيكل ألمنيوم وكيبورد عربي أثناء التشغيل",
+  "Apple iMac opened to show the logic board and cooling fan during repair in Kuwait": "آي ماك مفتوح يوضح اللوحة المنطقية ومروحة التبريد أثناء التصليح",
+  "Laptop keyboard removed from the top case during keyboard replacement in Kuwait": "كيبورد لابتوب بعد فكه من الغطاء العلوي للتبديل",
+  "All-in-one PC disassembled showing cooling fan and optical drive during repair in Kuwait": "كمبيوتر مكتبي مدمج مفكك يوضح المروحة ومحرك الأقراص الضوئية",
+  "HP laptop with vertical lines and a damaged display needing screen repair in Kuwait": "لابتوب HP بشاشة تالفة تظهر عليها خطوط عمودية",
+  "KCROC technician at the computer repair workstation in Hawalli, Kuwait": "فني KCROC أمام طاولة تصليح الكمبيوتر في حولي",
+  "Close-up of a MacBook Pro logic board and cooling fan in Kuwait": "لقطة قريبة للوحة ماك بوك برو ومروحة التبريد",
+  "Silver HP laptop on the Windows 10 lock screen at the repair shop in Kuwait": "لابتوب HP فضي يعرض شاشة قفل ويندوز 10",
+  "Laptop with red bezel being tested after screen replacement in Kuwait": "لابتوب بإطار أحمر أثناء اختبار الشاشة بعد تبديلها",
+  "MacBook Air with Arabic keyboard during display testing in Kuwait": "ماك بوك إير بكيبورد عربي أثناء اختبار العرض",
+  "MacBook Air display and dock shown from the side in Kuwait": "شاشة ماك بوك إير وشريط التطبيقات من الجانب",
+  "MacBook box contents with charger and UK plug adapter in Kuwait": "محتويات علبة ماك بوك والشاحن ومحول القابس البريطاني",
+  "Motherboard repair tools including BGA stencil holders, tweezers and spudgers on an ESD mat in Kuwait": "أدوات تصليح المذربورد على حصيرة ESD تشمل قوالب BGA وملاقط وأدوات فك",
+  "HP laptop showing the Windows getting ready screen during OS installation in Kuwait": "لابتوب HP يعرض شاشة تجهيز ويندوز أثناء تثبيت النظام",
+  "Apple iMac running macOS Catalina during display testing in Kuwait": "آي ماك يعمل بنظام macOS Catalina أثناء اختبار الشاشة",
+  "Toshiba laptop showing a no operating system found boot error in Kuwait": "لابتوب Toshiba يعرض خطأ عدم العثور على نظام تشغيل",
+  "Underside of a laptop CPU processor showing socket pins in Kuwait": "الجهة السفلية لمعالج لابتوب مع أطراف التوصيل",
+  "Laptop motherboard with RAM module and CPU socket held up for inspection in Kuwait": "مذربورد لابتوب مع RAM ومقبس المعالج أثناء الفحص",
+  "Seagate Barracuda 7200.12 500GB 3.5-inch hard drive in Kuwait": "قرص Seagate Barracuda 7200.12 بسعة 500GB ومقاس 3.5 بوصة",
+  "Pair of Intel M.2 Wi-Fi wireless cards for laptops in Kuwait": "بطاقتا Intel M.2 للاتصال اللاسلكي في اللابتوب",
+  "Technician inspecting an opened MacBook Pro logic board on the workbench in Kuwait": "فني يفحص لوحة ماك بوك برو المفتوحة على طاولة العمل",
+  "Inside a Dell small form factor desktop showing the power supply, fan and Seagate hard drive in Kuwait": "داخل كمبيوتر Dell صغير الحجم يظهر مزود الطاقة والمروحة وقرص Seagate",
+  "Tray of laptop SO-DIMM RAM modules in stock at the repair shop in Kuwait": "صينية شرائح SO-DIMM RAM للابتوبات من مخزون المختبر",
+  "Spare parts inventory of RAM, SSDs and Wi-Fi cards on the repair shop table in Kuwait": "مخزون RAM وSSD وبطاقات اتصال لاسلكي على طاولة المختبر",
+  "SK Hynix 8GB PC4-2400T laptop SO-DIMM RAM modules stacked in Kuwait": "شرائح SK Hynix SO-DIMM بسعة 8GB من نوع PC4-2400T مكدسة",
+  "M.2 SSD being installed in an opened Lenovo laptop during an upgrade in Kuwait": "تركيب SSD من نوع M.2 داخل لابتوب Lenovo مفتوح",
+  "Samsung PM871a M.2 SATA SSD held in hand in Kuwait": "وحدة Samsung PM871a M.2 SATA SSD في اليد",
+  "Laptop DC power jack connector replacement part in Kuwait": "مدخل طاقة DC بديل للابتوب",
+  "Laptop DC jack with cable harness for charging port replacement in Kuwait": "مدخل شحن DC مع كابل التوصيل للاستبدال",
+  "Sony VAIO laptops and a screen on the repair workbench in Kuwait": "لابتوبات Sony VAIO وشاشة على طاولة التصليح",
+  "Opened all-in-one PC showing motherboard, copper heat pipe and fan during repair in Kuwait": "كمبيوتر مدمج مفتوح يظهر المذربورد وأنبوب التبريد النحاسي والمروحة",
+  "LED TV main board with HDMI ports held for repair inspection in Kuwait": "لوحة تلفزيون LED مع منافذ HDMI أثناء الفحص",
+  "Laptop RAM modules sorted in a foam tray in Kuwait": "شرائح RAM للابتوب مرتبة في صينية إسفنجية",
+  "USB 3.0 flash drive on a Windows 10 screen for OS installation in Kuwait": "فلاش USB 3.0 بجانب شاشة ويندوز 10 لتثبيت النظام",
+  "Western Digital PC SN520 NVMe SSD and Intel Wi-Fi card inside an opened laptop in Kuwait": "وحدة WD PC SN520 NVMe SSD وبطاقة Intel Wi-Fi داخل لابتوب مفتوح",
+  "New replacement laptop keyboards in protective plastic in Kuwait": "كيبوردات لابتوب بديلة جديدة داخل أغلفة واقية",
+  "Micron 2400 512GB M.2 NVMe SSD in Kuwait": "وحدة Micron 2400 M.2 NVMe SSD بسعة 512GB",
+  "Laptop cooling fan with heavy dust buildup beside heatsink heat pipes in Kuwait": "مروحة تبريد لابتوب عليها غبار كثيف بجانب الأنابيب الحرارية",
+  "Close-up of dust-clogged laptop fan blades before cleaning in Kuwait": "لقطة قريبة لريش مروحة لابتوب مسدودة بالغبار قبل التنظيف",
+  "MSI laptop and a triple-fan graphics card in its box during a gaming PC upgrade in Kuwait": "لابتوب MSI وكرت شاشة بثلاث مراوح في علبته",
+  "Computer repair shop glass entrance with used monitors and computers in Kuwait": "المدخل الزجاجي لمحل التصليح مع شاشات وأجهزة كمبيوتر بالداخل",
+  "Samsung SO-DIMM laptop RAM module held above a foam tray of memory in Kuwait": "شريحة Samsung SO-DIMM RAM فوق صينية شرائح الذاكرة",
+  "New Intel LGA ATX gaming motherboard unboxed for a PC build in Kuwait": "مذربورد ألعاب Intel LGA ATX جديدة خارج العلبة",
+  "Graphics card disassembled into heatsink, PCB and triple-fan shroud in Kuwait": "كرت شاشة مفكك إلى مشتت ولوحة PCB وغطاء بثلاث مراوح",
+  "Lenovo Legion gaming laptop opened to show dual cooling fans and battery in Kuwait": "لابتوب Lenovo Legion مفتوح يوضح مروحتي التبريد والبطارية",
+  "Technician removing dust from laptop heatsink fins with tweezers in Kuwait": "فني يزيل الغبار من زعانف مشتت اللابتوب بالملقط",
+  "Opened Lenovo laptop with replacement cooling fan compared to the installed fan in Kuwait": "لابتوب Lenovo مفتوح مع مقارنة المروحة البديلة بالمروحة المركبة",
+  "Disassembled gaming laptop motherboard with dual fans and heatsink in Kuwait": "مذربورد لابتوب ألعاب مفككة مع مروحتين ومشتت حراري",
+  "Apple NVMe SSD blade held in front of a MacBook Air for replacement in Kuwait": "وحدة Apple NVMe SSD من نوع Blade أمام ماك بوك إير",
+  "Gaming laptop motherboard with GPU thermal pads and copper heatsink in Kuwait": "مذربورد لابتوب ألعاب مع وسادات GPU ومشتت نحاسي",
+  "Silver laptop with charger on a car seat during free pickup and delivery in Kuwait": "لابتوب فضي وشاحن على مقعد سيارة أثناء الاستلام والتوصيل",
+  "Acer Predator gaming desktop model label specifications in Kuwait": "ملصق مواصفات كمبيوتر Acer Predator المكتبي",
+  "Acer Predator gaming PC Cooler Master liquid cooler and Z37H4-AA motherboard in Kuwait": "كمبيوتر Acer Predator مع مبرد Cooler Master ولوحة Z37H4-AA",
+  "Acer Predator Orion 9000 gaming PC repair in Kuwait": "كمبيوتر ألعاب Acer Predator Orion 9000 أثناء التصليح",
+  "Acer Predator Z37H4-AA LGA motherboard replacement in Kuwait": "استبدال مذربورد Acer Predator Z37H4-AA LGA",
+  "Acer Predator Z37H4-AA motherboard in anti-static bag unboxing in Kuwait": "لوحة Acer Predator Z37H4-AA داخل كيس مضاد للكهرباء الساكنة",
+  "Acer Predator Z37H4-AA motherboard with AMD Radeon graphics card fan in Kuwait": "لوحة Acer Predator Z37H4-AA مع مروحة كرت AMD Radeon",
+  "Alienware laptop internal cleaning fan dust battery 97Wh in Kuwait": "تنظيف داخلي للابتوب Alienware وغبار المروحة وبطارية 97Wh",
+  "AMD Ryzen 7 laptop CPU old thermal paste before repaste in Kuwait": "معجون حراري قديم على معالج AMD Ryzen 7 قبل التجديد",
+  "Apple iMac 24 inch M1 2021 blue repair service": "آي ماك Apple M1 أزرق مقاس 24 بوصة موديل 2021",
+  "Apple magic keyboard arabic magic mouse iMac M1": "كيبورد Apple Magic عربي وماوس Magic لجهاز آي ماك M1",
+  "Arctic MX 4 thermal paste application laptop CPU": "وضع Arctic MX-4 على معالج لابتوب",
+  "Arctic MX 4 thermal paste on Intel CPU closeup": "لقطة قريبة لمعجون Arctic MX-4 على معالج Intel",
+  "ARGB PWM fan controller hub 9 port PC build wiring in Kuwait": "موزع مراوح ARGB PWM بتسعة منافذ وتوصيلاته",
+  "ASUS gaming laptop heatsink heat pipes dust buildup in Kuwait": "تراكم الغبار على مشتت وأنابيب تبريد لابتوب ألعاب ASUS",
+  "ASUS prime Z590 p BIOS EZ mode Core I7 10700K": "واجهة BIOS EZ Mode للوحة ASUS Prime Z590-P بمعالج Core i7-10700K",
+  "ASUS ROG Strix G15 G513R cooling fan dust buildup in Kuwait": "تراكم الغبار على مروحة ASUS ROG Strix G15 G513R",
+  "ASUS ROG Strix G15 G513R CPU and GPU old thermal paste before repaste in Kuwait": "معجون قديم على CPU وGPU في ASUS ROG Strix G15 G513R",
+  "ASUS ROG Strix G15 G513R heatsink old thermal paste and thermal pads in Kuwait": "مشتت ASUS ROG Strix G15 G513R ومعجون ووسادات حرارية قديمة",
+  "ASUS ROG Strix G15 G513R motherboard model label in Kuwait": "ملصق موديل مذربورد ASUS ROG Strix G15 G513R",
+  "ASUS ROG Strix G15 G513R opened dual fan cooling system RAM and SSD in Kuwait": "ASUS ROG Strix G15 G513R مفتوح مع مروحتين وRAM وSSD",
+  "ASUS ROG Strix G15 G513R second cooling fan dusty blades in Kuwait": "ريش المروحة الثانية في ASUS ROG Strix G15 G513R مغطاة بالغبار",
+  "ASUS ROG Strix Z790 a I9 14900K 64GB DDR5 BIOS": "واجهة BIOS للوحة ASUS ROG Strix Z790-A ومعالج i9-14900K وذاكرة 64GB DDR5",
+  "ASUS ROG Zephyrus G16 GU605 cooling fan dust on blades in Kuwait": "غبار على ريش مروحة ASUS ROG Zephyrus G16 GU605",
+  "ASUS ROG Zephyrus G16 GU605 heatsink and motherboard dust buildup in Kuwait": "غبار على مشتت ومذربورد ASUS ROG Zephyrus G16 GU605",
+  "ASUS ROG Zephyrus G16 GU605 OLED display cable and hinge bracket in Kuwait": "كابل شاشة OLED وقاعدة المفصلة في ASUS ROG Zephyrus G16 GU605",
+  "ASUS ROG Zephyrus G16 GU605 opened 90Wh battery triple fan cooling in Kuwait": "ASUS ROG Zephyrus G16 GU605 مفتوح يظهر بطارية 90Wh وثلاث مراوح",
+  "Clogged laptop heatsink fins dust removal": "إزالة الغبار من زعانف مشتت مسدودة",
+  "Computer repair shop graphics cards RTX 5060 technician in Kuwait": "كروت RTX 5060 وفني في محل تصليح الكمبيوتر",
+  "Dell desktop PC repair open case booting": "كمبيوتر Dell مكتبي مفتوح أثناء اختبار الإقلاع",
+  "Dell gaming laptop back cover removed 97Wh battery in Kuwait": "لابتوب ألعاب Dell بعد فك الغطاء الخلفي وبطارية 97Wh",
+  "Dell gaming laptop dust buildup on fan blades in Kuwait": "غبار متراكم على ريش مروحة لابتوب ألعاب Dell",
+  "Dell gaming laptop dusty cooling fan before cleaning in Kuwait": "مروحة تبريد لابتوب ألعاب Dell قبل التنظيف",
+  "Dell gaming laptop motherboard removed with dual fan heatsink in Kuwait": "مذربورد لابتوب ألعاب Dell مفكوكة مع مشتت ومروحتين",
+  "Dell gaming laptop NVIDIA GPU AMD Ryzen 7 cleaned ready for new thermal paste in Kuwait": "معالج AMD Ryzen 7 وشريحة NVIDIA GPU في لابتوب Dell بعد تنظيف المعجون"
+};
+const subjects:[RegExp,string][]=[
+ [/macbook/i,'ماك بوك'],[/imac/i,'آي ماك'],[/all.in.one|\baio pc\b/i,'كمبيوتر مدمج'],[/gaming laptop/i,'لابتوب ألعاب'],[/gaming (?:pc|desktop)/i,'كمبيوتر ألعاب'],[/desktop|\bpc\b/i,'كمبيوتر مكتبي'],[/laptop|notebook/i,'لابتوب'],[/motherboard|logic.board/i,'مذربورد'],[/graphics.card|\bgpu\b/i,'كرت شاشة'],[/workshop|shop/i,'مختبر KCROC']
+];
+const details:[RegExp,string][]=[
+ [/motherboard|logic.board|\bpcb\b/i,'اللوحة الإلكترونية'],[/cooling.fan|\bfans?\b|blower/i,'مروحة التبريد'],[/heatsink|heat.sink/i,'المشتت الحراري'],[/heat.?pipes?/i,'أنابيب التبريد'],[/thermal.paste|thermal.compound/i,'المعجون الحراري'],[/thermal.pads?/i,'الوسادات الحرارية'],[/dust|lint|grime/i,'تراكم الغبار والأوساخ'],[/\bcpu\b|processor/i,'المعالج'],[/\bgpu\b|graphics/i,'معالج الرسوميات'],[/\bram\b|so.?dimm|memory/i,'ذاكرة RAM'],[/\bssd\b|nvme|m\.2/i,'وحدة SSD'],[/\bhdd\b|hard.drive/i,'القرص الصلب'],[/battery|\bwh\b/i,'البطارية'],[/charger|power.adapter|\bac.adapter\b/i,'الشاحن'],[/charging.port|dc.jack|usb.c|thunderbolt/i,'مدخل الشحن أو التوصيل'],[/keyboard/i,'الكيبورد'],[/touchpad|trackpad/i,'لوحة اللمس'],[/palmrest|top.case/i,'الغطاء العلوي'],[/screen|display|lcd|oled/i,'الشاشة'],[/hinge|bezel/i,'المفصلة أو إطار الشاشة'],[/chassis|case|base.cover|bottom.cover/i,'الهيكل أو الغطاء'],[/power.supply|\bpsu\b/i,'مزود الطاقة'],[/bios|uefi|secure.boot/i,'واجهة BIOS أو UEFI'],[/windows/i,'نظام ويندوز'],[/macos/i,'نظام macOS'],[/cable|connector|port/i,'الكابلات والموصلات'],[/inventory|spare.parts|stock/i,'مخزون قطع الغيار'],[/technician|team|owner/i,'الفني أو فريق العمل'],[/entrance|exterior|front|interior|shelves/i,'مرافق المختبر']
+];
+const states:[RegExp,string][]=[
+ [/swollen|expanded/i,'انتفاخ'],[/broken|cracked|damaged/i,'تلف أو كسر'],[/dried|old.thermal.paste/i,'المادة الحرارية القديمة'],[/removed|disassembl|opened|open.case|teardown/i,'بعد الفك أو فتح الهيكل'],[/clean(?:ed|ing)|dust.removal/i,'أثناء أعمال التنظيف'],[/replacement|replacing/i,'أثناء أعمال الاستبدال أو مطابقة القطعة'],[/installation|installing|applied|application/i,'أثناء التركيب'],[/upgrade/i,'ضمن أعمال الترقية'],[/label|part.number|specification/i,'ملصق المواصفات'],[/close.?up/i,'لقطة قريبة'],[/diagnos|inspection|testing/i,'أثناء الفحص'],[/error|bsod|violation/i,'رسالة خطأ'],[/boot|powered.on|running|working/i,'أثناء التشغيل'],[/packaging|unbox/i,'القطعة وعبوتها']
+];
+export function arabicGalleryAlt(alt:string,category:string):string {
+ if(exact[alt])return exact[alt];
+ const subject=subjects.find(([re])=>re.test(alt))?.[1]??category;
+ const identifiers=alt.match(/\b(?:ASUS|Dell|HP|Lenovo|Acer|MSI|Gigabyte|Toshiba|Samsung|Intel|AMD|NVIDIA|Kingston|Corsair|Crucial|Seagate|WD|Micron|Lexar|ZOTAC|Alienware|ROG|Legion|Predator|Ryzen|Core|GeForce|Arctic|Kioxia|Thermal Grizzly|SK Hynix|Panasonic|Redmi|Surface|Vostro|Inspiron|Latitude|ThinkPad|IdeaPad|Zephyrus|Strix|OMEN|ProBook|Pavilion|Stream|Retina|M1|M2|DDR[345]L?|[0-9]+(?:GB|TB|Wh|W|V)|[A-Z]{1,5}[0-9][A-Z0-9-]{2,})\b/gi)??[];
+ const attributes=details.filter(([re])=>re.test(alt)).map(([,label])=>label);
+ const condition=states.filter(([re])=>re.test(alt)).map(([,label])=>label);
+ return [subject,[...new Set(identifiers)].join(' '),attributes.length?attributes.join('، '):'',condition.length?condition.join('، '):''].filter(Boolean).join(' — ');
+}
