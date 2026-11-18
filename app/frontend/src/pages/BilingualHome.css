@@ -1,0 +1,7 @@
+/* Arabic homepage only. */
+[data-home-locale="ar"] { direction: rtl; text-align: start; }
+[data-home-locale="ar"] :is(h1,h2,h3,p,span,dt,dd,a,button) { letter-spacing: normal; }
+[data-home-locale="ar"] .kcroc-display { font-family: inherit; line-height: 1.24; }
+[data-home-locale="ar"] :is(h2,h3) { line-height: 1.4; }
+[data-home-locale="ar"] .divide-x > :not([hidden]) ~ :not([hidden]) { --tw-divide-x-reverse: 1; }
+[data-home-locale="ar"] .kcroc-home-stats-grid > * { min-width: 0; }

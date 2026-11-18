@@ -1,5 +1,6 @@
 // File: app/frontend/src/components/home/Hero.tsx
 import { Button } from '@/components/ui/button';
+import { useHomeLocale } from './homeLocale';
 import { CalendarClock, Check, MessageCircle, Star, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../constants/routes';
@@ -35,15 +36,16 @@ const LAB_FACTS = [
  * per breakpoint; the few desktop-only extras use `hidden lg:*` utilities.
  */
 export default function Hero() {
+  const { ar, t, path, trackName } = useHomeLocale();
   const { trackConversion } = useAnalytics();
 
-  const homePage = KCROC_GRAPH.pages?.find((p) => p.id === 'page-home');
+  const homePage = KCROC_GRAPH.pages?.find((p) => p.id === (ar ? 'page-ar-home' : 'page-home'));
   const hero = homePage?.hero;
   const business = KCROC_GRAPH.business;
-  const heroWhatsAppLink = buildWhatsAppLink('Hi KCROC, I need computer repair in Kuwait. Can I get a free diagnosis and pickup?');
+  const heroWhatsAppLink = buildWhatsAppLink(t('Hi KCROC, I need computer repair in Kuwait. Can I get a free diagnosis and pickup?', 'هلا KCROC، عندي جهاز يحتاج تصليح. ممكن ترتبون فحص واستلام مجاني؟'));
   const rating = business?.aggregateRating?.ratingValue;
   const googleProfileUrl = business?.socialLinks?.googleMaps;
-  const headline = hero?.headline ?? "Kuwait's Expert Component-Level Repair Service.";
+  const headline = ar ? "تصليح وصيانة الكمبيوتر واللابتوب في الكويت" : hero?.headline ?? "Kuwait's Expert Component-Level Repair Service.";
   const desktopImage = '/images/kcroc-pc-doctor-windows-repair-services.webp';
   const heroImage768 = '/images/kcroc-pc-doctor-windows-repair-services.w768.webp';
 
@@ -63,8 +65,8 @@ export default function Hero() {
           <div className="min-w-0 text-center lg:max-w-2xl lg:text-start">
             <div className="mb-4 flex items-center justify-center lg:mb-6 lg:justify-start">
               <span className="kcroc-kicker">
-                <span className="lg:hidden">Precision repair laboratory</span>
-                <span className="hidden lg:inline">Kuwait · Component-level specialists</span>
+                <span className="lg:hidden">{t("Precision repair laboratory","مختبر تصليح متخصص")}</span>
+                <span className="hidden lg:inline">{t("Kuwait · Component-level specialists","الكويت · متخصصون بإصلاح المكونات الدقيقة")}</span>
               </span>
             </div>
 
@@ -75,15 +77,15 @@ export default function Hero() {
             </h1>
 
             <p className="mx-auto mt-3 max-w-lg text-base font-extrabold leading-snug text-cyan-300 sm:text-lg lg:mx-0 lg:mt-5 lg:max-w-xl lg:text-[1.7rem] lg:leading-tight">
-              {hero?.subheadline ?? "We fix the board. We don't just swap it."}
+              {ar ? 'نصلح المذربورد، مو بس نبدلها.' : hero?.subheadline ?? "We fix the board. We don't just swap it."}
             </p>
 
             <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-slate-300 sm:text-base lg:mx-0 lg:mt-4 lg:max-w-xl lg:text-[1.05rem] lg:leading-7">
-              {hero?.description ?? 'Free pickup and delivery across Kuwait. Diagnosis first, quote second, repair only with your approval.'}
+              {ar ? 'في مختبر KCROC بحولي نفحص اللابتوب وماك بوك وكمبيوتر الألعاب، ونحدد العطل ونصلح المكونات الدقيقة متى ما كان الإصلاح ممكن. نستلم جهازك من البيت أو المكتب مجانًا، ونعطيك السعر قبل لا نبدأ.' : hero?.description ?? 'Free pickup and delivery across Kuwait. Diagnosis first, quote second, repair only with your approval.'}
             </p>
 
             <ul className="mt-4 flex flex-wrap justify-center gap-2 lg:mt-6 lg:justify-start lg:gap-2.5">
-              {TRUST_CHIPS.map((label) => (
+              {(ar ? ["استلام وتوصيل مجاني بكل محافظات الكويت","ضمان 30 يوم على الإصلاح المكتمل","إذا ما صلحناه، ما تدفع"] : TRUST_CHIPS).map((label) => (
                 <li
                   key={label}
                   className="inline-flex min-h-10 items-center gap-1.5 rounded-lg border border-white/[0.12] bg-white/[0.04] px-3 py-1.5 text-[11px] font-bold text-[#D4DBDE] lg:gap-2 lg:px-3.5 lg:py-2 lg:text-xs"
@@ -97,11 +99,11 @@ export default function Hero() {
             <div className="mt-5 grid grid-cols-2 gap-2.5 lg:mt-8 lg:flex lg:flex-wrap lg:gap-3.5">
               <Button asChild size="lg" variant="ctaPrimary" className="h-14 w-full min-w-0 rounded-xl px-2 text-[13px] sm:px-5 sm:text-base lg:w-auto lg:px-7">
                 <Link
-                  to={ROUTES.BOOKING}
-                  onClick={() => trackConversion('cta_click', { cta_name: 'hero_book_pickup', button_position: 'hero' })}
+                  to={path(ROUTES.BOOKING)}
+                  onClick={() => trackConversion('cta_click', { cta_name: trackName('hero_book_pickup'), button_position: 'hero' })}
                 >
                   <CalendarClock className="h-5 w-5" aria-hidden="true" />
-                  Get Free Quote
+                  {t("Get Free Quote","احجز استلام مجاني")}
                 </Link>
               </Button>
               <Button asChild size="lg" className="h-14 w-full min-w-0 rounded-xl bg-[#25D366] px-2 text-[13px] font-extrabold text-[#062B15] hover:bg-[#4AE487] sm:px-5 sm:text-base lg:w-auto lg:px-7">
@@ -109,10 +111,10 @@ export default function Hero() {
                   href={heroWhatsAppLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => trackConversion('whatsapp_click', { cta_name: 'hero_quote', button_position: 'hero' })}
+                  onClick={() => trackConversion('whatsapp_click', { cta_name: trackName('hero_quote'), button_position: 'hero' })}
                 >
                   <MessageCircle className="h-5 w-5" aria-hidden="true" />
-                  Book Pickup
+                  {t("Book Pickup","تواصل مع فني")}
                 </a>
               </Button>
             </div>
@@ -123,7 +125,7 @@ export default function Hero() {
                 to="/ar/computer-repair-kuwait"
                 lang="ar"
                 dir="rtl"
-                onClick={() => trackConversion('cta_click', { cta_name: 'hero_arabic_computer_repair', button_position: 'hero' })}
+                onClick={() => trackConversion('cta_click', { cta_name: trackName('hero_arabic_computer_repair'), button_position: 'hero' })}
                 className="inline-flex min-h-12 max-w-full items-center justify-center rounded-lg px-3 py-2 text-center text-sm font-bold text-[#D4DBDE] underline decoration-white/35 underline-offset-4 transition-colors hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
               >
                 تصليح كمبيوتر ولابتوب في الكويت · استلام مجاني
@@ -135,14 +137,14 @@ export default function Hero() {
               <div className="flex" aria-hidden="true">{[...Array(5)].map((_, i) => <Star key={i} className="h-3.5 w-3.5 fill-current text-cyan-400" />)}</div>
               {rating && googleProfileUrl ? (
                 <a href={googleProfileUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center underline-offset-4 hover:text-cyan-200 hover:underline">
-                  {rating} Google rating · Read current reviews
+                  {rating} {t("Google rating · Read current reviews","تقييم Google · شوف تقييمات العملاء")}
                 </a>
-              ) : <span>Customer reviews on Google</span>}
+              ) : <span>{t("Customer reviews on Google","تقييمات العملاء على Google")}</span>}
             </div>
 
             {/* Desktop-only fact strip */}
             <dl className="mt-8 hidden max-w-xl grid-cols-3 divide-x divide-white/10 border-y border-white/[0.10] py-5 text-start lg:grid">
-              {DESKTOP_FACTS.map((item) => (
+              {(ar ? [{"value":"مجاني","label":"الفحص الأولي"},{"value":"السعر أول","label":"قبل أي عمل مدفوع"},{"value":"30 يوم","label":"ضمان الإصلاح"}] : DESKTOP_FACTS).map((item) => (
                 <div key={item.label} className="flex flex-col-reverse px-4 first:ps-0 last:pe-0">
                   <dt className="mt-1 text-[10px] font-bold uppercase leading-tight tracking-[0.12em] text-slate-400">{item.label}</dt>
                   <dd className="text-lg font-black tracking-tight text-white xl:text-2xl">{item.value}</dd>
@@ -160,7 +162,7 @@ export default function Hero() {
                   src={heroImage768}
                   srcSet={`${heroImage768} 768w, ${desktopImage} 1000w`}
                   sizes="(max-width: 1023px) calc(100vw - 2rem), 50vw"
-                  alt="KCROC technicians working on a laptop in the Hawalli computer repair workshop"
+                  alt={t("KCROC technicians working on a laptop in the Hawalli computer repair workshop","فنيو KCROC أثناء تصليح لابتوب في مختبر حولي")}
                   width="1000"
                   height="1000"
                   loading="eager"
@@ -170,24 +172,24 @@ export default function Hero() {
                 />
                 <figcaption className="absolute inset-x-3 bottom-3 z-10 flex items-center justify-between gap-3 rounded-xl border border-white/[0.10] bg-black/[0.55] px-3 py-2 backdrop-blur-md lg:inset-x-5 lg:bottom-5 lg:rounded-2xl lg:bg-[#0b1113]/[0.88] lg:p-4">
                   {/* mobile caption */}
-                  <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-white lg:hidden">Hawalli workshop</span>
-                  <span className="text-[10px] font-bold text-cyan-300 lg:hidden">Open 10 AM–10 PM</span>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-white lg:hidden">{t("Hawalli workshop","مختبر حولي")}</span>
+                  <span className="text-[10px] font-bold text-cyan-300 lg:hidden">{t("Open 10 AM–10 PM","يوميًا 10 صباحًا–10 مساءً")}</span>
                   {/* desktop caption */}
                   <span className="hidden min-w-0 lg:block">
-                    <span className="block text-[10px] font-black uppercase tracking-[0.16em] text-[#dfa86f]">KCROC Hawalli Laboratory</span>
-                    <span className="mt-1 block text-lg font-black text-white">Board repair. Microsoldering. Precision diagnostics.</span>
+                    <span className="block text-[10px] font-black uppercase tracking-[0.16em] text-[#dfa86f]">{t("KCROC Hawalli Laboratory","مختبر KCROC بحولي")}</span>
+                    <span className="mt-1 block text-lg font-black text-white">{t("Board repair. Microsoldering. Precision diagnostics.","تصليح مذربورد · لحام دقيق · فحص متخصص")}</span>
                   </span>
                   <span className="hidden shrink-0 text-right xl:block">
                     <span className="flex justify-end" aria-hidden="true">{[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-current text-cyan-400" />)}</span>
                     {rating && googleProfileUrl ? (
-                      <a href={googleProfileUrl} target="_blank" rel="noopener noreferrer" className="mt-1 flex min-h-12 items-center justify-end text-xs font-semibold text-[#C4CDD1] hover:text-white">{rating} Google rating · View reviews</a>
-                    ) : <span className="mt-1 block text-[11px] font-semibold text-slate-300">Customer reviews</span>}
+                      <a href={googleProfileUrl} target="_blank" rel="noopener noreferrer" className="mt-1 flex min-h-12 items-center justify-end text-xs font-semibold text-[#C4CDD1] hover:text-white">{rating} {t("Google rating · View reviews","تقييم Google · شوف التقييمات")}</a>
+                    ) : <span className="mt-1 block text-[11px] font-semibold text-slate-300">{t("Customer reviews","تقييمات العملاء")}</span>}
                   </span>
                 </figcaption>
               </figure>
 
               <div className="mt-4 hidden grid-cols-3 gap-3 lg:grid">
-                {LAB_FACTS.map((item) => (
+                {(ar ? [{"label":"مختبر آمن من الكهرباء الساكنة","value":"إصلاح دقيق"},{"label":"الاستلام","value":"كل الكويت"},{"label":"الضمان","value":"30 يوم"}] : LAB_FACTS).map((item) => (
                   <div key={item.label} className="rounded-[14px] border border-white/[0.075] bg-white/[0.028] px-3 py-3 text-center">
                     <p className="text-[9px] font-black uppercase tracking-[0.13em] text-slate-400">{item.label}</p>
                     <p className="mt-1 text-xs font-bold text-slate-200">{item.value}</p>
@@ -196,7 +198,7 @@ export default function Hero() {
               </div>
 
               <Link to="/gallery" className="mt-4 hidden min-h-12 items-center gap-2 text-sm font-extrabold text-[#D4DBDE] transition-colors hover:text-white lg:inline-flex">
-                Explore our repair gallery <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                {t("Explore our repair gallery","شوف صور شغلنا بالمختبر (بالإنجليزي)")} <ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden="true" />
               </Link>
             </div>
           </div>

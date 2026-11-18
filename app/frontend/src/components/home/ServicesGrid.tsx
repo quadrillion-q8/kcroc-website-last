@@ -1,5 +1,6 @@
 // File: src/components/home/ServicesGrid.tsx
 import React, { useState } from 'react';
+import { useHomeLocale } from './homeLocale';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Laptop, Gamepad2, Cpu, Apple, Wrench, Truck } from 'lucide-react';
 import { KCROC_GRAPH } from '../../data/graph';
@@ -15,6 +16,7 @@ const ICON_MAP: Record<string, React.ElementType> = {
 };
 
 const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx: number }) => {
+  const { ar, t, path, serviceCopy } = useHomeLocale();
   const { ref, visible } = useFadeIn();
   const Icon = ICON_MAP[service.iconKey] || Wrench;
   const cardImage =
@@ -22,7 +24,8 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
     service.contentImages?.find((image) => image.placement === 'coreFeatures') ??
     service.contentImages?.find((image) => image.placement === 'commonIssues') ??
     service.contentImages?.[0];
-  const cardText = service.shortDescription || service.description;
+  const localized = serviceCopy(service);
+  const cardText = localized?.description ?? (service.shortDescription || service.description);
 
   return (
     <div
@@ -31,7 +34,7 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
       className={`w-full transition-all duration-700 h-full ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
     >
       <Link
-        to={`/${service.slug}`}
+        to={path(`/${service.slug}`)}
         className="group relative flex h-full min-h-[15rem] flex-col overflow-hidden rounded-2xl border border-[#e4dbd0] bg-white shadow-sm transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-px hover:border-[#c9804d]/55 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f4f2c] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f4efe7]"
       >
         {cardImage && (
@@ -39,7 +42,7 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
             <img
               src={cardImage.src}
               srcSet={`${cardImage.src.replace(/\.webp$/, '.w480.webp')} 480w, ${cardImage.src} ${cardImage.width || 1000}w`}
-              alt={cardImage.alt}
+              alt={ar ? `فحص وتصليح ${localized?.title ?? service.title} في مختبر KCROC` : cardImage.alt}
               width={cardImage.width}
               height={cardImage.height}
               loading="lazy"
@@ -57,7 +60,7 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
           </div>
 
           <h3 className="min-h-[2.3rem] text-sm font-semibold leading-snug text-[#172022] line-clamp-2 sm:min-h-[2.5rem] sm:text-base">
-            {service.title}
+            {serviceCopy(service)?.title ?? service.title}
           </h3>
 
           <p className="min-h-[3.75rem] text-xs leading-5 text-[#566467] line-clamp-3 sm:min-h-[4rem] sm:text-sm">
@@ -66,7 +69,7 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
 
           <div className="mt-auto flex min-h-12 items-center gap-2 pt-2 text-xs font-bold text-[#8f4f2c] sm:text-sm">
             <i className="ti ti-clock" aria-hidden="true" />
-            Learn more
+            {t("Learn more","تفاصيل الخدمة")}
           </div>
         </div>
       </Link>
@@ -77,6 +80,7 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
 ServiceCard.displayName = 'ServiceCard';
 
 export default function ServicesGrid() {
+  const { t, path, serviceCopy } = useHomeLocale();
   const services = KCROC_GRAPH.services;
   const [showAllServices, setShowAllServices] = useState(false);
   const visibleServices = showAllServices ? services : services.slice(0, 6);
@@ -91,10 +95,10 @@ export default function ServicesGrid() {
     <section className="kcroc-section-light kcroc-editorial-section w-full border-y border-[#e7ded3] px-4 py-10 sm:px-8 sm:py-16">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
-          eyebrow="What we fix"
+          eyebrow={t("What we fix","شنو نصلح؟")}
           tone="ink"
-          title="Laptop, MacBook & Computer Repair Services"
-          description="From everyday laptop faults to board-level repairs, with dedicated pages for each service."
+          title={t("Laptop, MacBook & Computer Repair Services","خدمات تصليح اللابتوب وماك بوك والكمبيوتر")}
+          description={t("From everyday laptop faults to board-level repairs, with dedicated pages for each service.","من الأعطال اليومية إلى إصلاح المذربورد على مستوى المكوّن، لكل خدمة صفحة بتفاصيلها.")}
           className="mb-4 sm:mb-8"
         />
 
@@ -114,7 +118,7 @@ export default function ServicesGrid() {
               onClick={() => setShowAllServices((current) => !current)}
               className="inline-flex min-h-12 min-w-12 items-center justify-center rounded-xl border border-[#d8cfc3] bg-white px-6 py-3 text-sm font-bold text-[#263234] transition-colors hover:border-[#c9804d]/65 hover:bg-[#fffaf4] hover:text-[#8f4f2c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f4f2c] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f4efe7] motion-reduce:transition-none"
             >
-              {showAllServices ? 'Show fewer services' : `Show all ${services.length} services`}
+              {showAllServices ? t('Show fewer services','عرض خدمات أقل') : t(`Show all ${services.length} services`, `عرض كل الخدمات (${services.length})`)}
             </button>
           </div>
         )}
@@ -124,30 +128,30 @@ export default function ServicesGrid() {
             <Truck className="h-5 w-5" aria-hidden="true" />
           </div>
           <div className="min-w-0 flex-1">
-            <h3 className="text-sm font-extrabold text-[#172022] sm:text-base">Free pick-up &amp; drop across all Kuwait governorates</h3>
-            <p className="mt-1 text-xs leading-relaxed text-[#566467] sm:text-sm">We collect from your home or office. Diagnosis first, quote second, repair only with your approval.</p>
+            <h3 className="text-sm font-extrabold text-[#172022] sm:text-base">{t("Free pick-up & drop across all Kuwait governorates","استلام وتوصيل مجاني بكل محافظات الكويت")}</h3>
+            <p className="mt-1 text-xs leading-relaxed text-[#566467] sm:text-sm">{t("We collect from your home or office. Diagnosis first, quote second, repair only with your approval.","نستلم الجهاز من بيتك أو مكتبك. نفحصه أول، نعطيك السعر، ونصلح بعد موافقتك.")}</p>
           </div>
           <Link
-            to="/book"
+            to={path("/book")}
             className="inline-flex min-h-12 w-full shrink-0 items-center justify-center gap-2 rounded-xl bg-[#dfa86f] px-4 py-2.5 text-sm font-extrabold text-[#17110c] transition-colors hover:bg-[#efc697] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#efc697] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f4efe7] sm:w-auto"
           >
-            Arrange free pickup <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            {t("Arrange free pickup","احجز استلام مجاني")} <ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden="true" />
           </Link>
         </div>
 
         {featuredServices.length > 0 && (
           <div className="mt-5 rounded-2xl border border-[#e3dace] bg-white px-4 py-4 shadow-sm sm:mt-7 sm:px-6">
             <p className="text-xs leading-relaxed text-[#566467] sm:text-sm">
-              Not sure which service you need? Start with our <Link to="/computer-repair-kuwait" className="font-semibold text-[#8f4f2c] underline underline-offset-2">computer repair in Kuwait</Link> guide to repair options, or choose a laptop, screen or battery service below.
+              {t("Not sure which service you need? Start with our ","مو متأكد شنو الخدمة المناسبة؟ ابدأ بصفحة ")}<Link to={path("/computer-repair-kuwait")} className="font-semibold text-[#8f4f2c] underline underline-offset-2">{t("computer repair in Kuwait","تصليح الكمبيوتر في الكويت")}</Link>{t(" guide to repair options, or choose a laptop, screen or battery service below."," لمعرفة خيارات الإصلاح، أو اختر اللابتوب أو الشاشة أو البطارية من الروابط تحت.")}
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
               {featuredServices.map((service) => (
                 <Link
                   key={service.id}
-                  to={`/${service.slug}`}
+                  to={path(`/${service.slug}`)}
                   className="inline-flex min-h-12 items-center rounded-xl border border-[#e3dace] bg-[#fffaf4] px-3 py-2 text-xs font-semibold text-[#354245] transition-colors hover:border-[#c9804d]/55 hover:bg-[#f4efe7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8f4f2c] sm:text-sm"
                 >
-                  {service.title}
+                  {serviceCopy(service)?.title ?? service.title}
                 </Link>
               ))}
             </div>
