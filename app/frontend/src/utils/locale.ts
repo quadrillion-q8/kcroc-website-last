@@ -5,6 +5,8 @@
 // /ar/computer-repair-kuwait; Services and troubleshooting guides use explicit reciprocal pairs where localized versions exist.
 
 export const ENGLISH_TO_ARABIC: Record<string, string> = {
+  '/locations': '/ar/locations',
+  '/problems': '/ar/problems',
   '/brands': '/ar/brands',
   '/dell-laptop-repair-kuwait': '/ar/brands/dell-laptop-repair-kuwait',
   '/hp-laptop-repair-kuwait': '/ar/brands/hp-laptop-repair-kuwait',
@@ -54,6 +56,8 @@ export const ENGLISH_TO_ARABIC: Record<string, string> = {
 };
 
 export const ARABIC_TO_ENGLISH: Record<string, string> = {
+  '/ar/locations': '/locations',
+  '/ar/problems': '/problems',
   '/ar/brands': '/brands',
   '/ar/brands/dell-laptop-repair-kuwait': '/dell-laptop-repair-kuwait',
   '/ar/brands/hp-laptop-repair-kuwait': '/hp-laptop-repair-kuwait',
@@ -113,7 +117,7 @@ export function isArabicPath(pathname: string): boolean {
 // This intentionally differs from the language-switch fallback, which takes users to the Arabic hub.
 export function localizedSitePath(pathname: string, locale: SiteLocale): string {
   const normalized = pathname.replace(/\/+$/, '') || '/';
-  if (locale === 'ar') return ENGLISH_TO_ARABIC[normalized] ?? (normalized === '/locations' ? '/ar/near-me' : pathname);
+  if (locale === 'ar') return ENGLISH_TO_ARABIC[normalized] ?? pathname;
   return ARABIC_TO_ENGLISH[normalized] ?? pathname;
 }
 
