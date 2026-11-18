@@ -10,6 +10,8 @@ import './templates/ServiceTemplateLaptopLayout.css';
 import { IMAGES } from '../constants/images';
 import { buildWhatsAppLink } from '../utils/whatsappIntent';
 import { ArabicHeadTermLinks } from '@/components/content/ArabicHeadTermLinks';
+import ServiceConversionActions from '../components/content/ServiceConversionActions';
+import { localizedSitePath } from '../utils/locale';
 
 const LOCAL_LINKS = [
   { label: 'حولي', path: arabicLocationPath('hawalli') },
@@ -1249,7 +1251,7 @@ function ArabicGamingPcRepairPage({
   };
 
   return (
-    <div dir="rtl" lang="ar-KW" className="min-h-screen bg-transparent text-slate-100">
+    <div dir="rtl" lang="ar-KW" data-service-layout="arabic-premium" className="min-h-screen bg-transparent text-slate-100">
       <SEOEngine entityId={page.id} />
       <SchemaMarkup schema={schema} />
 
@@ -1291,16 +1293,7 @@ function ArabicGamingPcRepairPage({
                 ))}
               </div>
 
-              <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full bg-cyan-400 px-7 py-4 font-black text-slate-950 transition hover:bg-cyan-300">
-                  <MessageCircle className="h-5 w-5" aria-hidden="true" />
-                  أرسل مشكلة الـGaming PC على الواتساب
-                </a>
-                <Link to="/ar/book" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-900/70 px-7 py-4 font-black text-white transition hover:border-cyan-500/40 hover:text-cyan-300">
-                  <Truck className="h-5 w-5" aria-hidden="true" />
-                  رتب استلام الـGaming PC من منطقتك
-                </Link>
-              </div>
+              <ServiceConversionActions locale="ar" entityId="srv-gaming" whatsappHref={wa} whatsappLabel="أرسل مشكلة الـGaming PC على الواتساب" bookingLabel="رتب استلام الـGaming PC من منطقتك" showPricing className="mt-7 flex flex-wrap gap-3" />
 
               <p className="mt-4 text-sm leading-7 text-slate-400">
                 مو لازم تعرف اسم العطل. أرسل لنا <span className="font-bold text-slate-200">موديل الكمبيوتر المكتبي الكامل + كرت الشاشة المركب داخله + منطقتك + شنو قاعد يصير</span>، وإذا عندك فيديو قصير للعطل دزّه لنا. نستقبل جهاز الكمبيوتر الكامل وليس كرت الشاشة منفصلًا.
@@ -1794,7 +1787,7 @@ function ArabicComputerRepairPage({
   ];
 
   return (
-    <div dir="rtl" lang="ar-KW" className="min-h-screen bg-transparent text-slate-100">
+    <div dir="rtl" lang="ar-KW" data-service-layout="arabic-premium" className="min-h-screen bg-transparent text-slate-100">
       <SEOEngine entityId={page.id} />
       <SchemaMarkup schema={schema} />
 
@@ -1826,14 +1819,7 @@ function ArabicComputerRepairPage({
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <a href={wa} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-7 py-3.5 font-black text-slate-950 shadow-lg shadow-cyan-500/10 transition hover:bg-cyan-400">
-                  <MessageCircle className="h-5 w-5" aria-hidden="true" />
-                  راسلنا عبر واتساب
-                </a>
-                <Link to="/ar/book" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-600 bg-slate-900/50 px-7 py-3.5 font-black text-white transition hover:border-cyan-500/50 hover:text-cyan-300">
-                  <Truck className="h-5 w-5" aria-hidden="true" />
-                  احجز استلام الجهاز
-                </Link>
+                <ServiceConversionActions locale="ar" entityId={page.id} whatsappHref={wa} whatsappLabel="راسل فني KCROC على واتساب" bookingLabel="احجز استلام الجهاز" showPricing className="flex flex-wrap gap-3" />
                 <a href={`tel:+${business.telephone}`} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-800 px-6 py-3.5 font-bold text-slate-300 transition hover:border-slate-600 hover:text-white">
                   <Phone className="h-5 w-5" aria-hidden="true" />
                   +965 {business.telephone.replace(/^\+?965\s?/, '')}
@@ -2385,7 +2371,9 @@ export default function ArabicCommercialPage() {
               ]
             : [];
 
-  const heroPageImage = servicePageImages[0];
+  const pairedEnglishService = slug && ARABIC_SERVICE_LAYOUT_SLUGS.has(slug) ? KCROC_GRAPH.services.find(service => localizedSitePath('/' + service.slug, 'ar') === '/ar/' + slug) : undefined;
+  const graphHeroImage = pairedEnglishService?.contentImages?.find(image => image.placement === 'hero') ?? pairedEnglishService?.contentImages?.[0];
+  const heroPageImage = servicePageImages[0] ?? (graphHeroImage && cfg ? { image: graphHeroImage, alt: 'صورة من فحص وتصليح الجهاز في مختبر KCROC بحولي — ' + cfg.eyebrow, caption: 'صورة من أعمال المختبر؛ يتم تحديد طريقة الإصلاح حسب الموديل ونتيجة الفحص.' } : undefined);
   const supportingPageImages = servicePageImages.slice(1);
 
   if (!cfg || !page || !business) return <Navigate to="/404" replace />;
@@ -3340,6 +3328,7 @@ export default function ArabicCommercialPage() {
             <div className={heroPageImage ? "max-w-none" : "max-w-4xl"}>
               <h1 className="text-3xl font-black leading-tight text-white sm:text-5xl">{cfg.h1}</h1>
               <p className="mt-6 text-base leading-8 text-slate-300 sm:text-lg">{cfg.intro}</p>
+              {slug && ARABIC_SERVICE_LAYOUT_SLUGS.has(slug) && (<ServiceConversionActions locale="ar" entityId={pairedEnglishService?.id ?? page.id} whatsappHref={wa} whatsappLabel={slug === 'laptop-repair-kuwait' ? 'أرسل موديل اللابتوب والعطل على واتساب' : slug === 'laptop-screen-repair-kuwait' ? 'أرسل موديل اللابتوب واحصل على عرض سعر' : slug === 'gaming-laptop-repair-kuwait' ? 'أرسل الموديل والعطل على واتساب' : slug === 'laptop-keyboard-replacement-kuwait' ? 'أرسل موديل الجهاز وصورة الكيبورد على واتساب' : slug === 'laptop-charging-port-repair-kuwait' ? 'أرسل موديل الجهاز وصورة المنفذ على واتساب' : slug === 'computer-repair-farwaniya' ? 'رتب استلام مجاني من الفروانية' : 'واتساب KCROC'} showPricing className="mt-7 flex flex-wrap gap-3" />)}
               {(slug === 'laptop-battery-replacement-kuwait' || slug === 'macbook-battery-replacement-kuwait') && (
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                   <a href={wa} onClick={slug === 'macbook-battery-replacement-kuwait' ? () => trackMacbookBatteryCta('macbook_battery_ar_hero_whatsapp') : undefined} target="_blank" rel="noreferrer" aria-label={slug === 'macbook-battery-replacement-kuwait' ? 'أرسل موديل MacBook وأعراض البطارية إلى KCROC عبر واتساب' : 'أرسل موديل اللابتوب وأعراض البطارية إلى KCROC عبر واتساب'} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
@@ -3863,6 +3852,13 @@ export default function ArabicCommercialPage() {
               </Link>
             </div>
           )}
+          {slug && ARABIC_SERVICE_LAYOUT_SLUGS.has(slug) ? (
+            <div className="mt-5 flex flex-wrap gap-3">
+              <Link to={cfg.englishPath} lang="en" className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-800 px-7 py-3.5 font-semibold text-slate-300 hover:text-white">
+              {slug === 'laptop-screen-repair-kuwait' ? 'الصفحة باللغة الإنجليزية' : slug === 'laptop-charging-port-repair-kuwait' ? 'صفحة إصلاح منفذ الشحن باللغة الإنجليزية' : 'English service page'} <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+            </Link>
+            </div>
+          ) : (
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a href={wa} onClick={locationEntity ? () => trackLocationCta('whatsapp_click', 'hero') : undefined} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-500 px-7 py-3.5 font-black text-slate-950 hover:bg-cyan-400">
               <MessageCircle className="h-5 w-5" aria-hidden="true" /> {slug === 'laptop-repair-kuwait' ? 'أرسل موديل اللابتوب والعطل على واتساب' : slug === 'laptop-screen-repair-kuwait' ? 'أرسل موديل اللابتوب واحصل على عرض سعر' : slug === 'gaming-laptop-repair-kuwait' ? 'أرسل الموديل والعطل على واتساب' : slug === 'laptop-keyboard-replacement-kuwait' ? 'أرسل موديل الجهاز وصورة الكيبورد على واتساب' : slug === 'laptop-charging-port-repair-kuwait' ? 'أرسل موديل الجهاز وصورة المنفذ على واتساب' : slug === 'computer-repair-farwaniya' ? 'رتب استلام مجاني من الفروانية' : 'واتساب KCROC'}
@@ -3874,6 +3870,7 @@ export default function ArabicCommercialPage() {
               {slug === 'laptop-screen-repair-kuwait' ? 'الصفحة باللغة الإنجليزية' : slug === 'laptop-charging-port-repair-kuwait' ? 'صفحة إصلاح منفذ الشحن باللغة الإنجليزية' : 'English service page'} <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
+          )}
           {slug === 'laptop-keyboard-replacement-kuwait' && (
             <figure className="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 sm:mt-10">
               <img
@@ -3881,8 +3878,8 @@ export default function ArabicCommercialPage() {
                 alt="فك تجميعة لوحة مفاتيح اللابتوب لفحص الكيبورد والتوصيلات قبل الاستبدال"
                 width={IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.width}
                 height={IMAGES.laptopHardware.laptopKeyboardTopCaseAssemblyRemoval.height}
-                loading="eager"
-                fetchPriority="high"
+                loading={heroPageImage ? "lazy" : "eager"}
+                fetchPriority={heroPageImage ? "low" : "high"}
                 decoding="async"
                 className="aspect-[16/9] w-full object-cover"
               />
@@ -3898,8 +3895,8 @@ export default function ArabicCommercialPage() {
                 alt="فحص واستبدال منفذ طاقة DC Jack في لوحة لابتوب"
                 width={1000}
                 height={1000}
-                loading="eager"
-                fetchPriority="high"
+                loading={heroPageImage ? "lazy" : "eager"}
+                fetchPriority={heroPageImage ? "low" : "high"}
                 decoding="async"
                 className="aspect-[16/9] w-full object-cover"
               />
@@ -3915,8 +3912,8 @@ export default function ArabicCommercialPage() {
                 alt="لابتوب MSI للألعاب على طاولة فحص داخل ورشة KCROC"
                 width={IMAGES.gaming.msiWorkstation.width}
                 height={IMAGES.gaming.msiWorkstation.height}
-                loading="eager"
-                fetchPriority="high"
+                loading={heroPageImage ? "lazy" : "eager"}
+                fetchPriority={heroPageImage ? "low" : "high"}
                 decoding="async"
                 className="aspect-[16/9] w-full object-cover"
               />
@@ -3932,8 +3929,8 @@ export default function ArabicCommercialPage() {
                 alt="فحص مجموعة شاشة اللابتوب لتمييز عطل الشاشة من الكابل أو الاتصال والإضاءة"
                 width={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.width}
                 height={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.height}
-                loading="eager"
-                fetchPriority="high"
+                loading={heroPageImage ? "lazy" : "eager"}
+                fetchPriority={heroPageImage ? "low" : "high"}
                 decoding="async"
                 className="aspect-[16/9] w-full object-cover"
               />
@@ -4150,8 +4147,8 @@ export default function ArabicCommercialPage() {
                 alt="فني يفحص ماك بوك (MacBook) مفتوحًا لتشخيص أعطال الشاشة والبطارية والمذربورد في مختبر KCROC بحولي الكويت"
                 width={IMAGES.macbook.diagnostics.width}
                 height={IMAGES.macbook.diagnostics.height}
-                loading="eager"
-                fetchPriority="high"
+                loading={heroPageImage ? "lazy" : "eager"}
+                fetchPriority={heroPageImage ? "low" : "high"}
                 decoding="async"
                 className="aspect-[16/9] w-full object-cover"
               />
@@ -5278,7 +5275,7 @@ export default function ArabicCommercialPage() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => service && (
-              <Link key={service.id} to={arabicServicePathById[service.id] ?? `/${service.slug}`} className="group rounded-2xl border border-slate-800 bg-slate-900/45 p-6 hover:border-cyan-500/40">
+              <Link key={service.id} to={localizedSitePath(`/${service.slug}`, "ar")} className="group rounded-2xl border border-slate-800 bg-slate-900/45 p-6 hover:border-cyan-500/40">
                 <Wrench className="h-6 w-6 text-cyan-400" aria-hidden="true" />
                 <h3 className="mt-4 text-lg font-bold text-white group-hover:text-cyan-300">{(cfg.serviceCardCopy?.[service.id]?.title ?? ( slug === 'macbook-repair-kuwait' ? arabicMacbookServiceCopy[service.id]?.title : slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.title : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.title : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.title : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.title : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.title : slug === 'laptop-battery-replacement-kuwait' ? arabicBatteryServiceCopy[service.id]?.title : undefined)) ?? arabicDefaultServiceCopy[service.id]?.title ?? service.title.replace(' Kuwait', '')}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-400">{(cfg.serviceCardCopy?.[service.id]?.description ?? ( slug === 'macbook-repair-kuwait' ? arabicMacbookServiceCopy[service.id]?.description : slug === 'laptop-screen-repair-kuwait' ? arabicScreenServiceCopy[service.id]?.description : slug === 'gaming-laptop-repair-kuwait' ? arabicGamingServiceCopy[service.id]?.description : slug === 'macbook-screen-replacement-kuwait' ? arabicMacbookScreenServiceCopy[service.id]?.description : slug === 'laptop-keyboard-replacement-kuwait' ? arabicKeyboardServiceCopy[service.id]?.description : slug === 'laptop-charging-port-repair-kuwait' ? arabicChargingServiceCopy[service.id]?.description : slug === 'laptop-battery-replacement-kuwait' ? arabicBatteryServiceCopy[service.id]?.description : undefined)) ?? arabicDefaultServiceCopy[service.id]?.description ?? service.shortDescription}</p>

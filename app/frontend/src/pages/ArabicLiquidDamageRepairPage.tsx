@@ -1,3 +1,4 @@
+import ServiceConversionActions from '../components/content/ServiceConversionActions';
 // File: app/frontend/src/pages/ArabicLiquidDamageRepairPage.tsx
 // Kuwaiti-Arabic emergency-first service page for laptop and MacBook liquid damage.
 // This page is distinct from the English spill troubleshooting guide and from keyboard-only repair intent.
@@ -341,23 +342,7 @@ export default function ArabicLiquidDamageRepairPage() {
                 <p className="mt-5 text-base leading-8 text-slate-300 sm:text-lg">
                   أهم شي الحين: طفّ الجهاز إذا كان آمن للمس، وافصل الشاحن إذا المكان جاف وآمن، ولا تشغّله مرة ثانية للتجربة. حتى لو نشف من برّه، ممكن تبقى بقايا السائل تحت الكيبورد أو حول الموصلات وعلى المذربورد. في مختبر KCROC بحولي نفحص مسار السائل والتآكل، ونحدد إذا الحالة تحتاج تنظيفاً مناسباً أو إصلاح مكوّنات على اللوحة الأصلية قبل ما نقترح تبديل أي قطعة.
                 </p>
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <a
-                    href={whatsappUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="راسل KCROC على واتساب عن انسكاب الماء أو القهوة على اللابتوب"
-                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200"
-                  >
-                    <MessageCircle className="h-5 w-5" aria-hidden="true" /> طوارئ السوائل: راسلنا على واتساب
-                  </a>
-                  <Link
-                    to="/ar/book"
-                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 px-6 py-3 font-bold text-white transition hover:border-cyan-400/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-                  >
-                    رتّب استلام مجاني <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-                  </Link>
-                </div>
+                <ServiceConversionActions locale="ar" entityId="srv-liquid-damage" whatsappHref={whatsappUrl} whatsappLabel="طوارئ السوائل: راسلنا على واتساب" bookingLabel="رتّب استلام مجاني" showPricing className="mt-6 flex flex-wrap gap-3" />
                 <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-400">
                   <span className="inline-flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-cyan-300" aria-hidden="true" /> ضمان 30 يوم على الإصلاح المكتمل</span>
                   <span className="inline-flex items-center gap-2"><Truck className="h-4 w-4 text-cyan-300" aria-hidden="true" /> استلام وتوصيل مجاني بالكويت</span>
