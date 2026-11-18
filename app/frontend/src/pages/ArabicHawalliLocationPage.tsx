@@ -276,7 +276,7 @@ export default function ArabicHawalliLocationPage() {
 
               <div className="grid gap-3 sm:grid-cols-2">
                 <Button size="lg" className="w-full bg-cyan-500 px-6 font-black text-slate-950 hover:bg-cyan-400" asChild>
-                  <Link to="/book" onClick={() => track('book_pickup_click', 'hawalli_ar_book', 'hero')}>
+                  <Link to="/ar/book" onClick={() => track('book_pickup_click', 'hawalli_ar_book', 'hero')}>
                     <Truck className="ml-2 h-5 w-5" aria-hidden="true" />
                     احجز استلام مجاني
                   </Link>
@@ -440,7 +440,7 @@ export default function ArabicHawalliLocationPage() {
             <Link to="/ar/motherboard-repair-kuwait" className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-cyan-500/40 bg-cyan-500/10 px-5 py-3 text-sm font-black text-cyan-200 transition-colors hover:bg-cyan-500/20">
               تفاصيل تصليح المذربورد <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </Link>
-            <Link to="/book" onClick={() => track('book_pickup_click', 'hawalli_ar_board_module', 'comparison')} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-cyan-500 px-5 py-3 text-sm font-black text-slate-950 transition-colors hover:bg-cyan-400">
+            <Link to="/ar/book" onClick={() => track('book_pickup_click', 'hawalli_ar_board_module', 'comparison')} className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-cyan-500 px-5 py-3 text-sm font-black text-slate-950 transition-colors hover:bg-cyan-400">
               اطلب فحص جهازك <Truck className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
@@ -661,7 +661,7 @@ export default function ArabicHawalliLocationPage() {
           <div className="grid gap-7 lg:grid-cols-2">
             <div><p className="text-sm font-black text-cyan-300">تفضل الزيارة أو الاستلام؟</p><h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">ابدأ بطلب تصليح جهازك</h2><p className="mt-3 text-sm leading-7 text-slate-400">أرسل نوع الجهاز وموديله والمشكلة ومنطقتك. نساعدك في تحديد الخطوة التالية قبل ترتيب الاستلام أو الزيارة.</p></div>
             <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
-              <Button size="lg" className="bg-cyan-500 font-black text-slate-950 hover:bg-cyan-400" asChild><Link to="/book" onClick={() => track('book_pickup_click', 'hawalli_ar_book_bottom', 'bottom')}><Truck className="ml-2 h-5 w-5" aria-hidden="true" />احجز استلام مجاني</Link></Button>
+              <Button size="lg" className="bg-cyan-500 font-black text-slate-950 hover:bg-cyan-400" asChild><Link to="/ar/book" onClick={() => track('book_pickup_click', 'hawalli_ar_book_bottom', 'bottom')}><Truck className="ml-2 h-5 w-5" aria-hidden="true" />احجز استلام مجاني</Link></Button>
               <Button size="lg" variant="outline" className="border-slate-700 text-white hover:bg-slate-800" asChild><a href={waLink} target="_blank" rel="noopener noreferrer" onClick={() => track('whatsapp_click', 'hawalli_ar_whatsapp_bottom', 'bottom')}><MessageCircle className="ml-2 h-5 w-5" aria-hidden="true" /> واتساب</a></Button>
             </div>
           </div>

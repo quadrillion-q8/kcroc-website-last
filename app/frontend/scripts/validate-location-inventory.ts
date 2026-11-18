@@ -5,6 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { KCROC_GRAPH } from '../src/data/graph';
 import { NAV_GRAPH } from '../src/data/navGraph.generated';
+import { arabicLocationInventory, arabicLocationPath } from '../src/utils/arabicLocationRoutes';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const activeLocations = (KCROC_GRAPH.locations ?? []).filter((location) => location.isActive !== false);
@@ -47,7 +48,7 @@ for (const location of pickupLocations) {
   }
 }
 
-const priorityCardSlugs = ['mangaf', 'ahmadi', 'fahaheel', 'jahra', 'mubarak-al-kabeer'];
+const priorityCardSlugs = ['mangaf', 'ahmadi', 'fahaheel', 'jahra', 'mubarak-al-kabeer', 'rumaithiya', 'khaitan', 'messila', 'yarmouk'];
 for (const slug of priorityCardSlugs) {
   const location = pickupLocations.find((item) => item.slug === slug);
   assert.ok(location, `Expected priority pickup-area page is missing: ${slug}.`);
@@ -76,3 +77,32 @@ for (const [source, destination] of Object.entries(requiredLegacyRedirects)) {
 console.log(
   `Location inventory validation passed: ${pickupLocations.length} pickup areas + ${physicalLocations.length} physical lab = ${activeLocations.length} active locations; header, footer and hub inventories agree; four legacy redirects preserved.`,
 );
+
+const arInventory = arabicLocationInventory();
+assert.deepEqual(arInventory.map((entry) => entry.slug).sort(), activeLocations.map((entry) => entry.slug).sort());
+assert.equal(arInventory.filter((entry) => entry.hasArabic).length, 8, 'Existing Arabic location parity changed unexpectedly.');
+for (const entry of arInventory) {
+  assert.equal(entry.path, entry.hasArabic ? '/ar/computer-repair-' + entry.slug : '/location/' + entry.slug);
+}
+for (const slug of ['ahmadi', 'fahaheel', 'mangaf']) {
+  assert.equal(arabicLocationPath(slug), '/ar/computer-repair-' + slug);
+}
+for (const retired of ['jabriya', 'fintas']) assert.ok(!arInventory.some((entry) => entry.slug === retired));
+const activeIds = new Set(activeLocations.map((entry) => entry.id));
+for (const location of activeLocations) {
+  for (const id of location.relatedLocationIds ?? []) {
+    assert.ok(id !== location.id && activeIds.has(id), 'Invalid geographic edge: ' + location.id + ' -> ' + id);
+  }
+}
+for (const [source, target] of [['farwaniya', 'riggae'], ['riggae', 'farwaniya'], ['mangaf', 'mahboula'], ['mahboula', 'mangaf'], ['rumaithiya', 'mishref'], ['messila', 'sabah-al-salem'], ['jahra', 'hawalli']]) {
+  assert.ok(activeLocations.find((location) => location.slug === source)?.relatedLocationIds?.includes('loc-' + target), 'Missing Phase 4 geographic edge: ' + source + ' -> ' + target);
+}
+const hawalliArSource = fs.readFileSync(path.resolve(here, '../src/pages/ArabicHawalliLocationPage.tsx'), 'utf8');
+assert.equal((hawalliArSource.match(/to="\/ar\/book"/g) ?? []).length, 3);
+assert.ok(!hawalliArSource.includes('to="/book"'));
+const nearMeSource = fs.readFileSync(path.resolve(here, '../src/pages/NearMeAR.tsx'), 'utf8');
+assert.ok(nearMeSource.includes('const AREAS_AR = arabicLocationInventory()'));
+const commercialSource = fs.readFileSync(path.resolve(here, '../src/pages/ArabicCommercialPage.tsx'), 'utf8');
+assert.ok(!commercialSource.includes("path: '/location/ahmadi'"));
+assert.ok(commercialSource.includes('trackLocationCta'));
+console.log('Phase 4 Arabic location routing, geographic relationships and priority service cards passed.');

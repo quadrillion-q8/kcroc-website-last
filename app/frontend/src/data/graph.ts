@@ -5802,7 +5802,39 @@ export const rawGraphData: RawGraphData = {
         { title: 'Board-level diagnosis', description: 'Motherboard faults are investigated to the component level where technically feasible instead of defaulting to whole-board replacement.' },
         { title: 'Privacy-conscious handling', description: 'Repair diagnostics focus on the hardware fault, with files left untouched unless customer-authorized work requires otherwise.' }
       ],
-            localFaqs: [
+            localServiceCards: [
+  {
+    "title": "Gaming laptop cooling in Rumaithiya",
+    "problem": "A gaming laptop loses performance or shuts down during long sessions.",
+    "expertise": "We check load temperatures, fan operation and heatsink condition before recommending thermal service.",
+    "solution": "Arrange pickup from Rumaithiya and receive a quote from the Hawalli lab after diagnosis.",
+    "serviceIds": [
+      "srv-gaming-laptop-cleaning"
+    ]
+  },
+  {
+    "title": "Charging and power-path diagnosis",
+    "problem": "A laptop used at home no longer charges or powers on.",
+    "expertise": "We test the adapter, input connector and power circuits before selecting a repair.",
+    "solution": "Send the laptop model and fault when arranging collection; paid work starts after approval.",
+    "serviceIds": [
+      "srv-laptop",
+      "srv-charging-port",
+      "srv-motherboard"
+    ]
+  },
+  {
+    "title": "MacBook display and power faults",
+    "problem": "A MacBook develops a black display or intermittent startup.",
+    "expertise": "We differentiate panel, connector and board faults based on model-specific tests.",
+    "solution": "Collect from Rumaithiya, diagnose at Hawalli and return the tested device.",
+    "serviceIds": [
+      "srv-macbook",
+      "srv-macbook-screen"
+    ]
+  }
+],
+      localFaqs: [
         { id: "faq-rumaithiya-local-1", question: "Do you collect from Rumaithiya, Salwa, Shaab and Jabriya?", answer: "Yes. Rumaithiya, Salwa, Shaab and Jabriya are covered by free pickup and delivery. Send your area and the device symptoms on WhatsApp and we will arrange collection." },
         { id: "faq-rumaithiya-local-2", question: "My gaming laptop is slower than it used to be. Could cleaning help?", answer: "It can. If the laptop thermal throttles, it reduces its speed to stay cool, so games feel slower. Dust build-up and dried thermal paste are common causes. Cleaning the fans and heatsink and re-pasting the chips often restores performance. We check temperatures under load before and after." },
         { id: "faq-rumaithiya-local-3", question: "My laptop is completely dead after I plugged in a different charger. What happened?", answer: "A charger with the wrong voltage can damage the charging circuit. Unplug it and do not keep trying. Check that the adapter matches the laptop's rating. We test the adapter, the port and the power path on the bench and replace the damaged component where possible." },
@@ -5972,7 +6004,38 @@ export const rawGraphData: RawGraphData = {
         { title: 'Screens and batteries', description: 'Screen and battery replacement are available for supported laptop and MacBook models.' },
         { title: 'Motherboard repair', description: 'Component-level board diagnosis is available when a simple part swap is not the right answer.' }
       ],
-            localFaqs: [
+            localServiceCards: [
+  {
+    "title": "Charging connector and battery diagnosis",
+    "problem": "A charger fits but charging is intermittent or the battery does not charge.",
+    "expertise": "We verify adapter output, connector condition and the charging path before recommending a part.",
+    "solution": "Arrange collection in Khaitan with the charger if safe; approve the quote before work.",
+    "serviceIds": [
+      "srv-charging-port",
+      "srv-battery"
+    ]
+  },
+  {
+    "title": "Laptop screen and cable faults",
+    "problem": "Display lines or flicker appear when moving the lid.",
+    "expertise": "The panel, cable, hinge area and connectors are checked to isolate the fault.",
+    "solution": "We confirm the compatible part and total price before fitting it at Hawalli.",
+    "serviceIds": [
+      "srv-screen",
+      "srv-laptop"
+    ]
+  },
+  {
+    "title": "No-power and motherboard assessment",
+    "problem": "A laptop has no lights or response to the power button.",
+    "expertise": "Bench testing checks the power path and failed components where repair is feasible.",
+    "solution": "Arrange free pickup from Khaitan; we explain findings before paid repair.",
+    "serviceIds": [
+      "srv-motherboard"
+    ]
+  }
+],
+      localFaqs: [
         { id: "faq-khaitan-local-1", question: "Do you collect from Khaitan, Farwaniya, Riggae and Ardiya?", answer: "Yes. Khaitan, Farwaniya, Riggae and Ardiya are covered by free pickup and delivery. Send your area and the device symptoms on WhatsApp and we will arrange collection." },
         { id: "faq-khaitan-local-2", question: "My charger fits but the laptop will not charge. Is the charging port broken?", answer: "Check the charger light, try another outlet and look inside the port for debris. If the charger works on another laptop, the port or the charging circuit is the likely cause. We test the adapter, the port and the power path on the bench before recommending a repair." },
         { id: "faq-khaitan-local-3", question: "My laptop screen shows lines after I closed it hard. Is it the cable?", answer: "It might be the display cable or the hinge area stressing it, though the panel itself can also be damaged. Open and close the lid slowly and see whether the picture changes. If it does, the cable is the likely cause. We confirm it before quoting." },
@@ -6383,7 +6446,40 @@ export const rawGraphData: RawGraphData = {
         { title: 'Gaming PC support', description: 'Gaming systems can be checked for overheating, shutdowns, thermal throttling and hardware instability.' },
         { title: 'No need to visit the lab', description: 'Pickup and return delivery keep the repair process convenient for customers in Messila.' }
       ],
-            localFaqs: [
+            localServiceCards: [
+  {
+    "title": "Home gaming system instability",
+    "problem": "A gaming PC or laptop freezes or turns off under load.",
+    "expertise": "We check cooling, power delivery and hardware stability to isolate the fault.",
+    "solution": "Arrange pickup from Messila and receive a diagnostic quote from Hawalli.",
+    "serviceIds": [
+      "srv-gaming",
+      "srv-gaming-laptop-cleaning"
+    ]
+  },
+  {
+    "title": "MacBook black-display diagnosis",
+    "problem": "A MacBook powers on but the built-in display stays black.",
+    "expertise": "We inspect display and power paths according to the exact model.",
+    "solution": "We confirm repair options and compatibility before paid work; return delivery is arranged after testing.",
+    "serviceIds": [
+      "srv-macbook",
+      "srv-macbook-screen"
+    ]
+  },
+  {
+    "title": "Laptop power and battery faults",
+    "problem": "A laptop fails to start or loses power when unplugged.",
+    "expertise": "We distinguish battery wear, charger damage and board faults with bench measurements.",
+    "solution": "Send the symptoms and model when arranging Messila collection.",
+    "serviceIds": [
+      "srv-laptop",
+      "srv-battery",
+      "srv-motherboard"
+    ]
+  }
+],
+      localFaqs: [
         { id: "faq-messila-local-1", question: "Do you collect from Messila, Abu Ftaira, Fnaitees and Mubarak Al-Kabeer?", answer: "Yes. Messila, Abu Ftaira, Fnaitees and Mubarak Al-Kabeer are covered by free pickup and delivery. Send your area and the device symptoms on WhatsApp and we will arrange collection." },
         { id: "faq-messila-local-2", question: "My gaming laptop crashes in the middle of a game. Is it overheating?", answer: "Overheating is one of the most common causes. Dust in the vents, worn fans or old thermal paste can push temperatures high enough to force a shutdown. Failing graphics hardware and faulty memory can also cause crashes. We monitor temperatures under load and check the hardware to find the cause." },
         { id: "faq-messila-local-3", question: "My laptop does not turn on after a power cut. What may have happened?", answer: "A power surge can damage the adapter, the charging circuit or components on the board. Try a different charger if you have one, and hold the power button for around 30 seconds. If it stays dead, we trace the power path on the bench and replace the failed component where possible." },
@@ -7238,7 +7334,39 @@ export const rawGraphData: RawGraphData = {
   title:'Yarmouk',description:'Laptop, MacBook and gaming PC repair for Yarmouk, with free pickup to KCROC’s Hawalli lab.',
   localIntro:"KCROC offers free collection and return delivery for Yarmouk homes and offices. Our Hawalli technicians diagnose laptop, MacBook and desktop issues such as overheating, battery wear, damaged screens, charging faults, startup failures and motherboard problems. Gaming systems are checked for cooling and hardware stability where relevant. Every proposed repair is explained and quoted before paid work, and devices are tested before return. Yarmouk is not a separate repair branch.",
   localHighlights:[{title:'Pickup from Yarmouk',description:'Share the block or map pin on WhatsApp and we will arrange collection and return.'},{title:'Laptop and MacBook repair',description:'We diagnose screen, charging, battery, power and motherboard symptoms.'},{title:'Gaming laptop and PC cooling',description:'We inspect fans, airflow and temperature behaviour when a gaming system overheats or throttles.'},{title:'Workshop diagnosis in Hawalli',description:'All repairs are performed at the central KCROC lab and tested before delivery.'}],
-  localFaqs:[
+  localServiceCards: [
+  {
+    "title": "Home and office laptop faults",
+    "problem": "A laptop used for work develops intermittent charging or a damaged screen.",
+    "expertise": "We verify the charging path, panel and cable before recommending replacements.",
+    "solution": "Provide the collection block and model; Hawalli diagnosis precedes a quote.",
+    "serviceIds": [
+      "srv-laptop",
+      "srv-screen",
+      "srv-charging-port"
+    ]
+  },
+  {
+    "title": "Gaming laptop cooling and throttling",
+    "problem": "Frame rates fall after the laptop warms up.",
+    "expertise": "We measure temperatures and inspect fan and heatsink operation before recommending cleaning.",
+    "solution": "Book free pickup from Yarmouk and review the proposed work before approval.",
+    "serviceIds": [
+      "srv-gaming-laptop-cleaning"
+    ]
+  },
+  {
+    "title": "MacBook and component-level repair",
+    "problem": "A MacBook or laptop will not start reliably.",
+    "expertise": "We isolate power and board faults and consider component repair when technically feasible.",
+    "solution": "All device repairs take place in the central Hawalli laboratory, followed by return delivery.",
+    "serviceIds": [
+      "srv-macbook",
+      "srv-motherboard"
+    ]
+  }
+],
+      localFaqs:[
    {id:"faq-yarmouk-1",question:"Do you provide free laptop pickup in Yarmouk?",answer:"Yes. Free collection and return delivery can be arranged in Yarmouk. Send your block and device model on WhatsApp."},
    {id:"faq-yarmouk-2",question:"Can you clean a gaming laptop that overheats?",answer:"Yes. We inspect the cooling system, fans and thermal behaviour, then recommend cleaning or component repair based on diagnosis."},
    {id:"faq-yarmouk-3",question:"Can a laptop motherboard be repaired instead of replaced?",answer:"Where the failed component and board condition allow it, we attempt component-level repair. The technician confirms the suitable route after inspection."},
@@ -9339,6 +9467,81 @@ const brandIdByName = new Map(
     .map((brand) => [brand.brandName.trim().toLowerCase(), brand.id])
 );
 
+// Prioritize relevant, active geographic neighbors without changing location metadata.
+const LOCATION_NEIGHBOR_PRIORITY: Record<string, string[]> = {
+  "farwaniya": [
+    "loc-khaitan",
+    "loc-riggae"
+  ],
+  "khaitan": [
+    "loc-farwaniya",
+    "loc-riggae"
+  ],
+  "riggae": [
+    "loc-farwaniya",
+    "loc-khaitan"
+  ],
+  "ahmadi": [
+    "loc-fahaheel",
+    "loc-mangaf",
+    "loc-mahboula"
+  ],
+  "fahaheel": [
+    "loc-mangaf",
+    "loc-abu-halifa",
+    "loc-ahmadi"
+  ],
+  "mangaf": [
+    "loc-fahaheel",
+    "loc-abu-halifa",
+    "loc-mahboula"
+  ],
+  "abu-halifa": [
+    "loc-mahboula",
+    "loc-mangaf",
+    "loc-fahaheel"
+  ],
+  "mahboula": [
+    "loc-abu-halifa",
+    "loc-mangaf",
+    "loc-fahaheel"
+  ],
+  "jahra": [
+    "loc-hawalli",
+    "loc-farwaniya"
+  ],
+  "hawalli": [
+    "loc-jahra",
+    "loc-farwaniya",
+    "loc-salmiya"
+  ],
+  "rumaithiya": [
+    "loc-salmiya",
+    "loc-mishref"
+  ],
+  "messila": [
+    "loc-sabah-al-salem",
+    "loc-mubarak-al-kabeer"
+  ],
+  "mubarak-al-kabeer": [
+    "loc-sabah-al-salem",
+    "loc-messila"
+  ],
+  "sabah-al-salem": [
+    "loc-messila",
+    "loc-mubarak-al-kabeer"
+  ],
+  "salmiya": [
+    "loc-rumaithiya",
+    "loc-hawalli"
+  ],
+  "mishref": [
+    "loc-rumaithiya",
+    "loc-sabah-al-salem"
+  ]
+};
+const activeLocationIds = new Set(rawEntities.filter((entity) => entity.entityType === 'Location' && entity.isActive).map((entity) => entity.id));
+
 const allEntities = rawEntities.map((entity) => {
   if (entity.entityType === 'Location') {
     const rel = LOCATION_RELATIONSHIPS[entity.slug];
@@ -9348,6 +9551,8 @@ const allEntities = rawEntities.map((entity) => {
     return {
       ...entity,
       ...(rel ?? { relatedServiceIds: [], relatedProblemIds: [], relatedBrandIds: [], relatedLocationIds: [] }),
+      relatedLocationIds: [...new Set([...(LOCATION_NEIGHBOR_PRIORITY[entity.slug] ?? []), ...(rel?.relatedLocationIds ?? entity.relatedLocationIds ?? [])])]
+        .filter((id) => id !== entity.id && activeLocationIds.has(id)),
       relatedCaseStudyIds,
     } as LocationEntity;
   }
