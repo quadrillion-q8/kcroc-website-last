@@ -165,6 +165,7 @@ const salmiyaRelationship =
 
 const url = 'https://www.computerrepairkuwait.com/ar/pricing';
 const arabicHomeSource = await read('pages/ArabicLocalizedPages.tsx');
+const sharedHomeSource = await read('pages/Home.tsx');
 add('Arabic pricing route is registered', app.includes("path: 'ar/pricing'"));
 add('Arabic pricing page exists and has a native Arabic H1', pricingPage.includes('export default function ArabicPricingPage') && pricingPage.includes('أسعار تصليح الكمبيوتر واللابتوب في الكويت'));
 add('Arabic pricing SEO entity and canonical URL are present', graph.includes("id: 'page-ar-pricing'") && graph.includes(`canonicalUrl: '${url}'`));
@@ -821,8 +822,8 @@ add('Arabic and English homepage, services, and computer-repair hreflang alterna
   graph.includes("'en-KW': 'https://www.computerrepairkuwait.com/computer-repair-kuwait'"));
 add('Arabic localized homepage and services hub have dedicated content and localized direction',
   arabicHomeSource.includes('export function ArabicHomePage') &&
-  arabicHomeSource.includes('تصليح وصيانة الكمبيوتر واللابتوب في الكويت') &&
-  arabicHomeSource.includes('dir="rtl" lang="ar-KW"') &&
+  hero.includes('تصليح وصيانة الكمبيوتر واللابتوب في الكويت') &&
+  arabicHomeSource.includes('<Home locale="ar" />') && sharedHomeSource.includes('dir={ar ? "rtl" : undefined}') &&
   arabicHomeSource.includes('export function ArabicServicesPage') &&
   arabicHomeSource.includes('خدمات تصليح الكمبيوتر واللابتوب في الكويت') &&
   arabicHomeSource.includes("'laptop-liquid-damage-repair-kuwait':") && arabicHomeSource.includes("'/ar/laptop-liquid-damage-repair-kuwait'"));
@@ -907,8 +908,8 @@ add('Arabic contact card displays the Hawalli lab address and opening hours full
 add('Arabic homepage metadata and hero now include native تصليح وصيانة intent without English category labels',
   has(graph, "title: 'تصليح وصيانة الكمبيوتر واللابتوب في الكويت | مختبر KCROC حولي'") &&
   seoProjection.includes('تصليح وصيانة الكمبيوتر واللابتوب في الكويت | KCROC') &&
-  arabicHomeSource.includes('تصليح وصيانة الكمبيوتر واللابتوب في الكويت — نصلح المذربورد على مستوى القطعة') &&
-  arabicHomeSource.includes('إصلاح المكونات الدقيقة عند ملاءمة ذلك'));
+  hero.includes('تصليح وصيانة الكمبيوتر واللابتوب في الكويت') && hero.includes('نصلح المذربورد، مو بس نبدلها.') &&
+  hero.includes('نصلح المكونات الدقيقة متى ما كان الإصلاح ممكن'));
 add('Dell and Lenovo laptop-repair snippets use independent positioning and qualified selected-repair starting prices',
   graph.includes("title: 'Dell Laptop Repair Kuwait | Independent Lab | KCROC'") &&
   seoProjection.includes('Dell Laptop Repair Kuwait | Independent Lab | KCROC') &&

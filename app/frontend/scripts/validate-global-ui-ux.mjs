@@ -154,7 +154,7 @@ requireContains(cookie, 'role="region"', 'core/components/CookieConsentBanner.ts
 requireContains(cookie, 'aria-labelledby="cookie-consent-title"', 'core/components/CookieConsentBanner.tsx', 'the consent region must have an accessible name.');
 requireContains(hero, 'fetchPriority="high"', 'components/home/Hero.tsx', 'the hero image must retain high fetch priority.');
 requireContains(hero, 'Free pick-up & drop across all Kuwait governorates', 'components/home/Hero.tsx', 'hero trust signals must state the full governorate-wide pickup promise.');
-requireContains(servicesGrid, 'Free pick-up &amp; drop across all Kuwait governorates', 'components/home/ServicesGrid.tsx', 'the service grid must expose the Kuwait-wide free pickup promise.');
+requireContains(servicesGrid, 'Free pick-up & drop across all Kuwait governorates', 'components/home/ServicesGrid.tsx', 'the service grid must expose the Kuwait-wide free pickup promise.');
 requireContains(servicesGrid, 'Arrange free pickup', 'components/home/ServicesGrid.tsx', 'the service-grid logistics banner must have a next step.');
 requireContains(servicesGrid, 'services.slice(0, 6)', 'components/home/ServicesGrid.tsx', 'the homepage must initially show six services.');
 requireContains(servicesGrid, 'aria-expanded={showAllServices}', 'components/home/ServicesGrid.tsx', 'the show-all-services control must expose its expanded state.');
