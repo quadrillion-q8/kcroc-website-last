@@ -6,6 +6,8 @@ import { SEOEngine } from '../core/components/SEOEngine';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { ARABIC_PROBLEMS } from '../data/arabicProblems';
 import { useAnalytics } from '../core/analytics/AnalyticsProvider';
+import ArabicLocationQuality from '../components/content/ArabicLocationQuality';
+import { ARABIC_LOCATION_QUALITY } from '../data/arabicLocationQuality';
 import LocationHeroActions from '../components/content/LocationHeroActions';
 import { buildWhatsAppLink } from '../utils/whatsappIntent';
 import { arabicLocationDestination } from '../utils/arabicLocationRoutes';
@@ -31,7 +33,7 @@ export default function ArabicLocationPage(){
  const wa=buildWhatsAppLink('السلام عليكم KCROC، أبي أرتب استلام جهاز من '+copy.name+'. الموديل: ____. العطل: ____. القطعة والشارع والمبنى: ____. الموقع والوقت المفضل: ____.');
  const track=(event:'book_pickup_click'|'whatsapp_click'|'phone_call_click')=>trackConversion(event,{entity_id:loc.id,location_context:slug,cta_name:'location_hero',button_position:'hero'});
  const panel='rounded-2xl border border-slate-800 bg-slate-900/50 p-6 sm:p-8';
- const faqs=[...copy.faqs,{q:'وين يتم تصليح الجهاز؟',a:'في مختبر KCROC المركزي في حولي، شارع ابن خلدون، مجمع الملا، السرداب محل 19. هذي منطقة استلام وتوصيل وليست فرعًا.'},{q:'هل أعرف السعر قبل التصليح؟',a:'إي، الفحص الأولي مجاني ونوضح لك نتيجة الفحص والسعر قبل أي شغل مدفوع. الاستلام والتوصيل مجانيان وفق نطاق الخدمة.'}];
+ const faqs=[...copy.faqs,...(ARABIC_LOCATION_QUALITY[slug]??[]).map(([q,a])=>({q,a})),{q:'وين يتم تصليح الجهاز؟',a:'في مختبر KCROC المركزي في حولي، شارع ابن خلدون، مجمع الملا، السرداب محل 19. هذي منطقة استلام وتوصيل وليست فرعًا.'},{q:'هل أعرف السعر قبل التصليح؟',a:'إي، الفحص الأولي مجاني ونوضح لك نتيجة الفحص والسعر قبل أي شغل مدفوع. الاستلام والتوصيل مجانيان وفق نطاق الخدمة.'}];
  return <div lang="ar-KW" dir="rtl" data-kcroc-rollout="location-area-ar" data-location-scope="pickup-only" className="min-h-screen bg-transparent text-slate-200">
  <SEOEngine entityId={page.id}/>
  <SchemaMarkup schema={{'@context':'https://schema.org','@type':'FAQPage','@id':page.seo.canonicalUrl+'#faq',inLanguage:'ar-KW',mainEntity:faqs.map(f=>({'@type':'Question',name:f.q,acceptedAnswer:{'@type':'Answer',text:f.a}}))}}/>
@@ -45,6 +47,7 @@ export default function ArabicLocationPage(){
  <a data-location-action="call" href={'tel:+'+business.telephone.replace(/\D/g,'')} onClick={()=>track('phone_call_click')} className="mt-4 inline-flex min-h-12 items-center text-cyan-300" dir="ltr">+965 5530 1913</a>
  </div><figure className="overflow-hidden rounded-xl border border-slate-700"><img src={photo.src} width={photo.width} height={photo.height} alt={copy.photo} className="w-full object-contain bg-slate-950" fetchPriority="high"/><figcaption className="p-3 text-sm">{copy.photo} — صورة من مختبر KCROC، وليست فرعًا محليًا.</figcaption></figure></div>
  </header>
+ <ArabicLocationQuality location={loc}/>
  <div className="grid gap-6 mt-8">
  <section data-kcroc-editorial-panel="location-content" className={panel}><h2 className="text-2xl font-black mb-5 text-white">شنو نفحص لأجهزة {copy.name}؟</h2><div className="grid md:grid-cols-3 gap-4">{copy.highlights.map(h=><article key={h.title} className="rounded-xl border border-slate-700 p-5"><h3 className="font-black text-cyan-300 mb-3">{h.title}</h3><p className="leading-loose">{h.description}</p></article>)}</div></section>
  <section data-kcroc-editorial-panel="location-content" className={panel}><h2 className="text-2xl font-black mb-5 text-white">خدمات التصليح المرتبطة</h2><div className="grid sm:grid-cols-2 gap-4">{services.map(s=><Link key={s.id} className="rounded-xl border border-slate-700 p-5 font-bold text-cyan-300" to={localizedSitePath('/'+s.slug,'ar')}>{labels[s.id]??'خدمة تصليح الكمبيوتر'}</Link>)}</div><p className="mt-5">راجع <Link to="/ar/pricing" className="text-cyan-300 underline">الأسعار</Link>؛ نؤكد تكلفة القطعة وأجرة العمل قبل الموافقة.</p></section>

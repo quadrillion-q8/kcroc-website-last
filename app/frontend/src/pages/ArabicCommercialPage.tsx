@@ -1,3 +1,4 @@
+import ArabicLocationQuality from '../components/content/ArabicLocationQuality';
 import React from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft, BadgeCheck, BatteryCharging, CheckCircle2, CircleCheck, ClipboardCheck, Cpu, Gauge, MapPin, MessageCircle, Microscope, MonitorCog, Phone, Power, ShieldCheck, Star, Thermometer, Truck, Wrench } from 'lucide-react';
@@ -5394,6 +5395,7 @@ export default function ArabicCommercialPage() {
           </div>
         )}
 
+        {locationEntity && <ArabicLocationQuality location={locationEntity}/>}
         {locationProof && (
           <section className="mt-12" aria-labelledby="ar-location-workshop-proof" data-kcroc-editorial-panel={locationEntity ? "location-content" : undefined}>
             <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">من داخل المختبر</p>
