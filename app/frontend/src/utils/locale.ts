@@ -5,6 +5,7 @@
 // /ar/computer-repair-kuwait; Services and troubleshooting guides use explicit reciprocal pairs where localized versions exist.
 
 export const ENGLISH_TO_ARABIC: Record<string, string> = {
+  '/author/imran': '/ar/author/imran',
   '/about': '/ar/about',
   '/gallery': '/ar/gallery',
   '/faq': '/ar/faq',
@@ -93,6 +94,7 @@ export const ENGLISH_TO_ARABIC: Record<string, string> = {
 };
 
 export const ARABIC_TO_ENGLISH: Record<string, string> = {
+  '/ar/author/imran': '/author/imran',
   '/ar/about': '/about',
   '/ar/gallery': '/gallery',
   '/ar/faq': '/faq',
