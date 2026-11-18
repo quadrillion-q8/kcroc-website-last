@@ -1,5 +1,6 @@
 // File: app/frontend/src/components/home/LeadMagnet.tsx
 import React, { useMemo, useState } from 'react';
+import { useHomeLocale } from './homeLocale';
 import { KCROC_GRAPH } from '../../data/graph';
 import { buildWhatsAppLink } from '../../utils/whatsappIntent';
 import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
@@ -43,7 +44,21 @@ const ISSUES: (Option & { serviceIds: string[] })[] = [
   { id: 'other', label: 'Other Problem', Icon: Wrench, serviceIds: ['srv-laptop'] },
 ];
 
+const AR_OPTIONS: Record<string,string> = {
+  "Windows Laptop": "لابتوب Windows",
+  "MacBook": "ماك بوك",
+  "Gaming PC / Laptop": "كمبيوتر أو لابتوب قيمنق",
+  "Desktop / All-in-One": "كمبيوتر مكتبي أو All-in-One",
+  "No Power": "ما يشتغل",
+  "Overheating": "حرارة زائدة",
+  "Water / Liquid Spill": "انسكب ماي أو سائل",
+  "Broken / Black Screen": "شاشة مكسورة أو سودا",
+  "Not Charging": "ما يشحن",
+  "Keyboard Problem": "مشكلة بالكيبورد",
+  "Other Problem": "عطل ثاني"
+};
 export const LeadMagnet = () => {
+  const { ar, t, trackName } = useHomeLocale();
   const [device, setDevice] = useState('');
   const [issue, setIssue] = useState('');
   const { trackConversion } = useAnalytics();
@@ -70,7 +85,7 @@ export const LeadMagnet = () => {
         ? `Hi KCROC, my device has this issue: ${selectedIssue.label}. Can you advise on diagnosis and repair options?`
         : 'Hi KCROC, I need help with a computer or laptop repair. Please advise how to start.';
 
-  const waLink = buildWhatsAppLink(waMessage);
+  const waLink = buildWhatsAppLink(ar ? 'هلا KCROC، عندي ' + (selectedDevice ? AR_OPTIONS[selectedDevice.label] : 'جهاز كمبيوتر') + (selectedIssue ? '، المشكلة: ' + AR_OPTIONS[selectedIssue.label] : '') + '. ممكن تفحصونه وتوضحون لي خيارات الإصلاح والتكلفة والاستلام؟' : waMessage);
   const actionLabel = selectedDevice && selectedIssue
     ? `WhatsApp: ${selectedDevice.label} · ${selectedIssue.label}`
     : selectedDevice
@@ -95,22 +110,22 @@ export const LeadMagnet = () => {
           <div className="p-5 sm:p-8 lg:p-12">
             <div className="flex items-center justify-between gap-4 mb-3">
               <p className="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-2">
-                <MessageCircle className="w-4 h-4" aria-hidden="true" /> Quick Repair Check
+                <MessageCircle className="w-4 h-4" aria-hidden="true" /> {t("Quick Repair Check","فحص سريع للجهاز")}
               </p>
-              <span className="text-[11px] text-slate-400 font-semibold">Optional — start with WhatsApp</span>
+              <span className="text-[11px] text-slate-400 font-semibold">{t("Optional — start with WhatsApp","اختياري · تقدر تراسلنا مباشرة")}</span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-black text-white mb-3 leading-tight">
-              Tell us what is wrong with your device
+              {t("Tell us what is wrong with your device","قول لنا شنو المشكلة بجهازك")}
             </h2>
             <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8">
-              Choose your device and symptom. We will prepare a WhatsApp message with the details, and show the lowest applicable starting rate from KCROC's current service pricing.
+              {t("Choose your device and symptom. We will prepare a WhatsApp message with the details, and show the lowest applicable starting rate from KCROC's current service pricing.","اختر نوع الجهاز والعطل، ونجهز لك رسالة واتساب بالتفاصيل ونوضح أقل سعر بداية من أسعار الخدمات الحالية.")}
             </p>
 
             <div className="space-y-4 sm:space-y-6">
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-sm font-bold text-slate-200">1. Select device</h3>
-                  {selectedDevice && <span className="text-xs text-cyan-400 font-semibold">{selectedDevice.label}</span>}
+                  <h3 className="text-sm font-bold text-slate-200">{t("1. Select device","1. اختر الجهاز")}</h3>
+                  {selectedDevice && <span className="text-xs text-cyan-400 font-semibold">{ar ? AR_OPTIONS[selectedDevice.label] : selectedDevice.label}</span>}
                 </div>
                 <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
                   {DEVICES.map(({ id, label, Icon }) => (
@@ -122,7 +137,7 @@ export const LeadMagnet = () => {
                       className={selectClass(device === id)}
                     >
                       <Icon className={`w-5 h-5 mb-3 ${device === id ? 'text-cyan-300' : 'text-slate-400 group-hover:text-cyan-400'}`} aria-hidden="true" />
-                      <span className="block text-xs sm:text-sm font-bold text-white leading-snug">{label}</span>
+                      <span className="block text-xs sm:text-sm font-bold text-white leading-snug">{ar ? AR_OPTIONS[label] : label}</span>
                       {device === id && <CheckCircle2 className="absolute top-3 end-3 w-4 h-4 text-emerald-400" aria-hidden="true" />}
                     </button>
                   ))}
@@ -131,8 +146,8 @@ export const LeadMagnet = () => {
 
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-sm font-bold text-slate-200">2. Select issue</h3>
-                  {selectedIssue && <span className="text-xs text-cyan-400 font-semibold">{selectedIssue.label}</span>}
+                  <h3 className="text-sm font-bold text-slate-200">{t("2. Select issue","2. اختر العطل")}</h3>
+                  {selectedIssue && <span className="text-xs text-cyan-400 font-semibold">{ar ? AR_OPTIONS[selectedIssue.label] : selectedIssue.label}</span>}
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3">
                   {ISSUES.map(({ id, label, Icon }) => (
@@ -144,8 +159,8 @@ export const LeadMagnet = () => {
                       className={selectClass(issue === id)}
                     >
                       <Icon className={`w-5 h-5 mb-2.5 ${issue === id ? 'text-cyan-300' : 'text-slate-400 group-hover:text-cyan-400'}`} aria-hidden="true" />
-                      <span className="block text-xs font-bold text-white leading-snug">{label}</span>
-                      {issue === id && <CheckCircle2 className="absolute top-3 right-3 w-4 h-4 text-emerald-400" aria-hidden="true" />}
+                      <span className="block text-xs font-bold text-white leading-snug">{ar ? AR_OPTIONS[label] : label}</span>
+                      {issue === id && <CheckCircle2 className="absolute top-3 end-3 w-4 h-4 text-emerald-400" aria-hidden="true" />}
                     </button>
                   ))}
                 </div>
@@ -155,42 +170,42 @@ export const LeadMagnet = () => {
                 <div className="rounded-2xl border border-cyan-500/20 bg-cyan-950/20 p-4 sm:p-5">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <div>
-                      <p className="text-[11px] font-black uppercase tracking-[0.14em] text-cyan-400">Your starting estimate</p>
+                      <p className="text-[11px] font-black uppercase tracking-[0.14em] text-cyan-400">{t("Your starting estimate","سعر البداية التقريبي")}</p>
                       <p className="mt-1 text-xl sm:text-2xl font-black text-white">
-                        {estimate != null ? `From ${estimate} KWD` : 'Diagnosis required'}
+                        {estimate != null ? t(`From ${estimate} KWD`, `من ${estimate} د.ك`) : t('Diagnosis required','السعر بعد الفحص')}
                       </p>
                       <p className="mt-1 text-xs leading-5 text-slate-400">
-                        Final price depends on the confirmed fault, model and parts.
+                        {t("Final price depends on the confirmed fault, model and parts.","السعر النهائي يعتمد على العطل المؤكد والموديل والقطع المطلوبة.")}
                       </p>
                     </div>
                     <a
                       href={waLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={() => trackConversion('whatsapp_click', { cta_name: 'lead_magnet_visual_selector', button_position: 'lead_magnet', device: device || 'unspecified', issue: issue || 'unspecified' })}
+                      onClick={() => trackConversion('whatsapp_click', { cta_name: trackName('lead_magnet_visual_selector'), button_position: 'lead_magnet', device: device || 'unspecified', issue: issue || 'unspecified' })}
                       className="inline-flex min-h-12 min-w-12 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 py-3.5 text-sm font-black text-slate-950 transition-all hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 motion-reduce:transition-none sm:min-w-[250px]"
                     >
                       <MessageCircle className="w-5 h-5" aria-hidden="true" />
-                      {actionLabel}
+                      {ar ? 'راسل فني على واتساب' : actionLabel}
                     </a>
                   </div>
                 </div>
               )}
 
               <div className="flex items-start gap-2 text-xs text-slate-400">
-                <ArrowRight className="w-4 h-4 text-cyan-500 mt-0.5 shrink-0" aria-hidden="true" />
-                <span>You can message us immediately. Your selections only make the WhatsApp message more specific.</span>
+                <ArrowRight className="w-4 h-4 text-cyan-500 mt-0.5 shrink-0 rtl:rotate-180" aria-hidden="true" />
+                <span>{t("You can message us immediately. Your selections only make the WhatsApp message more specific.","تقدر تراسلنا مباشرة؛ اختيارك بس يساعدنا نفهم تفاصيل العطل.")}</span>
               </div>
-              <p className="text-[11px] leading-5 text-slate-400">🔒 We keep repair handling privacy-conscious and do not browse personal files as part of normal hardware diagnostics.</p>
+              <p className="text-[11px] leading-5 text-slate-400">{t("🔒 We keep repair handling privacy-conscious and do not browse personal files as part of normal hardware diagnostics.","🔒 نحافظ على خصوصيتك وما نتصفح ملفاتك الشخصية أثناء فحص الهاردوير المعتاد.")}</p>
             </div>
           </div>
 
-          <div className="relative min-h-[220px] lg:min-h-full overflow-hidden border-t lg:border-t-0 lg:border-l border-slate-800">
+          <div className="relative min-h-[220px] lg:min-h-full overflow-hidden border-t lg:border-t-0 lg:border-s border-slate-800">
             <picture>
               <source media="(max-width: 640px)" srcSet="/images/laptop-repair-shop-workbench-laptops.webp" />
               <img
                 src="/images/laptop-repair-shop-workbench-laptops.webp"
-                alt="KCROC laptop repair workbench used for diagnostics and hardware restoration"
+                alt={t("KCROC laptop repair workbench used for diagnostics and hardware restoration","طاولة فحص وتصليح اللابتوبات في مختبر KCROC")}
                 width="960"
                 height="524"
                 className="absolute inset-0 w-full h-full object-cover opacity-90"
@@ -198,12 +213,12 @@ export const LeadMagnet = () => {
                 decoding="async"
               />
             </picture>
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/20 to-transparent lg:block hidden" />
+            <div className="absolute inset-0 bg-gradient-to-r rtl:bg-gradient-to-l from-slate-900/95 via-slate-900/20 to-transparent lg:block hidden" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent lg:hidden" />
             <div className="absolute bottom-4 inset-x-4 sm:bottom-6 sm:inset-x-6 flex justify-end">
               <div className="inline-flex items-center gap-2 text-xs font-bold text-emerald-400 bg-brand-dark/80 backdrop-blur-md px-3 py-2 rounded-xl border border-emerald-500/30 shadow-lg">
                 <CheckCircle2 className="w-4 h-4" aria-hidden="true" />
-                Free pickup · Diagnosis first
+                {t("Free pickup · Diagnosis first","استلام مجاني · الفحص أول")}
               </div>
             </div>
           </div>

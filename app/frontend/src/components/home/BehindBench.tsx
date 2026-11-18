@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHomeLocale } from './homeLocale';
 import { ArrowRight, Microscope, Search, Wrench, Thermometer } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { IMAGES } from '../../constants/images';
@@ -31,6 +32,7 @@ const BENCH_STEPS = [
 ];
 
 export default function BehindBench() {
+  const { ar, t, path } = useHomeLocale();
   return (
     <section
       className="w-full py-12 sm:py-24 px-4 sm:px-6 border-t border-slate-800/50 bg-brand-dark/20"
@@ -39,13 +41,13 @@ export default function BehindBench() {
       <div className="max-w-7xl mx-auto">
         <div className="max-w-3xl mx-auto text-center mb-8 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg border border-white/[0.12] bg-white/[0.04] text-[#D4DBDE] text-xs font-bold uppercase tracking-wider mb-4">
-            Behind the Bench
+            {t("Behind the Bench","من داخل المختبر")}
           </div>
           <h2 id="behind-bench-title" className="text-white text-3xl sm:text-4xl font-black tracking-tight">
-            See How KCROC Diagnoses and Repairs the Fault
+            {t("See How KCROC Diagnoses and Repairs the Fault","شوف شلون نفحص ونصلح العطل في KCROC")}
           </h2>
           <p className="text-slate-400 mt-4 text-base leading-relaxed">
-            A practical look at the workflow behind component-level computer and laptop repair in Kuwait.
+            {t("A practical look at the workflow behind component-level computer and laptop repair in Kuwait.","خطوات فعلية لفحص وتصليح الكمبيوتر واللابتوب على مستوى المكونات في مختبر حولي.")}
           </p>
         </div>
 
@@ -58,24 +60,24 @@ export default function BehindBench() {
               <div className="relative aspect-[16/10] overflow-hidden bg-slate-950">
                 <img
                   src={image.src}
-                  alt={image.alt}
+                  alt={ar ? ['فحص مكونات الجهاز بالمجهر','تتبع عطل المذربورد','فني يصلح مكونات اللوحة','فحص التبريد واختبار الجهاز'][index] : image.alt}
                   width={image.width}
                   height={image.height}
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-cover"
                 />
-                <span className="absolute left-3 top-3 inline-flex items-center justify-center w-8 h-8 rounded-full bg-brand-dark/90 text-cyan-400 border border-slate-700/70">
+                <span className="absolute start-3 top-3 inline-flex items-center justify-center w-8 h-8 rounded-full bg-brand-dark/90 text-cyan-400 border border-slate-700/70">
                   <Icon className="w-4 h-4" aria-hidden="true" />
                 </span>
-                <span className="absolute right-3 bottom-3 px-2 py-1 rounded-full bg-brand-dark/90 text-slate-200 text-[10px] font-bold uppercase tracking-wider">
-                  Step {index + 1}
+                <span className="absolute end-3 bottom-3 px-2 py-1 rounded-full bg-brand-dark/90 text-slate-200 text-[10px] font-bold uppercase tracking-wider">
+                  {t("Step","خطوة")} {index + 1}
                 </span>
               </div>
 
               <div className="p-5 sm:p-6">
-                <h3 className="text-white font-bold text-base sm:text-lg">{title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed mt-2">{description}</p>
+                <h3 className="text-white font-bold text-base sm:text-lg">{ar ? ['نفحص الجهاز','نتتبع سبب العطل','نصلح المذربورد','نفحص التبريد ونختبر الجهاز'][index] : title}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed mt-2">{ar ? ['نفحص الجهاز بصريًا وبالمجهر لتحديد علامات العطل.','نعزل الخلل في دوائر الطاقة أو الشحن أو الإشارات.','نصلح المكوّن المتضرر متى ما كان إصلاح اللوحة ممكنًا فنيًا.','نفحص التبريد ونختبر وظائف الجهاز قبل التسليم حسب نوع العطل.'][index] : description}</p>
               </div>
             </article>
           ))}
@@ -86,15 +88,15 @@ export default function BehindBench() {
             to="/gallery"
             className="inline-flex min-h-12 items-center justify-center gap-2 px-5 py-3 rounded-xl border border-slate-700 text-slate-200 hover:border-cyan-500/40 hover:text-white transition-colors font-bold text-sm"
           >
-            View Workshop Gallery
-            <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            {t("View Workshop Gallery","شوف صور المختبر (بالإنجليزي)")}
+            <ArrowRight className="w-4 h-4 rtl:rotate-180" aria-hidden="true" />
           </Link>
           <Link
-            to="/book"
+            to={path("/book")}
             className="inline-flex min-h-12 items-center justify-center gap-2 px-5 py-3 rounded-xl bg-cyan-400 text-slate-950 hover:bg-cyan-300 transition-colors font-bold text-sm"
           >
-            Book Free Pickup
-            <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            {t("Book Free Pickup","احجز استلام مجاني")}
+            <ArrowRight className="w-4 h-4 rtl:rotate-180" aria-hidden="true" />
           </Link>
         </div>
       </div>

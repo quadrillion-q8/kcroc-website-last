@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHomeLocale } from './homeLocale';
 import { ArrowRight, CalendarClock, CheckCircle2, MessageCircle, ShieldCheck, Truck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../constants/routes';
@@ -6,9 +7,10 @@ import { buildWhatsAppLink } from '../../utils/whatsappIntent';
 import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
 
 export default function RepairProofCTA() {
+  const { t, path, trackName } = useHomeLocale();
   const { trackConversion } = useAnalytics();
   const whatsappLink = buildWhatsAppLink(
-    "Hi KCROC, I'd like help diagnosing my device before deciding on a repair. I'll share the model and symptoms. Can you advise on repair options and free pickup?"
+    t("Hi KCROC, I'd like help diagnosing my device before deciding on a repair. I'll share the model and symptoms. Can you advise on repair options and free pickup?", 'هلا KCROC، أبي أفحص جهازي قبل لا أقرر أصلحه أو أبدله. ممكن أرسل الموديل والعطل ونرتب الاستلام؟')
   );
 
   return (
@@ -20,47 +22,47 @@ export default function RepairProofCTA() {
         <div className="grid lg:grid-cols-[1fr_auto] gap-7 lg:gap-10 items-center">
           <div>
             <p className="text-cyan-400 text-xs font-black uppercase tracking-[0.14em] mb-3">
-              Need a repair decision?
+              {t("Need a repair decision?","محتار تصلح الجهاز أو تبدله؟")}
             </p>
             <h2 id="repair-proof-cta-title" className="text-white text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight">
-              Let us diagnose the fault before you commit to a replacement.
+              {t("Let us diagnose the fault before you commit to a replacement.","خلنا نفحص العطل قبل لا تقرر تبدل الجهاز أو القطعة.")}
             </h2>
             <p className="text-slate-400 mt-3 max-w-2xl text-sm sm:text-base leading-relaxed">
-              Send the device model and symptom on WhatsApp, or book free pickup. We confirm the fault and explain the repair path before proceeding.
+              {t("Send the device model and symptom on WhatsApp, or book free pickup. We confirm the fault and explain the repair path before proceeding.","أرسل الموديل والعطل على واتساب، أو احجز استلام مجاني. نأكد سبب المشكلة ونوضح خيار الإصلاح قبل لا نبدأ.")}
             </p>
 
             <div className="flex flex-wrap gap-2 mt-5">
               <span className="inline-flex items-center gap-1.5 rounded-md border border-white/[0.07] bg-white/[0.018] px-3 py-2 text-[11px] font-semibold text-slate-300">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" aria-hidden="true" /> Diagnosis first
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" aria-hidden="true" /> {t("Diagnosis first","الفحص أول")}
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-md border border-white/[0.07] bg-white/[0.018] px-3 py-2 text-[11px] font-semibold text-slate-300">
-                <Truck className="w-3.5 h-3.5 text-cyan-400" aria-hidden="true" /> Free pickup across Kuwait
+                <Truck className="w-3.5 h-3.5 text-cyan-400" aria-hidden="true" /> {t("Free pickup across Kuwait","استلام مجاني بكل الكويت")}
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-md border border-white/[0.07] bg-white/[0.018] px-3 py-2 text-[11px] font-semibold text-slate-300">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" aria-hidden="true" /> Warranty on eligible repairs
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" aria-hidden="true" /> {t("Warranty on eligible repairs","ضمان على الإصلاحات المشمولة")}
               </span>
             </div>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-1 gap-2.5 min-w-[220px]">
             <Link
-              to={ROUTES.BOOKING}
-              onClick={() => trackConversion('cta_click', { cta_name: 'repair_proof_book_pickup', button_position: 'repair_proof_cta' })}
+              to={path(ROUTES.BOOKING)}
+              onClick={() => trackConversion('cta_click', { cta_name: trackName('repair_proof_book_pickup'), button_position: 'repair_proof_cta' })}
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-5 py-3.5 min-h-[48px] font-black text-sm transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 touch-manipulation"
             >
               <CalendarClock className="w-5 h-5" aria-hidden="true" />
-              Book Free Pickup
-              <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              {t("Book Free Pickup","احجز استلام مجاني")}
+              <ArrowRight className="w-4 h-4 rtl:rotate-180" aria-hidden="true" />
             </Link>
             <a
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackConversion('whatsapp_click', { cta_name: 'repair_proof_whatsapp', button_position: 'repair_proof_cta' })}
+              onClick={() => trackConversion('whatsapp_click', { cta_name: trackName('repair_proof_whatsapp'), button_position: 'repair_proof_cta' })}
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] hover:brightness-95 text-slate-950 px-5 py-3.5 min-h-[48px] font-black text-sm transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 touch-manipulation"
             >
               <MessageCircle className="w-5 h-5" aria-hidden="true" />
-              WhatsApp a Technician
+              {t("WhatsApp a Technician","راسل فني على واتساب")}
             </a>
           </div>
         </div>

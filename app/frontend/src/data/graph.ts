@@ -136,7 +136,9 @@ export const rawGraphData: RawGraphData = {
         'faq-ar-home-pickup',
         'faq-ar-home-data',
         'faq-ar-home-pricing',
-        'faq-ar-home-turnaround'
+        'faq-ar-home-turnaround',
+        'faq-ar-home-warranty',
+        'faq-ar-home-liquid'
       ]
     } as WebPageEntity,
 
@@ -7722,6 +7724,9 @@ export const rawGraphData: RawGraphData = {
       answer: 'تعتمد المدة على نوع العطل وتوفر القطع ونتيجة الفحص. بعد تشخيص الجهاز نعطيك تقديرًا مبدئيًا للمدة، ونطلعك على أي تغيير إذا احتاج الإصلاح وقتًا إضافيًا.',
       seo: { title: 'مدة تصليح الكمبيوتر واللابتوب في الكويت | KCROC', description: 'تعرف على العوامل التي تحدد مدة الإصلاح ومتى تحصل على تقدير زمني.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar#faq-repair-time', schemaTypes: ['FAQPage'] }
     } as FAQEntity,
+
+    'faq-ar-home-warranty': { id: 'faq-ar-home-warranty', slug: 'ar-home-warranty', entityType: 'FAQ', isActive: true, title: "هل في ضمان على التصليح؟", description: "ضمان 30 يوم على الإصلاحات المكتملة ضمن نطاق القطعة والعمل المنفذ وشروط الخدمة. نوضح لك تفاصيل الضمان قبل موافقتك.", answer: "ضمان 30 يوم على الإصلاحات المكتملة ضمن نطاق القطعة والعمل المنفذ وشروط الخدمة. نوضح لك تفاصيل الضمان قبل موافقتك.", seo: { title: "هل في ضمان على التصليح؟ | KCROC", description: "ضمان 30 يوم على الإصلاحات المكتملة ضمن نطاق القطعة والعمل المنفذ وشروط الخدمة. نوضح لك تفاصيل الضمان قبل موافقتك.", canonicalUrl: 'https://www.computerrepairkuwait.com/ar#faq-warranty', schemaTypes: ['FAQPage'] } } as FAQEntity,
+    'faq-ar-home-liquid': { id: 'faq-ar-home-liquid', slug: 'ar-home-liquid', entityType: 'FAQ', isActive: true, title: "انكب ماي أو قهوة على اللابتوب، شنو أسوي؟", description: "طفي الجهاز وافصل الشاحن إذا كان آمن، ولا تشغله أو تشحنه مرة ثانية. تواصل معانا لترتيب الفحص والاستلام؛ نفحص آثار السائل والمكونات قبل تحديد إمكانية الإصلاح والتكلفة.", answer: "طفي الجهاز وافصل الشاحن إذا كان آمن، ولا تشغله أو تشحنه مرة ثانية. تواصل معانا لترتيب الفحص والاستلام؛ نفحص آثار السائل والمكونات قبل تحديد إمكانية الإصلاح والتكلفة.", seo: { title: "انكب ماي أو قهوة على اللابتوب، شنو أسوي؟ | KCROC", description: "طفي الجهاز وافصل الشاحن إذا كان آمن، ولا تشغله أو تشحنه مرة ثانية. تواصل معانا لترتيب الفحص والاستلام؛ نفحص آثار السائل والمكونات قبل تحديد إمكانية الإصلاح والتكلفة.", canonicalUrl: 'https://www.computerrepairkuwait.com/ar#faq-liquid', schemaTypes: ['FAQPage'] } } as FAQEntity,
 
     'faq-pick-and-drop': { id: 'faq-pick-and-drop', slug: 'pick-and-drop', entityType: 'FAQ', isActive: true, title: 'Do you offer a pick and drop service across Kuwait?', description: 'Free pickup and delivery across all Kuwait governorates.', answer: 'Yes. Kuwait Computer Repair On Call provides completely free pickup and delivery across all Kuwait governorates — including Hawalli, Salmiya, Kuwait City, Farwaniya, Ahmadi, Jahra, Fahaheel, Mangaf, and Mahboula. Message us on WhatsApp to arrange collection. There are no hidden transport charges.', seo: { title: 'FAQ: Free Pick & Drop Service', description: 'Free pickup and delivery across all Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#pick-and-drop', schemaTypes: ['FAQPage'] } } as FAQEntity,
     'faq-liquid-damage': { id: 'faq-liquid-damage', slug: 'liquid-damage', entityType: 'FAQ', isActive: true, title: 'Do you repair liquid-damaged laptops and MacBooks?', description: 'Details about our ultrasonic liquid damage repair process.', answer: 'Yes. We fully disassemble the device, run the motherboard through an industrial ultrasonic cleaner to strip corrosion, then trace and replace the specific shorted components using micro-soldering.', seo: { title: 'FAQ: Liquid Damage Repair', description: 'Liquid damage repair process details.', canonicalUrl: 'https://www.computerrepairkuwait.com/faq#liquid-damage', schemaTypes: ['FAQPage'] } } as FAQEntity,
