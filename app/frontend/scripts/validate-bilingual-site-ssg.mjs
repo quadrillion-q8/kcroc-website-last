@@ -150,3 +150,27 @@ for(const $ of [authorEN,authorAR]){
 }
 assert.ok(read('/ar/about')('main a[href="/ar/author/imran"]').length,'Arabic author discovery');
 console.log('Phase 6.5E: '+eligible.length+' non-editorial sitemap URLs have reciprocal language twins.');
+
+const upgradedProblems=problemDirectory('main [data-directory-item]').toArray().map(el=>problemDirectory(el).attr('href')).filter(route=>route!=='/ar/laptop-plugged-in-not-charging');
+assert.equal(upgradedProblems.length,13);
+for(const route of upgradedProblems){
+ const $=read(route);
+ assert.ok($('main [data-diagnostic-row]').length>=4,route+' static diagnostic cases');
+ assert.ok($('main [data-problem-editorial-panel="faq"] details').length>=5,route+' expanded FAQ inventory');
+ const faq=$('script[type="application/ld+json"]').toArray().flatMap(el=>{try{const x=JSON.parse($(el).text());return Array.isArray(x)?x:x['@graph']??[x]}catch{return []}}).find(x=>x['@type']==='FAQPage'&&String(x['@id']).endsWith('#faq'));
+ assert.ok(faq,route+' FAQ schema');
+ const questions=$('main [data-problem-editorial-panel="faq"] summary').toArray().map(el=>$(el).text().trim());
+ assert.deepEqual(faq.mainEntity.map(x=>x.name),questions,route+' visible FAQ schema parity');
+ assert.ok($('main a[href="/ar/gallery"]').length,route+' localized gallery');
+}
+const thermal=read('/ar/laptop-overheating-kuwait');
+assert.equal(thermal('[data-problem-editorial-panel="thermal-triage"] button[aria-pressed]').length,6);
+assert.equal(thermal('[data-diagnostic-row]').length,6);
+const spill=read('/ar/spilled-water-on-laptop');
+assert.equal(spill('[data-problem-editorial-panel="liquid-triage"] button[aria-pressed]').length,7);
+assert.equal(spill('[data-diagnostic-row]').length,5);
+const slow=read('/ar/laptop-running-very-slow');
+assert.equal(slow('[data-diagnostic-row]').length,6);
+assert.ok(slow('[data-problem-editorial-panel="price-estimates"]').text().includes('15–20'));
+assert.ok(read('/ar/laptop-keyboard-not-working')('[data-problem-editorial-panel="quick-answer"]').length);
+console.log('Phase 7A: thirteen Arabic problem pages, static diagnostic cases, interactive control inventory and visible FAQ schema verified.');
