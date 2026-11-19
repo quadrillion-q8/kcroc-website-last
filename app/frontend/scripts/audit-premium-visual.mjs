@@ -27,7 +27,7 @@ try {
      }
      return [9,12,15];
     };
-    const targets=[...main.querySelectorAll('[data-premium-model-chip],[data-brand-model],[data-location-problem-link] > span:not([aria-hidden]),[data-location-brand-link] > span,[data-location-problem-link]:not(:has(span:not([aria-hidden]))),[data-location-brand-link]:not(:has(span)),[data-premium-light-card] > span,[data-premium-conversion] [data-premium-action],[data-brand-content] [aria-labelledby="core-repair-pillars"] a > span')].filter(el=>el.getClientRects().length);
+    const targets=[...main.querySelectorAll('[data-premium-model-chip],[data-brand-model],[data-location-problem-link] > span:not([aria-hidden]),[data-location-brand-link] > span,[data-location-problem-link]:not(:has(span:not([aria-hidden]))),[data-location-brand-link]:not(:has(span)),[data-premium-light-card] > span,[data-premium-light-card] > h3,[data-premium-light-card] > p,[data-premium-conversion] [data-premium-action],[data-brand-content] [aria-labelledby="core-repair-pillars"] a > span')].filter(el=>el.getClientRects().length);
     const contrast=targets.map(el=>{
      const a=luminance(parse(getComputedStyle(el).color)),b=luminance(background(el));
      return {label:el.textContent.trim().slice(0,90),ratio:(Math.max(a,b)+.05)/(Math.min(a,b)+.05)};
@@ -46,7 +46,7 @@ try {
    }
    if(!pricing&&!result.error){
     const name=route.replace(/^\//,'').replaceAll('/','-');
-    const selectors=route.includes('msi-laptop')?['[data-premium-model-chip]','[data-premium-conversion]']:['[data-location-problem-link]','[data-location-brand-link]'];
+    const selectors=route.includes('msi-laptop')?['[data-premium-model-chip]','[data-premium-conversion]']:['[data-location-problem-link],[data-premium-light-card]','[data-location-brand-link],[data-premium-light-card]:nth-child(2)'];
     for(const [i,selector] of selectors.entries()){
      const target=await page.$(selector);
      if(!target)continue;
