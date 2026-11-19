@@ -1,12 +1,14 @@
 // Run after starting the built site or against a Vercel preview:
 // node scripts/audit-premium-visual.mjs https://preview.example.com
 import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
 import chromium from '@sparticuz/chromium';
 import puppeteer from 'puppeteer-core';
 const base = process.argv[2];
 assert.ok(base && /^https?:\/\//.test(base),'Pass a preview or local site URL');
 const browser = await puppeteer.launch({args:chromium.args,executablePath:process.env.CHROME_PATH||await chromium.executablePath(),headless:true});
 const failures=[];
+await fs.mkdir('premium-visual-evidence',{recursive:true});
 try {
  const page=await browser.newPage();
  for(const width of [390,1440]){
@@ -25,21 +27,32 @@ try {
      }
      return [9,12,15];
     };
-    const targets=[...main.querySelectorAll('[data-premium-model-chip],[data-brand-model],[data-location-problem-link] > span:not([aria-hidden]),[data-location-brand-link] > span,[data-premium-light-card] > span,[data-premium-conversion] [data-premium-action],[data-brand-content] [aria-labelledby="core-repair-pillars"] a > span')].filter(el=>el.getClientRects().length);
+    const targets=[...main.querySelectorAll('[data-premium-model-chip],[data-brand-model],[data-location-problem-link] > span:not([aria-hidden]),[data-location-brand-link] > span,[data-location-problem-link]:not(:has(span:not([aria-hidden]))),[data-location-brand-link]:not(:has(span)),[data-premium-light-card] > span,[data-premium-conversion] [data-premium-action],[data-brand-content] [aria-labelledby="core-repair-pillars"] a > span')].filter(el=>el.getClientRects().length);
     const contrast=targets.map(el=>{
      const a=luminance(parse(getComputedStyle(el).color)),b=luminance(background(el));
      return {label:el.textContent.trim().slice(0,90),ratio:(Math.max(a,b)+.05)/(Math.min(a,b)+.05)};
     });
-    const gaps=[...main.querySelectorAll('[data-brand-content] > section + section,[data-kcroc-rollout^="location-"] > section[data-kcroc-editorial-panel] + section[data-kcroc-editorial-panel]')].map(el=>el.getBoundingClientRect().top-el.previousElementSibling.getBoundingClientRect().bottom);
+    const gaps=[...main.querySelectorAll('[data-brand-content] > section + section,[data-kcroc-rollout^="location-"] > section[data-kcroc-editorial-panel] + section[data-kcroc-editorial-panel],[data-kcroc-rollout^="location-"] > div > section[data-kcroc-editorial-panel] + section[data-kcroc-editorial-panel]')].map(el=>el.getBoundingClientRect().top-el.previousElementSibling.getBoundingClientRect().bottom);
     return {premium:main.getAttribute('data-kcroc-premium'),contrast,gaps,overflow:document.documentElement.scrollWidth-innerWidth};
    });
    const pricing=route==='/pricing'||route==='/ar/pricing';
    if(result.error||result.premium!==(pricing?null:'true'))failures.push({route,width,error:result.error||'Wrong premium scope'});
    if(!pricing&&!result.error){
-    if(route.includes('msi-laptop')&&result.contrast.length<2)failures.push({route,width,error:'Missing brand contrast targets'});
+    if(result.contrast.length<2)failures.push({route,width,error:'Missing contrast targets'});
+    if(result.gaps.length<1)failures.push({route,width,error:'Missing adjacent section spacing targets'});
     for(const c of result.contrast)if(c.ratio<4.5)failures.push({route,width,contrast:c});
     for(const gap of result.gaps)if(gap<20)failures.push({route,width,gap});
     if(result.overflow>2)failures.push({route,width,overflow:result.overflow});
+   }
+   if(!pricing&&!result.error){
+    const name=route.replace(/^\//,'').replaceAll('/','-');
+    const selectors=route.includes('msi-laptop')?['[data-premium-model-chip]','[data-premium-conversion]']:['[data-location-problem-link]','[data-location-brand-link]'];
+    for(const [i,selector] of selectors.entries()){
+     const target=await page.$(selector);
+     if(!target)continue;
+     await target.evaluate(el=>el.scrollIntoView({block:'center',inline:'nearest',behavior:'instant'}));
+     await page.screenshot({path:'premium-visual-evidence/'+name+'-'+width+'-'+i+'.png'});
+    }
    }
    console.log(JSON.stringify({route,width,...result}));
   }
