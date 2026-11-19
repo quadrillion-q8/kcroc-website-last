@@ -27,18 +27,19 @@ try {
      }
      return [9,12,15];
     };
-    const targets=[...main.querySelectorAll('[data-premium-model-chip],[data-brand-model],[data-location-problem-link] > span:not([aria-hidden]),[data-location-brand-link] > span,[data-premium-light-card] > span,[data-premium-conversion] [data-premium-action],[data-brand-content] [aria-labelledby="core-repair-pillars"] a > span')].filter(el=>el.getClientRects().length);
+    const targets=[...main.querySelectorAll('[data-premium-model-chip],[data-brand-model],[data-location-problem-link] > span:not([aria-hidden]),[data-location-brand-link] > span,[data-location-problem-link]:not(:has(span:not([aria-hidden]))),[data-location-brand-link]:not(:has(span)),[data-premium-light-card] > span,[data-premium-conversion] [data-premium-action],[data-brand-content] [aria-labelledby="core-repair-pillars"] a > span')].filter(el=>el.getClientRects().length);
     const contrast=targets.map(el=>{
      const a=luminance(parse(getComputedStyle(el).color)),b=luminance(background(el));
      return {label:el.textContent.trim().slice(0,90),ratio:(Math.max(a,b)+.05)/(Math.min(a,b)+.05)};
     });
-    const gaps=[...main.querySelectorAll('[data-brand-content] > section + section,[data-kcroc-rollout^="location-"] > section[data-kcroc-editorial-panel] + section[data-kcroc-editorial-panel]')].map(el=>el.getBoundingClientRect().top-el.previousElementSibling.getBoundingClientRect().bottom);
+    const gaps=[...main.querySelectorAll('[data-brand-content] > section + section,[data-kcroc-rollout^="location-"] > section[data-kcroc-editorial-panel] + section[data-kcroc-editorial-panel],[data-kcroc-rollout^="location-"] > div > section[data-kcroc-editorial-panel] + section[data-kcroc-editorial-panel]')].map(el=>el.getBoundingClientRect().top-el.previousElementSibling.getBoundingClientRect().bottom);
     return {premium:main.getAttribute('data-kcroc-premium'),contrast,gaps,overflow:document.documentElement.scrollWidth-innerWidth};
    });
    const pricing=route==='/pricing'||route==='/ar/pricing';
    if(result.error||result.premium!==(pricing?null:'true'))failures.push({route,width,error:result.error||'Wrong premium scope'});
    if(!pricing&&!result.error){
-    if(route.includes('msi-laptop')&&result.contrast.length<2)failures.push({route,width,error:'Missing brand contrast targets'});
+    if(result.contrast.length<2)failures.push({route,width,error:'Missing contrast targets'});
+    if(result.gaps.length<1)failures.push({route,width,error:'Missing adjacent section spacing targets'});
     for(const c of result.contrast)if(c.ratio<4.5)failures.push({route,width,contrast:c});
     for(const gap of result.gaps)if(gap<20)failures.push({route,width,gap});
     if(result.overflow>2)failures.push({route,width,overflow:result.overflow});
