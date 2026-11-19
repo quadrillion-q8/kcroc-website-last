@@ -244,3 +244,64 @@ for(const $ of [authorEN,authorAR])assert.equal($('main [data-author-article-lan
 assert.ok(authorAR('main a[href="/ar/book"]').length,'Localized author booking');
 assert.ok(authorAR('meta[property="og:locale"][content="ar_KW"]').length,'Arabic author social locale');
 console.log('Phase 7C: Arabic contact, FAQ links, accessible gallery thumbnails and author metadata verified.');
+
+
+// Phase 7F: full rendered commercial-route audit. Keep discovery findings
+// report-only until reviewed against intentional redirects and editorial links.
+const auditFindings = [];
+const recordFinding = (route, kind, detail) => auditFindings.push({route,kind,detail});
+const normalizedPath = p => p.replace(/\/+$/,'') || '/';
+const indexedSet = new Set(sitemapPaths);
+const commercialPairs = pairs.filter(([en])=>!editorial(en));
+const routeSet = new Set(commercialPairs.flat());
+assert.equal(routeSet.size,commercialPairs.length*2,'Duplicate commercial language mapping');
+for(const route of routeSet){
+ const $=read(route);
+ const ar=pairedArabic.has(route);
+ const opposite=ar?pairedArabic:pairedEnglish;
+ const expectedLocale=ar?'ar':'en';
+ if(!indexedSet.has(route))recordFinding(route,'missing-sitemap-entry',route);
+ if($('head link[rel="canonical"]').length!==1)recordFinding(route,'canonical-count',String($('head link[rel="canonical"]').length));
+ if($('main h1').length!==1)recordFinding(route,'h1-count',String($('main h1').length));
+ if($('main').attr('dir')!==(ar?'rtl':'ltr'))recordFinding(route,'direction',String($('main').attr('dir')));
+ const ids=new Set();
+ for(const el of $('[id]').toArray()){
+  const id=$(el).attr('id');
+  if(ids.has(id))recordFinding(route,'duplicate-id',id);
+  ids.add(id);
+ }
+ for(const el of $('main a[href]').toArray()){
+  const a=$(el),href=a.attr('href');
+  if(!href||!href.trim()){recordFinding(route,'empty-href','main link');continue;}
+  if(href.startsWith('#')){
+   let fragment;
+   try{fragment=decodeURIComponent(href.slice(1));}catch{fragment=href.slice(1);}
+   if(fragment&&!ids.has(fragment))recordFinding(route,'missing-fragment',href);
+   continue;
+  }
+  if(!href.startsWith('/')&&!href.startsWith(host+'/'))continue;
+  let url;
+  try{url=new URL(href,host);}catch{recordFinding(route,'invalid-url',href);continue;}
+  if(url.origin!==host)continue;
+  const target=normalizedPath(url.pathname);
+  const slug=target.slice(1);
+  const files=slug?[slug+'.html',slug+'/index.html']:['index.html'];
+  if(!files.some(f=>fs.existsSync(path.join(root,'dist',f))))recordFinding(route,'non-prerendered-target',target);
+  const twin=(ar?pairedEnglish:pairedArabic).get(target);
+  if(twin&&!editorial(target)&&target!==opposite.get(route)&&a.attr('lang')!==(ar?'en':'ar')&&a.attr('hreflang')!==(ar?'en':'ar'))recordFinding(route,'opposite-language-link',target+' -> '+twin);
+ }
+ for(const el of $('main img').toArray()){
+  if($(el).attr('alt')===undefined)recordFinding(route,'missing-alt',$(el).attr('src')||'image');
+ }
+ for(const el of $('script[type="application/ld+json"]').toArray()){
+  try{JSON.parse($(el).text());}catch{recordFinding(route,'invalid-json-ld','JSON-LD parse failed');}
+ }
+}
+const uniqueFindings=[...new Map(auditFindings.map(f=>[JSON.stringify(f),f])).values()];
+const counts={};
+for(const finding of uniqueFindings)counts[finding.kind]=(counts[finding.kind]||0)+1;
+const auditReport={commercialPairs:commercialPairs.length,commercialRoutes:routeSet.size,findings:uniqueFindings,counts};
+fs.writeFileSync(path.join(root,'bilingual-quality-report.json'),JSON.stringify(auditReport,null,2)+'\n');
+console.log('Phase 7F rendered commercial quality audit: '+routeSet.size+' routes; '+uniqueFindings.length+' review findings (report-only).');
+console.log(JSON.stringify(counts));
+for(const f of uniqueFindings)console.warn('[Phase 7F review] '+f.kind+' '+f.route+' '+f.detail);
