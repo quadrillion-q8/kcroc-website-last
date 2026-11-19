@@ -352,3 +352,24 @@
   outline: 3px solid var(--premium-copper) !important;
   outline-offset: 3px;
 }
+
+
+/* Related repair cards and plain secondary links, explicitly on light panels. */
+#main-content[data-kcroc-premium="true"] [data-brand-content] [aria-labelledby="core-repair-pillars"] a > span,
+#main-content[data-kcroc-premium="true"] [data-brand-content] [aria-labelledby="core-repair-pillars"] a > svg {
+  color: var(--premium-copper) !important;
+}
+#main-content[data-kcroc-premium="true"] [data-kcroc-editorial-panel] [data-premium-light-card] > span:first-child {
+  color: var(--premium-ink) !important;
+}
+#main-content[data-kcroc-premium="true"] [data-kcroc-editorial-panel] [data-premium-light-card] > span:not(:first-child) {
+  color: var(--premium-muted) !important;
+}
+#main-content[data-kcroc-premium="true"] [data-brand-content] [data-premium-conversion] a[href="/ar/brands"] {
+  background: #f7f3ed !important;
+  border-color: var(--premium-line) !important;
+  color: var(--premium-ink) !important;
+}
+@media (max-width:639px) {
+  #main-content[data-kcroc-premium="true"] [data-premium-conversion] a { flex: 1 1 100%; }
+}
