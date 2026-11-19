@@ -5,6 +5,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 
 import Header from './Header';
 import Footer from './Footer';
+import '../../../styles/kcroc-premium.css';
 import { ErrorBoundary } from '../ErrorBoundary';
 import { CookieConsentBanner } from '../CookieConsentBanner';
 import { StickyMobileCTA } from '../../../components/home/StickyMobileCTA';
@@ -83,6 +84,8 @@ export const RootLayout: React.FC = () => {
   const isGlobalEditorialArticle = pathname === '/blog/why-8gb-ram-is-no-longer-enough-for-windows-11' || pathname === '/blog/why-is-my-laptop-so-slow';
   const hideConversionActions = isGlobalEditorialArticle || isEnglishTechnicalGuideRoute(pathname);
   const isArabicRoute = isArabicPath(pathname);
+  const visualPath = pathname.replace(/\/+$/, '') || '/';
+  const premiumVisual = visualPath !== '/pricing' && visualPath !== '/ar/pricing';
   const showAnimatedBackground = shouldShowAnimatedBackground(pathname);
   const [decorativeBackgroundReady, setDecorativeBackgroundReady] = useState(false);
 
@@ -145,6 +148,7 @@ export const RootLayout: React.FC = () => {
             id="main-content"
             data-page-type={pathname === '/' || pathname === '/ar' ? 'home' : 'inner'}
             data-site-locale={isArabicRoute ? 'ar' : 'en'}
+            data-kcroc-premium={premiumVisual ? 'true' : undefined}
             lang={isArabicRoute ? 'ar-KW' : undefined}
             dir={isArabicRoute ? 'rtl' : undefined}
             className="relative z-10 flex-grow flex flex-col bg-transparent pt-0"
