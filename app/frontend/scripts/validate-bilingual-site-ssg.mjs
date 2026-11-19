@@ -340,3 +340,10 @@ assert.ok(cityVisual('main [data-location-problem-link]').length>0,'Kuwait City 
 assert.ok(cityVisual('main [data-location-brand-link]').length>0,'Kuwait City brand card visual contract');
 assert.equal(cityVisual('main [data-premium-light-card][href="/macbook-repair-kuwait"]').length,1,'Kuwait City Apple card visual contract');
 console.log('Phase 7G.1B: brand and location visual hooks, conversion targets and pricing exclusion verified.');
+
+
+// The Arabic Kuwait City route uses ArabicCommercialPage, rather than
+// ArabicLocationPage. Require its actual rendered service-card hooks.
+const arCityVisual=read('/ar/computer-repair-kuwait-city');
+assert.ok(arCityVisual('main [aria-labelledby="arabic-services"] [data-premium-light-card="true"] > h3').length>=2,'Arabic Kuwait City actual service card headings');
+assert.ok(arCityVisual('main [aria-labelledby="arabic-services"] [data-premium-light-card="true"] > p').length>=2,'Arabic Kuwait City actual service card descriptions');
