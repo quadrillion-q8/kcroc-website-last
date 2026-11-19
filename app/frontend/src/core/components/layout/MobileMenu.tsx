@@ -148,7 +148,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
 
       <div
         ref={mobileRef}
-        id="mobile-nav-panel"
+        id="mobile-nav-panel" data-premium-chrome="mobile-menu"
         dir={isArabicRoute ? "rtl" : undefined}
         lang={isArabicRoute ? "ar-KW" : undefined}
         role="dialog"
@@ -247,13 +247,13 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
                       aria-expanded={isExpanded}
                       aria-controls={`mobile-mega-${link.id}`}
                       tabIndex={isOpen && isExpanded ? 0 : -1}
-                      className={`w-full min-h-14 flex items-center justify-between gap-3 px-4 py-3.5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isExpanded ? 'text-white' : 'text-slate-100'}`}
+                      className={`w-full min-h-14 flex items-center justify-between gap-3 px-4 py-3.5 text-start focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${isExpanded ? 'text-white' : 'text-slate-100'}`}
                     >
                       <span className="min-w-0">
                         <span className="block text-sm font-black">{link.label}</span>
-                        <span className="mt-0.5 block truncate text-[11px] font-medium text-slate-500">{copy.subtitle}</span>
+                        <span className="mt-0.5 block truncate text-[11px] font-medium text-[#aebabe]">{copy.subtitle}</span>
                       </span>
-                      <ChevronDown className={`h-5 w-5 shrink-0 transition-transform motion-reduce:transition-none ${isExpanded ? 'rotate-180 text-[#dfa86f]' : 'text-slate-600'}`} aria-hidden="true" />
+                      <ChevronDown className={`h-5 w-5 shrink-0 transition-transform motion-reduce:transition-none ${isExpanded ? 'rotate-180 text-[#dfa86f]' : 'text-[#9ba9ae]'}`} aria-hidden="true" />
                     </button>
 
                     <div
@@ -282,7 +282,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
                           {megaConfig.featured?.length ? (
                             <div>
                               <div className="mb-2 flex items-center justify-between px-1">
-                                <p className="text-[10px] font-black uppercase tracking-[0.15em] text-slate-500">Featured</p>
+                                <p className="text-[10px] font-black uppercase tracking-[0.15em] text-[#aebabe]">Featured</p>
                                 <span className="text-[10px] font-bold text-slate-700">{megaConfig.featured.length}</span>
                               </div>
                               <div className="space-y-2">
@@ -311,7 +311,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
                           {moreItems.length ? (
                             <div>
                               <div className="mb-2 flex items-center justify-between px-1">
-                                <p className="text-[10px] font-black uppercase tracking-[0.15em] text-slate-500">Explore more</p>
+                                <p className="text-[10px] font-black uppercase tracking-[0.15em] text-[#aebabe]">Explore more</p>
                                 <span className="text-[10px] font-bold text-slate-700">{moreItems.length} links</span>
                               </div>
                               <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2">
@@ -325,7 +325,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
                                       tabIndex={isOpen && isExpanded ? 0 : -1}
                                       className="group flex min-h-12 items-center gap-2.5 rounded-xl border border-transparent px-3 py-2.5 text-xs font-semibold text-slate-400 transition-colors hover:border-white/[0.06] hover:bg-white/[0.035] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
                                     >
-                                      <Icon className="h-3.5 w-3.5 shrink-0 text-slate-600 group-hover:text-[#dfa86f]" aria-hidden="true" />
+                                      <Icon className="h-3.5 w-3.5 shrink-0 text-[#9ba9ae] group-hover:text-[#dfa86f]" aria-hidden="true" />
                                       <span className="min-w-0 flex-1 truncate">{entity.title}</span>
                                       <ChevronRight className="h-3.5 w-3.5 shrink-0 text-slate-800 group-hover:text-[#dfa86f]" aria-hidden="true" />
                                     </Link>
@@ -349,7 +349,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
                   className={`flex min-h-14 items-center justify-between gap-3 rounded-2xl border px-4 py-3 font-bold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f] ${activelyHighlighted ? 'border-[#c9804d]/30 bg-[#c9804d]/[0.06] text-[#efc19c]' : 'border-white/[0.07] bg-white/[0.018] text-slate-200 hover:border-white/[0.11] hover:bg-white/[0.035]'}`}
                 >
                   <span>{link.label}</span>
-                  <ChevronRight className="h-4 w-4 text-slate-600" aria-hidden="true" />
+                  <ChevronRight className="h-4 w-4 text-[#9ba9ae]" aria-hidden="true" />
                 </Link>
               );
             })}
@@ -370,7 +370,7 @@ export default function MobileMenu({ isOpen, onClose, mobileRef, navModel, clean
             {isArabicRoute ? "راسل فنيًا عبر واتساب" : "WhatsApp a technician"}
             <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
           </a>
-          <p className="mt-2 text-center text-[10px] font-medium text-slate-600" dir={isArabicRoute ? "rtl" : undefined}>{phoneDisplay} · {isArabicRoute ? "استلام وتوصيل مجاني في الكويت" : "Free pickup & delivery across Kuwait"}</p>
+          <p className="mt-2 text-center text-[10px] font-medium text-[#9ba9ae]" dir={isArabicRoute ? "rtl" : undefined}>{phoneDisplay} · {isArabicRoute ? "استلام وتوصيل مجاني في الكويت" : "Free pickup & delivery across Kuwait"}</p>
         </div>
         )}
       </div>
