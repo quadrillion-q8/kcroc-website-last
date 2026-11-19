@@ -70,8 +70,8 @@ export default function Gallery() {
         else if(!e.shiftKey&&(document.activeElement===last||!dialogRef.current?.contains(document.activeElement))){e.preventDefault();first.focus();}
       }
       else if(e.key==='Escape'){e.preventDefault();closeLightbox();}
-      else if(e.key==='ArrowLeft'){e.preventDefault(); ar?showNext():showPrev();}
-      else if(e.key==='ArrowRight'){e.preventDefault(); ar?showPrev():showNext();}
+      else if(e.key==='ArrowLeft'){e.preventDefault(); if(ar){showNext();}else{showPrev();}}
+      else if(e.key==='ArrowRight'){e.preventDefault(); if(ar){showPrev();}else{showNext();}}
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
