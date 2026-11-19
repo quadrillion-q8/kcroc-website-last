@@ -305,3 +305,18 @@ fs.writeFileSync(path.join(root,'bilingual-quality-report.json'),JSON.stringify(
 console.log('Phase 7F rendered commercial quality audit: '+routeSet.size+' routes; '+uniqueFindings.length+' review findings (report-only).');
 console.log(JSON.stringify(counts));
 for(const f of uniqueFindings)console.warn('[Phase 7F review] '+f.kind+' '+f.route+' '+f.detail);
+
+
+// Phase 7G: premium design opt-in must never affect the two pricing pages.
+for (const [en,ar] of commercialPairs) {
+ for (const route of [en,ar]) {
+  const $=read(route);
+  const protectedPricing=route==='/pricing'||route==='/ar/pricing';
+  assert.equal($('main#main-content').attr('data-kcroc-premium'),protectedPricing?undefined:'true',route+' premium design scope');
+ }
+}
+const premiumCss=fs.readFileSync(path.join(root,'src/styles/kcroc-premium.css'),'utf8');
+for(const token of ['--premium-graphite','--premium-paper','--premium-white','--premium-copper','[data-service-conversion]','[data-location-hero-actions]','[data-problem-cta]','[aria-pressed="true"]','prefers-reduced-motion']){
+ assert.ok(premiumCss.includes(token),'Premium visual contract: '+token);
+}
+console.log('Phase 7G: premium opt-in, pricing exclusions and three visual treatments verified in static markup/source.');
