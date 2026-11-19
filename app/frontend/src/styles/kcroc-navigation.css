@@ -17,13 +17,14 @@
   box-shadow: inset 0 -2px #a96b45;
 }
 [data-premium-chrome="header"] [data-premium-header-booking] {
-  background: #dfa86f;
-  color: #17110c;
+  background-color: #dfa86f !important;
+  background-image: none !important;
+  color: #17110c !important;
   box-shadow: none;
 }
-[data-premium-chrome="header"] [data-premium-header-booking]:hover { background: #efc697; }
-[data-premium-chrome="header"] [data-premium-header-booking] span span:last-child {
-  color: #4b321e;
+[data-premium-chrome="header"] [data-premium-header-booking]:hover { background-color: #efc697 !important; }
+[data-premium-chrome="header"] [data-premium-header-booking] [data-premium-booking-subtitle] {
+  color: #4b321e !important;
 }
 [data-premium-chrome="header"] :is(a,button):focus-visible,
 [data-premium-chrome="mega-menu"] :is(a,button):focus-visible {

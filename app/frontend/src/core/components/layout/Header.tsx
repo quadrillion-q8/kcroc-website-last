@@ -261,14 +261,14 @@ export default function Header() {
                 </a>
                 <Button
                   asChild
-                  variant="ctaPrimary"
+                  variant="default"
                   className="min-h-12 max-w-full gap-2 rounded-lg bg-[#dfa86f] px-3 py-2 text-center text-sm leading-tight text-[#17110c] font-extrabold transition-colors hover:bg-[#efc697] focus-visible:ring-2 focus-visible:ring-[#8f4f2c]"
                 >
                   <Link data-premium-header-booking="true" to={localizedSitePath("/book", isArabicRoute ? "ar" : "en")} onClick={() => trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' })}>
                     <CalendarCheck size={15} aria-hidden="true" />
                     <span className="flex min-w-0 flex-col items-start leading-tight">
                       <span>{isArabicRoute ? 'احجز استلام مجاني' : 'Book Free Pickup'}</span>
-                      <span className="mt-0.5 text-[10px] font-semibold text-[#4b321e]">{isArabicRoute ? 'استلام مجاني في جميع مناطق الكويت' : 'Free pickup across Kuwait'}</span>
+                      <span data-premium-booking-subtitle="true" className="mt-0.5 text-[10px] font-semibold text-[#4b321e]">{isArabicRoute ? 'استلام مجاني في جميع مناطق الكويت' : 'Free pickup across Kuwait'}</span>
                     </span>
                   </Link>
                 </Button>
