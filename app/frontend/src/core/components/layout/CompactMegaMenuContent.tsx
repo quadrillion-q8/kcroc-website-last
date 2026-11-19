@@ -107,7 +107,7 @@ export default function CompactMegaMenuContent({ config, meta, rootSlug, density
     <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_24px_70px_rgba(15,23,42,0.18)]">
       <div className="flex items-center justify-between gap-4 border-b border-slate-100 px-4 py-3 lg:px-5">
         <div className="min-w-0">
-          <p className="m-0 text-[11px] font-bold uppercase tracking-wider text-blue-600">{meta.eyebrow}</p>
+          <p className="m-0 text-[11px] font-bold uppercase tracking-wider text-[#814321]">{meta.eyebrow}</p>
           <h2 className="m-0 mt-0.5 text-lg font-extrabold tracking-tight text-slate-900">
             {config.title}
             <span className="ml-2 text-xs font-semibold text-slate-500">({items.length})</span>
@@ -121,7 +121,7 @@ export default function CompactMegaMenuContent({ config, meta, rootSlug, density
             trackConversion('cta_click', { cta_name: 'mega_menu_view_all', button_position: 'header' });
             onClose();
           }}
-          className="group inline-flex min-h-9 shrink-0 items-center justify-center gap-1.5 rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-800 transition hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+          className="group inline-flex min-h-9 shrink-0 items-center justify-center gap-1.5 rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-800 transition hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#814321]"
         >
           {meta.allLabel}
           <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
@@ -151,18 +151,18 @@ export default function CompactMegaMenuContent({ config, meta, rootSlug, density
                   trackConversion('cta_click', { cta_name: ctaName, button_position: 'header' });
                   onClose();
                 }}
-                className={`group flex h-full w-full cursor-pointer items-center gap-2 rounded-lg transition hover:bg-blue-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${isCompact ? 'px-2 py-1' : 'px-2.5 py-2'}`}
+                className={`group flex h-full w-full cursor-pointer items-center gap-2 rounded-lg transition hover:bg-[#f7f3ed] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#814321] ${isCompact ? 'px-2 py-1' : 'px-2.5 py-2'}`}
               >
-                <span className={`flex shrink-0 items-center justify-center rounded-md bg-slate-100 text-slate-600 transition-colors group-hover:bg-blue-100 group-hover:text-blue-700 ${isCompact ? 'h-6 w-6' : 'h-8 w-8'}`}>
+                <span className={`flex shrink-0 items-center justify-center rounded-md bg-slate-100 text-slate-600 transition-colors group-hover:bg-[#f2eae0] group-hover:text-[#713b20] ${isCompact ? 'h-6 w-6' : 'h-8 w-8'}`}>
                   <Icon className={isCompact ? 'h-3.5 w-3.5' : 'h-4 w-4'} aria-hidden="true" />
                 </span>
                 <span
                   dir="auto"
-                  className={`min-w-0 flex-1 line-clamp-2 font-semibold text-slate-800 transition-colors group-hover:text-blue-700 ${isCompact ? 'text-xs leading-4' : 'text-sm leading-5'}`}
+                  className={`min-w-0 flex-1 line-clamp-2 font-semibold text-slate-800 transition-colors group-hover:text-[#713b20] ${isCompact ? 'text-xs leading-4' : 'text-sm leading-5'}`}
                 >
                   {entity.title}
                 </span>
-                <ChevronRight className="h-3.5 w-3.5 shrink-0 text-slate-400 transition-transform group-hover:translate-x-0.5 group-hover:text-blue-700" aria-hidden="true" />
+                <ChevronRight className="h-3.5 w-3.5 shrink-0 text-slate-400 transition-transform group-hover:translate-x-0.5 group-hover:text-[#713b20]" aria-hidden="true" />
               </Link>
             </li>
           );
@@ -185,9 +185,9 @@ export default function CompactMegaMenuContent({ config, meta, rootSlug, density
           <a
             href={'tel:+' + phoneDigits}
             onClick={() => trackConversion('phone_call_click', { cta_name: 'mega_menu_phone', button_position: 'header' })}
-            className="inline-flex min-h-9 items-center justify-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-800 transition hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+            className="inline-flex min-h-9 items-center justify-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-800 transition hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#814321]"
           >
-            <Phone className="h-3.5 w-3.5 text-blue-600" aria-hidden="true" />{phoneDisplay}
+            <Phone className="h-3.5 w-3.5 text-[#814321]" aria-hidden="true" />{phoneDisplay}
           </a>
           <Link
             to={route("/book")}
@@ -196,7 +196,7 @@ export default function CompactMegaMenuContent({ config, meta, rootSlug, density
               trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' });
               onClose();
             }}
-            className="inline-flex min-h-9 items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+            className="inline-flex min-h-9 items-center gap-1.5 rounded-lg bg-[#c9804d] px-4 py-2 text-xs font-semibold text-[#17110c] shadow-sm transition hover:bg-[#dfa86f] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#814321]"
           >
             Book Free Pickup <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
           </Link>
