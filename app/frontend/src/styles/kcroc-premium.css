@@ -176,3 +176,30 @@
 @media (prefers-reduced-motion: reduce) {
   [data-kcroc-premium="true"] :is([data-service-action],[data-location-action],[data-problem-action]) { transition: none; }
 }
+
+
+/* Form heading contrast and readable secondary text on white cards. */
+[data-kcroc-premium="true"] :is([data-kcroc-rollout^="booking"],[data-kcroc-rollout^="contact"]) :is(.rounded-3xl,.rounded-2xl):has(form) :is(h2,h3,h4) {
+  color: var(--premium-ink) !important;
+}
+[data-kcroc-premium="true"] :is([data-kcroc-rollout^="booking"],[data-kcroc-rollout^="contact"]) form button[type="submit"] {
+  border-radius: .875rem;
+  min-height: 52px;
+  background: var(--premium-copper-fill) !important;
+  color: #17110c !important;
+  box-shadow: none !important;
+}
+[data-kcroc-premium="true"] :is([data-kcroc-rollout^="booking"],[data-kcroc-rollout^="contact"]) form button[type="submit"]:disabled {
+  opacity: .65;
+  cursor: not-allowed;
+}
+[data-kcroc-premium="true"] :is([data-kcroc-rollout^="booking"],[data-kcroc-rollout^="contact"]) form [role="status"] {
+  color: var(--premium-muted) !important;
+}
+/* Arabic technical model names keep native shaping; avoid clipping long
+   labels without replacing the existing font stack or downloading fonts. */
+[data-kcroc-premium="true"][data-site-locale="ar"] :is([data-service-action],[data-location-action],[data-problem-action],form label,form legend,form button) {
+  letter-spacing: normal !important;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
