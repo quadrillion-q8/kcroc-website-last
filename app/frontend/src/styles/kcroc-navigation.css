@@ -1,0 +1,74 @@
+/* Phase 7G.2: scoped premium chrome. No main-content or pricing layout rules. */
+[data-premium-chrome="header"] {
+  background: #fff;
+  border-bottom: 1px solid #ded6ca;
+  box-shadow: 0 2px 12px rgba(23,32,34,.06);
+}
+[data-premium-chrome="header"] nav > a,
+[data-premium-chrome="header"] nav > div > button {
+  color: #344245;
+  font-weight: 650;
+  border-radius: .5rem;
+  transition: color .15s ease,background-color .15s ease;
+}
+[data-premium-chrome="header"] nav :is(a[aria-current="page"],button[aria-expanded="true"]) {
+  color: #814321;
+  background: #f7f3ed;
+  box-shadow: inset 0 -2px #a96b45;
+}
+[data-premium-chrome="header"] [data-premium-header-booking] {
+  background: #dfa86f;
+  color: #17110c;
+  box-shadow: none;
+}
+[data-premium-chrome="header"] [data-premium-header-booking]:hover { background: #efc697; }
+[data-premium-chrome="header"] [data-premium-header-booking] span span:last-child {
+  color: #4b321e;
+}
+[data-premium-chrome="header"] :is(a,button):focus-visible,
+[data-premium-chrome="mega-menu"] :is(a,button):focus-visible {
+  outline: 2px solid #814321;
+  outline-offset: 2px;
+}
+@media (hover:hover) {
+  [data-premium-chrome="header"] nav > a:hover,
+  [data-premium-chrome="header"] nav > div > button:hover {
+    color: #814321;
+    background: #f7f3ed;
+  }
+}
+/* Desktop panels remain white, with warm lines and readable small labels. */
+[data-premium-chrome="mega-menu"] > div {
+  border-color: #ded6ca;
+  border-radius: 1rem;
+  box-shadow: 0 16px 44px rgba(23,32,34,.18);
+}
+[data-premium-chrome="mega-menu"] :is(.text-slate-400,.text-slate-500) { color: #536164; }
+[data-premium-chrome="mega-menu"] :is(.border-slate-100,.border-slate-200) { border-color: #e4dcd1; }
+[data-premium-chrome="mega-menu"] a { min-height: 44px; }
+[data-premium-chrome="mega-menu"] :is(a,button) { text-align: start; }
+[data-premium-chrome="mega-menu"][dir="rtl"] :is(.tracking-wider,.uppercase,[class*="tracking-"]) { letter-spacing: normal; }
+[data-premium-chrome="mega-menu"][dir="rtl"] :is(.ml-auto,.ml-2) { margin-left: 0; }
+[data-premium-chrome="mega-menu"][dir="rtl"] .ml-auto { margin-inline-start: auto; }
+[data-premium-chrome="mega-menu"][dir="rtl"] .ml-2 { margin-inline-start: .5rem; }
+/* Mobile drawer retains graphite; hierarchy and reachable controls improve. */
+[data-premium-chrome="mobile-menu"] { background: #101619; }
+[data-premium-chrome="mobile-menu"] > div:first-child,
+[data-premium-chrome="mobile-menu"] > div:last-child { background-color: #101619; }
+[data-premium-chrome="mobile-menu"] section { border-radius: .875rem; }
+[data-premium-chrome="mobile-menu"] :is(a,button):focus-visible,
+[data-premium-chrome="footer"] :is(a,button):focus-visible {
+  outline: 2px solid #e4b18a;
+  outline-offset: 3px;
+}
+[data-premium-chrome="mobile-menu"][dir="rtl"] :is(a,button,p,span) { letter-spacing: normal; }
+[data-premium-chrome="mobile-menu"][dir="rtl"] :is(.text-left) { text-align: start; }
+/* Footer deliberately remains the dark technical finish. */
+[data-premium-chrome="footer"] { background: #101619; border-top: 1px solid #354247; }
+[data-premium-chrome="footer"] :is(.text-slate-400,.text-slate-500,.text-slate-600) { color: #aebabe; }
+[data-premium-chrome="footer"] nav a { text-underline-offset: 4px; }
+[data-premium-chrome="footer"] nav a:hover { color: #efc697; text-decoration: underline; }
+[data-premium-chrome="footer"][dir="rtl"] :is(h2,h3,p,a,button,span) { letter-spacing: normal; }
+@media (prefers-reduced-motion: reduce) {
+  [data-premium-chrome] :is(a,button) { transition: none !important; }
+}
