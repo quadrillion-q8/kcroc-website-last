@@ -16,6 +16,7 @@ import {
 import { KCROC_GRAPH } from '../data/graph';
 import { SEOEngine } from '../core/components/SEOEngine';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
+import { useAnalytics } from '../core/analytics/AnalyticsProvider';
 
 const business = KCROC_GRAPH.business!;
 
@@ -257,11 +258,11 @@ const schema = {
 };
 
 export default function ArabicChargingTroubleshootingPage() {
+  const { trackConversion } = useAnalytics();
+  const track = (action: 'whatsapp' | 'booking', position: 'hero' | 'body') => trackConversion(action === 'whatsapp' ? 'whatsapp_click' : 'cta_click', { cta_name: 'arabic_charging_' + action, button_position: position, entity_id: 'problem-not-charging' });
   const whatsappText =
-    'السلام عليكم KCROC، اللابتوب عندي متصل بالشاحن لكنه لا يشحن. الماركة والموديل: ____. نسبة البطارية والرسالة الظاهرة: ____. نوع الشاحن وقدرته: ____. منطقتي بالكويت: ____. أرفق صورة للشاحن والمنفذ. فضلاً أكدوا مسار الفحص والسعر وهل السعر يشمل القطعة قبل أي إصلاح مدفوع.';
+    'السلام عليكم KCROC، اللابتوب عندي متصل بالشاحن لكنه لا يشحن. الماركة والموديل: ____. نسبة البطارية والرسالة الظاهرة: ____. نوع الشاحن وقدرته: ____. منطقتي بالكويت: ____. أرفق صورة للشاحن والمنفذ إذا كان ذلك آمنًا فقط. لا أرسل كلمات مرور أو مفاتيح استرداد. فضلاً أكدوا مسار الفحص والسعر وهل السعر يشمل القطعة قبل أي إصلاح مدفوع.';
   const whatsappUrl = 'https://wa.me/' + business.telephone + '?text=' + encodeURIComponent(whatsappText);
-  const pickupText = 'السلام عليكم KCROC، أريد ترتيب استلام مجاني للابتوب للفحص بسبب مشكلة متصل بالشاحن ولا يشحن. الماركة والموديل: ____. الأعراض: ____. المنطقة: ____. الرجاء تأكيد موعد الاستلام قبل الإرسال.';
-  const pickupUrl = 'https://wa.me/' + business.telephone + '?text=' + encodeURIComponent(pickupText);
 
   return (
     <div dir="rtl" lang="ar-KW" className="min-h-screen bg-transparent text-slate-100">
@@ -272,9 +273,9 @@ export default function ArabicChargingTroubleshootingPage() {
         <nav aria-label="مسار التنقل" className="mb-8 flex flex-wrap items-center gap-2 text-sm text-slate-500">
           <Link to="/ar" className="hover:text-cyan-300">الرئيسية</Link>
           <span aria-hidden="true">/</span>
-          <span>دليل تشخيص مشكلة الشحن</span>
+          <Link to="/ar/problems" className="hover:text-cyan-300">الأعطال</Link>
           <span aria-hidden="true">/</span>
-          <span className="text-slate-300">اللابتوب متصل بالشاحن ولا يشحن</span>
+          <span aria-current="page" className="text-slate-300">اللابتوب متصل بالشاحن ولا يشحن</span>
         </nav>
 
         <header className="overflow-hidden rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 via-slate-950/90 to-slate-950 p-6 shadow-2xl sm:p-10">
@@ -339,13 +340,13 @@ export default function ArabicChargingTroubleshootingPage() {
           </p>
 
           <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <a href={whatsappUrl} target="_blank" rel="noreferrer" aria-label="إرسال موديل اللابتوب وأعراض عدم الشحن إلى KCROC عبر واتساب" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200">
+            <a data-charging-action="whatsapp-hero" onClick={() => track('whatsapp', 'hero')} href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="إرسال موديل اللابتوب وأعراض عدم الشحن إلى KCROC عبر واتساب" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200">
               <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل الموديل وصورة العرض على واتساب
             </a>
-            <a href={pickupUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 px-6 py-3 font-bold text-white transition hover:border-cyan-500/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+            <Link data-charging-action="booking-hero" to="/ar/book" onClick={() => track('booking', 'hero')} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 px-6 py-3 font-bold text-white transition hover:border-cyan-500/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
               احجز استلاماً مجانياً من منطقتك <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-            </a>
-            <Link to="/laptop-plugged-in-not-charging" aria-label="Open the English laptop plugged-in-but-not-charging guide" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 px-6 py-3 font-bold text-slate-300 transition hover:border-cyan-500/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+            </Link>
+            <Link to="/laptop-plugged-in-not-charging" lang="en" aria-label="Open the English laptop plugged-in-but-not-charging guide" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 px-6 py-3 font-bold text-slate-300 transition hover:border-cyan-500/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
               English guide <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
@@ -355,6 +356,13 @@ export default function ArabicChargingTroubleshootingPage() {
             <span className="inline-flex items-center gap-2"><Wrench className="h-4 w-4 text-cyan-300" aria-hidden="true" /> الفحص والإصلاح في مختبر حولي</span>
           </div>
         </header>
+
+        <section data-charging-safety-gate className="mt-8 rounded-2xl border border-amber-500/40 bg-amber-500/5 p-5" aria-labelledby="charging-safety-gate">
+          <h2 id="charging-safety-gate" className="font-black text-xl text-amber-200">متى توقف الفحص المنزلي فوراً؟</h2>
+          <p className="mt-3 leading-7">إذا في انتفاخ بالبطارية أو ريحة احتراق أو شرر أو حرارة غير طبيعية، وقف الاستخدام والشحن وافصل الكهرباء إذا كان آمن. إذا الجهاز يدخن لا تلمسه. إذا لمبة الشاحن تطفي عند التوصيل، لا تعيد المحاولة.</p>
+          <p className="mt-3 leading-7">لا تفتح الجهاز ولا تدخل أدوات في المنفذ ولا تحدث BIOS مع طاقة غير مستقرة. الخطوات التالية فقط إذا الجهاز آمن وما فيه علامات خطر.</p>
+          <div className="mt-4 flex flex-wrap gap-4"><Link to="/ar/laptop-wont-turn-on" className="text-cyan-300 underline">الجهاز ما يشتغل نهائياً</Link><Link to="/ar/spilled-water-on-laptop" className="text-cyan-300 underline">تعرض الجهاز لسائل</Link></div>
+        </section>
 
         <section className="mt-10" aria-labelledby="charging-symptoms-heading">
           <div className="mb-5 max-w-4xl">
@@ -590,7 +598,7 @@ export default function ArabicChargingTroubleshootingPage() {
           <h2 id="charging-next-step" className="text-2xl font-black text-white sm:text-3xl">خلّ القياس يحدد القطعة، مو التخمين</h2>
           <p className="mt-3 max-w-3xl leading-8 text-slate-300">أرسل الموديل ونسبة البطارية ورسالة الشاشة وصورة الشاحن والمنفذ. نرتب الاستلام المجاني، ونوضح لك نتيجة الفحص وخيارات الإصلاح والسعر قبل بدء أي عمل مدفوع.</p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <a href={whatsappUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
+            <a data-charging-action="whatsapp-body" onClick={() => track('whatsapp', 'body')} href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3 font-black text-slate-950 transition hover:bg-cyan-300">
               <MessageCircle className="h-5 w-5" aria-hidden="true" /> أرسل التفاصيل على واتساب
             </a>
             <Link to="/ar/laptop-charging-port-repair-kuwait" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-700 px-6 py-3 font-bold text-cyan-200 hover:border-cyan-500/40">إصلاح مدخل الشحن <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
