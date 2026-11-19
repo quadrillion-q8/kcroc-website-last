@@ -347,3 +347,13 @@ console.log('Phase 7G.1B: brand and location visual hooks, conversion targets an
 const arCityVisual=read('/ar/computer-repair-kuwait-city');
 assert.ok(arCityVisual('main [aria-labelledby="arabic-services"] [data-premium-light-card="true"] > h3').length>=2,'Arabic Kuwait City actual service card headings');
 assert.ok(arCityVisual('main [aria-labelledby="arabic-services"] [data-premium-light-card="true"] > p').length>=2,'Arabic Kuwait City actual service card descriptions');
+
+
+// Phase 7G.2: keep the premium chrome present in both rendered home languages
+// without introducing additional menus or changing published link targets.
+for (const route of ['/', '/ar']) {
+ const $=read(route);
+ assert.equal($('header[data-premium-chrome="header"]').length,1,route+' one shared premium header');
+ assert.equal($('footer[data-premium-chrome="footer"]').length,1,route+' one shared premium footer');
+ assert.equal($('header [data-premium-header-booking]').attr('href'),route==='/ar'?'/ar/book':'/book',route+' localized header pickup');
+}
