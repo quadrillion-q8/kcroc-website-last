@@ -1,3 +1,4 @@
+import '../../../styles/kcroc-navigation.css';
 // File: app/frontend/src/core/components/layout/Header.tsx
 import React, { useState, useRef, useEffect, useCallback, Suspense } from 'react';
 import { Link, useLocation, matchPath } from 'react-router-dom';
@@ -165,7 +166,7 @@ export default function Header() {
 
   return (
     <>
-<header ref={headerRef} dir={isArabicRoute ? "rtl" : undefined} lang={isArabicRoute ? "ar-KW" : undefined} className={`sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-100 transition-shadow duration-200 ${scrolled ? 'shadow-sm' : ''}`}>
+<header data-premium-chrome="header" ref={headerRef} dir={isArabicRoute ? "rtl" : undefined} lang={isArabicRoute ? "ar-KW" : undefined} className={`sticky top-0 z-50 bg-white border-b border-[#ded6ca] transition-shadow duration-200 ${scrolled ? 'shadow-sm' : ''}`}>
         <div className="kcroc-header-inner max-w-[1360px] mx-auto px-4 sm:px-6 xl:px-8 2xl:px-12">
           <div className="flex min-h-[72px] flex-wrap items-center justify-between gap-x-3 gap-y-1 py-1">
             
@@ -263,11 +264,11 @@ export default function Header() {
                   variant="ctaPrimary"
                   className="min-h-12 max-w-full gap-2 rounded-lg bg-[#dfa86f] px-3 py-2 text-center text-sm leading-tight text-[#17110c] font-extrabold transition-colors hover:bg-[#efc697] focus-visible:ring-2 focus-visible:ring-[#8f4f2c]"
                 >
-                  <Link to={localizedSitePath("/book", isArabicRoute ? "ar" : "en")} onClick={() => trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' })}>
+                  <Link data-premium-header-booking="true" to={localizedSitePath("/book", isArabicRoute ? "ar" : "en")} onClick={() => trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' })}>
                     <CalendarCheck size={15} aria-hidden="true" />
                     <span className="flex min-w-0 flex-col items-start leading-tight">
                       <span>{isArabicRoute ? 'احجز استلام مجاني' : 'Book Free Pickup'}</span>
-                      <span className="mt-0.5 text-[10px] font-semibold text-white">{isArabicRoute ? 'استلام مجاني في جميع مناطق الكويت' : 'Free pickup across Kuwait'}</span>
+                      <span className="mt-0.5 text-[10px] font-semibold text-[#4b321e]">{isArabicRoute ? 'استلام مجاني في جميع مناطق الكويت' : 'Free pickup across Kuwait'}</span>
                     </span>
                   </Link>
                 </Button>
