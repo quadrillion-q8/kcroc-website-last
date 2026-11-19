@@ -35,6 +35,18 @@ for (const [en,ar] of pairs) {
   const wa=main.find('[data-service-action="whatsapp"]').attr('href') || '';
   assert.ok(/^https:\/\/wa\.me\//.test(wa),ar+' WhatsApp URL');
   assert.ok(/[\u0600-\u06ff]/.test(decodeURIComponent(wa)),ar+' Arabic WhatsApp intent');
+  // Commercial intake must request useful model and pickup details, not merely a generic greeting.
+  const intakeRoutes = ['/ar/computer-repair-kuwait','/ar/laptop-repair-kuwait','/ar/motherboard-repair-kuwait','/ar/gaming-pc-repair-kuwait','/ar/ssd-ram-upgrade-kuwait'];
+  if (intakeRoutes.includes(ar)) {
+    const message = new URL(wa).searchParams.get('text') || '';
+    assert.ok(message.includes('الموديل') || message.includes('مواصفات'),ar+' model or specifications intake');
+    assert.ok(message.includes('المنطقة'),ar+' pickup area intake');
+    assert.ok(message.includes('السعر'),ar+' quote intake');
+  }
+  if (['/ar/computer-repair-kuwait','/ar/gaming-pc-repair-kuwait'].includes(ar)) {
+    assert.ok(main.find('a[href="/ar/gallery"]').length>0,ar+' localized repair proof');
+    assert.equal(main.find('a[href="/gallery"]').length,0,ar+' no English gallery links');
+  }
   assert.ok(main.find('img').toArray().some(img=> /[\u0600-\u06ff]/.test(a(img).attr('alt')||'')),ar+' Arabic photo alt');
   assert.equal(a('link[rel="canonical"]').attr('href'),'https://www.computerrepairkuwait.com'+ar,ar);
   if (e('main [data-service-layout="service"], main [data-service-layout="laptop-repair"]').length) {

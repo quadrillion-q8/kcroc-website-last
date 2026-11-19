@@ -1460,7 +1460,7 @@ function ArabicGamingPcRepairPage({
               <p className="mt-4 leading-8 text-slate-400">
                 بدل الكلام العام، نوريك صور فعلية من شغل الـGaming PC وكروت الشاشة والتبريد داخل ورشة KCROC.
               </p>
-              <Link to="/gallery" className="mt-6 inline-flex items-center gap-2 rounded-full border border-slate-700 px-5 py-3 text-sm font-black text-white hover:border-cyan-500/40 hover:text-cyan-300">
+              <Link to="/ar/gallery" className="mt-6 inline-flex items-center gap-2 rounded-full border border-slate-700 px-5 py-3 text-sm font-black text-white hover:border-cyan-500/40 hover:text-cyan-300">
                 شوف معرض الصور <ArrowLeft className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
@@ -1473,7 +1473,7 @@ function ArabicGamingPcRepairPage({
                 { image: IMAGES.gaming.asusRogFan, title: 'تبريد VRM في ASUS ROG' },
                 { image: IMAGES.gaming.gpuUpgrade, title: 'GPU وترقية كرت الشاشة' },
               ].map((item) => (
-                <Link to="/gallery" key={item.title} className="group relative aspect-square overflow-hidden bg-slate-950">
+                <Link to="/ar/gallery" key={item.title} className="group relative aspect-square overflow-hidden bg-slate-950">
                   <img src={item.image.src} alt={item.title} width={item.image.width} height={item.image.height} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105 group-hover:opacity-80" />
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950 to-transparent p-4 pt-10">
                     <p className="text-xs font-bold text-white">{item.title}</p>
@@ -2023,13 +2023,13 @@ function ArabicComputerRepairPage({
               <p className="text-sm font-black tracking-[0.08em] text-cyan-400">صور من أعمالنا</p>
               <h2 id="workshop-proof" className="mt-2 text-3xl font-black text-white sm:text-4xl">شوف شنو نسوي داخل الورشة</h2>
               <p className="mt-4 leading-8 text-slate-400">بدل ما نقول لك فقط "نحن محترفون"، نعرض لك صورًا فعلية من مجموعة KCROC للخدمة والإصلاح والصيانة.</p>
-              <Link to="/gallery" className="mt-7 inline-flex items-center gap-2 rounded-full border border-slate-700 px-5 py-3 text-sm font-black text-white transition hover:border-cyan-500/50 hover:text-cyan-300">
+              <Link to="/ar/gallery" className="mt-7 inline-flex items-center gap-2 rounded-full border border-slate-700 px-5 py-3 text-sm font-black text-white transition hover:border-cyan-500/50 hover:text-cyan-300">
                 فتح معرض الصور <ArrowLeft className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
             <div className="grid grid-cols-2 gap-px bg-slate-800 sm:grid-cols-3">
               {AR_COMPUTER_PROOF_IMAGES.map((item) => (
-                <Link to="/gallery" key={item.title} className="group relative aspect-square overflow-hidden bg-slate-950">
+                <Link to="/ar/gallery" key={item.title} className="group relative aspect-square overflow-hidden bg-slate-950">
                   <img src={item.image.src} alt={item.title} width={item.image.width} height={item.image.height} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105 group-hover:opacity-80" />
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950 to-transparent p-4 pt-10">
                     <p className="text-xs font-bold text-white">{item.title}</p>
@@ -2410,6 +2410,13 @@ export default function ArabicCommercialPage() {
     { label: 'الإضاءة الخلفية أو كيبورد MacBook', message: 'السلام عليكم KCROC، أحتاج فحص كيبورد بإضاءة خلفية أو RGB أو كيبورد MacBook. الماركة والموديل أو رقم Axxxx: ____. المشكلة: الأزرار / الإضاءة / التخطيط / تجميعة Top-Case: ____. التخطيط المطلوب: ____. منطقتي: ____. فضلاً أكدوا توافق القطعة وتوفرها وأجرة العمل وسعر القطعة والمدة قبل الإصلاح.' }
   ].map((item) => ({ ...item, href: buildWhatsAppLink(item.message) }));
 
+  const serviceIntakeMessages: Record<string, string> = {
+    'computer-repair-kuwait': 'السلام عليكم KCROC، أحتاج فحص كمبيوتر في الكويت. نوع الجهاز: لابتوب / مكتبي / ماك بوك / Gaming PC: ____. الماركة والموديل: ____. الأعراض: ____. المنطقة: ____. أرجو تأكيد الاستلام المجاني والتشخيص والسعر قبل أي شغل مدفوع.',
+    'laptop-repair-kuwait': 'السلام عليكم KCROC، أحتاج فحص لابتوب. الماركة والموديل الكامل: ____. العطل: ما يشتغل / ما يشحن / شاشة / حرارة / مفصلة / غيره: ____. متى بدأ العطل؟ ____. المنطقة: ____. أرجو تأكيد الفحص والسعر قبل التصليح.',
+    'motherboard-repair-kuwait': 'السلام عليكم KCROC، أحتاج فحص مذربورد. نوع الجهاز والماركة والموديل: ____. العطل: ____. حالة لمبة الشحن والتشغيل: ____. هل تعرض لسائل أو صدمة؟ ____. المنطقة: ____. أرجو تحديد العطل وإمكانية إصلاح اللوحة والسعر بعد الفحص.',
+    'gaming-pc-repair-kuwait': 'السلام عليكم KCROC، أحتاج فحص Gaming PC كامل. مواصفات المعالج والمذربورد وكرت الشاشة إن عرفت: ____. الأعراض: ____. هل المشكلة تظهر وقت اللعب أو من بداية التشغيل؟ ____. المنطقة: ____. أرجو تأكيد استلام الجهاز الكامل والفحص والسعر قبل التصليح.',
+    'ssd-ram-upgrade-kuwait': 'السلام عليكم KCROC، أبي أطور SSD أو RAM. الماركة والموديل الكامل: ____. سعة التخزين والرام الحالية إن عرفت: ____. الاستخدام المطلوب: ____. المنطقة: ____. أرجو تأكيد التوافق والسعة والقطعة والسعر الكامل قبل الترقية.'
+  };
   const whatsappMessage = slug === 'macbook-screen-replacement-kuwait'
     ? 'السلام عليكم KCROC، عندي مشكلة في شاشة MacBook Air أو Pro. سأرسل صورة للشاشة والجهاز، وإذا لم أعرف رقم الموديل أرجو مساعدتي في تحديده. أريد معرفة هل يمكن إصلاح الكابل أو الإضاءة أم تحتاج الشاشة إلى تبديل، مع السعر النهائي شامل الشاشة والتركيب والمدة المتوقعة قبل البدء. منطقتي: ____.'
     : slug === 'laptop-battery-replacement-kuwait'
@@ -2438,7 +2445,7 @@ export default function ArabicCommercialPage() {
                 ? 'السلام عليكم KCROC، أحتاج تصليح كمبيوتر أو لابتوب من الفحيحيل أو المناطق القريبة. المنطقة: الفحيحيل / فنطاس / المنقف / أبو حليفة / مدينة صباح الأحمد البحرية: ____. نوع الجهاز والموديل: ____. الأعراض: ____. أرجو تنسيق الاستلام والتوصيل المجاني وتأكيد التكلفة بعد الفحص وقبل الإصلاح.'
                 : slug === 'computer-repair-ahmadi'
                   ? 'السلام عليكم KCROC، أحتاج فحص Gaming PC أو لابتوب أو MacBook من الأحمدي أو جنوب الكويت. المنطقة: الأحمدي / الفحيحيل / المنقف / المهبولة / الصباحية: ____. البلوك والشارع ورقم المبنى: ____. نوع الجهاز والماركة والموديل: ____. المشكلة والأعراض: حرارة / إعادة تشغيل / لا يعمل / شاشة سوداء / شحن / سائل / أخرى: ____. إذا كان Gaming PC أذكر المواصفات الأساسية ونوع التبريد إن عرفت. أقدر أشارك موقع واتساب المباشر. الوقت المفضل للاستلام بين 10 صباحًا و10 مساءً: ____. أرجو تأكيد الموعد المتاح ونتيجة التشخيص والتكلفة قبل أي إصلاح مدفوع.'
-                  : `السلام عليكم KCROC، أحتاج ${cfg.h1}. أريد أعرف طريقة الاستلام والتشخيص.`;
+                  : (serviceIntakeMessages[slug ?? ''] ?? `السلام عليكم KCROC، أحتاج ${cfg.h1}. أريد أعرف طريقة الاستلام والتشخيص.`);
   const macbookBatteryWhatsappMessage = 'السلام عليكم KCROC، أحتاج عرض سعر شامل لتشخيص أو تبديل بطارية MacBook. النوع: Air / Pro: ____. السنة أو الشريحة: Intel / M1 / M2 / M3 / M4 / غير متأكد: ____. رقم A-number إن توفر: ____. الأعراض: Service Recommended / البطارية تفضى بسرعة / متصل بالشاحن ولا يشحن أو واقف على 0% / انتفاخ أو ارتفاع التراك باد / أخرى: ____. المنطقة: ____. لا أحتاج إلى إرسال لقطة شاشة أو رقم تسلسلي لبدء التواصل. فضلاً ساعدوني في تحديد الموديل، وأكدوا فحص البطارية ودائرة الشحن وفئة القطعة والضمان والسعر الكامل شامل البطارية والتركيب والمدة قبل أي عمل مدفوع. إذا كان هناك انتفاخ، أرجو إرسال تعليمات التعامل والاستلام الآمن أولاً.';
   const macbookWhatsappMessage = 'السلام عليكم KCROC، أحتاج فحص وتصليح ماك بوك (MacBook) في الكويت. النوع: ماك بوك اير / ماك بوك برو (MacBook Air / Pro). الشريحة إن عُرفت: M1 / M2 / M3 / M4 / M5 / Intel: ____. رقم الموديل Axxxx أو رقم الموديل الظاهر في النظام: ____. الأعراض: لا يشتغل / لا يشحن USB‑C تايب سي أو MagSafe / شاشة سوداء / بطارية / كيبورد أو تراك باد / انسكاب سائل / ملفات مهمة. هل حصل سقوط أو انسكاب؟ ____. منطقتي بالكويت: ____. أستطيع إرسال صورة للموديل والعطل. إذا كانت البيانات مهمة سأوضح ذلك قبل الفحص. فضلاً أكدوا خيارات التشخيص والسعر النهائي والمدة المتوقعة قبل أي عمل مدفوع.';
   const macbookBatteryQuickQuotes = [
@@ -4856,7 +4863,7 @@ export default function ArabicCommercialPage() {
               <h2 id="ahmadi-common-problems" className="mt-2 text-2xl font-black text-white sm:text-3xl">أعطال Gaming PC واللابتوب وMacBook التي نفحصها</h2>
               <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 {ahmadiProblems.map((problem) => (
-                  <Link key={problem.id} to={`/${problem.slug}`} className="rounded-xl border border-slate-800 bg-slate-900/45 px-5 py-4 font-semibold text-slate-200 transition hover:border-cyan-500/40 hover:text-cyan-300">
+                  <Link key={problem.id} to={localizedSitePath(`/${problem.slug}`, "ar")} className="rounded-xl border border-slate-800 bg-slate-900/45 px-5 py-4 font-semibold text-slate-200 transition hover:border-cyan-500/40 hover:text-cyan-300">
                     {AHMADI_PROBLEM_LABELS[problem.id] ?? problem.title}
                   </Link>
                 ))}
@@ -4930,7 +4937,7 @@ export default function ArabicCommercialPage() {
               <h2 id="fahaheel-common-problems" className="mt-2 text-2xl font-black text-white sm:text-3xl">أعطال الكمبيوتر واللابتوب التي نفحصها</h2>
               <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 {fahaheelProblems.map((problem) => (
-                  <Link key={problem.id} to={`/${problem.slug}`} className="rounded-xl border border-slate-800 bg-slate-900/45 px-5 py-4 font-semibold text-slate-200 transition hover:border-cyan-500/40 hover:text-cyan-300">
+                  <Link key={problem.id} to={localizedSitePath(`/${problem.slug}`, "ar")} className="rounded-xl border border-slate-800 bg-slate-900/45 px-5 py-4 font-semibold text-slate-200 transition hover:border-cyan-500/40 hover:text-cyan-300">
                     {FAHAHEEL_PROBLEM_LABELS[problem.id] ?? problem.title}
                   </Link>
                 ))}
@@ -5004,7 +5011,7 @@ export default function ArabicCommercialPage() {
               <h2 id="mangaf-common-problems" className="mt-2 text-2xl font-black text-white sm:text-3xl">أعطال الكمبيوتر واللابتوب التي نفحصها</h2>
               <div className="mt-5 grid gap-3 sm:grid-cols-3">
                 {mangafProblems.map((problem) => (
-                  <Link key={problem.id} to={`/${problem.slug}`} className="rounded-xl border border-slate-800 bg-slate-900/45 px-5 py-4 font-semibold text-slate-200 transition hover:border-cyan-500/40 hover:text-cyan-300">
+                  <Link key={problem.id} to={localizedSitePath(`/${problem.slug}`, "ar")} className="rounded-xl border border-slate-800 bg-slate-900/45 px-5 py-4 font-semibold text-slate-200 transition hover:border-cyan-500/40 hover:text-cyan-300">
                     {MANGAF_PROBLEM_LABELS[problem.id] ?? problem.title}
                   </Link>
                 ))}
