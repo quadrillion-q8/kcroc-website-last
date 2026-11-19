@@ -320,3 +320,23 @@ for(const token of ['--premium-graphite','--premium-paper','--premium-white','--
  assert.ok(premiumCss.includes(token),'Premium visual contract: '+token);
 }
 console.log('Phase 7G: premium opt-in, pricing exclusions and three visual treatments verified in static markup/source.');
+
+
+// Phase 7G.1B: ensure the exact formerly low-contrast elements retain their
+// semantic styling hooks, including Arabic brand final conversion controls.
+for(const id of ['dell','hp','lenovo','asus','acer','msi']){
+ for(const route of ['/'+id+'-laptop-repair-kuwait','/ar/brands/'+id+'-laptop-repair-kuwait']){
+  const $=read(route);
+  assert.equal($('main [data-premium-conversion]').length,1,route+' final conversion treatment');
+  assert.equal($('main [data-premium-conversion] [data-premium-action="booking"]').attr('href'),route.startsWith('/ar/')?'/ar/book':'/book',route+' booking target');
+  assert.ok($('main [data-premium-conversion] [data-premium-action="whatsapp"]').attr('href')?.includes('wa.me/'),route+' WhatsApp target');
+ }
+}
+const msiVisual=read('/msi-laptop-repair-kuwait');
+assert.ok(msiVisual('main [data-premium-model-chip]').length>=3,'MSI model chip visual contract');
+assert.ok(msiVisual('main [data-premium-repair-focus]').length>=1,'MSI divider visual contract');
+const cityVisual=read('/location/kuwait-city');
+assert.ok(cityVisual('main [data-location-problem-link]').length>0,'Kuwait City problem card visual contract');
+assert.ok(cityVisual('main [data-location-brand-link]').length>0,'Kuwait City brand card visual contract');
+assert.equal(cityVisual('main [data-premium-light-card][href="/macbook-repair-kuwait"]').length,1,'Kuwait City Apple card visual contract');
+console.log('Phase 7G.1B: brand and location visual hooks, conversion targets and pricing exclusion verified.');
