@@ -203,3 +203,27 @@ for(const route of locationRoutes){
  assert.ok(faqs.every(q=>schema.mainEntity.some(x=>x.name===q)),route+' visible FAQ schema');
 }
 console.log('Phase 7B: Arabic location quality modules, price rows, emergency protocols and office handover inventory verified.');
+
+const arContact=read('/ar/contact'), enContact=read('/contact');
+assert.equal(arContact('main [data-kcroc-editorial-panel="contact-faq"] details').length,enContact('main [data-kcroc-editorial-panel="contact-faq"] details').length,'Contact visit FAQs');
+assert.equal(arContact('main form button[type="submit"][aria-busy="false"]').length,1,'Contact busy state');
+assert.ok(arContact('main form [role="status"]').length,'Arabic contact accessible feedback');
+assert.ok(arContact('main a[href="/ar/laptop-repair-kuwait"]').length);
+assert.ok(arContact('main a[href="/ar/computer-repair-kuwait"]').length);
+const faqLinks=arFaq('main details').toArray();
+for(const x of faqLinks){
+ const id=arFaq(x).attr('id');
+ assert.equal(arFaq(x).find('a[href="/ar/faq#'+id+'"]').length,1,id+' direct FAQ link');
+ assert.equal(arFaq(x).find('summary').length,1);
+}
+assert.ok(arFaq('main [role="status"]').length,'FAQ result count');
+const galleryButtons=arGallery('main button[data-gallery-photo]');
+assert.equal(galleryButtons.length,arGallery('main img').length,'Arabic keyboard operable photo tiles');
+assert.equal(galleryButtons.length,enGallery('main button[data-gallery-photo]').length,'Shared gallery tiles');
+const alts=galleryButtons.map((_,x)=>arGallery(x).find('img').attr('alt')).get();
+assert.ok(alts.every(alt=>/[\u0600-\u06ff]/.test(alt)),'Arabic photo descriptions');
+assert.ok(new Set(alts).size>=Math.ceil(alts.length*.8),'Photo-specific descriptions, not generic categories');
+for(const $ of [authorEN,authorAR])assert.equal($('main [data-author-article-language]').length,3,'Author editorial link inventory');
+assert.ok(authorAR('main a[href="/ar/book"]').length,'Localized author booking');
+assert.ok(authorAR('meta[property="og:locale"][content="ar_KW"]').length,'Arabic author social locale');
+console.log('Phase 7C: Arabic contact, FAQ links, accessible gallery thumbnails and author metadata verified.');
