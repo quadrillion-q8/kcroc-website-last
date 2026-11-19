@@ -57,6 +57,45 @@ try {
    console.log(JSON.stringify({route,width,...result}));
   }
  }
+ // Phase 7G.2: verify actual shared chrome on both home languages.
+ for(const width of [390,1440]){
+  await page.setViewport({width,height:900,deviceScaleFactor:1});
+  for(const route of ['/','/ar']){
+   await page.goto(new URL(route,base).href,{waitUntil:'networkidle2',timeout:60000});
+   const header=await page.evaluate(()=>{
+    const el=document.querySelector('header[data-premium-chrome="header"]');
+    const footer=document.querySelector('footer[data-premium-chrome="footer"]');
+    const booking=el?.querySelector('[data-premium-header-booking]');
+    const sub=booking?.querySelector('span span:last-child');
+    const rgb=s=>(s.match(/[\\d.]+/g)||[]).map(Number);
+    const lum=a=>a.slice(0,3).reduce((sum,v,i)=>{v/=255;return sum+(v<=.04045?v/12.92:((v+.055)/1.055)**2.4)*[.2126,.7152,.0722][i]},0);
+    let contrast=null;
+    if(sub&&booking?.getClientRects().length){
+      const a=lum(rgb(getComputedStyle(sub).color)),b=lum(rgb(getComputedStyle(booking).backgroundColor));
+      contrast=(Math.max(a,b)+.05)/(Math.min(a,b)+.05);
+    }
+    return {present:!!el,footer:!!footer,href:booking?.getAttribute('href'),contrast,rtl:el?.getAttribute('dir'),overflow:el?el.scrollWidth-el.clientWidth:999};
+   });
+   if(!header.present||!header.footer||header.href!==(route==='/ar'?'/ar/book':'/book')||header.overflow>2|| (route==='/ar'&&header.rtl!=='rtl'))failures.push({route,width,header});
+   if(width===1440&&(header.contrast===null||header.contrast<4.5))failures.push({route,width,error:'Header booking contrast',header});
+   if(width===390){
+    const trigger=await page.$('header button[aria-controls="mobile-nav-panel"]');
+    if(!trigger){failures.push({route,width,error:'Missing mobile navigation trigger'});continue;}
+    await trigger.evaluate(el=>el.click());
+    await page.waitForSelector('#mobile-nav-panel[data-premium-chrome="mobile-menu"]',{timeout:10000});
+    await page.screenshot({path:'premium-visual-evidence/home-'+(route==='/ar'?'ar':'en')+'-mobile-menu.png'});
+    await page.keyboard.press('Escape');
+   }else{
+    const trigger=await page.$('header nav button[aria-controls^="mega-menu-"]');
+    if(!trigger){failures.push({route,width,error:'Missing desktop mega menu trigger'});continue;}
+    await trigger.evaluate(el=>el.click());
+    await page.waitForSelector('[data-premium-chrome="mega-menu"]',{timeout:10000});
+    await page.screenshot({path:'premium-visual-evidence/home-'+(route==='/ar'?'ar':'en')+'-mega-menu.png'});
+    await page.keyboard.press('Escape');
+   }
+   console.log(JSON.stringify({route,width,chrome:header}));
+  }
+ }
 }finally{await browser.close();}
 assert.equal(failures.length,0,JSON.stringify(failures,null,2));
 console.log('Premium visual smoke checks passed.');
