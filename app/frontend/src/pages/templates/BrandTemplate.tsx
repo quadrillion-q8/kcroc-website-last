@@ -7,6 +7,7 @@ import { SEOEngine } from '../../core/components/SEOEngine';
 import { buildWhatsAppLink, getIntentWhatsAppLink } from '../../utils/whatsappIntent';
 import CoreRepairPillars from '../../components/content/CoreRepairPillars';
 import ArabicBrandContent from './ArabicBrandContent';
+import ServiceConversionActions from '../../components/content/ServiceConversionActions';
 import {
   Wrench,
   CheckCircle,
@@ -135,30 +136,7 @@ const BrandTemplate: React.FC = () => {
                 ))}
               </div>
 
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-cyan-500 px-7 py-3.5 font-black text-slate-950 transition-colors hover:bg-cyan-400"
-                >
-                  WhatsApp a Technician
-                  <ArrowRight className="h-5 w-5" aria-hidden="true" />
-                </a>
-                <Link
-                  to="/book"
-                  className="inline-flex items-center justify-center rounded-full border border-slate-600 bg-slate-900/70 px-7 py-3.5 font-bold text-white hover:border-cyan-700 hover:text-cyan-300"
-                >
-                  Book a Repair
-                </Link>
-                <Link
-                  to="/pricing"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-cyan-500/25 bg-cyan-950/25 px-7 py-3.5 font-bold text-cyan-200 hover:border-cyan-400/60 hover:bg-cyan-900/30"
-                >
-                  View Repair Prices
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-              </div>
+              <ServiceConversionActions locale="en" entityId={brand.id} whatsappHref={whatsappLink} whatsappLabel="WhatsApp a Technician" showPricing className="mt-9 flex flex-wrap gap-3" />
             </div>
 
             {brand.contentImages?.[0] && (

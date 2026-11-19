@@ -15,6 +15,11 @@ for(const id of ids){
  assert.ok(m.find('[data-brand-issue]').length>=3,route+' diagnostic coverage');
  assert.ok(m.find('[data-brand-service]').length>=5,route+' service discovery');
  assert.ok(m.find('[data-brand-faq]').length>=6,route+' localized FAQ');
+ assert.equal(m.find('[data-brand-diagnostic-prep="brand-'+id+'"]').length,1,route+' diagnostic preparation');
+ assert.equal(m.find('[data-brand-diagnostic-prep] a[href="/ar/gallery"]').length,1,route+' localized gallery');
+ assert.equal(b('main [data-service-action="booking"]').attr('href'),'/book',e);
+ assert.equal(b('main [data-service-action="pricing"]').attr('href'),'/pricing',e);
+ assert.ok(b('main [data-service-action="whatsapp"]').attr('href')?.includes('wa.me/'),e);
  assert.equal(m.find('[data-service-action="booking"]').attr('href'),'/ar/book',route);
  assert.equal(m.find('[data-service-action="pricing"]').attr('href'),'/ar/pricing',route);
  assert.ok(m.find('[data-service-action="whatsapp"]').attr('href')?.includes('wa.me/'),route);
