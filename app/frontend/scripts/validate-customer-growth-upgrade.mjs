@@ -358,8 +358,13 @@ add('Laptop repair resources distinguish the no-power repair page from the troub
   !has(graph, `label: "Laptop Won't Turn On? Complete Troubleshooting Guide", path: '/laptop-wont-turn-on'`) &&
   laptopGuidesIndex.includes("'guides/laptop-wont-turn-on'"));
 
+const brandConversionActions = await read('components/content/ServiceConversionActions.tsx');
 add('Brand repair pages expose a direct link to transparent pricing',
-  brandTemplate.includes('to="/pricing"') && brandTemplate.includes('View Repair Prices'));
+  /<ServiceConversionActions\b[^>]*\blocale="en"[^>]*\bshowPricing\b/.test(brandTemplate) &&
+  brandConversionActions.includes('{showPricing && <Link') &&
+  brandConversionActions.includes('data-service-action="pricing"') &&
+  brandConversionActions.includes("localizedSitePath('/pricing', locale)") &&
+  brandConversionActions.includes('View repair pricing'));
 
 add('Arabic Salmiya location cards have explicit Arabic titles and descriptions for all five service types',
   salmiyaConfig.includes('serviceCardCopy: {') &&
