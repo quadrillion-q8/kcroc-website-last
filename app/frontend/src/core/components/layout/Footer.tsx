@@ -113,11 +113,11 @@ export function Footer() {
 
   if (isGlobalEditorialArticle || isGlobalTechnicalGuide) {
     return (
-      <footer className="relative z-10 border-t border-white/10 bg-[#0c1214] py-9" aria-label="Editorial footer">
+      <footer data-premium-chrome="footer" className="relative z-10 border-t border-white/10 bg-[#0c1214] py-9" aria-label="Editorial footer">
         <div className="mx-auto flex max-w-7xl flex-col gap-5 px-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
           <div>
             <p className="text-sm font-black tracking-wide text-white">KCROC Hardware Engineering Lab</p>
-            <p className="mt-1 max-w-xl text-xs leading-6 text-slate-500">Technical guidance on laptop hardware, storage, performance and diagnostics.</p>
+            <p className="mt-1 max-w-xl text-xs leading-6 text-[#aab7bb]">Technical guidance on laptop hardware, storage, performance and diagnostics.</p>
           </div>
           <nav aria-label="Editorial links" className="flex flex-wrap gap-x-5 gap-y-3 text-sm text-slate-400">
             <Link to="/blog" className="hover:text-white">Articles</Link>
@@ -176,7 +176,7 @@ export function Footer() {
   );
 
   return (
-    <footer
+    <footer data-premium-chrome="footer"
       dir={isArabicRoute ? 'rtl' : undefined}
       lang={isArabicRoute ? 'ar-KW' : undefined}
       className="relative bg-[#0c1214]/[0.98] backdrop-blur-md border-t border-white/[0.10] pt-14 pb-28 md:pb-8 z-10"
@@ -252,7 +252,7 @@ export function Footer() {
             </p>
 
             {business.openingHours && (
-              <p className="flex items-center gap-2 text-slate-500 text-xs mb-5">
+              <p className="flex items-center gap-2 text-[#aab7bb] text-xs mb-5">
                 <Clock className="w-4 h-4 text-[#dfa86f] flex-shrink-0" aria-hidden="true" />
                 {isArabicRoute && business.openingHours === 'Open daily 10:00 AM – 10:00 PM' ? 'يوميًا من 10 صباحًا إلى 10 مساءً' : business.openingHours}
               </p>
@@ -372,7 +372,7 @@ export function Footer() {
                   <CalendarClock className="w-4 h-4" aria-hidden="true" />
                   {isArabicRoute ? "احجز استلام مجاني" : "BOOK FREE PICKUP"}
                 </a>
-                <span className="block text-slate-500 text-xs mt-2 ml-1">{isArabicRoute ? "استلام وتوصيل مجاني في مناطق الكويت" : "Pick-up & drop across all Kuwait governorates"}</span>
+                <span className="block text-[#aab7bb] text-xs mt-2 ml-1">{isArabicRoute ? "استلام وتوصيل مجاني في مناطق الكويت" : "Pick-up & drop across all Kuwait governorates"}</span>
               </li>
             </ul>
 
@@ -408,7 +408,7 @@ export function Footer() {
 
         {/* Legal */}
         <div className="border-t border-white/[0.10] pt-7 mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-slate-500 text-xs sm:text-sm text-center md:text-left">
+          <p className="text-[#aab7bb] text-xs sm:text-sm text-center md:text-left">
             {isArabicRoute ? `© ${new Date().getFullYear()} ${business.legalName}. جميع الحقوق محفوظة.` : `© ${new Date().getFullYear()} ${business.legalName}. All rights reserved.`}
           </p>
           <div role="group" aria-label={isArabicRoute ? "سياسات وإعدادات الموقع" : "Site policies and settings"} className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2">

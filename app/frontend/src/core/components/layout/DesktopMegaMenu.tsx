@@ -285,7 +285,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
     return (
       <div
         ref={panelRef}
-        id={`mega-menu-${config.id}`}
+        data-premium-chrome="mega-menu" dir={isArabicPath(pathname) ? "rtl" : undefined} lang={isArabicPath(pathname) ? "ar-KW" : undefined} id={`mega-menu-${config.id}`}
         role="region"
         aria-label={config.title}
         aria-hidden={!isOpen}
@@ -313,7 +313,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
     return (
       <div
         ref={panelRef}
-        id={`mega-menu-${config.id}`}
+        data-premium-chrome="mega-menu" dir={isArabicPath(pathname) ? "rtl" : undefined} lang={isArabicPath(pathname) ? "ar-KW" : undefined} id={`mega-menu-${config.id}`}
         role="region"
         aria-label={config.title}
         aria-hidden={!isOpen}
@@ -348,7 +348,7 @@ export default function DesktopMegaMenu({ isOpen, panelLeft, config, onMouseEnte
   return (
     <div
       ref={panelRef}
-      id={`mega-menu-${config.id}`}
+      data-premium-chrome="mega-menu" dir={isArabicPath(pathname) ? "rtl" : undefined} lang={isArabicPath(pathname) ? "ar-KW" : undefined} id={`mega-menu-${config.id}`}
       aria-label={config.title}
       aria-hidden={!isOpen}
       onMouseEnter={onMouseEnter}

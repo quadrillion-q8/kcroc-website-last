@@ -310,7 +310,7 @@ export default function StructuredMegaMenuContent({ config, meta, isOpen, onClos
     <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_24px_70px_rgba(15,23,42,0.18)]">
       <div className="flex flex-col gap-4 border-b border-slate-100 px-5 py-5 md:flex-row md:items-start md:justify-between lg:px-7 lg:py-6">
         <div className="min-w-0 max-w-3xl">
-          <p className="mb-2 text-xs font-bold uppercase tracking-wider text-blue-600">{structuredConfig.kicker}</p>
+          <p className="mb-2 text-xs font-bold uppercase tracking-wider text-[#814321]">{structuredConfig.kicker}</p>
           <h2 className="m-0 text-2xl font-extrabold tracking-tight text-slate-900">{structuredConfig.heading}</h2>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">{structuredConfig.subheading}</p>
         </div>
@@ -322,7 +322,7 @@ export default function StructuredMegaMenuContent({ config, meta, isOpen, onClos
             trackConversion('cta_click', { cta_name: 'mega_menu_view_all', button_position: 'header' });
             onClose();
           }}
-          className="group inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+          className="group inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#814321]"
         >
           {structuredConfig.viewAllLabel}
           <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
@@ -340,7 +340,7 @@ export default function StructuredMegaMenuContent({ config, meta, isOpen, onClos
             >
               <div>
                 <div className="mb-3 flex items-center gap-3 border-b border-slate-100 pb-3">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#f7f3ed] text-[#814321]">
                     <HeaderIcon className="h-4 w-4" aria-hidden="true" />
                   </span>
                   <div className="min-w-0">
@@ -362,13 +362,13 @@ export default function StructuredMegaMenuContent({ config, meta, isOpen, onClos
                           trackConversion('cta_click', { cta_name: 'mega_menu_structured_link', button_position: 'header' });
                           onClose();
                         }}
-                        className="group flex min-h-14 cursor-pointer items-center gap-3 rounded-xl p-2.5 transition hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                        className="group flex min-h-14 cursor-pointer items-center gap-3 rounded-xl p-2.5 transition hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#814321]"
                       >
                         <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-600">
                           <ItemIcon className="h-4 w-4" aria-hidden="true" />
                         </span>
                         <span className="min-w-0 flex-1">
-                          <span className="block text-sm font-bold text-slate-900 transition group-hover:text-blue-600">{item.title}</span>
+                          <span className="block text-sm font-bold text-slate-900 transition group-hover:text-[#814321]">{item.title}</span>
                           <span className="line-clamp-1 block text-xs text-slate-500">{item.description}</span>
                         </span>
                         <ChevronRight className="ml-auto h-4 w-4 shrink-0 text-slate-400 transition group-hover:translate-x-0.5" aria-hidden="true" />
@@ -380,7 +380,7 @@ export default function StructuredMegaMenuContent({ config, meta, isOpen, onClos
                   )}
                 </div>
               </div>
-              <p className="mt-4 rounded-xl border border-blue-100 bg-blue-50/70 p-3 text-xs font-semibold leading-5 text-blue-900">{column.bottomBannerText}</p>
+              <p className="mt-4 rounded-xl border border-[#ded6ca] bg-[#f7f3ed]/70 p-3 text-xs font-semibold leading-5 text-[#713b20]">{column.bottomBannerText}</p>
             </section>
           );
         })}
@@ -402,9 +402,9 @@ export default function StructuredMegaMenuContent({ config, meta, isOpen, onClos
           <a
             href={'tel:+' + phoneDigits}
             onClick={() => trackConversion('phone_call_click', { cta_name: 'mega_menu_phone', button_position: 'header' })}
-            className="inline-flex min-h-10 items-center justify-center gap-1.5 rounded-xl px-3 py-2 text-sm font-semibold text-slate-800 transition hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+            className="inline-flex min-h-10 items-center justify-center gap-1.5 rounded-xl px-3 py-2 text-sm font-semibold text-slate-800 transition hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#814321]"
           >
-            <Phone className="h-4 w-4 text-blue-600" aria-hidden="true" />{phoneDisplay}
+            <Phone className="h-4 w-4 text-[#814321]" aria-hidden="true" />{phoneDisplay}
           </a>
           <Link
             to={route("/book")}
@@ -412,7 +412,7 @@ export default function StructuredMegaMenuContent({ config, meta, isOpen, onClos
               trackConversion('cta_click', { cta_name: 'header_book', button_position: 'header' });
               onClose();
             }}
-            className="inline-flex min-h-11 items-center gap-1.5 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+            className="inline-flex min-h-11 items-center gap-1.5 rounded-xl bg-[#c9804d] px-5 py-2.5 text-sm font-semibold text-[#17110c] shadow-md transition hover:bg-[#dfa86f] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#814321]"
           >
             Book Free Pickup <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
           </Link>
