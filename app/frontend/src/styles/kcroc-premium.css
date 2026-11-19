@@ -1,0 +1,205 @@
+/*
+ * KCROC premium visual system — phase 7G
+ * Scoped to opted-in main content; pricing pages deliberately excluded.
+ * Existing page geometry, semantic markup, diagnostics and safety colours remain intact.
+ */
+[data-kcroc-premium="true"] {
+  --premium-graphite: #101619;
+  --premium-graphite-raised: #1d282d;
+  --premium-paper: #f7f3ed;
+  --premium-white: #ffffff;
+  --premium-ink: #172022;
+  --premium-muted: #455356;
+  --premium-line: #ded6ca;
+  --premium-copper: #814321;
+  --premium-copper-fill: #c9804d;
+  --premium-radius: clamp(1rem, 1.7vw, 1.5rem);
+  --premium-shadow: 0 2px 5px rgba(31,26,20,.045), 0 12px 32px rgba(31,26,20,.07);
+  --kcroc-paper: var(--premium-paper);
+  --kcroc-paper-surface: var(--premium-white);
+  --kcroc-paper-ink: var(--premium-ink);
+  --kcroc-paper-muted: var(--premium-muted);
+  --kcroc-paper-line: var(--premium-line);
+  --kcroc-paper-accent: var(--premium-copper);
+  --kcroc-rollout-paper: var(--premium-paper);
+  --kcroc-rollout-white: var(--premium-white);
+  --kcroc-rollout-ink: var(--premium-ink);
+  --kcroc-rollout-muted: var(--premium-muted);
+  --kcroc-rollout-line: var(--premium-line);
+  --kcroc-rollout-copper: var(--premium-copper);
+}
+
+/* 01 — Technical identity. Only the named homepage hero, service headers,
+   brand hero and location heroes opt into the new graphite finish. */
+[data-kcroc-premium="true"] :is([aria-labelledby="home-hero-heading"],[data-service-layout] > header,[data-kcroc-rollout="brand"] > section:first-of-type,[data-location-hero="true"]) {
+  background-color: var(--premium-graphite) !important;
+  border-color: rgba(225, 177, 138, .18);
+}
+[data-kcroc-premium="true"] [aria-labelledby="home-hero-heading"] {
+  background-image: radial-gradient(ellipse at 18% 15%,rgba(201,128,77,.10),transparent 56%), linear-gradient(155deg,#101619,#192327 68%,#101619);
+}
+[data-kcroc-premium="true"] [aria-labelledby="home-hero-heading"] .kcroc-kicker {
+  color: #e4b18a;
+}
+[data-kcroc-premium="true"] [aria-labelledby="home-hero-heading"] .kcroc-photo-frame {
+  border: 1px solid rgba(228,177,138,.24);
+  border-radius: var(--premium-radius);
+  box-shadow: 0 20px 48px rgba(0,0,0,.22);
+}
+[data-kcroc-premium="true"] :is([aria-labelledby="home-hero-heading"],[data-service-layout] > header,[data-kcroc-rollout="brand"] > section:first-of-type,[data-location-hero="true"]) h1 {
+  text-wrap: balance;
+}
+[data-kcroc-premium="true"][data-site-locale="ar"] :is(h1,h2,h3,h4) {
+  letter-spacing: normal !important;
+  line-height: 1.35 !important;
+}
+
+/* 02 — Editorial clarity. Apply to the existing editorial contracts instead
+   of guessing based on generic Tailwind colours. Preserve interactive
+   diagnosis and emergency/status panels, code samples and photographic overlays. */
+[data-kcroc-premium="true"] :is(
+  [data-service-layout] section[data-service-editorial-panel]:not([aria-labelledby*="safety"]):not([aria-labelledby*="emergency"]):not([aria-labelledby*="spill-guidance"]),
+  [data-kcroc-rollout]:not([data-kcroc-rollout^="booking"]):not([data-kcroc-rollout^="contact"]) [data-kcroc-editorial-panel]:not([data-kcroc-editorial-panel="faq-search"]),
+  [data-kcroc-rollout="brand"] [data-brand-content] > section,
+  [data-problem-layout] [data-problem-editorial-panel]:is([data-problem-editorial-panel="causes"],[data-problem-editorial-panel="safe-checks"],[data-problem-editorial-panel="lab"],[data-problem-editorial-panel="services"],[data-problem-editorial-panel="brands-covered"],[data-problem-editorial-panel="related-resources"],[data-problem-editorial-panel="technical-references"],[data-problem-editorial-panel="faq"],[data-problem-editorial-panel="diagnostic-path"])
+) {
+  background-color: var(--premium-paper) !important;
+  border-color: var(--premium-line) !important;
+  border-radius: var(--premium-radius);
+  box-shadow: var(--premium-shadow);
+}
+[data-kcroc-premium="true"] :is([data-service-editorial-panel],[data-kcroc-editorial-panel],[data-brand-content] > section,[data-problem-editorial-panel]) :is(h2,h3) {
+  text-wrap: balance;
+}
+[data-kcroc-premium="true"] :is([data-service-editorial-panel],[data-kcroc-editorial-panel],[data-brand-content] > section,[data-problem-editorial-panel]) :is(p,li) {
+  overflow-wrap: break-word;
+}
+[data-kcroc-premium="true"] :is([data-service-editorial-panel],[data-brand-content] > section) > :is(h2,h3) {
+  color: var(--premium-ink) !important;
+}
+[data-kcroc-premium="true"] :is([data-brand-family-check],[data-brand-issue],[data-ar-technical-check]) {
+  background: var(--premium-white) !important;
+  border-color: var(--premium-line) !important;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(31,26,20,.045);
+}
+/* Keep tables readable; never change table geometry or overflow containers. */
+[data-kcroc-premium="true"] :is([data-service-editorial-panel],[data-problem-editorial-panel="diagnostic-path"]) thead {
+  background: #eae3d8 !important;
+}
+[data-kcroc-premium="true"] :is([data-service-editorial-panel],[data-brand-content] > section,[data-problem-editorial-panel="faq"]) details[open] {
+  border-color: #b77952 !important;
+  background-color: #fffaf5 !important;
+}
+
+/* 03 — Conversion. Explicit shared action attributes preserve link URLs,
+   analytics handlers, WhatsApp brand recognition and action ordering. */
+[data-kcroc-premium="true"] :is([data-service-conversion],[data-location-hero-actions],[data-problem-cta]) :is(a,button) {
+  min-height: 48px;
+  max-width: 100%;
+  border-radius: .875rem !important;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.4;
+  box-shadow: none !important;
+  transition: background-color .16s ease,border-color .16s ease,color .16s ease;
+}
+[data-kcroc-premium="true"] :is([data-service-action="booking"],[data-location-action="booking"],[data-problem-action="booking"]) {
+  background: var(--premium-copper-fill) !important;
+  color: #17110c !important;
+  border: 1px solid var(--premium-copper-fill) !important;
+}
+[data-kcroc-premium="true"] :is([data-service-action="pricing"],[data-location-action="pricing"]) {
+  background: var(--premium-white) !important;
+  color: var(--premium-ink) !important;
+  border: 1px solid #d1c7b9 !important;
+}
+[data-kcroc-premium="true"] :is([data-service-action="whatsapp"],[data-location-action="whatsapp"],[data-problem-action="whatsapp"]) {
+  background: #25d366 !important;
+  color: #052e16 !important;
+  border: 1px solid #25d366 !important;
+}
+@media (hover:hover) {
+  [data-kcroc-premium="true"] :is([data-service-action="booking"],[data-location-action="booking"],[data-problem-action="booking"]):hover { background: #e0a679 !important; }
+  [data-kcroc-premium="true"] :is([data-service-action="pricing"],[data-location-action="pricing"]):hover { background: #f3e9de !important; }
+  [data-kcroc-premium="true"] :is([data-service-action="whatsapp"],[data-location-action="whatsapp"],[data-problem-action="whatsapp"]):hover { background: #51df83 !important; }
+}
+[data-kcroc-premium="true"] :is([data-service-action],[data-location-action],[data-problem-action]):focus-visible {
+  outline: 3px solid #e4b18a !important;
+  outline-offset: 3px;
+}
+
+/* White enquiry surfaces with a visible border and non-colour selection cue.
+   Scope to booking/contact only, not tools, search bars or pricing filters. */
+[data-kcroc-premium="true"] :is([data-kcroc-rollout^="booking"],[data-kcroc-rollout^="contact"]) :is(.rounded-3xl,.rounded-2xl):has(form) {
+  background: var(--premium-white) !important;
+  border-color: var(--premium-line) !important;
+  color: var(--premium-ink) !important;
+  border-radius: var(--premium-radius);
+  box-shadow: var(--premium-shadow);
+}
+[data-kcroc-premium="true"] :is([data-kcroc-rollout^="booking"],[data-kcroc-rollout^="contact"]) form :is(input:not([type="checkbox"]):not([type="radio"]),select,textarea) {
+  background: #fafaf9 !important;
+  color: var(--premium-ink) !important;
+  border-color: #909b98 !important;
+  border-radius: .75rem;
+  min-width: 0;
+  min-height: 48px;
+}
+[data-kcroc-premium="true"] :is([data-kcroc-rollout^="booking"],[data-kcroc-rollout^="contact"]) form :is(label,legend,.text-slate-400,.text-slate-500,.text-slate-600) {
+  color: var(--premium-muted) !important;
+}
+[data-kcroc-premium="true"] :is([data-kcroc-rollout^="booking"],[data-kcroc-rollout^="contact"]) form :is(input,textarea)::placeholder {
+  color: #556460 !important;
+}
+[data-kcroc-premium="true"] [data-kcroc-rollout^="booking"] form button[aria-pressed] {
+  background: #fff !important;
+  border: 1px solid #909b98 !important;
+  color: var(--premium-ink) !important;
+  min-height: 48px;
+  transform: none;
+}
+[data-kcroc-premium="true"] [data-kcroc-rollout^="booking"] form button[aria-pressed="true"] {
+  background: #f6e9db !important;
+  border-color: var(--premium-copper) !important;
+  color: #713b20 !important;
+  box-shadow: inset 0 0 0 1px var(--premium-copper) !important;
+  font-weight: 800;
+}
+[data-kcroc-premium="true"] :is([data-kcroc-rollout^="booking"],[data-kcroc-rollout^="contact"]) form :is(input,select,textarea,button):focus-visible {
+  outline: 3px solid var(--premium-copper) !important;
+  outline-offset: 3px;
+}
+@media (max-width: 639px) {
+  [data-kcroc-premium="true"] :is([data-service-conversion],[data-location-hero-actions],[data-problem-cta]) > :is(a,button) { flex: 1 1 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-kcroc-premium="true"] :is([data-service-action],[data-location-action],[data-problem-action]) { transition: none; }
+}
+
+
+/* Form heading contrast and readable secondary text on white cards. */
+[data-kcroc-premium="true"] :is([data-kcroc-rollout^="booking"],[data-kcroc-rollout^="contact"]) :is(.rounded-3xl,.rounded-2xl):has(form) :is(h2,h3,h4) {
+  color: var(--premium-ink) !important;
+}
+[data-kcroc-premium="true"] :is([data-kcroc-rollout^="booking"],[data-kcroc-rollout^="contact"]) form button[type="submit"] {
+  border-radius: .875rem;
+  min-height: 52px;
+  background: var(--premium-copper-fill) !important;
+  color: #17110c !important;
+  box-shadow: none !important;
+}
+[data-kcroc-premium="true"] :is([data-kcroc-rollout^="booking"],[data-kcroc-rollout^="contact"]) form button[type="submit"]:disabled {
+  opacity: .65;
+  cursor: not-allowed;
+}
+[data-kcroc-premium="true"] :is([data-kcroc-rollout^="booking"],[data-kcroc-rollout^="contact"]) form [role="status"] {
+  color: var(--premium-muted) !important;
+}
+/* Arabic technical model names keep native shaping; avoid clipping long
+   labels without replacing the existing font stack or downloading fonts. */
+[data-kcroc-premium="true"][data-site-locale="ar"] :is([data-service-action],[data-location-action],[data-problem-action],form label,form legend,form button) {
+  letter-spacing: normal !important;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
