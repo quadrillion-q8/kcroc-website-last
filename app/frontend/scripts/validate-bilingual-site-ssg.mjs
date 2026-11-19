@@ -156,6 +156,16 @@ assert.equal(upgradedProblems.length,13);
 for(const route of upgradedProblems){
  const $=read(route);
  assert.ok($('main [data-diagnostic-row]').length>=4,route+' static diagnostic cases');
+ for(const position of ['hero','body']){
+  const cta=$('main [data-problem-cta="'+position+'"]');
+  assert.equal(cta.length,1,route+' '+position+' CTA');
+  assert.equal(cta.find('[data-problem-action="booking"]').attr('href'),'/ar/book',route+' localized booking');
+  const wa=cta.find('[data-problem-action="whatsapp"]').attr('href')||'';
+  assert.ok(wa.startsWith('https://wa.me/'),route+' WhatsApp link');
+  const message=new URL(wa).searchParams.get('text')||'';
+  for(const term of ['الموديل','المنطقة','السعر','كلمات مرور','مفاتيح استرداد'])assert.ok(message.includes(term),route+' intake '+term);
+ }
+
  assert.ok($('main [data-problem-editorial-panel="faq"] details').length>=5,route+' expanded FAQ inventory');
  const faq=$('script[type="application/ld+json"]').toArray().flatMap(el=>{try{const x=JSON.parse($(el).text());return Array.isArray(x)?x:x['@graph']??[x]}catch{return []}}).find(x=>x['@type']==='FAQPage'&&String(x['@id']).endsWith('#faq'));
  assert.ok(faq,route+' FAQ schema');
