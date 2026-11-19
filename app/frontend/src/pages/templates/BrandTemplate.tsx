@@ -213,12 +213,12 @@ const BrandTemplate: React.FC = () => {
                   <p className="mt-2 text-sm leading-6 text-slate-400">{family.description}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {family.models.map((model) => (
-                      <span key={model} className="rounded-full bg-slate-800 px-3 py-1 text-xs font-semibold text-slate-300">
+                      <span data-premium-model-chip key={model} className="rounded-full bg-slate-800 px-3 py-1 text-xs font-semibold text-slate-300">
                         {model}
                       </span>
                     ))}
                   </div>
-                  <div className="mt-5 border-t border-slate-800 pt-4">
+                  <div data-premium-repair-focus className="mt-5 border-t border-slate-800 pt-4">
                     <p className="mb-2 text-xs font-bold uppercase tracking-wider text-slate-500">Repair focus</p>
                     <p className="text-sm leading-6 text-slate-300">{family.repairFocus.join(' · ')}</p>
                   </div>
@@ -569,7 +569,7 @@ const BrandTemplate: React.FC = () => {
         <CoreRepairPillars context={`For ${brand.brandName} faults, use the focused laptop repair hub for the main repair path or the broader computer repair hub for desktop and other PC needs.`} />
 
         {/* Final conversion */}
-        <section className="rounded-3xl border border-cyan-900/60 bg-cyan-950/30 p-8 text-center md:p-12">
+        <section data-premium-conversion className="rounded-3xl border border-cyan-900/60 bg-cyan-950/30 p-8 text-center md:p-12">
           <MonitorSmartphone className="mx-auto h-10 w-10 text-cyan-400" aria-hidden="true" />
           <h2 className="mt-4 text-3xl font-black text-white md:text-4xl">Need {brand.brandName} laptop repair in Kuwait?</h2>
           <p className="mx-auto mt-4 max-w-2xl leading-7 text-slate-300">
@@ -578,7 +578,7 @@ const BrandTemplate: React.FC = () => {
           </p>
           <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
             <a
-              href={whatsappLink}
+              data-premium-action="whatsapp" href={whatsappLink}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-cyan-500 px-7 py-3.5 font-black text-slate-950 hover:bg-cyan-400"
@@ -586,7 +586,7 @@ const BrandTemplate: React.FC = () => {
               WhatsApp a Technician
               <ArrowRight className="h-5 w-5" aria-hidden="true" />
             </a>
-            <Link to="/book" className="inline-flex items-center justify-center rounded-full border border-slate-600 px-7 py-3.5 font-bold text-white hover:border-cyan-700 hover:text-cyan-300">
+            <Link data-premium-action="booking" to="/book" className="inline-flex items-center justify-center rounded-full border border-slate-600 px-7 py-3.5 font-bold text-white hover:border-cyan-700 hover:text-cyan-300">
               Book a Repair
             </Link>
           </div>
