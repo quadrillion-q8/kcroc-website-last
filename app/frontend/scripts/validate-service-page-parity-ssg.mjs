@@ -36,6 +36,14 @@ for (const [en,ar] of pairs) {
   assert.ok(/^https:\/\/wa\.me\//.test(wa),ar+' WhatsApp URL');
   assert.ok(/[\u0600-\u06ff]/.test(decodeURIComponent(wa)),ar+' Arabic WhatsApp intent');
   // Commercial intake must request useful model and pickup details, not merely a generic greeting.
+  const technicalParityRoutes = ['/ar/motherboard-repair-kuwait','/ar/ssd-ram-upgrade-kuwait','/ar/laptop-hinge-repair-kuwait'];
+  if (technicalParityRoutes.includes(ar)) {
+    const section = main.find('[data-ar-technical-parity="'+ar.slice(4)+'"]');
+    assert.equal(section.length,1,ar+' technical diagnostic section');
+    assert.equal(section.find('[data-ar-technical-check]').length,4,ar+' four static diagnostic checks');
+    assert.equal(section.find('h2').length,1,ar+' technical heading');
+    assert.equal(section.find('a[href="/ar/pricing"]').length,1,ar+' localized pricing');
+  }
   const intakeRoutes = ['/ar/computer-repair-kuwait','/ar/laptop-repair-kuwait','/ar/motherboard-repair-kuwait','/ar/gaming-pc-repair-kuwait','/ar/ssd-ram-upgrade-kuwait'];
   if (intakeRoutes.includes(ar)) {
     const message = new URL(wa).searchParams.get('text') || '';
