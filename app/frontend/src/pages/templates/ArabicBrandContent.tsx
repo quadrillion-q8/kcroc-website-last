@@ -21,6 +21,14 @@ export default function ArabicBrandContent({ brand }: { brand: BrandEntity }) {
   });
   const wa = buildWhatsAppLink('السلام عليكم KCROC، أحتاج فحص لابتوب ' + brand.brandName + '. رقم الموديل: ____. العطل: ____. المنطقة: ____. أرجو تأكيد طريقة الاستلام والسعر بعد الفحص.');
   const images = brand.contentImages ?? [];
+  const diagnosticQuestions: Record<string, string> = {
+    'brand-dell': 'أرسل Service Tag ورمز تشخيص F12 إذا ظهر، بدون مشاركة كلمات المرور.',
+    'brand-hp': 'أرسل رقم المنتج ونمط ومضات Caps Lock أو رمز التحذير إذا ظهر.',
+    'brand-lenovo': 'أرسل Machine Type والموديل الكامل ونوع الشاحن المستخدم.',
+    'brand-asus': 'أرسل رقم الموديل الكامل ووضح إذا المشكلة تظهر تحت الحمل أو من بداية التشغيل.',
+    'brand-acer': 'أرسل رقم الموديل أو SNID ووصف حالة لمبة الشحن والتشغيل.',
+    'brand-msi': 'أرسل رقم الموديل الكامل ووصف حالة لمبات التشغيل والشحن وأي مشكلة بالمفصلة.'
+  };
   const faqs = [...copy.questions,
     ['هل KCROC مركز صيانة معتمد من الشركة؟','لا، إحنا مختبر مستقل في حولي، مو مركز صيانة رسمي أو معتمد من الشركة. إذا جهازك تحت ضمان الشركة راجع شروط الضمان قبل الإصلاح.'],
     ['كم سعر تصليح الجهاز؟','الفحص الأولي مجاني. السعر النهائي يعتمد على العطل والموديل والقطعة وتوفرها؛ نأكد التكلفة ونطاق العمل قبل أي شغل مدفوع.'],
@@ -58,6 +66,12 @@ export default function ArabicBrandContent({ brand }: { brand: BrandEntity }) {
     <div data-brand-content="true" className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
       <section className="mb-10" aria-labelledby="brand-ar-models"><h2 id="brand-ar-models" className="text-3xl font-black">موديلات {brand.brandName} اللي نفحصها</h2><p className="mt-3 leading-7">أمثلة من الموديلات. نأكد التوافق حسب رقم جهازك، مو اسم العائلة وحده.</p><div className="mt-6 flex flex-wrap gap-2">{(brand.commonModels ?? []).map(m=><span data-brand-model={m} key={m} dir="ltr" className="rounded-full border border-slate-700 px-4 py-2 text-sm font-semibold">{m}</span>)}</div></section>
       <section className="mb-10" aria-labelledby="brand-ar-faults"><h2 id="brand-ar-faults" className="text-3xl font-black">الأعطال الشائعة وطريقة الفحص</h2><div className="mt-6 grid gap-4 md:grid-cols-2">{arIssues.map(i=><article data-brand-issue={i.id} key={i.id} className="rounded-2xl border border-slate-800 bg-slate-900/45 p-6"><h3 className="text-lg font-black">{i.copy[0]}</h3><p className="mt-3 leading-7">{i.copy[1]}</p>{i.copy[2] && <Link to={localizedSitePath('/'+i.copy[2],'ar')} className="mt-4 inline-flex items-center gap-2 font-bold text-cyan-300">تفاصيل التصليح <ArrowLeft className="h-4 w-4" aria-hidden="true"/></Link>}</article>)}</div></section>
+      <section className="mb-10" aria-labelledby="brand-ar-diagnostics" data-brand-diagnostic-prep={brand.id}>
+        <h2 id="brand-ar-diagnostics" className="text-3xl font-black">شنو المعلومات اللي تساعدنا نفحص جهازك؟</h2>
+        <p className="mt-3 leading-7">{diagnosticQuestions[brand.id]}</p>
+        <p className="mt-3 leading-7">رمز الخطأ أو اسم الموديل يساعدنا نحدد اتجاه الفحص، لكنه ما يثبت إن قطعة معينة خربانة. لا تفتح الجهاز أو تعيد تشغيله إذا تعرض لسوائل أو فيه بطارية منتفخة.</p>
+        <Link to="/ar/gallery" className="mt-4 inline-flex min-h-11 items-center gap-2 font-bold text-cyan-300 focus-visible:outline focus-visible:outline-cyan-400">شوف صور أعمال الفحص والتصليح <ArrowLeft className="h-4 w-4" aria-hidden="true"/></Link>
+      </section>
       <section className="mb-10" aria-labelledby="brand-ar-services"><h2 id="brand-ar-services" className="text-3xl font-black">خدمات تصليح {brand.brandName}</h2><div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">{services.map(({service,copy:s})=><Link data-brand-service={service.id} key={service.id} to={s.href} className="rounded-2xl border border-slate-800 bg-slate-900/65 p-6"><Wrench className="h-5 w-5 text-cyan-400" aria-hidden="true"/><h3 className="mt-3 text-lg font-black">{s.title}</h3><p className="mt-2 leading-7">{s.description}</p><p className="mt-3 font-bold text-cyan-300">{arabicHomePrice(service)}</p></Link>)}</div><Link to="/ar/pricing" className="mt-6 inline-flex font-bold text-cyan-300">راجع جميع أسعار التصليح في الكويت</Link></section>
       <section className="mb-10" aria-labelledby="brand-ar-process"><h2 id="brand-ar-process" className="text-3xl font-black">شلون يتم التصليح؟</h2><ol className="mt-6 grid gap-4 md:grid-cols-3">{[['استلام الجهاز','أرسل الموديل والعطل ومنطقتك؛ ننسق الاستلام المجاني.'],['الفحص وعرض السعر','نفحص الجهاز في مختبر حولي ونوضح السبب وخيارات الإصلاح والتكلفة.'],['التصليح والاختبار','بعد موافقتك نصلح الجهاز ونختبره وننسق إرجاعه.']].map(([t,d],i)=><li key={t} className="rounded-2xl border border-slate-800 p-5"><span className="font-black text-cyan-400">{i+1}</span><h3 className="mt-2 font-black">{t}</h3><p className="mt-2 leading-7">{d}</p></li>)}</ol></section>
       {images.length>1 && <section className="mb-10" aria-labelledby="brand-ar-photos"><h2 id="brand-ar-photos" className="text-3xl font-black">صور من فحص أجهزة {brand.brandName}</h2><div className="mt-6 grid gap-4 sm:grid-cols-2">{images.slice(1).map((img,i)=><figure key={img.src} className="overflow-hidden rounded-2xl border border-slate-800"><img src={img.src} alt={'صورة من أعمال فحص جهاز '+brand.brandName+' '+(i+2)} width={img.width ?? 1200} height={img.height ?? 800} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover"/><figcaption className="p-4 text-sm">مثال على فحص المكونات في مختبر KCROC.</figcaption></figure>)}</div></section>}
