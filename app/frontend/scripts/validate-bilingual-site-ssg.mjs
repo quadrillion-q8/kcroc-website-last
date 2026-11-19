@@ -89,7 +89,14 @@ for(const el of problemDirectory('main [data-directory-item]').toArray()){
  const $=read(route);
  assert.equal($('main h1').length,1,route+' H1');
  if(route==='/ar/laptop-plugged-in-not-charging') {
-  assert.ok($('main a[href^="https://wa.me/"]').length,route+' existing WhatsApp pickup');
+  assert.equal($('main [data-charging-action="booking-hero"]').attr('href'),'/ar/book',route+' localized booking');
+  assert.equal($('main [data-charging-safety-gate]').length,1,route+' safety gate');
+  for(const position of ['hero','body']){
+   const wa=$('main [data-charging-action="whatsapp-'+position+'"]').attr('href')||'';
+   assert.ok(wa.startsWith('https://wa.me/'),route+' '+position+' WhatsApp');
+   assert.ok((new URL(wa).searchParams.get('text')||'').includes('مفاتيح استرداد'),route+' privacy guidance');
+  }
+  assert.equal($('main [data-charging-safety-gate] a').length,2,route+' related emergency destinations');
   continue;
  }
  assert.ok($('main a[href="/ar/book"]').length,route+' booking');
@@ -177,7 +184,7 @@ const thermal=read('/ar/laptop-overheating-kuwait');
 assert.equal(thermal('[data-problem-editorial-panel="thermal-triage"] button[aria-pressed]').length,6);
 assert.equal(thermal('[data-diagnostic-row]').length,6);
 const spill=read('/ar/spilled-water-on-laptop');
-assert.equal(spill('[data-problem-editorial-panel="liquid-triage"] button[aria-pressed]').length,7);
+assert.equal(spill('[data-problem-editorial-panel="liquid-triage"] button[aria-pressed]').length,8);
 assert.equal(spill('[data-diagnostic-row]').length,5);
 const slow=read('/ar/laptop-running-very-slow');
 assert.equal(slow('[data-diagnostic-row]').length,6);
