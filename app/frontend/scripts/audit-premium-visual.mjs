@@ -1,12 +1,14 @@
 // Run after starting the built site or against a Vercel preview:
 // node scripts/audit-premium-visual.mjs https://preview.example.com
 import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
 import chromium from '@sparticuz/chromium';
 import puppeteer from 'puppeteer-core';
 const base = process.argv[2];
 assert.ok(base && /^https?:\/\//.test(base),'Pass a preview or local site URL');
 const browser = await puppeteer.launch({args:chromium.args,executablePath:process.env.CHROME_PATH||await chromium.executablePath(),headless:true});
 const failures=[];
+await fs.mkdir('premium-visual-evidence',{recursive:true});
 try {
  const page=await browser.newPage();
  for(const width of [390,1440]){
@@ -40,6 +42,16 @@ try {
     for(const c of result.contrast)if(c.ratio<4.5)failures.push({route,width,contrast:c});
     for(const gap of result.gaps)if(gap<20)failures.push({route,width,gap});
     if(result.overflow>2)failures.push({route,width,overflow:result.overflow});
+   }
+   if(!pricing&&!result.error){
+    const name=route.replace(/^\//,'').replaceAll('/','-');
+    const selectors=route.includes('msi-laptop')?['[data-premium-model-chip]','[data-premium-conversion]']:['[data-location-problem-link]','[data-location-brand-link]'];
+    for(const [i,selector] of selectors.entries()){
+     const target=await page.$(selector);
+     if(!target)continue;
+     await target.evaluate(el=>el.scrollIntoView({block:'center',inline:'nearest',behavior:'instant'}));
+     await page.screenshot({path:'premium-visual-evidence/'+name+'-'+width+'-'+i+'.png'});
+    }
    }
    console.log(JSON.stringify({route,width,...result}));
   }
