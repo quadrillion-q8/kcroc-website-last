@@ -996,6 +996,7 @@ export default function LocationDeepTemplate() {
             ))}
             <Link
               to="/macbook-repair-kuwait"
+              data-premium-light-card="true"
               className="text-center bg-slate-900/50 hover:bg-slate-900/80 border border-slate-800 hover:border-cyan-500/40 rounded-xl px-3 py-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
             >
               <span className="block text-sm font-bold text-white">Apple</span>
