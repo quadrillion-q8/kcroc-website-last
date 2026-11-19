@@ -203,3 +203,152 @@
   line-height: 1.55;
   overflow-wrap: anywhere;
 }
+
+
+/* Phase 7G.1B — repair visual inheritance conflicts on light surfaces.
+ * ID scope intentionally outranks older !important utility rewrites.
+ * Never use a global recolour of spans: photo overlays, emergency warnings
+ * and the dark diagnostic controls have their own semantic surfaces.
+ */
+#main-content[data-kcroc-premium="true"] {
+  --premium-section-gap: clamp(1.5rem, 3vw, 2.75rem);
+  --premium-radius: clamp(.875rem, 1.3vw, 1.125rem);
+  --premium-shadow: 0 2px 6px rgba(31,26,20,.045), 0 8px 24px rgba(31,26,20,.055);
+}
+#main-content[data-kcroc-premium="true"] [data-kcroc-rollout="brand"] [data-brand-content] > section + section,
+#main-content[data-kcroc-premium="true"] [data-kcroc-rollout^="location-"] > section[data-kcroc-editorial-panel] + section[data-kcroc-editorial-panel],
+#main-content[data-kcroc-premium="true"] [data-kcroc-rollout^="location-"] > div > section[data-kcroc-editorial-panel] + section[data-kcroc-editorial-panel] {
+  margin-block-start: var(--premium-section-gap) !important;
+}
+#main-content[data-kcroc-premium="true"] [data-kcroc-rollout="brand"] [data-brand-content] > section {
+  margin-block-end: var(--premium-section-gap) !important;
+}
+#main-content[data-kcroc-premium="true"] :is(
+  [data-kcroc-rollout="brand"] [data-brand-content] > section,
+  [data-kcroc-rollout^="location-"] [data-kcroc-editorial-panel],
+  [data-service-layout] section[data-service-editorial-panel],
+  [data-problem-layout] [data-problem-editorial-panel="causes"],
+  [data-problem-layout] [data-problem-editorial-panel="diagnostic-path"],
+  [data-problem-layout] [data-problem-editorial-panel="faq"]
+) h2 {
+  font-size: clamp(1.5rem, 2.2vw, 2.125rem) !important;
+  font-weight: 800;
+  line-height: 1.22 !important;
+  color: var(--premium-ink) !important;
+}
+#main-content[data-kcroc-premium="true"] :is(
+  [data-kcroc-rollout="brand"] [data-brand-content] > section,
+  [data-kcroc-rollout^="location-"] [data-kcroc-editorial-panel],
+  [data-service-layout] section[data-service-editorial-panel]
+) h3 {
+  color: var(--premium-ink) !important;
+  font-weight: 750;
+  line-height: 1.3;
+}
+#main-content[data-kcroc-premium="true"][data-site-locale="ar"] :is(
+  [data-brand-content] > section,
+  [data-kcroc-editorial-panel],
+  [data-service-editorial-panel],
+  [data-problem-editorial-panel]
+) :is(h2,h3) {
+  line-height: 1.45 !important;
+  letter-spacing: normal !important;
+}
+
+/* Brand model chips and divider, including the exact MSI screenshot. */
+#main-content[data-kcroc-premium="true"] [data-brand-content] [data-premium-model-chip],
+#main-content[data-kcroc-premium="true"] [data-brand-content] [data-brand-model] {
+  background: #f2eae0 !important;
+  color: #703d20 !important;
+  border: 1px solid #d9cabb !important;
+  border-radius: .5rem !important;
+  padding: .35rem .65rem;
+  font-weight: 650;
+  line-height: 1.4;
+}
+#main-content[data-kcroc-premium="true"] [data-brand-content] [data-premium-repair-focus] {
+  border-color: var(--premium-line) !important;
+}
+#main-content[data-kcroc-premium="true"] [data-brand-content] [data-premium-repair-focus] > p:first-child {
+  color: var(--premium-ink) !important;
+}
+
+/* Readable linked cards. Explicit markers avoid recolouring photography
+ * overlays and operational/emergency modules on every location page. */
+#main-content[data-kcroc-premium="true"] [data-kcroc-editorial-panel] :is(
+  [data-location-problem-link],[data-location-brand-link],[data-premium-light-card]
+),
+#main-content[data-kcroc-premium="true"] [data-brand-content] :is([data-brand-service],[data-premium-light-card]) {
+  background: #fff !important;
+  border: 1px solid var(--premium-line) !important;
+  color: var(--premium-ink) !important;
+  box-shadow: 0 2px 6px rgba(31,26,20,.04);
+  border-radius: .875rem !important;
+}
+#main-content[data-kcroc-premium="true"] [data-kcroc-editorial-panel] [data-location-problem-link] > span:not([aria-hidden]),
+#main-content[data-kcroc-premium="true"] [data-kcroc-editorial-panel] [data-location-brand-link] > span:first-child {
+  color: var(--premium-ink) !important;
+}
+#main-content[data-kcroc-premium="true"] [data-kcroc-editorial-panel] [data-location-brand-link] > span:not(:first-child) {
+  color: var(--premium-muted) !important;
+}
+#main-content[data-kcroc-premium="true"] [data-kcroc-editorial-panel] [data-location-problem-link] > svg {
+  color: var(--premium-copper) !important;
+}
+#main-content[data-kcroc-premium="true"] [data-kcroc-editorial-panel] [data-location-problem-link] > span[aria-hidden="true"] {
+  background: var(--premium-copper) !important;
+  box-shadow: none !important;
+  animation: none !important;
+}
+@media (hover:hover) {
+  #main-content[data-kcroc-premium="true"] [data-kcroc-editorial-panel] :is([data-location-problem-link],[data-location-brand-link],[data-premium-light-card]):hover,
+  #main-content[data-kcroc-premium="true"] [data-brand-content] :is([data-brand-service],[data-premium-light-card]):hover {
+    background: #fffaf5 !important;
+    border-color: #a96b45 !important;
+  }
+}
+
+/* Text links and nested CTA labels: dark copper on light backgrounds.
+ * Never change photo-overlay text, buttons or emergency/status indicators. */
+#main-content[data-kcroc-premium="true"] :is(
+  [data-brand-content] > section,
+  [data-kcroc-editorial-panel],
+  [data-service-editorial-panel],
+  [data-problem-editorial-panel="related-resources"],
+  [data-problem-editorial-panel="services"]
+) a:not([data-service-action]):not([data-location-action]):not([data-problem-action]):not([data-premium-action]):not([class*="bg-cyan-"]):not([class*="bg-emerald-"]):not([class*="bg-green-"]):not([class*="bg-rose-"]):not([class*="bg-amber-"]):not([data-brand-symptom]):not([data-location-brand-link]):not([data-location-problem-link]):is([class*="text-cyan-"],[class*="hover:text-cyan-"]) {
+  color: var(--premium-copper) !important;
+}
+#main-content[data-kcroc-premium="true"] [data-brand-content] a span[class*="text-cyan-"]:not([class*="bg-"]) {
+  color: var(--premium-copper) !important;
+}
+
+/* Final brand conversion, same explicit action hierarchy as hero controls. */
+#main-content[data-kcroc-premium="true"] [data-brand-content] [data-premium-conversion] {
+  background: #fff !important;
+  border: 1px solid var(--premium-line) !important;
+  border-radius: var(--premium-radius);
+}
+#main-content[data-kcroc-premium="true"] [data-premium-action] {
+  min-height: 48px;
+  border-radius: .875rem !important;
+  font-weight: 750;
+  text-align: center;
+  white-space: normal;
+  box-shadow: none !important;
+}
+#main-content[data-kcroc-premium="true"] [data-premium-action="whatsapp"] {
+  background: #25d366 !important;
+  border: 1px solid #25d366 !important;
+  color: #052e16 !important;
+}
+#main-content[data-kcroc-premium="true"] [data-premium-action="booking"] {
+  background: #fff !important;
+  border: 1px solid #9e7760 !important;
+  color: var(--premium-copper) !important;
+}
+#main-content[data-kcroc-premium="true"] [data-premium-action]:focus-visible,
+#main-content[data-kcroc-premium="true"] :is([data-location-problem-link],[data-location-brand-link]):focus-visible {
+  outline: 3px solid var(--premium-copper) !important;
+  outline-offset: 3px;
+}
