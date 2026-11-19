@@ -2164,6 +2164,39 @@ type ArabicComputerPage = NonNullable<ReturnType<typeof getArabicComputerPage>>;
  * Only Arabic service-detail routes receive the shared editorial panels.
  * Arabic governorate/area pages remain on their own local-page presentation.
  */
+const ARABIC_TECHNICAL_PARITY: Record<string, { title: string; checks: [string, string][]; verification: string }> = {
+  'motherboard-repair-kuwait': {
+    title: 'شلون نفرق بين عطل المذربورد وعطل القطع المتصلة فيها؟',
+    checks: [
+      ['الجهاز ما يعطي أي علامة تشغيل', 'نفحص مصدر الطاقة والمدخل والحماية والفيوزات وخطوط التغذية الأساسية قبل الحكم على اللوحة.'],
+      ['لمبة التشغيل تشتغل بس الجهاز ما يقلع', 'نراجع تسلسل تشغيل الدوائر والذاكرة والإشارات اللازمة للإقلاع حسب تصميم اللوحة.'],
+      ['شحن متقطع أو بطارية ما تشحن', 'نميز بين الشاحن والمنفذ والبطارية ودائرة التحكم بالشحن باستخدام القياسات المناسبة.'],
+      ['آثار سائل أو سخونة غير طبيعية', 'نفصل الطاقة ونفحص التآكل والمناطق المتضررة والقصر الكهربائي؛ لا ننصح بتجربة التشغيل قبل الفحص.']
+    ],
+    verification: 'بعد الإصلاح الموافق عليه نراجع الوظائف المتأثرة، مثل التشغيل والشحن والعرض والاستقرار حسب العطل. إذا الإصلاح على مستوى المكونات غير مناسب نوضح الخيارات قبل أي شغل مدفوع.'
+  },
+  'ssd-ram-upgrade-kuwait': {
+    title: 'شلون نحدد الترقية المناسبة: SSD أو RAM؟',
+    checks: [
+      ['الإقلاع وفتح البرامج بطيء', 'نراجع نوع التخزين وصحته واستجابته؛ منفذ M.2 مو بالضرورة يدعم كل أقراص NVMe أو SATA.'],
+      ['التهنيق مع برامج كثيرة', 'نراجع ضغط الذاكرة والاستخدام الفعلي، ونطابق جيل DDR والسعة المدعومة والفتحات المتاحة.'],
+      ['رام ملحومة أو فتحة غير متاحة', 'نتأكد من مواصفات الموديل قبل طلب القطعة؛ ما نعد بترقية جهاز ما يدعمها.'],
+      ['نقل النظام إلى قرص جديد', 'نراجع صحة القرص وإعداد الإقلاع والتشفير قبل الاستنساخ عند الإمكان. ننصح بنسخة احتياطية مسبقاً؛ استعادة البيانات التالفة مو ضمن الخدمة.']
+    ],
+    verification: 'نتأكد من تعرف النظام على السعة الجديدة، ونختبر الإقلاع وصحة التخزين واستقرار الذاكرة حسب الترقية المتفق عليها. التحسن يعتمد على سبب الاختناق الأصلي.'
+  },
+  'laptop-hinge-repair-kuwait': {
+    title: 'شلون نحدد إذا المفصلة تحتاج ترميم أو تبديل؟',
+    checks: [
+      ['الغطاء ثقيل أو يطلع صوت طقطقة', 'نراجع مقاومة حركة المفصلة وتثبيتها بدل إجبار الغطاء على الحركة.'],
+      ['إطار الشاشة ينفصل', 'نفحص قواعد البراغي والغطاء والهيكل؛ تلف القواعد مو بالضرورة يعني تلف المفصلة المعدنية نفسها.'],
+      ['الصورة تتغير مع حركة الغطاء', 'نراجع مسار كابل العرض والموصلات ونفصل المشكلة الميكانيكية عن عطل الشاشة.'],
+      ['الغطاء مو بمحاذاة القاعدة', 'نتحقق من توافق المفصلتين وسلامة نقاط التثبيت ونحدد إمكانية الترميم أو الحاجة لقطعة بديلة.']
+    ],
+    verification: 'نراجع محاذاة الغطاء وحركة المفصلات وثبات التثبيت والصورة بعد الإصلاح حسب حالة الجهاز. لا تجبر الغطاء على الفتح أو الإغلاق إذا فيه مقاومة أو انفصال.'
+  }
+};
+
 const ARABIC_SERVICE_LAYOUT_SLUGS = new Set([
   'computer-repair-kuwait',
   'laptop-repair-kuwait',
@@ -5279,6 +5312,24 @@ export default function ArabicCommercialPage() {
               </div>
             </section>
           </>
+        )}
+
+        {slug && ARABIC_TECHNICAL_PARITY[slug] && (
+          <section className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8" aria-labelledby="ar-technical-parity" data-service-editorial-panel data-ar-technical-parity={slug}>
+            <h2 id="ar-technical-parity" className="text-2xl font-black text-white sm:text-3xl">{ARABIC_TECHNICAL_PARITY[slug].title}</h2>
+            <p className="mt-3 leading-7 text-slate-300">الأعراض تعطي اتجاه للفحص، مو تأكيد على القطعة الخربانة. نحدد الإجراء المناسب حسب الموديل ونتيجة التشخيص.</p>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              {ARABIC_TECHNICAL_PARITY[slug].checks.map(([symptom, check]) => (
+                <article key={symptom} data-ar-technical-check className="rounded-2xl border border-slate-700 p-5">
+                  <h3 className="font-bold text-white">{symptom}</h3>
+                  <p className="mt-2 leading-7 text-slate-300">{check}</p>
+                </article>
+              ))}
+            </div>
+            <h3 className="mt-7 text-xl font-black text-white">شنو نراجع قبل تسليم الجهاز؟</h3>
+            <p className="mt-3 leading-7 text-slate-300">{ARABIC_TECHNICAL_PARITY[slug].verification}</p>
+            <Link to="/ar/pricing" className="mt-5 inline-flex min-h-11 items-center gap-2 font-bold text-cyan-300 focus-visible:outline focus-visible:outline-cyan-400">راجع الأسعار المنشورة <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
+          </section>
         )}
 
         <section className="mt-12" aria-labelledby="arabic-services" data-kcroc-editorial-panel={locationEntity ? "location-content" : undefined}>
