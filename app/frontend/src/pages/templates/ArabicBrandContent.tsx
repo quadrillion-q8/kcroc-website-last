@@ -9,7 +9,7 @@ import { buildWhatsAppLink } from '../../utils/whatsappIntent';
 import { localizedSitePath } from '../../utils/locale';
 import { arabicLocationInventory } from '../../utils/arabicLocationRoutes';
 import { ARABIC_SERVICE_COPY, arabicHomePrice } from '../../components/home/homeLocale';
-import { ARABIC_BRANDS } from '../../data/brandArabic';
+import { ARABIC_BRANDS, ARABIC_BRAND_FAMILY_GUIDANCE } from '../../data/brandArabic';
 
 export default function ArabicBrandContent({ brand }: { brand: BrandEntity }) {
   const copy = ARABIC_BRANDS[brand.id];
@@ -44,7 +44,7 @@ export default function ArabicBrandContent({ brand }: { brand: BrandEntity }) {
     <SEOEngine entityId={page.id} /><SchemaMarkup schema={schema} />
     <section className="relative overflow-hidden border-b border-slate-800 bg-brand-dark/55 px-6 pb-16 pt-12 sm:pt-24">
       <div className="relative mx-auto max-w-6xl">
-        <nav aria-label="مسار التنقل" className="mb-8 flex flex-wrap gap-2 text-sm text-slate-400"><Link to="/ar">الرئيسية</Link><span aria-hidden="true">/</span><Link to="/ar/brands">الماركات</Link><span aria-hidden="true">/</span><span>{copy.name}</span></nav>
+        <nav aria-label="مسار التنقل" className="mb-8 flex flex-wrap gap-2 text-sm text-slate-400"><Link to="/ar">الرئيسية</Link><span aria-hidden="true">/</span><Link to="/ar/brands">الماركات</Link><span aria-hidden="true">/</span><span aria-current="page">{copy.name}</span></nav>
         <div className="grid items-center gap-10 lg:grid-cols-[1.25fr_.75fr]">
           <div>
             <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-900/70 bg-cyan-950/40 px-4 py-2 text-sm font-semibold text-cyan-300"><ShieldCheck className="h-4 w-4" aria-hidden="true"/> مختبر مستقل لتصليح {copy.name} بالكويت</p>
@@ -65,6 +65,18 @@ export default function ArabicBrandContent({ brand }: { brand: BrandEntity }) {
     </div></section>
     <div data-brand-content="true" className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
       <section className="mb-10" aria-labelledby="brand-ar-models"><h2 id="brand-ar-models" className="text-3xl font-black">موديلات {brand.brandName} اللي نفحصها</h2><p className="mt-3 leading-7">أمثلة من الموديلات. نأكد التوافق حسب رقم جهازك، مو اسم العائلة وحده.</p><div className="mt-6 flex flex-wrap gap-2">{(brand.commonModels ?? []).map(m=><span data-brand-model={m} key={m} dir="ltr" className="rounded-full border border-slate-700 px-4 py-2 text-sm font-semibold">{m}</span>)}</div></section>
+      <section className="mb-10" aria-labelledby="brand-ar-family-guidance" data-brand-family-guidance={brand.id}>
+        <h2 id="brand-ar-family-guidance" className="text-3xl font-black">شنو يختلف بالفحص حسب موديل {brand.brandName}؟</h2>
+        <p className="mt-3 leading-7">هذي أمثلة على اتجاه الفحص، مو تشخيص نهائي أو مواصفات ثابتة لكل جيل.</p>
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          {(ARABIC_BRAND_FAMILY_GUIDANCE[brand.id] ?? []).map(([family, guidance]) => (
+            <article key={family} data-brand-family-check className="rounded-2xl border border-slate-800 bg-slate-900/45 p-5">
+              <h3 className="font-black"><bdi>{family}</bdi></h3><p className="mt-3 leading-7">{guidance}</p>
+            </article>
+          ))}
+        </div>
+        <p className="mt-4 leading-7">بعد التصليح المتفق عليه، نختبر الوظائف المتأثرة بالعطل حسب الموديل ونوضح أي قيود قبل تسليم الجهاز.</p>
+      </section>
       <section className="mb-10" aria-labelledby="brand-ar-faults"><h2 id="brand-ar-faults" className="text-3xl font-black">الأعطال الشائعة وطريقة الفحص</h2><div className="mt-6 grid gap-4 md:grid-cols-2">{arIssues.map(i=><article data-brand-issue={i.id} key={i.id} className="rounded-2xl border border-slate-800 bg-slate-900/45 p-6"><h3 className="text-lg font-black">{i.copy[0]}</h3><p className="mt-3 leading-7">{i.copy[1]}</p>{i.copy[2] && <Link to={localizedSitePath('/'+i.copy[2],'ar')} className="mt-4 inline-flex items-center gap-2 font-bold text-cyan-300">تفاصيل التصليح <ArrowLeft className="h-4 w-4" aria-hidden="true"/></Link>}</article>)}</div></section>
       <section className="mb-10" aria-labelledby="brand-ar-diagnostics" data-brand-diagnostic-prep={brand.id}>
         <h2 id="brand-ar-diagnostics" className="text-3xl font-black">شنو المعلومات اللي تساعدنا نفحص جهازك؟</h2>
@@ -77,8 +89,8 @@ export default function ArabicBrandContent({ brand }: { brand: BrandEntity }) {
       {images.length>1 && <section className="mb-10" aria-labelledby="brand-ar-photos"><h2 id="brand-ar-photos" className="text-3xl font-black">صور من فحص أجهزة {brand.brandName}</h2><div className="mt-6 grid gap-4 sm:grid-cols-2">{images.slice(1).map((img,i)=><figure key={img.src} className="overflow-hidden rounded-2xl border border-slate-800"><img src={img.src} alt={'صورة من أعمال فحص جهاز '+brand.brandName+' '+(i+2)} width={img.width ?? 1200} height={img.height ?? 800} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover"/><figcaption className="p-4 text-sm">مثال على فحص المكونات في مختبر KCROC.</figcaption></figure>)}</div></section>}
       {brand.id==='brand-dell' && <section className="mb-10"><h2 className="text-2xl font-black">دليل تشخيص حرارة لابتوب ديل</h2><Link to="/guides/ar/dell-laptop-overheating" className="mt-3 inline-flex font-bold text-cyan-300">اقرأ الدليل العربي لتشخيص حرارة Dell</Link></section>}
       <section className="mb-10" aria-labelledby="brand-ar-areas"><h2 id="brand-ar-areas" className="text-3xl font-black">استلام وتوصيل بالكويت</h2><p className="mt-3 leading-7"><MapPin className="inline h-5 w-5" aria-hidden="true"/> الفحص والتصليح في <Link to="/ar/computer-repair-hawalli" className="font-bold text-cyan-300">مختبر KCROC الوحيد في حولي</Link>؛ باقي المناطق للاستلام والتوصيل وليست فروعاً.</p><div className="mt-5 flex flex-wrap gap-2">{arabicLocationInventory().filter(x=>x.hasArabic).map(x=><Link key={x.slug} to={x.path} className="rounded-full border border-slate-700 px-4 py-2 text-sm font-bold">{x.title}</Link>)}</div><Link to="/ar/near-me" className="mt-4 inline-flex font-bold text-cyan-300">جميع مناطق الخدمة</Link></section>
-      <section className="mb-10" aria-labelledby="brand-ar-faq"><h2 id="brand-ar-faq" className="text-3xl font-black">الأسئلة الشائعة</h2><div className="mt-6 space-y-3">{faqs.map(([q,a])=><details data-brand-faq="true" key={q} className="rounded-xl border border-slate-700 p-5"><summary className="cursor-pointer font-bold">{q}</summary><p className="mt-3 leading-7">{a}</p></details>)}</div></section>
-      <section className="rounded-3xl border border-cyan-900/60 p-8 text-center"><h2 className="text-3xl font-black">تحتاج فني تصليح {brand.brandName}؟</h2><p className="mt-3 leading-7">أرسل الموديل والعطل والمنطقة ونرتب معاك الفحص.</p><div className="mt-5 flex flex-wrap justify-center gap-3"><a href={wa} target="_blank" rel="noopener noreferrer" className="rounded-xl bg-cyan-500 px-5 py-3 font-black">راسلنا على واتساب</a><Link to="/ar/book" className="rounded-xl border border-slate-700 px-5 py-3 font-bold">احجز استلام مجاني</Link><Link to="/ar/brands" className="rounded-xl border border-slate-700 px-5 py-3 font-bold">جميع الماركات</Link></div></section>
+      <section className="mb-10" aria-labelledby="brand-ar-faq"><h2 id="brand-ar-faq" className="text-3xl font-black">الأسئلة الشائعة</h2><div className="mt-6 space-y-3">{faqs.map(([q,a])=><details data-brand-faq="true" key={q} className="rounded-xl border border-slate-700 p-5"><summary className="cursor-pointer rounded-md font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400">{q}</summary><p className="mt-3 leading-7">{a}</p></details>)}</div></section>
+      <section className="rounded-3xl border border-cyan-900/60 p-8 text-center"><h2 className="text-3xl font-black">تحتاج فني تصليح {brand.brandName}؟</h2><p className="mt-3 leading-7">أرسل الموديل والعطل والمنطقة ونرتب معاك الفحص.</p><div className="mt-5 flex flex-wrap justify-center gap-3"><a href={wa} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center rounded-xl bg-cyan-500 px-5 py-3 font-black text-slate-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400">راسلنا على واتساب</a><Link to="/ar/book" className="inline-flex min-h-12 items-center rounded-xl border border-slate-700 px-5 py-3 font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400">احجز استلام مجاني</Link><Link to="/ar/brands" className="inline-flex min-h-12 items-center rounded-xl border border-slate-700 px-5 py-3 font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400">جميع الماركات</Link></div></section>
     </div>
   </div>;
 }

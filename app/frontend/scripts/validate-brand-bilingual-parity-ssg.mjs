@@ -12,6 +12,11 @@ for(const id of ids){
  assert.equal(m.find('h1').length,1,route);
  assert.equal(m.find('[data-brand-id="brand-'+id+'"]').length,1,route);
  assert.ok(m.find('[data-brand-model]').length>=5,route+' model families');
+ assert.equal(m.find('[data-brand-family-guidance="brand-'+id+'"]').length,1,route+' family guidance');
+ assert.equal(m.find('[data-brand-family-check]').length,3,route+' static family checks');
+ assert.equal(m.find('[data-brand-family-check] h3 bdi').length,3,route+' bidirectional family names');
+ assert.equal(m.find('[data-brand-family-check] p').length,3,route+' visible diagnostic explanations');
+ assert.equal(m.find('nav [aria-current="page"]').length,1,route+' breadcrumb current page');
  assert.ok(m.find('[data-brand-issue]').length>=3,route+' diagnostic coverage');
  assert.ok(m.find('[data-brand-service]').length>=5,route+' service discovery');
  assert.ok(m.find('[data-brand-faq]').length>=6,route+' localized FAQ');
