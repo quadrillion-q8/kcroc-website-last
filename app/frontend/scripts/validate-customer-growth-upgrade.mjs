@@ -900,8 +900,8 @@ add('Arabic computer and laptop pages expose a qualified from-price without impl
   seoProjection.includes('بعض الإصلاحات تبدأ من 15 د.ك حسب الموديل والعطل') &&
   graph.includes("title: 'تصليح لابتوب في الكويت | شاشة وشحن وبطارية | KCROC'"));
 add('Arabic Hawalli search snippet states the physical lab location and daily opening hours',
-  graph.includes('السرداب، محل 19، يوميًا من 10 صباحًا إلى 10 مساءً') &&
-  seoProjection.includes('السرداب، محل 19، يوميًا من 10 صباحًا إلى 10 مساءً'));
+  graph.includes('السرداب محل 19. يوميًا 10 ص–10 م') &&
+  seoProjection.includes('السرداب محل 19. يوميًا 10 ص–10 م'));
 add('Selected brand SEO titles lead with repair and visibly clarify independent/out-of-warranty positioning',
   ['Dell Laptop Repair Kuwait | Independent Lab | KCROC', 'HP Laptop Repair Kuwait | Independent Lab | KCROC', 'Lenovo Laptop Repair Kuwait | Independent Lab | KCROC'].every((title) => graph.includes(title) && seoProjection.includes(title)) &&
   brandTemplate.includes('not an official {brand.brandName} service centre') &&
