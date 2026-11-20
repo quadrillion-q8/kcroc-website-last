@@ -3269,8 +3269,8 @@ export const rawGraphData: RawGraphData = {
         { src: IMAGES.laptopHardware.laptopOpenRepairBench.src, alt: IMAGES.laptopHardware.laptopOpenRepairBench.alt, width: IMAGES.laptopHardware.laptopOpenRepairBench.width, height: IMAGES.laptopHardware.laptopOpenRepairBench.height, placement: 'process', caption: 'Laptop opened on the repair bench for inspection and testing.' }
       ],
       seo: { 
-        title: 'Laptop Repair Kuwait | Free Diagnosis & Pickup | KCROC', 
-        description: 'Laptop repair in Kuwait for power, charging, screen and hinge faults. Selected repairs from 15 KWD. Free diagnosis and pickup; quote before paid work.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-repair-kuwait' }, 
+        title: 'Laptop Repair Kuwait | Board-Level Lab & Free Pickup | KCROC', 
+        description: 'Laptop repair in Kuwait for power, charging, screen and hinge faults. Selected repairs from 15 KWD. Free diagnosis, pickup and 30-day repair warranty.', canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-repair-kuwait' }, 
         ogType: 'article', 
         schemaTypes: ['Service', 'FAQPage'],
         lastModified: '2026-10-26T00:00:00+03:00'

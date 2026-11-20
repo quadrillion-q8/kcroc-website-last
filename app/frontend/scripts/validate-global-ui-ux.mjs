@@ -180,7 +180,7 @@ requireContains(legacyCss, "'Plus Jakarta Sans'", 'styles/kcroc.css', 'legacy CS
 requireContains(legacyCss, '@media (prefers-reduced-motion: reduce)', 'styles/kcroc.css', 'legacy animations and smooth scrolling must respect reduced motion.');
 requireContains(schema, '.replace(/</g,', 'components/seo/SchemaMarkup.tsx', 'JSON-LD must escape less-than characters before inline script rendering.');
 requireContains(graph, "title: 'Laptop Repair Kuwait | Board-Level Lab & Free Pickup | KCROC'", 'data/graph.ts', 'laptop repair SEO title must emphasise board-level capability and free pickup.');
-requireContains(graph, "description: 'Expert laptop repair in Kuwait from 15 KWD.", 'data/graph.ts', 'laptop repair meta description must state the starting price and warranty.');
+requireContains(graph, "description: 'Laptop repair in Kuwait for power, charging, screen and hinge faults. Selected repairs from 15 KWD. Free diagnosis, pickup and 30-day repair warranty.'", 'data/graph.ts', 'laptop repair meta description must state selected-repair starting price, diagnosis, pickup and warranty.');
 requireContains(graph, 'pricingGuide: {', 'data/graph.ts', 'laptop pricing rows must remain in the canonical knowledge graph.');
 requireContains(graphSchema, 'pricingGuide: z.object({', 'types/knowledgeGraph.ts', 'graph schema must validate service pricing-guide data.');
 requireContains(serviceTemplate, 'entity.pricingGuide.rows.map', 'pages/templates/ServiceTemplate.tsx', 'pricing rows must render as a semantic table from graph data.');
