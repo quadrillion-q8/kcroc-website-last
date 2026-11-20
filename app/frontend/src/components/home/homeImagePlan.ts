@@ -19,6 +19,13 @@ function claim(id: string, candidates: readonly ServiceImage[], target: Map<stri
   const image = candidates.find(item => !used.has(item.src));
   if (image) { used.add(image.src); target.set(id, image); }
 }
+// Reserve distinct, relevant pricing photos before the service grid consumes
+// candidates. These two services share hero assets with other graph services.
+const dedicatedPricing: Record<string, ServiceImage> = {
+  'srv-desktop-pc': { ...IMAGES.laptopHardware.hpDesktopTowerPcRepair, placement: 'coreFeatures' },
+  'srv-macbook-screen': { ...IMAGES.macbook.macbookProOpenMacosScreen, placement: 'coreFeatures' },
+};
+for (const [id, image] of Object.entries(dedicatedPricing)) claim(id, [image], pricing);
 for (const service of KCROC_GRAPH.services) {
   const images = service.contentImages ?? [];
   const preferred = images.find(image => image.placement === 'hero') ??
@@ -26,6 +33,8 @@ for (const service of KCROC_GRAPH.services) {
     images.find(image => image.placement === 'commonIssues') ?? images[0];
   claim(service.id, preferred ? [preferred, ...images] : [], grid);
 }
-for (const service of KCROC_GRAPH.services) claim(service.id, service.contentImages ?? [], pricing);
+for (const service of KCROC_GRAPH.services) {
+  if (!pricing.has(service.id)) claim(service.id, service.contentImages ?? [], pricing);
+}
 export const homepageServiceImage = (id: string) => grid.get(id);
 export const homepagePricingImage = (id: string) => pricing.get(id);

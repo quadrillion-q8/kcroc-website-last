@@ -26,4 +26,21 @@ for (const phrase of ['تصليح وصيانة الكمبيوتر واللابت
 assert.equal(ar('link[rel="canonical"]').attr('href'),'https://www.computerrepairkuwait.com/ar');
 assert.equal(en('link[rel="canonical"]').attr('href'),'https://www.computerrepairkuwait.com/');
 assert.ok(ar('link[hreflang="en-KW"]').length); assert.ok(en('link[hreflang="ar-KW"]').length);
+// A page with zero duplicate photos can still have missing card photos.
+for (const [locale, $] of [['en',en],['ar',ar]]) {
+  const home = $('[data-home-locale="'+locale+'"]');
+  const pricingCards=home.find('[data-home-pricing-grid] article');
+  const serviceCards=home.find('#homepage-services-grid a');
+  assert.ok(pricingCards.length >= 15, locale+' missing pricing cards');
+  for (const card of [...pricingCards.toArray(), ...serviceCards.toArray()]) {
+    const img=$(card).find('img');
+    const label=$(card).attr('data-home-pricing-service') || $(card).attr('href');
+    assert.equal(img.length,1,locale+' missing card photograph: '+label);
+    const src=img.attr('src');
+    assert.ok(src && src.startsWith('/images/'),locale+' invalid card asset: '+label);
+    assert.ok(fs.existsSync(path.join(process.cwd(),'dist',src.slice(1))),locale+' missing image file: '+src);
+    assert.ok(img.attr('alt')?.trim(),locale+' missing image alt: '+label);
+  }
+}
+console.log('Homepage pricing and visible service cards have complete photo coverage in both languages.');
 console.log('Bilingual homepage SSG parity passed: shared layout, photography, booking, services, FAQs and canonical/hreflang.');

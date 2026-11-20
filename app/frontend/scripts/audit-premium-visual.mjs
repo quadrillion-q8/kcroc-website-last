@@ -62,6 +62,25 @@ try {
   await page.setViewport({width,height:900,deviceScaleFactor:1});
   for(const route of ['/','/ar']){
    await page.goto(new URL(route,base).href,{waitUntil:'networkidle2',timeout:60000});
+   // Expand hidden service cards to verify the hydrated DOM as well as SSG.
+   const expand=await page.$('button[aria-controls="homepage-services-grid"]');
+   if(expand){
+    await page.waitForFunction(()=>!!document.querySelector('button[aria-controls="homepage-services-grid"]'));
+    await expand.evaluate(el=>el.click());
+    await page.waitForFunction(()=>document.querySelector('button[aria-controls="homepage-services-grid"]')?.getAttribute('aria-expanded')==='true',{timeout:10000});
+    const coverage=await page.evaluate(()=>{
+      const cards=[...document.querySelectorAll('#homepage-services-grid a,[data-home-pricing-grid] article')];
+      const gridCount=document.querySelectorAll('#homepage-services-grid a').length;
+      const priceCount=document.querySelectorAll('[data-home-pricing-grid] article').length;
+      const missing=cards.filter(card=>card.querySelectorAll('img').length!==1).map(card=>card.getAttribute('data-home-pricing-service')||card.getAttribute('href'));
+      const images=[...document.querySelectorAll('[data-home-locale] img')].map(img=>(img.getAttribute('src')||'').split(/[?#]/)[0].replace(/\.w\d+(?=\.[a-z]+$)/i,'')).filter(Boolean);
+      const repeated=images.filter((src,i)=>images.indexOf(src)!==i);
+      return {gridCount,priceCount,missing,repeated:[...new Set(repeated)]};
+    });
+    if(coverage.gridCount!==coverage.priceCount||coverage.gridCount<15||coverage.missing.length||coverage.repeated.length)failures.push({route,width,error:'Expanded homepage card photography',coverage});
+    console.log(JSON.stringify({route,width,homepagePhotoCoverage:coverage}));
+    await expand.evaluate(el=>el.click());
+   }else failures.push({route,width,error:'Missing homepage services expansion control'});
    const header=await page.evaluate(()=>{
     const el=document.querySelector('header[data-premium-chrome="header"]');
     const footer=document.querySelector('footer[data-premium-chrome="footer"]');

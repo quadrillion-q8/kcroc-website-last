@@ -39,7 +39,7 @@ export const PricingTable = () => {
           className="mb-6 sm:mb-10"
         />
 
-        <div className="grid grid-cols-1 gap-4 min-[560px]:grid-cols-2 sm:gap-6 xl:grid-cols-3">
+        <div data-home-pricing-grid className="grid grid-cols-1 gap-4 min-[560px]:grid-cols-2 sm:gap-6 xl:grid-cols-3">
           {services.map((service) => {
             const thumb = homepagePricingImage(service.id);
             const whatsappLink = buildWhatsAppLink(
@@ -54,6 +54,7 @@ export const PricingTable = () => {
             return (
               <article
                 key={service.id}
+                data-home-pricing-service={service.id}
                 className="flex h-full min-h-[25rem] min-w-0 flex-col overflow-hidden rounded-2xl border border-[#e3dace] bg-white shadow-sm transition-[border-color,box-shadow] hover:border-[#c9804d]/45 hover:shadow-md"
               >
                 <div className="flex aspect-[16/9] w-full shrink-0 items-center justify-center overflow-hidden border-b border-[#e8e0d6] bg-[#f4efe7]">
