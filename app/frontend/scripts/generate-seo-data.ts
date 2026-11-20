@@ -29,6 +29,8 @@ const routableEntities = (KCROC_GRAPH.routableEntities ?? []).map((e: any) => {
       return {
         ...b,
         description: e.description,
+        isPhysicalLocation: Boolean(e.isPhysicalLocation),
+        landmark: e.landmark,
         coords: e.coords,
         serviceAreas: e.serviceAreas ?? [],
         areaPostalCode: e.areaPostalCode,

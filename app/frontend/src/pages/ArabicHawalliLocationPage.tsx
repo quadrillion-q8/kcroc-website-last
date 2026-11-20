@@ -29,7 +29,6 @@ import { buildWhatsAppLink } from '../utils/whatsappIntent';
 
 const BASE_URL = KCROC_GRAPH.business?.websiteUrl ?? 'https://www.computerrepairkuwait.com';
 const PAGE_URL = BASE_URL + '/ar/computer-repair-hawalli';
-const ENGLISH_URL = BASE_URL + '/location/hawalli';
 const DIRECTIONS_URL = 'https://maps.google.com/?cid=3928987856909945446';
 
 const ARABIC_SERVICES: Record<string, { title: string; description: string; path: string }> = {
@@ -194,38 +193,6 @@ export default function ArabicHawalliLocationPage() {
   const faqSchema = {
     '@context': 'https://schema.org',
     '@graph': [
-      {
-        '@type': ['LocalBusiness', 'ComputerStore'],
-        '@id': ENGLISH_URL + '#location',
-        name: location.title,
-        url: ENGLISH_URL,
-        telephone: '+' + business.telephone,
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: location.landmark,
-          addressLocality: 'Hawalli',
-          addressRegion: business.addressRegion,
-          addressCountry: 'KW',
-        },
-        geo: location.coords
-          ? {
-              '@type': 'GeoCoordinates',
-              latitude: location.coords.lat,
-              longitude: location.coords.lng,
-            }
-          : undefined,
-        openingHoursSpecification: business.schemaOpeningHours
-          ? [
-              {
-                '@type': 'OpeningHoursSpecification',
-                dayOfWeek: business.schemaOpeningHours.dayOfWeek.map((day) => 'https://schema.org/' + day),
-                opens: business.schemaOpeningHours.opens,
-                closes: business.schemaOpeningHours.closes,
-              },
-            ]
-          : undefined,
-        areaServed: location.serviceAreas.map((area) => ({ '@type': 'City', name: area })),
-      },
       {
         '@type': 'FAQPage',
         '@id': PAGE_URL + '#faq',
