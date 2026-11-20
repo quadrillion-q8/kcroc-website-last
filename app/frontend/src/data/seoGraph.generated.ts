@@ -235,7 +235,7 @@ export const SEO_GRAPH = {
       "title": "فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب",
       "slug": "ar/computer-repair-kuwait",
       "seo": {
-        "title": "فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب | KCROC",
+        "title": "تصليح كمبيوتر ولابتوب في الكويت | KCROC",
         "description": "تحتاج فني كمبيوتر في الكويت؟ استلام وتوصيل مجاني من المنزل أو المكتب. نفحص الجهاز في مختبر حولي ونوضح التكلفة قبل الإصلاح، مع ضمان 30 يومًا.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/ar/computer-repair-kuwait",
         "locale": "ar_KW",
