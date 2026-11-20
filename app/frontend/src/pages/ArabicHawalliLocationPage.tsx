@@ -605,7 +605,8 @@ export default function ArabicHawalliLocationPage() {
               { title: 'السالمية', path: '/ar/computer-repair-salmiya' },
               { title: 'الفروانية', path: '/ar/computer-repair-farwaniya' },
               { title: 'مدينة الكويت', path: '/ar/computer-repair-kuwait-city' },
-              { title: 'فني كمبيوتر بالقرب مني', path: '/ar/near-me' },
+              { title: 'تصليح كمبيوتر بالقرب مني', path: '/ar/near-me' },
+              { title: 'فني كمبيوتر في الكويت', path: '/ar' },
               { title: 'تصليح كمبيوتر في الكويت', path: '/ar/computer-repair-kuwait' },
             ].map((item) => <Link key={item.path} to={item.path} className="rounded-full border border-slate-800 bg-slate-900/50 px-4 py-2 text-sm font-bold text-slate-200 transition-colors hover:border-cyan-500/40 hover:text-cyan-300">{item.title}</Link>)}
           </div>
