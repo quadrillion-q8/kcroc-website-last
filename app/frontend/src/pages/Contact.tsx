@@ -113,6 +113,8 @@ export default function Contact() {
     }
     setIsSubmitting(true);
     try {
+      // A completed local enquiry form is a handoff attempt, not proof of delivery.
+      trackConversion('contact_request_handoff', { cta_name: 'contact_form_submit', button_position: 'contact_page', form_details_present: true });
       trackConversion('whatsapp_click', { cta_name: 'contact_form_submit', button_position: 'contact_page' });
       handoffWhatsApp(whatsappMessage);
     } finally {

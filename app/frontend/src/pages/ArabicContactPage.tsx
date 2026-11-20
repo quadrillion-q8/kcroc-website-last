@@ -85,6 +85,8 @@ export default function ArabicContactPage() {
     setIsSubmitting(true);
     setHandoffError(false);
     try {
+      // A completed local enquiry form is a handoff attempt, not proof of delivery.
+      trackConversion('contact_request_handoff', { cta_name: 'arabic_contact_form_submit', button_position: 'arabic_contact_page', form_details_present: true });
       trackConversion('whatsapp_click', { cta_name: 'arabic_contact_form_submit', button_position: 'arabic_contact_page' });
       handoffWhatsApp(message);
     } catch { setHandoffError(true); }

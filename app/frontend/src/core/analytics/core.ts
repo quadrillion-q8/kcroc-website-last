@@ -58,7 +58,8 @@ export const trackEvent = (event: AnalyticsEvent | BookingEvent, payload: BaseEv
     }
 
     if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', event, fullyCompiledPayload);
+      const handoffEvent = event === 'booking_request_handoff' || event === 'contact_request_handoff' || event === 'whatsapp_click' || event === 'phone_call_click';
+      window.gtag('event', event, handoffEvent ? { ...fullyCompiledPayload, transport_type: 'beacon' } : fullyCompiledPayload);
     }
   } catch (error) {
     if (ANALYTICS_DEBUG) {

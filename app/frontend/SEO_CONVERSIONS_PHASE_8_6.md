@@ -1,0 +1,9 @@
+# Phase 8.6 — customer conversion measurement
+
+GA4 organic baseline Oct 21–Nov 17 2026: 67 WhatsApp clicks (50 users), 9 phone clicks (9 users); 189 Kuwait organic sessions and 69 Kuwait organic key events. Prior equal window: 7 WhatsApp clicks, 2 phone clicks. Event totals are not orders or unique leads. Property 504861401 records purchase, whatsapp_click and phone_call_click as key events; no custom definitions. No purchase or booking-confirmation evidence.
+
+New events: booking_request_handoff (pickup form submission attempt) and contact_request_handoff (validated contact form submission attempt). Existing whatsapp_click remains. begin_booking counts once per booking page mount. No booking_complete or purchase event is emitted based on handoff. These events record intent, not a delivered message or accepted appointment. Boolean completeness flags do not transmit the text entered by customers. Consent behavior is unchanged.
+
+Owner-side GA4: mark the two new events as key events if useful, and use an event-name breakdown rather than summing them with whatsapp_click (the same interaction can emit both). Optionally register event-scoped custom dimensions cta_name, button_position and booking_type; do not register personal information. Check DebugView with consent and a real test handoff. No GA4 admin writes executed. Track actual confirmed pickups and paid repairs separately using workshop records, without sending passwords, names, phone numbers or device fault text to GA4. Deduplicate true lead/order counts in workshop records.
+
+Both booking forms clarify that WhatsApp still requires Send, and team confirmation is required. Duplicate rapid submit is prevented during handoff, optional fields remain optional, and a recoverable call fallback appears for synchronous navigation failure. Preserve UI classes, prices, routes, images, and all legacy checks. Test no actual message is sent by automated CI.
