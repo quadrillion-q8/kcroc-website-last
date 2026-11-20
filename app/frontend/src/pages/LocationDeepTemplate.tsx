@@ -1029,7 +1029,11 @@ export default function LocationDeepTemplate() {
             </Link>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-            {WORKSHOP_GALLERY_IMAGES.map((img, index) => (
+            {WORKSHOP_GALLERY_IMAGES.map((original, index) => {
+              const img = original.src === location.contentImage?.src
+                ? { ...IMAGES.brand.shopEntrance, caption: 'Entrance to the central Hawalli workshop' }
+                : original;
+              return (
               <div
                 key={img.src}
                 className="group relative rounded-xl overflow-hidden border border-slate-800 aspect-[4/3]"
@@ -1052,7 +1056,8 @@ export default function LocationDeepTemplate() {
                   {img.caption}
                 </p>
               </div>
-            ))}
+              );
+            })}
           </div>
           <Link
             to="/gallery"

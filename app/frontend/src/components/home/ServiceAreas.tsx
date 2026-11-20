@@ -87,12 +87,12 @@ export const ServiceAreas = () => {
           <div className="relative group rounded-3xl overflow-hidden border border-slate-800 bg-brand-dark shadow-2xl">
             <div className="aspect-[16/9] sm:aspect-[16/10] relative overflow-hidden">
               <picture>
-                <source media="(max-width: 640px)" srcSet="/images/kcroc-pc-doctor-windows-repair-services.webp" />
+                <source media="(max-width: 640px)" srcSet="/images/kcroc-al-mullah-complex-hawalli-exterior.webp" />
                 <img
-                  src="/images/kcroc-pc-doctor-windows-repair-services.webp"
-                  alt={t("KCROC computer repair technicians serving customers across Kuwait from the Hawalli lab","فنيو KCROC في مختبر حولي لخدمة مناطق الكويت")}
-                  width="960"
-                  height="524"
+                  src="/images/kcroc-al-mullah-complex-hawalli-exterior.webp"
+                  alt={t("Al Mullah Complex in Hawalli, home of the KCROC repair laboratory","مجمع الملا بحولي، موقع مختبر KCROC لتصليح الكمبيوتر")}
+                  width="1200"
+                  height="800"
                   sizes="(max-width: 1023px) 100vw, 50vw"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out opacity-90"
                   loading="lazy"

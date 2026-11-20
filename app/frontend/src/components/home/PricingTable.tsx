@@ -1,4 +1,5 @@
 import React from 'react';
+import { homepagePricingImage } from './homeImagePlan';
 import { useHomeLocale } from './homeLocale';
 import { KCROC_GRAPH } from '../../data/graph';
 import { useAnalytics } from '../../core/analytics/AnalyticsProvider';
@@ -40,7 +41,7 @@ export const PricingTable = () => {
 
         <div className="grid grid-cols-1 gap-4 min-[560px]:grid-cols-2 sm:gap-6 xl:grid-cols-3">
           {services.map((service) => {
-            const thumb = service.contentImages?.[0];
+            const thumb = homepagePricingImage(service.id);
             const whatsappLink = buildWhatsAppLink(
               ar ? `هلا KCROC، أبي أسأل عن ${serviceCopy(service)?.title ?? service.title}. شنو سعر البداية وشنو تحتاجون عشان تأكدون السعر النهائي؟` : `Hi KCROC, I'd like to ask about ${service.title}. What is the starting price and what do you need to confirm the exact quote?`
             );

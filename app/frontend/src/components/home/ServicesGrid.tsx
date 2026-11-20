@@ -6,6 +6,7 @@ import { ArrowRight, Laptop, Gamepad2, Cpu, Apple, Wrench, Truck } from 'lucide-
 import { KCROC_GRAPH } from '../../data/graph';
 import { ServiceEntity } from '../../types/knowledgeGraph';
 import { useFadeIn } from '../../hooks/useFadeIn';
+import { homepageServiceImage } from './homeImagePlan';
 import { SectionHeader } from '@/components/ui/section-header';
 
 const ICON_MAP: Record<string, React.ElementType> = {
@@ -19,11 +20,7 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
   const { ar, t, path, serviceCopy } = useHomeLocale();
   const { ref, visible } = useFadeIn();
   const Icon = ICON_MAP[service.iconKey] || Wrench;
-  const cardImage =
-    service.contentImages?.find((image) => image.placement === 'hero') ??
-    service.contentImages?.find((image) => image.placement === 'coreFeatures') ??
-    service.contentImages?.find((image) => image.placement === 'commonIssues') ??
-    service.contentImages?.[0];
+  const cardImage = homepageServiceImage(service.id);
   const localized = serviceCopy(service);
   const cardText = localized?.description ?? (service.shortDescription || service.description);
 
@@ -41,7 +38,7 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
           <div className="relative aspect-[16/9] w-full shrink-0 overflow-hidden">
             <img
               src={cardImage.src}
-              srcSet={`${cardImage.src.replace(/\.webp$/, '.w480.webp')} 480w, ${cardImage.src} ${cardImage.width || 1000}w`}
+              srcSet={cardImage.src === service.contentImages?.[0]?.src && cardImage.src.endsWith('.webp') ? `${cardImage.src.replace(/\.webp$/, '.w480.webp')} 480w, ${cardImage.src} ${cardImage.width || 1000}w` : undefined}
               alt={ar ? `فحص وتصليح ${localized?.title ?? service.title} في مختبر KCROC` : cardImage.alt}
               width={cardImage.width}
               height={cardImage.height}

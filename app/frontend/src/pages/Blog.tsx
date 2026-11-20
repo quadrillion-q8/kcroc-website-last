@@ -304,7 +304,7 @@ export default function Blog() {
       ========================= */}
       <section className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {displayPosts.map((post) => (
+          {displayPosts.map((post, index) => (
             <article
               key={post.key}
               className="bg-slate-900/40 backdrop-blur-xl border border-slate-700/50 rounded-3xl overflow-hidden hover:border-cyan-500/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all duration-500 hover:-translate-y-1 flex flex-col"
@@ -315,13 +315,15 @@ export default function Blog() {
                 className="block aspect-[16/9] overflow-hidden bg-brand-dark"
                 rel="bookmark"
               >
-                <img
+                {displayPosts.slice(0, index).some(previous => previous.image === post.image) ? (
+                  <div className="flex h-full w-full items-center justify-center bg-slate-800" aria-label={post.title}><BookOpen className="h-12 w-12 text-slate-400" aria-hidden="true" /></div>
+                ) : <img
                   src={post.image}
                   alt={post.title}
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500 opacity-90 hover:opacity-100"
-                />
+                />}
               </Link>
 
               {/* CONTENT */}
