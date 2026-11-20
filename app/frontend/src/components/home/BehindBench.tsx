@@ -9,7 +9,7 @@ const BENCH_STEPS = [
     title: 'Inspect',
     description: 'Visual inspection and microscope-assisted checks identify the physical and electrical clues before repair.',
     icon: Microscope,
-    image: IMAGES.brand.leadTechnician,
+    image: IMAGES.laptopHardware.laptopOpenRepairBench,
   },
   {
     title: 'Trace the Fault',
@@ -21,7 +21,7 @@ const BENCH_STEPS = [
     title: 'Repair the Board',
     description: 'Component-level work targets the failed component when board repair is technically viable.',
     icon: Wrench,
-    image: IMAGES.brand.technicians,
+    image: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen,
   },
   {
     title: 'Thermal Service & Testing',
@@ -60,7 +60,7 @@ export default function BehindBench() {
               <div className="relative aspect-[16/10] overflow-hidden bg-slate-950">
                 <img
                   src={image.src}
-                  alt={ar ? ['فحص مكونات الجهاز بالمجهر','تتبع عطل المذربورد','فني يصلح مكونات اللوحة','فحص التبريد واختبار الجهاز'][index] : image.alt}
+                  alt={ar ? ['لابتوب مفتوح على طاولة الفحص','تتبع عطل المذربورد','لوحة لابتوب HP مفتوحة للفحص والإصلاح','فحص التبريد واختبار الجهاز'][index] : image.alt}
                   width={image.width}
                   height={image.height}
                   loading="lazy"

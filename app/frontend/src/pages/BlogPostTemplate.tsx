@@ -1782,7 +1782,11 @@ export default function BlogPostTemplate() {
 
               {post.richContent && post.richContent.length > 0 ? (
                 <div>
-                  {post.richContent.map((block, index) => (
+                  {post.richContent.map((block, index) => {
+                    if (block.type === 'image' && (block.src === post.image || post.richContent!.slice(0, index).some(previous => previous.type === 'image' && previous.src === block.src))) {
+                      return block.caption ? <p key={index} className="my-6 text-sm text-slate-400">{block.caption}</p> : null;
+                    }
+                    return (
                     <RichBlock
                       key={index}
                       block={block}
@@ -1790,7 +1794,8 @@ export default function BlogPostTemplate() {
                       currentEntityId={currentGraphEntityId}
                       excludeEntityIds={isGlobalEditorialArticle ? GLOBAL_EDITORIAL_AUTOLINK_EXCLUSIONS : undefined}
                     />
-                  ))}
+                    );
+                  })}
                 </div>
               ) : post.content?.length > 0 ? (
                 <div className="space-y-6">
