@@ -59,6 +59,10 @@ See `app/frontend/.env.example` for supported variable names. Depending on enabl
 - A blank value in `.env.example` is a placeholder, not a working credential.
 - Verify the applicable environment variables in a safe preview before enabling integrations in production.
 
+## Image policy
+
+See [No Duplicate Images Per Page](KCROC_IMAGE_POLICY.md). Review the post-build image audit and run `pnpm run validate:page-images` before approving image-related changes.
+
 ## Release discipline
 
 1. Change authoritative source data and components; do not patch generated artifacts manually.

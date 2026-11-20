@@ -80,6 +80,7 @@ jobs:
         with:
           name: kcroc-production-certification
           path: |
+            app/frontend/page-image-audit.json
             app/frontend/seo-audit.log
             app/frontend/premium-preview.log
             app/frontend/premium-visual-audit.log
