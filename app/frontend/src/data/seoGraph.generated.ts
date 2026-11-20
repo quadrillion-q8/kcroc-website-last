@@ -2912,7 +2912,9 @@ export const SEO_GRAPH = {
         "Jahra",
         "Fahaheel",
         "Mishrif"
-      ]
+      ],
+      "isPhysicalLocation": true,
+      "landmark": "Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19"
     },
     {
       "id": "loc-kuwait-city",
@@ -2945,7 +2947,8 @@ export const SEO_GRAPH = {
         "Dasman",
         "Mirqab",
         "Qibla"
-      ]
+      ],
+      "isPhysicalLocation": false
     },
     {
       "id": "loc-salmiya",
@@ -2977,7 +2980,8 @@ export const SEO_GRAPH = {
         "Rumaithiya",
         "Salwa",
         "Bidaa"
-      ]
+      ],
+      "isPhysicalLocation": false
     },
     {
       "id": "loc-farwaniya",
@@ -3010,7 +3014,8 @@ export const SEO_GRAPH = {
         "Riggae",
         "Ardiya",
         "Jleeb Al-Shuyoukh"
-      ]
+      ],
+      "isPhysicalLocation": false
     },
     {
       "id": "loc-jahra",
@@ -3043,7 +3048,8 @@ export const SEO_GRAPH = {
         "Naeem",
         "Qasr",
         "Taima"
-      ]
+      ],
+      "isPhysicalLocation": false
     },
     {
       "id": "loc-ahmadi",
@@ -3071,7 +3077,8 @@ export const SEO_GRAPH = {
         "Mangaf",
         "Mahboula",
         "Sabahiya"
-      ]
+      ],
+      "isPhysicalLocation": false
     },
     {
       "id": "loc-fahaheel",
@@ -3097,7 +3104,8 @@ export const SEO_GRAPH = {
         "Mangaf",
         "Abu Halifa",
         "Sabah Al-Ahmad Sea City"
-      ]
+      ],
+      "isPhysicalLocation": false
     },
     {
       "id": "loc-mangaf",
@@ -3123,7 +3131,8 @@ export const SEO_GRAPH = {
         "Fahaheel",
         "Abu Halifa",
         "Ahmadi"
-      ]
+      ],
+      "isPhysicalLocation": false
     },
     {
       "id": "loc-abu-halifa",
@@ -3149,7 +3158,8 @@ export const SEO_GRAPH = {
         "Mangaf",
         "Fahaheel",
         "Fintas"
-      ]
+      ],
+      "isPhysicalLocation": false
     },
     {
       "id": "loc-jabriya",
@@ -3176,7 +3186,8 @@ export const SEO_GRAPH = {
         "Salmiya",
         "Shaab",
         "Surra"
-      ]
+      ],
+      "isPhysicalLocation": false
     },
     {
       "id": "loc-mubarak-al-kabeer",
@@ -3203,7 +3214,8 @@ export const SEO_GRAPH = {
         "Qurain",
         "Sabah Al-Salem",
         "Qusour"
-      ]
+      ],
+      "isPhysicalLocation": false
     },
     {
       "id": "loc-fintas",
@@ -3230,7 +3242,8 @@ export const SEO_GRAPH = {
         "Mangaf",
         "Fahaheel",
         "Abu Ftaira"
-      ]
+      ],
+      "isPhysicalLocation": false
     },
     {
       "id": "loc-sabah-al-salem",
@@ -3256,7 +3269,8 @@ export const SEO_GRAPH = {
         "Mubarak Al-Kabeer",
         "Adan",
         "Qurain"
-      ]
+      ],
+      "isPhysicalLocation": false
     },
     {
       "id": "loc-salwa",
@@ -3283,7 +3297,8 @@ export const SEO_GRAPH = {
         "Rumaithiya",
         "Bidaa",
         "Shaab"
-      ]
+      ],
+      "isPhysicalLocation": false
     },
     {
       "id": "loc-rumaithiya",
@@ -3310,7 +3325,8 @@ export const SEO_GRAPH = {
         "Salwa",
         "Shaab",
         "Jabriya"
-      ]
+      ],
+      "isPhysicalLocation": false
     },
     {
       "id": "loc-surra",
@@ -3337,7 +3353,8 @@ export const SEO_GRAPH = {
         "Qadsiya",
         "Jabriya",
         "Hawalli"
-      ]
+      ],
+      "isPhysicalLocation": false
     },
     {
       "id": "loc-khaitan",
@@ -3364,7 +3381,8 @@ export const SEO_GRAPH = {
         "Farwaniya",
         "Riggae",
         "Ardiya"
-      ]
+      ],
+      "isPhysicalLocation": false
     },
     {
       "id": "loc-riggae",
@@ -3391,7 +3409,8 @@ export const SEO_GRAPH = {
         "Khaitan",
         "Farwaniya",
         "Ardiya"
-      ]
+      ],
+      "isPhysicalLocation": false
     },
     {
       "id": "loc-ardiya",
@@ -3418,7 +3437,8 @@ export const SEO_GRAPH = {
         "Farwaniya",
         "Riggae",
         "Jleeb Al-Shuyoukh"
-      ]
+      ],
+      "isPhysicalLocation": false
     },
     {
       "id": "loc-mahboula",
@@ -3445,7 +3465,8 @@ export const SEO_GRAPH = {
         "Mangaf",
         "Abu Halifa",
         "Fahaheel"
-      ]
+      ],
+      "isPhysicalLocation": false
     },
     {
       "id": "loc-rawda",
@@ -3472,7 +3493,8 @@ export const SEO_GRAPH = {
         "Adailiya",
         "Surra",
         "Hawalli"
-      ]
+      ],
+      "isPhysicalLocation": false
     },
     {
       "id": "loc-messila",
@@ -3499,7 +3521,8 @@ export const SEO_GRAPH = {
         "Abu Ftaira",
         "Fnaitees",
         "Mubarak Al-Kabeer"
-      ]
+      ],
+      "isPhysicalLocation": false
     },
     {
       "id": "brand-dell",

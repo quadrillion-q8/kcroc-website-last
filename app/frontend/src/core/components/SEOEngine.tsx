@@ -145,7 +145,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
     "@type": ["LocalBusiness", "ComputerStore"],
     "@id": `${business.websiteUrl}/#business`,
     "name": business.legalName,
-    ...(isArabicLocale ? { "alternateName": "كي سي آر أو سي (KCROC)" } : {}),
+    "alternateName": isArabicLocale ? ['KCROC', 'كي سي آر أو سي'] : 'KCROC',
     ...(isArabicLocale ? { "description": description } : {}),
     "url": business.websiteUrl,
     "image": business.logoUrl,
@@ -198,6 +198,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
   };
 
   const schemaGraph: any[] = [baseLocalBusiness];
+  const isHawalliWorkshopPage = entity.id === 'loc-hawalli' || entity.id === 'page-ar-hawalli-computer-repair';
 
   // Single canonical Person entity for the founder/author. Pages that declare
   // Person or article schema reference this node rather than creating duplicate
@@ -215,7 +216,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
 
   // Generic WebPage node: every indexable document can participate in the
   // same site graph without requiring page-level JSON-LD.
-  if (schemaTypes?.includes('WebPage') || schemaTypes?.includes('AboutPage') || schemaTypes?.includes('ContactPage') || schemaTypes?.includes('ProfilePage') || schemaTypes?.includes('Article') || schemaTypes?.includes('TechArticle')) {
+  if (isHawalliWorkshopPage || schemaTypes?.includes('WebPage') || schemaTypes?.includes('AboutPage') || schemaTypes?.includes('ContactPage') || schemaTypes?.includes('ProfilePage') || schemaTypes?.includes('Article') || schemaTypes?.includes('TechArticle')) {
     schemaGraph.push({
       "@type": schemaTypes?.includes('CollectionPage') ? 'CollectionPage' : (schemaTypes?.includes('AboutPage') ? 'AboutPage' : (schemaTypes?.includes('ContactPage') ? 'ContactPage' : (schemaTypes?.includes('ProfilePage') ? 'ProfilePage' : 'WebPage'))),
       "@id": `${fullCanonicalUrl}#webpage`,
@@ -224,7 +225,8 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
       "description": description,
       "inLanguage": locale || 'en-KW',
       "isPartOf": { "@id": `${business.websiteUrl}/#website` },
-      ...(schemaTypes?.includes('ProfilePage') && { "mainEntity": { "@id": AUTHOR_ID } })
+      ...(schemaTypes?.includes('ProfilePage') && { "mainEntity": { "@id": AUTHOR_ID } }),
+      ...(isHawalliWorkshopPage && { "mainEntity": { "@id": `${business.websiteUrl}/#business` } })
     });
   }
 
@@ -842,38 +844,10 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
         const location = entity as LocationEntity;
 
         if (location.isPhysicalLocation) {
-          // Real branch/storefront — full LocalBusiness node with a
-          // genuine street address and geo point.
-          schemaGraph.push({
-            "@type": ["LocalBusiness", "ComputerStore"],
-            "@id": `${fullCanonicalUrl}#location`,
-            "name": location.title,
-            "url": fullCanonicalUrl,
-            "telephone": `+${business.telephone}`,
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": location.landmark,
-              "addressLocality": location.title.replace(' Repair Center', ''),
-              "addressRegion": business.addressRegion,
-              "addressCountry": "KW"
-            },
-            "geo": location.coords ? {
-              "@type": "GeoCoordinates",
-              "latitude": location.coords.lat,
-              "longitude": location.coords.lng
-            } : undefined,
-            "openingHoursSpecification": business.schemaOpeningHours ? [{
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": business.schemaOpeningHours.dayOfWeek.map(day => `https://schema.org/${day}`),
-              "opens": business.schemaOpeningHours.opens,
-              "closes": business.schemaOpeningHours.closes
-            }] : undefined,
-            "areaServed": location.serviceAreas.map(area => ({
-              "@type": "City",
-              "name": area
-            })),
-            "parentOrganization": { "@id": `${business.websiteUrl}/#business` }
-          });
+          // KCROC has one physical workshop. Its canonical business node above
+          // already carries the address, geo, opening hours, phone and Maps ID.
+          // Do not publish a second LocalBusiness identity for the same shop.
+          // The workshop WebPage references that canonical node as mainEntity.
         } else {
           // Service-area page — no storefront exists here, so
           // no address/geo/LocalBusiness claim is made. Instead this
