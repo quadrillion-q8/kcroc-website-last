@@ -1424,7 +1424,7 @@ function ArabicGamingPcRepairPage({
               <Link to="/ar/gaming-laptop-repair-kuwait" className="rounded-full border border-slate-700 px-4 py-2 text-sm font-bold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300">تصليح اللابتوب القيمنق</Link>
               <Link to="/guides/gaming-pc-not-turning-on-kuwait" className="rounded-full border border-slate-700 px-4 py-2 text-sm font-bold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300">دليل الكمبيوتر الذي لا يعمل (بالإنجليزية)</Link>
               <Link to="/blog/gaming-pc-cooling" className="rounded-full border border-slate-700 px-4 py-2 text-sm font-bold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300">دليل تبريد Gaming PC (بالإنجليزية)</Link>
-              <Link to="/guides/bios-uefi-recovery-kuwait" className="rounded-full border border-slate-700 px-4 py-2 text-sm font-bold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300">دليل BIOS / UEFI (بالإنجليزية)</Link>
+              <Link to="/guides/ar/bios-uefi-recovery-kuwait" className="rounded-full border border-slate-700 px-4 py-2 text-sm font-bold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300">دليل BIOS / UEFI بالعربي</Link>
             </div>
           </div>
         </section>
@@ -1627,7 +1627,7 @@ function ArabicGamingPcRepairPage({
           <Link to="/ar/motherboard-repair-kuwait" className="rounded-full border border-slate-800 px-4 py-2 text-sm font-bold text-slate-300 hover:border-cyan-500/40 hover:text-cyan-300">تصليح مذربورد</Link>
           <Link to="/ar/gaming-laptop-cleaning-kuwait" className="rounded-full border border-slate-800 px-4 py-2 text-sm font-bold text-slate-300 hover:border-cyan-500/40 hover:text-cyan-300">تنظيف Gaming Laptop</Link>
           <Link to="/blog/gaming-pc-cooling" className="rounded-full border border-slate-800 px-4 py-2 text-sm font-bold text-slate-300 hover:border-cyan-500/40 hover:text-cyan-300">دليل تبريد Gaming PC</Link>
-          <Link to="/guides/bios-uefi-recovery-kuwait" className="rounded-full border border-slate-800 px-4 py-2 text-sm font-bold text-slate-300 hover:border-cyan-500/40 hover:text-cyan-300">دليل BIOS / UEFI</Link>
+          <Link to="/guides/ar/bios-uefi-recovery-kuwait" className="rounded-full border border-slate-800 px-4 py-2 text-sm font-bold text-slate-300 hover:border-cyan-500/40 hover:text-cyan-300">دليل BIOS / UEFI</Link>
         </div>
       </div>
       <ArabicHeadTermLinks />
@@ -2052,7 +2052,7 @@ function ArabicComputerRepairPage({
                 ))}
               </div>
               <Link to="/ar/near-me" className="mt-7 inline-flex items-center gap-2 font-black text-cyan-300 hover:text-cyan-200">
-                فني كمبيوتر وتصليح لابتوب بالقرب مني <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+                تصليح كمبيوتر ولابتوب بالقرب مني <ArrowLeft className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
             <figure className="overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/45">
@@ -2683,7 +2683,8 @@ export default function ArabicCommercialPage() {
       ]
     : slug === 'laptop-hinge-repair-kuwait'
     ? [
-        { title: 'حماية شاشة اللابتوب من الكسر والضغط', path: '/blog/how-to-protect-laptop-screen' },
+        { title: 'تشخيص كسر مفصلة اللابتوب', path: '/ar/laptop-hinge-broken' },
+        { title: 'حماية شاشة اللابتوب من الكسر والضغط (بالإنجليزية)', path: '/blog/how-to-protect-laptop-screen' },
         { title: 'تصليح وتبديل شاشة اللابتوب', path: '/ar/laptop-screen-repair-kuwait' },
         { title: 'تصليح اللابتوب في الكويت', path: '/ar/laptop-repair-kuwait' },
         { title: 'أسعار تصليح مفصلات اللابتوب', path: '/ar/pricing' }
@@ -2707,10 +2708,11 @@ export default function ArabicCommercialPage() {
       ]
     : slug === 'laptop-repair-kuwait'
     ? [
+        { title: 'تشخيص ارتفاع حرارة اللابتوب', path: '/ar/laptop-overheating-kuwait' },
         { title: 'دليل ارتفاع حرارة اللابتوب (بالإنجليزية)', path: '/guides/why-is-my-laptop-so-hot' },
         { title: 'علامات ضعف بطارية اللابتوب (بالإنجليزية)', path: '/guides/laptop-battery-warning-signs' },
-        { title: 'اللابتوب متصل بالشاحن لكنه لا يشحن (بالإنجليزية)', path: '/laptop-plugged-in-not-charging' },
-        { title: 'استعادة BIOS / UEFI عند فشل الإقلاع (بالإنجليزية)', path: '/guides/bios-uefi-recovery-kuwait' },
+        { title: 'اللابتوب متصل بالشاحن لكنه لا يشحن', path: '/ar/laptop-plugged-in-not-charging' },
+        { title: 'استعادة BIOS / UEFI عند فشل الإقلاع', path: '/guides/ar/bios-uefi-recovery-kuwait' },
         { title: 'أسعار تصليح اللابتوب والكمبيوتر في الكويت', path: '/ar/pricing' }
       ]
     : slug === 'macbook-repair-kuwait'
@@ -2723,13 +2725,14 @@ export default function ArabicCommercialPage() {
       ]
     : slug === 'laptop-keyboard-replacement-kuwait'
     ? [
+        { title: 'تشخيص كيبورد اللابتوب الذي لا يعمل', path: '/ar/laptop-keyboard-not-working' },
         { title: 'تصليح أضرار السوائل للابتوب', path: '/ar/laptop-liquid-damage-repair-kuwait' },
         { title: 'تصليح المذربورد في الكويت', path: '/ar/motherboard-repair-kuwait' },
         { title: 'تبديل كيبورد اللابتوب (English)', path: '/laptop-keyboard-replacement-kuwait' }
       ]
     : slug === 'laptop-charging-port-repair-kuwait'
     ? [
-        { title: 'اللابتوب متصل بالشاحن لكنه لا يشحن (بالإنجليزية)', path: '/laptop-plugged-in-not-charging' },
+        { title: 'اللابتوب متصل بالشاحن لكنه لا يشحن', path: '/ar/laptop-plugged-in-not-charging' },
         { title: 'تصليح المذربورد ومسار الطاقة في الكويت', path: '/ar/motherboard-repair-kuwait' }
       ]
     : slug === 'macbook-screen-replacement-kuwait'
@@ -2742,6 +2745,8 @@ export default function ArabicCommercialPage() {
     : slug === 'laptop-screen-repair-kuwait'
       ? [
           { title: 'تبديل شاشة MacBook Air وMacBook Pro', path: '/ar/macbook-screen-replacement-kuwait' },
+          { title: 'تشخيص الشاشة المكسورة', path: '/ar/laptop-screen-cracked-kuwait' },
+          { title: 'تشخيص الشاشة السوداء قبل تبديل القطعة', path: '/ar/laptop-black-screen-kuwait' },
           { title: 'تصليح اللابتوب في الكويت', path: '/ar/laptop-repair-kuwait' },
           { title: 'أسعار تصليح الشاشة والقطع في الكويت', path: '/ar/pricing' },
           { title: 'دليل باللغة الإنجليزية: حماية شاشة اللابتوب من الكسر', path: '/blog/how-to-protect-laptop-screen' }
@@ -5481,7 +5486,7 @@ export default function ArabicCommercialPage() {
               <h2 id="arabic-local" className="text-2xl font-black text-white">استلام من منطقتك بالكويت</h2>
               <p className="mt-3 max-w-3xl leading-8 text-slate-400">ما تحتاج تودي الجهاز بنفسك إلى حولي. أرسل منطقتك وموديل الجهاز والمشكلة، ونرتب الاستلام ثم يتم الفحص والإصلاح في مختبر KCROC في حولي وإرجاع الجهاز لك بعد الاختبار.</p>
               <div className="mt-5 flex flex-wrap gap-x-5 gap-y-3">
-                <Link to="/ar/near-me" className="inline-flex items-center gap-2 font-bold text-cyan-300 hover:text-cyan-200">فني كمبيوتر وتصليح لابتوب بالقرب مني <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
+                <Link to="/ar/near-me" className="inline-flex items-center gap-2 font-bold text-cyan-300 hover:text-cyan-200">تصليح كمبيوتر ولابتوب بالقرب مني <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
                 <Link to="/ar/pricing" className="inline-flex items-center gap-2 font-bold text-cyan-300 hover:text-cyan-200">أسعار تصليح الكمبيوتر واللابتوب في الكويت <ArrowLeft className="h-4 w-4" aria-hidden="true" /></Link>
               </div>
             </div>

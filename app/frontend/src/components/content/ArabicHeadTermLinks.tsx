@@ -3,13 +3,14 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const HEAD_TERM_LINKS = [
+  { to: '/ar', label: 'فني كمبيوتر في الكويت' },
   { to: '/ar/computer-repair-kuwait', label: 'تصليح كمبيوتر الكويت' },
   { to: '/ar/laptop-repair-kuwait', label: 'تصليح لابتوب الكويت' },
 ];
 
 /**
- * Exact-anchor Arabic links to the two owner pages for the main Arabic
- * head terms ("تصليح كمبيوتر" / "تصليح لابتوب"). Rendered at the end of the
+ * Arabic links to the three national keyword owners: technician, computer
+ * repair, and laptop repair. Rendered at the end of the
  * Arabic pages so internal links consistently point at one page per term.
  * The page currently being viewed is left out.
  */
