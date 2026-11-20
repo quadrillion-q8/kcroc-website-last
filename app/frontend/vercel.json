@@ -65,6 +65,11 @@
   ],
   "redirects": [
     {
+      "source": "/&",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/computer-repair-in-sabahalsalem",
       "destination": "/location/sabah-al-salem",
       "permanent": true

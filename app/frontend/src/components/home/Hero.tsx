@@ -45,7 +45,7 @@ export default function Hero() {
   const heroWhatsAppLink = buildWhatsAppLink(t('Hi KCROC, I need computer repair in Kuwait. Can I get a free diagnosis and pickup?', 'هلا KCROC، عندي جهاز يحتاج تصليح. ممكن ترتبون فحص واستلام مجاني؟'));
   const rating = business?.aggregateRating?.ratingValue;
   const googleProfileUrl = business?.socialLinks?.googleMaps;
-  const headline = ar ? "تصليح وصيانة الكمبيوتر واللابتوب في الكويت" : hero?.headline ?? "Kuwait's Expert Component-Level Repair Service.";
+  const headline = ar ? "فني كمبيوتر في الكويت" : hero?.headline ?? "Kuwait's Expert Component-Level Repair Service.";
   const desktopImage = '/images/kcroc-pc-doctor-windows-repair-services.webp';
   const heroImage768 = '/images/kcroc-pc-doctor-windows-repair-services.w768.webp';
 
@@ -81,7 +81,7 @@ export default function Hero() {
             </p>
 
             <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-slate-300 sm:text-base lg:mx-0 lg:mt-4 lg:max-w-xl lg:text-[1.05rem] lg:leading-7">
-              {ar ? 'في مختبر KCROC بحولي نفحص اللابتوب وماك بوك وكمبيوتر الألعاب، ونحدد العطل ونصلح المكونات الدقيقة متى ما كان الإصلاح ممكن. نستلم جهازك من البيت أو المكتب مجانًا، ونعطيك السعر قبل لا نبدأ.' : hero?.description ?? 'Free pickup and delivery across Kuwait. Diagnosis first, quote second, repair only with your approval.'}
+              {ar ? 'تصليح وصيانة الكمبيوتر واللابتوب في الكويت من مختبر KCROC بحولي. نفحص اللابتوب وماك بوك وكمبيوتر الألعاب، ونحدد العطل ونصلح المكونات الدقيقة متى ما كان الإصلاح ممكن. نستلم جهازك من البيت أو المكتب مجانًا، ونعطيك السعر قبل لا نبدأ.' : hero?.description ?? 'Free pickup and delivery across Kuwait. Diagnosis first, quote second, repair only with your approval.'}
             </p>
 
             <ul className="mt-4 flex flex-wrap justify-center gap-2 lg:mt-6 lg:justify-start lg:gap-2.5">
@@ -122,13 +122,13 @@ export default function Hero() {
             {/* Arabic entry point: isolated RTL inline context inside the LTR flow */}
             <div className="mt-4 flex justify-center lg:justify-start">
               <Link
-                to="/ar/computer-repair-kuwait"
+                to={ar ? "/ar/computer-repair-kuwait" : "/ar"}
                 lang="ar"
                 dir="rtl"
                 onClick={() => trackConversion('cta_click', { cta_name: trackName('hero_arabic_computer_repair'), button_position: 'hero' })}
                 className="inline-flex min-h-12 max-w-full items-center justify-center rounded-lg px-3 py-2 text-center text-sm font-bold text-[#D4DBDE] underline decoration-white/35 underline-offset-4 transition-colors hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#dfa86f]"
               >
-                تصليح كمبيوتر ولابتوب في الكويت · استلام مجاني
+                {ar ? "تصليح كمبيوتر ولابتوب في الكويت · استلام مجاني" : "فني كمبيوتر في الكويت · الموقع بالعربي"}
               </Link>
             </div>
 

@@ -873,17 +873,17 @@ add('Computer Repair Kuwait title, description, image and update date stay in th
 add('Unverified customer/repair totals removed from sales copy', !about.includes("number: '500+'") && !booking.includes('500+ professionals') && !arabicCommercial.includes("['500+', 'جهاز تم إصلاحه']"));
 
 // Arabic computer-repair intent: keep the national repair destination distinct from proximity and technician-visit intent.
-const arTitle = 'فني كمبيوتر في الكويت | تصليح كمبيوتر ولابتوب | KCROC';
+const arTitle = 'تصليح كمبيوتر ولابتوب في الكويت | KCROC';
 const arH1 = 'تصليح كمبيوتر ولابتوب في الكويت مع استلام مجاني';
 add('Arabic commercial page title targets technician and repair intent in Kuwait', has(graph, `title: '${arTitle}'`) && seoProjection.includes(arTitle));
-add('Arabic commercial metadata describes lab repair, free intake and customer approval', has(graph, `title: 'تصليح كمبيوتر ولابتوب في الكويت'`) && has(graph, `تبحث عن فني كمبيوتر في الكويت؟ فحص أولي مجاني وإصلاح داخل مختبر KCROC بحولي بعد موافقتك، مع استلام وتوصيل مجاني وضمان 30 يومًا.`) && seoProjection.includes(arTitle));
+add('Arabic commercial metadata describes lab repair, free intake and customer approval', has(graph, `title: 'تصليح كمبيوتر ولابتوب في الكويت'`) && has(graph, `تصليح كمبيوتر ولابتوب في الكويت: فحص أولي مجاني، استلام وتوصيل مجاني، وعرض سعر قبل الإصلاح في مختبر KCROC بحولي. ضمان 30 يومًا.`) && seoProjection.includes(arTitle));
 add('Arabic computer-repair H1 names repair and pickup rather than an in-home technician visit', has(arabicCommercial, `h1: '${arH1}'`) && arabicCommercial.includes(`                ${arH1}\n              </h1>`));
 add('Arabic computer-repair hero clearly explains workshop-only repair and pickup from home or office', arabicCommercial.includes('الفحص والإصلاح يتمان داخل مختبرنا في حولي، مو داخل البيت') && arabicCommercial.includes('استلام وتوصيل مجاني في الكويت'));
 add('Arabic computer repair pricing distinguishes laptop starting prices from all desktop repairs', arabicCommercial.includes('ما فيه سعر بداية موحّد لكل كمبيوتر مكتبي') && arabicCommercial.includes('الأسعار المعروضة تخص خدمات محددة'));
 add('Arabic commercial FAQ explicitly states that repairs are workshop-only', arabicCommercial.includes('لا نقدم زيارة فني أو إصلاحًا داخل المنزل') && arabicCommercial.includes('مختبر KCROC في حولي'));
 add('Arabic commercial phone CTA displays a Kuwait country code, not a stray currency symbol', arabicCommercial.includes('+965 {business.telephone.replace(') && !arabicCommercial.includes('                  ${business.telephone.replace'));
 add('Arabic nearby page targets proximity intent and links to the main service page', graph.includes("title: 'تصليح كمبيوتر بالقرب منك في الكويت | استلام مجاني | KCROC'") && nearMeAr.includes('تصليح كمبيوتر ولابتوب') && nearMeAr.includes('to="/ar/computer-repair-kuwait"'));
-add('Arabic Hawalli snippet reflects technician queries, the basement workshop, daily hours and free pickup', has(graph, "title: 'تصليح كمبيوتر حولي | فني كمبيوتر ولابتوب | KCROC") && has(graph, "تحتاج فني كمبيوتر في حولي؟ زر مختبر KCROC في مجمع الملا، شارع ابن خلدون، السرداب، محل 19، يوميًا من 10 صباحًا إلى 10 مساءً، أو اطلب الاستلام والتوصيل مجانًا. ضمان 30 يومًا على الإصلاح المكتمل.") && has(seoProjection, 'تصليح كمبيوتر حولي | فني كمبيوتر ولابتوب | KCROC') && has(seoProjection, 'يوميًا من 10 صباحًا إلى 10 مساءً، أو اطلب الاستلام والتوصيل مجانًا. ضمان 30 يومًا على الإصلاح المكتمل.'));
+add('Arabic Hawalli snippet reflects technician queries, the basement workshop, daily hours and free pickup', has(graph, "title: 'تصليح كمبيوتر حولي | فني كمبيوتر ولابتوب | KCROC") && has(graph, "تصليح كمبيوتر حولي في مختبر KCROC، شارع ابن خلدون، مجمع الملا، السرداب محل 19. يوميًا 10 ص–10 م، فحص واستلام مجاني.") && has(seoProjection, 'تصليح كمبيوتر حولي | فني كمبيوتر ولابتوب | KCROC') && has(seoProjection, 'يوميًا 10 ص–10 م، فحص واستلام مجاني.'));
 add('HP laptop-repair snippet identifies an independent provider and a qualified from-price', graph.includes("title: 'HP Laptop Repair Kuwait | Independent Lab | KCROC'") && seoProjection.includes('HP Laptop Repair Kuwait | Independent Lab | KCROC') && graph.includes('not an official HP-authorized service center') && graph.includes('Selected repairs from 15 KWD where applicable'));
 
 add('Homepage metadata positions KCROC as the Hawalli repair lab while the dedicated computer page keeps the commercial hub title',
@@ -892,8 +892,8 @@ add('Homepage metadata positions KCROC as the Hawalli repair lab while the dedic
   seoProjection.includes('Computer and laptop repair at KCROC’s Hawalli component-level lab') &&
   graph.includes("title: 'Computer Repair Kuwait | PC, Laptop & MacBook | KCROC'"));
 add('Arabic homepage metadata keeps broad repair intent and states Hawalli lab, free pickup and 30-day warranty',
-  graph.includes('تصليح الكمبيوتر واللابتوب في الكويت من مختبر KCROC بحولي، مع فحص أولي مجاني واستلام وتوصيل مجاني') &&
-  seoProjection.includes('تصليح الكمبيوتر واللابتوب في الكويت من مختبر KCROC بحولي') &&
+  graph.includes('تحتاج فني كمبيوتر في الكويت؟ مختبر KCROC بحولي لتصليح الكمبيوتر واللابتوب. فحص أولي واستلام وتوصيل مجاني') &&
+  seoProjection.includes('مختبر KCROC بحولي لتصليح الكمبيوتر واللابتوب') &&
   seoProjection.includes('ضمان 30 يومًا على الإصلاح المكتمل'));
 add('Arabic computer and laptop pages expose a qualified from-price without implying every repair costs 15 KWD',
   graph.includes('بعض الإصلاحات تبدأ من 15 د.ك حسب الموديل والعطل') &&
@@ -914,7 +914,7 @@ add('Arabic contact card displays the Hawalli lab address and opening hours full
   !arabicContact.includes('{business.openingHours}'));
 add('Arabic homepage metadata and hero now include native تصليح وصيانة intent without English category labels',
   has(graph, "title: 'تصليح وصيانة الكمبيوتر واللابتوب في الكويت | مختبر KCROC حولي'") &&
-  seoProjection.includes('تصليح وصيانة الكمبيوتر واللابتوب في الكويت | KCROC') &&
+  seoProjection.includes('فني كمبيوتر في الكويت | فحص واستلام مجاني | KCROC') &&
   hero.includes('تصليح وصيانة الكمبيوتر واللابتوب في الكويت') && hero.includes('نصلح المذربورد، مو بس نبدلها.') &&
   hero.includes('نصلح المكونات الدقيقة متى ما كان الإصلاح ممكن'));
 add('Dell and Lenovo laptop-repair snippets use independent positioning and qualified selected-repair starting prices',
@@ -936,9 +936,9 @@ add('Cracked-screen page remains a symptom guide and avoids unsupported OEM or s
   !crackedScreenProblem.includes('often same-day'));
 
 add('Arabic hreflang projection matches homepage alternate', graph.includes("'en-KW': 'https://www.computerrepairkuwait.com/'") && seoProjection.includes('\"en-KW\": \"https://www.computerrepairkuwait.com/\"'));
-add('Homepage hero exposes one tracked Arabic commercial link shared by mobile and desktop', (hero.match(/hero_arabic_computer_repair/g) || []).length === 1 && (hero.match(/to="\/ar\/computer-repair-kuwait"/g) || []).length === 1);
+add('Homepage hero exposes one tracked Arabic commercial link shared by mobile and desktop', (hero.match(/hero_arabic_computer_repair/g) || []).length === 1 && hero.includes('to={ar ? "/ar/computer-repair-kuwait" : "/ar"}'));
 add('Homepage Arabic links distinguish national repair and near-me intent', serviceAreas.includes("{ label: 'تصليح كمبيوتر في الكويت', path: '/ar/computer-repair-kuwait' }") && serviceAreas.includes("{ label: 'تصليح كمبيوتر بالقرب مني', path: '/ar/near-me' }"));
-add('Homepage Arabic hero anchor uses the national repair intent', hero.includes('تصليح كمبيوتر ولابتوب في الكويت · استلام مجاني') && hero.includes('to="/ar/computer-repair-kuwait"'));
+add('Homepage Arabic hero anchor uses the national repair intent', hero.includes('تصليح كمبيوتر ولابتوب في الكويت · استلام مجاني') && hero.includes('to={ar ? "/ar/computer-repair-kuwait" : "/ar"}'));
 add('Near-me footer label stays focused on nearby repair rather than the technician head term', footer.includes("'/near-me': 'تصليح كمبيوتر بالقرب منك'"));
 add('English pricing snippet leads with qualified starting labor prices', graph.includes('Laptop screen labor from 30 KWD + panel; battery labor from 8 KWD + battery') && seoProjection.includes('Laptop screen labor from 30 KWD + panel; battery labor from 8 KWD + battery'));
 add('Pricing hero visibly shows qualified prices with relevant service links', englishPricing.includes('From 30 KWD + panel') && englishPricing.includes('From 8 KWD + battery') && englishPricing.includes('to="/ssd-ram-upgrade-kuwait"'));
