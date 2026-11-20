@@ -1,5 +1,5 @@
 // File: app/frontend/src/pages/BookingPage.tsx
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './KCROCEditorialRollout.css';
 import { ShieldCheck, Truck, Clock, MapPin, MessageCircle, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -46,6 +46,11 @@ export default function BookingPage() {
   const [deviceModel, setDeviceModel] = useState('');
   const [preferredPickup, setPreferredPickup] = useState('');
   const bookingStarted = useRef(false);
+  const submitting = useRef(false);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [handoffError, setHandoffError] = useState(false);
+  useEffect(() => () => { if (timer.current) clearTimeout(timer.current); }, []);
 
   // Count a booking start only once per visit to this form. A WhatsApp handoff
   // is tracked separately and is not treated as a completed booking.
@@ -63,11 +68,27 @@ export default function BookingPage() {
   // Generate the formatted WhatsApp link
   const handleWhatsAppRedirect = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (submitting.current) return;
+    submitting.current = true;
+    setIsSubmitting(true);
+    setHandoffError(false);
     trackBookingStart();
+    // Static categorical flags only; never send form values or WhatsApp message to analytics.
+    trackConversion('booking_request_handoff', {
+      booking_type: 'pickup', cta_name: 'booking_form_submit', button_position: 'booking_page',
+      form_details_present: Boolean(issue.trim() && location.trim()),
+      model_provided: Boolean(deviceModel.trim()), pickup_preference_provided: Boolean(preferredPickup),
+    });
     trackConversion('whatsapp_click', { cta_name: 'booking_form_submit', button_position: 'booking_page' });
     
     const text = `*New Repair Inquiry*\n\n*Device:* ${deviceType}${deviceModel.trim() ? ` (${deviceModel.trim()})` : ''}\n*Location:* ${location.trim() || 'Not provided'}\n*Preferred pickup:* ${preferredPickup || 'Flexible / discuss on WhatsApp'}\n*Issue:* ${issue.trim() || 'Needs diagnostic'}\n\n_Hi KCROC, I would like to request free pickup and an initial diagnostic. Please confirm the pickup details with me._`;
-    handoffWhatsApp(text);
+    try {
+      handoffWhatsApp(text);
+    } catch {
+      setHandoffError(true);
+    } finally {
+      timer.current = setTimeout(() => { submitting.current = false; setIsSubmitting(false); }, 800);
+    }
   };
 
   return (
@@ -206,6 +227,8 @@ export default function BookingPage() {
                 <div className="pt-4">
                   <Button
                     type="submit"
+                    disabled={isSubmitting}
+                    aria-busy={isSubmitting}
                     size="lg"
                     className="w-full min-h-[56px] h-auto whitespace-normal px-4 sm:px-6 py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-base sm:text-lg rounded-2xl shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-colors"
                   >
@@ -213,6 +236,9 @@ export default function BookingPage() {
                     Request Free Pickup on WhatsApp
                     <ChevronRight className="w-5 h-5 ml-2 opacity-50" />
                   </Button>
+                  <p className="mt-3 text-center text-xs text-slate-400" data-booking-handoff-instruction>After WhatsApp opens, tap Send. Pickup is confirmed only after KCROC replies. Do not share passwords or sensitive information.</p>
+                  <p className="sr-only" role="status">{isSubmitting ? 'Preparing your WhatsApp request…' : ''}</p>
+                  {handoffError && <p role="alert" className="mt-3 text-sm text-rose-300">Could not open WhatsApp. Try again or <a href="tel:+96555301913" className="underline">call our team</a>.</p>}
                   <p className="text-center text-xs text-slate-500 mt-4 flex items-center justify-center gap-1">
                     <ShieldCheck className="w-3 h-3 text-emerald-400" /> Secure & Instant. Speak directly with our engineers.
                   </p>

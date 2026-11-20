@@ -14,6 +14,8 @@ export type AnalyticsEvent =
   | 'phone_call_click'
   | 'book_pickup_click'
   | 'contact_submit'
+  | 'contact_request_handoff'
+  | 'booking_request_handoff'
   | 'internal_search'
   | 'cta_click'
   | 'generate_lead';

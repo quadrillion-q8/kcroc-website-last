@@ -1,5 +1,5 @@
 // File: app/frontend/src/pages/ArabicBookingPage.tsx
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './KCROCEditorialRollout.css';
 import { Clock, MapPin, MessageCircle, ShieldCheck, Truck } from 'lucide-react';
 import { SEOEngine } from '../core/components/SEOEngine';
@@ -41,6 +41,11 @@ export default function ArabicBookingPage() {
   const [location, setLocation] = useState('');
   const [preferredPickup, setPreferredPickup] = useState('');
   const bookingStarted = useRef(false);
+  const submitting = useRef(false);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [handoffError, setHandoffError] = useState(false);
+  useEffect(() => () => { if (timer.current) clearTimeout(timer.current); }, []);
 
   const trackBookingStart = () => {
     if (bookingStarted.current) return;
@@ -55,7 +60,17 @@ export default function ArabicBookingPage() {
 
   const handleWhatsAppRedirect = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (submitting.current) return;
+    submitting.current = true;
+    setIsSubmitting(true);
+    setHandoffError(false);
     trackBookingStart();
+    // Static categorical flags only; never send form values or WhatsApp message to analytics.
+    trackConversion('booking_request_handoff', {
+      booking_type: 'pickup', cta_name: 'arabic_booking_form_submit', button_position: 'arabic_booking_page',
+      form_details_present: Boolean(issue.trim() && location.trim()),
+      model_provided: Boolean(deviceModel.trim()), pickup_preference_provided: Boolean(preferredPickup),
+    });
     trackConversion('whatsapp_click', {
       cta_name: 'arabic_booking_form_submit',
       button_position: 'arabic_booking_page'
@@ -68,7 +83,13 @@ export default function ArabicBookingPage() {
       '*الوقت المفضل للاستلام:* ' + (preferredPickup || 'مرن / يتم التنسيق عبر واتساب') + '\n' +
       '*العطل:* ' + (issue.trim() || 'أحتاج إلى فحص وتشخيص') + '\n\n' +
       'مرحبًا KCROC، أريد طلب استلام مجاني للجهاز وفحصه مبدئيًا. يرجى التواصل معي لتأكيد تفاصيل الاستلام.';
-    handoffWhatsApp(message);
+    try {
+      handoffWhatsApp(message);
+    } catch {
+      setHandoffError(true);
+    } finally {
+      timer.current = setTimeout(() => { submitting.current = false; setIsSubmitting(false); }, 800);
+    }
   };
 
   return (
@@ -173,11 +194,16 @@ export default function ArabicBookingPage() {
                 <div className="pt-2">
                   <button
                     type="submit"
+                    disabled={isSubmitting}
+                    aria-busy={isSubmitting}
                     className="flex min-h-[56px] w-full items-center justify-center rounded-2xl bg-emerald-500 px-4 py-4 text-base font-black text-slate-950 shadow-lg transition hover:bg-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:text-lg"
                   >
                     <MessageCircle className="ml-2 h-5 w-5" aria-hidden="true" />
                     اطلب استلامًا مجانيًا عبر واتساب
                   </button>
+                  <p className="mt-3 text-center text-xs text-slate-400" data-booking-handoff-instruction>بعد فتح واتساب، اضغط إرسال الرسالة. موعد الاستلام يتأكد بعد رد فريق KCROC. لا ترسل كلمات مرور أو معلومات حساسة.</p>
+                  <p className="sr-only" role="status">{isSubmitting ? 'جاري تجهيز رسالة واتساب…' : ''}</p>
+                  {handoffError && <p role="alert" className="mt-3 text-sm text-rose-300">تعذر فتح واتساب. حاول مرة ثانية أو <a href="tel:+96555301913" className="underline">اتصل بفريقنا</a>.</p>}
                   <p className="mt-4 flex items-center justify-center gap-1 text-center text-xs text-slate-500"><ShieldCheck className="h-3 w-3 text-emerald-400" aria-hidden="true" /> أرسل طلبك مباشرة إلى فريق KCROC</p>
                 </div>
               </form>
