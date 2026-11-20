@@ -980,7 +980,7 @@ const AR_COMPUTER_SERVICE_CARDS = [
     title: 'تصليح المذربورد واللوحة الأم',
     description: 'فحص دوائر الطاقة والشحن والمكونات الإلكترونية، مع إمكانية الإصلاح على مستوى المكوّن عندما يكون مناسبًا.',
     path: '/ar/motherboard-repair-kuwait',
-    image: IMAGES.services.motherboardRepair,
+    image: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen,
   },
   {
     title: 'تصليح Gaming PC وكرت الشاشة',
@@ -1024,32 +1024,32 @@ const AR_COMPUTER_PROOF_IMAGES = [
   {
     title: 'إصلاح لابتوب داخل الورشة',
     description: 'صورة حقيقية من بيئة العمل والفحص في KCROC.',
-    image: IMAGES.brand.technicians,
+    image: IMAGES.brand.laptopRepairShopWorkbenchLaptops,
   },
   {
     title: 'فحص وصيانة اللوحة الأم',
     description: 'أعمال الهاردوير الدقيقة تبدأ من الفحص وليس من تبديل القطع عشوائيًا.',
-    image: IMAGES.services.motherboardRepair,
+    image: IMAGES.laptopHardware.laptopMotherboardDiagnosticBenchRepair,
   },
   {
     title: 'تشخيص MacBook',
     description: 'فحص الجهاز من الداخل وتحديد المشكلة قبل اختيار الإصلاح المناسب.',
-    image: IMAGES.macbook.diagnostics,
+    image: IMAGES.macbook.logicBoard,
   },
   {
     title: 'Gaming PC وكرت الشاشة',
     description: 'أنظمة عالية الأداء تحتاج فحصًا للحرارة والطاقة والاستقرار، وليس فقط تبديل القطع.',
-    image: IMAGES.gaming.rtxLighting,
+    image: IMAGES.gaming.waterCooled,
   },
   {
     title: 'صيانة حرارية',
     description: 'فحص وتنظيف النظام الحراري وإعادة الخدمة عند الحاجة.',
-    image: IMAGES.services.thermalService,
+    image: IMAGES.laptopHardware.copperHeatsink1,
   },
   {
     title: 'إصلاح هيكل ومفصلات اللابتوب',
     description: 'معالجة الضرر الميكانيكي قبل أن يتوسع إلى الشاشة أو الكابلات.',
-    image: IMAGES.laptopHardware.brokenHinge,
+    image: IMAGES.laptopHardware.screenBezel,
   },
 ] as const;
 
@@ -1467,8 +1467,8 @@ function ArabicGamingPcRepairPage({
             <div className="grid grid-cols-2 gap-px bg-slate-800 sm:grid-cols-3">
               {[
                 { image: IMAGES.gaming.rgbLighting, title: 'Gaming PC وتجميعة عالية الأداء' },
-                { image: IMAGES.gaming.diagnostics, title: 'طاولة تشخيص وفحص' },
-                { image: IMAGES.gaming.zotacCard, title: 'كرت شاشة وفحص المكونات' },
+                { image: IMAGES.gaming.customPcBuildMotherboardCablesInterior, title: 'فحص المذربورد والتوصيلات داخل الكمبيوتر' },
+                { image: IMAGES.gaming.msiGpuBuild, title: 'كرت شاشة مركب داخل Gaming PC' },
                 { image: IMAGES.gaming.waterCooled, title: 'تبريد مائي وتجميعة Custom' },
                 { image: IMAGES.gaming.asusRogFan, title: 'تبريد VRM في ASUS ROG' },
                 { image: IMAGES.gaming.gpuUpgrade, title: 'GPU وترقية كرت الشاشة' },
@@ -2219,21 +2219,21 @@ const ARABIC_SERVICE_LAYOUT_SLUGS = new Set([
 
 const AR_LOCATION_PROOF: Record<string, { title: string; text: string; images: { image: { src: string; width: number; height: number }; alt: string; caption: string }[]; services: { label: string; path: string }[] }> = {
   'computer-repair-salmiya': { title: "السالمية", text: "إذا انسكبت قهوة أو ماي على اللابتوب، لا تعيد تشغيله ولا تشحنه. عند الاستلام من السالمية ننسق نقطة التسليم عند مدخل العمارة أو المكتب، ونفحص آثار السوائل والتآكل ومسار الطاقة في مختبر حولي قبل اقتراح تبديل أي قطعة.", images: [
-    { image: IMAGES.services.laptopRepair, alt: "فحص لابتوب داخل مختبر KCROC بحولي", caption: "تشخيص أعطال اللابتوب وفحص اللوحة قبل تحديد القطعة المطلوبة." },
+    { image: IMAGES.laptopHardware.laptopOpenRepairBench, alt: "لابتوب مفتوح على طاولة الفحص في مختبر KCROC", caption: "تشخيص أعطال اللابتوب وفحص اللوحة قبل تحديد القطعة المطلوبة." },
     { image: IMAGES.brand.shopInterior, alt: "داخل مختبر KCROC المركزي في حولي", caption: "مكان الفحص والإصلاح الفعلي في حولي." },
     { image: IMAGES.brand.technicians, alt: "فنيو KCROC أثناء فحص جهاز", caption: "تشخيص العطل قبل أي إصلاح مدفوع." },
     { image: IMAGES.brand.leadTechnician, alt: "فني يعمل على جهاز في طاولة الإصلاح", caption: "فحص المكونات على طاولة المختبر." },
     { image: IMAGES.brand.inventory, alt: "قطع غيار اللابتوب في مختبر KCROC", caption: "نتأكد من توافق القطعة وتوفرها قبل الطلب." }
   ], services: [{"label":"تصليح أضرار السوائل","path":"/ar/laptop-liquid-damage-repair-kuwait"},{"label":"تصليح المذربورد","path":"/ar/motherboard-repair-kuwait"},{"label":"تصليح ماك بوك","path":"/ar/macbook-repair-kuwait"}] },
   'computer-repair-jahra': { title: "الجهراء", text: "لتوفير مشوار الجهراء إلى حولي، أرسل المنطقة والقطعة وموقع الاستلام وموديل الجهاز. إذا اللابتوب يطفي أثناء اللعب، نفحص الحرارة والمراوح والمشتت تحت الحمل، ونفصل مشاكل التبريد عن أعطال دائرة الطاقة قبل تحديد الإصلاح.", images: [
-    { image: IMAGES.motherboard.thermalGrizzly1, alt: "وضع المعجون الحراري على شريحة أثناء صيانة التبريد", caption: "فحص التبريد وخدمة المعجون الحراري حسب تشخيص الجهاز." },
+    { image: IMAGES.motherboard.thermalArctic, alt: "وضع معجون Arctic MX-6 أثناء صيانة التبريد", caption: "فحص التبريد وخدمة المعجون الحراري حسب تشخيص الجهاز." },
     { image: IMAGES.brand.shopInterior, alt: "داخل مختبر KCROC المركزي في حولي", caption: "مكان الفحص والإصلاح الفعلي في حولي." },
     { image: IMAGES.brand.technicians, alt: "فنيو KCROC أثناء فحص جهاز", caption: "تشخيص العطل قبل أي إصلاح مدفوع." },
     { image: IMAGES.brand.leadTechnician, alt: "فني يعمل على جهاز في طاولة الإصلاح", caption: "فحص المكونات على طاولة المختبر." },
     { image: IMAGES.brand.inventory, alt: "قطع غيار اللابتوب في مختبر KCROC", caption: "نتأكد من توافق القطعة وتوفرها قبل الطلب." }
   ], services: [{"label":"تنظيف لابتوب الألعاب","path":"/ar/gaming-laptop-cleaning-kuwait"},{"label":"تصليح المذربورد","path":"/ar/motherboard-repair-kuwait"},{"label":"تصليح كمبيوتر ألعاب","path":"/ar/gaming-pc-repair-kuwait"}] },
   'computer-repair-kuwait-city': { title: "مدينة الكويت", text: "إذا الجهاز من مكتب أو برج في شرق أو القبلة أو المرقاب، نسق معانا نقطة التسليم المناسبة عند الاستقبال ووقت وجود الشخص المخوّل بالتسليم. نفحص شحن اللابتوب وشاشته واللوحة الأم حسب العطل، ونوضح السعر قبل العمل المدفوع؛ كل التصليح يتم بمختبر حولي.", images: [
-    { image: IMAGES.brand.technicians, alt: "فنيو KCROC يفحصون الأجهزة في مختبر حولي", caption: "فحص أجهزة العمل داخل المختبر المركزي." },
+    { image: IMAGES.brand.shopEntrance, alt: "مدخل مختبر KCROC في حولي", caption: "مكان الفحص والإصلاح في مختبر حولي." },
     { image: IMAGES.brand.shopInterior, alt: "داخل مختبر KCROC المركزي في حولي", caption: "مكان الفحص والإصلاح الفعلي في حولي." },
     { image: IMAGES.services.laptopRepair, alt: "لابتوب أثناء الفحص في المختبر", caption: "مثال على فحص جهاز قبل تحديد الإصلاح." },
     { image: IMAGES.brand.leadTechnician, alt: "فني يعمل على جهاز في طاولة الإصلاح", caption: "فحص المكونات على طاولة المختبر." },
@@ -3780,7 +3780,7 @@ export default function ArabicCommercialPage() {
                   </ul>
                 </div>
                 <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
-                  <img src={IMAGES.macbook.diagnostics.src} alt="فني يفحص جهاز MacBook مفتوحًا قبل تحديد موديل الشاشة والعطل في مختبر KCROC بالكويت" width={IMAGES.macbook.diagnostics.width} height={IMAGES.macbook.diagnostics.height} loading="lazy" decoding="async" className="aspect-[16/9] w-full object-cover" />
+                  <img src={IMAGES.macbook.macbookProOpenMacosScreen.src} alt="جهاز MacBook Pro مفتوح وشاشة macOS ظاهرة أثناء فحص العرض" width={IMAGES.macbook.macbookProOpenMacosScreen.width} height={IMAGES.macbook.macbookProOpenMacosScreen.height} loading="lazy" decoding="async" className="aspect-[16/9] w-full object-cover" />
                   <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">نفحص الشاشة والكابل ومسار الإضاءة لتحديد ما إذا كان الإصلاح أو التبديل هو الخيار المناسب.</figcaption>
                 </figure>
               </div>
@@ -3937,27 +3937,27 @@ export default function ArabicCommercialPage() {
           {slug === 'laptop-charging-port-repair-kuwait' && (
             <figure className="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 sm:mt-10">
               <img
-                src="/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp"
-                alt="فحص واستبدال منفذ طاقة DC Jack في لوحة لابتوب"
-                width={1000}
-                height={1000}
+                src={IMAGES.laptopHardware.lenovoLaptopUsbCChargerAdapter.src}
+                alt="شاحن USB-C للابتوب Lenovo لفحص توافق الشحن"
+                width={IMAGES.laptopHardware.lenovoLaptopUsbCChargerAdapter.width}
+                height={IMAGES.laptopHardware.lenovoLaptopUsbCChargerAdapter.height}
                 loading={heroPageImage ? "lazy" : "eager"}
                 fetchPriority={heroPageImage ? "low" : "high"}
                 decoding="async"
                 className="aspect-[16/9] w-full object-cover"
               />
               <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400 sm:px-5">
-                منفذ DC Jack التالف قد يسبب شحنًا متقطعًا. نتحقق من حالة المنفذ ونقاط التثبيت قبل تحديد إمكانية الإصلاح أو الاستبدال.
+                نفحص توافق الشاحن والكابل قبل تشخيص منفذ USB-C أو DC Jack. منفذ DC Jack التالف قد يسبب شحنًا متقطعًا؛ نتحقق من المنفذ ونقاط التثبيت قبل تحديد الإصلاح أو الاستبدال.
               </figcaption>
             </figure>
           )}
           {slug === 'gaming-laptop-repair-kuwait' && (
             <figure className="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 sm:mt-10">
               <img
-                src={IMAGES.gaming.msiWorkstation.src}
-                alt="لابتوب MSI للألعاب على طاولة فحص داخل ورشة KCROC"
-                width={IMAGES.gaming.msiWorkstation.width}
-                height={IMAGES.gaming.msiWorkstation.height}
+                src={IMAGES.gaming.gamingLaptopFan.src}
+                alt="مراوح ولوحة لابتوب ألعاب أثناء الفحص"
+                width={IMAGES.gaming.gamingLaptopFan.width}
+                height={IMAGES.gaming.gamingLaptopFan.height}
                 loading={heroPageImage ? "lazy" : "eager"}
                 fetchPriority={heroPageImage ? "low" : "high"}
                 decoding="async"
@@ -3971,17 +3971,17 @@ export default function ArabicCommercialPage() {
           {slug === 'laptop-screen-repair-kuwait' && (
             <figure className="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 sm:mt-10">
               <img
-                src={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.src}
-                alt="فحص مجموعة شاشة اللابتوب لتمييز عطل الشاشة من الكابل أو الاتصال والإضاءة"
-                width={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.width}
-                height={IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair.height}
+                src={IMAGES.laptopHardware.hpPavilionLaptopOpenDesktopScreen.src}
+                alt="شاشة لابتوب HP Pavilion تعرض سطح المكتب"
+                width={IMAGES.laptopHardware.hpPavilionLaptopOpenDesktopScreen.width}
+                height={IMAGES.laptopHardware.hpPavilionLaptopOpenDesktopScreen.height}
                 loading={heroPageImage ? "lazy" : "eager"}
                 fetchPriority={heroPageImage ? "low" : "high"}
                 decoding="async"
                 className="aspect-[16/9] w-full object-cover"
               />
               <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400 sm:px-5">
-                الصورة من أعمال فك وفحص مجموعة شاشة اللابتوب. نفحص الشاشة والكابل وموصلات العرض حسب الموديل، ونؤكد القطعة والتكلفة والمدة قبل التركيب.
+                الصورة توضح لابتوب يعمل وتظهر صورة سطح المكتب. نفحص الشاشة والكابل وموصلات العرض حسب الموديل، ونؤكد القطعة والتكلفة والمدة قبل التركيب.
               </figcaption>
             </figure>
           )}
@@ -3991,10 +3991,10 @@ export default function ArabicCommercialPage() {
               <div className="grid gap-5 md:grid-cols-2">
                 <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
                   <img
-                    src={IMAGES.macbook.diagnostics.src}
-                    alt="فني يفحص جهاز MacBook مفتوحًا في مختبر KCROC بحولي لتحديد الموديل قبل إصلاح الشاشة"
-                    width={IMAGES.macbook.diagnostics.width}
-                    height={IMAGES.macbook.diagnostics.height}
+                    src={IMAGES.macbook.macbookUnboxingRepairWorkshop.src}
+                    alt="جهاز MacBook في مختبر الصيانة قبل فحص الموديل"
+                    width={IMAGES.macbook.macbookUnboxingRepairWorkshop.width}
+                    height={IMAGES.macbook.macbookUnboxingRepairWorkshop.height}
                     loading="lazy"
                     decoding="async"
                     className="aspect-[16/9] w-full object-cover"
@@ -4030,7 +4030,7 @@ export default function ArabicCommercialPage() {
               <p className="mt-3 max-w-4xl leading-8 text-slate-400">توضح الصور أنواع الأعمال التي قد يحتاجها الجهاز: فحص عام، وتنظيف التبريد، وتشخيص المكونات الداخلية. الصورة وحدها لا تحدد العطل؛ نعتمد على موديل جهازك ونتائج الفحص قبل اقتراح الإصلاح.</p>
               <div className="mt-6 grid gap-5 md:grid-cols-3">
                 <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/60">
-                  <img src={IMAGES.services.laptopRepair.src} alt="فحص وإصلاح لابتوب في مختبر KCROC بالكويت" width={IMAGES.services.laptopRepair.width} height={IMAGES.services.laptopRepair.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                  <img src={IMAGES.laptopHardware.laptopOpenRepairBench.src} alt="لابتوب مفتوح على طاولة فحص وإصلاح" width={IMAGES.laptopHardware.laptopOpenRepairBench.width} height={IMAGES.laptopHardware.laptopOpenRepairBench.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
                   <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">فحص الجهاز وتحديد مسار التشخيص المناسب قبل تحديد القطعة أو التكلفة.</figcaption>
                 </figure>
                 <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/60">
@@ -4189,10 +4189,10 @@ export default function ArabicCommercialPage() {
           {slug === 'macbook-repair-kuwait' && (
             <figure className="mt-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 sm:mt-10">
               <img
-                src={IMAGES.macbook.diagnostics.src}
-                alt="فني يفحص ماك بوك (MacBook) مفتوحًا لتشخيص أعطال الشاشة والبطارية والمذربورد في مختبر KCROC بحولي الكويت"
-                width={IMAGES.macbook.diagnostics.width}
-                height={IMAGES.macbook.diagnostics.height}
+                src={IMAGES.macbook.macbookProOpenMacosScreen.src}
+                alt="جهاز MacBook Pro أثناء فحص التشغيل والعرض"
+                width={IMAGES.macbook.macbookProOpenMacosScreen.width}
+                height={IMAGES.macbook.macbookProOpenMacosScreen.height}
                 loading={heroPageImage ? "lazy" : "eager"}
                 fetchPriority={heroPageImage ? "low" : "high"}
                 decoding="async"
@@ -4220,8 +4220,8 @@ export default function ArabicCommercialPage() {
                     description: 'التشققات وآثار الضغط والبقع الداكنة التي تتوسع قد تشير إلى تلف لوحة العرض. نطابق رقم القطعة والمواصفات قبل تأكيد الاستبدال.',
                   },
                   {
-                    image: IMAGES.laptopHardware.laptopScreenAssemblyDisassemblyRepair,
-                    alt: 'مجموعة شاشة اللابتوب وكابل العرض أثناء الفحص الفني',
+                    image: IMAGES.laptopHardware.dellLaptopCorruptedScreenGpuFailure,
+                    alt: 'خلل ظاهر في صورة شاشة لابتوب Dell أثناء التشخيص',
                     title: 'خطوط أو وميض أو صورة متقطعة',
                     description: 'السبب قد يكون لوحة الشاشة أو الكابل أو الموصل أو مسار العرض. إذا كان العطل يتغير مع زاوية الغطاء، لا تحركه بالقوة؛ قد يلزم فحص المفصلات والكابل.',
                   },
@@ -5139,7 +5139,7 @@ export default function ArabicCommercialPage() {
               <p className="mt-4 max-w-4xl leading-8 text-slate-300">نفصل بين تآكل خلايا البطارية ومشكلة الشاحن أو المنفذ وعطل دائرة الشحن على المذربورد. حسب تصميم الجهاز قد نحتاج فحص آيسي الشحن وخط بيانات البطارية أو مسار الطاقة؛ ما نحكم على قطعة قبل الفحص.</p>
               <div className="mt-6 grid items-start gap-6 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]">
                 <figure className="min-w-0 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
-                  <img src={IMAGES.upgrades.laptopBottomChassisBatteryRamOpen.src} alt="قاعدة لابتوب Windows مفتوحة لفحص البطارية والتوصيلات" width={IMAGES.upgrades.laptopBottomChassisBatteryRamOpen.width} height={IMAGES.upgrades.laptopBottomChassisBatteryRamOpen.height} sizes="(min-width: 1024px) 34vw, 100vw" loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                  <img src={IMAGES.laptopHardware.lenovoLaptopBatteryFanHeatsinkOpen.src} alt="لابتوب Lenovo مفتوح لفحص البطارية والمروحة والتوصيلات" width={IMAGES.laptopHardware.lenovoLaptopBatteryFanHeatsinkOpen.width} height={IMAGES.laptopHardware.lenovoLaptopBatteryFanHeatsinkOpen.height} sizes="(min-width: 1024px) 34vw, 100vw" loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
                   <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-300">نفحص البطارية والموصل ومسار الطاقة حسب موديل اللابتوب قبل طلب بديل.</figcaption>
                 </figure>
                 <div className="grid gap-4 sm:grid-cols-2">
@@ -5162,7 +5162,7 @@ export default function ArabicCommercialPage() {
               <p className="mt-3 max-w-4xl leading-8 text-slate-300">نفحص بطاريات HP وDell وLenovo وASUS وAcer وMSI وMicrosoft Surface حسب موديل الجهاز. تختلف البطاريات والتوصيلات والسعات حتى داخل الماركة الواحدة، لذلك نطابق رقم الموديل أو Service Tag ورقم القطعة ونتحقق من التوفر قبل تأكيد السعر.</p>
               <div className="mt-6 grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.82fr)]">
                 <figure className="min-w-0 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
-                  <img src={IMAGES.laptopHardware.hpBattery2.src} alt="بطارية لابتوب HP أثناء الفحص قبل الاستبدال" width={IMAGES.laptopHardware.hpBattery2.width} height={IMAGES.laptopHardware.hpBattery2.height} sizes="(min-width: 1024px) 34vw, 100vw" loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                  <img src={IMAGES.laptopHardware.hpBattery1.src} alt="بطارية HP HT03XL للفحص ومطابقة رقم القطعة" width={IMAGES.laptopHardware.hpBattery1.width} height={IMAGES.laptopHardware.hpBattery1.height} sizes="(min-width: 1024px) 34vw, 100vw" loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
                   <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-300">تُطابق القطعة مع رقم الموديل والتوصيل قبل طلب البطارية المناسبة.</figcaption>
                 </figure>
                 <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
@@ -5298,7 +5298,7 @@ export default function ArabicCommercialPage() {
 
             <section className="mt-12 grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]" aria-labelledby="macbook-swollen-battery">
               <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
-                <img src={IMAGES.macbook.swollenBattery1.src} alt="بطارية MacBook منتفخة وتحتاج إلى فحص وتعامل آمن في المختبر" width={IMAGES.macbook.swollenBattery1.width} height={IMAGES.macbook.swollenBattery1.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                <img src={IMAGES.macbook.swollenBattery2.src} alt="بطارية MacBook منتفخة تحتاج إلى تعامل آمن" width={IMAGES.macbook.swollenBattery2.width} height={IMAGES.macbook.swollenBattery2.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
                 <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-300">لا تضغط على البطارية المنتفخة أو تحاول فكها بنفسك.</figcaption>
               </figure>
               <div className="rounded-2xl border border-amber-700/40 bg-amber-950/20 p-6 sm:p-8">
