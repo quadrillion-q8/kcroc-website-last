@@ -811,7 +811,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
         )}
 
         {entity.repairExamples && entity.repairExamples.items.length > 0 && (
-          <section className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
+          <section data-representative-repair-scenarios className="max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/50 relative z-10">
             <h2 className="text-2xl font-bold mb-4 text-white">{entity.id === 'srv-gaming' ? 'How Our Hawalli Lab Traces Complex Gaming PC Faults' : 'Representative Repair Scenarios'}</h2>
             <p className="text-xs text-slate-500 mb-8 max-w-2xl">{entity.repairExamples.disclaimer}</p>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
@@ -826,6 +826,10 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                     <div>
                       <dt className="text-slate-500 font-semibold uppercase text-[10px] tracking-wide mb-1">Diagnosis</dt>
                       <dd className="text-slate-300 leading-relaxed">{example.diagnosis}</dd>
+                    </div>
+                    <div data-repair-scenario-action>
+                      <dt className="text-slate-500 font-semibold uppercase text-[10px] tracking-wide mb-1">Repair action</dt>
+                      <dd className="text-slate-300 leading-relaxed">{example.repair}</dd>
                     </div>
                     <div>
                       <dt className="text-slate-500 font-semibold uppercase text-[10px] tracking-wide mb-1">Outcome</dt>

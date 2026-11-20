@@ -4362,7 +4362,7 @@ export const rawGraphData: RawGraphData = {
             title: 'Business Laptop: Battery Percentage Jumping Unpredictably',
             symptoms: 'The reported charge would jump from around 55% straight down to 20% with no gradual decline in between.',
             diagnosis: 'Capacity testing showed the cell itself was still within an acceptable range, but the fuel gauge had desynced from the actual voltage curve.',
-            repair: 'A full calibration cycle (complete discharge and recharge) resynced the fuel gauge to the battery\'s real behavior.',
+            repair: 'A manufacturer-supported battery gauge calibration procedure resynced the fuel gauge after confirming the battery was not swollen or damaged and calibration was appropriate for the exact model.',
             outcome: 'Percentage reporting became linear and predictable again, with no battery replacement needed.'
           }
         ]
