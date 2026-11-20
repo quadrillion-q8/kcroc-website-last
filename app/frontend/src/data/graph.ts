@@ -500,8 +500,8 @@ export const rawGraphData: RawGraphData = {
       title: "تصليح كمبيوتر السالمية وفني لابتوب",
       description: "تصليح كمبيوتر ولابتوب في السالمية مع استلام وتوصيل مجاني من الرميثية وسلوى والبدع، والإصلاح في مختبر KCROC بحولي.",
       seo: {
-        title: "تصليح كمبيوتر السالمية | فني لابتوب واستلام مجاني | KCROC",
-        description: "تصليح كمبيوتر ولابتوب في السالمية والرميثية وسلوى والبدع. تشخيص قبل الإصلاح، معالجة أضرار السوائل، استلام وتوصيل مجاني، وضمان 30 يومًا.",
+        title: "تصليح لابتوب وكمبيوتر السالمية | استلام مجاني | KCROC",
+        description: "تصليح لابتوب وكمبيوتر بالسالمية والرميثية وسلوى والبدع. استلام وتوصيل مجاني، وفحص أولي وعرض سعر قبل التصليح في مختبر KCROC بحولي.",
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-salmiya',
         locale: 'ar_KW', alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-salmiya', 'en-KW': 'https://www.computerrepairkuwait.com/location/salmiya', 'x-default': 'https://www.computerrepairkuwait.com/location/salmiya' },
         ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-04T00:00:00+03:00',
@@ -515,8 +515,8 @@ export const rawGraphData: RawGraphData = {
       title: "تصليح كمبيوتر الجهراء وفني لابتوب",
       description: "تصليح كمبيوتر ولابتوب في الجهراء مع استلام وتوصيل مجاني من سعد العبدالله والنعيم والقصر وتيماء، والإصلاح في مختبر KCROC بحولي.",
       seo: {
-        title: "تصليح كمبيوتر الجهراء | فني لابتوب واستلام مجاني | KCROC",
-        description: "تصليح كمبيوتر ولابتوب في الجهراء وسعد العبدالله والنعيم والقصر وتيماء. تنظيف وتغيير المعجون الحراري، فحص اللوحة الأم، استلام وتوصيل مجاني، وضمان 30 يومًا.",
+        title: "تصليح كمبيوتر ولابتوب الجهراء | استلام مجاني | KCROC",
+        description: "تحتاج تصليح كمبيوتر أو لابتوب بالجهراء؟ استلام وتوصيل مجاني من الجهراء والمناطق المجاورة، وفحص أولي مجاني في مختبر KCROC بحولي.",
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-jahra',
         locale: 'ar_KW', alternates: { 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-jahra', 'en-KW': 'https://www.computerrepairkuwait.com/location/jahra', 'x-default': 'https://www.computerrepairkuwait.com/location/jahra' },
         ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList'], lastModified: '2026-10-07T00:00:00+03:00',
@@ -4174,7 +4174,7 @@ export const rawGraphData: RawGraphData = {
       ],
       seo: {
         title: 'Laptop Screen Repair Cost Kuwait | Labor from 30 KWD | KCROC',
-        description: 'Windows laptop screen repair cost in Kuwait: labor starts from 30 KWD plus the panel. Free pickup, a 30-day warranty and a confirmed quote before paid work.',
+        description: 'Windows laptop screen repair in Kuwait. Labor from 30 KWD + compatible panel, not the total price. Free diagnosis and pickup; quote before repair.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-screen-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait' },
         ogType: 'article',
         schemaTypes: ['Service', 'FAQPage'],
@@ -4455,7 +4455,7 @@ export const rawGraphData: RawGraphData = {
         { src: IMAGES.laptopHardware.laptopBatteryMotherboardOpenRepair.src, alt: IMAGES.laptopHardware.laptopBatteryMotherboardOpenRepair.alt, width: IMAGES.laptopHardware.laptopBatteryMotherboardOpenRepair.width, height: IMAGES.laptopHardware.laptopBatteryMotherboardOpenRepair.height, placement: 'process', caption: 'Battery connection and surrounding motherboard area inspected before the completed repair is tested.' }
       ],
       seo: { 
-        title: 'Laptop Battery Replacement Kuwait | Labour from 8 KWD + Battery | KCROC', 
+        title: 'Laptop Battery Replacement Kuwait | Free Pickup | KCROC', 
         description: 'Windows laptop battery replacement in Kuwait. Labour from 8 KWD + compatible battery. Free charging-path diagnosis and pickup; quote before paid work.', 
         canonicalUrl: 'https://www.computerrepairkuwait.com/battery-replacement-kuwait', 
         locale: 'en_KW',
@@ -4471,7 +4471,7 @@ export const rawGraphData: RawGraphData = {
     /* ═══════════════════════════════════════════════════════════════
        LOCATION
     ═══════════════════════════════════════════════════════════════ */
-    'loc-hawalli': { id: 'loc-hawalli', slug: 'hawalli', entityType: 'Location', isActive: true, isPhysicalLocation: true, title: 'Hawalli Repair Center', description: "Precision micro-soldering, logic-board recovery and hardware repair for MacBooks, gaming PCs and laptops at our Hawalli lab. We fix the board. We don't just swap it. Walk in on Ibn Khaldoun St or book free pickup and delivery across Kuwait.", landmark: 'Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19', coords: { lat: 29.3416921515256, lng: 48.00761257498341 }, serviceRadiusKm: 40, serviceAreas: ['Hawalli', 'Salmiya', 'Kuwait City', 'Farwaniya', 'Ahmadi', 'Jahra', 'Fahaheel', 'Mishref', 'Shuwaikh Residential', 'Abdullah Al-Salem', 'Shamiya', 'Nuzha', 'Adailiya', 'Kaifan', 'Yarmouk', 'Qortuba'], contentImage: { src: IMAGES.brand.shopExteriorDay.src, alt: IMAGES.brand.shopExteriorDay.alt, width: IMAGES.brand.shopExteriorDay.width, height: IMAGES.brand.shopExteriorDay.height, caption: 'Our repair center at Al Mullah Complex, Ibn Khaldoun St, Hawalli.' }, seo: { title: 'Computer Repair Hawalli | Walk-In + Free Pickup | KCROC', description: 'Walk-in laptop, MacBook and PC repair at Al Mullah Complex, Basement Shop 19, Ibn Khaldoun St, Hawalli. Open daily 10 AM–10 PM; free pickup across Kuwait.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/hawalli', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/location/hawalli', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-hawalli', 'x-default': 'https://www.computerrepairkuwait.com/location/hawalli' }, ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-11-05T00:00:00+03:00' }, relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard', 'srv-gaming-laptop-cleaning'], navigationPriority: 100 } as LocationEntity,
+    'loc-hawalli': { id: 'loc-hawalli', slug: 'hawalli', entityType: 'Location', isActive: true, isPhysicalLocation: true, title: 'Hawalli Repair Center', description: "Precision micro-soldering, logic-board recovery and hardware repair for MacBooks, gaming PCs and laptops at our Hawalli lab. We fix the board. We don't just swap it. Walk in on Ibn Khaldoun St or book free pickup and delivery across Kuwait.", landmark: 'Ibn Khaldoun St, Al Mullah Complex, Basement Shop 19', coords: { lat: 29.3416921515256, lng: 48.00761257498341 }, serviceRadiusKm: 40, serviceAreas: ['Hawalli', 'Salmiya', 'Kuwait City', 'Farwaniya', 'Ahmadi', 'Jahra', 'Fahaheel', 'Mishref', 'Shuwaikh Residential', 'Abdullah Al-Salem', 'Shamiya', 'Nuzha', 'Adailiya', 'Kaifan', 'Yarmouk', 'Qortuba'], contentImage: { src: IMAGES.brand.shopExteriorDay.src, alt: IMAGES.brand.shopExteriorDay.alt, width: IMAGES.brand.shopExteriorDay.width, height: IMAGES.brand.shopExteriorDay.height, caption: 'Our repair center at Al Mullah Complex, Ibn Khaldoun St, Hawalli.' }, seo: { title: 'Computer & Laptop Repair Hawalli | Walk-In Lab | KCROC', description: 'Visit KCROC at Al Mullah Complex, Basement Shop 19, Ibn Khaldoun St, Hawalli. Open daily 10 AM–10 PM. Free initial diagnosis and pickup.', canonicalUrl: 'https://www.computerrepairkuwait.com/location/hawalli', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/location/hawalli', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/computer-repair-hawalli', 'x-default': 'https://www.computerrepairkuwait.com/location/hawalli' }, ogType: 'website', schemaTypes: ['LocalBusiness'], lastModified: '2026-11-05T00:00:00+03:00' }, relatedServiceIds: ['srv-gaming', 'srv-laptop', 'srv-motherboard', 'srv-gaming-laptop-cleaning'], navigationPriority: 100 } as LocationEntity,
 
     'loc-kuwait-city': {
       id: 'loc-kuwait-city',
@@ -4879,8 +4879,8 @@ export const rawGraphData: RawGraphData = {
         caption: 'Component-level laptop, MacBook and gaming hardware assessment for Salmiya customers.'
       },
       seo: {
-        title: 'Computer, MacBook & Gaming PC Repair Salmiya | KCROC',
-        description: 'Liquid-damage, MacBook logic-board and gaming PC/laptop repair in Salmiya, Bidaa and Salwa. Free pickup and diagnostics; repairs at our Hawalli lab.',
+        title: 'Laptop & Computer Repair Salmiya | Free Pickup | KCROC',
+        description: 'Laptop, MacBook and gaming PC repair for Salmiya, Bidaa and Salwa. Free pickup and delivery to our Hawalli lab; diagnosis and quote before repair.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/location/salmiya',
         alternates: {
           'en-KW': 'https://www.computerrepairkuwait.com/location/salmiya',
@@ -7953,7 +7953,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'hp-data', title: 'Will HP laptop repair require formatting or accessing my files?', answer: 'Routine hardware diagnosis does not require browsing personal files, and formatting is not an automatic repair step. If a proposed step could affect storage or the operating system, we explain it and ask before proceeding. Data access cannot be guaranteed for every hardware fault.' }
       ],
       pricing: { startingFrom: 15, currency: 'KWD', quoteRequired: true, displayLabel: 'From 15 KWD — free diagnostic first' },
-      seo: { title: 'HP Laptop Repair Kuwait | Independent Lab | KCROC', description: 'Independent HP laptop repair in Kuwait—not HP-authorized. Pavilion, EliteBook, ProBook, Envy, OMEN and Victus diagnosis. Selected repairs from 15 KWD where applicable, free pickup and a quote before work.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/brands/hp-laptop-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait' },  ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-11-13T00:00:00+03:00' },
+      seo: { title: 'HP Laptop Repair Kuwait | Independent Lab | KCROC', description: 'Independent HP laptop repair in Kuwait, not HP-authorized. Pavilion, EliteBook, ProBook, Envy, OMEN & Victus. Selected repairs from 15 KWD where applicable; free pickup.', canonicalUrl: 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/brands/hp-laptop-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/hp-laptop-repair-kuwait' },  ogType: 'article', schemaTypes: ['Brand', 'Service', 'FAQPage', 'BreadcrumbList'], lastModified: '2026-11-13T00:00:00+03:00' },
       navigationPriority: 80, popular: true 
     } as BrandEntity,
 

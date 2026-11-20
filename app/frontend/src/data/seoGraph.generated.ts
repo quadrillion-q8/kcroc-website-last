@@ -454,8 +454,8 @@ export const SEO_GRAPH = {
       "title": "تصليح كمبيوتر السالمية وفني لابتوب",
       "slug": "ar/computer-repair-salmiya",
       "seo": {
-        "title": "تصليح كمبيوتر السالمية | فني لابتوب واستلام مجاني | KCROC",
-        "description": "تصليح كمبيوتر ولابتوب في السالمية والرميثية وسلوى والبدع. تشخيص قبل الإصلاح، معالجة أضرار السوائل، استلام وتوصيل مجاني، وضمان 30 يومًا.",
+        "title": "تصليح لابتوب وكمبيوتر السالمية | استلام مجاني | KCROC",
+        "description": "تصليح لابتوب وكمبيوتر بالسالمية والرميثية وسلوى والبدع. استلام وتوصيل مجاني، وفحص أولي وعرض سعر قبل التصليح في مختبر KCROC بحولي.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/ar/computer-repair-salmiya",
         "locale": "ar_KW",
         "alternates": {
@@ -490,8 +490,8 @@ export const SEO_GRAPH = {
       "title": "تصليح كمبيوتر الجهراء وفني لابتوب",
       "slug": "ar/computer-repair-jahra",
       "seo": {
-        "title": "تصليح كمبيوتر الجهراء | فني لابتوب واستلام مجاني | KCROC",
-        "description": "تصليح كمبيوتر ولابتوب في الجهراء وسعد العبدالله والنعيم والقصر وتيماء. تنظيف وتغيير المعجون الحراري، فحص اللوحة الأم، استلام وتوصيل مجاني، وضمان 30 يومًا.",
+        "title": "تصليح كمبيوتر ولابتوب الجهراء | استلام مجاني | KCROC",
+        "description": "تحتاج تصليح كمبيوتر أو لابتوب بالجهراء؟ استلام وتوصيل مجاني من الجهراء والمناطق المجاورة، وفحص أولي مجاني في مختبر KCROC بحولي.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/ar/computer-repair-jahra",
         "locale": "ar_KW",
         "alternates": {
@@ -2706,7 +2706,7 @@ export const SEO_GRAPH = {
       "slug": "laptop-screen-repair-kuwait",
       "seo": {
         "title": "Laptop Screen Repair Cost Kuwait | Labor from 30 KWD | KCROC",
-        "description": "Windows laptop screen repair cost in Kuwait: labor starts from 30 KWD plus the panel. Free pickup, a 30-day warranty and a confirmed quote before paid work.",
+        "description": "Windows laptop screen repair in Kuwait. Labor from 30 KWD + compatible panel, not the total price. Free diagnosis and pickup; quote before repair.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait",
         "locale": "en_KW",
         "alternates": {
