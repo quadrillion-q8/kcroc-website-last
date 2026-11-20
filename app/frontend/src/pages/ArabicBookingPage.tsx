@@ -203,7 +203,7 @@ export default function ArabicBookingPage() {
                   </button>
                   <p className="mt-3 text-center text-xs text-slate-400" data-booking-handoff-instruction>بعد فتح واتساب، اضغط إرسال الرسالة. موعد الاستلام يتأكد بعد رد فريق KCROC. لا ترسل كلمات مرور أو معلومات حساسة.</p>
                   <p className="sr-only" role="status">{isSubmitting ? 'جاري تجهيز رسالة واتساب…' : ''}</p>
-                  {handoffError && <p role="alert" className="mt-3 text-sm text-rose-300">تعذر فتح واتساب. حاول مرة ثانية أو <a href="tel:+96555301913" className="underline">اتصل بفريقنا</a>.</p>}
+                  {handoffError && <p role="alert" className="mt-3 text-sm text-rose-300">تعذر فتح واتساب. حاول مرة ثانية أو <a href={`tel:+${business.telephone}`} className="underline">اتصل بفريقنا</a>.</p>}
                   <p className="mt-4 flex items-center justify-center gap-1 text-center text-xs text-slate-500"><ShieldCheck className="h-3 w-3 text-emerald-400" aria-hidden="true" /> أرسل طلبك مباشرة إلى فريق KCROC</p>
                 </div>
               </form>
