@@ -238,7 +238,7 @@ export default function BookingPage() {
                   </Button>
                   <p className="mt-3 text-center text-xs text-slate-400" data-booking-handoff-instruction>After WhatsApp opens, tap Send. Pickup is confirmed only after KCROC replies. Do not share passwords or sensitive information.</p>
                   <p className="sr-only" role="status">{isSubmitting ? 'Preparing your WhatsApp request…' : ''}</p>
-                  {handoffError && <p role="alert" className="mt-3 text-sm text-rose-300">Could not open WhatsApp. Try again or <a href="tel:+96555301913" className="underline">call our team</a>.</p>}
+                  {handoffError && <p role="alert" className="mt-3 text-sm text-rose-300">Could not open WhatsApp. Try again or <a href={`tel:+${business.telephone}`} className="underline">call our team</a>.</p>}
                   <p className="text-center text-xs text-slate-500 mt-4 flex items-center justify-center gap-1">
                     <ShieldCheck className="w-3 h-3 text-emerald-400" /> Secure & Instant. Speak directly with our engineers.
                   </p>
