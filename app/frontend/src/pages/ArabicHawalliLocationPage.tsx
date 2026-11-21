@@ -473,6 +473,58 @@ export default function ArabicHawalliLocationPage() {
         </div>
       </section>
 
+
+      {/* Match the English Hawalli page's six price anchors. The standalone pricing pages stay untouched. */}
+      <section id="hawalli-ar-pricing-cta" data-kcroc-editorial-panel="hawalli-pricing" aria-labelledby="hawalli-ar-pricing-heading" className="border-t border-slate-800/70 px-4 py-8 sm:px-6">
+        <div className="container mx-auto max-w-6xl rounded-2xl border border-cyan-500/20 bg-cyan-950/20 p-5 sm:p-6">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 id="hawalli-ar-pricing-heading" className="text-xl font-black text-white">أسعار البداية في مختبر حولي</h2>
+              <p className="mt-2 max-w-3xl text-sm leading-7 text-slate-300">الفحص الأولي مجاني، ونوضح لك السعر النهائي قبل أي شغل مدفوع بعد تحديد العطل والقطعة المناسبة.</p>
+            </div>
+            <Link to="/ar/pricing" className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-cyan-500 px-5 py-3 text-sm font-black text-slate-950 hover:bg-cyan-400">
+              تفاصيل الأسعار والقطع <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-3">
+            {HAWALLI_AR_PRICE_CARDS.map((item) => (
+              <div key={item.id} data-hawalli-pricing-card="true" data-hawalli-price={item.id} className="rounded-xl border border-slate-700/70 bg-slate-950/40 p-4">
+                <p className="text-xs font-semibold text-slate-400">{item.label}</p>
+                <p className="mt-1 text-xl font-black text-white">{item.price}</p>
+                <p className="mt-1 text-xs leading-6 text-slate-400">{item.note}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 text-xs leading-7 text-slate-400">الأسعار استرشادية وليست إجماليًا مضمونًا. سعر 25 د.ك لأعمال MacBook المختارة لا يشمل تصليح اللوحة المنطقية، وسعر تصليحها منفصل (45–100+ د.ك). يختلف السعر بحسب الموديل، ونوع القطعة، وتعقيد العطل. قطع الغيار والشاشات والبطاريات تُحسب بشكل منفصل حيثما ذُكر.</p>
+        </div>
+      </section>
+
+      <section data-kcroc-editorial-panel="hawalli-content" aria-labelledby="hawalli-ar-problems" className="border-t border-slate-800/70 px-4 py-10 sm:px-6 sm:py-14">
+        <div className="container mx-auto max-w-6xl">
+          <h2 id="hawalli-ar-problems" className="text-2xl font-black text-white sm:text-3xl">أعطال الكمبيوتر واللابتوب اللي نفحصها في حولي</h2>
+          <p className="mt-2 max-w-3xl text-sm leading-7 text-slate-400">اختَر المشكلة للاطلاع على خطوات التشخيص والنصائح المناسبة قبل حجز الإصلاح.</p>
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {localizedProblems.map((problem) => (
+              <Link key={problem.id} data-hawalli-ar-problem={problem.id} to={problem.path} className="flex min-h-14 items-center gap-3 rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3 text-sm font-semibold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+                <Wrench className="h-4 w-4 shrink-0 text-cyan-400" aria-hidden="true" />{problem.title}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section data-kcroc-editorial-panel="hawalli-content" aria-labelledby="hawalli-ar-brands" className="border-t border-slate-800/70 bg-slate-900/20 px-4 py-10 sm:px-6 sm:py-14">
+        <div className="container mx-auto max-w-6xl">
+          <h2 id="hawalli-ar-brands" className="text-2xl font-black text-white sm:text-3xl">ماركات اللابتوب اللي نصلحها في حولي</h2>
+          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-7">
+            {localizedBrands.map((brand) => (
+              <Link key={brand.id} data-hawalli-ar-brand={brand.id} to={brand.path} className="rounded-xl border border-slate-800 bg-slate-900/60 px-3 py-4 text-center text-sm font-black text-white hover:border-cyan-500/40 hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">{brand.title}</Link>
+            ))}
+            <Link data-hawalli-ar-brand="apple-macbook" to="/ar/macbook-repair-kuwait" className="rounded-xl border border-slate-800 bg-slate-900/60 px-3 py-4 text-center text-sm font-black text-white hover:border-cyan-500/40 hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">Apple MacBook</Link>
+          </div>
+        </div>
+      </section>
+
       <section className="border-y border-slate-800/70 bg-slate-950/70 px-4 py-10 sm:px-6 sm:py-14">
         <div className="container mx-auto max-w-6xl">
           <div className="mb-7 max-w-3xl">
