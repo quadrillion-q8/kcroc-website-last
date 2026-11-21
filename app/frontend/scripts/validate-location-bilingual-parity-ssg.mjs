@@ -42,5 +42,51 @@ for (const [en,ar] of pairs) {
     assert.equal($('link[rel="canonical"]').attr('href'),host+route,route+' preserved canonical');
     assert.ok(main.find('[data-kcroc-editorial-panel]').length>0,route+' editorial surface');
   }
+
+  if (physical) {
+    // The paired Hawalli pages must offer the same repair decisions, not merely the same hero buttons.
+    const enPage = read(en), arPage = read(ar);
+    const enMain = enPage('main'), arMain = arPage('main');
+    const enSource = fs.readFileSync(path.join(root, 'src/pages/HawalliLocationPage.tsx'), 'utf8');
+    const arSource = fs.readFileSync(path.join(root, 'src/pages/ArabicHawalliLocationPage.tsx'), 'utf8');
+    const groupMatches = [...enSource.matchAll(/serviceIds:\s*\[([^\]]+)\]/g)];
+    const englishServiceIds = [...new Set(groupMatches.flatMap(match => [...match[1].matchAll(/'([^']+)'/g)].map(m => m[1])))];
+    const arabicServiceIds = [...new Set([...arSource.matchAll(/'(srv-[^']+)'\s*:\s*\{/g)].map(m => m[1]))];
+    assert.equal(englishServiceIds.length, 15, 'Hawalli EN service groups must remain explicit');
+    assert.deepEqual(arabicServiceIds.slice().sort(), englishServiceIds.slice().sort(), 'Hawalli service IDs must match across languages');
+    const arServices = arMain.find('[data-hawalli-ar-service]');
+    assert.equal(arServices.length, englishServiceIds.length, 'All Hawalli services need Arabic cards');
+    for (const item of arServices.toArray()) {
+      const href = arPage(item).attr('href') || '';
+      assert.ok(href.startsWith('/ar/'), 'Arabic service must link to Arabic destination: ' + href);
+    }
+
+    const englishPricing = enMain.find('[data-hawalli-pricing-card]');
+    const arabicPricing = arMain.find('[data-hawalli-pricing-card]');
+    assert.equal(englishPricing.length, 6, 'English Hawalli baseline price-card count');
+    assert.equal(arabicPricing.length, englishPricing.length, 'Arabic Hawalli must show all six price anchors');
+    for (const item of englishPricing.toArray()) {
+      const id = enPage(item).attr('data-hawalli-price');
+      const englishPrice = enPage(item).find('p').eq(1).text().match(/\d+/g)?.join('/') || '';
+      const arCard = arMain.find('[data-hawalli-price="' + id + '"]');
+      const arabicPrice = arCard.find('p').eq(1).text().match(/\d+/g)?.join('/') || '';
+      assert.equal(arCard.length, 1, 'Missing Arabic price card: ' + id);
+      assert.equal(arabicPrice, englishPrice, 'Arabic price mismatch for ' + id);
+    }
+
+    assert.equal(arMain.find('[data-hawalli-ar-problem]').length, 14, 'Hawalli requires all 14 localized problem links');
+    assert.equal(arMain.find('[data-hawalli-ar-brand]').length, 7, 'Hawalli requires six laptop brands and MacBook');
+    assert.equal(arMain.find('[data-hawalli-ar-area]').length, pairs.length - 1, 'Hawalli must link every other active Arabic area');
+    assert.equal(arMain.find('[data-hawalli-ar-trust]').length, 6, 'Hawalli requires all six repair assurances');
+    assert.equal(arMain.find('[data-hawalli-ar-faq]').length, 12, 'Hawalli needs full Arabic FAQ depth');
+    assert.equal(arMain.find('[data-hawalli-ar-review]').length, enMain.find('blockquote').length, 'Hawalli review counts should match English');
+    assert.equal(arMain.find('a[href="/ar/gallery"]').length, 1, 'Hawalli Arabic gallery must keep Arabic visitors localized');
+    const images = arMain.find('img').toArray().map(el => arPage(el).attr('src')).filter(Boolean);
+    assert.equal(new Set(images).size, images.length, 'Hawalli must not display the same photo twice on one page');
+    for (const item of arMain.find('[data-hawalli-ar-problem], [data-hawalli-ar-brand], [data-hawalli-ar-area]').toArray()) {
+      const href = arPage(item).attr('href') || '';
+      assert.ok(href.startsWith('/ar/'), 'Arabic discovery link must stay Arabic: ' + href);
+    }
+  }
 }
-console.log('Location bilingual parity: '+pairs.length+' EN/AR pairs, shared location CTAs, one H1 per page, Arabic hero photos, canonical, local pricing, and Hawalli-only physical lab verified.');
+console.log('Location bilingual parity: '+pairs.length+' EN/AR pairs, shared location CTAs, one H1 per page, Arabic hero photos, canonical, local pricing, Hawalli physical-lab identity, service catalog, price values, reviews, trust, Arabic discovery and unique photos verified.');
