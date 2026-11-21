@@ -210,8 +210,8 @@ requireContains(serviceLayoutCss, '[aria-labelledby="repair-process-heading"] ar
 requireContains(serviceLayoutCss, 'background: #c9804d !important;', 'pages/templates/ServiceTemplateLaptopLayout.css', 'warm service-process markers must use KCROC copper.');
 requireContains(serviceLayoutCss, 'color: #17110c !important;', 'pages/templates/ServiceTemplateLaptopLayout.css', 'warm service-process markers must use a high-contrast dark foreground.');
 requireContains(serviceLayoutCss, 'border-radius: 1.4rem;', 'pages/templates/ServiceTemplateLaptopLayout.css', 'service hero corners must be restrained rather than oversized.');
-requireContains(globalCss, '"Noto Sans Arabic", "Noto Naskh Arabic", "Geeza Pro", Tahoma, Arial, sans-serif', 'index.css', 'Arabic reading areas must prefer an Arabic-capable system font stack.');
-requireContains(globalCss, '[dir="rtl"] :is(h1, h2, h3, h4)', 'index.css', 'Arabic headings must not inherit tight Latin tracking and must retain adequate line height.');
+requireContains(globalCss, "--kcroc-arabic-font: 'IBM Plex Sans Arabic', 'Noto Sans Arabic', Tahoma, Arial, sans-serif;", 'index.css', 'Arabic reading areas must use the licensed, self-hosted IBM Plex font stack.');
+requireContains(globalCss, ':lang(ar):is(h1, h2, h3, h4)', 'index.css', 'Arabic headings must not inherit tight Latin tracking and must retain adequate line height.');
 requireContains(arabicServicePage, 'aria-labelledby="charging-port-repair-process" data-service-editorial-panel', 'pages/ArabicCommercialPage.tsx', 'Arabic charging-port process section must use the shared editorial panel.');
 requireContains(arabicServicePage, 'aria-labelledby="keyboard-repair-process" data-service-editorial-panel', 'pages/ArabicCommercialPage.tsx', 'Arabic keyboard process section must use the shared editorial panel.');
 requireContains(arabicServicePage, 'aria-labelledby="macbook-screen-process" data-service-editorial-panel', 'pages/ArabicCommercialPage.tsx', 'Arabic MacBook screen process section must use the shared editorial panel.');
