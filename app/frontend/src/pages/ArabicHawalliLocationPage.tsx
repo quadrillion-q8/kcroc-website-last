@@ -712,7 +712,7 @@ export default function ArabicHawalliLocationPage() {
           <div className="mb-7"><p className="text-sm font-black text-cyan-300">إجابات محلية</p><h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">أسئلة شائعة عن تصليح الكمبيوتر في حولي</h2></div>
           <div className="space-y-3">
             {faqs.map((item, index) => (
-              <details key={item.q} className="group rounded-xl border border-slate-800 bg-slate-950/40 p-4 sm:p-5" open={index === 0}>
+              <details key={item.q} data-hawalli-ar-faq="true" className="group rounded-xl border border-slate-800 bg-slate-950/40 p-4 sm:p-5" open={index === 0}>
                 <summary className="cursor-pointer list-none font-bold text-white marker:hidden">{item.q}</summary>
                 <p className="mt-3 text-sm leading-7 text-slate-400">{item.a}</p>
               </details>
