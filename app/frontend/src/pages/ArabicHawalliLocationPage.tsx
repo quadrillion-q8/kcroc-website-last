@@ -233,6 +233,14 @@ export default function ArabicHawalliLocationPage() {
       q: 'هل تحتاج الصيانة فورمات أو فتح ملفاتي؟',
       a: 'فحص الهاردوير ما يتطلب تصفح ملفاتك ولا نسوي فورمات كخطوة تلقائية. إذا احتاجت الحالة خطوة ممكن تأثر على وحدة التخزين أو النظام، نشرحها لك ونطلب موافقتك قبل التنفيذ.',
     },
+    {
+      q: 'شنو ماركات اللابتوب اللي تصلحونها؟',
+      a: 'نصلح ماركات اللابتوب مثل ' + KCROC_GRAPH.brands.map((brand) => brand.brandName).join('، ') + ' وأجهزة Apple MacBook، ونحدد الإصلاح بعد التشخيص.',
+    },
+    {
+      q: 'كم ياخذ وقت تصليح الكمبيوتر؟',
+      a: 'الوقت يعتمد على نوع العطل وتوفر القطعة ونتيجة الفحص. نوضح لك المدة المتوقعة بعد التشخيص وقبل اعتماد الإصلاح.',
+    },
   ];
 
   const faqSchema = {
@@ -564,6 +572,29 @@ export default function ArabicHawalliLocationPage() {
         </div>
       </section>
 
+
+      <section data-kcroc-editorial-panel="hawalli-content" aria-labelledby="hawalli-ar-trust" className="border-t border-slate-800/70 px-4 py-10 sm:px-6 sm:py-14">
+        <div className="container mx-auto max-w-6xl">
+          <h2 id="hawalli-ar-trust" className="text-2xl font-black text-white sm:text-3xl">ليش تختار مختبر KCROC في حولي؟</h2>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              ['تصليح على مستوى المكونات', 'نفحص دوائر الطاقة والشحن ونصلح المكوّن المتضرر إذا كانت حالته تسمح، بدل تبديل البورد بدون تشخيص.'],
+              ['خصوصية الجهاز والملفات', 'فحص الهاردوير المعتاد ما يتطلب تصفح ملفاتك؛ نشرح أي خطوة قد تؤثر على وحدة التخزين ونطلب موافقتك.'],
+              ['استلام وتوصيل مجاني', 'تقدر تزور مختبر حولي أو ترتب استلام الجهاز وإرجاعه من مناطق الكويت اللي نخدمها.'],
+              ['ضمان تصليح 30 يومًا', 'الإصلاحات المكتملة مشمولة بضمان 30 يومًا وفق شروط الخدمة.'],
+              ['ما تصلح؟ ما تدفع', 'تسري سياسة No Fix, No Fee وفق شروطها بعد تقييم العطل، ونوضح لك أي استثناء قبل بدء العمل.'],
+              ['مختبر آمن من الكهرباء الساكنة', 'فحص البورد واللحام المجهري يتم على طاولات عمل مهيأة لتقليل مخاطر التفريغ الكهربائي الساكن ESD.'],
+            ].map(([title, description]) => (
+              <article key={title} data-hawalli-ar-trust="true" className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
+                <CheckCircle2 className="h-5 w-5 text-cyan-400" aria-hidden="true" />
+                <h3 className="mt-3 font-black text-white">{title}</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-400">{description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section data-kcroc-editorial-panel="hawalli-content" className="border-t border-slate-800/70 bg-slate-900/20 px-4 py-10 sm:px-6 sm:py-14">
         <div className="container mx-auto max-w-6xl">
           <div className="mb-7"><p className="text-sm font-black text-cyan-300">تعرف على مكان الإصلاح</p><h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">صور من مختبر KCROC في حولي</h2><p className="mt-2 max-w-3xl text-sm leading-7 text-slate-400">صور فعلية للمختبر ومساحة العمل والأدوات. عنواننا واحد في حولي؛ أما الاستلام والتوصيل فيغطي المناطق التي نخدمها.</p></div>
@@ -578,6 +609,35 @@ export default function ArabicHawalliLocationPage() {
           <Link to="/ar/gallery" className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-cyan-300 hover:text-cyan-200">شاهد معرض الصور <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
         </div>
       </section>
+
+
+      {hawalliReviews.length > 0 && reviews && (
+        <section data-kcroc-editorial-panel="hawalli-content" aria-labelledby="hawalli-ar-reviews" className="border-t border-slate-800/70 bg-slate-900/20 px-4 py-10 sm:px-6 sm:py-14">
+          <div className="container mx-auto max-w-5xl">
+            <div className="mb-7 text-center">
+              <div className="inline-flex items-center gap-2">
+                <Star className="h-5 w-5 fill-cyan-400 text-cyan-400" aria-hidden="true" />
+                <span className="text-xl font-black text-white">{reviews.aggregateRating.ratingValue}</span>
+                <span className="text-sm text-slate-400">تقييم Google</span>
+              </div>
+              <h2 id="hawalli-ar-reviews" className="mt-2 text-2xl font-black text-white sm:text-3xl">تجارب عملاء مختبر حولي</h2>
+              <a href={DIRECTIONS_URL} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex min-h-11 items-center text-sm font-bold text-cyan-300 hover:text-cyan-200">شوف التقييمات على Google</a>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              {hawalliReviews.map((review) => (
+                <blockquote key={review.name + review.time} data-hawalli-ar-review="true" className="flex flex-col rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
+                  <p dir="auto" className="flex-1 text-sm leading-7 text-slate-200">“{review.text}”</p>
+                  <footer className="mt-4 text-sm text-slate-400">
+                    <span className="font-bold text-white">{review.name}</span>
+                    <span dir="auto" className="mt-1 block">{review.location} · {review.device} · {review.time}</span>
+                    {review.sourceUrl && <a href={review.sourceUrl} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex min-h-10 items-center font-semibold text-cyan-300 hover:text-cyan-200">اقرأ التقييم الأصلي على Google</a>}
+                  </footer>
+                </blockquote>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="border-t border-slate-800/70 px-4 py-10 sm:px-6 sm:py-14">
         <div className="container mx-auto max-w-6xl">
@@ -665,14 +725,9 @@ export default function ArabicHawalliLocationPage() {
         <div className="container mx-auto max-w-6xl">
           <div className="mb-7"><p className="text-sm font-black text-cyan-300">تغطية الكويت</p><h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">المختبر في حولي ونخدم مناطق أخرى بالاستلام</h2><p className="mt-2 max-w-3xl text-sm leading-7 text-slate-400">هذه روابط لمناطق وخدمات ذات صلة. لا تعني وجود فروع فعلية خارج مختبر حولي.</p></div>
           <div className="flex flex-wrap gap-3">
-            {[
-              { title: 'السالمية', path: '/ar/computer-repair-salmiya' },
-              { title: 'الفروانية', path: '/ar/computer-repair-farwaniya' },
-              { title: 'مدينة الكويت', path: '/ar/computer-repair-kuwait-city' },
-              { title: 'تصليح كمبيوتر بالقرب مني', path: '/ar/near-me' },
-              { title: 'فني كمبيوتر في الكويت', path: '/ar' },
-              { title: 'تصليح كمبيوتر في الكويت', path: '/ar/computer-repair-kuwait' },
-            ].map((item) => <Link key={item.path} to={item.path} className="rounded-full border border-slate-800 bg-slate-900/50 px-4 py-2 text-sm font-bold text-slate-200 transition-colors hover:border-cyan-500/40 hover:text-cyan-300">{item.title}</Link>)}
+            {nearbyLocations.map((item) => <Link key={item.path} data-hawalli-ar-area={item.slug} to={item.path} className="rounded-full border border-slate-800 bg-slate-900/50 px-4 py-2 text-sm font-bold text-slate-200 transition-colors hover:border-cyan-500/40 hover:text-cyan-300">{item.title}</Link>)}
+            <Link to="/ar/locations" className="rounded-full border border-cyan-500/40 bg-cyan-950/20 px-4 py-2 text-sm font-bold text-cyan-300 hover:bg-cyan-950/40">كل مناطق الخدمة</Link>
+            <Link to="/ar/near-me" className="rounded-full border border-slate-800 bg-slate-900/50 px-4 py-2 text-sm font-bold text-slate-200 hover:text-cyan-300">تصليح كمبيوتر بالقرب مني</Link>
           </div>
         </div>
       </section>
