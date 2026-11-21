@@ -26,6 +26,9 @@ import MapComponent from '../components/MapComponent';
 import { useAnalytics } from '../core/analytics/AnalyticsProvider';
 import { IMAGES } from '../constants/images';
 import { buildWhatsAppLink } from '../utils/whatsappIntent';
+import { ENGLISH_TO_ARABIC } from '../utils/locale';
+import { arabicLocationInventory } from '../utils/arabicLocationRoutes';
+import { isReviewPublishable } from '../utils/publicationEligibility';
 
 const BASE_URL = KCROC_GRAPH.business?.websiteUrl ?? 'https://www.computerrepairkuwait.com';
 const PAGE_URL = BASE_URL + '/ar/computer-repair-hawalli';
@@ -82,6 +85,37 @@ const ARABIC_SERVICES: Record<string, { title: string; description: string; path
     description: 'ترقية التخزين والذاكرة حسب توافق الجهاز واحتياجك.',
     path: '/ar/ssd-ram-upgrade-kuwait',
   },
+  'srv-desktop-pc': { title: 'تصليح الكمبيوتر المكتبي', description: 'تشخيص أعطال تشغيل الكمبيوتر المكتبي والطاقة والقطع الداخلية داخل مختبر حولي.', path: '/ar/desktop-pc-repair-kuwait' },
+  'srv-liquid-damage': { title: 'تصليح أضرار السوائل', description: 'فحص آثار السوائل والتآكل على الدوائر؛ افصل الجهاز ولا تشغله مجددًا قبل الفحص.', path: '/ar/laptop-liquid-damage-repair-kuwait' },
+  'srv-macbook-screen': { title: 'تبديل شاشة MacBook', description: 'فحص الشاشة والكابل والتوصيلات ومطابقة القطعة حسب موديل MacBook ورقم A.', path: '/ar/macbook-screen-replacement-kuwait' },
+  'srv-gaming-laptop-cleaning': { title: 'تنظيف وتبريد لابتوب الألعاب', description: 'فحص الحرارة والمراوح وتنظيف نظام التبريد وإعادة المعجون عند الحاجة.', path: '/ar/gaming-laptop-cleaning-kuwait' },
+  'srv-hinge': { title: 'تصليح مفصلات وهيكل اللابتوب', description: 'تقييم المفصلات والقواعد والغطاء لتحديد خيار الإصلاح المناسب.', path: '/ar/laptop-hinge-repair-kuwait' },
+};
+
+const HAWALLI_AR_PRICE_CARDS = [
+  { id: 'diagnostic', label: 'الفحص الأولي', price: 'مجانًا', note: 'فحص مبدئي على طاولة المختبر بدون التزام' },
+  { id: 'motherboard', label: 'تصليح المذربورد', price: 'من 25 د.ك', note: 'نطاق استرشادي لإصلاح المكونات: 25–60 د.ك' },
+  { id: 'macbook', label: 'خدمات مختارة لأجهزة MacBook', price: 'من 25 د.ك', note: 'تصليح لوحة MacBook المنطقية: 45–100+ د.ك' },
+  { id: 'battery', label: 'أجرة تبديل البطارية', price: 'من 8 د.ك', note: 'سعر البطارية نفسها غير مشمول' },
+  { id: 'keyboard', label: 'أجرة تبديل الكيبورد', price: 'من 10 د.ك', note: 'سعر الكيبورد أو المجموعة غير مشمول' },
+  { id: 'screen', label: 'أجرة تبديل الشاشة', price: 'من 30 د.ك', note: 'سعر لوحة الشاشة غير مشمول' },
+] as const;
+
+const HAWALLI_AR_PROBLEM_LABELS: Record<string, string> = {
+  'laptop-wont-turn-on': 'اللابتوب ما يشتغل أو ما توصله كهرباء',
+  'laptop-overheating-kuwait': 'حرارة اللابتوب مرتفعة أو المروحة صوتها عالي',
+  'laptop-black-screen-kuwait': 'الجهاز يشتغل لكن الشاشة سوداء',
+  'spilled-water-on-laptop': 'انسكب ماي أو قهوة على اللابتوب',
+  'laptop-plugged-in-not-charging': 'اللابتوب مو راضي يشحن',
+  'laptop-keyboard-not-working': 'الكيبورد ما يشتغل',
+  'laptop-wifi-not-connecting': 'الواي فاي ما يتصل',
+  'laptop-running-very-slow': 'اللابتوب صار بطيء بشكل واضح',
+  'laptop-hinge-broken': 'مفصلات اللابتوب مكسورة',
+  'laptop-screen-cracked-kuwait': 'شاشة اللابتوب مكسورة',
+  'windows-wont-boot-kuwait': 'ويندوز ما يقلع',
+  'blue-screen-of-death-bsod-fix-kuwait': 'الشاشة الزرقاء BSOD',
+  'computer-freezing-crashing-kuwait': 'الكمبيوتر يعلق أو يطفي فجأة',
+  'virus-malware-removal-kuwait': 'برامج ضارة أو فايروسات',
 };
 
 const GALLERY = [
@@ -108,6 +142,17 @@ export default function ArabicHawalliLocationPage() {
   const business = KCROC_GRAPH.business;
   const reviews = KCROC_GRAPH.reviews;
   const services = KCROC_GRAPH.services.filter((service) => ARABIC_SERVICES[service.id]);
+  const localizedProblems = KCROC_GRAPH.problems.flatMap((problem) => {
+    const path = ENGLISH_TO_ARABIC['/' + problem.slug];
+    const title = HAWALLI_AR_PROBLEM_LABELS[problem.slug];
+    return path && title ? [{ id: problem.id, title, path }] : [];
+  });
+  const localizedBrands = KCROC_GRAPH.brands.flatMap((brand) => {
+    const path = ENGLISH_TO_ARABIC['/' + brand.slug];
+    return path ? [{ id: brand.id, title: brand.brandName, path }] : [];
+  });
+  const nearbyLocations = arabicLocationInventory().filter((item) => item.slug !== 'hawalli' && item.hasArabic);
+  const hawalliReviews = reviews?.items.filter((review) => review.location === 'Hawalli' && isReviewPublishable(review)).slice(0, 3) ?? [];
 
   if (!location || !business) return null;
 
@@ -412,7 +457,7 @@ export default function ArabicHawalliLocationPage() {
             {services.map((service) => {
               const copy = ARABIC_SERVICES[service.id];
               return (
-                <Link key={service.id} to={copy.path} className="group rounded-2xl border border-slate-800 bg-slate-900/40 p-5 transition-colors hover:border-cyan-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+                <Link key={service.id} data-hawalli-ar-service={service.id} to={copy.path} className="group rounded-2xl border border-slate-800 bg-slate-900/40 p-5 transition-colors hover:border-cyan-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-300">
                       {service.id === 'srv-motherboard' ? <Cpu className="h-5 w-5" aria-hidden="true" /> : service.id === 'srv-screen' ? <Monitor className="h-5 w-5" aria-hidden="true" /> : service.id === 'srv-battery' ? <BatteryCharging className="h-5 w-5" aria-hidden="true" /> : service.id === 'srv-macbook' ? <Apple className="h-5 w-5" aria-hidden="true" /> : service.id === 'srv-gaming' || service.id === 'srv-gaming-laptop' ? <Gamepad2 className="h-5 w-5" aria-hidden="true" /> : service.id === 'srv-laptop' ? <Laptop className="h-5 w-5" aria-hidden="true" /> : <Wrench className="h-5 w-5" aria-hidden="true" />}
@@ -478,7 +523,7 @@ export default function ArabicHawalliLocationPage() {
               </figure>
             ))}
           </div>
-          <Link to="/gallery" className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-cyan-300 hover:text-cyan-200">شاهد معرض الصور <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+          <Link to="/ar/gallery" className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-cyan-300 hover:text-cyan-200">شاهد معرض الصور <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
         </div>
       </section>
 
