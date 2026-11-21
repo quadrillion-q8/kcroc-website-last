@@ -26,6 +26,9 @@ import MapComponent from '../components/MapComponent';
 import { useAnalytics } from '../core/analytics/AnalyticsProvider';
 import { IMAGES } from '../constants/images';
 import { buildWhatsAppLink } from '../utils/whatsappIntent';
+import { ENGLISH_TO_ARABIC } from '../utils/locale';
+import { arabicLocationInventory } from '../utils/arabicLocationRoutes';
+import { isReviewPublishable } from '../utils/publicationEligibility';
 
 const BASE_URL = KCROC_GRAPH.business?.websiteUrl ?? 'https://www.computerrepairkuwait.com';
 const PAGE_URL = BASE_URL + '/ar/computer-repair-hawalli';
@@ -82,6 +85,37 @@ const ARABIC_SERVICES: Record<string, { title: string; description: string; path
     description: 'ترقية التخزين والذاكرة حسب توافق الجهاز واحتياجك.',
     path: '/ar/ssd-ram-upgrade-kuwait',
   },
+  'srv-desktop-pc': { title: 'تصليح الكمبيوتر المكتبي', description: 'تشخيص أعطال تشغيل الكمبيوتر المكتبي والطاقة والقطع الداخلية داخل مختبر حولي.', path: '/ar/desktop-pc-repair-kuwait' },
+  'srv-liquid-damage': { title: 'تصليح أضرار السوائل', description: 'فحص آثار السوائل والتآكل على الدوائر؛ افصل الجهاز ولا تشغله مجددًا قبل الفحص.', path: '/ar/laptop-liquid-damage-repair-kuwait' },
+  'srv-macbook-screen': { title: 'تبديل شاشة MacBook', description: 'فحص الشاشة والكابل والتوصيلات ومطابقة القطعة حسب موديل MacBook ورقم A.', path: '/ar/macbook-screen-replacement-kuwait' },
+  'srv-gaming-laptop-cleaning': { title: 'تنظيف وتبريد لابتوب الألعاب', description: 'فحص الحرارة والمراوح وتنظيف نظام التبريد وإعادة المعجون عند الحاجة.', path: '/ar/gaming-laptop-cleaning-kuwait' },
+  'srv-hinge': { title: 'تصليح مفصلات وهيكل اللابتوب', description: 'تقييم المفصلات والقواعد والغطاء لتحديد خيار الإصلاح المناسب.', path: '/ar/laptop-hinge-repair-kuwait' },
+};
+
+const HAWALLI_AR_PRICE_CARDS = [
+  { id: 'diagnostic', label: 'الفحص الأولي', price: 'مجانًا', note: 'فحص مبدئي على طاولة المختبر بدون التزام' },
+  { id: 'motherboard', label: 'تصليح المذربورد', price: 'من 25 د.ك', note: 'نطاق استرشادي لإصلاح المكونات: 25–60 د.ك' },
+  { id: 'macbook', label: 'خدمات مختارة لأجهزة MacBook', price: 'من 25 د.ك', note: 'تصليح لوحة MacBook المنطقية: 45–100+ د.ك' },
+  { id: 'battery', label: 'أجرة تبديل البطارية', price: 'من 8 د.ك', note: 'سعر البطارية نفسها غير مشمول' },
+  { id: 'keyboard', label: 'أجرة تبديل الكيبورد', price: 'من 10 د.ك', note: 'سعر الكيبورد أو المجموعة غير مشمول' },
+  { id: 'screen', label: 'أجرة تبديل الشاشة', price: 'من 30 د.ك', note: 'سعر لوحة الشاشة غير مشمول' },
+] as const;
+
+const HAWALLI_AR_PROBLEM_LABELS: Record<string, string> = {
+  'laptop-wont-turn-on': 'اللابتوب ما يشتغل أو ما توصله كهرباء',
+  'laptop-overheating-kuwait': 'حرارة اللابتوب مرتفعة أو المروحة صوتها عالي',
+  'laptop-black-screen-kuwait': 'الجهاز يشتغل لكن الشاشة سوداء',
+  'spilled-water-on-laptop': 'انسكب ماي أو قهوة على اللابتوب',
+  'laptop-plugged-in-not-charging': 'اللابتوب مو راضي يشحن',
+  'laptop-keyboard-not-working': 'الكيبورد ما يشتغل',
+  'laptop-wifi-not-connecting': 'الواي فاي ما يتصل',
+  'laptop-running-very-slow': 'اللابتوب صار بطيء بشكل واضح',
+  'laptop-hinge-broken': 'مفصلات اللابتوب مكسورة',
+  'laptop-screen-cracked-kuwait': 'شاشة اللابتوب مكسورة',
+  'windows-wont-boot-kuwait': 'ويندوز ما يقلع',
+  'blue-screen-of-death-bsod-fix-kuwait': 'الشاشة الزرقاء BSOD',
+  'computer-freezing-crashing-kuwait': 'الكمبيوتر يعلق أو يطفي فجأة',
+  'virus-malware-removal-kuwait': 'برامج ضارة أو فايروسات',
 };
 
 const GALLERY = [
@@ -108,6 +142,17 @@ export default function ArabicHawalliLocationPage() {
   const business = KCROC_GRAPH.business;
   const reviews = KCROC_GRAPH.reviews;
   const services = KCROC_GRAPH.services.filter((service) => ARABIC_SERVICES[service.id]);
+  const localizedProblems = KCROC_GRAPH.problems.flatMap((problem) => {
+    const path = ENGLISH_TO_ARABIC['/' + problem.slug];
+    const title = HAWALLI_AR_PROBLEM_LABELS[problem.slug];
+    return path && title ? [{ id: problem.id, title, path }] : [];
+  });
+  const localizedBrands = KCROC_GRAPH.brands.flatMap((brand) => {
+    const path = ENGLISH_TO_ARABIC['/' + brand.slug];
+    return path ? [{ id: brand.id, title: brand.brandName, path }] : [];
+  });
+  const nearbyLocations = arabicLocationInventory().filter((item) => item.slug !== 'hawalli' && item.hasArabic);
+  const hawalliReviews = reviews?.items.filter((review) => review.location === 'Hawalli' && isReviewPublishable(review)).slice(0, 3) ?? [];
 
   if (!location || !business) return null;
 
@@ -187,6 +232,14 @@ export default function ArabicHawalliLocationPage() {
     {
       q: 'هل تحتاج الصيانة فورمات أو فتح ملفاتي؟',
       a: 'فحص الهاردوير ما يتطلب تصفح ملفاتك ولا نسوي فورمات كخطوة تلقائية. إذا احتاجت الحالة خطوة ممكن تأثر على وحدة التخزين أو النظام، نشرحها لك ونطلب موافقتك قبل التنفيذ.',
+    },
+    {
+      q: 'شنو ماركات اللابتوب اللي تصلحونها؟',
+      a: 'نصلح ماركات اللابتوب مثل ' + KCROC_GRAPH.brands.map((brand) => brand.brandName).join('، ') + ' وأجهزة Apple MacBook، ونحدد الإصلاح بعد التشخيص.',
+    },
+    {
+      q: 'كم ياخذ وقت تصليح الكمبيوتر؟',
+      a: 'الوقت يعتمد على نوع العطل وتوفر القطعة ونتيجة الفحص. نوضح لك المدة المتوقعة بعد التشخيص وقبل اعتماد الإصلاح.',
     },
   ];
 
@@ -412,7 +465,7 @@ export default function ArabicHawalliLocationPage() {
             {services.map((service) => {
               const copy = ARABIC_SERVICES[service.id];
               return (
-                <Link key={service.id} to={copy.path} className="group rounded-2xl border border-slate-800 bg-slate-900/40 p-5 transition-colors hover:border-cyan-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+                <Link key={service.id} data-hawalli-ar-service={service.id} to={copy.path} className="group rounded-2xl border border-slate-800 bg-slate-900/40 p-5 transition-colors hover:border-cyan-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-300">
                       {service.id === 'srv-motherboard' ? <Cpu className="h-5 w-5" aria-hidden="true" /> : service.id === 'srv-screen' ? <Monitor className="h-5 w-5" aria-hidden="true" /> : service.id === 'srv-battery' ? <BatteryCharging className="h-5 w-5" aria-hidden="true" /> : service.id === 'srv-macbook' ? <Apple className="h-5 w-5" aria-hidden="true" /> : service.id === 'srv-gaming' || service.id === 'srv-gaming-laptop' ? <Gamepad2 className="h-5 w-5" aria-hidden="true" /> : service.id === 'srv-laptop' ? <Laptop className="h-5 w-5" aria-hidden="true" /> : <Wrench className="h-5 w-5" aria-hidden="true" />}
@@ -424,6 +477,58 @@ export default function ArabicHawalliLocationPage() {
                 </Link>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+
+      {/* Match the English Hawalli page's six price anchors. The standalone pricing pages stay untouched. */}
+      <section id="hawalli-ar-pricing-cta" data-kcroc-editorial-panel="hawalli-pricing" aria-labelledby="hawalli-ar-pricing-heading" className="border-t border-slate-800/70 px-4 py-8 sm:px-6">
+        <div className="container mx-auto max-w-6xl rounded-2xl border border-cyan-500/20 bg-cyan-950/20 p-5 sm:p-6">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 id="hawalli-ar-pricing-heading" className="text-xl font-black text-white">أسعار البداية في مختبر حولي</h2>
+              <p className="mt-2 max-w-3xl text-sm leading-7 text-slate-300">الفحص الأولي مجاني، ونوضح لك السعر النهائي قبل أي شغل مدفوع بعد تحديد العطل والقطعة المناسبة.</p>
+            </div>
+            <Link to="/ar/pricing" className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-cyan-500 px-5 py-3 text-sm font-black text-slate-950 hover:bg-cyan-400">
+              تفاصيل الأسعار والقطع <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-3">
+            {HAWALLI_AR_PRICE_CARDS.map((item) => (
+              <div key={item.id} data-hawalli-pricing-card="true" data-hawalli-price={item.id} className="rounded-xl border border-slate-700/70 bg-slate-950/40 p-4">
+                <p className="text-xs font-semibold text-slate-400">{item.label}</p>
+                <p className="mt-1 text-xl font-black text-white">{item.price}</p>
+                <p className="mt-1 text-xs leading-6 text-slate-400">{item.note}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 text-xs leading-7 text-slate-400">الأسعار استرشادية وليست إجماليًا مضمونًا. سعر 25 د.ك لأعمال MacBook المختارة لا يشمل تصليح اللوحة المنطقية، وسعر تصليحها منفصل (45–100+ د.ك). يختلف السعر بحسب الموديل، ونوع القطعة، وتعقيد العطل. قطع الغيار والشاشات والبطاريات تُحسب بشكل منفصل حيثما ذُكر.</p>
+        </div>
+      </section>
+
+      <section data-kcroc-editorial-panel="hawalli-content" aria-labelledby="hawalli-ar-problems" className="border-t border-slate-800/70 px-4 py-10 sm:px-6 sm:py-14">
+        <div className="container mx-auto max-w-6xl">
+          <h2 id="hawalli-ar-problems" className="text-2xl font-black text-white sm:text-3xl">أعطال الكمبيوتر واللابتوب اللي نفحصها في حولي</h2>
+          <p className="mt-2 max-w-3xl text-sm leading-7 text-slate-400">اختَر المشكلة للاطلاع على خطوات التشخيص والنصائح المناسبة قبل حجز الإصلاح.</p>
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {localizedProblems.map((problem) => (
+              <Link key={problem.id} data-hawalli-ar-problem={problem.id} to={problem.path} className="flex min-h-14 items-center gap-3 rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3 text-sm font-semibold text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+                <Wrench className="h-4 w-4 shrink-0 text-cyan-400" aria-hidden="true" />{problem.title}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section data-kcroc-editorial-panel="hawalli-content" aria-labelledby="hawalli-ar-brands" className="border-t border-slate-800/70 bg-slate-900/20 px-4 py-10 sm:px-6 sm:py-14">
+        <div className="container mx-auto max-w-6xl">
+          <h2 id="hawalli-ar-brands" className="text-2xl font-black text-white sm:text-3xl">ماركات اللابتوب اللي نصلحها في حولي</h2>
+          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-7">
+            {localizedBrands.map((brand) => (
+              <Link key={brand.id} data-hawalli-ar-brand={brand.id} to={brand.path} className="rounded-xl border border-slate-800 bg-slate-900/60 px-3 py-4 text-center text-sm font-black text-white hover:border-cyan-500/40 hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">{brand.title}</Link>
+            ))}
+            <Link data-hawalli-ar-brand="apple-macbook" to="/ar/macbook-repair-kuwait" className="rounded-xl border border-slate-800 bg-slate-900/60 px-3 py-4 text-center text-sm font-black text-white hover:border-cyan-500/40 hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">Apple MacBook</Link>
           </div>
         </div>
       </section>
@@ -467,6 +572,29 @@ export default function ArabicHawalliLocationPage() {
         </div>
       </section>
 
+
+      <section data-kcroc-editorial-panel="hawalli-content" aria-labelledby="hawalli-ar-trust" className="border-t border-slate-800/70 px-4 py-10 sm:px-6 sm:py-14">
+        <div className="container mx-auto max-w-6xl">
+          <h2 id="hawalli-ar-trust" className="text-2xl font-black text-white sm:text-3xl">ليش تختار مختبر KCROC في حولي؟</h2>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              ['تصليح على مستوى المكونات', 'نفحص دوائر الطاقة والشحن ونصلح المكوّن المتضرر إذا كانت حالته تسمح، بدل تبديل البورد بدون تشخيص.'],
+              ['خصوصية الجهاز والملفات', 'فحص الهاردوير المعتاد ما يتطلب تصفح ملفاتك؛ نشرح أي خطوة قد تؤثر على وحدة التخزين ونطلب موافقتك.'],
+              ['استلام وتوصيل مجاني', 'تقدر تزور مختبر حولي أو ترتب استلام الجهاز وإرجاعه من مناطق الكويت اللي نخدمها.'],
+              ['ضمان تصليح 30 يومًا', 'الإصلاحات المكتملة مشمولة بضمان 30 يومًا وفق شروط الخدمة.'],
+              ['ما تصلح؟ ما تدفع', 'تسري سياسة No Fix, No Fee وفق شروطها بعد تقييم العطل، ونوضح لك أي استثناء قبل بدء العمل.'],
+              ['مختبر آمن من الكهرباء الساكنة', 'فحص البورد واللحام المجهري يتم على طاولات عمل مهيأة لتقليل مخاطر التفريغ الكهربائي الساكن ESD.'],
+            ].map(([title, description]) => (
+              <article key={title} data-hawalli-ar-trust="true" className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
+                <CheckCircle2 className="h-5 w-5 text-cyan-400" aria-hidden="true" />
+                <h3 className="mt-3 font-black text-white">{title}</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-400">{description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section data-kcroc-editorial-panel="hawalli-content" className="border-t border-slate-800/70 bg-slate-900/20 px-4 py-10 sm:px-6 sm:py-14">
         <div className="container mx-auto max-w-6xl">
           <div className="mb-7"><p className="text-sm font-black text-cyan-300">تعرف على مكان الإصلاح</p><h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">صور من مختبر KCROC في حولي</h2><p className="mt-2 max-w-3xl text-sm leading-7 text-slate-400">صور فعلية للمختبر ومساحة العمل والأدوات. عنواننا واحد في حولي؛ أما الاستلام والتوصيل فيغطي المناطق التي نخدمها.</p></div>
@@ -478,9 +606,38 @@ export default function ArabicHawalliLocationPage() {
               </figure>
             ))}
           </div>
-          <Link to="/gallery" className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-cyan-300 hover:text-cyan-200">شاهد معرض الصور <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+          <Link to="/ar/gallery" className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-cyan-300 hover:text-cyan-200">شاهد معرض الصور <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
         </div>
       </section>
+
+
+      {hawalliReviews.length > 0 && reviews && (
+        <section data-kcroc-editorial-panel="hawalli-content" aria-labelledby="hawalli-ar-reviews" className="border-t border-slate-800/70 bg-slate-900/20 px-4 py-10 sm:px-6 sm:py-14">
+          <div className="container mx-auto max-w-5xl">
+            <div className="mb-7 text-center">
+              <div className="inline-flex items-center gap-2">
+                <Star className="h-5 w-5 fill-cyan-400 text-cyan-400" aria-hidden="true" />
+                <span className="text-xl font-black text-white">{reviews.aggregateRating.ratingValue}</span>
+                <span className="text-sm text-slate-400">تقييم Google</span>
+              </div>
+              <h2 id="hawalli-ar-reviews" className="mt-2 text-2xl font-black text-white sm:text-3xl">تجارب عملاء مختبر حولي</h2>
+              <a href={DIRECTIONS_URL} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex min-h-11 items-center text-sm font-bold text-cyan-300 hover:text-cyan-200">شوف التقييمات على Google</a>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              {hawalliReviews.map((review) => (
+                <blockquote key={review.name + review.time} data-hawalli-ar-review="true" className="flex flex-col rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
+                  <p dir="auto" className="flex-1 text-sm leading-7 text-slate-200">“{review.text}”</p>
+                  <footer className="mt-4 text-sm text-slate-400">
+                    <span className="font-bold text-white">{review.name}</span>
+                    <span dir="auto" className="mt-1 block">{review.location} · {review.device} · {review.time}</span>
+                    {review.sourceUrl && <a href={review.sourceUrl} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex min-h-10 items-center font-semibold text-cyan-300 hover:text-cyan-200">اقرأ التقييم الأصلي على Google</a>}
+                  </footer>
+                </blockquote>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="border-t border-slate-800/70 px-4 py-10 sm:px-6 sm:py-14">
         <div className="container mx-auto max-w-6xl">
@@ -555,7 +712,7 @@ export default function ArabicHawalliLocationPage() {
           <div className="mb-7"><p className="text-sm font-black text-cyan-300">إجابات محلية</p><h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">أسئلة شائعة عن تصليح الكمبيوتر في حولي</h2></div>
           <div className="space-y-3">
             {faqs.map((item, index) => (
-              <details key={item.q} className="group rounded-xl border border-slate-800 bg-slate-950/40 p-4 sm:p-5" open={index === 0}>
+              <details key={item.q} data-hawalli-ar-faq="true" className="group rounded-xl border border-slate-800 bg-slate-950/40 p-4 sm:p-5" open={index === 0}>
                 <summary className="cursor-pointer list-none font-bold text-white marker:hidden">{item.q}</summary>
                 <p className="mt-3 text-sm leading-7 text-slate-400">{item.a}</p>
               </details>
@@ -568,14 +725,9 @@ export default function ArabicHawalliLocationPage() {
         <div className="container mx-auto max-w-6xl">
           <div className="mb-7"><p className="text-sm font-black text-cyan-300">تغطية الكويت</p><h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">المختبر في حولي ونخدم مناطق أخرى بالاستلام</h2><p className="mt-2 max-w-3xl text-sm leading-7 text-slate-400">هذه روابط لمناطق وخدمات ذات صلة. لا تعني وجود فروع فعلية خارج مختبر حولي.</p></div>
           <div className="flex flex-wrap gap-3">
-            {[
-              { title: 'السالمية', path: '/ar/computer-repair-salmiya' },
-              { title: 'الفروانية', path: '/ar/computer-repair-farwaniya' },
-              { title: 'مدينة الكويت', path: '/ar/computer-repair-kuwait-city' },
-              { title: 'تصليح كمبيوتر بالقرب مني', path: '/ar/near-me' },
-              { title: 'فني كمبيوتر في الكويت', path: '/ar' },
-              { title: 'تصليح كمبيوتر في الكويت', path: '/ar/computer-repair-kuwait' },
-            ].map((item) => <Link key={item.path} to={item.path} className="rounded-full border border-slate-800 bg-slate-900/50 px-4 py-2 text-sm font-bold text-slate-200 transition-colors hover:border-cyan-500/40 hover:text-cyan-300">{item.title}</Link>)}
+            {nearbyLocations.map((item) => <Link key={item.path} data-hawalli-ar-area={item.slug} to={item.path} className="rounded-full border border-slate-800 bg-slate-900/50 px-4 py-2 text-sm font-bold text-slate-200 transition-colors hover:border-cyan-500/40 hover:text-cyan-300">{item.title}</Link>)}
+            <Link to="/ar/locations" className="rounded-full border border-cyan-500/40 bg-cyan-950/20 px-4 py-2 text-sm font-bold text-cyan-300 hover:bg-cyan-950/40">كل مناطق الخدمة</Link>
+            <Link to="/ar/near-me" className="rounded-full border border-slate-800 bg-slate-900/50 px-4 py-2 text-sm font-bold text-slate-200 hover:text-cyan-300">تصليح كمبيوتر بالقرب مني</Link>
           </div>
         </div>
       </section>
