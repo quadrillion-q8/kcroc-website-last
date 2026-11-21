@@ -37,7 +37,7 @@ for (const subset of subsets) {
     const bytes = fs.readFileSync(file);
     assert.ok(bytes.length > 10_000, `WOFF2 asset is suspiciously small: ${filename}`);
     assert.equal(bytes.toString('ascii', 0, 4), 'wOF2', `Invalid WOFF2 font: ${filename}`);
-    const style = stylesheet.match(new RegExp(`@font-face\\s*\\{[^}]*${filename.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&')}[^}]*\\}`))?.[0];
+    const style = [...stylesheet.matchAll(/@font-face\\s*\\{[^}]*\\}/g)].map((face) => face[0]).find((face) => face.includes(filename));
     assert.ok(style, `Missing @font-face for ${filename}`);
     assert.ok(style.includes(`font-weight: ${weight};`), `Wrong font weight for ${filename}`);
     assert.ok(style.includes('unicode-range:'), `Missing Unicode subset guard for ${filename}`);
