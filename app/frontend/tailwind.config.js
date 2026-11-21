@@ -21,6 +21,8 @@ export default {
         /* 🚀 Corrected to match the Business Context brand guidelines */
         sans: ["Plus Jakarta Sans", "-apple-system", "system-ui", "sans-serif"],
         heading: ["Plus Jakarta Sans", "-apple-system", "system-ui", "sans-serif"],
+        // Use on explicit Arabic UI components; automatic :lang(ar) support lives in index.css.
+        arabic: ["IBM Plex Sans Arabic", "Noto Sans Arabic", "Tahoma", "Arial", "sans-serif"],
       },
       colors: {
         kcroc: {
