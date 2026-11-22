@@ -9,7 +9,9 @@ const policy = JSON.parse(fs.readFileSync(path.join(dirname, 'kcroc-gsc-query-po
 const args = process.argv.slice(2);
 const arg = (key) => {
   const direct = args.find(x => x.startsWith(key + '='));
-  return direct ? direct.slice(key.length + 1) : args[args.indexOf(key) + 1];
+  if (direct) return direct.slice(key.length + 1);
+  const index = args.indexOf(key);
+  return index >= 0 ? args[index + 1] : undefined;
 };
 const flag = (key) => args.includes(key);
 const compile = (pattern) => new RegExp(pattern.replace(/^\(\?i\)/, ''), 'i');
