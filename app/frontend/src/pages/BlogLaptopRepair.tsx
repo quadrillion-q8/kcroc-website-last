@@ -767,7 +767,7 @@ export default function BlogLaptopRepair() {
           />
           <div className="space-y-3">
             {faq.map((item) => (
-              <Card key={item.q} className="border-slate-800 bg-slate-900/70">
+              <Card key={item.q} data-kcroc-faq-item="true" className="border-slate-800 bg-slate-900/70">
                 <CardContent className="p-5 sm:p-6">
                   <h3 className="font-bold leading-6 text-white">{item.q}</h3>
                   <p className="mt-3 text-sm leading-7 text-slate-300">{item.a}</p>
