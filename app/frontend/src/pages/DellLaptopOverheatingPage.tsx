@@ -666,7 +666,7 @@ export const DellLaptopOverheatingPage = () => {
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8 text-center">Frequently Asked Questions</h2>
           <div className="space-y-4">
             {FAQS.map((item, idx) => (
-              <Card key={idx} className="bg-slate-900/40 border-slate-800">
+              <Card key={idx} data-kcroc-faq-item="true" className="bg-slate-900/40 border-slate-800">
                 <CardContent className="p-6">
                   <h3 className="text-base sm:text-lg font-bold text-white mb-2 flex items-start gap-3">
                     <HelpCircle className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" /> 
