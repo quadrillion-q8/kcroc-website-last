@@ -691,7 +691,7 @@ export default function GameBarPresenceWriterGuide() {
           <h2 className="text-2xl font-bold sm:text-4xl">GameBarPresenceWriter questions answered</h2>
           <div className="mt-7 grid gap-4 md:grid-cols-2">
             {faqs.map((faq) => (
-              <article key={faq.q} className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
+              <article key={faq.q} data-kcroc-faq-item="true" className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
                 <h3 className="font-bold leading-6 text-white">{faq.q}</h3>
                 <p className="mt-3 text-sm leading-7 text-slate-400">
                   {faq.q === 'Does GameBarPresenceWriter.exe definitely cause gaming stutter?'
