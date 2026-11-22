@@ -42,6 +42,7 @@ The `--presegmented` flag is required for ordinary query-only exports; use it **
 ## Live baseline from OpenSEO / Google Search Console
 
 - Property and date window as above. **English:** 1,339 rows returned across two API pages. **Arabic:** 129 rows returned.
+- Classified query rows: **EN** — Keep 1,250 (8,206 impressions, 135 clicks), Review 17 (208 impressions, 3 clicks), Exclude 72 (343 impressions, 6 clicks). **AR** — Keep 115 (1,500 impressions, 13 clicks), Review 6 (39 impressions, 0 clicks), Exclude 8 (33 impressions, 0 clicks). These are per-query returned-row sums, not property-level totals.
 - Actual English mixed query: `iphone repair center kuwait mac book repair center kuwaitlaptop repair center kuwait service provider` — **135 impressions, 0 clicks**. A naïve iPhone exclusion would hide this query completely; offline classification routes it to manual review.
 - Arabic ambiguous examples: `تصليح شاشات كمبيوتر` (20 impressions) and `تصليح شاشة كمبيوتر` (10 impressions). Keep for manual screen-type classification; avoid deleting automatically.
 - Actual nonservice intent includes `تصليح كمبيوتر بالمنزل` (7 impressions), `فني كمبيوتر خدمة منازل` (11), `تصليح طابعات حولي` (3), and `شراء لابتوب` (6).
