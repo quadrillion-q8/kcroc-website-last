@@ -27,3 +27,13 @@ Applies to **every current and new KCROC page**, both English and Kuwaiti-style 
 Run `node scripts/validate-kcroc-ui-contrast.mjs` and the existing `node scripts/validate-global-ui-ux.mjs` as part of prebuild. Review actual rendered desktop (1440px), tablet (768px), and mobile (375px) layouts, in EN/AR and with keyboard navigation. Verify field, button and heading contrast in computed styles rather than trusting source class names.
 
 This policy is mandatory for new UI work; source assertions cannot prove that every pre-existing component has been visually audited.
+
+## Required FAQ treatment (website-wide, including English and ar-KW)
+
+Every FAQ item, whether a native details/summary disclosure, custom accessible button/region accordion, or intentionally static answer card, must declare \`data-kcroc-faq-item="true"\`. Group wrappers with obsolete dark backgrounds can opt into \`data-kcroc-faq-list="true"\`.
+
+- **Surface:** white \`#FFFFFF\`, warm white \`#FFFAF4\` when expanded; dark question text \`#172022\`; answer text \`#566467\`; copper arrows and focus \`#8F4F2C\`. Control boundaries and foreground colors must meet their respective WCAG AA contrasts.
+- **Interaction:** FAQ accordions start collapsed (unless a deep link opens one). Never hide answer text from SSG HTML or break FAQPage answer/source parity. Preserve existing question IDs, answer text, analytics events, and links.
+- **Layout:** no muddy gray cards or dark-on-dark question text; visible arrows, clear 16px questions, accessible focus styles, keyboard interaction, responsive spacing, logical RTL alignment, and reduced-motion support.
+- **Separation:** TOC disclosures, diagnostic tools, safety warnings and pricing matrices are **not** FAQ cards and must never receive FAQ-specific recoloring.
+- **Release gate:** the frontend prebuild executes \`scripts/validate-kcroc-faq-global.mjs\`, checking contrast token pairs, template opt-in inventory, and source-level collapsed behavior. In addition, run the full SSG/SEO/FAQ schema checks and visually inspect EN/AR at 375px, 768px and 1440px.
