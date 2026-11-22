@@ -5,10 +5,11 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 
 const read = (path) => readFile(new URL(path, import.meta.url), 'utf8');
-const [globalCss, rollout, location, policy] = await Promise.all([
+const [globalCss, rollout, location, blogPost, policy] = await Promise.all([
   read('../src/index.css'),
   read('../src/pages/KCROCEditorialRollout.css'),
   read('../src/pages/LocationDeepTemplate.tsx'),
+  read('../src/pages/BlogPostTemplate.tsx'),
   read('../../../docs/KCROC_GLOBAL_UI_CONTRAST_POLICY.md'),
 ]);
 
@@ -92,6 +93,15 @@ assert.ok(
   location.includes('aria-labelledby="local-emergency-protocol"\n              data-kcroc-surface="dark"'),
   'Emergency technical panel must opt into the dark surface policy',
 );
+assert.ok(
+  blogPost.includes('aria-labelledby="global-diagnostic-scorecard" data-kcroc-surface="dark"'),
+  'Global diagnostic scorecard must opt into the dark surface policy',
+);
+assert.ok(
+  rollout.includes(':is(h1,h2,h3,h4,strong,b):not([data-kcroc-surface="dark"] *)'),
+  'Article reading styles must not override dark scorecard headings',
+);
+assert.ok(!rollout.includes('section[aria-labelledby="global-diagnostic-scorecard"] * {'), 'Scorecard must not bleach descendant colors');
 assert.ok(policy.includes('every current and new KCROC page'), 'Global bilingual policy documentation missing');
 console.log('✅ KCROC global UI contrast/surface guard passed (' + checks.length + ' measured color pairs).');
 console.log('   Browser/computed-style and EN/AR viewport audits remain required for full accessibility verification.');
