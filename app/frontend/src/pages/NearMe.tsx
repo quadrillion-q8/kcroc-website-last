@@ -246,7 +246,7 @@ export default function NearMe() {
         <div className="mx-auto max-w-4xl">
           <div className="mb-10 text-center"><p className="mb-2 text-xs font-bold uppercase tracking-widest text-cyan-400">Near-me questions</p><h2 className="text-3xl font-black text-white sm:text-4xl">Computer Repair Near Me — FAQs</h2></div>
           <div className="space-y-3">
-            {faqs.map((faq) => faq && <details key={faq.id} className="group rounded-2xl border border-slate-800 bg-brand-dark/70 p-5"><summary className="cursor-pointer list-none pr-8 font-bold text-white marker:hidden">{faq.title}<span className="float-right text-cyan-400 group-open:rotate-45">+</span></summary><p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-400">{faq.answer}</p></details>)}
+            {faqs.map((faq) => faq && <details key={faq.id} data-kcroc-faq-item="true" className="group rounded-2xl border border-slate-800 bg-brand-dark/70 p-5"><summary className="cursor-pointer list-none pr-8 font-bold text-white marker:hidden">{faq.title}<span className="float-right text-cyan-400 group-open:rotate-45">+</span></summary><p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-400">{faq.answer}</p></details>)}
           </div>
         </div>
       </section>
