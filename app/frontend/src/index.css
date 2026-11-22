@@ -1235,7 +1235,7 @@ select {
   --kcroc-faq-open: #fffaf4;
   --kcroc-faq-ink: #172022;
   --kcroc-faq-muted: #566467;
-  --kcroc-faq-line: #d6c9b9;
+  --kcroc-faq-line: #8b8175;
   --kcroc-faq-copper: #8f4f2c;
 }
 #main-content[data-page-type] [data-kcroc-faq-list] {
@@ -1292,8 +1292,22 @@ select {
   color: var(--kcroc-faq-muted) !important;
   line-height: 1.75;
 }
+/* Inner question spans should never shrink below 16px due to legacy text-sm. */
 #main-content[data-page-type] [data-kcroc-faq-item] :is(
-  summary svg, button[aria-expanded] svg,
+  summary > span, button[aria-expanded] > span
+) {
+  font-size: 1rem !important;
+  line-height: 1.55;
+}
+#main-content[data-page-type] [data-kcroc-faq-item] :is(
+  p, [data-kcroc-faq-answer], [role="region"]
+),
+#main-content[data-page-type] details[data-kcroc-faq-item] > div {
+  font-size: 1rem;
+}
+#main-content[data-page-type] [data-kcroc-faq-item] :is(
+  summary svg, button[aria-expanded] svg, h3 svg,
+  h3 [class*="text-cyan-"], p [class*="text-emerald-"],
   summary [class*="text-cyan-"], summary [class*="text-slate-"]
 ) {
   color: var(--kcroc-faq-copper) !important;
@@ -1303,6 +1317,9 @@ select {
 ) {
   background-color: var(--kcroc-faq-paper) !important;
   border-color: var(--kcroc-faq-line) !important;
+}
+#main-content[data-page-type] [data-kcroc-faq-item] button:not([aria-expanded]) {
+  color: var(--kcroc-faq-copper) !important;
 }
 #main-content[data-page-type] [data-kcroc-faq-item] a:not([class*="bg-"]) {
   color: var(--kcroc-faq-copper) !important;
@@ -1320,7 +1337,7 @@ select {
 ):focus-visible {
   outline-offset: -3px;
 }
-:lang(ar) #main-content [data-kcroc-faq-item] :is(
+#main-content[data-site-locale="ar"] [data-kcroc-faq-item] :is(
   summary, summary span, button[aria-expanded], button[aria-expanded] span
 ) {
   text-align: start;

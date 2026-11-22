@@ -411,7 +411,7 @@ export default function IntelVsAmdGuide() {
             <Section id="faq" title="Frequently asked questions">
               <div className="space-y-3">
                 {faqItems.map((item) => (
-                  <details key={item.question} className="group rounded-2xl border border-slate-800 bg-slate-900/40 open:border-cyan-500/30">
+                  <details key={item.question} data-kcroc-faq-item="true" className="group rounded-2xl border border-slate-800 bg-slate-900/40 open:border-cyan-500/30">
                     <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 font-bold text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-400">{item.question}<span className="text-cyan-400 transition-transform group-open:rotate-45">+</span></summary>
                     <p className="px-5 pb-5 text-sm leading-7 text-slate-400">{item.answer}</p>
                   </details>

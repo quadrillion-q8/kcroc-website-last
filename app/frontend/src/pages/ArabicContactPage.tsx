@@ -236,16 +236,16 @@ export default function ArabicContactPage() {
       <section className="border-t border-slate-800/50 px-6 py-12" aria-labelledby="ar-contact-questions" data-kcroc-editorial-panel="contact-faq">
         <h2 id="ar-contact-questions" className="mb-6 text-center text-2xl font-black text-white">أسئلة عن زيارة المختبر والتواصل</h2>
         <div className="mx-auto grid max-w-5xl gap-4 md:grid-cols-2">
-          <details className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+          <details data-kcroc-faq-item="true" className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
             <summary className="cursor-pointer font-bold text-white">هل يمكن زيارة مختبر KCROC مباشرة؟</summary>
             <p className="mt-3 leading-7 text-slate-300">نعم، يمكنك زيارة مختبرنا الفعلي في مجمع الملا، الطابق السفلي، المحل 19 في حولي. ساعات العمل يوميًا من 10 صباحًا إلى 10 مساءً.</p>
           </details>
-          <details className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+          <details data-kcroc-faq-item="true" className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
             <summary className="cursor-pointer font-bold text-white">هل توفرون استلام اللابتوب من خارج حولي؟</summary>
             <p className="mt-3 leading-7 text-slate-300">نعم، نقدم خدمة استلام وتوصيل مجانية من مناطق الكويت التي نخدمها. مختبرنا الفعلي الوحيد موجود في حولي.</p>
           </details>
-          <details className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5"><summary className="cursor-pointer font-bold text-white">أقدر أرتب الاستلام بدون زيارة المختبر؟</summary><p className="mt-3 leading-7 text-slate-300">إي، استخدم واتساب أو <Link to="/ar/book" className="text-cyan-300 underline">صفحة الحجز</Link> وأرسل الموديل والعطل والمنطقة لتنسيق الاستلام المجاني.</p></details>
-          <details className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5"><summary className="cursor-pointer font-bold text-white">شنو أرسل للفني قبل ما أتواصل؟</summary><p className="mt-3 leading-7 text-slate-300">أرسل الماركة والموديل ووصف مختصر للعطل ومنطقتك. لا ترسل كلمات مرور أو مفاتيح الاسترداد. النموذج فوق يجهز لك الرسالة قبل إرسالها.</p></details>
+          <details data-kcroc-faq-item="true" className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5"><summary className="cursor-pointer font-bold text-white">أقدر أرتب الاستلام بدون زيارة المختبر؟</summary><p className="mt-3 leading-7 text-slate-300">إي، استخدم واتساب أو <Link to="/ar/book" className="text-cyan-300 underline">صفحة الحجز</Link> وأرسل الموديل والعطل والمنطقة لتنسيق الاستلام المجاني.</p></details>
+          <details data-kcroc-faq-item="true" className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5"><summary className="cursor-pointer font-bold text-white">شنو أرسل للفني قبل ما أتواصل؟</summary><p className="mt-3 leading-7 text-slate-300">أرسل الماركة والموديل ووصف مختصر للعطل ومنطقتك. لا ترسل كلمات مرور أو مفاتيح الاسترداد. النموذج فوق يجهز لك الرسالة قبل إرسالها.</p></details>
         </div>
       </section>
 

@@ -162,7 +162,7 @@ export default function Services({ locale = 'en' }: { locale?: SiteLocale } = {}
             </div>
             <div className="grid gap-3 md:grid-cols-2">
               {serviceFaqs.map((faq) => (
-                <details key={faq.id} className="group rounded-xl border border-slate-800 bg-slate-900/45 p-5">
+                <details key={faq.id} data-kcroc-faq-item="true" className="group rounded-xl border border-slate-800 bg-slate-900/45 p-5">
                   <summary className="cursor-pointer list-none pr-1 font-bold text-white marker:hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400">
                     <span className="inline-flex w-full items-center justify-between gap-4">
                       {faq.title}

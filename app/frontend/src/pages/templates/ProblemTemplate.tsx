@@ -729,7 +729,7 @@ const ProblemTemplate: React.FC = () => {
                   {isOverheating ? 'Laptop overheating in Kuwait: frequently asked questions' : `${problemLabel}: frequently asked questions`}
                 </h2>
               </div>
-              <div className="divide-y divide-slate-800 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
+              <div data-kcroc-faq-list="true" className="divide-y divide-slate-800 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
                 {problem.faqs.map((faq, idx) => (
                   <details key={idx} data-kcroc-faq-item="true" className="group p-5">
                     <summary className="flex cursor-pointer list-none items-center gap-3 font-bold text-white">

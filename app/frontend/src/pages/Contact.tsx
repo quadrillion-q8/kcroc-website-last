@@ -327,19 +327,19 @@ export default function Contact() {
         <div className="mx-auto max-w-5xl">
           <h2 id="contact-questions" className="mb-6 text-center text-2xl font-black text-white">Visiting and Contact Questions</h2>
           <div className="grid gap-4 md:grid-cols-2">
-            <details className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+            <details data-kcroc-faq-item="true" className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
               <summary className="cursor-pointer font-bold text-white">Can I visit KCROC in person?</summary>
               <p className="mt-3 leading-7 text-slate-300">Yes. Dropping off in person? Visit our ESD-safe repair lab at Ibn Khaldoun Street, Al Mullah Complex, Basement Shop 19, Hawalli. We are open daily from 10:00 AM to 10:00 PM.</p>
             </details>
-            <details className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+            <details data-kcroc-faq-item="true" className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
               <summary className="cursor-pointer font-bold text-white">Do you have repair branches outside Hawalli?</summary>
               <p className="mt-3 leading-7 text-slate-300">Hawalli is KCROC&apos;s physical repair laboratory. For other areas, we arrange free pickup and delivery across Kuwait rather than presenting service areas as additional storefronts.</p>
             </details>
-            <details className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+            <details data-kcroc-faq-item="true" className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
               <summary className="cursor-pointer font-bold text-white">Can I arrange pickup without visiting the lab?</summary>
               <p className="mt-3 leading-7 text-slate-300">Yes. Use the WhatsApp button or booking page to share your device model, fault and area so the team can coordinate free pickup.</p>
             </details>
-            <details className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+            <details data-kcroc-faq-item="true" className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
               <summary className="cursor-pointer font-bold text-white">What should I send before contacting a technician?</summary>
               <p className="mt-3 leading-7 text-slate-300">Share the device brand and model, a short description of the fault, and your area. You can use the form above to prepare those details in WhatsApp.</p>
             </details>

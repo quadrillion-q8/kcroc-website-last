@@ -442,7 +442,7 @@ export default function MacBookBatteryReplacementPage() {
             <h2 id="macbook-battery-faqs" className="text-2xl font-black text-white sm:text-3xl">MacBook battery replacement FAQs</h2>
             <div className="mt-6 grid gap-3 md:grid-cols-2">
               {FAQS.map((faq) => (
-                <details key={faq.question} className="group rounded-xl border border-slate-800 bg-slate-900/45 p-5">
+                <details key={faq.question} data-kcroc-faq-item="true" className="group rounded-xl border border-slate-800 bg-slate-900/45 p-5">
                   <summary className="cursor-pointer list-none font-bold text-white marker:hidden">{faq.question}</summary>
                   <p className="mt-3 text-sm leading-7 text-slate-400">{faq.answer}</p>
                 </details>

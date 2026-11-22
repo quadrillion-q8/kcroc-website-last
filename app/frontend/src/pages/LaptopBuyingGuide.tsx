@@ -1157,7 +1157,7 @@ export default function LaptopBuyingGuide() {
 
           <div className="space-y-3 sm:space-y-4">
             {faq.map((item, index) => (
-              <Card key={index} className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-700 backdrop-blur-sm">
+              <Card key={index} data-kcroc-faq-item="true" className="bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-700 backdrop-blur-sm">
                 <CardContent className="p-4 sm:p-8">
                   <h3 className="text-sm sm:text-lg font-bold text-white mb-2 sm:mb-3 flex items-start gap-2 sm:gap-3">
                     <span className="text-cyan-400 flex-shrink-0">Q:</span>

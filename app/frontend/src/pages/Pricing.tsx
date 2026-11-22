@@ -812,7 +812,7 @@ export default function Pricing() {
         <div className="mx-auto max-w-4xl">
           <div className="mb-8 text-center sm:mb-12"><Badge className="mb-4 border border-emerald-500/20 bg-emerald-500/10 px-3 py-1.5 text-[10px] uppercase tracking-widest text-emerald-400">Pricing questions</Badge><h2 id="faq-heading" className="text-3xl font-black tracking-tight text-white sm:text-4xl">Pricing FAQs</h2><p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-500">Clear answers before you hand over your device.</p></div>
           <div className="space-y-3">
-            {faqs.map((faq) => <details key={faq.q} className="group overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/30">
+            {faqs.map((faq) => <details key={faq.q} data-kcroc-faq-item="true" className="group overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/30">
               <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-5 p-5 text-left text-sm font-bold text-white transition-colors hover:text-cyan-400 sm:p-6 [&::-webkit-details-marker]:hidden"><span>{faq.q}</span><ChevronDown className="h-5 w-5 shrink-0 text-slate-600 transition-transform duration-300 group-open:rotate-180 group-open:text-cyan-400" aria-hidden="true" /></summary>
               <div className="border-t border-slate-800/70 px-5 pb-5 pt-4 sm:px-6 sm:pb-6"><p className="text-sm leading-7 text-slate-400">{faq.a}</p></div>
             </details>)}

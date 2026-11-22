@@ -388,7 +388,7 @@ export default function NearMeAR() {
           </div>
           <div className="space-y-3">
             {faqs.map((faq) => faq && (
-              <details key={faq.id} className="group rounded-2xl border border-slate-800 bg-brand-dark/70 p-5">
+              <details key={faq.id} data-kcroc-faq-item="true" className="group rounded-2xl border border-slate-800 bg-brand-dark/70 p-5">
                 <summary className="cursor-pointer list-none pl-8 font-bold text-white marker:hidden">
                   {faq.title}
                   <span className="float-left text-cyan-400 group-open:rotate-45">+</span>

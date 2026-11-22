@@ -1581,9 +1581,9 @@ function ArabicGamingPcRepairPage({
             <p className="text-sm font-black tracking-[0.08em] text-cyan-400">الأسئلة اللي نسأل عنها وايد</p>
             <h2 id="gaming-faq" className="mt-2 text-3xl font-black text-white sm:text-4xl">قبل لا تقول: "أبي أبدّل الكرت"</h2>
           </div>
-          <div className="overflow-hidden rounded-[1.75rem] border border-slate-800 bg-slate-900/40">
+          <div data-kcroc-faq-list="true" className="overflow-hidden rounded-[1.75rem] border border-slate-800 bg-slate-900/40">
             {GAMING_AR_FAQ.map((item) => (
-              <details key={item.q} className="group border-b border-slate-800 last:border-b-0">
+              <details key={item.q} data-kcroc-faq-item="true" className="group border-b border-slate-800 last:border-b-0">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-5 px-6 py-5 font-black text-white [&::-webkit-details-marker]:hidden">
                   <span>{item.q}</span>
                   <ArrowLeft className="h-4 w-4 shrink-0 text-cyan-400 transition group-open:-rotate-90" aria-hidden="true" />
@@ -2135,9 +2135,9 @@ function ArabicComputerRepairPage({
             <p className="text-sm font-black tracking-[0.08em] text-cyan-400">الأسئلة الشائعة</p>
             <h2 id="arabic-faq-premium" className="mt-2 text-3xl font-black text-white sm:text-4xl">قبل لا ترسل جهازك</h2>
           </div>
-          <div className="overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/40">
+          <div data-kcroc-faq-list="true" className="overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/40">
             {faq.map((item) => (
-              <details key={item.q} className="group border-b border-slate-800 last:border-b-0">
+              <details key={item.q} data-kcroc-faq-item="true" className="group border-b border-slate-800 last:border-b-0">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-5 px-6 py-5 font-black text-white [&::-webkit-details-marker]:hidden">
                   {item.q}
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-700 text-slate-400 transition group-open:rotate-90 group-open:border-cyan-500/40 group-open:text-cyan-300">
@@ -5555,15 +5555,15 @@ export default function ArabicCommercialPage() {
         <section className="mt-12" aria-labelledby="arabic-faq" data-kcroc-editorial-panel={locationEntity ? "location-content" : undefined}>
           <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">الأسئلة الشائعة</p>
           <h2 id="arabic-faq" className="mt-2 text-2xl font-black text-white sm:text-3xl">قبل لا ترسل جهازك</h2>
-          <div className="mt-6 divide-y divide-slate-800 overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/45">
+          <div data-kcroc-faq-list="true" className="mt-6 divide-y divide-slate-800 overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/45">
             {cfg.faq.map((item) => (
               slug === 'computer-repair-farwaniya' ? (
-                <div key={item.q} className="p-6">
+                <div key={item.q} data-kcroc-faq-item="true" className="p-6">
                   <h3 className="font-bold text-white">{item.q}</h3>
                   <p className="mt-3 leading-7 text-slate-400">{item.a}</p>
                 </div>
               ) : (
-                <details key={item.q} className="p-6" open={slug === 'laptop-charging-port-repair-kuwait'} onToggle={(event) => { if (locationEntity && event.currentTarget.open) trackLocationCta('faq_expand', 'faq'); }}>
+                <details key={item.q} data-kcroc-faq-item="true" className="p-6" onToggle={(event) => { if (locationEntity && event.currentTarget.open) trackLocationCta('faq_expand', 'faq'); }}>
                   <summary className="cursor-pointer font-bold text-white">{item.q}</summary>
                   <p className="mt-3 leading-7 text-slate-400">{item.a}</p>
                 </details>

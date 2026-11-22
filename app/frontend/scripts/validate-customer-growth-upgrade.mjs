@@ -1208,9 +1208,10 @@ add('Arabic charging-port FAQ keeps all eight question-answer pairs in source an
   && arabicCommercial.includes("inLanguage: 'ar-KW'")
   && arabicCommercial.includes("mainEntity: cfg.faq.map")
   && arabicCommercial.includes('<div className="px-6 pb-6 text-sm leading-8 text-slate-400">{item.a}</div>'));
-add('Arabic charging-port FAQ answers are expanded in the prerendered page while preserving all eight graph-backed answers',
+add('Arabic charging-port FAQ answers stay in prerendered HTML and FAQPage schema while starting collapsed',
   chargingFaqCount === 8
-  && arabicCommercial.includes("open={slug === 'laptop-charging-port-repair-kuwait'}")
+  && !arabicCommercial.includes("open={slug === 'laptop-charging-port-repair-kuwait'}")
+  && arabicCommercial.includes('data-kcroc-faq-item="true"')
   && arabicCommercial.includes("mainEntity: cfg.faq.map"));
 add('Arabic charging-port diagnostic matrix compares charger, connector and board-level fault paths',
   arabicCommercial.includes('id="charging-port-component-matrix"')

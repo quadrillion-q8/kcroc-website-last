@@ -265,15 +265,15 @@ export default function ArabicBookingPage() {
         <section className="mt-12 border-t border-slate-800 pt-10" aria-labelledby="arabic-booking-faqs">
           <h2 id="arabic-booking-faqs" className="text-2xl font-black text-white sm:text-3xl">أسئلة شائعة حول حجز الاستلام</h2>
           <div className="mt-5 max-w-4xl divide-y divide-slate-800">
-            <details className="py-4">
+            <details data-kcroc-faq-item="true" className="py-4">
               <summary className="cursor-pointer font-semibold text-slate-200">هل الفحص الأولي مجاني؟</summary>
               <p className="mt-2 text-sm leading-loose text-slate-400">نعم، الفحص الأولي مجاني. نوضح لك الإصلاح المقترح والتكلفة قبل بدء أي عمل مدفوع.</p>
             </details>
-            <details className="py-4">
+            <details data-kcroc-faq-item="true" className="py-4">
               <summary className="cursor-pointer font-semibold text-slate-200">هل الاستلام والتوصيل مجانيان في الكويت؟</summary>
               <p className="mt-2 text-sm leading-loose text-slate-400">نرتب الاستلام وإعادة الجهاز مجانًا في مناطق الكويت التي نخدمها، ويتم تأكيد التفاصيل عبر واتساب.</p>
             </details>
-            <details className="py-4">
+            <details data-kcroc-faq-item="true" className="py-4">
               <summary className="cursor-pointer font-semibold text-slate-200">كم يستغرق الإصلاح؟</summary>
               <p className="mt-2 text-sm leading-loose text-slate-400">تعتمد المدة على العطل والموديل وتوفر القطع. تستغرق كثير من إصلاحات الأجهزة المعتادة نحو 24 إلى 48 ساعة، وقد تحتاج الأعطال المعقدة إلى وقت أطول.</p>
             </details>

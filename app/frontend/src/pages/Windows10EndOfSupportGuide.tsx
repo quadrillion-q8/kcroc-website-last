@@ -271,7 +271,7 @@ export default function Windows10EndOfSupportGuide() {
           <Section id="faq" title="Frequently asked questions">
             <div className="space-y-4">
               {faqs.map(({ q, a }) => (
-                <details key={q} className="group rounded-xl border border-slate-800 bg-slate-900 p-5">
+                <details key={q} data-kcroc-faq-item="true" className="group rounded-xl border border-slate-800 bg-slate-900 p-5">
                   <summary className="cursor-pointer list-none flex items-start gap-3 font-bold text-white text-lg">
                     <CircleHelp className="w-5 h-5 text-cyan-400 shrink-0 mt-1" /> {q}
                   </summary>
