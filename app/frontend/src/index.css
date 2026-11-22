@@ -1294,7 +1294,7 @@ select {
 }
 #main-content[data-page-type] [data-kcroc-faq-item] :is(
   summary svg, button[aria-expanded] svg, h3 svg,
-  h3 [class*="text-cyan-"],
+  h3 [class*="text-cyan-"], p [class*="text-emerald-"],
   summary [class*="text-cyan-"], summary [class*="text-slate-"]
 ) {
   color: var(--kcroc-faq-copper) !important;
@@ -1304,6 +1304,9 @@ select {
 ) {
   background-color: var(--kcroc-faq-paper) !important;
   border-color: var(--kcroc-faq-line) !important;
+}
+#main-content[data-page-type] [data-kcroc-faq-item] button:not([aria-expanded]) {
+  color: var(--kcroc-faq-copper) !important;
 }
 #main-content[data-page-type] [data-kcroc-faq-item] a:not([class*="bg-"]) {
   color: var(--kcroc-faq-copper) !important;
