@@ -1443,15 +1443,15 @@ export default function LocationDeepTemplate() {
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white text-center tracking-tight">
             Frequently Asked Questions
           </h2>
-          <div className="space-y-2.5">
-            {localFaqs.map((faq, index) => {
+          <div data-kcroc-faq-list="true" className="space-y-2.5">
+            {localFaqs.map((faq) => {
               if (isKuwaitCityPage) {
                 return (
                   <details
                     key={faq.id}
                     id={faq.id}
-                    open={index < 3}
                     data-kuwait-city-faq="true"
+                    data-kcroc-faq-item="true"
                     className="group overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50 open:border-cyan-400/25"
                   >
                     <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 text-left marker:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-cyan-400 sm:px-6 [&::-webkit-details-marker]:hidden">
@@ -1467,7 +1467,7 @@ export default function LocationDeepTemplate() {
 
               const isOpen = openFaqId === faq.id;
               return (
-                <div key={faq.id} className="bg-slate-900/50 border border-slate-800 rounded-2xl overflow-hidden">
+                <div key={faq.id} data-kcroc-faq-item="true" className="bg-slate-900/50 border border-slate-800 rounded-2xl overflow-hidden">
                   <button
                     type="button"
                     id={`${faq.id}-trigger`}
