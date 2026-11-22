@@ -14,9 +14,10 @@ const $ = load(fs.readFileSync(html, 'utf8'));
 const mainText = $('main').text().replace(/\s+/g, ' ');
 const canonical = 'https://www.computerrepairkuwait.com' + route;
 assert.equal($('head link[rel="canonical"]').attr('href'), canonical);
-assert.equal($('head title').text(), 'تصليح كمبيوتر ولابتوب في الكويت | KCROC');
+assert.equal($('head title').text(), 'تصليح وصيانة كمبيوتر ولابتوب في الكويت | KCROC');
+assert.match($('head meta[name="description"]').attr('content') || '', /تصليح وصيانة كمبيوتر ولابتوب/);
 assert.equal($('main h1').length, 1, 'Preserve a single national repair H1');
-assert.match($('main h1').text(), /تصليح كمبيوتر ولابتوب في الكويت/);
+assert.match($('main h1').text(), /تصليح وصيانة كمبيوتر ولابتوب في الكويت/);
 assert.ok($('head link[hreflang="en-KW"]').length && $('head link[hreflang="ar-KW"]').length,
   'Keep reciprocal bilingual alternates');
 
@@ -34,11 +35,17 @@ for (const phrase of [
   'تصليح كمبيوتر حولي',
   'تصليح كمبيوتر الجهراء',
   'محل صيانة كمبيوتر قريب مني',
+  'صيانة الكمبيوتر',
+  'فني حاسوب',
+  'أقرب محل صيانة',
+  'ماركات اللابتوب اللي نصلحها',
+  'فني كمبيوتر حولي',
 ]) assert.ok(mainText.includes(phrase), 'Missing user-intent phrase in SSG: ' + phrase);
 
 const links = new Set($('main a[href]').map((_, el) => $(el).attr('href')).get());
 for (const link of [
   '/ar/laptop-repair-kuwait',
+  '/ar/brands',
   '/ar/brands/hp-laptop-repair-kuwait',
   '/ar/computer-repair-hawalli',
   '/ar/computer-repair-jahra',
@@ -49,6 +56,8 @@ for (const link of [
 assert.ok(mainText.includes('مو ضمن خدماتنا'), 'Must distinguish external monitors from laptop-screen repairs');
 assert.ok(mainText.includes('شاشة اللابتوب سوداء أو مكسورة'), 'Screen problem card must specify laptop screens');
 assert.ok(mainText.includes('لا نصلح شاشات الكمبيوتر المكتبي المنفصلة'), 'Main content must explicitly exclude standalone monitors');
+assert.ok(mainText.includes('ما نقدم تصليح كروت الشاشة المنفصلة'), 'Do not market standalone GPU repair');
+assert.ok(!mainText.includes('تصليح Gaming PC وكرت الشاشة'), 'No ambiguous standalone GPU repair card');
 assert.ok(mainText.includes('لا نقدم زيارة فني أو إصلاحًا داخل المنزل'),
   'Must not misrepresent pickup as a home repair visit');
 
@@ -59,7 +68,7 @@ const nodes = structured.flatMap((item) => item['@graph'] ?? [item]);
 const faq = nodes.find((item) => item['@type'] === 'FAQPage' && item['@id'] === canonical + '#faq');
 assert.ok(faq, 'FAQ structured data missing for hub');
 const questions = faq.mainEntity || [];
-for (const phrase of ['شاشات الكمبيوتر المنفصلة', 'فني كمبيوتر خدمة منازل', 'محل صيانة كمبيوتر قريب مني']) {
+for (const phrase of ['شاشات الكمبيوتر المنفصلة', 'كروت الشاشة المنفصلة', 'فني كمبيوتر خدمة منازل', 'محل صيانة كمبيوتر قريب مني']) {
   assert.ok(questions.some((item) => item.name.includes(phrase) && item.acceptedAnswer?.text),
     'Question and answer mismatch in FAQ schema: ' + phrase);
 }

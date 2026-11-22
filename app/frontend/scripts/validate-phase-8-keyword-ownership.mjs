@@ -4,7 +4,7 @@ import path from 'node:path';
 import { load } from 'cheerio';
 const expectations = {
   "/ar": "فني كمبيوتر في الكويت | فحص واستلام مجاني | KCROC",
-  "/ar/computer-repair-kuwait": "تصليح كمبيوتر ولابتوب في الكويت | KCROC",
+  "/ar/computer-repair-kuwait": "تصليح وصيانة كمبيوتر ولابتوب في الكويت | KCROC",
   "/laptop-repair-kuwait": "Laptop Repair Kuwait | Board-Level Lab & Free Pickup | KCROC",
   "/ar/computer-repair-hawalli": "تصليح كمبيوتر حولي | فني كمبيوتر ولابتوب | KCROC"
 };
