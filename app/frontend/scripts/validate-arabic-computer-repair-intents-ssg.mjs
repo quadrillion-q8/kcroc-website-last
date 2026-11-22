@@ -11,7 +11,7 @@ const html = [route.slice(1) + '.html', route.slice(1) + '/index.html']
 assert.ok(html, 'Missing prerendered Arabic national computer repair hub');
 
 const $ = load(fs.readFileSync(html, 'utf8'));
-const mainText = $('main').text().replace(/\\s+/g, ' ');
+const mainText = $('main').text().replace(/\s+/g, ' ');
 const canonical = 'https://www.computerrepairkuwait.com' + route;
 assert.equal($('head link[rel="canonical"]').attr('href'), canonical);
 assert.equal($('head title').text(), 'تصليح كمبيوتر ولابتوب في الكويت | KCROC');
