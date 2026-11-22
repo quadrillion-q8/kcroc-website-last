@@ -287,11 +287,11 @@ export const rawGraphData: RawGraphData = {
 
     'page-ar-computer-repair': {
       id: 'page-ar-computer-repair', slug: 'ar/computer-repair-kuwait', entityType: 'WebPage', isActive: true,
-      title: 'تصليح كمبيوتر ولابتوب في الكويت',
-      description: 'تصليح كمبيوتر ولابتوب في الكويت للكمبيوتر المكتبي وGaming PC وMacBook، مع فحص أولي مجاني واستلام من المنزل أو المكتب وإصلاح داخل مختبر KCROC في حولي بعد موافقتك.',
+      title: 'تصليح وصيانة كمبيوتر ولابتوب في الكويت',
+      description: 'تصليح وصيانة الكمبيوتر المكتبي واللابتوب وGaming PC وMacBook في الكويت؛ فحص أولي مجاني واستلام وتوصيل إلى مختبر KCROC في حولي، ونشرح التكلفة قبل بدء الإصلاح.',
       seo: {
-        title: 'تصليح كمبيوتر ولابتوب في الكويت | KCROC',
-        description: 'تصليح كمبيوتر ولابتوب في الكويت: فحص أولي مجاني، استلام وتوصيل مجاني، وعرض سعر قبل الإصلاح في مختبر KCROC بحولي. ضمان 30 يومًا.',
+        title: 'تصليح وصيانة كمبيوتر ولابتوب في الكويت | KCROC',
+        description: 'تصليح وصيانة كمبيوتر ولابتوب في الكويت داخل مختبر KCROC بحولي. فحص أولي مجاني، استلام وتوصيل مجاني، عرض سعر قبل الإصلاح وضمان 30 يومًا.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/computer-repair-kuwait',
         locale: 'ar_KW',
         alternates: {
@@ -300,7 +300,7 @@ export const rawGraphData: RawGraphData = {
           'x-default': 'https://www.computerrepairkuwait.com/computer-repair-kuwait'
         },
         ogType: 'website', schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service'],
-        lastModified: '2026-11-17T00:00:00+03:00',
+        lastModified: '2026-11-22T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح كمبيوتر في الكويت', url: '/ar/computer-repair-kuwait' }]
       },
       relatedServiceIds: ['srv-laptop', 'srv-motherboard', 'srv-gaming', 'srv-macbook', 'srv-screen']
