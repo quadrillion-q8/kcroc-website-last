@@ -40,11 +40,11 @@ import { isReviewPublishable } from '../utils/publicationEligibility';
 const BASE_URL = KCROC_GRAPH.business!.websiteUrl;
 
 const KUWAIT_CITY_PROTOCOL_LABELS = [
-  'PROTOCOL 01 // TOWER HANDOVER',
-  'PROTOCOL 02 // SLA TIMING',
-  'PROTOCOL 03 // NVME RETENTION',
-  'PROTOCOL 04 // POSTAL ZONES',
-  'PROTOCOL 05 // HAWALLI LAB',
+  'OFFICE PICKUP',
+  'REPAIR TIMING',
+  'STORAGE PRIVACY',
+  'AREAS COVERED',
+  'HAWALLI REPAIR LAB',
 ] as const;
 
 const KUWAIT_CITY_POSTAL_PRIORITY = new Set(['Sharq', 'Qibla / Jibla', 'Mirqab', 'Dasman', 'Bneid Al-Gar', 'Safat']);
@@ -545,6 +545,7 @@ export default function LocationDeepTemplate() {
           {location.localEmergencyProtocol && (
             <section
               aria-labelledby="local-emergency-protocol"
+              data-kcroc-surface="dark"
               className="mt-7 rounded-2xl border border-amber-500/30 bg-amber-500/[0.06] p-5 sm:p-6"
             >
               <h3 id="local-emergency-protocol" className="text-lg font-black text-amber-200">
@@ -625,33 +626,34 @@ export default function LocationDeepTemplate() {
                 <section
                   aria-labelledby="kuwait-city-tower-handover-heading"
                   data-tower-handover-generator="true"
-                  className="mt-5 rounded-2xl border border-cyan-400/25 bg-slate-950/90 p-5 shadow-[0_18px_55px_rgba(8,47,73,0.22)] sm:p-6"
+                  data-kcroc-surface="light"
+                  data-kcroc-form="true"
+                  className="mt-5 rounded-2xl border border-stone-200 bg-white p-5 shadow-sm sm:p-6"
                 >
                   <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                     <div className="max-w-xl">
-                      <span className="inline-flex rounded-md bg-cyan-400/10 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-cyan-300">
+                      <span className="inline-flex rounded-md bg-orange-50 px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-amber-900">
                         Sharq · Qibla · Mirqab · Dasman · Bneid Al-Gar
                       </span>
-                      <h3 id="kuwait-city-tower-handover-heading" className="mt-2 text-lg font-black text-white">
-                        1-Tap Tower &amp; Reception Handover
+                      <h3 id="kuwait-city-tower-handover-heading" className="mt-2 text-xl font-black text-slate-950 sm:text-2xl">
+                        Arrange office pickup in Kuwait City
                       </h3>
-                      <p className="mt-1 text-sm leading-6 text-slate-400">
-                        Prepare the collection details before sending your office pickup request.
+                      <p className="mt-2 text-sm leading-6 text-slate-600 sm:text-base">
+                        Share the building, device and contact details to prepare a WhatsApp pickup request.
                       </p>
                     </div>
-                    <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-slate-700 bg-slate-900 px-3 py-1.5 text-xs font-semibold text-slate-300">
-                      <span className="h-2 w-2 rounded-full bg-cyan-400 motion-safe:animate-pulse" aria-hidden="true" />
-                      HANDOVER DETAILS
+                    <span className="inline-flex shrink-0 items-center rounded-full border border-orange-200 bg-orange-50 px-3 py-1.5 text-xs font-semibold text-amber-900">
+                      Free pickup &amp; delivery
                     </span>
                   </div>
 
-                  <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                    <label className="block text-xs font-semibold text-slate-300">
+                  <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                    <label className="block text-sm font-semibold text-slate-900">
                       District
                       <select
                         value={towerHandover.district}
                         onChange={(event) => updateTowerHandover('district', event.target.value)}
-                        className="mt-1.5 min-h-11 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 text-sm text-white outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                        className="mt-1.5 min-h-11 w-full rounded-lg border border-slate-500 bg-white px-3 text-base text-slate-950 outline-none transition focus:border-amber-700 focus:ring-2 focus:ring-amber-700/20"
                       >
                         {postalZoneOptions.map((zone) => (
                           <option key={zone.name} value={zone.name}>{zone.name} ({zone.postalCode})</option>
@@ -659,49 +661,49 @@ export default function LocationDeepTemplate() {
                         <option value="Al-Sawaber">Al-Sawaber (15300)</option>
                       </select>
                     </label>
-                    <label className="block text-xs font-semibold text-slate-300">
+                    <label className="block text-sm font-semibold text-slate-900">
                       Street / block / building
                       <input
                         value={towerHandover.building}
                         onChange={(event) => updateTowerHandover('building', event.target.value)}
                         placeholder="Building name, street or block"
-                        className="mt-1.5 min-h-11 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                        className="mt-1.5 min-h-11 w-full rounded-lg border border-slate-500 bg-white px-3 text-base text-slate-950 placeholder:text-slate-600 outline-none transition focus:border-amber-700 focus:ring-2 focus:ring-amber-700/20"
                       />
                     </label>
-                    <label className="block text-xs font-semibold text-slate-300">
+                    <label className="block text-sm font-semibold text-slate-900">
                       Tower / floor / suite
                       <input
                         value={towerHandover.floor}
                         onChange={(event) => updateTowerHandover('floor', event.target.value)}
                         placeholder="Tower, floor or suite"
-                        className="mt-1.5 min-h-11 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                        className="mt-1.5 min-h-11 w-full rounded-lg border border-slate-500 bg-white px-3 text-base text-slate-950 placeholder:text-slate-600 outline-none transition focus:border-amber-700 focus:ring-2 focus:ring-amber-700/20"
                       />
                     </label>
-                    <label className="block text-xs font-semibold text-slate-300">
+                    <label className="block text-sm font-semibold text-slate-900">
                       Reception / IT contact
                       <input
                         value={towerHandover.contact}
                         onChange={(event) => updateTowerHandover('contact', event.target.value)}
                         placeholder="Contact person or extension"
-                        className="mt-1.5 min-h-11 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                        className="mt-1.5 min-h-11 w-full rounded-lg border border-slate-500 bg-white px-3 text-base text-slate-950 placeholder:text-slate-600 outline-none transition focus:border-amber-700 focus:ring-2 focus:ring-amber-700/20"
                       />
                     </label>
-                    <label className="block text-xs font-semibold text-slate-300">
+                    <label className="block text-sm font-semibold text-slate-900">
                       Device / laptop model
                       <input
                         value={towerHandover.model}
                         onChange={(event) => updateTowerHandover('model', event.target.value)}
                         placeholder="Brand and exact model"
-                        className="mt-1.5 min-h-11 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                        className="mt-1.5 min-h-11 w-full rounded-lg border border-slate-500 bg-white px-3 text-base text-slate-950 placeholder:text-slate-600 outline-none transition focus:border-amber-700 focus:ring-2 focus:ring-amber-700/20"
                       />
                     </label>
-                    <label className="block text-xs font-semibold text-slate-300">
+                    <label className="block text-sm font-semibold text-slate-900">
                       Fault / symptoms
                       <input
                         value={towerHandover.fault}
                         onChange={(event) => updateTowerHandover('fault', event.target.value)}
                         placeholder="No power, screen, charging..."
-                        className="mt-1.5 min-h-11 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 text-sm text-white placeholder:text-slate-500 outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                        className="mt-1.5 min-h-11 w-full rounded-lg border border-slate-500 bg-white px-3 text-base text-slate-950 placeholder:text-slate-600 outline-none transition focus:border-amber-700 focus:ring-2 focus:ring-amber-700/20"
                       />
                     </label>
                   </div>
@@ -709,19 +711,21 @@ export default function LocationDeepTemplate() {
                   <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                     <a
                       href={towerHandoverWaLink}
+                      data-kcroc-action="primary"
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => handleWhatsAppClick('tower_handover_generator')}
-                      className="inline-flex min-h-11 items-center justify-center rounded-lg bg-cyan-400 px-4 py-2.5 text-sm font-black text-slate-950 transition hover:bg-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200"
+                      className="inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-orange-400 px-4 py-2.5 text-sm font-black text-slate-950 transition hover:bg-orange-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-700 sm:w-auto"
                     >
-                      WhatsApp Tower Pickup Details
+                      Send pickup request on WhatsApp
                     </a>
                     <a
                       href={'tel:+' + phone}
+                      data-kcroc-action="secondary"
                       onClick={() => handleCallClick('tower_handover_generator')}
-                      className="inline-flex min-h-11 items-center justify-center rounded-lg border border-slate-700 bg-slate-900 px-4 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+                      className="inline-flex min-h-11 w-full items-center justify-center rounded-lg border border-slate-500 bg-white px-4 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-stone-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-700 sm:w-auto"
                     >
-                      Call Dispatch: {phoneDisplay}
+                      Call KCROC: {phoneDisplay}
                     </a>
                   </div>
                 </section>

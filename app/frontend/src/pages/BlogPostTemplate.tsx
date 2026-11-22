@@ -727,7 +727,7 @@ const GlobalLaptopDiagnosticScorecard: React.FC = () => {
   const selectedEvidence = evidenceGuidance[evidence];
 
   return (
-    <section className="my-12 rounded-3xl border border-cyan-500/25 bg-slate-950/80 p-5 sm:p-7" aria-labelledby="global-diagnostic-scorecard">
+    <section className="my-12 rounded-3xl border border-cyan-500/25 bg-slate-950/80 p-5 sm:p-7" aria-labelledby="global-diagnostic-scorecard" data-kcroc-surface="dark">
       <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-300">Interactive diagnostic tool</p>
       <h2 id="global-diagnostic-scorecard" className="mt-2 text-2xl font-black text-white sm:text-3xl">
         Global Laptop Diagnostic Scorecard

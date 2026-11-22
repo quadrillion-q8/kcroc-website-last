@@ -15,7 +15,7 @@
 
 [data-kcroc-rollout] { --rollout-content-width: 80rem; }
 
-[data-kcroc-rollout] [data-kcroc-editorial-panel] {
+[data-kcroc-rollout] [data-kcroc-editorial-panel]:not([data-kcroc-surface="dark"]) {
   box-sizing: border-box;
   border-color: var(--kcroc-rollout-line) !important;
   border-radius: 1.4rem;
@@ -23,20 +23,20 @@
   color: var(--kcroc-rollout-ink) !important;
   box-shadow: 0 12px 32px rgba(25, 29, 28, 0.075);
 }
-[data-kcroc-rollout] [data-kcroc-editorial-panel] :is(h1,h2,h3,h4,h5,strong) {
+[data-kcroc-rollout] [data-kcroc-editorial-panel] :is(h1,h2,h3,h4,h5,strong):not([data-kcroc-surface="dark"] *) {
   color: var(--kcroc-rollout-ink) !important;
   text-wrap: balance;
 }
-[data-kcroc-rollout] [data-kcroc-editorial-panel] :is(p,li,td,th,dd,figcaption) {
+[data-kcroc-rollout] [data-kcroc-editorial-panel] :is(p,li,td,th,dd,figcaption):not([data-kcroc-surface="dark"] *) {
   color: var(--kcroc-rollout-muted) !important;
 }
-[data-kcroc-rollout] [data-kcroc-editorial-panel] :is(.text-white,.text-slate-100,.text-slate-200,.text-slate-300,.text-slate-400,.text-slate-500) {
+[data-kcroc-rollout] [data-kcroc-editorial-panel] :is(.text-white,.text-slate-100,.text-slate-200,.text-slate-300,.text-slate-400,.text-slate-500):not([data-kcroc-surface="dark"] *) {
   color: var(--kcroc-rollout-muted) !important;
 }
-[data-kcroc-rollout] [data-kcroc-editorial-panel] :is(.text-cyan-200,.text-cyan-300,.text-cyan-400,.text-cyan-500) {
+[data-kcroc-rollout] [data-kcroc-editorial-panel] :is(.text-cyan-200,.text-cyan-300,.text-cyan-400,.text-cyan-500):not([data-kcroc-surface="dark"] *) {
   color: var(--kcroc-rollout-copper) !important;
 }
-[data-kcroc-rollout] [data-kcroc-editorial-panel] :is(article,li,div,figure)[class*="rounded-"][class*="border"]:not([data-tower-handover-generator]):not([aria-labelledby="local-emergency-protocol"]) {
+[data-kcroc-rollout] [data-kcroc-editorial-panel] :is(article,li,div,figure)[class*="rounded-"][class*="border"]:not([data-kcroc-surface="dark"]):not([data-kcroc-surface="dark"] *):not([data-tower-handover-generator]) {
   border-color: var(--kcroc-rollout-line) !important;
   background-color: var(--kcroc-rollout-white) !important;
   box-shadow: 0 4px 18px rgba(33,27,22,.045);
@@ -48,7 +48,7 @@
 [data-kcroc-rollout] [data-kcroc-editorial-panel] :is(td,th) {
   border-color: var(--kcroc-rollout-line) !important;
 }
-[data-kcroc-rollout] [data-kcroc-editorial-panel] :is(a[class*="text-cyan-"],a[class*="hover:text-cyan-"]) {
+[data-kcroc-rollout] [data-kcroc-editorial-panel] :is(a[class*="text-cyan-"],a[class*="hover:text-cyan-"]):not([data-kcroc-surface="dark"] *) {
   color: var(--kcroc-rollout-copper) !important;
   text-decoration-color: rgba(143,79,44,.35);
   text-underline-offset: .2em;
@@ -58,7 +58,7 @@
   background: var(--kcroc-rollout-copper-fill) !important;
   color: #17110c !important;
 }
-[data-kcroc-rollout] [data-kcroc-editorial-panel] :is(a,button)[class*="border-slate-"] {
+[data-kcroc-rollout] [data-kcroc-editorial-panel] :is(a,button)[class*="border-slate-"]:not([data-kcroc-surface="dark"] *) {
   border-color: #cbbcac !important;
   color: var(--kcroc-rollout-ink) !important;
 }
@@ -79,27 +79,55 @@
   background: var(--kcroc-rollout-white) !important;
   border-color: var(--kcroc-rollout-line) !important;
 }
-/* These operational and emergency modules intentionally retain graphite/amber. */
-[data-kcroc-rollout="location-area"] [data-tower-handover-generator],
+/* Intentional dark exception: emergency protocol uses explicit on-dark tokens.
+   Never use a blanket "*" color rule; it destroys step-number and button contrast. */
 [data-kcroc-rollout="location-area"] [aria-labelledby="local-emergency-protocol"] {
-  background: rgba(2,6,23,.97) !important;
-  border-color: rgba(34,211,238,.25) !important;
-  color: #e2e8f0 !important;
+  background: var(--kcroc-ui-surface-dark) !important;
+  border-color: #a7824f !important;
+  color: var(--kcroc-ui-text-dark) !important;
 }
-[data-kcroc-rollout="location-area"] [data-tower-handover-generator] *,
-[data-kcroc-rollout="location-area"] [aria-labelledby="local-emergency-protocol"] * {
-  color: #e2e8f0 !important;
+[data-kcroc-rollout="location-area"] [aria-labelledby="local-emergency-protocol"] > h3 {
+  color: #fcd34d !important;
 }
 [data-kcroc-rollout="location-area"] [aria-labelledby="local-emergency-protocol"] :is(li,div,article)[class*="rounded-"][class*="border"] {
-  border-color: rgba(245,158,11,.2) !important;
-  background: #0f172a !important;
-  color: #e2e8f0 !important;
+  background: var(--kcroc-ui-field-dark) !important;
+  border-color: #64748b !important;
   box-shadow: none !important;
 }
+/* Kuwait City office pickup adopts the SAME light treatment as the adjacent
+   information cards. Labels, field borders and contact buttons stay readable. */
+[data-kcroc-rollout="location-area"] [data-tower-handover-generator] {
+  background: var(--kcroc-ui-surface-light) !important;
+  border-color: var(--kcroc-rollout-line) !important;
+  color: var(--kcroc-ui-text-light) !important;
+  box-shadow: 0 8px 28px rgba(25,29,28,.06);
+}
+[data-kcroc-rollout="location-area"] [data-tower-handover-generator] :is(h2,h3) {
+  color: var(--kcroc-ui-text-light) !important;
+}
+[data-kcroc-rollout="location-area"] [data-tower-handover-generator] p {
+  color: var(--kcroc-ui-muted-light) !important;
+}
+[data-kcroc-rollout="location-area"] [data-tower-handover-generator] label {
+  color: var(--kcroc-ui-text-light) !important;
+}
 [data-kcroc-rollout="location-area"] [data-tower-handover-generator] :is(input,select,textarea) {
-  border-color: #334155 !important;
-  background: #0f172a !important;
-  color: #f8fafc !important;
+  background: var(--kcroc-ui-field-light) !important;
+  border-color: var(--kcroc-ui-border-light) !important;
+  color: var(--kcroc-ui-text-light) !important;
+  color-scheme: light;
+}
+[data-kcroc-rollout="location-area"] [data-tower-handover-generator] :is(input,textarea)::placeholder {
+  color: var(--kcroc-ui-placeholder) !important;
+  opacity: 1;
+}
+[data-kcroc-rollout="location-area"] [data-tower-handover-generator] a[data-kcroc-action="secondary"] {
+  background: #fff !important;
+  border-color: var(--kcroc-ui-border-light) !important;
+  color: var(--kcroc-ui-text-light) !important;
+}
+[data-kcroc-rollout="location-area"] [data-tower-handover-generator] a[data-kcroc-action="secondary"]:hover {
+  background: #f4efe7 !important;
 }
 
 /* Brand detail: hero and symptom picker remain dark. */
@@ -168,13 +196,13 @@
   background: var(--kcroc-rollout-paper) !important;
   color: var(--kcroc-rollout-ink) !important;
 }
-[data-kcroc-rollout="article"] [data-kcroc-editorial-panel="article-body"] :is(h1,h2,h3,h4,strong,b) {
+[data-kcroc-rollout="article"] [data-kcroc-editorial-panel="article-body"] :is(h1,h2,h3,h4,strong,b):not([data-kcroc-surface="dark"] *) {
   color: var(--kcroc-rollout-ink) !important;
 }
-[data-kcroc-rollout="article"] [data-kcroc-editorial-panel="article-body"] :is(p,li,td,th,figcaption,cite,.text-slate-200,.text-slate-300,.text-slate-400,.text-slate-500) {
+[data-kcroc-rollout="article"] [data-kcroc-editorial-panel="article-body"] :is(p,li,td,th,figcaption,cite,.text-slate-200,.text-slate-300,.text-slate-400,.text-slate-500):not([data-kcroc-surface="dark"] *) {
   color: var(--kcroc-rollout-muted) !important;
 }
-[data-kcroc-rollout="article"] [data-kcroc-editorial-panel="article-body"] :is(a,.text-cyan-300,.text-cyan-400) {
+[data-kcroc-rollout="article"] [data-kcroc-editorial-panel="article-body"] :is(a,.text-cyan-300,.text-cyan-400):not([data-kcroc-surface="dark"] *) {
   color: var(--kcroc-rollout-copper) !important;
 }
 [data-kcroc-rollout="article"] [data-kcroc-editorial-panel="article-body"] pre,
@@ -184,9 +212,8 @@
   background: #0b1220 !important;
   color: #e2e8f0 !important;
 }
-[data-kcroc-rollout="article"] [data-kcroc-editorial-panel="article-body"] section[aria-labelledby="global-diagnostic-scorecard"] * {
-  color: #e2e8f0 !important;
-}
+/* The scorecard opts into the global dark surface; preserve distinct link,
+   label and status colors instead of bleaching all descendants. */
 
 /* Booking/contact forms: improve field contrast and use the site copper action. */
 [data-kcroc-rollout^="booking"] :is(input,select,textarea),
