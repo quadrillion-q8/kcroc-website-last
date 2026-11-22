@@ -1235,7 +1235,7 @@ select {
   --kcroc-faq-open: #fffaf4;
   --kcroc-faq-ink: #172022;
   --kcroc-faq-muted: #566467;
-  --kcroc-faq-line: #d6c9b9;
+  --kcroc-faq-line: #8b8175;
   --kcroc-faq-copper: #8f4f2c;
 }
 #main-content[data-page-type] [data-kcroc-faq-list] {
@@ -1293,7 +1293,8 @@ select {
   line-height: 1.75;
 }
 #main-content[data-page-type] [data-kcroc-faq-item] :is(
-  summary svg, button[aria-expanded] svg,
+  summary svg, button[aria-expanded] svg, h3 svg,
+  h3 [class*="text-cyan-"],
   summary [class*="text-cyan-"], summary [class*="text-slate-"]
 ) {
   color: var(--kcroc-faq-copper) !important;
@@ -1320,7 +1321,7 @@ select {
 ):focus-visible {
   outline-offset: -3px;
 }
-:lang(ar) #main-content [data-kcroc-faq-item] :is(
+#main-content[data-site-locale="ar"] [data-kcroc-faq-item] :is(
   summary, summary span, button[aria-expanded], button[aria-expanded] span
 ) {
   text-align: start;
