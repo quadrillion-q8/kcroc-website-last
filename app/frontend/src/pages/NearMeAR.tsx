@@ -24,29 +24,28 @@ import { IMAGES } from '../constants/images';
 import { ArabicHeadTermLinks } from '@/components/content/ArabicHeadTermLinks';
 
 
-// Arabic labels for existing (English-slugged) service pages — the
-// underlying service pages stay English for now, but Arabic visitors get
-// Arabic labels/descriptions pointing to them, same pattern already used in
-// NearMe.tsx's embedded Arabic section.
+// Arabic labels for the actual localized service pages. Keep every link rooted
+// in a supported repair service; pickup is not a promise of on-site repairs.
 const SERVICES_AR: { path: string; icon: React.ElementType; title: string; description: string }[] = [
-  { path: '/ar/laptop-repair-kuwait', icon: Laptop, title: 'تصليح لابتوب', description: 'تشخيص وإصلاح أعطال اللابتوب، سواء كانت في الهاردوير أو السوفتوير، لمختلف الماركات.' },
-  { path: '/ar/macbook-repair-kuwait', icon: Apple, title: 'تصليح ماك بوك', description: 'إصلاح أعطال MacBook واللوحة المنطقية، بما في ذلك إصلاحات الميكروسولدرينج عند الحاجة.' },
-  { path: '/ar/gaming-pc-repair-kuwait', icon: Gamepad2, title: 'تصليح كمبيوتر قيمنق', description: 'تشخيص وإصلاح أجهزة الألعاب المكتبية، ومشاكل كروت الشاشة والتبريد والطاقة وغيرها.' },
+  { path: '/ar/laptop-repair-kuwait', icon: Laptop, title: 'تصليح لابتوب', description: 'تشخيص أعطال التشغيل والشحن والحرارة والشاشة والهاردوير للابتوبات من مختلف الماركات.' },
+  { path: '/ar/macbook-repair-kuwait', icon: Apple, title: 'تصليح ماك بوك', description: 'تشخيص أعطال MacBook واللوحة الأم وإصلاح المكوّنات الدقيقة عند ملاءمة الحالة.' },
+  { path: '/ar/gaming-pc-repair-kuwait', icon: Gamepad2, title: 'تصليح كمبيوتر قيمنق', description: 'نفحص بي سي الألعاب المكتبي الكامل وأعطال الحرارة والطاقة والتبريد وهبوط FPS والاستقرار؛ لا نصلح كروت الشاشة المنفصلة.' },
   { path: '/ar/motherboard-repair-kuwait', icon: Cpu, title: 'تصليح اللوحة الأم', description: 'إصلاح اللوحة الأم على مستوى القطعة الإلكترونية بدل استبدال اللوحة بالكامل، متى ما كان ذلك ممكنًا.' },
   { path: '/ar/laptop-screen-repair-kuwait', icon: Monitor, title: 'تغيير شاشة اللابتوب', description: 'تغيير شاشات اللابتوب المكسورة أو المتضررة، وإصلاح مشاكل الخطوط أو الإضاءة حسب حالة الشاشة.' },
   { path: '/ar/laptop-battery-replacement-kuwait', icon: ShieldCheck, title: 'تغيير بطارية اللابتوب', description: 'فحص صحة البطارية أولًا ثم استبدالها عند التأكد من أن البطارية هي سبب المشكلة.' },
   { path: '/ar/laptop-keyboard-replacement-kuwait', icon: Laptop, title: 'تبديل كيبورد اللابتوب', description: 'تبديل الكيبورد أو تشخيص الأزرار التي لا تعمل والإضاءة ومشاكل السوائل حسب موديل الجهاز.' },
-  { path: '/ar/ssd-ram-upgrade-kuwait', icon: Cpu, title: 'ترقية SSD وRAM', description: 'ترقية التخزين والذاكرة بعد فحص التوافق ودعم الجهاز، مع نقل البيانات عند الإمكان.' },
+  { path: '/ar/ssd-ram-upgrade-kuwait', icon: Cpu, title: 'ترقية SSD وRAM', description: 'ترقية التخزين والذاكرة بعد فحص التوافق ودعم الجهاز لتحسين سرعة الإقلاع والأداء.' },
   { path: '/ar/laptop-charging-port-repair-kuwait', icon: Cpu, title: 'إصلاح مدخل الشحن', description: 'تشخيص منفذ الشحن ودوائر الطاقة، مع إصلاح المنفذ أو العطل على مستوى اللوحة عندما يكون ذلك ممكنًا.' },
 ];
 
 const AREAS_AR = arabicLocationInventory();
+const WORKSHOP_ADDRESS_AR = 'شارع ابن خلدون، مجمع الملا، السرداب، محل 19، حولي، الكويت';
 
 const AR_COMMERCIAL_CLUSTER = [
   { href: '/ar/computer-repair-kuwait', title: 'تصليح كمبيوتر في الكويت', desc: 'صفحة الخدمة العامة للكمبيوتر واللابتوب واللوحة الأم.' },
   { href: '/ar/laptop-repair-kuwait', title: 'تصليح لابتوب في الكويت', desc: 'خدمات الشاشة والبطارية والشحن والتبريد واللوحة الأم.' },
   { href: '/ar/motherboard-repair-kuwait', title: 'تصليح المذربورد واللوحة الأم', desc: 'تشخيص وإصلاح دوائر الطاقة والشحن والمكونات عندما يكون ذلك ممكنًا.' },
-  { href: '/ar/gaming-pc-repair-kuwait', title: 'تصليح Gaming PC في الكويت', desc: 'GPU والحرارة والطاقة والتبريد ومشاكل الأداء تحت الضغط.' },
+  { href: '/ar/gaming-pc-repair-kuwait', title: 'تصليح Gaming PC في الكويت', desc: 'فحص حرارة كمبيوتر الألعاب والطاقة والتبريد وهبوط FPS والاستقرار تحت الضغط.' },
   { href: '/ar/laptop-screen-repair-kuwait', title: 'تصليح وتبديل شاشة اللابتوب', desc: 'تشخيص الشاشة السوداء والخطوط والوميض قبل طلب القطعة.' },
 ];
 
@@ -114,7 +113,7 @@ export default function NearMeAR() {
         url: business.websiteUrl + IMAGES.brand.shopExteriorDay.src,
         contentUrl: business.websiteUrl + IMAGES.brand.shopExteriorDay.src,
         name: 'موقع مختبر KCROC في حولي',
-        caption: 'واجهة موقع KCROC في مجمع المله، حولي. يتم إصلاح الأجهزة في المختبر بعد ترتيب الاستلام، وليس داخل منازل العملاء.',
+        caption: 'واجهة مختبر KCROC في مجمع الملا بحولي. يتم إصلاح الأجهزة داخل المختبر، مو في منازل العملاء.',
         width: IMAGES.brand.shopExteriorDay.width,
         height: IMAGES.brand.shopExteriorDay.height,
         inLanguage: 'ar-KW'
@@ -146,10 +145,10 @@ export default function NearMeAR() {
                 <MapPin className="ml-2 inline h-3.5 w-3.5" aria-hidden="true" /> خدمة محلية في الكويت
               </Badge>
               <h1 className="text-4xl font-black leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-6xl">
-                تصليح كمبيوتر ولابتوب <span className="text-cyan-400">بالقرب منك في الكويت</span>
+                تصليح وصيانة كمبيوتر ولابتوب <span className="text-cyan-400">قريب منك في الكويت</span>
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-loose text-slate-300 sm:text-lg">
-                تبحث عن تصليح كمبيوتر قريب منك؟ نرتب استلام اللابتوب أو الكمبيوتر من المنزل أو المكتب في مناطق الكويت التي نخدمها، ونفحصه ونصلحه في مختبر KCROC بحولي، ثم نوصله لك بعد الاختبار مع عرض سعر قبل بدء الإصلاح.
+                تدور على «تصليح كمبيوتر قريب مني» أو «صيانة لابتوب قريب مني» وما تبي تضيع وقتك بالمشاوير؟ KCROC يرتّب استلام الكمبيوتر أو اللابتوب مجانًا من البيت أو المكتب في مناطق الكويت اللي نخدمها. نفحص جهازك ونصلحه داخل مختبرنا الوحيد بحولي بعد ما نوضح لك السعر وتوافق عليه، ونوصله لك بعد الاختبار.
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <Button size="lg" className="w-full bg-cyan-500 font-black text-slate-950 hover:bg-cyan-400 sm:w-auto" asChild>
@@ -190,13 +189,13 @@ export default function NearMeAR() {
         <div className="mx-auto max-w-6xl">
           <div className="mb-10 max-w-3xl">
             <p className="mb-2 text-xs font-bold uppercase tracking-widest text-cyan-400">خدمة محلية بقدرة إصلاح حقيقية</p>
-            <h2 className="text-3xl font-black tracking-tight text-white sm:text-4xl">فني قريب منك، وإصلاح حقيقي لجهازك</h2>
-            <p className="mt-4 leading-loose text-slate-400">عند البحث عن فني كمبيوتر قريب منك، الأهم ليس فقط قرب المحل، بل أن يعرف الفني كيف يشخّص العطل بدقة، يشرح لك المشكلة بوضوح، ويسهّل عليك استلام جهازك وتسليمه.</p>
+            <h2 className="text-3xl font-black tracking-tight text-white sm:text-4xl">استلام مريح من منطقتك وفحص حقيقي لجهازك</h2>
+            <p className="mt-4 leading-loose text-slate-400">إذا تكتب «محل تصليح كمبيوتر قريب مني» أو «محل تصليح لابتوب قريب مني»، مو لازم تختار أقرب مكان من غير ما تعرف طريقة الإصلاح. عندنا مصلح كمبيوتر يفحص العطل داخل مختبر ESD بحولي، ونرتب لك الاستلام والتوصيل مجانًا من منطقتك.</p>
           </div>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {[
               { icon: Cpu, title: 'إصلاح على مستوى القطعة', desc: 'إذا كان العطل في قطعة إلكترونية داخل اللوحة الأم، نحاول إصلاح القطعة نفسها بدل استبدال اللوحة كاملة، وهذا يوفر عليك تكلفة اللوحة الجديدة.' },
-              { icon: ShieldCheck, title: 'إذا لم يمكن الإصلاح، فلا رسوم عليك', desc: 'إذا تبيّن أن جهازك لا يمكن إصلاحه بتكلفة مناسبة، لا تتحمّل أي رسوم فحص أو تشخيص.' },
+              { icon: ShieldCheck, title: 'إذا لم يمكن الإصلاح، فلا رسوم عليك', desc: 'الفحص الأولي مجاني، وإذا ما قدرنا نكمل الإصلاح ما نفرض عليك أجور إصلاح، وفق سياسة No Fix, No Fee.' },
               { icon: Truck, title: 'استلام وتوصيل مجاني', desc: 'نرتب استلام جهازك من المنزل أو المكتب في حولي والسالمية ومدينة الكويت والفروانية والأحمدي والجهراء وما حولها.' },
               { icon: BadgeCheck, title: 'خصوصية بياناتك تهمّنا', desc: 'نركّز على فحص الجهاز وإصلاح العطل فقط، وفنيونا لا يحتاجون إلى فتح ملفاتك الشخصية أثناء الإصلاح.' },
             ].map((usp) => (
@@ -216,11 +215,11 @@ export default function NearMeAR() {
           <div className="grid items-start gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
             <div>
               <p className="mb-2 text-xs font-bold uppercase tracking-widest text-cyan-400">الموقع الفعلي وطريقة الخدمة</p>
-              <h2 id="near-me-workshop" className="text-3xl font-black leading-tight text-white sm:text-4xl">ورشة حقيقية في حولي، مع استلام من منطقتك</h2>
-              <p className="mt-4 leading-loose text-slate-300">حتى لو كنت بعيدًا عن حولي، لا تحتاج إلى البحث عن محل قريب أو نقل الجهاز بنفسك. نرتب استلامه من المنزل أو المكتب ضمن مناطق الخدمة، ويجري التشخيص والإصلاح في مختبر KCROC بحولي، ثم ننسق إعادته بعد الاختبار.</p>
+              <h2 id="near-me-workshop" className="text-3xl font-black leading-tight text-white sm:text-4xl">مختبر تصليح كمبيوتر ولابتوب في حولي، واستلام من منطقتك</h2>
+              <p className="mt-4 leading-loose text-slate-300">إذا تبحث عن صيانة كمبيوتر قريب مني أو تصليح لاب توب قريب مني، ما يحتاج تلف على أماكن تصليح لابتوب بعيدة. تقدر تزور مختبرنا الوحيد في حولي، أو تطلب استلام جهازك من البيت أو المكتب في مناطق الخدمة. ما عندنا فروع تصليح ثانية، ولا فني يصلح داخل المنزل؛ كل شغل الفحص والإصلاح يصير في مختبر حولي ثم نرجّع الجهاز لك بعد الاختبار.</p>
               <div className="mt-5 rounded-2xl border border-slate-800 bg-slate-950/60 p-5">
                 <p className="text-xs font-bold uppercase tracking-wider text-cyan-300">عنوان المختبر</p>
-                <address className="mt-2 not-italic font-bold leading-7 text-white">{business.streetAddress}، {business.addressLocality}، الكويت</address>
+                <address className="mt-2 not-italic font-bold leading-7 text-white">{WORKSHOP_ADDRESS_AR}</address>
                 <p className="mt-3 flex items-center gap-2 text-sm text-slate-400"><Clock className="h-4 w-4 shrink-0 text-cyan-400" aria-hidden="true" /> يوميًا من 10:00 صباحًا إلى 10:00 مساءً</p>
                 <div className="mt-4 flex flex-wrap gap-3">
                   <a href={business.socialLinks.googleMaps} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full bg-cyan-500 px-5 py-2.5 text-sm font-black text-slate-950 transition hover:bg-cyan-400">
@@ -235,12 +234,12 @@ export default function NearMeAR() {
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 sm:col-span-2">
-                <img src={IMAGES.brand.shopExteriorDay.src} alt="واجهة موقع KCROC في مجمع المله بشارع ابن خلدون في حولي، الكويت" width={IMAGES.brand.shopExteriorDay.width} height={IMAGES.brand.shopExteriorDay.height} loading="lazy" decoding="async" className="aspect-[16/9] w-full object-cover" />
+                <img src={IMAGES.brand.shopExteriorDay.src} alt="واجهة موقع KCROC في مجمع الملا بشارع ابن خلدون في حولي، الكويت" width={IMAGES.brand.shopExteriorDay.width} height={IMAGES.brand.shopExteriorDay.height} loading="lazy" decoding="async" className="aspect-[16/9] w-full object-cover" />
                 <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">واجهة موقع العمل الفعلي في حولي؛ افتح خرائط Google لمعرفة الاتجاهات قبل الزيارة.</figcaption>
               </figure>
               <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
-                <img src={IMAGES.brand.shopEntrance.src} alt="مدخل مختبر KCROC في مجمع المله بحولي" width={IMAGES.brand.shopEntrance.width} height={IMAGES.brand.shopEntrance.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
-                <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">مدخل موقع العمل في مجمع المله.</figcaption>
+                <img src={IMAGES.brand.shopEntrance.src} alt="مدخل مختبر KCROC في مجمع الملا بحولي" width={IMAGES.brand.shopEntrance.width} height={IMAGES.brand.shopEntrance.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                <figcaption className="border-t border-slate-800 px-4 py-3 text-sm leading-6 text-slate-400">مدخل موقع العمل في مجمع الملا.</figcaption>
               </figure>
               <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
                 <img src={IMAGES.brand.shopInterior.src} alt="داخل مختبر وورشة إصلاح الكمبيوتر واللابتوب في KCROC" width={IMAGES.brand.shopInterior.width} height={IMAGES.brand.shopInterior.height} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
@@ -283,6 +282,7 @@ export default function NearMeAR() {
             <div>
               <p className="mb-2 text-xs font-bold uppercase tracking-widest text-cyan-400">ماذا نصلح</p>
               <h2 className="text-3xl font-black text-white sm:text-4xl">خدمات تصليح الكمبيوتر واللابتوب</h2>
+              <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-400">تدور على محل تصليح بي سي للألعاب أو محل صيانة لابتوب؟ هذي أبرز خدمات الهاردوير اللي نستلم لها أجهزة من البيت أو المكتب بالكويت ونفحصها داخل مختبر حولي.</p>
             </div>
             <Link to="/ar/services" className="inline-flex items-center text-sm font-bold text-cyan-400 hover:text-cyan-300">جميع الخدمات <ArrowRight className="mr-1 h-4 w-4 rotate-180" aria-hidden="true" /></Link>
           </div>
@@ -296,6 +296,9 @@ export default function NearMeAR() {
               </Link>
             ))}
           </div>
+          <p className="mt-6 max-w-4xl text-sm leading-7 text-slate-400">
+            خدماتنا تخص فحص وصيانة هاردوير الكمبيوتر واللابتوب. ما نقدّم استرجاع بيانات، ولا إزالة فيروسات، ولا تصليح كروت الشاشة المنفصلة أو شاشات المونيتور الخارجية، ولا زيارات فني للإصلاح داخل البيت.
+          </p>
         </div>
       </section>
 
@@ -303,9 +306,9 @@ export default function NearMeAR() {
       <section className="border-y border-slate-800/60 bg-brand-dark/40 px-4 py-12 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-6xl">
           <div className="mb-10 max-w-3xl">
-            <p className="mb-2 text-xs font-bold uppercase tracking-widest text-cyan-400">الخدمات التجارية بالعربي</p>
+            <p className="mb-2 text-xs font-bold uppercase tracking-widest text-cyan-400">صفحات الخدمات المتخصصة</p>
             <h2 className="text-3xl font-black text-white sm:text-4xl">ابدأ من صفحة الخدمة المناسبة لجهازك</h2>
-            <p className="mt-4 leading-loose text-slate-400">هذه الصفحات تجمع تفاصيل الخدمة مع المشاكل الشائعة، الماركات، مناطق الاستلام وطرق التواصل حتى تصل من نية البحث إلى طلب الإصلاح بشكل أوضح.</p>
+            <p className="mt-4 leading-loose text-slate-400">إذا تعرف نوع العطل، اختار الصفحة الأقرب لمشكلة جهازك عشان تشوف شنو نفحص وشنو نصلح وطريقة استلام الجهاز من منطقتك.</p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {AR_COMMERCIAL_CLUSTER.map((item) => (
@@ -322,7 +325,7 @@ export default function NearMeAR() {
       <section className="border-y border-slate-800/60 bg-slate-900/30 px-4 py-12 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-6xl">
           <div className="mb-10 max-w-3xl">
-            <p className="mb-2 text-xs font-bold uppercase tracking-widest text-cyan-400">أكثر عمليات البحث شيوعًا</p>
+            <p className="mb-2 text-xs font-bold uppercase tracking-widest text-cyan-400">مساعدة حسب المشكلة</p>
             <h2 className="text-3xl font-black text-white sm:text-4xl">اختر المشكلة أو خدمة الإصلاح الأقرب لجهازك</h2>
             <p className="mt-4 leading-loose text-slate-400">إذا كنت تعرف المشكلة التي يعاني منها جهازك، انتقل مباشرة إلى صفحة التشخيص والخدمة المناسبة بدل البحث عن محل بشكل عام.</p>
           </div>
@@ -401,13 +404,13 @@ export default function NearMeAR() {
       <section className="px-4 py-14 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl border border-cyan-500/20 bg-slate-900/80 p-7 text-center shadow-2xl sm:p-12">
           <HomeIcon className="mx-auto h-8 w-8 text-cyan-400" aria-hidden="true" />
-          <h2 className="mt-4 text-3xl font-black text-white sm:text-4xl">تحتاج فني كمبيوتر قريب منك؟</h2>
+          <h2 className="mt-4 text-3xl font-black text-white sm:text-4xl">تبي تصلّح جهازك بدون مشوار؟</h2>
           <p className="mx-auto mt-4 max-w-2xl leading-loose text-slate-400">أخبرنا بمنطقتك ونوع جهازك والمشكلة التي تواجهها، وسنساعدك في تحديد الخطوة المناسبة. وإذا احتاج الجهاز إلى فحص، سنرتب لك الاستلام من المنزل أو المكتب.</p>
           <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
             <Button size="lg" className="bg-cyan-500 font-black text-slate-950 hover:bg-cyan-400" asChild><Link to="/ar/book">احجز استلام مجاني</Link></Button>
             <Button size="lg" variant="outline" className="border-slate-700 text-white hover:bg-slate-800" asChild><a href={waLink} target="_blank" rel="noopener noreferrer">تواصل عبر واتساب</a></Button>
           </div>
-          <p className="mt-5 text-xs text-slate-500">مختبر الإصلاح المركزي: {business.streetAddress}، {business.addressLocality}، الكويت</p>
+          <p className="mt-5 text-xs text-slate-500">مختبر الإصلاح الوحيد: {WORKSHOP_ADDRESS_AR}</p>
         </div>
       </section>
       <ArabicHeadTermLinks />
