@@ -1132,3 +1132,92 @@ select {
 :lang(ar):is(a, button, label, summary, input, select, textarea) {
   letter-spacing: normal;
 }
+
+
+/* KCROC GLOBAL SURFACE + CONTROL CONTRAST POLICY (EN / AR)
+   Explicit dark/light surfaces avoid accidental theme inversion by section
+   or page CSS. All paired foreground/background colors meet WCAG AA for text.
+   Use the surface marker on real UI components, not whole-page overrides. */
+:root {
+  --kcroc-ui-surface-dark: #0b1220;
+  --kcroc-ui-text-dark: #f8fafc;
+  --kcroc-ui-muted-dark: #cbd5e1;
+  --kcroc-ui-field-dark: #0f172a;
+  --kcroc-ui-border-dark: #64748b;
+  --kcroc-ui-surface-light: #fffdf9;
+  --kcroc-ui-text-light: #172022;
+  --kcroc-ui-muted-light: #566467;
+  --kcroc-ui-field-light: #ffffff;
+  --kcroc-ui-border-light: #798286;
+  --kcroc-ui-placeholder: #59666a;
+  --kcroc-ui-action: #c9804d;
+  --kcroc-ui-action-ink: #17110c;
+}
+
+[data-kcroc-surface="dark"] {
+  color: var(--kcroc-ui-text-dark);
+  color-scheme: dark;
+}
+[data-kcroc-surface="light"] {
+  color: var(--kcroc-ui-text-light);
+  color-scheme: light;
+}
+[data-kcroc-surface="dark"] :is(h1,h2,h3,h4,h5,label,legend,strong) {
+  color: var(--kcroc-ui-text-dark) !important;
+}
+[data-kcroc-surface="dark"] :is(p,dd,figcaption,li) {
+  color: var(--kcroc-ui-muted-dark) !important;
+}
+[data-kcroc-surface="dark"] :is(input,select,textarea) {
+  background: var(--kcroc-ui-field-dark) !important;
+  color: var(--kcroc-ui-text-dark) !important;
+  border-color: var(--kcroc-ui-border-dark) !important;
+  color-scheme: dark;
+}
+[data-kcroc-surface="dark"] :is(input,textarea)::placeholder {
+  color: var(--kcroc-ui-muted-dark) !important;
+  opacity: 1;
+}
+/* Opt-in forms share readable 14px labels, 16px inputs, and 44px targets. */
+[data-kcroc-form] label {
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+[data-kcroc-form] :is(input,select,textarea) {
+  min-height: 2.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+[data-kcroc-surface="light"][data-kcroc-form] label {
+  color: var(--kcroc-ui-text-light) !important;
+}
+[data-kcroc-surface="light"][data-kcroc-form] :is(input,select,textarea) {
+  background: var(--kcroc-ui-field-light) !important;
+  color: var(--kcroc-ui-text-light) !important;
+  border-color: var(--kcroc-ui-border-light) !important;
+  color-scheme: light;
+}
+[data-kcroc-surface="light"][data-kcroc-form] :is(input,textarea)::placeholder {
+  color: var(--kcroc-ui-placeholder) !important;
+  opacity: 1;
+}
+[data-kcroc-form] :is(input,select,textarea,a,button):focus-visible {
+  outline: 3px solid var(--brand-copper-deep, #8f4f2c);
+  outline-offset: 2px;
+}
+[data-kcroc-surface] [data-kcroc-action="primary"] {
+  background: var(--kcroc-ui-action) !important;
+  border-color: var(--kcroc-ui-action) !important;
+  color: var(--kcroc-ui-action-ink) !important;
+}
+[data-kcroc-surface="light"] [data-kcroc-action="secondary"] {
+  background: var(--kcroc-ui-field-light) !important;
+  border: 1px solid var(--kcroc-ui-border-light) !important;
+  color: var(--kcroc-ui-text-light) !important;
+}
+[data-kcroc-surface="dark"] [data-kcroc-action="secondary"] {
+  background: #1e293b !important;
+  border: 1px solid var(--kcroc-ui-border-dark) !important;
+  color: var(--kcroc-ui-text-dark) !important;
+}
