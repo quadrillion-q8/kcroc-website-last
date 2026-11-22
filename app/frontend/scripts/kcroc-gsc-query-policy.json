@@ -1,0 +1,159 @@
+{
+  "version": "2026-11-22",
+  "scope": "Kuwait; web search; segmented by landing-page URL, not query language",
+  "source": "Google Search Console, sc-domain:computerrepairkuwait.com",
+  "segments": {
+    "en": {
+      "exclude": "(?i)(\\b(?:iphone|ipad|tablets?|smartphones?|xbox|playstation|nintendo|routers?|modems?|cctv|printers?|12vhpwr)\\b|\\bps[345]\\b|(?:phone|mobile)\\s*(?:repair|technician|service|fix)|(?:gaming\\s*)?console\\s*(?:repair|service|fix)|network\\s*(?:setup|install(?:ation)?|cabling|support)|(?:desktop|external|standalone|pc|computer)\\s*monitors?|(?:laptops?|computers?|pcs?)\\s*(?:for\\s*)?sale|(?:buy|sell)\\s*(?:used\\s*)?(?:laptops?|computers?|pcs?)\\b|used\\s*(?:laptops?|computers?|pcs?)\\s*(?:for\\s*sale|price|shop|store|buy)|(?:data|file|hard\\s*drive)\\s*recovery|dead[\\s-]*board\\s*file\\s*rescue|data\\s*backup|cloud\\s*migration|managed\\s*backup|(?:home|on[\\s-]*site|in[\\s-]*home)\\s*(?:repair|visit|technician|service)|home\\s*(?:laptop|computer|pc|macbook)\\s*repair|(?:laptop|computer|pc|macbook)\\s*home\\s*repair|appliance\\s*repair|custom\\s*(?:gaming\\s*)?pc\\s*build|(?:pc|gaming\\s*pc)\\s*build(?:er|ing|s)?\\b|build\\s*a\\s*(?:gaming\\s*)?pc\\b|security\\s*camera|enterprise\\s*it|\\bamc\\b|annual\\s*maintenance|managed\\s*it|ink\\s*refill|(?:gpu|graphics\\s*card)\\s*(?:repair|fix|reball)|(?:virus|malware)\\s*(?:removal|cleaning|repair))",
+      "review": "(?i)(gaming\\s+monitor|monitor\\s*(?:screen\\s*)?(?:repair|fix|replacement)|hard\\s*(?:disk|drive)\\s*repair|laptop\\s*monitor|repair\\s*(?:at|in)\\s*home|computer\\s*sales\\s*and\\s*service)",
+      "mixed": "(?i)((?:iphone|ipad|tablet|smartphone|phone\\s*repair|printers?)\\b.{0,150}(?:laptop|mac\\s*book|computer|pc)\\s*(?:repair|service|fix)|(?:laptop|mac\\s*book|computer|pc)\\s*(?:repair|service|fix).{0,150}(?:iphone|ipad|tablet|smartphone|phone\\s*repair|printers?))"
+    },
+    "ar": {
+      "exclude": "(?i)(آيفون|ايفون|أيفون|آيباد|ايباد|أيباد|تابلت|(?:تصليح|صيانة|فني|مركز|شاشة|بطارية)\\s*(?:تلفون(?:ات)?|تليفون(?:ات)?|هواتف|هاتف|موبايل(?:ات)?|جوال(?:ات)?)|بلاي\\s*ستيشن|بلي\\s*ستيشن|اكس\\s*بوكس|إكس\\s*بوكس|إكسبوكس|نينتندو|\\bps[345]\\b|(?:تصليح|صيانة)\\s*سوني\\s*(?:بلاي\\s*ستيشن|ps[345])|أجهزة\\s*الألعاب|اجهزة\\s*الالعاب|راوتر|مودم|فني\\s*شبكات|شبكات\\s*انترنت|(?:شاشة|شاشات)\\s*(?:كمبيوتر\\s*)?(?:خارجية|مكتبية)|(?:شاشة|شاشات)\\s*(?:كمبيوتر|بي\\s*سي)\\s*(?:مكتبي|خارجي)|بيع\\s*(?:وشراء\\s*)?(?:لابتوب(?:ات)?|كمبيوتر(?:ات)?|بي\\s*سي)|(?:لابتوب(?:ات)?|كمبيوتر(?:ات)?|بي\\s*سي)\\s*للبيع|شراء\\s*(?:لابتوب(?:ات)?|كمبيوتر(?:ات)?|بي\\s*سي)|(?:استرجاع|استعادة)\\s*(?:ال)?(?:بيانات|ملفات)|نسخ\\s*احتياطي|نقل\\s*بيانات\\s*سحابي|(?:تصليح|صيانة|فني)\\s*(?:كمبيوتر|لابتوب|لاب\\s*توب|بي\\s*سي)\\s*(?:بالمنزل|في\\s*المنزل|بالبيت|في\\s*البيت)|(?:فني|تصليح|صيانة)\\s*(?:كمبيوتر|لابتوب|لاب\\s*توب|بي\\s*سي)\\s*(?:يجي|يزور)\\s*(?:البيت|المنزل)|خدمة\\s*منازل|(?:تصليح|صيانة)\\s*أجهزة\\s*منزلية|تجميع(?:ة|ات)?\\s*(?:كمبيوتر|بي\\s*سي|جيمنج|قيمنق|العاب|ألعاب)|كاميرا(?:ت)?\\s*مراقبة|عقود\\s*صيانة|دعم\\s*فني\\s*للشركات|أنظمة\\s*it|انظمة\\s*it|طابع(?:ة|ات)|تعبئة\\s*حبر|(?:تصليح|صيانة)\\s*كر(?:ت|وت)\\s*(?:ال)?شاشة|(?:ازالة|إزالة|حذف)\\s*فيروسات)",
+      "review": "(?i)((?:تصليح|صيانة|تغيير)\\s*شاش(?:ة|ات)\\s*(?:ال)?كمبيوتر|(?:تصليح|صيانة)\\s*شاش(?:ة|ات)\\s*قيمنق|(?:تصليح|صيانة)\\s*سوني|(?:تصليح|صيانة|فني)\\s*كمبيوتر\\s*(?:للبيت|للمنزل))",
+      "mixed": "(?i)((?:آيفون|ايفون|أيفون|آيباد|ايباد|طابع(?:ة|ات))\\s*.{0,100}(?:تصليح|صيانة)\\s*(?:لابتوب|لاب\\s*توب|كمبيوتر|ماك\\s*بوك)|(?:تصليح|صيانة)\\s*(?:لابتوب|لاب\\s*توب|كمبيوتر|ماك\\s*بوك).{0,100}(?:آيفون|ايفون|أيفون|آيباد|ايباد|طابع(?:ة|ات)))"
+    }
+  },
+  "tests": [
+    {
+      "segment": "en",
+      "query": "laptop repair home pickup",
+      "expected": "keep"
+    },
+    {
+      "segment": "en",
+      "query": "mobile laptop pickup kuwait",
+      "expected": "keep"
+    },
+    {
+      "segment": "en",
+      "query": "computer repair open now",
+      "expected": "keep"
+    },
+    {
+      "segment": "en",
+      "query": "Sony VAIO repair",
+      "expected": "keep"
+    },
+    {
+      "segment": "en",
+      "query": "phone number computer repair",
+      "expected": "keep"
+    },
+    {
+      "segment": "en",
+      "query": "laptop wifi not working",
+      "expected": "keep"
+    },
+    {
+      "segment": "en",
+      "query": "home laptop repair service",
+      "expected": "exclude"
+    },
+    {
+      "segment": "en",
+      "query": "gpu repair near me",
+      "expected": "exclude"
+    },
+    {
+      "segment": "en",
+      "query": "virus removal kuwait",
+      "expected": "exclude"
+    },
+    {
+      "segment": "en",
+      "query": "monitor screen repair",
+      "expected": "review"
+    },
+    {
+      "segment": "en",
+      "query": "hard disk repair near me",
+      "expected": "review"
+    },
+    {
+      "segment": "en",
+      "query": "iphone repair center kuwait mac book repair center kuwaitlaptop repair center kuwait service provider",
+      "expected": "review"
+    },
+    {
+      "segment": "en",
+      "query": "computer and printer repair near me",
+      "expected": "exclude"
+    },
+    {
+      "segment": "ar",
+      "query": "تصليح سوني فايو لابتوب",
+      "expected": "review"
+    },
+    {
+      "segment": "ar",
+      "query": "تصليح شاشة لابتوب",
+      "expected": "keep"
+    },
+    {
+      "segment": "ar",
+      "query": "استلام لابتوب من المنزل",
+      "expected": "keep"
+    },
+    {
+      "segment": "ar",
+      "query": "رقم تلفون تصليح كمبيوتر",
+      "expected": "keep"
+    },
+    {
+      "segment": "ar",
+      "query": "تصليح كمبيوتر بالمنزل",
+      "expected": "exclude"
+    },
+    {
+      "segment": "ar",
+      "query": "فني كمبيوتر خدمة منازل",
+      "expected": "exclude"
+    },
+    {
+      "segment": "ar",
+      "query": "تصليح شاشات كمبيوتر",
+      "expected": "review"
+    },
+    {
+      "segment": "ar",
+      "query": "تصليح شاشات كمبيوتر مكتبي",
+      "expected": "exclude"
+    },
+    {
+      "segment": "ar",
+      "query": "تصليح طابعات حولي",
+      "expected": "exclude"
+    },
+    {
+      "segment": "ar",
+      "query": "صيانة كروت شاشة",
+      "expected": "exclude"
+    },
+    {
+      "segment": "ar",
+      "query": "تصليح سوني بلايستيشن",
+      "expected": "exclude"
+    },
+    {
+      "segment": "ar",
+      "query": "استلام كمبيوتر من البيت",
+      "expected": "keep"
+    },
+    {
+      "segment": "en",
+      "query": "macbook screen repair",
+      "expected": "keep"
+    },
+    {
+      "segment": "en",
+      "query": "computer monitor repair near me",
+      "expected": "exclude"
+    },
+    {
+      "segment": "ar",
+      "query": "تصليح لابتوب بالمنزل",
+      "expected": "exclude"
+    }
+  ]
+}
