@@ -1863,6 +1863,17 @@ add('Kuwait City has ten dedicated FAQs shared by the visible page and FAQPage s
   !kuwaitCityEntity.includes('1 to 3 hours') &&
   !kuwaitCityEntity.includes('10 to 15 minutes') &&
   !kuwaitCityEntity.includes('serialized chain-of-custody tag'));
+add('Kuwait City search-intent content targets relevant hardware repair without claiming a downtown shop or authorized brand center',
+  locations.includes('data-kuwait-city-search-intent="hardware-only"') &&
+  locations.includes('Looking for Laptop or Computer Repair Near You in Kuwait City?') &&
+  locations.includes('computer repair near me') &&
+  locations.includes('laptop repair near me') &&
+  locations.includes('to="/desktop-pc-repair-kuwait"') &&
+  locations.includes('to="/macbook-repair-kuwait"') &&
+  locations.includes('not an') &&
+  locations.includes('pickup appointments depend on confirmed availability.') &&
+  !locations.includes('laptop software repair near me'));
+
 add('Kuwait City service-area postal codes flow through the shared SEO schema generator',
   seoEngine.includes('location.additionalAreaPostalCodes') &&
   seoEngine.includes('"postalCode": area.postalCode') &&
