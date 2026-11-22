@@ -830,7 +830,7 @@ export default function GamingPCCooling() {
             </div>
             <div className="space-y-3">
               {faqs.map((item) => (
-                <details key={item.question} className="group rounded-xl border border-slate-700 bg-slate-900/70 p-4 open:border-cyan-400/30 sm:p-5">
+                <details key={item.question} data-kcroc-faq-item="true" className="group rounded-xl border border-slate-700 bg-slate-900/70 p-4 open:border-cyan-400/30 sm:p-5">
                   <summary className="flex cursor-pointer list-none items-start justify-between gap-4 font-semibold text-white marker:hidden">
                     <span>{item.question}</span>
                     <span className="text-cyan-300 transition-transform group-open:rotate-45">+</span>
