@@ -196,13 +196,13 @@
   background: var(--kcroc-rollout-paper) !important;
   color: var(--kcroc-rollout-ink) !important;
 }
-[data-kcroc-rollout="article"] [data-kcroc-editorial-panel="article-body"] :is(h1,h2,h3,h4,strong,b) {
+[data-kcroc-rollout="article"] [data-kcroc-editorial-panel="article-body"] :is(h1,h2,h3,h4,strong,b):not([data-kcroc-surface="dark"] *) {
   color: var(--kcroc-rollout-ink) !important;
 }
-[data-kcroc-rollout="article"] [data-kcroc-editorial-panel="article-body"] :is(p,li,td,th,figcaption,cite,.text-slate-200,.text-slate-300,.text-slate-400,.text-slate-500) {
+[data-kcroc-rollout="article"] [data-kcroc-editorial-panel="article-body"] :is(p,li,td,th,figcaption,cite,.text-slate-200,.text-slate-300,.text-slate-400,.text-slate-500):not([data-kcroc-surface="dark"] *) {
   color: var(--kcroc-rollout-muted) !important;
 }
-[data-kcroc-rollout="article"] [data-kcroc-editorial-panel="article-body"] :is(a,.text-cyan-300,.text-cyan-400) {
+[data-kcroc-rollout="article"] [data-kcroc-editorial-panel="article-body"] :is(a,.text-cyan-300,.text-cyan-400):not([data-kcroc-surface="dark"] *) {
   color: var(--kcroc-rollout-copper) !important;
 }
 [data-kcroc-rollout="article"] [data-kcroc-editorial-panel="article-body"] pre,
@@ -212,9 +212,8 @@
   background: #0b1220 !important;
   color: #e2e8f0 !important;
 }
-[data-kcroc-rollout="article"] [data-kcroc-editorial-panel="article-body"] section[aria-labelledby="global-diagnostic-scorecard"] * {
-  color: #e2e8f0 !important;
-}
+/* The scorecard opts into the global dark surface; preserve distinct link,
+   label and status colors instead of bleaching all descendants. */
 
 /* Booking/contact forms: improve field contrast and use the site copper action. */
 [data-kcroc-rollout^="booking"] :is(input,select,textarea),
