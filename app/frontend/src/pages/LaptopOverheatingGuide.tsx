@@ -700,7 +700,7 @@ export default function LaptopOverheatingGuide() {
           </div>
           <div className="mt-6 grid gap-4">
             {faq.map(item => (
-              <details key={item.q} className="group rounded-xl border border-slate-800 bg-slate-900/50 p-5">
+              <details key={item.q} data-kcroc-faq-item="true" className="group rounded-xl border border-slate-800 bg-slate-900/50 p-5">
                 <summary className="cursor-pointer list-none pr-8 font-semibold text-white">
                   {item.q}
                   <ChevronRight className="float-right h-5 w-5 text-slate-500 transition group-open:rotate-90" />
