@@ -422,6 +422,14 @@ export default function LocationDeepTemplate() {
               <p className="text-sm sm:text-lg text-slate-300 leading-relaxed">
                 {location.description}
               </p>
+              {isKuwaitCityPage && (
+                <p className="text-sm leading-6 text-slate-400">
+                  KCROC (Kuwait Computer Repair On Call) provides laptop repair, PC repair and
+                  hardware-focused computer service for Kuwait City customers. Your device is
+                  collected from an agreed office or home pickup point and repaired at our
+                  Hawalli workshop—not by an on-site technician or at a separate downtown branch.
+                </p>
+              )}
               {['mishref', 'qortuba'].includes(location.slug) && (
                 <p className="text-sm leading-relaxed text-slate-400">
                   Prefer to hand over your device in person?{' '}
@@ -896,6 +904,77 @@ export default function LocationDeepTemplate() {
       {location.localPricingAnchorsPlacement === 'after-services' &&
         (location.localPricingAnchors ?? []).length > 0 &&
         renderLocalPricingAnchors('py-8 sm:py-10 px-4 sm:px-6 border-t border-slate-800/50')}
+
+      {/* Kuwait City-only search intent: describe the real service instead of dumping keyword variants. */}
+      {isKuwaitCityPage && (
+        <section
+          aria-labelledby="kuwait-city-repair-options-heading"
+          data-kuwait-city-search-intent="hardware-only"
+          data-kcroc-editorial-panel="location-search-intent"
+          className="border-t border-slate-800/50 bg-slate-950 px-4 py-10 sm:px-6 sm:py-14"
+        >
+          <div className="container mx-auto max-w-6xl">
+            <div className="max-w-3xl">
+              <span className="font-mono text-xs font-bold uppercase tracking-[0.14em] text-cyan-300">
+                Local hardware repair · Kuwait City
+              </span>
+              <h2 id="kuwait-city-repair-options-heading" className="mt-2 text-2xl font-black tracking-tight text-white sm:text-3xl">
+                Looking for Laptop or Computer Repair Near You in Kuwait City?
+              </h2>
+              <p className="mt-4 text-sm leading-7 text-slate-300 sm:text-base">
+                Searching for <strong className="font-semibold text-white">computer repair near me</strong> or
+                <strong className="font-semibold text-white"> laptop repair near me</strong> in Sharq,
+                Qibla, Mirqab, Dasman or Bneid Al-Gar? KCROC offers an alternative to taking your
+                device to a computer repair shop: free pickup from your office or home, a hardware
+                diagnosis and quote at our Hawalli lab, and free return delivery after the approved repair.
+              </p>
+            </div>
+            <div className="mt-7 grid gap-4 md:grid-cols-3">
+              <article className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6">
+                <h3 className="text-lg font-bold text-white">Laptop repair &amp; service</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-300">
+                  Windows laptop repairs for Dell, HP, Lenovo, ASUS, Acer and MSI: charging
+                  ports, broken screens, overheating, hinges, batteries and no-power faults.
+                  We test the hardware before proposing a replacement.
+                </p>
+                <Link to="/laptop-repair-kuwait" className="mt-4 inline-flex min-h-10 items-center text-sm font-bold text-cyan-300 underline underline-offset-4 hover:text-cyan-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+                  Laptop repair in Kuwait
+                </Link>
+              </article>
+              <article className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6">
+                <h3 className="text-lg font-bold text-white">Desktop PC repair</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-300">
+                  Desktop computer repair for hardware faults including power failure,
+                  startup issues, cooling problems and motherboard diagnostics. Arrange
+                  collection for an office PC or home computer in Kuwait City.
+                </p>
+                <Link to="/desktop-pc-repair-kuwait" className="mt-4 inline-flex min-h-10 items-center text-sm font-bold text-cyan-300 underline underline-offset-4 hover:text-cyan-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+                  Desktop and PC repair
+                </Link>
+              </article>
+              <article className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6">
+                <h3 className="text-lg font-bold text-white">Apple MacBook repair</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-300">
+                  Independent MacBook Air and MacBook Pro hardware service for power,
+                  charging, screen and logic-board faults, including component-level
+                  diagnosis where technically appropriate.
+                </p>
+                <Link to="/macbook-repair-kuwait" className="mt-4 inline-flex min-h-10 items-center text-sm font-bold text-cyan-300 underline underline-offset-4 hover:text-cyan-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+                  MacBook repair in Kuwait
+                </Link>
+              </article>
+            </div>
+            <p className="mt-6 max-w-4xl text-sm leading-7 text-slate-400">
+              KCROC is an independent computer and laptop repair provider, not an
+              Apple-authorized or Dell-authorized service center. Kuwait City is a collection
+              area, not a separate walk-in laptop repair center. Our physical repair shop is
+              <Link to="/location/hawalli" className="ml-1 font-semibold text-cyan-300 underline underline-offset-4 hover:text-cyan-200">in Hawalli</Link>,
+              open daily 10:00 AM–10:00 PM; pickup appointments depend on confirmed availability.
+              For broader coverage, see <Link to="/computer-repair-kuwait" className="font-semibold text-cyan-300 underline underline-offset-4 hover:text-cyan-200">computer repair across Kuwait</Link>.
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* ─── PROBLEMS WE FIX ─── */}
       <section data-kcroc-editorial-panel="location-content" className="py-8 sm:py-14 px-4 sm:px-6 border-t border-slate-800/50">
