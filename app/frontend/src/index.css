@@ -1221,3 +1221,115 @@ select {
   border: 1px solid var(--kcroc-ui-border-dark) !important;
   color: var(--kcroc-ui-text-dark) !important;
 }
+
+
+/* KCROC GLOBAL FAQ SURFACE CONTRACT — EN / ar-KW
+   FAQ cards are editorial reading surfaces, not dark diagnostic controls.
+   Mark each rendered FAQ card with data-kcroc-faq-item="true".
+   This is intentionally more specific than legacy page and premium colors.
+   Never apply these rules to TOC menus, technical troubleshooting disclosures,
+   emergency warnings or to the pricing matrix. */
+:root {
+  --kcroc-faq-paper: #f4efe7;
+  --kcroc-faq-surface: #ffffff;
+  --kcroc-faq-open: #fffaf4;
+  --kcroc-faq-ink: #172022;
+  --kcroc-faq-muted: #566467;
+  --kcroc-faq-line: #d6c9b9;
+  --kcroc-faq-copper: #8f4f2c;
+}
+#main-content[data-page-type] [data-kcroc-faq-list] {
+  background-color: transparent !important;
+  border-color: var(--kcroc-faq-line) !important;
+  color: var(--kcroc-faq-ink);
+  color-scheme: light;
+}
+#main-content[data-page-type] [data-kcroc-faq-item] {
+  background: var(--kcroc-faq-surface) !important;
+  border: 1px solid var(--kcroc-faq-line) !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 2px 10px rgba(23, 32, 34, 0.04) !important;
+  color: var(--kcroc-faq-ink) !important;
+  color-scheme: light;
+  overflow: hidden;
+}
+#main-content[data-page-type] [data-kcroc-faq-item]:is([open], [data-expanded="true"]),
+#main-content[data-page-type] [data-kcroc-faq-item]:has(button[aria-expanded="true"]) {
+  border-color: var(--kcroc-faq-copper) !important;
+  background: var(--kcroc-faq-open) !important;
+}
+#main-content[data-page-type] [data-kcroc-faq-item]:hover {
+  border-color: var(--kcroc-faq-copper) !important;
+}
+#main-content[data-page-type] [data-kcroc-faq-item] :is(summary, button[aria-expanded]) {
+  min-height: 3rem;
+  color: var(--kcroc-faq-ink) !important;
+  cursor: pointer;
+  text-align: start;
+  line-height: 1.55;
+  list-style: none;
+}
+#main-content[data-page-type] [data-kcroc-faq-item] summary::-webkit-details-marker {
+  display: none;
+}
+#main-content[data-page-type] [data-kcroc-faq-item] :is(
+  h3,
+  summary,
+  summary h3,
+  summary span:not([aria-hidden]),
+  button[aria-expanded] span
+) {
+  color: var(--kcroc-faq-ink) !important;
+}
+#main-content[data-page-type] [data-kcroc-faq-item] :is(summary, button[aria-expanded]) {
+  font-size: max(1rem, 16px);
+  font-weight: 650;
+}
+#main-content[data-page-type] [data-kcroc-faq-item] :is(
+  p, [data-kcroc-faq-answer], [role="region"]
+),
+#main-content[data-page-type] details[data-kcroc-faq-item] > div {
+  color: var(--kcroc-faq-muted) !important;
+  line-height: 1.75;
+}
+#main-content[data-page-type] [data-kcroc-faq-item] :is(
+  summary svg, button[aria-expanded] svg,
+  summary [class*="text-cyan-"], summary [class*="text-slate-"]
+) {
+  color: var(--kcroc-faq-copper) !important;
+}
+#main-content[data-page-type] [data-kcroc-faq-item] summary :is(
+  [class*="bg-slate-"], [class*="bg-brand-dark"]
+) {
+  background-color: var(--kcroc-faq-paper) !important;
+  border-color: var(--kcroc-faq-line) !important;
+}
+#main-content[data-page-type] [data-kcroc-faq-item] a:not([class*="bg-"]) {
+  color: var(--kcroc-faq-copper) !important;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+#main-content[data-page-type] [data-kcroc-faq-item] :is(
+  summary, button[aria-expanded], a, button
+):focus-visible {
+  outline: 3px solid var(--kcroc-faq-copper) !important;
+  outline-offset: 3px;
+}
+#main-content[data-page-type] [data-kcroc-faq-item] :is(
+  summary, button[aria-expanded]
+):focus-visible {
+  outline-offset: -3px;
+}
+:lang(ar) #main-content [data-kcroc-faq-item] :is(
+  summary, summary span, button[aria-expanded], button[aria-expanded] span
+) {
+  text-align: start;
+  letter-spacing: normal;
+  line-height: 1.8;
+}
+@media (prefers-reduced-motion: reduce) {
+  #main-content [data-kcroc-faq-item],
+  #main-content [data-kcroc-faq-item] * {
+    transition-duration: .01ms !important;
+  }
+}

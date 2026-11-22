@@ -731,7 +731,7 @@ const ProblemTemplate: React.FC = () => {
               </div>
               <div className="divide-y divide-slate-800 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
                 {problem.faqs.map((faq, idx) => (
-                  <details key={idx} className="group p-5">
+                  <details key={idx} data-kcroc-faq-item="true" className="group p-5">
                     <summary className="flex cursor-pointer list-none items-center gap-3 font-bold text-white">
                       <HelpCircle className="h-5 w-5 flex-shrink-0 text-cyan-400" />
                       <span>{faq.question}</span>

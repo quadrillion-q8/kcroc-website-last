@@ -909,7 +909,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
             <div className="space-y-3">
               {entity.faqs.map((faq) => (
                 isMacbookScreenService || entity.id === 'srv-liquid-damage' ? (
-                  <article key={faq.id} data-service-faq={entity.id === 'srv-liquid-damage' ? 'true' : undefined} className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
+                  <article key={faq.id} data-kcroc-faq-item="true" data-service-faq={entity.id === 'srv-liquid-damage' ? 'true' : undefined} className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
                     <h3 className="text-white font-semibold">{faq.title}</h3>
                     <p id={`faq-answer-${entity.id}-${faq.id}`} className="mt-3 text-sm leading-relaxed text-slate-300">
                       {faq.answer}
@@ -918,6 +918,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 ) : (
                   <details
                     key={faq.id}
+                    data-kcroc-faq-item="true"
                     className="group bg-slate-900/50 border border-slate-800 rounded-2xl overflow-hidden"
                     onToggle={(event) => {
                       if (event.currentTarget.open) {

@@ -52,6 +52,7 @@ export default function FAQSection() {
           return (
             <article
               key={faq.id}
+              data-kcroc-faq-item="true"
               className="overflow-hidden rounded-xl border border-slate-800 bg-slate-900/80 transition-colors hover:border-slate-700 sm:rounded-2xl"
             >
               <h3 className="m-0">

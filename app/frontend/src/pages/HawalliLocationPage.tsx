@@ -877,8 +877,8 @@ export default function HawalliLocationPage() {
             {localFaqs.map((faq) => (
               <details
                 key={faq.id}
-                open
                 data-hawalli-faq-item="true"
+                data-kcroc-faq-item="true"
                 onToggle={(event) => {
                   if (event.currentTarget.open) {
                     trackConversion('faq_expand', {

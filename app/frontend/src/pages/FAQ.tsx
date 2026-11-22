@@ -261,6 +261,7 @@ export default function FAQ() {
                     return (
                       <details
                         key={faq.id}
+                        data-kcroc-faq-item="true"
                         id={faq.id}
                         open={isOpen}
                         onClick={(e) => toggleFaq(faq.id, e)}
