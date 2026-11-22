@@ -397,7 +397,7 @@ export default function ArabicPricingPage() {
         <div className="mx-auto max-w-4xl">
           <h2 id="arabic-pricing-faq" className="text-2xl font-black text-white sm:text-3xl">أسئلة شائعة عن أسعار التصليح</h2>
           <div className="mt-6 divide-y divide-slate-800 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/45">
-            {FAQS.map((item) => <details key={item.q} className="p-5 sm:p-6"><summary className="cursor-pointer font-bold leading-7 text-white marker:text-cyan-400">{item.q}</summary><p className="mt-3 text-sm leading-7 text-slate-400">{item.a}</p></details>)}
+            {FAQS.map((item) => <details key={item.q} data-kcroc-faq-item="true" className="p-5 sm:p-6"><summary className="cursor-pointer font-bold leading-7 text-white marker:text-cyan-400">{item.q}</summary><p className="mt-3 text-sm leading-7 text-slate-400">{item.a}</p></details>)}
           </div>
         </div>
       </section>
