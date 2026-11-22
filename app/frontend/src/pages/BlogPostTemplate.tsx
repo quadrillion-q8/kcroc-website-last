@@ -659,7 +659,7 @@ const CALLOUT_STYLES: Record<string, { icon: React.ElementType; border: string; 
 ═══════════════════════════════════════════════════════════════════ */
 
 const FAQAccordionItem: React.FC<{ question: string; answer: string }> = ({ question, answer }) => (
-  <details className="group border border-slate-800 rounded-2xl bg-slate-900/40 open:border-cyan-500/40 transition-colors">
+  <details data-kcroc-faq-item="true" className="group border border-slate-800 rounded-2xl bg-slate-900/40 open:border-cyan-500/40 transition-colors">
     <summary className="flex items-center justify-between gap-4 p-5 cursor-pointer list-none font-bold text-white select-none">
       <span>{question}</span>
       <ChevronDown className="w-4 h-4 text-cyan-400 shrink-0 transition-transform group-open:rotate-180 motion-reduce:transition-none" aria-hidden="true" />
@@ -949,7 +949,7 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
       return block.display === 'static' ? (
         <div className="my-10 space-y-5" aria-label="Frequently asked questions">
           {faqItems.map((item, i) => (
-            <section key={i} className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+            <section key={i} data-kcroc-faq-item="true" className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
               <h3 className="text-base font-bold leading-snug text-white">{item.question}</h3>
               <p className="mt-3 text-sm leading-relaxed text-slate-300">{item.answer}</p>
             </section>
