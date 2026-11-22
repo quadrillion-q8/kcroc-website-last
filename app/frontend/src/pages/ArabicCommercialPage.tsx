@@ -983,8 +983,8 @@ const AR_COMPUTER_SERVICE_CARDS = [
     image: IMAGES.laptopHardware.hpLaptopMotherboardRepairOpen,
   },
   {
-    title: 'تصليح Gaming PC وكرت الشاشة',
-    description: 'تشخيص GPU وVRAM والطاقة والحرارة ومشاكل الأداء والـFPS مع اختبار استقرار قبل التسليم.',
+    title: 'تصليح بي سي الألعاب (Gaming PC)',
+    description: 'نفحص التبريد والطاقة واستقرار كمبيوتر الألعاب الكامل، ونشخّص أعراض GPU وVRAM ضمن الجهاز. ما نقدم تصليح كروت الشاشة المنفصلة.',
     path: '/ar/gaming-pc-repair-kuwait',
     image: IMAGES.gaming.rtxLighting,
   },
@@ -1658,6 +1658,10 @@ function ArabicComputerRepairPage({
       a: 'نعم، نفحص ونصلح أعطال هاردوير لابتوبات HP وDell وLenovo وASUS وAcer وMSI حسب الموديل والعطل. KCROC ورشة مستقلة وليست مركز خدمة معتمدًا من هذه الماركات.',
     },
     {
+      q: 'هل تصلحون كروت الشاشة المنفصلة؟',
+      a: 'لا نقدم تصليح كروت الشاشة المنفصلة. إذا المشكلة داخل Gaming PC كامل، نقدر نفحص التبريد والطاقة والاستقرار وأعراض كرت الشاشة وهو مركب بالجهاز لتحديد سبب العطل، بدون الوعد بإصلاح الكرت نفسه.',
+    },
+    {
       q: 'كم سعر تصليح الكمبيوتر واللابتوب في الكويت؟',
       a: 'الفحص الأولي مجاني. بعض إصلاحات اللابتوب الشائعة تبدأ من 15 د.ك، وتبديل شاشة اللابتوب من 30 د.ك، وإصلاح اللوحة الأم على مستوى المكونات من 25 د.ك عندما تنطبق الخدمة. ما فيه سعر بداية موحّد لكل كمبيوتر مكتبي؛ يعتمد السعر النهائي على الموديل والعطل والقطعة المطلوبة، ونؤكده قبل بدء العمل المدفوع.',
     },
@@ -1725,7 +1729,7 @@ function ArabicComputerRepairPage({
       {
         '@type': 'Service',
         '@id': `${page.seo.canonicalUrl}#service`,
-        name: 'تصليح كمبيوتر ولابتوب في الكويت',
+        name: 'تصليح وصيانة كمبيوتر ولابتوب في الكويت',
         serviceType: 'Computer and laptop repair',
         areaServed: { '@type': 'Country', name: 'Kuwait' },
         provider: {
@@ -1793,8 +1797,8 @@ function ArabicComputerRepairPage({
       link: 'تصليح اللابتوب',
     },
     {
-      title: 'Gaming PC يهنّق أو يطيح الـFPS',
-      text: 'نفحص الحرارة وكرت الشاشة والطاقة والاستقرار لتحديد سبب التقطيع أو الإطفاء أثناء اللعب.',
+      title: 'بي سي الألعاب يهنّق أو يطيح الـFPS',
+      text: 'نفحص حرارة المعالج والتبريد والطاقة والاستقرار لتحديد سبب التقطيع أو الإطفاء أثناء اللعب. ما نصلح كروت الشاشة المنفصلة.',
       path: '/ar/gaming-pc-repair-kuwait',
       link: 'تصليح Gaming PC',
     },
@@ -1829,13 +1833,13 @@ function ArabicComputerRepairPage({
 
               <p className="mt-7 text-sm font-black tracking-[0.08em] text-cyan-400">مختبر تصليح في حولي • استلام وتوصيل مجاني في الكويت</p>
               <h1 className="mt-3 max-w-4xl text-4xl font-black leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-6xl">
-                تصليح كمبيوتر ولابتوب في الكويت مع استلام مجاني
+                تصليح وصيانة كمبيوتر ولابتوب في الكويت مع استلام مجاني
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-                تبحث عن فني كمبيوتر في الكويت؟ جهازك ما يشتغل أو يعلّق أو ما يشحن؟ في KCROC نبدأ من <strong className="text-white">سبب المشكلة</strong>، مو من أول قطعة نقدر نبدلها.
+                تدور على فني كمبيوتر أو محل صيانة كمبيوتر في الكويت؟ جهازك ما يشتغل أو يعلّق أو ما يشحن؟ في KCROC نبدأ من <strong className="text-white">سبب المشكلة</strong>، مو من تبديل القطع بالتخمين.
               </p>
               <p className="mt-4 max-w-2xl text-base leading-8 text-slate-400">
-                نستلم جهازك من البيت أو المكتب، والفحص والإصلاح يتمان داخل مختبرنا في حولي، مو داخل البيت. نشرح لك الحل والتكلفة قبل أي عمل مدفوع، ونبدأ بعد موافقتك فقط، ثم نختبر الجهاز قبل إرجاعه لك.
+                نقدم صيانة أجهزة الكمبيوتر واللابتوب وتصليح أعطال الهاردوير. نستلم جهازك مجانًا من البيت أو المكتب، والفحص والإصلاح يتمان داخل مختبرنا في حولي، مو داخل البيت. نشرح لك الحل والتكلفة قبل أي عمل مدفوع، ونبدأ بعد موافقتك فقط، ثم نختبر الجهاز قبل إرجاعه لك.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -1900,7 +1904,7 @@ function ArabicComputerRepairPage({
               شنو المشكلة اللي تواجهك؟
             </h2>
             <p className="mt-4 leading-8 text-slate-400">
-              سواء كنت تبحث عن فني كمبيوتر في الكويت أو محل تصليح كمبيوترات أو محل تصليح كمبيوتر، ابدأ من الأعراض الظاهرة. نساعدك تختار الخدمة الأقرب للمشكلة بدل ما تفترض أن قطعة معيّنة تحتاج تبديل.
+              سواء تدور على مصلح كمبيوتر أو محل تصليح كمبيوترات في الكويت، ابدأ من الأعراض الظاهرة. نحدد نوع صيانة الكمبيوتر المطلوبة قبل ما نفترض أن قطعة معينة لازم تتبدل. أما شاشات المونيتور المنفصلة فمو ضمن خدماتنا.
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -1945,7 +1949,7 @@ function ArabicComputerRepairPage({
             <p className="text-sm font-black tracking-[0.08em] text-cyan-400">الفرق الحقيقي</p>
             <h2 id="why-repair" className="mt-2 text-3xl font-black text-white sm:text-4xl">مو كل مذربورد خربانة لازم تتبدل</h2>
             <p className="mt-4 text-base leading-8 text-slate-400 sm:text-lg">
-              أحيانًا يكون العطل في مكوّن أو دائرة داخل اللوحة نفسها. لذلك نحدد العطل أولًا ونقيّم إمكانية الإصلاح على مستوى المكوّنات قبل القفز مباشرة إلى استبدال اللوحة كاملة.
+              مو كل عطل بالمذربورد يحتاج تبديل اللوحة كاملة. داخل مختبر ESD بحولي، يبدأ فني حاسوب متخصص بفحص الدوائر والمكوّنات لتحديد مصدر العطل. إذا كان إصلاح المكوّنات ممكنًا ومناسبًا، نشرح لك هذا الخيار والتكلفة قبل أي استبدال.
             </p>
           </div>
           <div className="mt-8 grid items-stretch gap-6 lg:grid-cols-[0.9fr_1.1fr]">
@@ -2016,6 +2020,15 @@ function ArabicComputerRepairPage({
               نساعدك في صيانة أجهزة الكمبيوتر وتصليح بي سي والكمبيوترات المكتبية بعد فحص العطل. وإذا تبي صيانة لابتوب أو تصليح لاب توب أو تصليح لابتوبات، شوف <Link to="/ar/laptop-repair-kuwait" className="font-bold text-cyan-300 hover:text-cyan-200">تصليح لابتوب الكويت</Link> للتشخيص حسب المشكلة. وعندك HP؟ راجع <Link to="/ar/brands/hp-laptop-repair-kuwait" className="font-bold text-cyan-300 hover:text-cyan-200">تصليح لاب توب HP</Link> للموديلات والأعطال الشائعة.
             </p>
           </div>
+          <div className="mb-6 rounded-2xl border border-slate-800 bg-slate-900/35 p-5" aria-labelledby="arabic-repair-supported-brands">
+            <h3 id="arabic-repair-supported-brands" className="text-lg font-black text-white">ماركات اللابتوب اللي نصلحها</h3>
+            <p className="mt-2 text-sm leading-7 text-slate-400">
+              نقدم صيانة وتصليح لابتوبات HP وDell وLenovo وASUS وAcer وMSI، وكذلك MacBook حسب الموديل والعطل وتوفر القطع. إذا كنت تبحث عن محل صيانة لابتوب، نرتب الاستلام ونشخّص المشكلة داخل مختبرنا في حولي.
+            </p>
+            <Link to="/ar/brands" className="mt-3 inline-flex items-center gap-2 text-sm font-black text-cyan-300 hover:text-cyan-200">
+              استعرض الماركات المدعومة <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {AR_COMPUTER_SERVICE_CARDS.map((item) => (
               <Link key={item.path} to={item.path} className="group overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/45 transition duration-300 hover:-translate-y-1 hover:border-cyan-500/40 hover:bg-slate-900/70">
@@ -2065,6 +2078,9 @@ function ArabicComputerRepairPage({
               <p className="text-sm font-black tracking-[0.08em] text-cyan-400">خدمة الكويت</p>
               <h2 id="local-service" className="mt-2 text-3xl font-black text-white sm:text-4xl">ما تحتاج تودي الجهاز بنفسك إلى حولي</h2>
               <p className="mt-4 max-w-3xl leading-8 text-slate-400">مختبر KCROC موجود في حولي، في شارع ابن خلدون، مجمع الملا، محل 19 في البدروم. وإذا ما يناسبك تروح للمختبر، نرتب استلام جهازك من البيت أو المكتب في مناطق الكويت، ونرجعه لك بعد الإصلاح والاختبار. سواء تحتاج مصلح كمبيوتر أو مصلح لابتوبات، دز لنا موديل الجهاز ومنطقتك على واتساب ونوضح لك طريقة الاستلام؛ ما نقدم تصليح داخل المنزل.</p>
+              <p className="mt-3 max-w-3xl leading-8 text-slate-400">
+                تدور على <Link to="/ar/computer-repair-hawalli" className="font-bold text-cyan-300 hover:text-cyan-200">فني كمبيوتر حولي</Link> أو خدمة تصليح لابتوب حولي؟ تقدر تسلم الجهاز في مختبرنا الوحيد بحولي. وإذا تبحث عن أقرب محل صيانة وما يناسبك المشوار، عندنا استلام وتوصيل مجاني من مناطق الخدمة، ومنها الجهراء والسالمية والفروانية؛ بدون زيارة فني للإصلاح داخل البيت.
+              </p>
               <div className="mt-6 flex flex-wrap gap-2">
                 {LOCAL_LINKS.map((item) => (
                   <Link key={item.path} to={item.path} className="rounded-full border border-slate-800 bg-black/10 px-4 py-2 text-sm font-bold text-slate-300 transition hover:border-cyan-500/40 hover:text-cyan-300">{item.path === arabicLocationPath('hawalli') ? 'تصليح كمبيوتر حولي' : item.path === arabicLocationPath('jahra') ? 'تصليح كمبيوتر الجهراء' : item.label}</Link>
