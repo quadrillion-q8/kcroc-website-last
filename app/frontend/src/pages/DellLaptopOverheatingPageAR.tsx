@@ -223,7 +223,7 @@ export default function DellLaptopOverheatingPageAR() {
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">أسئلة تتكرر عن حرارة لابتوبات Dell</h2>
             <div className="space-y-4">
               {faq.map(({ q, a }) => (
-                <details key={q} className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
+                <details key={q} data-kcroc-faq-item="true" className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
                   <summary className="font-bold text-white cursor-pointer">{q}</summary>
                   <p className="text-sm leading-8 text-slate-400 mt-3 mb-0">{a}</p>
                 </details>
