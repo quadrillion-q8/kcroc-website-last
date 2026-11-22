@@ -1135,8 +1135,8 @@ export default function BiosUefiRecoveryGuide() {
             <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-400">Open the question that matches your problem. The detailed guidance above remains available if you want the full explanation.</p>
           </div>
           <div className="space-y-3">
-            {faq.map((item, index) => (
-              <details key={item.q} className="group rounded-xl border border-slate-800 bg-brand-dark/40 p-4 open:border-cyan-500/30 open:bg-slate-900/60 sm:p-5" open={index === 0}>
+            {faq.map((item) => (
+              <details key={item.q} data-kcroc-faq-item="true" className="group rounded-xl border border-slate-800 bg-brand-dark/40 p-4 open:border-cyan-500/30 open:bg-slate-900/60 sm:p-5">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-bold text-white sm:text-base">
                   <span>{item.q}</span>
                   <ChevronRight className="h-5 w-5 shrink-0 text-slate-500 transition-transform group-open:rotate-90 group-open:text-cyan-400" aria-hidden="true" />
