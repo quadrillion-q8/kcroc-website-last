@@ -1581,7 +1581,7 @@ function ArabicGamingPcRepairPage({
             <p className="text-sm font-black tracking-[0.08em] text-cyan-400">الأسئلة اللي نسأل عنها وايد</p>
             <h2 id="gaming-faq" className="mt-2 text-3xl font-black text-white sm:text-4xl">قبل لا تقول: "أبي أبدّل الكرت"</h2>
           </div>
-          <div className="overflow-hidden rounded-[1.75rem] border border-slate-800 bg-slate-900/40">
+          <div data-kcroc-faq-list="true" className="overflow-hidden rounded-[1.75rem] border border-slate-800 bg-slate-900/40">
             {GAMING_AR_FAQ.map((item) => (
               <details key={item.q} data-kcroc-faq-item="true" className="group border-b border-slate-800 last:border-b-0">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-5 px-6 py-5 font-black text-white [&::-webkit-details-marker]:hidden">
@@ -2135,7 +2135,7 @@ function ArabicComputerRepairPage({
             <p className="text-sm font-black tracking-[0.08em] text-cyan-400">الأسئلة الشائعة</p>
             <h2 id="arabic-faq-premium" className="mt-2 text-3xl font-black text-white sm:text-4xl">قبل لا ترسل جهازك</h2>
           </div>
-          <div className="overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/40">
+          <div data-kcroc-faq-list="true" className="overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/40">
             {faq.map((item) => (
               <details key={item.q} data-kcroc-faq-item="true" className="group border-b border-slate-800 last:border-b-0">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-5 px-6 py-5 font-black text-white [&::-webkit-details-marker]:hidden">
@@ -5555,7 +5555,7 @@ export default function ArabicCommercialPage() {
         <section className="mt-12" aria-labelledby="arabic-faq" data-kcroc-editorial-panel={locationEntity ? "location-content" : undefined}>
           <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">الأسئلة الشائعة</p>
           <h2 id="arabic-faq" className="mt-2 text-2xl font-black text-white sm:text-3xl">قبل لا ترسل جهازك</h2>
-          <div className="mt-6 divide-y divide-slate-800 overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/45">
+          <div data-kcroc-faq-list="true" className="mt-6 divide-y divide-slate-800 overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/45">
             {cfg.faq.map((item) => (
               slug === 'computer-repair-farwaniya' ? (
                 <div key={item.q} data-kcroc-faq-item="true" className="p-6">
