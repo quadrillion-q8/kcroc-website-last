@@ -119,7 +119,7 @@ const SectionTitle = ({ id, children }: { id: string; children: React.ReactNode 
 );
 
 const FAQItem = ({ q, a }: { q: string; a: string }) => (
-  <details className="group border border-slate-800 rounded-2xl bg-slate-900/40 open:border-cyan-500/40 transition-colors">
+  <details data-kcroc-faq-item="true" className="group border border-slate-800 rounded-2xl bg-slate-900/40 open:border-cyan-500/40 transition-colors">
     <summary className="flex items-center justify-between gap-4 p-5 cursor-pointer list-none font-bold text-white">
       <span>{q}</span>
       <ChevronDown className="w-4 h-4 text-cyan-400 shrink-0 transition-transform group-open:rotate-180" aria-hidden="true" />
