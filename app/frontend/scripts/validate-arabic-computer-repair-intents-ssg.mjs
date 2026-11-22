@@ -47,6 +47,8 @@ for (const link of [
 ]) assert.ok(links.has(link), 'Missing destination link: ' + link);
 
 assert.ok(mainText.includes('مو ضمن خدماتنا'), 'Must distinguish external monitors from laptop-screen repairs');
+assert.ok(mainText.includes('شاشة اللابتوب سوداء أو مكسورة'), 'Screen problem card must specify laptop screens');
+assert.ok(mainText.includes('لا نصلح شاشات الكمبيوتر المكتبي المنفصلة'), 'Main content must explicitly exclude standalone monitors');
 assert.ok(mainText.includes('لا نقدم زيارة فني أو إصلاحًا داخل المنزل'),
   'Must not misrepresent pickup as a home repair visit');
 
