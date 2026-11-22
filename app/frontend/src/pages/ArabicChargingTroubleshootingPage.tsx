@@ -582,8 +582,8 @@ export default function ArabicChargingTroubleshootingPage() {
           <p className="text-sm font-black tracking-wide text-cyan-400">إجابات مباشرة لرسائل وأعراض الشحن</p>
           <h2 id="charging-faq-heading" className="mt-2 text-2xl font-black text-white sm:text-3xl">الأسئلة الشائعة عن اللابتوب المتصل بالشاحن ولا يشحن</h2>
           <div className="mt-5 space-y-3">
-            {FAQ.map((item, index) => (
-              <details key={item.q} className="group rounded-2xl border border-slate-800 bg-slate-950/45 p-5" open={index === 0}>
+            {FAQ.map((item) => (
+              <details key={item.q} data-kcroc-faq-item="true" className="group rounded-2xl border border-slate-800 bg-slate-950/45 p-5">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
                   <span>{item.q}</span>
                   <ArrowLeft className="h-4 w-4 shrink-0 text-cyan-300 transition-transform group-open:-rotate-90" aria-hidden="true" />
