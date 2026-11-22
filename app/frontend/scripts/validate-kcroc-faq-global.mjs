@@ -84,6 +84,9 @@ const templates = [
   'pages/ArabicProblemPage.tsx',
   'pages/ArabicCommercialPage.tsx',
   'pages/DellLaptopOverheatingPage.tsx',
+  'pages/ArabicFAQ.tsx',
+  'pages/GameBarPresenceWriterGuide.tsx',
+  'pages/LaptopBuyingGuideAR.tsx',
 ];
 const files = await Promise.all(templates.map(async name => [name,await read(name)]));
 for(const [name,body] of files) {
