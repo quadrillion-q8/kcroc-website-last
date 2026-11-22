@@ -460,7 +460,7 @@ export default function ComputerRepairKuwait() {
           </div>
           <div className="mt-6 overflow-hidden rounded-2xl border border-white/10 bg-slate-900/55">
             {FAQ.map((item) => (
-              <details key={item.q} className="group border-b border-white/10 last:border-b-0">
+              <details key={item.q} data-kcroc-faq-item="true" className="group border-b border-white/10 last:border-b-0">
                 <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-5 px-5 py-4 font-bold text-white transition hover:bg-white/[0.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-cyan-400 sm:px-6 [&::-webkit-details-marker]:hidden">
                   <span>{item.q}</span>
                   <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-cyan-400/20 text-lg font-normal text-cyan-200 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
