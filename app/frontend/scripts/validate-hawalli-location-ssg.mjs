@@ -23,7 +23,7 @@ assert.ok(faqListStart >= 0, 'Hawalli visible FAQ list marker is missing');
 const faqDetails = html.match(/<details\b[^>]*data-hawalli-faq-item="true"[^>]*>/g) ?? [];
 assert.equal(faqDetails.length, 12, 'Expected exactly twelve Hawalli FAQ details elements');
 const openFaqDetails = faqDetails.filter((tag) => /\bopen(?:=""|="true")?(?=\s|>)/.test(tag));
-assert.equal(openFaqDetails.length, 12, 'All twelve Hawalli FAQ answers must be open and visible in the prerendered HTML');
+assert.equal(openFaqDetails.length, 0, 'All twelve Hawalli FAQ cards should start collapsed while answers remain in the prerendered HTML');
 
 const faqAnswers = [...html.matchAll(/<p\b[^>]*data-hawalli-faq-answer="true"[^>]*>([\s\S]*?)<\/p>/g)];
 assert.equal(faqAnswers.length, 12, 'Each Hawalli FAQ must prerender one answer paragraph');
@@ -57,4 +57,4 @@ assert.ok(html.includes('subject to team confirmation'), 'Curbside handover must
 assert.ok(html.includes('Ask about curbside handover'), 'Curbside WhatsApp handover CTA is missing');
 assert.ok(!/GPU repair/i.test(html), 'Unsupported GPU repair service wording must not appear on the Hawalli page');
 
-console.log('Hawalli SSG validation passed: canonical + one H1, Friday hours schema, 12 visible FAQ answers matching FAQPage, six accurate pricing cards, and conditional walk-in handover guidance.');
+console.log('Hawalli SSG validation passed: canonical + one H1, Friday hours schema, 12 prerendered collapsed FAQ answers matching FAQPage, six accurate pricing cards, and conditional walk-in handover guidance.');
