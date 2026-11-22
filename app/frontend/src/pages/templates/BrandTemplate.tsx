@@ -525,7 +525,7 @@ const BrandTemplate: React.FC = () => {
             </div>
             <div className="divide-y divide-slate-800 overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/50">
               {faqs.map((faq) => (
-                <details key={faq.id} className="group p-6">
+                <details key={faq.id} data-kcroc-faq-item="true" className="group p-6">
                   <summary className="cursor-pointer list-none pr-8 font-bold text-white marker:hidden">
                     {faq.title}
                   </summary>
