@@ -307,15 +307,15 @@ export default function BookingPage() {
           <div className="rounded-3xl border border-slate-800 bg-slate-900/30 p-6 sm:p-8">
             <h2 className="text-2xl font-black text-white">Booking questions</h2>
             <div className="mt-4 divide-y divide-slate-800">
-              <details className="py-3">
+              <details data-kcroc-faq-item="true" className="py-3">
                 <summary className="cursor-pointer font-semibold text-slate-200">Is the initial diagnostic free?</summary>
                 <p className="mt-2 text-sm leading-relaxed text-slate-400">Yes. The initial diagnostic is free. We share the recommended work and quote before any paid repair begins.</p>
               </details>
-              <details className="py-3">
+              <details data-kcroc-faq-item="true" className="py-3">
                 <summary className="cursor-pointer font-semibold text-slate-200">Is pickup and delivery free across Kuwait?</summary>
                 <p className="mt-2 text-sm leading-relaxed text-slate-400">KCROC arranges free pickup and return across Kuwait governorates. Our team confirms collection details with you on WhatsApp.</p>
               </details>
-              <details className="py-3">
+              <details data-kcroc-faq-item="true" className="py-3">
                 <summary className="cursor-pointer font-semibold text-slate-200">How long will a repair take?</summary>
                 <p className="mt-2 text-sm leading-relaxed text-slate-400">Timing depends on the fault, device model and parts availability. Many standard hardware repairs take around 24–48 hours; complex repairs may take longer.</p>
               </details>
