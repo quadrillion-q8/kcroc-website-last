@@ -227,11 +227,11 @@ export const rawGraphData: RawGraphData = {
     // Locale 'ar_KW' lets SEOEngine emit the appropriate language/direction.
     'page-near-me-ar': {
       id: 'page-near-me-ar', slug: 'ar/near-me', entityType: 'WebPage', isActive: true,
-      title: 'تصليح كمبيوتر ولابتوب بالقرب منك في الكويت',
-      description: 'خدمة تصليح كمبيوتر ولابتوب بالقرب منك في الكويت مع استلام وتوصيل مجاني من المنزل أو المكتب، وفحص وإصلاح في مختبر KCROC الفعلي بحولي. نوضح التكلفة قبل الإصلاح؛ لا نقدم زيارات إصلاح داخل المنزل.',
+      title: 'تصليح وصيانة كمبيوتر ولابتوب قريب منك في الكويت',
+      description: 'خدمة استلام وتوصيل مجاني للكمبيوتر واللابتوب من البيت أو المكتب بمناطق الكويت، مع صيانة وإصلاح الأجهزة داخل مختبر KCROC الوحيد في حولي. لا نقدم زيارات فني للإصلاح داخل المنزل.',
       seo: {
-        title: 'تصليح كمبيوتر بالقرب منك في الكويت | استلام مجاني | KCROC',
-        description: 'تحتاج تصليح كمبيوتر أو لابتوب بالقرب منك؟ نرتب الاستلام من المنزل أو المكتب ونفحص الجهاز في مختبرنا بحولي، مع توصيل مجاني وعرض سعر قبل الإصلاح. لا نقدم إصلاحًا داخل المنزل.',
+        title: 'تصليح كمبيوتر ولابتوب قريب منك | استلام مجاني بالكويت | KCROC',
+        description: 'تدور على محل تصليح كمبيوتر أو صيانة لابتوب قريب منك؟ KCROC يستلم جهازك مجانًا من البيت أو المكتب بالكويت، ويصلحه بمختبر حولي بعد الفحص وموافقتك على السعر.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/near-me',
         locale: 'ar_KW',
         alternates: {
@@ -241,16 +241,17 @@ export const rawGraphData: RawGraphData = {
         },
         ogType: 'website',
         ogImage: '/images/kcroc-al-mullah-complex-hawalli-exterior.webp',
-        ogImageAlt: 'واجهة موقع KCROC في مجمع المله بحولي، الكويت',
+        ogImageAlt: 'واجهة مختبر KCROC في مجمع الملا بحولي، الكويت',
         ogImageWidth: 1200,
         ogImageHeight: 800,
         schemaTypes: ['WebPage', 'FAQPage', 'BreadcrumbList', 'Service'],
-        lastModified: '2026-11-01T00:00:00+03:00',
+        lastModified: '2026-11-22T00:00:00+03:00',
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح كمبيوتر بالقرب منك', url: '/ar/near-me' }]
       },
       featuredFAQIds: [
         'faq-arabic-computer-technician', 'faq-ar-hawalli-technician', 'faq-ar-pricing',
-        'faq-ar-hours', 'faq-ar-maintenance', 'faq-ar-laptop-repair-process'
+        'faq-ar-hours', 'faq-ar-maintenance', 'faq-ar-laptop-repair-process',
+        'faq-ar-near-me-pickup', 'faq-ar-near-me-home-visit', 'faq-ar-near-me-branches'
       ]
     } as WebPageEntity,
     'page-computer-repair': {
@@ -7682,9 +7683,9 @@ export const rawGraphData: RawGraphData = {
     'faq-ar-hawalli-technician': {
       id: 'faq-ar-hawalli-technician', slug: 'tasleeh-kombyuter-hawalli', entityType: 'FAQ', isActive: true,
       title: 'هل تتوفر خدمة فني تصليح كمبيوتر في حولي والمناطق القريبة؟',
-      description: 'معلومات عن مختبر KCROC لتصليح الكمبيوتر في حولي وتغطيته لمنطقة النعيمي والمناطق المجاورة.',
-      answer: 'نعم، مختبرنا المركزي يقع في حولي (شارع ابن خلدون، مجمع الملا)، ونوفر منه استلامًا وتوصيلًا مجانيًا لمنطقة النعيمي والمناطق المجاورة. أرسل لنا موقعك ونوع المشكلة على واتساب، وسنرتب استلام جهازك دون الحاجة للحضور إلى المختبر.',
-      seo: { title: 'تصليح كمبيوتر حولي والنعيمي | KCROC', description: 'فني تصليح كمبيوتر في حولي يغطي النعيمي والمناطق المجاورة، مع استلام وتوصيل مجاني لجهازك.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar/near-me#hawalli', schemaTypes: ['FAQPage'] }
+      description: 'معلومات عن مختبر KCROC الوحيد في حولي وخدمة الاستلام والتوصيل في الكويت.',
+      answer: 'مختبر KCROC الوحيد في حولي، شارع ابن خلدون، مجمع الملا، السرداب، محل 19. إذا كنت في منطقة ثانية بالكويت، نرتب استلام الجهاز وتوصيله مجانًا إلى المختبر ثم إرجاعه بعد الإصلاح والاختبار. ما نقدم إصلاحًا داخل المنزل.',
+      seo: { title: 'مختبر تصليح كمبيوتر حولي | KCROC', description: 'مختبر واحد في حولي مع استلام وتوصيل مجاني للكمبيوتر واللابتوب من مناطق الكويت.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar/near-me#hawalli', schemaTypes: ['FAQPage'] }
     } as FAQEntity,
 
     'faq-ar-pricing': {
@@ -7717,6 +7718,28 @@ export const rawGraphData: RawGraphData = {
       description: 'شرح خطوات عملية إصلاح اللابتوب لدى KCROC من الاستلام حتى التسليم.',
       answer: 'نبدأ بتشخيص المشكلة عبر واتساب ونرتب استلام الجهاز مجانًا من عندك. بعدها نجري الفحص والتشخيص في مختبرنا بحولي، ونوضح لك العطل والتكلفة قبل البدء بأي إصلاح. بعد موافقتك، ننفّذ الإصلاح ونختبر الجهاز جيدًا، ثم نوصله إليك مع ضمان 30 يومًا على القطع والعمل.',
       seo: { title: 'خطوات تصليح اللابتوب في الكويت | KCROC', description: 'استلام مجاني، تشخيص وتسعير واضح، إصلاح واختبار، ثم توصيل مع ضمان 30 يومًا.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar/near-me#process', schemaTypes: ['FAQPage'] }
+    } as FAQEntity,
+
+    'faq-ar-near-me-pickup': {
+      id: 'faq-ar-near-me-pickup', slug: 'nearby-computer-repair-pickup-ar', entityType: 'FAQ', isActive: true,
+      title: 'أدور على محل تصليح كمبيوتر قريب مني، هل لازم أروح حولي؟',
+      description: 'كيف نرتب استلام الكمبيوتر واللابتوب من مناطق الكويت إلى المختبر.',
+      answer: 'مو لازم تروح بنفسك. مختبر KCROC الوحيد موجود في حولي، شارع ابن خلدون، مجمع الملا، السرداب، محل 19. إذا تحتاج صيانة لابتوب أو كمبيوتر قريب من منطقتك، نرتب استلام الجهاز مجانًا من البيت أو المكتب، ونفحصه ونصلحه في المختبر بعد موافقتك على السعر، ثم نوصله لك بعد الاختبار.',
+      seo: { title: 'استلام كمبيوتر من منطقتك في الكويت | KCROC', description: 'استلام وتوصيل مجاني للكمبيوتر واللابتوب إلى مختبر حولي، بدون الحاجة للذهاب للمحل.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar/near-me#pickup', schemaTypes: ['FAQPage'] }
+    } as FAQEntity,
+    'faq-ar-near-me-home-visit': {
+      id: 'faq-ar-near-me-home-visit', slug: 'computer-repair-home-visit-ar', entityType: 'FAQ', isActive: true,
+      title: 'هل الفني يصلح الكمبيوتر داخل البيت؟',
+      description: 'الفرق بين خدمة الاستلام من المنزل وزيارة الفني للإصلاح.',
+      answer: 'لا. KCROC ما يقدم فني يزور البيت للإصلاح ولا تصليح الأجهزة داخل المنزل. نستلم الجهاز من البيت أو المكتب مجانًا في مناطق الخدمة، وننجز الفحص والإصلاح داخل مختبرنا المجهز في حولي، ثم نرجعه لك بعد الاختبار.',
+      seo: { title: 'هل يتوفر تصليح كمبيوتر داخل المنزل؟ | KCROC', description: 'لا نقدم إصلاحًا في المنزل؛ نقدم استلامًا وتوصيلًا مجانيًا إلى مختبر حولي.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar/near-me#home-visit', schemaTypes: ['FAQPage'] }
+    } as FAQEntity,
+    'faq-ar-near-me-branches': {
+      id: 'faq-ar-near-me-branches', slug: 'computer-repair-branches-ar', entityType: 'FAQ', isActive: true,
+      title: 'عندكم فروع في الجهراء أو السالمية أو مناطق ثانية؟',
+      description: 'موقع المختبر الفعلي ومناطق استلام الأجهزة داخل الكويت.',
+      answer: 'لا، عندنا مختبر فعلي واحد فقط في حولي. نخدم الجهراء والسالمية والفروانية والأحمدي ومدينة الكويت وباقي مناطق الخدمة عبر الاستلام والتوصيل المجاني، ونرجع جهازك بعد الفحص والإصلاح والاختبار. صفحة منطقتك توضح تفاصيل الاستلام، مو عنوان فرع جديد.',
+      seo: { title: 'هل لدى KCROC فروع خارج حولي؟', description: 'مختبر واحد في حولي مع استلام وتوصيل أجهزة من جميع مناطق الكويت.', canonicalUrl: 'https://www.computerrepairkuwait.com/ar/near-me#areas', schemaTypes: ['FAQPage'] }
     } as FAQEntity,
 
     'faq-near-me-reliable': {
