@@ -1292,6 +1292,19 @@ select {
   color: var(--kcroc-faq-muted) !important;
   line-height: 1.75;
 }
+/* Inner question spans should never shrink below 16px due to legacy text-sm. */
+#main-content[data-page-type] [data-kcroc-faq-item] :is(
+  summary > span, button[aria-expanded] > span
+) {
+  font-size: 1rem !important;
+  line-height: 1.55;
+}
+#main-content[data-page-type] [data-kcroc-faq-item] :is(
+  p, [data-kcroc-faq-answer], [role="region"]
+),
+#main-content[data-page-type] details[data-kcroc-faq-item] > div {
+  font-size: 1rem;
+}
 #main-content[data-page-type] [data-kcroc-faq-item] :is(
   summary svg, button[aria-expanded] svg, h3 svg,
   h3 [class*="text-cyan-"], p [class*="text-emerald-"],
