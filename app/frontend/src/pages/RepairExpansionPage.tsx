@@ -10,6 +10,7 @@ import { SEOEngine } from '../core/components/SEOEngine';
 import { localizedSitePath } from '../utils/locale';
 import ServiceConversionActions from '../components/content/ServiceConversionActions';
 import './RepairExpansionPage.css';
+import { ThermalClimate, ThermalComparison, ThermalServiceDetails } from './ThermalDeepDive';
 
 type Bilingual = { en: string; ar: string };
 type VisualCopy = { intro: string; hero: Bilingual; detail: Bilingual };
@@ -19,8 +20,8 @@ type VisualCopy = { intro: string; hero: Bilingual; detail: Bilingual };
 const VISUALS: Record<string, VisualCopy> = {
   'laptop-cleaning-thermal-paste-kuwait': {
     intro: 'Reduce heat and fan noise with a diagnosis-led internal clean. We check airflow and temperatures before deciding whether fresh thermal material is appropriate.',
-    hero: { en: 'Thermal paste on the laptop processor during cooling-system service', ar: 'المعجون الحراري على معالج اللابتوب أثناء فحص التبريد' },
-    detail: { en: 'Laptop fan and heatsink during careful dust removal', ar: 'مروحة اللابتوب والمشتت الحراري أثناء تنظيف الغبار' },
+    hero: { en: 'Laptop fan and heatsink fins during internal dust cleaning', ar: 'مروحة اللابتوب وزعانف المشتت أثناء تنظيف الغبار الداخلي' },
+    detail: { en: 'Laptop processor with fresh thermal paste during condition-based service', ar: 'معالج لابتوب مع معجون حراري جديد عند الحاجة أثناء الصيانة' },
   },
   'laptop-fan-replacement-kuwait': {
     intro: 'A grinding, stalled or intermittent cooling fan needs diagnosis, not guesswork. We identify the fault and match a replacement to the exact laptop model.',
@@ -79,7 +80,10 @@ export default function RepairExpansionPage() {
   const copy = ar ? item.ar : item;
   const visual = VISUALS[item.slug];
   const title = ar ? item.arabicTitle : item.title;
-  const intro = ar ? item.ar.intro : visual.intro;
+  const isEverydayThermal = slug === 'laptop-cleaning-thermal-paste-kuwait';
+  const intro = ar ? item.ar.intro : isEverydayThermal
+    ? 'Loud fan, blocked vents or a laptop that gets hot during everyday work? We check temperatures and airflow before deciding whether internal dust cleaning or condition-based thermal paste service is needed.'
+    : visual.intro;
   const waText = ar
     ? 'السلام عليكم KCROC، أبي استفسر عن ' + item.arabicTitle + '. موديل الجهاز الكامل: ____. العطل والأعراض: ____. المنطقة: ____. أبي فحص وعرض السعر شامل القطع وأجرة العمل قبل التصليح.'
     : 'Hello KCROC, I would like diagnosis for ' + item.title + '. Exact device brand/model: ____. Symptoms and history: ____. Kuwait pickup area: ____. Please confirm compatibility, parts availability and total quote before any paid repair.';
@@ -132,6 +136,10 @@ export default function RepairExpansionPage() {
                 <div className="kcroc-repair-hero-facts">
                   <span><MapPin aria-hidden="true" />{t('Repair work at our Hawalli lab', 'التصليح داخل مختبر حولي')}</span>
                   <span><ShieldCheck aria-hidden="true" />{t('Quote before paid work', 'السعر واضح قبل أي عمل')}</span>
+                  {isEverydayThermal && <>
+                    <span data-thermal-guide-price="true">{t('Guide: 15–20 KWD', 'السعر الإرشادي: 15–20 د.ك')}</span>
+                    <span>{t('Typical: same day / 24h*', 'المدة المعتادة: نفس اليوم أو 24 ساعة*')}</span>
+                  </>}
                 </div>
                 <ServiceConversionActions locale={locale} entityId={entityId} whatsappHref={wa} showPricing className="kcroc-repair-actions" />
                 <p className="kcroc-repair-microcopy">
@@ -180,6 +188,8 @@ export default function RepairExpansionPage() {
           </div>
         </section>
 
+        {isEverydayThermal && <ThermalClimate ar={ar} />}
+
         <section className="kcroc-repair-symptoms" aria-labelledby="kcroc-repair-symptoms-title">
           <div className="kcroc-repair-container kcroc-repair-symptoms-grid">
             <div className="kcroc-repair-section-intro">
@@ -200,6 +210,8 @@ export default function RepairExpansionPage() {
             </ul>
           </div>
         </section>
+
+        {isEverydayThermal && <ThermalComparison ar={ar} />}
 
         <section className="kcroc-repair-diagnosis" aria-labelledby="kcroc-repair-diagnosis-title">
           <div className="kcroc-repair-container">
@@ -243,6 +255,8 @@ export default function RepairExpansionPage() {
             </aside>
           </div>
         </section>
+
+        {isEverydayThermal && <ThermalServiceDetails ar={ar} />}
 
         <section className="kcroc-repair-faq" aria-labelledby="kcroc-repair-faq-title">
           <div className="kcroc-repair-container kcroc-repair-faq-inner">
