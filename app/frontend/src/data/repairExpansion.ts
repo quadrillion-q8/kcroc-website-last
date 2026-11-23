@@ -9,8 +9,8 @@ export const REPAIR_EXPANSION = [
     "title": "Laptop Cleaning & Thermal Paste Service Kuwait",
     "arabicTitle": "تنظيف اللابتوب وتبديل المعجون الحراري بالكويت",
     "primary": "laptop cleaning thermal paste Kuwait",
-    "photo": "/images/gallery/laptop-cpu-thermal-paste-reapplication-intel-core.webp",
-    "pricingPhoto": "/images/gallery/laptop-fan-and-heatsink-deep-cleaning-kuwait.webp",
+    "photo": "/images/gallery/laptop-fan-and-heatsink-deep-cleaning-kuwait.webp",
+    "pricingPhoto": "/images/gallery/laptop-cpu-thermal-paste-reapplication-intel-core.webp",
     "parent": "/laptop-repair-kuwait",
     "related": [
       "srv-laptop",
@@ -30,21 +30,41 @@ export const REPAIR_EXPANSION = [
     ],
     "faqs": [
       [
-        "Does every laptop need new thermal paste annually?",
-        "No. Dust cleaning and thermal-interface replacement are different decisions. We assess measured temperatures, contact condition and the model before recommending repasting."
+            "How much does laptop cleaning and thermal paste service cost in Kuwait?",
+            "Our published guide range for standard laptop thermal service is 15–20 KWD, with free initial diagnosis. Exact work and the total are quoted for your model before paid service; fan replacement or other repairs are priced separately."
       ],
       [
-        "Will this service stop every overheating issue?",
-        "Not necessarily. A failed fan, blocked heatsink, damaged sensor or board fault may require a different repair after diagnosis."
+            "How often should I clean my laptop in Kuwait?",
+            "For regularly used laptops, a cooling-system inspection roughly every 12–18 months can be useful in dusty environments, or sooner if vents become blocked or fans grow louder. Thermal paste is replaced based on condition, not a fixed calendar."
       ],
       [
-        "Do you clean ordinary office and student laptops?",
-        "This page covers standard Windows laptops; gaming laptops have a separate thermal-service page. Confirm the exact model before arranging pickup."
+            "Does every laptop need new thermal paste every year?",
+            "No. Clearing dust does not automatically justify removing a heatsink. We leave a healthy factory thermal interface undisturbed unless testing or disassembly warrants replacement."
+      ],
+      [
+            "Will cleaning and repasting fix every overheating problem?",
+            "No. A failing fan, damaged heat pipe, high background load, battery issue or motherboard fault can create similar symptoms. We diagnose before recommending a repair."
+      ],
+      [
+            "How long does the laptop thermal service take?",
+            "The published typical turnaround for a straightforward thermal service is same day or within 24 hours, subject to the lab queue, model and parts availability. Timing is confirmed after inspection."
+      ],
+      [
+            "Are my files affected during laptop cleaning?",
+            "Cooling maintenance normally does not erase files, but no hardware service can guarantee data integrity. Back up important files first; KCROC does not offer data recovery."
+      ],
+      [
+            "Do you clean gaming laptops and MacBooks too?",
+            "Gaming-laptop cleaning has a dedicated specialist service page, and MacBook Air/Pro requests are handled through our separate MacBook repair service after model verification."
+      ],
+      [
+            "Is pickup and delivery free throughout Kuwait?",
+            "Yes. Free pickup and return are offered across Kuwait for eligible repair bookings; cleaning and testing take place at the Hawalli lab, not at customers' homes."
       ]
-    ],
-    "scope": "General Windows laptops; thermal work only when compatible and justified by testing.",
+],
+    "scope": "Standard Windows laptop dust cleaning, airflow checks and condition-based thermal maintenance; gaming laptops and MacBooks have separate service paths.",
     "ar": {
-      "intro": "تنظيف داخلي للابتوبات العادية وفحص المروحة والمشتت والمعجون الحراري حسب حالة الجهاز، مو تبديل معجون بشكل تلقائي.",
+      "intro": "صوت مروحة اللابتوب عالي أو الجهاز يسخن مع الشغل العادي؟ نفحص الحرارة والهواء أول، وننظف الغبار ونبدّل المعجون إذا احتاج فعلاً.",
       "symptoms": [
         "صوت المروحة عالي حتى مع الاستخدام الخفيف",
         "فتحات التهوية مسدودة أو دفع الهواء ضعيف",
@@ -58,20 +78,40 @@ export const REPAIR_EXPANSION = [
         "نقيّم المعجون الحراري حسب الموديل ونعيد الاختبار بعد الخدمة"
       ],
       "faqs": [
-        [
-          "لازم أبدّل المعجون كل سنة؟",
-          "لا، ما في موعد ثابت لكل لابتوب. نبدّله فقط إذا الفحص يثبت الحاجة وكان الموديل يسمح."
-        ],
-        [
-          "التنظيف يحل كل مشاكل الحرارة؟",
-          "مو بالضرورة. ممكن تكون المشكلة بمروحة معطلة أو مشتت أو دائرة بالجهاز، ونوضحها بعد الفحص."
-        ],
-        [
-          "تصلحون لابتوبات الدراسة والمكتب؟",
-          "نعم، هذا النطاق للأجهزة العادية وينفصل عن صفحة تنظيف لابتوبات الألعاب، حسب تأكيد الموديل والخدمة."
-        ]
+      [
+            "بكم تنظيف اللابتوب وتبديل المعجون بالكويت؟",
+            "السعر الإرشادي لخدمة تبريد اللابتوب العادي 15–20 د.ك، والفحص الأولي مجاني. نحدد السعر النهائي بعد فحص الموديل وقبل الشغل، وأي مروحة أو قطعة إضافية لها عرض سعر مستقل."
       ],
-      "scope": "لابتوبات Windows العادية؛ المعجون الحراري حسب نتيجة الفحص وتوافق الجهاز."
+      [
+            "كل جم لازم أنظف اللابتوب بالكويت؟",
+            "إذا الجهاز يُستخدم يومياً وفيه غبار، ممكن يفيد فحص التبريد تقريباً كل 12–18 شهر، أو قبل إذا ضعف الهواء أو ارتفع صوت المروحة. المعجون ما له جدول ثابت."
+      ],
+      [
+            "لازم أبدّل المعجون كل سنة؟",
+            "لا. إذا الحرارة طبيعية والمعجون الأصلي مناسب والمشتت ما يحتاج ينفك، ما نغيّره لمجرد مرور سنة."
+      ],
+      [
+            "التنظيف يحل كل مشاكل الحرارة؟",
+            "مو بالضرورة. ممكن العطل من المروحة أو المشتت أو برامج تستهلك المعالج أو البطارية أو دائرة الطاقة. نفحص السبب أول."
+      ],
+      [
+            "جم تاخذ خدمة التنظيف والتبريد؟",
+            "المدة المعتادة حسب قائمة الأسعار نفس اليوم أو خلال 24 ساعة للشغل البسيط، حسب زحمة المختبر والموديل وتوفر القطع. نأكدها عقب الفحص."
+      ],
+      [
+            "ملفاتي تتأثر من التنظيف؟",
+            "الخدمة المعتادة ما تمسح الملفات، لكن أي صيانة هاردوير لها مخاطر على البيانات. احتفظ بنسخة احتياطية قبل الخدمة؛ ما نقدم استرجاع بيانات."
+      ],
+      [
+            "تنظفون لابتوبات القيمنق والماك بوك؟",
+            "القيمنق له صفحة تبريد متخصصة، والماك بوك له مسار تصليح منفصل حسب الموديل وطريقة الفك."
+      ],
+      [
+            "التوصيل والاستلام مجاني بكل الكويت؟",
+            "نعم، نوفر استلام وتوصيل مجاني للحجوزات المؤهلة بجميع مناطق الكويت. الفحص والشغل في مختبر حولي، مو داخل بيت العميل."
+      ]
+],
+      "scope": "تنظيف وفحص تبريد لابتوبات Windows العادية، والمعجون حسب الفحص. القيمنق والماك بوك لهم خدمات منفصلة."
     }
   },
   {
@@ -458,10 +498,12 @@ export const REPAIR_EXPANSION_ENTITIES: Record<string, ServiceEntity | WebPageEn
         { src: item.pricingPhoto, alt: item.title + ' - complementary internal component view', placement: 'coreFeatures' },
       ],
       coreFeatures: [...item.checks], faqs: enFaqs,
-      seo: { title: item.title + ' | KCROC', description: item.scope + ' Diagnosis at our Hawalli lab. Kuwait-wide pickup, quote before work and 30-day warranty on covered completed repairs.',
+      seo: { title: item.title + ' | KCROC', description: item.slug === 'laptop-cleaning-thermal-paste-kuwait'
+        ? 'Laptop overheating or loud fan? Internal dust cleaning and condition-based thermal paste service in Kuwait. Guide 15–20 KWD, free pickup and Hawalli lab diagnosis.'
+        : item.scope + ' Diagnosis at our Hawalli lab. Kuwait-wide pickup, quote before work and 30-day warranty on covered completed repairs.',
         canonicalUrl: enUrl, locale: 'en_KW', alternates, ogType: 'website',
         ogImage: item.photo, ogImageAlt: item.title + ' - KCROC technical service image',
-        schemaTypes: ['Service', 'WebPage', 'BreadcrumbList', 'LocalBusiness'],
+        schemaTypes: item.slug === 'laptop-cleaning-thermal-paste-kuwait' ? ['Service', 'WebPage', 'BreadcrumbList', 'LocalBusiness', 'FAQPage'] : ['Service', 'WebPage', 'BreadcrumbList', 'LocalBusiness'],
         lastModified: stamp,
         breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Services', url: '/services' }, { name: item.title, url: '/' + item.slug }] }
     } as ServiceEntity;
@@ -473,7 +515,7 @@ export const REPAIR_EXPANSION_ENTITIES: Record<string, ServiceEntity | WebPageEn
       seo: { title: item.arabicTitle + ' | KCROC', description: item.ar.intro + ' فحص في مختبر حولي واستلام وتوصيل بالكويت، وعرض سعر قبل التصليح.',
         canonicalUrl: arUrl, locale: 'ar_KW', alternates, ogType: 'website',
         ogImage: item.photo, ogImageAlt: item.arabicTitle,
-        schemaTypes: ['WebPage', 'BreadcrumbList', 'LocalBusiness'],
+        schemaTypes: item.slug === 'laptop-cleaning-thermal-paste-kuwait' ? ['WebPage', 'BreadcrumbList', 'LocalBusiness', 'FAQPage'] : ['WebPage', 'BreadcrumbList', 'LocalBusiness'],
         lastModified: stamp,
         breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }, { name: 'الخدمات', url: '/ar/services' }, { name: item.arabicTitle, url: '/ar/' + item.slug }] }
     } as WebPageEntity;
