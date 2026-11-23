@@ -33,6 +33,7 @@
 import React from 'react';
 import { Head } from 'vite-react-ssg';
 import { SEO_GRAPH } from '../../data/seoGraph.generated';
+import { REPAIR_EXPANSION } from '../../data/repairExpansion';
 import {
   ServiceEntity,
   LocationEntity,
@@ -293,6 +294,10 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
             "@id": `${fullCanonicalUrl}#service`,
             "name": service.title,
             "description": service.description,
+            ...(service.id === 'srv-laptop-thermal-service' ? {
+              "serviceType": "Standard Windows laptop internal dust cleaning and condition-based thermal paste replacement",
+              "inLanguage": "en-KW"
+            } : {}),
             ...(service.id === 'srv-liquid-damage' ? {
               "serviceType": "Laptop and MacBook liquid-damage inspection, board decontamination and component-level repair where technically viable",
               "inLanguage": "en-KW",
@@ -494,6 +499,17 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
               "lowPrice": 35,
               "offerCount": 3,
               "description": "Published guide pricing: from 35 KWD for limited contamination work, 45–65 KWD for bare-board decontamination, and 60–90+ KWD for component-level repair. Initial diagnosis is free; final price is confirmed after inspection and customer approval."
+            } : service.id === 'srv-laptop-thermal-service' ? {
+              "@type": "Offer",
+              "name": "Standard laptop thermal service — published guide range",
+              "priceCurrency": "KWD",
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "priceCurrency": "KWD",
+                "minPrice": 15,
+                "maxPrice": 20
+              },
+              "description": "Model-dependent guide range. Free initial diagnosis; final quote before paid work, with additional parts priced separately."
             } : service.pricing ? {
               "@type": "Offer",
               "name": service.pricing.displayLabel ?? `From ${service.pricing.startingFrom} ${service.pricing.currency}`,
@@ -622,7 +638,10 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
             ? featuredIds.map(id => SEO_GRAPH.faqs.find(f => f.id === id)).filter((f): f is NonNullable<typeof f> => Boolean(f))
             : [];
           
-          questions = sourceFaqs.map(faq => ({ title: faq.title, answer: faq.answer }));
+          const thermalService = REPAIR_EXPANSION.find(service => 'page-ar-' + service.id === webPage.id);
+          questions = thermalService?.slug === 'laptop-cleaning-thermal-paste-kuwait'
+            ? thermalService.ar.faqs.map(([title, answer]) => ({ title, answer }))
+            : sourceFaqs.map(faq => ({ title: faq.title, answer: faq.answer }));
         }
 
         if (questions.length > 0) {

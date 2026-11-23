@@ -57,6 +57,49 @@ try {
    console.log(JSON.stringify({route,width,...result}));
   }
  }
+ // Specialist thermal-page browser QA at both standard viewports and both languages.
+ for(const width of [390,1440]){
+  await page.setViewport({width,height:900,deviceScaleFactor:1});
+  for(const route of ['/laptop-cleaning-thermal-paste-kuwait','/ar/laptop-cleaning-thermal-paste-kuwait']){
+   await page.goto(new URL(route,base).href,{waitUntil:'networkidle2',timeout:60000});
+   const result=await page.evaluate(()=>{
+    const root=document.querySelector('[data-repair-expansion="laptop-cleaning-thermal-paste-kuwait"]');
+    if(!root)return {error:'Thermal service layout missing'};
+    const imgs=[...root.querySelectorAll('img[data-kcroc-service-photo]')].map(img=>img.getAttribute('src'));
+    const cssTable=root.querySelector('.kcroc-thermal-table-scroll');
+    const qa=[...root.querySelectorAll('details[data-kcroc-faq-item]')];
+    const h1=[...root.querySelectorAll('h1')];
+    const segments=[...root.querySelectorAll('[data-thermal-section]')].map(el=>el.getAttribute('data-thermal-section'));
+    const bg=el=>{
+     for(let parent=el;parent;parent=parent.parentElement){
+      const v=getComputedStyle(parent).backgroundColor;
+      if(v&&v!=='rgba(0, 0, 0, 0)'&&v!=='transparent')return v;
+     }
+     return 'rgb(255, 255, 255)';
+    };
+    const rgb=s=>(s.match(/[\d.]+/g)||[]).map(Number);
+    const lum=c=>c.slice(0,3).map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4}).reduce((sum,v,i)=>sum+v*[.2126,.7152,.0722][i],0);
+    const contrast=['.kcroc-thermal-climate-grid p','.kcroc-thermal-table tbody td','.kcroc-thermal-price-primary p','.kcroc-thermal-price-value','.kcroc-repair-faq-question'].map(sel=>{
+     const el=root.querySelector(sel);if(!el)return {sel,ratio:0};
+     const f=lum(rgb(getComputedStyle(el).color)),b=lum(rgb(bg(el)));
+     return {sel,ratio:(Math.max(f,b)+.05)/(Math.min(f,b)+.05)};
+    });
+    return {dir:root.getAttribute('dir'),h1:h1.length,faqs:qa.length,images:imgs,segments,
+      tableOverflow:cssTable?cssTable.scrollWidth>cssTable.clientWidth:false,
+      pageOverflow:document.documentElement.scrollWidth-window.innerWidth,contrast};
+   });
+   if(result.error||result.dir!==(route.startsWith('/ar/')?'rtl':'ltr')||result.h1!==1||result.faqs!==8||result.images?.length!==2||new Set(result.images).size!==2||result.segments?.length!==3||result.pageOverflow>2){
+    failures.push({route,width,error:'Thermal-page layout/RTL/FAQ/image/overflow regression',result});
+   }
+   for(const c of result.contrast||[])if(c.ratio<4.5)failures.push({route,width,error:'Thermal-page text contrast',contrast:c});
+   const target=await page.$('.kcroc-thermal-table-scroll');
+   if(target){
+    await target.evaluate(el=>el.scrollIntoView({block:'center',behavior:'instant'}));
+    await page.screenshot({path:'premium-visual-evidence/thermal-'+(route.startsWith('/ar/')?'ar':'en')+'-'+width+'.png'});
+   }
+   console.log(JSON.stringify({route,width,thermalPageVisual:result}));
+  }
+ }
  // Phase 7G.2: verify actual shared chrome on both home languages.
  for(const width of [390,1440]){
   await page.setViewport({width,height:900,deviceScaleFactor:1});
