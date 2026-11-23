@@ -1,6 +1,7 @@
 // File: app/frontend/src/App.tsx
 import React, { lazy } from 'react';
 import { RouteObject, Navigate, Outlet } from 'react-router-dom';
+import { REPAIR_EXPANSION } from './data/repairExpansion';
 import { RootLayout } from './core/components/layout/RootLayout';
 import { RouteErrorBoundary } from './core/components/RouteErrorBoundary';
 import { AnalyticsProvider } from './core/analytics/AnalyticsProvider';
@@ -36,6 +37,7 @@ export const routes: RouteObject[] = [
           { path: 'ar/services', lazy: async () => ({ Component: (await import('./pages/ArabicLocalizedPages')).ArabicServicesPage }) },
           { path: 'near-me', lazy: async () => ({ Component: (await import('./pages/NearMe')).default }) },
           { path: 'ar/near-me', lazy: async () => ({ Component: (await import('./pages/NearMeAR')).default }) },
+          ...REPAIR_EXPANSION.map((service) => ({ path: 'ar/' + service.slug, lazy: async () => ({ Component: (await import('./pages/RepairExpansionPage')).default }) })),
           { path: 'ar/pricing', lazy: async () => ({ Component: (await import('./pages/ArabicPricingPage')).default }) },
           { path: 'ar/book', lazy: async () => ({ Component: (await import('./pages/ArabicBookingPage')).default }) },
           { path: 'ar/contact', lazy: async () => ({ Component: (await import('./pages/ArabicContactPage')).default }) },
@@ -47,14 +49,12 @@ export const routes: RouteObject[] = [
           { path: 'ar/laptop-black-screen-kuwait', lazy: async () => ({ Component: (await import('./pages/ArabicProblemPage')).default }) },
           { path: 'ar/spilled-water-on-laptop', lazy: async () => ({ Component: (await import('./pages/ArabicProblemPage')).default }) },
           { path: 'ar/laptop-keyboard-not-working', lazy: async () => ({ Component: (await import('./pages/ArabicProblemPage')).default }) },
-          { path: 'ar/laptop-wifi-not-connecting', lazy: async () => ({ Component: (await import('./pages/ArabicProblemPage')).default }) },
           { path: 'ar/laptop-running-very-slow', lazy: async () => ({ Component: (await import('./pages/ArabicProblemPage')).default }) },
           { path: 'ar/laptop-hinge-broken', lazy: async () => ({ Component: (await import('./pages/ArabicProblemPage')).default }) },
           { path: 'ar/laptop-screen-cracked-kuwait', lazy: async () => ({ Component: (await import('./pages/ArabicProblemPage')).default }) },
           { path: 'ar/windows-wont-boot-kuwait', lazy: async () => ({ Component: (await import('./pages/ArabicProblemPage')).default }) },
           { path: 'ar/blue-screen-of-death-bsod-fix-kuwait', lazy: async () => ({ Component: (await import('./pages/ArabicProblemPage')).default }) },
           { path: 'ar/computer-freezing-crashing-kuwait', lazy: async () => ({ Component: (await import('./pages/ArabicProblemPage')).default }) },
-          { path: 'ar/virus-malware-removal-kuwait', lazy: async () => ({ Component: (await import('./pages/ArabicProblemPage')).default }) },
           { path: 'ar/computer-repair-abu-halifa', lazy: async () => ({ Component: (await import('./pages/ArabicLocationPage')).default }) },
           { path: 'ar/computer-repair-mubarak-al-kabeer', lazy: async () => ({ Component: (await import('./pages/ArabicLocationPage')).default }) },
           { path: 'ar/computer-repair-sabah-al-salem', lazy: async () => ({ Component: (await import('./pages/ArabicLocationPage')).default }) },
@@ -80,6 +80,7 @@ export const routes: RouteObject[] = [
           { path: 'ar/terms-of-service', lazy: async () => ({ Component: (await import('./pages/ArabicLegalPages')).ArabicTermsOfService }) },
           { path: 'ar/privacy-security-kuwait', lazy: async () => ({ Component: (await import('./pages/ArabicLegalPages')).ArabicPrivacySecurity }) },
           { path: 'ar/:slug', lazy: async () => ({ Component: (await import('./pages/ArabicCommercialPage')).default }) },
+          ...REPAIR_EXPANSION.map((service) => ({ path: service.slug, lazy: async () => ({ Component: (await import('./pages/RepairExpansionPage')).default }) })),
           { path: 'macbook-battery-replacement-kuwait', lazy: async () => ({ Component: (await import('./pages/MacBookBatteryReplacementPage')).default }) },
           { path: 'computer-repair-kuwait', lazy: async () => ({ Component: (await import('./pages/ComputerRepairKuwait')).default }) },
           { path: 'services', lazy: async () => ({ Component: (await import('./pages/Services')).default }) },

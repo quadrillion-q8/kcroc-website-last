@@ -6,6 +6,7 @@ import {
   BrandEntity, ProblemEntity, CaseStudyEntity
 } from '../types/knowledgeGraph.js';
 import { IMAGES } from '../constants/images.js';
+import { REPAIR_EXPANSION_ENTITIES } from './repairExpansion';
 
 export const rawGraphData: RawGraphData = {
   metadata: {
@@ -15,6 +16,7 @@ export const rawGraphData: RawGraphData = {
   },
 
   entities: {
+    ...REPAIR_EXPANSION_ENTITIES,
 
     /* ═══════════════════════════════════════════════════════════════
        BUSINESS ENTITY
@@ -30,7 +32,7 @@ export const rawGraphData: RawGraphData = {
       schemaOpeningHours: { dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'], opens: '10:00', closes: '22:00' },
       aggregateRating: { ratingValue: '4.9', reviewCount: 161, bestRating: 5 },
       socialLinks: { facebook: 'https://www.facebook.com/computerrepairkuwait', instagram: 'https://www.instagram.com/computerrepairkuwait', googleMaps: 'https://www.google.com/maps/place/?q=place_id:ChIJzapykEqbzz8RZsrwoaORhjY' },
-      aiSummary: 'Kuwait Computer Repair On Call (KCROC) is a Hawalli-based component-level computer repair specialist. Services include laptop and MacBook repair, gaming PC repair, motherboard chip-level diagnostics, screen replacement, battery replacement, charging-port repair, hinge and chassis repair, keyboard replacement, SSD and RAM upgrades, liquid-damage repair, gaming laptop thermal servicing, and virus removal. Free pickup and delivery across all Kuwait governorates. 30-day warranty on completed repairs. No Fix, No Fee policy.',
+      aiSummary: 'Kuwait Computer Repair On Call (KCROC) is a Hawalli-based component-level computer repair specialist. Services include laptop and MacBook repair, gaming PC repair, motherboard chip-level diagnostics, screen replacement, battery replacement, charging-port repair, hinge and chassis repair, keyboard replacement, SSD and RAM upgrades, liquid-damage repair, gaming laptop thermal servicing, and thermal maintenance. Free pickup and delivery across all Kuwait governorates. 30-day warranty on completed repairs. No Fix, No Fee policy.',
     } as BusinessEntity,
 
     /* ═══════════════════════════════════════════════════════════════
@@ -9006,7 +9008,7 @@ export const rawGraphData: RawGraphData = {
     } as ProblemEntity,
 
     'problem-wifi-fail': {
-      id: 'problem-wifi-fail', slug: 'laptop-wifi-not-connecting', entityType: 'Problem', isActive: true,
+      id: 'problem-wifi-fail', slug: 'laptop-wifi-not-connecting', entityType: 'Problem', isActive: false,
       title: 'Laptop WiFi Not Connecting or Missing', primaryKeyword: "laptop WiFi not connecting", secondaryKeywords: ["laptop WiFi missing Windows","laptop WiFi keeps disconnecting","laptop wireless card repair Kuwait"],
       description: 'Diagnosis for laptops that cannot find WiFi networks, frequently drop connection, or are missing the WiFi icon entirely.',
       symptom: 'The WiFi icon disappears from Windows, the laptop cannot find any networks despite phones connecting fine, or the connection drops repeatedly during gaming or streaming.',
@@ -9294,7 +9296,7 @@ export const rawGraphData: RawGraphData = {
     } as ProblemEntity,
 
     'problem-malware': {
-      id: 'problem-malware', slug: 'virus-malware-removal-kuwait', entityType: 'Problem', isActive: true,
+      id: 'problem-malware', slug: 'virus-malware-removal-kuwait', entityType: 'Problem', isActive: false,
       title: 'Virus, Malware or Ransomware Infection', primaryKeyword: "virus and malware removal Kuwait", secondaryKeywords: ["laptop malware removal Kuwait","browser hijacker removal","ransomware infection assessment Kuwait"],
       description: 'Removal service for laptops and PCs showing signs of viruses, adware, browser hijackers, or ransomware.',
       symptom: 'Constant pop-up ads even outside the browser, a homepage or search engine that changed itself, unfamiliar toolbars, the antivirus getting disabled on its own, or — in serious cases — files that suddenly cannot be opened with a ransom message demanding payment.',

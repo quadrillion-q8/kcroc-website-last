@@ -3,6 +3,12 @@ import type { ServiceEntity } from '../../types/knowledgeGraph';
 import { localizedSitePath } from '../../utils/locale';
 export const HomeLocaleContext = createContext<'en' | 'ar'>('en');
 export const ARABIC_SERVICE_COPY: Record<string, { title: string; description: string; href: string }> = {
+  'laptop-cleaning-thermal-paste-kuwait': { title: 'تنظيف اللابتوب وتبديل المعجون الحراري بالكويت', description: 'تنظيف داخلي للابتوبات العادية وفحص المروحة والمشتت والمعجون الحراري حسب حالة الجهاز، مو تبديل معجون بشكل تلقائي.', href: '/ar/laptop-cleaning-thermal-paste-kuwait' },
+  'laptop-fan-replacement-kuwait': { title: 'تبديل مروحة اللابتوب بالكويت', description: 'مروحة اللابتوب تطق أو تحك أو ما تدور؟ نفحص المروحة وتوصيلاتها قبل ما نطلب قطعة بديلة.', href: '/ar/laptop-fan-replacement-kuwait' },
+  'macbook-charging-port-repair-kuwait': { title: 'تصليح مدخل شحن ماك بوك USB-C بالكويت', description: 'ماك بوك ما يشحن من USB-C أو الشحن يفصل؟ نفحص المدخل والشاحن ودائرة الطاقة ونحدد الحل حسب رقم الموديل.', href: '/ar/macbook-charging-port-repair-kuwait' },
+  'bios-repair-kuwait': { title: 'تصليح BIOS وUEFI للابتوب والكمبيوتر بالكويت', description: 'الجهاز وقف بعد تحديث BIOS أو ما يوصل لشاشة الإقلاع؟ نفحص أول إذا المشكلة من الفيرموير فعلًا أو من مكوّن ثاني.', href: '/ar/bios-repair-kuwait' },
+  'pc-power-supply-replacement-kuwait': { title: 'تبديل باور سبلاي الكمبيوتر المكتبي بالكويت', description: 'الكمبيوتر المكتبي ما يشتغل أو يطفي فجأة؟ نفحص مسار الكهرباء ونبدّل وحدة PSU كاملة إذا ثبت عطلها.', href: '/ar/pc-power-supply-replacement-kuwait' },
+  'macbook-liquid-damage-repair-kuwait': { title: 'تصليح ماك بوك بعد انسكاب السوائل بالكويت', description: 'انكب ماي أو قهوة على الماك بوك؟ خلّ الجهاز مطفي ولا تشحنه. نفحص آثار السوائل والمكونات المتضررة بالمختبر قبل أي تجربة تشغيل.', href: '/ar/macbook-liquid-damage-repair-kuwait' },
   'laptop-repair-kuwait': { title: 'تصليح اللابتوب في الكويت', description: 'تشخيص أعطال التشغيل والشحن والحرارة والشاشة والبطارية ومكونات الجهاز.', href: '/ar/laptop-repair-kuwait' },
   'desktop-pc-repair-kuwait': { title: 'تصليح الكمبيوتر المكتبي وPC', description: 'تشخيص أعطال الطاقة والشاشة والحرارة والرام والتخزين والمذربورد في الكمبيوتر المكتبي الكامل.', href: '/ar/desktop-pc-repair-kuwait' },
   'laptop-hinge-repair-kuwait': { title: 'تصليح مفصلات وهيكل اللابتوب', description: 'فحص المفصلات وقواعد التثبيت والغطاء والإطار وكابل الشاشة قبل تحديد طريقة الإصلاح.', href: '/ar/laptop-hinge-repair-kuwait' },
