@@ -11,6 +11,7 @@ import { localizedSitePath } from '../utils/locale';
 import ServiceConversionActions from '../components/content/ServiceConversionActions';
 import './RepairExpansionPage.css';
 import { ThermalClimate, ThermalComparison, ThermalServiceDetails } from './ThermalDeepDive';
+import { ThermalPrecisionCare, ThermalHandover, ThermalWhatsAppBrief } from './ThermalAdditions';
 
 type Bilingual = { en: string; ar: string };
 type VisualCopy = { intro: string; hero: Bilingual; detail: Bilingual };
@@ -189,6 +190,7 @@ export default function RepairExpansionPage() {
         </section>
 
         {isEverydayThermal && <ThermalClimate ar={ar} />}
+        {isEverydayThermal && <ThermalPrecisionCare ar={ar} />}
 
         <section className="kcroc-repair-symptoms" aria-labelledby="kcroc-repair-symptoms-title">
           <div className="kcroc-repair-container kcroc-repair-symptoms-grid">
@@ -256,6 +258,7 @@ export default function RepairExpansionPage() {
           </div>
         </section>
 
+        {isEverydayThermal && <ThermalHandover ar={ar} />}
         {isEverydayThermal && <ThermalServiceDetails ar={ar} />}
 
         <section className="kcroc-repair-faq" aria-labelledby="kcroc-repair-faq-title">
@@ -277,6 +280,7 @@ export default function RepairExpansionPage() {
                 </details>
               ))}
             </div>
+            {isEverydayThermal && <p className="kcroc-thermal-faq-bridge"><Link to={ar ? '/ar/laptop-repair-kuwait' : '/laptop-repair-kuwait'}>{t('Need broader component-level laptop repair after diagnosis? See the main laptop repair service.', 'إذا طلع العطل أكبر من التبريد، شوف خدمة تصليح اللابتوب على مستوى المكونات.')}</Link></p>}
           </div>
         </section>
 
@@ -289,6 +293,7 @@ export default function RepairExpansionPage() {
                 'Share the exact model, symptoms and pickup area. We will explain the next diagnostic step and confirm the quote before any paid work.',
                 'أرسل الموديل والأعراض والمنطقة. نوضح طريقة الفحص ونأكد عرض السعر قبل أي تصليح مدفوع.'
               )}</p>
+              {isEverydayThermal && <ThermalWhatsAppBrief ar={ar} />}
               <div className="kcroc-repair-next-actions">
                 <Link to={localizedSitePath('/book', locale)} className="kcroc-repair-book">
                   {t('Arrange free pickup', 'احجز استلام مجاني')} <ArrowUpRight aria-hidden="true" />
