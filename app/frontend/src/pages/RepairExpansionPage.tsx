@@ -11,7 +11,7 @@ import './KCROCEditorialRollout.css';
 export default function RepairExpansionPage() {
   const { pathname } = useLocation();
   const ar = pathname.startsWith('/ar/');
-  const slug = pathname.replace(/^\\/ar\\//, '/').replace(/^\\//, '').replace(/\\/$/, '');
+  const slug = pathname.replace('/ar/', '/').split('/').filter(Boolean).pop() ?? '';
   const item = REPAIR_EXPANSION.find((candidate) => candidate.slug === slug);
   if (!item) return <Navigate to="/404" replace />;
   const entityId = ar ? 'page-ar-' + item.id : item.id;
