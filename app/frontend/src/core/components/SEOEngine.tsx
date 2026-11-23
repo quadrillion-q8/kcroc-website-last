@@ -33,6 +33,7 @@
 import React from 'react';
 import { Head } from 'vite-react-ssg';
 import { SEO_GRAPH } from '../../data/seoGraph.generated';
+import { REPAIR_EXPANSION } from '../../data/repairExpansion';
 import {
   ServiceEntity,
   LocationEntity,
@@ -293,6 +294,22 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
             "@id": `${fullCanonicalUrl}#service`,
             "name": service.title,
             "description": service.description,
+            ...(service.id === 'srv-laptop-thermal-service' ? {
+              "serviceType": "Standard Windows laptop internal dust cleaning, heatsink and fan airflow maintenance, and condition-based thermal paste replacement",
+              "inLanguage": "en-KW",
+              "offers": {
+                "@type": "Offer",
+                "name": "Standard laptop thermal service — published guide range",
+                "priceCurrency": "KWD",
+                "priceSpecification": {
+                  "@type": "PriceSpecification",
+                  "priceCurrency": "KWD",
+                  "minPrice": 15,
+                  "maxPrice": 20
+                },
+                "description": "Model-dependent published guide range. Free initial diagnosis and final quote before approved paid work; additional parts priced separately."
+              }
+            } : {}),
             ...(service.id === 'srv-liquid-damage' ? {
               "serviceType": "Laptop and MacBook liquid-damage inspection, board decontamination and component-level repair where technically viable",
               "inLanguage": "en-KW",
@@ -622,7 +639,10 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
             ? featuredIds.map(id => SEO_GRAPH.faqs.find(f => f.id === id)).filter((f): f is NonNullable<typeof f> => Boolean(f))
             : [];
           
-          questions = sourceFaqs.map(faq => ({ title: faq.title, answer: faq.answer }));
+          const thermalService = REPAIR_EXPANSION.find(service => 'page-ar-' + service.id === webPage.id);
+          questions = thermalService?.slug === 'laptop-cleaning-thermal-paste-kuwait'
+            ? thermalService.ar.faqs.map(([title, answer]) => ({ title, answer }))
+            : sourceFaqs.map(faq => ({ title: faq.title, answer: faq.answer }));
         }
 
         if (questions.length > 0) {
