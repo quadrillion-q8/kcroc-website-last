@@ -1640,7 +1640,7 @@ export default function BlogPostTemplate() {
                   </span>
                 )}
                 <span className="flex items-center gap-1.5 mt-1"><Calendar size={14} aria-hidden="true" /> {isWindows26H2Guide ? 'Published: ' : ''}{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</span>
-                {isWindows26H2Guide && post.technicalReviewDate && (
+                {(isWindows26H2Guide || isMicrosoftSurfaceEventNews) && post.technicalReviewDate && (
                   <span className="flex items-center gap-1.5 mt-1"><Calendar size={14} aria-hidden="true" /> Updated: {getTechnicalReviewDateLabel(post, 'November 14, 2026')}</span>
                 )}
                 <span className="flex items-center gap-1.5 mt-1"><Clock size={14} aria-hidden="true" /> {post.readTime}</span>
@@ -1742,24 +1742,25 @@ export default function BlogPostTemplate() {
               )}
 
               {isMicrosoftSurfaceEventNews && (
-                <div className="grid gap-5 md:grid-cols-2 mb-10" aria-label="Pre-event status">
+                <div className="grid gap-5 md:grid-cols-2 mb-10" aria-label="October 7 event outcome and buying limitations">
                   <aside className="rounded-2xl border border-cyan-500/30 bg-cyan-500/5 p-6" role="note">
-                    <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-400 mb-2">News Flash · What’s confirmed — Oct. 3, 2026</p>
+                    <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-400 mb-2">Confirmed · Updated November 23, 2026</p>
                     <ul className="space-y-2 text-sm text-slate-300 leading-relaxed">
-                      <li>Microsoft has confirmed the Windows and Surface event for October 7 at 10 a.m. Pacific Time.</li>
-                      <li>Surface Laptop Ultra was already officially announced on May 31 and remains a pre-release product.</li>
-                      <li>NVIDIA RTX Spark has already been officially announced.</li>
-                      <li>Windows 12 has not been announced for this event.</li>
+                      <li>Surface Laptop Ultra became available starting October 16, with a US$2,599 launch MSRP.</li>
+                      <li>Surface RTX Spark Dev Box entered US-only preorders, with November shipping planned.</li>
+                      <li>NVIDIA announced RTX Spark laptops available October 16 from multiple PC brands.</li>
+                      <li>Microsoft announced hybrid intelligence and general availability of Execution Containers for Windows 11.</li>
+                      <li>Windows 12 was not announced at the event.</li>
                     </ul>
                   </aside>
                   <aside className="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-6" role="note">
-                    <p className="text-xs font-black uppercase tracking-[0.16em] text-amber-400 mb-2">Still to be confirmed on October 7</p>
+                    <p className="text-xs font-black uppercase tracking-[0.16em] text-amber-400 mb-2">Verify before purchase</p>
                     <ul className="space-y-2 text-sm text-slate-300 leading-relaxed">
-                      <li>Final Surface Laptop Ultra retail configurations</li>
-                      <li>Regional pricing and Kuwait availability</li>
-                      <li>Final shipping dates</li>
-                      <li>Additional Windows AI features or hardware announcements</li>
-                      <li>Independent real-world performance results</li>
+                      <li>Country-specific stock, prices, warranty and after-sales service</li>
+                      <li>The exact RAM, storage, software and power configuration</li>
+                      <li>Independent battery, fan-noise and application benchmarks</li>
+                      <li>Staged Windows AI feature rollout and agent permissions</li>
+                      <li>Whether US direct-order products are sold in your market</li>
                     </ul>
                   </aside>
                 </div>
