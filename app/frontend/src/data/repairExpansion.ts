@@ -9,7 +9,7 @@ export const REPAIR_EXPANSION = [
     "title": "Laptop Cleaning & Thermal Paste Service Kuwait",
     "arabicTitle": "تنظيف اللابتوب وتبديل المعجون الحراري بالكويت",
     "primary": "laptop cleaning thermal paste Kuwait",
-    "photo": "/images/laptop-cpu-thermal-paste-reapplication.webp",
+    "photo": "/images/gallery/laptop-cpu-thermal-paste-reapplication-intel-core.webp",
     "parent": "/laptop-repair-kuwait",
     "related": [
       "srv-laptop",
@@ -79,7 +79,7 @@ export const REPAIR_EXPANSION = [
     "title": "Laptop Cooling Fan Replacement Kuwait",
     "arabicTitle": "تبديل مروحة اللابتوب بالكويت",
     "primary": "laptop fan replacement Kuwait",
-    "photo": "/images/laptop-cooling-fan-replacement-part-new.webp",
+    "photo": "/images/gallery/lenovo-laptop-replacement-cooling-fan-part-number-label-kuwait.webp",
     "parent": "/laptop-overheating-kuwait",
     "related": [
       "srv-laptop",
@@ -220,7 +220,7 @@ export const REPAIR_EXPANSION = [
     "title": "BIOS & UEFI Firmware Repair Kuwait",
     "arabicTitle": "تصليح BIOS وUEFI للابتوب والكمبيوتر بالكويت",
     "primary": "BIOS repair Kuwait",
-    "photo": "/images/guides/bios-recovery/micro-soldering-bios-ic.webp",
+    "photo": "/images/gallery/asus-prime-z590-p-bios-ez-mode-core-i7-10700k.webp",
     "parent": "/motherboard-repair-kuwait",
     "related": [
       "srv-motherboard",
@@ -291,7 +291,7 @@ export const REPAIR_EXPANSION = [
     "title": "Desktop PC Power Supply Replacement Kuwait",
     "arabicTitle": "تبديل باور سبلاي الكمبيوتر المكتبي بالكويت",
     "primary": "PC power supply replacement Kuwait",
-    "photo": "/images/breadboarding-motherboard-with-corsair-power-supply.webp",
+    "photo": "/images/gallery/hp-desktop-pc-opened-motherboard-psu-ssd-and-hard-drive-kuwait.webp",
     "parent": "/desktop-pc-repair-kuwait",
     "related": [
       "srv-desktop-pc",
