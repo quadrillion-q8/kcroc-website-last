@@ -1,9 +1,12 @@
 import { EntityType } from '../analytics/types';
 
+// Navigation includes index-page shortcuts in addition to knowledge-graph entities.
+export type NavEntityType = EntityType | 'Page';
+
 export interface NavEntity {
   id: string;
   slug: string;
-  entityType: EntityType;
+  entityType: NavEntityType;
   primaryKeyword: string;
   title: string;
   description: string;

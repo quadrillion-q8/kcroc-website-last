@@ -171,7 +171,7 @@ const getMoreItems = (config: MegaMenuConfig) => {
 
 const getIndexItem = (config: MegaMenuConfig) => {
   const candidates = config.sections.flatMap(section => section.items);
-  return candidates.find(item => item.entityType === 'WebPage' && /^(services|brands|problems|pricing|blog|news|guides)$/.test(item.slug)) ?? null;
+  return candidates.find(item => item.entityType === 'Page' && /^(services|brands|problems|pricing|blog|news|guides)$/.test(item.slug)) ?? null;
 };
 
 interface Props {
