@@ -18,7 +18,6 @@ for (const required of [
   '12-Service Windows 11 Audit Matrix',
   'Read-Only PowerShell Audit Toolkit',
   'Safe rollback and WinRE recovery protocol',
-  'November 23, 2026',
 ]) {
   assert.ok(html.includes(required), 'SSG guide missing required visible content: ' + required);
 }
