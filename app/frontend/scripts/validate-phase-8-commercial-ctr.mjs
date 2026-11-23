@@ -51,4 +51,33 @@ assert.match(targets['/hp-laptop-repair-kuwait'].description,/not HP-authorized/
 assert.match(targets['/location/hawalli'].description,/Basement Shop 19.*10 AM–10 PM/);
 for(const route of ['/ar/computer-repair-jahra','/ar/computer-repair-salmiya'])assert.ok(targets[route].description.includes('مختبر KCROC بحولي'));
 assert.match(targets['/location/salmiya'].description,/our Hawalli lab/);
+const findSSG=(route)=>{
+  const slug=route.slice(1);
+  const file=[slug+'.html',slug+'/index.html'].map(p=>path.join('dist',p)).find(p=>fs.existsSync(p));
+  assert.ok(file, 'Missing SSG '+route);
+  return load(fs.readFileSync(file,'utf8'));
+};
+const $screen=findSSG('/laptop-screen-repair-kuwait');
+const $screenAR=findSSG('/ar/laptop-screen-repair-kuwait');
+assert.equal($screen('[data-screen-cost-guide]').length,1,'English page has one visible pricing explainer');
+assert.equal($screenAR('[data-screen-cost-guide-ar]').length,1,'Arabic page has one visible pricing explainer');
+assert.match($screen('[data-screen-cost-guide]').text(),/How much does laptop screen repair cost in Kuwait/i);
+assert.match($screen('[data-screen-cost-guide]').text(),/30 KWD/);
+assert.match($screen('[data-screen-cost-guide]').text(),/priced separately/i);
+assert.match($screen('[data-screen-cost-guide]').text(),/HP laptop screen replacement cost/i);
+assert.match($screenAR('[data-screen-cost-guide-ar]').text(),/كم سعر تصليح شاشة اللابتوب في الكويت/);
+assert.match($screenAR('[data-screen-cost-guide-ar]').text(),/30 د\.ك/);
+assert.ok($screen('[data-screen-cost-guide] a[href^="https://wa.me/"]').length,'English quote CTA is functional');
+assert.ok($screenAR('[data-screen-cost-guide-ar] a[href^="https://wa.me/"]').length,'Arabic quote CTA is functional');
+assert.ok($screen('[data-screen-cost-guide] a[href="/macbook-screen-replacement-kuwait"]').length,'MacBook screen intent is routed separately');
+assert.equal($screen('head link[rel="canonical"]').attr('href'),domain+'/laptop-screen-repair-kuwait');
+assert.equal($screenAR('head link[rel="canonical"]').attr('href'),domain+'/ar/laptop-screen-repair-kuwait');
+assert.ok($screen('details[data-kcroc-faq-item]').length >= 14,'Expanded English screen FAQs are rendered');
+const faqText=$screen('details[data-kcroc-faq-item]').text();
+assert.match(faqText,/HP laptop screen replacement cost/i);
+assert.match(faqText,/Acer laptop cracked screen/i);
+assert.match(faqText,/OLED, Full HD and laptop touch screens/i);
+assert.match(faqText,/screen repair near me/i);
+console.log('Laptop screen query intent: bilingual visible pricing, WhatsApp quotes, brand/panel FAQs and canonical URLs passed.');
+
 console.log('Phase 8.3: seven CTR target snippets, canonical URLs, hreflang, single H1 and truthful business qualifiers passed.');
