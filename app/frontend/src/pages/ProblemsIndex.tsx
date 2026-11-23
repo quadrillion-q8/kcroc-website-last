@@ -53,6 +53,12 @@ export default function ProblemsIndex() {
                   )}
                 </div>
 
+                {problem.contentImages?.[0] && (
+                  <img src={problem.contentImages[0].src} alt={problem.contentImages[0].alt}
+                    width={problem.contentImages[0].width} height={problem.contentImages[0].height}
+                    loading="lazy" decoding="async"
+                    className="mb-6 aspect-[16/10] w-full rounded-xl bg-slate-950 object-cover object-center" />
+                )}
                 <h2 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
                   {problem.title}
                 </h2>

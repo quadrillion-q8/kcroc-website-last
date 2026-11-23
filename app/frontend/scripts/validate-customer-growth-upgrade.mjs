@@ -1304,7 +1304,7 @@ add('Arabic charging troubleshooting page uses relevant gallery photos with resp
   && (arabicChargingGuide.match(/alt=\{/g) || []).length >= 5
   && arabicChargingGuide.includes('loading="eager"')
   && arabicChargingGuide.includes('loading="lazy"')
-  && graph.includes('/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp'));
+  && graph.includes('/images/gallery/laptop-dc-jack-cable-harness-charging-port-replacement-kuwait.webp'));
 
 add('Motherboard service snippet targets laptop, desktop and MacBook logic-board intent',
   graph.includes("title: 'Laptop Motherboard Repair Kuwait | MacBook Logic Board | KCROC'") &&

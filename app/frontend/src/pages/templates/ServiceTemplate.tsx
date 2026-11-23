@@ -127,7 +127,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
   const ContentImage = ({ image }: { image: NonNullable<typeof entity.contentImages>[number] }) => (
     <Link
       to="/gallery"
-      className="group block mb-8 rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/50 hover:border-cyan-500/40 transition-colors"
+      className="group mx-auto block mb-8 w-full max-w-4xl rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/50 hover:border-cyan-500/40 transition-colors"
       aria-label={`${image.alt} — view more repair photos in our gallery`}
     >
       <img
@@ -136,7 +136,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
         width={image.width}
         height={image.height}
         loading="lazy"
-        className="w-full max-h-96 object-cover group-hover:opacity-90 transition-opacity"
+        className="w-full max-h-[360px] bg-slate-950/70 object-contain group-hover:opacity-90 transition-opacity"
       />
       {image.caption && (
         <p className="text-xs text-slate-400 px-5 py-3 border-t border-slate-800/70">

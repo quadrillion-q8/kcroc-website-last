@@ -63,6 +63,21 @@ export default function Services({ locale = 'en' }: { locale?: SiteLocale } = {}
     };
     return rank(a.id) - rank(b.id);
   });
+  // Select a genuinely distinct photo for each service card; never repeat a
+  // photo within the directory merely because two services share a hero.
+  const serviceCardPhotos = new Map<string, { src: string; alt: string; width?: number; height?: number }>();
+  const usedServicePhotos = new Set<string>();
+  services.forEach((service) => {
+    const choices = 'contentImages' in service
+      ? (service.contentImages ?? [])
+      : [{ src: '/images/swollen-macbook-battery-replacement-2.webp', alt: 'MacBook battery removed for repair inspection', width: 1200, height: 800 }];
+    const photo = choices.find((candidate) => Boolean(candidate.src && candidate.alt) && !usedServicePhotos.has(candidate.src!));
+    if (photo?.src && photo.alt) {
+      serviceCardPhotos.set(service.id, { src: photo.src, alt: photo.alt, width: photo.width, height: photo.height });
+      usedServicePhotos.add(photo.src);
+    }
+  });
+
   const serviceFaqs = (ar ? ['faq-ar-pricing', 'faq-arabic-computer-technician', 'faq-ar-hours', 'faq-ar-laptop-repair-process'] : SERVICE_FAQ_IDS)
     .map((id) => KCROC_GRAPH.faqs?.find((faq) => faq.id === id))
     .filter((faq) => faq !== undefined);
@@ -134,6 +149,17 @@ export default function Services({ locale = 'en' }: { locale?: SiteLocale } = {}
                     data-translated={ar ? String(Boolean(localized && href !== "/" + service.slug)) : undefined}
                     className="group flex h-full flex-col rounded-2xl border border-slate-800 bg-slate-900/80 p-7 transition duration-300 hover:border-emerald-500/50 hover:bg-slate-800/70"
                   >
+                    {serviceCardPhotos.get(service.id) && (
+                      <img
+                        src={serviceCardPhotos.get(service.id)!.src}
+                        alt={serviceCardPhotos.get(service.id)!.alt}
+                        width={serviceCardPhotos.get(service.id)!.width}
+                        height={serviceCardPhotos.get(service.id)!.height}
+                        loading="lazy"
+                        decoding="async"
+                        className="mb-6 aspect-[16/10] w-full rounded-xl bg-slate-950 object-cover object-center"
+                      />
+                    )}
                     <div className="mb-5 flex items-start justify-between gap-4">
                       <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-slate-800 bg-brand-dark transition-transform duration-300 group-hover:scale-105">
                         <ServiceIcon className="h-7 w-7 text-emerald-500" aria-hidden="true" />

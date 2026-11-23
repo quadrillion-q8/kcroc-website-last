@@ -1328,7 +1328,7 @@ export const rawGraphData: RawGraphData = {
         title: 'تصليح مدخل شحن اللابتوب بالكويت | USB-C وDC Jack | KCROC',
         description: 'اللابتوب ما يشحن أو المنفذ مرتخي؟ فحص وإصلاح USB-C وDC Jack في الكويت، من 20 د.ك حسب العطل، مع استلام مجاني وضمان 30 يومًا.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-charging-port-repair-kuwait',
-        ogImage: '/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp',
+        ogImage: '/images/gallery/laptop-dc-jack-cable-harness-charging-port-replacement-kuwait.webp',
         ogImageAlt: 'فحص واستبدال منفذ طاقة DC Jack في لوحة لابتوب',
         ogImageWidth: 1000,
         ogImageHeight: 1000,
@@ -1344,7 +1344,7 @@ export const rawGraphData: RawGraphData = {
         breadcrumbs: [{ name: 'الرئيسية', url: '/' }, { name: 'تصليح مدخل شحن اللابتوب', url: '/ar/laptop-charging-port-repair-kuwait' }]
       },
       featuredImage: {
-        ogImage: '/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp',
+        ogImage: '/images/gallery/laptop-dc-jack-cable-harness-charging-port-replacement-kuwait.webp',
         altText: 'فحص واستبدال منفذ طاقة DC Jack في لوحة لابتوب'
       },
       relatedServiceIds: ['srv-charging-port', 'srv-motherboard', 'srv-battery', 'srv-laptop']
@@ -1360,7 +1360,7 @@ export const rawGraphData: RawGraphData = {
         title: 'اللابتوب متصل بالشاحن ولا يشحن؟ التشخيص والحل في الكويت | KCROC',
         description: 'هل يظهر اللابتوب أو MacBook متصل بالشاحن ولا يشحن أو ثابت على 0%؟ دليل تشخيص آمن للتفريق بين عطل الشاحن، البطارية، المنفذ ودائرة الشحن مع فحص مجاني واستلام بالكويت.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-plugged-in-not-charging',
-        ogImage: '/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp',
+        ogImage: '/images/gallery/laptop-dc-jack-cable-harness-charging-port-replacement-kuwait.webp',
         ogImageAlt: 'فحص واستبدال منفذ شحن اللابتوب DC Jack في مختبر KCROC',
         ogImageWidth: 1400,
         ogImageHeight: 1400,
@@ -1380,7 +1380,7 @@ export const rawGraphData: RawGraphData = {
         ]
       },
       featuredImage: {
-        ogImage: '/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp',
+        ogImage: '/images/gallery/laptop-dc-jack-cable-harness-charging-port-replacement-kuwait.webp',
         altText: 'منفذ شحن اللابتوب DC Jack أثناء الفحص والإصلاح في مختبر KCROC'
       },
       relatedServiceIds: ['srv-battery', 'srv-charging-port', 'srv-motherboard', 'srv-laptop'],

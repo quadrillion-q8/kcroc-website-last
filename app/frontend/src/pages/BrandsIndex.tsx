@@ -41,7 +41,12 @@ export default function BrandsIndex() {
                   to={localizedSitePath(`/${brand.slug}`, ar ? "ar" : "en")} data-brand-card={brand.id}
                   className="group flex h-full flex-col rounded-2xl border border-slate-800 bg-slate-900/65 p-7 transition-all duration-300 hover:border-cyan-500/50 hover:bg-slate-800/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                 >
-                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-slate-800 bg-brand-dark">
+                  {brand.contentImages?.[0] && (
+                     <img src={brand.contentImages[0].src} alt={brand.contentImages[0].alt}
+                       loading="lazy" decoding="async"
+                       className="mb-5 aspect-[16/10] w-full rounded-xl bg-slate-950 object-cover object-center" />
+                   )}
+                   <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-slate-800 bg-brand-dark">
                     <Cpu className="h-6 w-6 text-cyan-400" aria-hidden="true" />
                   </div>
 

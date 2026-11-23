@@ -2859,7 +2859,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: 'h2', text: '3. Check the Charging Port or USB-C Port', id: 'check-charging-port' },
       { type: 'paragraph', text: "Gently connect the charger and observe the port. The plug should not feel excessively loose, sink into the chassis, spark, or require pressure in a particular direction. A damaged DC jack can interrupt power even when the adapter is good." },
       { type: 'paragraph', text: "On USB-C models, try only another port that the manufacturer designates for charging. Not every USB-C port accepts charging input, and not every cable can carry laptop-level power." },
-      { type: 'image', src: '/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp', alt: 'Laptop DC power jack connector during no-power diagnosis', caption: 'A loose or damaged DC jack can create intermittent charging, no charging light, or a completely dead laptop.' },
+      { type: 'image', src: '/images/gallery/laptop-dc-jack-cable-harness-charging-port-replacement-kuwait.webp', alt: 'Laptop DC jack cable harness during power connector diagnosis', caption: 'A loose or damaged DC jack can create intermittent charging, no charging light, or a completely dead laptop.' },
 
       { type: 'h2', text: '4. Disconnect Accessories and Docking Devices', id: 'disconnect-accessories' },
       { type: 'paragraph', text: "Remove USB devices, external drives, memory-card readers, HDMI cables, docks, printers, Ethernet adapters and other accessories. Then connect only the charger and try the power button once." },
@@ -6845,7 +6845,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "paragraph", text: "The strongest gaming PC optimization strategy is not a secret Windows setting. It is a repeatable diagnostic process: measure the baseline, identify the bottleneck, change one variable, benchmark the same workload, verify stability, and keep only changes that produce a meaningful result. That method scales from a budget gaming PC to a high-end RTX/Radeon system and from a desktop in a cool room to a gaming machine operating through Kuwait's heat." }
     ],
     image: "/images/gaming-laptop-dual-fan-motherboard-diagnostics.webp",
-    discoverImage: "/images/discover/gaming-laptop-dual-fan-motherboard-diagnostics-workbench-1200x675.webp",
+    discoverImage: "/images/discover/gaming-laptop-dual-fan-motherboard-diagnostics-1200x675.webp",
     date: "2026-10-01",
     technicalReviewDate: "October 1, 2026",
     author: "Imran Natiq",

@@ -389,6 +389,14 @@ export default function LaptopBuyingGuide() {
         </div>
       </section>
 
+      <figure className="mx-auto mb-10 max-w-5xl overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+        <img src="/images/blog/laptop-buying-guide-kuwait-2026.webp"
+          alt="Laptop hardware and buying decisions illustrated for the Kuwait 2026 laptop guide"
+          loading="eager" fetchPriority="high" decoding="async"
+          className="max-h-[440px] w-full object-contain" />
+        <figcaption className="px-5 py-3 text-sm leading-relaxed text-slate-300">Choosing a laptop: prioritize repairable hardware, balanced specifications and realistic cooling capacity.</figcaption>
+      </figure>
+
       {/* Introduction */}
       <section className="pb-8 sm:pb-16 px-4 sm:px-6">
         <div className="container mx-auto max-w-4xl space-y-4 sm:space-y-6 text-slate-300 text-sm sm:text-lg leading-relaxed">
