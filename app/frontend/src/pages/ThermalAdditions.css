@@ -49,3 +49,7 @@
 .kcroc-repair[dir="rtl"] .kcroc-thermal-extra-table :is(th,td){line-height:1.95}
 @media(max-width:760px){.kcroc-repair .kcroc-thermal-extra-cards,.kcroc-repair .kcroc-thermal-scope-grid,.kcroc-repair .kcroc-thermal-prep-grid{grid-template-columns:1fr}.kcroc-repair .kcroc-thermal-extra{padding:3rem 0}.kcroc-repair .kcroc-thermal-extra-table th,.kcroc-repair .kcroc-thermal-extra-table td{padding:.9rem}}
 @media(prefers-reduced-motion:reduce){.kcroc-repair .kcroc-thermal-extra *{scroll-behavior:auto}}
+
+.kcroc-repair .kcroc-thermal-faq-bridge{margin:1.6rem 0 0;line-height:1.8}
+.kcroc-repair .kcroc-thermal-faq-bridge a{color:#a7e4f6;text-decoration:underline;text-underline-offset:4px;font-weight:800}
+.kcroc-repair .kcroc-thermal-faq-bridge a:focus-visible{outline:2px solid #a7e4f6;outline-offset:3px}
