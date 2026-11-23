@@ -190,7 +190,7 @@ export function Footer() {
               return (
                 <div
                   key={badge.id}
-                  className="flex items-center justify-center gap-2 text-[11px] sm:text-xs font-semibold text-slate-400 uppercase tracking-[0.12em] text-center"
+                  className="flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold text-slate-300 uppercase tracking-[0.12em] text-center"
                 >
                   {Icon && <Icon className="w-4 h-4 text-[#dfa86f] shrink-0" aria-hidden="true" />}
                   <span>{isArabicRoute ? (ARABIC_TRUST_LABELS[badge.title] ?? badge.title) : badge.title}</span>
@@ -317,7 +317,7 @@ export function Footer() {
             <ul className={`${mobileServicesOpen ? 'block' : 'hidden'} md:block space-y-3`}>
               {visibleServices.map((link) => (
                 <li key={link.path}>
-                  <Link to={localizedPath(link.path)} className="inline-flex min-h-12 items-center text-slate-400 hover:text-[#dfa86f] transition-colors text-sm">
+                  <Link to={localizedPath(link.path)} className="inline-flex min-h-12 items-center text-slate-300 hover:text-[#dfa86f] transition-colors text-sm">
                     {serviceLabel(link.path, link.label)}
                   </Link>
                 </li>
