@@ -945,11 +945,11 @@ export const SEO_GRAPH = {
       "id": "news-microsoft-windows-surface-event-october-7-2026",
       "entityType": "WebPage",
       "isActive": true,
-      "title": "Microsoft Windows & Surface Event on October 7, 2026: What to Expect",
+      "title": "Microsoft Windows & Surface Event 2026: What Launched and What Reviews Reveal",
       "slug": "news/microsoft-windows-surface-event-october-7-2026",
       "seo": {
-        "title": "Microsoft Windows & Surface Event 2026: What to Expect",
-        "description": "Microsoft's October 7 Windows and Surface event: Surface Laptop Ultra, NVIDIA RTX Spark, local AI PCs, Windows news, and what buyers in Kuwait should know.",
+        "title": "Microsoft Surface Event 2026: What Launched & Reviews",
+        "description": "Microsoft's October 7 Surface event: RTX Spark laptop launch, MXC, Surface prices, reviews and Windows 12 status. Updated November 23, 2026.",
         "canonicalUrl": "https://www.computerrepairkuwait.com/news/microsoft-windows-surface-event-october-7-2026",
         "ogImage": "https://www.computerrepairkuwait.com/images/news-microsoft-windows-surface-event-2026-kcroc.webp",
         "ogType": "article",
@@ -959,7 +959,7 @@ export const SEO_GRAPH = {
           "BreadcrumbList",
           "Person"
         ],
-        "lastModified": "2026-10-03T00:00:00+03:00",
+        "lastModified": "2026-11-23T12:00:00+03:00",
         "breadcrumbs": [
           {
             "name": "Home",
@@ -970,12 +970,12 @@ export const SEO_GRAPH = {
             "url": "/news"
           },
           {
-            "name": "Microsoft Windows & Surface Event on October 7, 2026",
+            "name": "Microsoft Surface Event 2026: What Launched",
             "url": "/news/microsoft-windows-surface-event-october-7-2026"
           }
         ]
       },
-      "description": "Microsoft's October 7 Windows and Surface event puts local AI PCs, Surface hardware and NVIDIA RTX Spark technology in focus. Here is what is confirmed, what remains unknown, and what buyers in Kuwait should watch.",
+      "description": "Updated November 23: What Microsoft announced October 7, what shipped, what reviewers found about Surface Laptop Ultra and RTX Spark, and what buyers should verify.",
       "featuredFAQIds": []
     },
     {
