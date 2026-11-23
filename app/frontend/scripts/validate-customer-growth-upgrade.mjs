@@ -254,7 +254,7 @@ add('English Windows services and settings guides remain global, with one isolat
   !globalGuideSalesSignals.test(windowsSettingsGuideEntry) &&
   graph.includes('An evidence-led review of Windows 11 settings for privacy, startup, battery life, gaming and security'));
 
-add('Windows services guide includes all requested expansion modules, read-only audit commands and exactly 12 static FAQs',
+add('Windows services guide includes expanded query clusters, safe audit steps and exactly 16 static FAQs',
   windowsServicesGuideEntry.includes('How Windows 11 Services Start') &&
   windowsServicesGuideEntry.includes('WHESVC Technical Profile and Patch Verification') &&
   windowsServicesGuideEntry.includes('DiagTrack: Privacy Controls') &&
@@ -266,7 +266,12 @@ add('Windows services guide includes all requested expansion modules, read-only 
   windowsServicesGuideEntry.includes('Safe rollback and WinRE recovery protocol') &&
   windowsServicesGuideEntry.includes('Software vs. Hardware Bottleneck Triage') &&
   windowsServicesGuideEntry.includes('tasklist.exe /svc') &&
-  servicesFaqCount === 12 &&
+  servicesFaqCount === 16 &&
+  windowsServicesGuideEntry.includes('C:\\\\ProgramData\\\\whesvc') &&
+  windowsServicesGuideEntry.includes('GamingServicesNet') &&
+  windowsServicesGuideEntry.includes('Service Host: Windows Health and Optimized Experiences') &&
+  windowsServicesGuideEntry.includes('Which services should you disable in Windows 11?') &&
+  !windowsServicesGuideEntry.includes('whescvmapsbroker') &&
   windowsServicesGuideEntry.includes('"display": "static"'));
 
 // The no-power article is intentionally a Kuwait-local service-intent guide.
