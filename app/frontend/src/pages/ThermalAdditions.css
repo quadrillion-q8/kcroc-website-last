@@ -1,0 +1,51 @@
+/* Thermal service only: accessible, bilingual, additive editorial modules. */
+.kcroc-repair .kcroc-thermal-extra{padding:clamp(3.2rem,5vw,5.5rem) 0;color:#172832}
+.kcroc-repair .kcroc-thermal-extra h2{max-width:840px}
+.kcroc-repair .kcroc-thermal-extra h3{font-size:1.07rem;line-height:1.5;color:#20333e}
+.kcroc-repair .kcroc-thermal-extra p{color:#455863}
+.kcroc-repair .kcroc-thermal-extra-lead{max-width:860px;font-size:1.03rem;line-height:1.85;margin:1.2rem 0 0}
+.kcroc-repair .kcroc-thermal-precision{background:#fff}
+.kcroc-repair .kcroc-thermal-handover{background:#f3f6f5}
+.kcroc-repair .kcroc-thermal-extra-table-scroll{max-width:100%;overflow-x:auto;margin:1.8rem 0;border:1px solid #cad6d8;border-radius:1rem;background:#fff}
+.kcroc-repair .kcroc-thermal-extra-table-scroll:focus-visible{outline:3px solid #a85a31;outline-offset:3px}
+.kcroc-repair .kcroc-thermal-extra-table{width:100%;min-width:650px;border-collapse:collapse;text-align:start;table-layout:fixed}
+.kcroc-repair .kcroc-thermal-extra-table thead{background:#172832}
+.kcroc-repair .kcroc-thermal-extra-table th,.kcroc-repair .kcroc-thermal-extra-table td{padding:1.05rem;line-height:1.75;text-align:start;vertical-align:top;border-bottom:1px solid #dce5e5;font-size:.94rem}
+.kcroc-repair .kcroc-thermal-extra-table thead th{color:#fff;font-weight:800}
+.kcroc-repair .kcroc-thermal-extra-table tbody th{background:#f5f8f8;color:#1d333e;font-weight:780}
+.kcroc-repair .kcroc-thermal-extra-table tbody td{color:#344c57}
+.kcroc-repair .kcroc-thermal-extra-table tbody tr:last-child > *{border-bottom:0}
+.kcroc-repair .kcroc-thermal-extra-emphasis{margin:1.5rem 0 0;border-inline-start:4px solid #a7633b;border-radius:.5rem;background:#faf4ee;padding:1.15rem 1.25rem;line-height:1.8;color:#3b4b53!important}
+.kcroc-repair .kcroc-thermal-extra-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1.8rem}
+.kcroc-repair .kcroc-thermal-extra-card{min-width:0;padding:1.6rem;border:1px solid #d4dfe0;border-radius:1rem;background:#fff}
+.kcroc-repair .kcroc-thermal-extra-number{display:inline-flex;align-items:center;justify-content:center;width:2.35rem;height:2.35rem;border-radius:.6rem;background:#182e39;color:#fff;font-weight:800;margin-bottom:.9rem}
+.kcroc-repair .kcroc-thermal-extra-card h3{margin:.1rem 0 .7rem}
+.kcroc-repair .kcroc-thermal-extra-card p{line-height:1.8;font-size:.95rem}
+.kcroc-repair .kcroc-thermal-extra-disclaimer{margin:1.6rem 0 0;max-width:95ch;font-size:.9rem;line-height:1.75}
+.kcroc-repair .kcroc-thermal-scope{padding-top:2.8rem;border-top:1px solid #e1e6e6}
+.kcroc-repair .kcroc-thermal-scope-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1.8rem}
+.kcroc-repair .kcroc-thermal-scope-grid article{padding:1.5rem;border:1px solid #d6e1e2;border-radius:1rem;background:#f6f8f8}
+.kcroc-repair .kcroc-thermal-scope-grid article:first-child{border-color:#bad9cf;background:#f4faf7}
+.kcroc-repair .kcroc-thermal-scope-grid h3{margin:0 0 1rem}
+.kcroc-repair .kcroc-thermal-scope-grid ul{list-style:disc;padding-inline-start:1.2rem;display:grid;gap:.75rem}
+.kcroc-repair .kcroc-thermal-scope-grid li{color:#354d55;line-height:1.7}
+.kcroc-repair .kcroc-thermal-prep{background:#f4f7f7}
+.kcroc-repair .kcroc-thermal-prep-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1.8rem}
+.kcroc-repair .kcroc-thermal-prep-grid article{padding:1.65rem;border:1px solid #d6e0e1;border-radius:1rem;background:#fff}
+.kcroc-repair .kcroc-thermal-prep-grid .kcroc-thermal-prep-warning{border-color:#e5bfb0;background:#fff7f2}
+.kcroc-repair .kcroc-thermal-prep-grid h3{margin:0 0 1rem}
+.kcroc-repair .kcroc-thermal-prep-grid ul,.kcroc-repair .kcroc-thermal-prep-grid ol{display:grid;gap:.8rem;padding-inline-start:1.25rem}
+.kcroc-repair .kcroc-thermal-prep-grid ul{list-style:disc}
+.kcroc-repair .kcroc-thermal-prep-grid ol{list-style:decimal}
+.kcroc-repair .kcroc-thermal-prep-grid li{color:#374c56;line-height:1.75}
+.kcroc-repair .kcroc-thermal-prep-routes{margin-top:1.5rem;line-height:1.9}
+.kcroc-repair .kcroc-thermal-prep-routes a{color:#7c3c1b;text-decoration:underline;text-underline-offset:3px;font-weight:750}
+.kcroc-repair .kcroc-thermal-fast-brief{margin:1.2rem 0 1.35rem;border:1px solid #7e918f;border-inline-start:4px solid #eab68b;border-radius:.95rem;padding:1.1rem 1.3rem;background:#20343c;color:#fff}
+.kcroc-repair .kcroc-thermal-fast-brief .kcroc-thermal-fast-label{color:#f6c8a5;font-weight:850;letter-spacing:.08em;font-size:.71rem}
+.kcroc-repair .kcroc-thermal-fast-brief h3{color:#fff;margin:.4rem 0;font-weight:800}
+.kcroc-repair .kcroc-thermal-fast-brief p{color:#dce8ed;margin:.45rem 0;line-height:1.7}
+.kcroc-repair .kcroc-thermal-fast-brief .kcroc-thermal-fast-example{border-radius:.6rem;background:#10242b;color:#fff;padding:.75rem 1rem;font-size:.88rem;overflow-wrap:anywhere}
+.kcroc-repair[dir="rtl"] .kcroc-thermal-extra :is(h2,h3){letter-spacing:normal;line-height:1.7}
+.kcroc-repair[dir="rtl"] .kcroc-thermal-extra-table :is(th,td){line-height:1.95}
+@media(max-width:760px){.kcroc-repair .kcroc-thermal-extra-cards,.kcroc-repair .kcroc-thermal-scope-grid,.kcroc-repair .kcroc-thermal-prep-grid{grid-template-columns:1fr}.kcroc-repair .kcroc-thermal-extra{padding:3rem 0}.kcroc-repair .kcroc-thermal-extra-table th,.kcroc-repair .kcroc-thermal-extra-table td{padding:.9rem}}
+@media(prefers-reduced-motion:reduce){.kcroc-repair .kcroc-thermal-extra *{scroll-behavior:auto}}
