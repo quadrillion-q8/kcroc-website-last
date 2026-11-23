@@ -58,7 +58,7 @@ const PRICE_GROUPS = [
 const PRICE_LINKS: Partial<Record<string, { href: string; label: string }>> = {
   'الفحص والتشخيص الأولي': { href: '/ar/computer-repair-kuwait', label: 'تفاصيل خدمة التصليح والفحص' },
   'إعادة تثبيت Windows وضبط النظام': { href: '/ar/computer-repair-kuwait', label: 'عرض خدمات الكمبيوتر' },
-  'تبديل مروحة اللابتوب': { href: '/ar/laptop-fan-replacement-kuwait', label: 'تفاصيل تبديل مروحة اللابتوب' }
+  'تبديل مروحة اللابتوب': { href: '/ar/laptop-fan-replacement-kuwait', label: 'تفاصيل تبديل مروحة اللابتوب' },
   'استعادة BIOS أو Firmware': { href: '/guides/ar/bios-uefi-recovery-kuwait', label: 'اقرأ دليل استعادة BIOS وUEFI' },
   'تنظيف اللابتوب وخدمة التبريد': { href: '/ar/laptop-repair-kuwait', label: 'تفاصيل تصليح اللابتوب' },
   'خدمة تبريد Gaming PC': { href: '/ar/gaming-pc-repair-kuwait', label: 'تفاصيل تصليح Gaming PC' },
