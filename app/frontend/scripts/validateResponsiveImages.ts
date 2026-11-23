@@ -16,7 +16,9 @@ const required = new Set<string>([
 for (const service of KCROC_GRAPH.services) {
   const source = service.contentImages?.[0]?.src;
   if (!source || !source.endsWith('.webp')) continue;
-  required.add(source.replace(/\.webp$/, '.w480.webp'));
+  // Gallery images ship a verified 640 px thumbnail; service images ship 480 px.
+  const derivative = source.startsWith('/images/gallery/') ? '.w640.webp' : '.w480.webp';
+  required.add(source.replace(/\.webp$/, derivative));
 }
 
 const missing = [...required].filter((publicPath) => {

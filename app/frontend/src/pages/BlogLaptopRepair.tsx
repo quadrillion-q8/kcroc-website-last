@@ -424,6 +424,13 @@ export default function BlogLaptopRepair() {
         </div>
       </section>
 
+      <figure className="mx-auto my-10 max-w-5xl overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+        <img src="/images/laptop-repair-kuwait.webp"
+          alt="Opened laptop at a computer hardware repair workbench"
+          loading="eager" fetchPriority="high" decoding="async"
+          className="max-h-[440px] w-full object-contain" />
+        <figcaption className="px-5 py-3 text-sm leading-relaxed text-slate-300">Hardware-first diagnosis: identify the faulty component before approving parts or replacement work.</figcaption>
+      </figure>
       <section aria-label="KCROC service facts" className="px-4 py-8 sm:px-6">
         <div className="mx-auto grid max-w-6xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {[

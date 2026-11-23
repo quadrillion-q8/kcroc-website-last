@@ -46,6 +46,13 @@ export default function Locations() {
             </p>
           </header>
 
+          <figure className="mb-12 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+            <img src="/images/computer-repair-shop-hawalli-kuwait.webp"
+              alt="Central KCROC computer repair laboratory in Hawalli, Kuwait"
+              loading="lazy" decoding="async" className="max-h-80 w-full object-cover" />
+            <figcaption className="px-5 py-3 text-sm text-slate-300">Every pickup area is served by the central Hawalli repair laboratory; these are not separate shop locations.</figcaption>
+          </figure>
+
           <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5" aria-label="KCROC service areas" data-kcroc-editorial-panel="service-area-cards">
             {locations.map((location) => {
               const name = location.title.replace(/ Repair Center$/i, '');

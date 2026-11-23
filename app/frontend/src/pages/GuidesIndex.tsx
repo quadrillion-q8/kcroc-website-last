@@ -116,6 +116,11 @@ export default function GuidesIndex() {
             </p>
           </header>
 
+          <figure className="mb-12 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+            <img src="/images/laptop-motherboard-diagnostic-bench-repair.webp" alt="Laptop motherboard on the diagnostics bench"
+              loading="lazy" decoding="async" className="max-h-80 w-full object-cover" />
+            <figcaption className="px-5 py-3 text-sm text-slate-300">Hands-on hardware diagnostics and practical troubleshooting guidance.</figcaption>
+          </figure>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {GUIDES.map((guide) => {
               const Icon = guide.icon;

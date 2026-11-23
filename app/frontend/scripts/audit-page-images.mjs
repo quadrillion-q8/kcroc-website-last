@@ -90,16 +90,82 @@ function walk(dir) {
 assert.ok(fs.existsSync(dist), 'Run the production build before auditing images.');
 const pages = walk(dist).sort();
 assert.ok(pages.length, 'No prerendered HTML files found.');
+const forbiddenImageStems = [
+  'kcroc-technician-portrait-computer-repair-kuwait',
+  'kcroc-technician-at-repair-workstation-hawalli-kuwait',
+  'kcroc-imran-natiq-laptop-repair-workshop-owner',
+  'kcroc-computer-repair-technician-team',
+  'kcroc-computer-parts-shop-interior-shelves',
+  'laptop-dc-power-jack-connector-replacement-kuwait-1000',
+];
+const mandatoryVisualRoutes = new Set([
+  '/services', '/ar/services', '/brands', '/ar/brands',
+  '/problems', '/ar/problems', '/locations', '/ar/locations', '/guides',
+  '/blog/laptop-buying-guide-kuwait-2026',
+  '/blog/laptop-repair-kuwait-2026',
+  '/guides/ar/dell-laptop-overheating',
+]);
 const findings = [];
+const violations = [];
 let placements = 0;
+let zeroContentImagePages = 0;
+let contentImagePages = 0;
 for (const file of pages) {
   const route = '/' + path.relative(dist, file).split(path.sep).join('/').replace(/(?:^|\/)index\.html$/, '').replace(/\.html$/, '');
-  const result = scan(fs.readFileSync(file, 'utf8'), route);
+  const html = fs.readFileSync(file, 'utf8');
+  const result = scan(html, route);
   placements += result.placements;
   findings.push(...result.findings);
+  const $ = load(html);
+  const images = $('main img');
+  if (images.length) contentImagePages += 1;
+  else zeroContentImagePages += 1;
+  if (mandatoryVisualRoutes.has(route.replace(/\/$/, '') || '/') && !images.length) {
+    violations.push({ route, problem: 'Missing content image on required editorial or directory page' });
+  }
+  for (const stem of forbiddenImageStems) {
+    if (html.includes(stem)) violations.push({ route, problem: 'Forbidden image filename: ' + stem });
+  }
+  images.each((_, element) => {
+    const image = $(element);
+    const src = image.attr('src') || '';
+    if (image.attr('alt') === undefined) {
+      violations.push({ route, problem: 'Missing alt attribute: ' + src });
+    }
+    const candidates = [src, ...srcsetUrls(image.attr('srcset'))];
+    const picture = image.closest('picture');
+    picture.find('source').each((_, source) => {
+      candidates.push(...srcsetUrls($(source).attr('srcset')));
+    });
+    for (const candidate of new Set(candidates)) {
+      let url;
+      try { url = new URL(candidate, new URL(route, host)); } catch { continue; }
+      if (url.hostname !== 'www.computerrepairkuwait.com' && url.hostname !== 'computerrepairkuwait.com') continue;
+      if (!url.pathname.startsWith('/images/')) continue;
+      const imagePath = path.resolve(dist, '.' + decodeURIComponent(url.pathname));
+      if (!imagePath.startsWith(dist + path.sep) || !fs.existsSync(imagePath)) {
+        violations.push({ route, problem: 'Missing local image: ' + candidate });
+      }
+    }
+  });
 }
-const report = { pages: pages.length, placements, duplicatePairs: findings.length, affectedRoutes: [...new Set(findings.map(f => f.route))], findings };
+for (const stem of forbiddenImageStems) {
+  const candidateFiles = walkFiles(path.join(root, 'public', 'images')).filter(file => path.basename(file).includes(stem));
+  for (const candidate of candidateFiles) violations.push({ route: 'asset-library', problem: 'Forbidden asset remains: ' + path.relative(root, candidate) });
+}
+function walkFiles(dir) {
+  return fs.readdirSync(dir, { withFileTypes: true }).flatMap(entry => {
+    const full = path.join(dir, entry.name);
+    return entry.isDirectory() ? walkFiles(full) : [full];
+  });
+}
+const report = {
+  pages: pages.length, placements, contentImagePages, zeroContentImagePages,
+  duplicatePairs: findings.length, affectedRoutes: [...new Set(findings.map(f => f.route))],
+  violations, findings,
+};
 fs.writeFileSync(path.join(root, 'page-image-audit.json'), JSON.stringify(report, null, 2) + '\n');
 for (const f of findings) console.warn('[Duplicate image] ' + f.route + ' | ' + f.first.source + ' (' + f.first.location + ') -> ' + f.duplicate.source + ' (' + f.duplicate.location + ')');
-console.log('KCROC image audit: ' + pages.length + ' pages, ' + placements + ' placements, ' + findings.length + ' duplicate pairs on ' + report.affectedRoutes.length + ' routes.');
-if (process.argv.includes('--strict') && findings.length) process.exitCode = 1;
+for (const violation of violations) console.warn('[Image quality] ' + violation.route + ' | ' + violation.problem);
+console.log('KCROC image audit: ' + pages.length + ' pages, ' + placements + ' placements, ' + contentImagePages + ' pages with images, ' + zeroContentImagePages + ' without, ' + findings.length + ' duplicate pairs, ' + violations.length + ' quality violations.');
+if (process.argv.includes('--strict') && (findings.length || violations.length)) process.exitCode = 1;

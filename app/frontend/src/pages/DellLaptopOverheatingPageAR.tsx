@@ -133,6 +133,12 @@ export default function DellLaptopOverheatingPageAR() {
             </p>
           </header>
 
+          <figure className="mb-9 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+            <img src="/images/dell-laptop-ram-fan-battery-chassis-open.webp"
+              alt="لابتوب Dell مفتوح يوضح المروحة والمذربورد والبطارية لفحص الحرارة"
+              loading="eager" decoding="async" className="max-h-80 w-full object-contain"/>
+            <figcaption className="px-5 py-3 text-sm leading-loose text-slate-300">مكان المروحة والمشتت يختلف حسب موديل Dell؛ الصورة للتوضيح وليست تعليمات لفك جهازك.</figcaption>
+          </figure>
           <section className="rounded-3xl border border-amber-500/30 bg-amber-500/10 p-6 mb-9">
             <h2 className="text-xl font-bold text-amber-200 mb-3">متى تكون حرارة Dell طبيعية ومتى نقلق؟</h2>
             <p className="leading-8 text-slate-300 mb-0">

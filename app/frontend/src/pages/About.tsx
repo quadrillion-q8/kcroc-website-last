@@ -162,8 +162,8 @@ export default function About() {
           <div className="bg-slate-900/30 backdrop-blur-sm border border-slate-800 rounded-3xl p-2 sm:p-3 shadow-2xl relative group">
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none" aria-hidden="true" />
             <img
-              src="/images/kcroc-computer-repair-technician-team.webp"
-              alt="KCROC repair workshop – Kuwait Computer Repair On Call, Hawalli"
+              src="/images/laptop-motherboard-diagnostic-bench-repair.webp"
+              alt="Laptop motherboard on a diagnostic bench for component-level repair at KCROC"
               loading="lazy"
               className="w-full h-64 sm:h-[400px] object-cover rounded-2xl opacity-90 transition-opacity duration-500 group-hover:opacity-100"
               onError={(e) => { e.currentTarget.src = 'https://ui-avatars.com/api/?name=KCROC&size=400&background=06b6d4&color=fff&bold=true'; }}

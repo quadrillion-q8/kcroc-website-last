@@ -38,7 +38,7 @@ const ServiceCard = React.memo(({ service, idx }: { service: ServiceEntity, idx:
           <div className="relative aspect-[16/9] w-full shrink-0 overflow-hidden">
             <img
               src={cardImage.src}
-              srcSet={cardImage.src === service.contentImages?.[0]?.src && cardImage.src.endsWith('.webp') ? `${cardImage.src.replace(/\.webp$/, '.w480.webp')} 480w, ${cardImage.src} ${cardImage.width || 1000}w` : undefined}
+              srcSet={cardImage.src === service.contentImages?.[0]?.src && cardImage.src.endsWith('.webp') ? `${cardImage.src.replace(/\.webp$/, cardImage.src.startsWith('/images/gallery/') ? '.w640.webp' : '.w480.webp')} ${cardImage.src.startsWith('/images/gallery/') ? 640 : 480}w, ${cardImage.src} ${cardImage.width || 1000}w` : undefined}
               alt={ar ? `فحص وتصليح ${localized?.title ?? service.title} في مختبر KCROC` : cardImage.alt}
               width={cardImage.width}
               height={cardImage.height}

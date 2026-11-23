@@ -3033,7 +3033,7 @@ export default function ArabicCommercialPage() {
       inLanguage: 'ar-KW',
       description: cfg.intro,
       url: page.seo.canonicalUrl,
-      image: `${business.websiteUrl}/images/laptop-dc-power-jack-connector-replacement-kuwait-1000.webp`,
+      image: `${business.websiteUrl}/images/gallery/laptop-dc-jack-cable-harness-charging-port-replacement-kuwait.webp`,
       areaServed: { '@type': 'Country', name: 'Kuwait' },
       provider: {
         '@type': 'LocalBusiness',
