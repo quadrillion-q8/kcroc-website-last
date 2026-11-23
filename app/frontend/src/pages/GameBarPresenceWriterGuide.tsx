@@ -33,7 +33,7 @@ const MS_GAMEBAR_SUPPORT_URL = 'https://support.microsoft.com/en-us/accessibilit
 const PRESENTMON_URL = 'https://github.com/GameTechDev/PresentMon';
 
 const PUBLISHED_DATE = 'August 23, 2026';
-const LAST_REVIEWED = 'November 11, 2026';
+const LAST_REVIEWED = 'November 23, 2026';
 
 const toc = [
   { id: 'quick-answer', label: '60-Second Answer' },
@@ -46,6 +46,7 @@ const toc = [
   { id: 'controls', label: 'Settings vs Policy' },
   { id: 'game-dvr-registry', label: 'Game DVR Policy' },
   { id: 'registry', label: 'Advanced Override' },
+  { id: 'event-viewer-errors', label: 'DCOM & Crash Logs' },
   { id: 'other-causes', label: 'Other Stutter Causes' },
   { id: 'cluster', label: 'Related Gaming Guides' },
   { id: 'faq', label: 'FAQ' },
@@ -75,6 +76,13 @@ const faqs = [
   { q: 'How can I measure frame-time instead of average FPS?', a: 'Use a consistent per-frame capture tool such as PresentMon and compare the same scene. PresentMon reports CPU, GPU and display frame durations and latency metrics. Keep the capture method identical before and after the test; no single metric proves that Presence Writer caused the hitch.' },
   { q: 'Should I set ActivationType to 0 to disable Presence Writer?', a: 'No universal value is documented by Microsoft for this workaround. The ActivatableClassId change is not a documented Game Bar performance setting. Most users should leave the protected key untouched; experts who have already changed it should restore their own recorded original value and permissions.' },
 
+  { q: "What is Xbox presence?", a: "Xbox presence is the game/activity status shared with Xbox social features. Microsoft documents GameBarPresenceWriter.exe as receiving GotFocus, LostFocus and AppClose game events; it may update Xbox Live presence when the account, Xbox app and sharing options are enabled." },
+  { q: "Why do I get \"Access Denied\" or \"Error editing value\" when disabling GameBarPresenceWriter?", a: "The protected WindowsRuntime ActivatableClassId registration can reject ActivationType edits because of Windows permissions or TrustedInstaller ownership. It is not a Microsoft-supported disable setting. Do not seize ownership; use the reversible process test and Game Bar/Captures options first." },
+  { q: "Why don't I see Xbox Game Bar in Windows 11 Settings?", a: "On some Windows 11 builds the app is simply called Game Bar and appears under Settings > System > System Components rather than Apps > Installed apps. Search Settings for Game Bar; paths and available options vary by Windows build and app version." },
+  { q: "How do I disable Game Bar completely in Windows 11 safely?", a: "There is no single universal supported control that guarantees permanent removal of every Game Bar or Presence Writer component. Where available, set Game Bar background permissions to Never, terminate the current instance, and disable Record what happened in Settings > Gaming > Captures. Retest while retaining Xbox/Store dependencies." },
+  { q: "How do I fix Xbox Game Bar not opening in Windows 11?", a: "Check whether Game Bar is installed and updated. Test Win + G on the desktop and in a borderless-windowed game. In Advanced options, use Repair if offered; Reset can remove app settings, so try it only after Repair and restart Windows." },
+  { q: "Why is the Windows / Xbox Game Bar FPS counter not working in Windows 11?", a: "Try Win + G > Performance > FPS and select Request access if prompted, then restart Windows. The counter may need Performance Log Users group permission. Update Windows and Game Bar and test with third-party overlays closed; availability varies by game and build." },
+  { q: "Does the DCOM error 'The server Windows.Gaming.GameBar.PresenceServer.Internal.PresenceWriter did not register with DCOM within the required timeout' cause games to crash?", a: "Not necessarily. DistributedCOM Event ID 10010 means a COM server did not register before the timeout; it does not prove why a game crashed. Check related Application errors and Reliability Monitor (perfmon /rel). Event ID 7000 is a separate Service Control Manager event: read the actual failed service name." },
 ];
 
 // 🚀 Self-contained TechArticle + Person + HowTo + FAQPage + BreadcrumbList
@@ -136,7 +144,7 @@ const STRUCTURED_DATA = {
       "keywords": ["GameBarPresenceWriter.exe", "Xbox Game Bar", "Windows Game DVR", "Windows 11 gaming stutter", "frame-time analysis", "AllowGameDVR policy", "PresentMon"],
       "proficiencyLevel": "Intermediate",
       "datePublished": "2026-08-23",
-      "dateModified": "2026-11-11"
+      "dateModified": "2026-11-23"
     },
     {
       "@type": "HowTo",
@@ -326,6 +334,16 @@ export default function GameBarPresenceWriterGuide() {
             <Callout title="Important distinction">
               Seeing this process in Task Manager does not prove that it is causing stutter or that your CPU, GPU, or network is the bottleneck. Use the repeatable process-isolation test next, then measure before changing settings.
             </Callout>
+            <div className="mt-8 rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6">
+              <h3 id="xbox-presence-game-event-parser" className="scroll-mt-28 text-xl font-bold">What Is Xbox Presence—and "Game Event Parser" in Task Manager?</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-300">Xbox presence reports the game/activity status to Xbox social features when the user opts to share it. Microsoft documents Game Bar Presence Writer as responding to <strong>GotFocus</strong>, <strong>LostFocus</strong> and <strong>AppClose</strong> notifications; its default implementation can update Xbox Live presence with the relevant Xbox app and account settings.</p>
+              <p className="mt-3 text-sm leading-7 text-slate-300">If <strong>Game Event Parser</strong> appears in Task Manager, do not assume it is GameBarPresenceWriter.exe or a verified Windows component. Similar display names can appear in game tools and third-party overlay or monitoring software. Identify the actual executable before disabling anything.</p>
+              <ol className="mt-4 list-decimal space-y-2 pl-6 text-sm leading-7 text-slate-300">
+                <li>Open <strong>Task Manager → Details</strong> and locate the process's executable.</li>
+                <li>Use <strong>Open file location</strong> when available to inspect its path.</li>
+                <li>Review <strong>Properties → Digital Signatures</strong>, the publisher and the installed application before changing startup settings or deleting files.</li>
+              </ol>
+            </div>
           </div>
         </div>
       </section>
@@ -474,6 +492,29 @@ export default function GameBarPresenceWriterGuide() {
               Disabling Game Bar/capture features can remove Xbox Game Bar widgets, Game Bar recording and related capture shortcuts. It does not disable Steam Overlay, Discord Overlay, OBS, or your GPU vendor's separate overlay/capture features.
             </Callout>
           </div>
+
+          <div className="mt-8 grid gap-6 lg:grid-cols-2">
+            <article className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6">
+              <h3 id="game-bar-missing-menu" className="scroll-mt-28 text-xl font-bold">Windows 11: "I Don't See Xbox Game Bar" — How to Disable Its Background Activity</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-300">Newer Windows 11 builds may label Xbox Game Bar simply <strong>Game Bar</strong> and place it under <strong>Settings → System → System Components</strong>. Some older builds put it in <strong>Apps → Installed apps</strong>. The Gaming settings page may only control shortcuts, not offer a complete disable switch.</p>
+              <ol className="mt-4 list-decimal space-y-2 pl-6 text-sm leading-7 text-slate-300">
+                <li>Search Settings for <strong>Game Bar</strong>. If present, open its three-dot menu and <strong>Advanced options</strong> under System Components or Installed apps.</li>
+                <li>If the <strong>Background component permissions</strong> control exists, choose <strong>Never</strong>. Use <strong>Terminate</strong> to end the current app instance if offered.</li>
+                <li>In <strong>Settings → Gaming → Captures</strong>, turn off <strong>Record what happened</strong> if you do not use background clips, then test again.</li>
+              </ol>
+              <p className="mt-4 text-sm leading-7 text-slate-300">Controls vary by Windows build. Background permission set to Never is <strong>not</strong> a guaranteed permanent disable of every Game Bar component or overlay. Avoid scripts that remove shared Xbox, Microsoft Store or Gaming Services packages.</p>
+            </article>
+            <article className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6">
+              <h3 id="game-bar-repair-fps-counter" className="scroll-mt-28 text-xl font-bold">Game Bar Not Opening? Repair Xbox Game Bar or Fix the FPS Counter</h3>
+              <ol className="mt-4 list-decimal space-y-3 pl-6 text-sm leading-7 text-slate-300">
+                <li>If <strong>Win + G</strong> does not open Game Bar, check that it is installed and updated; test on the desktop and in a borderless-windowed game.</li>
+                <li>Where <strong>Advanced options</strong> are offered, choose <strong>Repair</strong> first. Try <strong>Reset</strong> only if needed; Reset can discard app settings. Restart and retest.</li>
+                <li>For a blank Windows / Xbox Game Bar FPS counter, open <strong>Win + G → Performance → FPS</strong> and select <strong>Request access</strong> if prompted. The <strong>Performance Log Users</strong> permission may require a full Windows restart.</li>
+                <li>Update Game Bar, Windows and GPU drivers and test with other overlays closed if FPS remains unavailable. Game and display-mode support varies.</li>
+              </ol>
+              <p className="mt-4 text-sm leading-6 text-slate-400">Microsoft documents Repair and Reset for apps that expose those options; not every Windows build offers the same buttons.</p>
+            </article>
+          </div>
           <p className="mt-6 max-w-3xl text-sm leading-6 text-slate-400">
             Looking for more Settings-app changes worth making? See our{' '}
             <Link to="/guides/windows-11-settings-tweaks" className="font-semibold text-cyan-300 hover:text-cyan-200">18 Windows 11 Settings Worth Changing</Link>{' '}
@@ -599,6 +640,14 @@ export default function GameBarPresenceWriterGuide() {
             <Callout title="Unofficial and last-resort only" danger>
               Microsoft's developer documentation describes Presence Writer's purpose and the registration path for a custom implementation. It does not document or recommend this ActivatableClassId override as a gaming optimization or supported disable procedure. Because it changes protected system configuration, it should not be the first response to a process appearing in Task Manager.
             </Callout>
+            <div className="mt-7 rounded-2xl border border-amber-500/25 bg-amber-500/5 p-5 sm:p-6">
+              <h3 id="presence-writer-access-denied" className="scroll-mt-28 text-xl font-bold">"Access Denied" or "Error Editing Value" When Disabling GameBar Presence Writer</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-300">Forum instructions to disable GameBarPresenceWriter.exe sometimes target <strong>ActivationType</strong> under this protected Windows Runtime registration:</p>
+              <div className="mt-3"><CodeBlock>{registryPath}</CodeBlock></div>
+              <p className="mt-3 text-sm leading-7 text-slate-300">Registry Editor may show <strong>Error Editing Value</strong>, <strong>Cannot edit ActivationType: Error writing the value's new contents</strong> or <strong>Access Denied</strong>. Windows permissions and, on some systems, <strong>TrustedInstaller</strong> ownership can block the change. Actual ownership and permissions must be inspected on the device.</p>
+              <p className="mt-3 text-sm leading-7 text-slate-300"><strong>Do not force-take ownership</strong> to set ActivationType to 0: this is not a Microsoft-supported Game Bar performance procedure. Use the temporary taskkill test and available Game Bar / Captures controls first.</p>
+              <p className="mt-3 text-sm leading-7 text-slate-300">If <strong>taskkill</strong> itself reports Access Denied, treat that as a separate permissions issue. Confirm the executable's System32 path and Microsoft signature before deciding whether a one-session elevated-terminal test is appropriate.</p>
+            </div>
           </div>
             <AccessibleTable label="Rollback guidance for Game Bar and Presence Writer changes">
               <thead className="bg-slate-900 text-xs uppercase tracking-wider text-slate-400"><tr><th scope="col" className="px-4 py-3">Change type</th><th scope="col" className="px-4 py-3">Rollback path</th><th scope="col" className="px-4 py-3">Important caution</th></tr></thead>
@@ -610,6 +659,35 @@ export default function GameBarPresenceWriterGuide() {
                 <tr><th scope="row" className="px-4 py-4 text-left font-semibold text-white">Protected ActivationType override</th><td className="px-4 py-4 text-slate-300">Restore the exact original value, owner and permissions from your recorded backup plan.</td><td className="px-4 py-4 text-slate-400">A .reg export does not restore ACLs. Skip this if you cannot confidently recover them.</td></tr>
               </tbody>
             </AccessibleTable>
+        </div>
+      </section>
+
+
+      <section id="event-viewer-errors" className={sectionClass}>
+        <div className="container mx-auto max-w-5xl">
+          <Badge className="mb-3 border-amber-500/30 bg-amber-500/10 text-amber-300">Game crashes and Windows event logs</Badge>
+          <h2 className="scroll-mt-28 text-2xl font-bold sm:text-4xl">Event Viewer Errors: DCOM Timeout, Event ID 7000 &amp; Games Crashing</h2>
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-300">When a game crashes, <strong>Windows.Gaming.GameBar.PresenceServer.Internal.PresenceWriter</strong> may appear in Event Viewer nearby. The timestamp alone does not establish that Game Bar caused the crash. Compare the event source, ID and faulting process before making changes.</p>
+          <div className="mt-7 grid gap-6 lg:grid-cols-2">
+            <article className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6">
+              <h3 id="presence-writer-dcom-10010" className="scroll-mt-28 text-xl font-bold">DCOM Event ID 10010: Presence Writer Did Not Register in Time</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-300">The System log may report:</p>
+              <blockquote className="mt-4 border-l-4 border-cyan-500/60 pl-4 text-sm leading-7 text-slate-200">The server Windows.Gaming.GameBar.PresenceServer.Internal.PresenceWriter did not register with DCOM within the required timeout.</blockquote>
+              <p className="mt-4 text-sm leading-7 text-slate-300">This is a <strong>DistributedCOM Event ID 10010</strong> registration timeout, not a crash diagnosis. A delayed component, damaged app registration, a recent Game Bar configuration change or a wider Windows hang are hypotheses to investigate. An error near the time of a crash can be a consequence rather than a trigger.</p>
+              <p className="mt-3 text-sm leading-7 text-slate-300">If you previously changed ActivationType, removed Xbox components or restricted Game Bar, restore only your recorded settings and retest. Do not change protected registry permissions to silence an event.</p>
+            </article>
+            <article className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6">
+              <h3 id="service-control-manager-7000" className="scroll-mt-28 text-xl font-bold">Service Control Manager Event ID 7000: Check the Named Service</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-300"><strong>Event ID 7000</strong> identifies a service or driver that failed to start. Presence Writer is an out-of-process COM component, not necessarily the service named in a nearby 7000 event.</p>
+              <ol className="mt-4 list-decimal space-y-2 pl-6 text-sm leading-7 text-slate-300">
+                <li>Open <strong>Event Viewer → Windows Logs → System</strong> and read the exact service name, source and error in Event ID 7000 or DCOM Event ID 10010.</li>
+                <li>Open <strong>Reliability Monitor</strong> with <code>perfmon /rel</code>; compare the game's crash timestamp to <strong>Windows Logs → Application</strong>, faulting modules, graphics-driver errors and LiveKernelEvent reports.</li>
+                <li>If the failed service belongs to Gaming Services, anti-cheat software or a driver, repair or update <em>that identified component</em> through its official publisher instead of disabling unrelated services.</li>
+                <li>If the game keeps crashing, investigate GPU drivers, memory stability, power delivery, drive health, temperatures and the game itself. Do not treat a nearby DCOM timeout as conclusive.</li>
+              </ol>
+            </article>
+          </div>
+          <div className="mt-7"><Callout title="Correlation is not causation">A crash and a DCOM timeout can share a cause or occur in sequence. Preserve Windows settings, collect repeatable evidence and keep a rollback plan rather than applying speculative registry tweaks.</Callout></div>
         </div>
       </section>
 
