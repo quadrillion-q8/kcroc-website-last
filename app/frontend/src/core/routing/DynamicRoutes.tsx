@@ -19,10 +19,10 @@ export const DynamicRouteHandler = () => {
   if (service) return <ServiceTemplate entityId={service.id} />;
 
   const brand = KCROC_GRAPH.brands.find(b => b.slug === slug);
-  if (brand) return <BrandTemplate entityId={brand.id} />;
+  if (brand) return <BrandTemplate />;
 
   const problem = KCROC_GRAPH.problems.find(p => p.slug === slug);
-  if (problem) return <ProblemTemplate entityId={problem.id} />;
+  if (problem) return <ProblemTemplate />;
 
   // Legacy "/computer-repair-<area>" and "/laptop-repair-<area>" URLs. Production
   // is covered by server-side 301s; this covers client-side navigation and local

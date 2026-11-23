@@ -111,10 +111,10 @@ export const RootLayout: React.FC = () => {
       };
     }
 
-    const timerId = window.setTimeout(activate, 1200);
+    const timerId = globalThis.setTimeout(activate, 1200);
     return () => {
       cancelled = true;
-      window.clearTimeout(timerId);
+      globalThis.clearTimeout(timerId);
     };
   }, [showAnimatedBackground, pathname]);
 

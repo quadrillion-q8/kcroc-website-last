@@ -201,7 +201,7 @@ export default function Header() {
                   return (
                     <div key={link.id} className="relative" onMouseEnter={() => handleMouseEnter(link.megaMenuId!)} onMouseLeave={handleMouseLeave}>
                       <button
-                        ref={el => navRefs.current[link.megaMenuId!] = el}
+                        ref={el => { navRefs.current[link.megaMenuId!] = el; }}
                         type="button"
                         aria-expanded={isOpen}
                         aria-haspopup="true"

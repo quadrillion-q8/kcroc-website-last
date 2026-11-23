@@ -37,7 +37,7 @@ export class NavigationCompiler {
     return {
       id: entity.id || entity.slug,
       slug: entity.slug,
-      entityType: type as any,
+      entityType: type,
       primaryKeyword: entity.title?.toLowerCase() || '',
       title: entity.title || 'Unknown',
       description: entity.description || '',
@@ -58,7 +58,7 @@ export class NavigationCompiler {
     const servicesIndex: NavEntity = {
       id: 'services_index',
       slug: 'services',
-      entityType: 'Page' as any,
+      entityType: 'Page',
       primaryKeyword: 'services',
       title: `All Services (${allServices.length})`,
       description: 'Browse every repair service we offer',
