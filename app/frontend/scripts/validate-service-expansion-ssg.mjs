@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { load } from 'cheerio';
-const specs = [{"slug":"laptop-cleaning-thermal-paste-kuwait","id":"srv-laptop-thermal-service","photo":"/images/gallery/laptop-cpu-thermal-paste-reapplication-intel-core.webp"},{"slug":"laptop-fan-replacement-kuwait","id":"srv-laptop-fan","photo":"/images/gallery/lenovo-laptop-replacement-cooling-fan-part-number-label-kuwait.webp"},{"slug":"macbook-charging-port-repair-kuwait","id":"srv-macbook-charging-port","photo":"/images/gallery/macbook-pro-thunderbolt-usb-c-port-replacement-board-repair.webp"},{"slug":"bios-repair-kuwait","id":"srv-bios-repair","photo":"/images/gallery/asus-prime-z590-p-bios-ez-mode-core-i7-10700k.webp"},{"slug":"pc-power-supply-replacement-kuwait","id":"srv-desktop-psu","photo":"/images/gallery/hp-desktop-pc-opened-motherboard-psu-ssd-and-hard-drive-kuwait.webp"},{"slug":"macbook-liquid-damage-repair-kuwait","id":"srv-macbook-liquid","photo":"/images/gallery/macbook-pro-16-m1-logic-board-motherboard-repair.webp"}];
+const specs = [{"slug":"laptop-cleaning-thermal-paste-kuwait","id":"srv-laptop-thermal-service","photo":"/images/gallery/laptop-fan-and-heatsink-deep-cleaning-kuwait.webp"},{"slug":"laptop-fan-replacement-kuwait","id":"srv-laptop-fan","photo":"/images/gallery/lenovo-laptop-replacement-cooling-fan-part-number-label-kuwait.webp"},{"slug":"macbook-charging-port-repair-kuwait","id":"srv-macbook-charging-port","photo":"/images/gallery/macbook-pro-thunderbolt-usb-c-port-replacement-board-repair.webp"},{"slug":"bios-repair-kuwait","id":"srv-bios-repair","photo":"/images/gallery/asus-prime-z590-p-bios-ez-mode-core-i7-10700k.webp"},{"slug":"pc-power-supply-replacement-kuwait","id":"srv-desktop-psu","photo":"/images/gallery/hp-desktop-pc-opened-motherboard-psu-ssd-and-hard-drive-kuwait.webp"},{"slug":"macbook-liquid-damage-repair-kuwait","id":"srv-macbook-liquid","photo":"/images/gallery/macbook-pro-16-m1-logic-board-motherboard-repair.webp"}];
 const root = process.cwd();
 const read = (url) => {
   const rel = url.slice(1);
@@ -41,6 +41,29 @@ for (const spec of specs) {
     assert.ok(alts.toArray().some(e=>$(e).attr('hreflang')==='ar-KW'&&$(e).attr('href')==='https://www.computerrepairkuwait.com'+ar),url+' Arabic hreflang');
     assert.ok(alts.toArray().some(e=>$(e).attr('hreflang')==='en-KW'&&$(e).attr('href')==='https://www.computerrepairkuwait.com'+en),url+' English hreflang');
     assert.ok(main.find('details[data-kcroc-faq-item]').length >= 3,url+' questions');
+    if(spec.slug==='laptop-cleaning-thermal-paste-kuwait') {
+      assert.equal(main.find('[data-thermal-guide-price="true"]').length,1,url+' price fact');
+      assert.equal(main.find('[data-thermal-section="environment"]').length,1,url+' climate context');
+      assert.equal(main.find('[data-thermal-section="comparison"] table tbody tr').length,4,url+' comparison rows');
+      assert.equal(main.find('[data-thermal-section="practical"]').length,1,url+' models, pricing and pickup');
+      assert.equal(main.find('details[data-kcroc-faq-item]').length,8,url+' eight FAQs');
+      const schema=$('script[type="application/ld+json"]').toArray().flatMap(node=>{
+        try {return JSON.parse($(node).html()||'{}')['@graph']||[];} catch {return [];}
+      });
+      const faqPage=schema.find(node=>node['@type']==='FAQPage');
+      assert.ok(faqPage,url+' FAQPage JSON-LD');
+      assert.equal(faqPage.mainEntity.length,8,url+' eight schema QAs');
+      const visible=main.find('details[data-kcroc-faq-item]').toArray().map(el=>[$(el).find('summary .kcroc-repair-faq-question').text().trim(),$(el).find('.kcroc-repair-faq-answer p').text().trim()]);
+      for(let i=0;i<8;i++){
+        assert.equal(faqPage.mainEntity[i].name,visible[i][0],url+' visible question matches schema');
+        assert.equal(faqPage.mainEntity[i].acceptedAnswer.text,visible[i][1],url+' visible answer matches schema');
+      }
+      if(lang==='en') {
+        const service=schema.find(node=>node['@type']==='Service'&&node['@id']?.endsWith('#service'));
+        assert.equal(service?.offers?.priceSpecification?.minPrice,15,url+' published price min');
+        assert.equal(service?.offers?.priceSpecification?.maxPrice,20,url+' published price max');
+      }
+    }
     if(lang==='ar') assert.ok(/[\u0600-\u06ff]/.test(main.find('img').attr('alt')||''),url+' Arabic alt');
   }
 }
