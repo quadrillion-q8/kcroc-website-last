@@ -372,11 +372,11 @@ export const rawGraphData: RawGraphData = {
       slug: 'ar/laptop-screen-repair-kuwait',
       entityType: 'WebPage',
       isActive: true,
-      title: 'تبديل وتصليح شاشة اللابتوب في الكويت',
-      description: 'تبديل شاشة اللابتوب في الكويت لأجهزة HP وDell وLenovo وASUS وAcer وMSI وHuawei. فحص الكابل والإضاءة ومطابقة رقم القطعة واللمس ومعدل التحديث، مع فحص أولي مجاني واستلام وتوصيل مجاني.',
+      title: 'تصليح وتبديل شاشة اللابتوب في الكويت',
+      description: 'تصليح شاشة لابتوب في الكويت لأجهزة HP وDell وLenovo وASUS وAcer وMSI. أجرة تبديل الشاشة من 30 د.ك + سعر الشاشة حسب الموديل؛ فحص أولي واستلام وتوصيل مجاني.',
       seo: {
-        title: 'تبديل شاشة اللابتوب الكويت | HP وDell وLenovo | KCROC',
-        description: 'تبديل شاشة اللابتوب في الكويت لأجهزة HP وDell وLenovo وASUS وAcer وMSI وHuawei. نفحص الكابل والإضاءة ونطابق رقم القطعة واللمس ومعدل التحديث. فحص أولي مجاني واستلام وتوصيل مجاني.',
+        title: 'تصليح شاشة لابتوب الكويت | أجرة من 30 د.ك + الشاشة',
+        description: 'تصليح وتبديل شاشة اللابتوب في الكويت. أجرة العمل من 30 د.ك + سعر LCD أو OLED أو شاشة اللمس حسب الموديل. فحص أولي واستلام وتوصيل مجاني.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/ar/laptop-screen-repair-kuwait',
         locale: 'ar_KW',
         alternates: {
