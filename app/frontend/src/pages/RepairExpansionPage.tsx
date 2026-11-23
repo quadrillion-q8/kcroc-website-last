@@ -1,79 +1,307 @@
 import React from 'react';
 import { Link, Navigate, useLocation } from 'react-router-dom';
-import { ArrowUpRight, BadgeCheck, CheckCircle2, ClipboardCheck, MapPin, ShieldCheck, Wrench } from 'lucide-react';
+import {
+  ArrowUpRight, BadgeCheck, CheckCircle2, ChevronDown, ClipboardCheck,
+  MapPin, ShieldCheck, Truck, Wrench,
+} from 'lucide-react';
 import { KCROC_GRAPH } from '../data/graph';
 import { REPAIR_EXPANSION } from '../data/repairExpansion';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { localizedSitePath } from '../utils/locale';
 import ServiceConversionActions from '../components/content/ServiceConversionActions';
-import './KCROCEditorialRollout.css';
+import './RepairExpansionPage.css';
+
+type Bilingual = { en: string; ar: string };
+type VisualCopy = { intro: string; hero: Bilingual; detail: Bilingual };
+
+// Editorial image descriptions are specific to the photographed component.
+// Never imply that an illustrative photograph is a verified customer case.
+const VISUALS: Record<string, VisualCopy> = {
+  'laptop-cleaning-thermal-paste-kuwait': {
+    intro: 'Reduce heat and fan noise with a diagnosis-led internal clean. We check airflow and temperatures before deciding whether fresh thermal material is appropriate.',
+    hero: { en: 'Thermal paste on the laptop processor during cooling-system service', ar: 'المعجون الحراري على معالج اللابتوب أثناء فحص التبريد' },
+    detail: { en: 'Laptop fan and heatsink during careful dust removal', ar: 'مروحة اللابتوب والمشتت الحراري أثناء تنظيف الغبار' },
+  },
+  'laptop-fan-replacement-kuwait': {
+    intro: 'A grinding, stalled or intermittent cooling fan needs diagnosis, not guesswork. We identify the fault and match a replacement to the exact laptop model.',
+    hero: { en: 'Laptop cooling fan with its identifying part-number label', ar: 'مروحة تبريد لابتوب مع رقم القطعة للتأكد من التوافق' },
+    detail: { en: 'Original and replacement cooling fans prepared for model matching', ar: 'مروحة قديمة وبديلة للمقارنة والتأكد من التوافق' },
+  },
+  'macbook-charging-port-repair-kuwait': {
+    intro: 'A loose USB-C connector or interrupted charging can originate in the port, cable or logic board. We test the power path before recommending the right repair.',
+    hero: { en: 'MacBook USB-C connector and board-side charging-port components', ar: 'مدخل شحن USB-C ومكوناته على لوحة ماك بوك' },
+    detail: { en: 'MacBook logic-board area with charging power-control components', ar: 'منطقة التحكم بالشحن والطاقة على لوجك بورد ماك بوك' },
+  },
+  'bios-repair-kuwait': {
+    intro: 'A failed firmware update or a computer that will not complete POST does not always mean the BIOS chip is damaged. We verify the board and recovery options first.',
+    hero: { en: 'ASUS motherboard BIOS setup screen during firmware diagnostics', ar: 'شاشة إعدادات BIOS للوحة ASUS أثناء فحص الفيرموير' },
+    detail: { en: 'Motherboard repair tools used for board-level fault investigation', ar: 'أدوات فحص وإصلاح اللوحة الأم للأعطال على مستوى المكونات' },
+  },
+  'pc-power-supply-replacement-kuwait': {
+    intro: 'No power, unexpected shutdowns or instability can point to the desktop power supply or another component. We test the complete PC before quoting a compatible PSU replacement.',
+    hero: { en: 'Desktop computer with power supply and internal connections visible', ar: 'الكمبيوتر المكتبي من الداخل مع مزود الطاقة وتوصيلاته' },
+    detail: { en: 'Power supply inside a compact desktop computer', ar: 'مزود طاقة داخل كمبيوتر مكتبي صغير الحجم' },
+  },
+  'macbook-liquid-damage-repair-kuwait': {
+    intro: 'Liquid exposure needs careful inspection, not repeated power-on attempts. We assess contamination and logic-board damage before explaining repair feasibility and cost.',
+    hero: { en: 'MacBook logic board removed for component-level inspection', ar: 'لوجك بورد ماك بوك مفكوك لفحص المكونات' },
+    detail: { en: 'MacBook logic-board cleaning during contamination assessment', ar: 'تنظيف لوجك بورد ماك بوك أثناء فحص آثار السوائل' },
+  },
+};
+
+const AR_RELATED_LABELS: Record<string, string> = {
+  '/laptop-repair-kuwait': 'تصليح اللابتوب',
+  '/laptop-overheating-kuwait': 'فحص سخونة اللابتوب',
+  '/gaming-laptop-cleaning-kuwait': 'تنظيف وتبريد لابتوب الألعاب',
+  '/macbook-repair-kuwait': 'تصليح ماك بوك',
+  '/laptop-charging-port-repair-kuwait': 'تصليح مدخل شحن اللابتوب',
+  '/motherboard-repair-kuwait': 'تصليح المذربورد',
+  '/desktop-pc-repair-kuwait': 'تصليح الكمبيوتر المكتبي',
+  '/gaming-pc-repair-kuwait': 'تصليح كمبيوتر الألعاب',
+  '/laptop-liquid-damage-repair-kuwait': 'تصليح اللابتوب المتضرر من السوائل',
+  '/macbook-liquid-damage-repair-kuwait': 'تصليح ماك بوك المتضرر من السوائل',
+};
 
 export default function RepairExpansionPage() {
   const { pathname } = useLocation();
   const ar = pathname.startsWith('/ar/');
-  const slug = pathname.replace('/ar/', '/').split('/').filter(Boolean).pop() ?? '';
+  const slug = pathname.replace(/^\/ar\//, '/').split('/').filter(Boolean).pop() ?? '';
   const item = REPAIR_EXPANSION.find((candidate) => candidate.slug === slug);
   if (!item) return <Navigate to="/404" replace />;
+
   const entityId = ar ? 'page-ar-' + item.id : item.id;
-  const activeEntity = KCROC_GRAPH.routableEntities.some((entity) => entity.id === entityId);
+  const activeEntity = KCROC_GRAPH.routableEntities.some((entity) => entity.id === entityId && entity.isActive);
   const business = KCROC_GRAPH.business;
   if (!activeEntity || !business) return <Navigate to="/404" replace />;
+
   const locale = ar ? 'ar' : 'en';
+  const t = (english: string, arabic: string) => ar ? arabic : english;
   const copy = ar ? item.ar : item;
+  const visual = VISUALS[item.slug];
   const title = ar ? item.arabicTitle : item.title;
-  const intro = ar ? item.ar.intro : item.scope;
-  const symptoms = [...copy.symptoms];
-  const checks = [...copy.checks];
-  const faqs = [...copy.faqs];
+  const intro = ar ? item.ar.intro : visual.intro;
   const waText = ar
     ? 'السلام عليكم KCROC، أبي استفسر عن ' + item.arabicTitle + '. موديل الجهاز الكامل: ____. العطل والأعراض: ____. المنطقة: ____. أبي فحص وعرض السعر شامل القطع وأجرة العمل قبل التصليح.'
     : 'Hello KCROC, I would like diagnosis for ' + item.title + '. Exact device brand/model: ____. Symptoms and history: ____. Kuwait pickup area: ____. Please confirm compatibility, parts availability and total quote before any paid repair.';
   const wa = 'https://wa.me/' + business.telephone + '?text=' + encodeURIComponent(waText);
-  const t = (english: string, arabic: string) => ar ? arabic : english;
-  const related = [...new Set([item.parent, ...item.related.map((id) => KCROC_GRAPH.services.find((s) => s.id === id)?.slug).filter((slug): slug is string => !!slug).map((slug) => '/' + slug)])].filter((path) => path !== '/' + item.slug).slice(0, 4);
-  return <>
-    <SEOEngine entityId={entityId} />
-    <div lang={ar ? 'ar-KW' : 'en-KW'} dir={ar ? 'rtl' : 'ltr'} data-service-layout="service" data-repair-expansion={slug} className="min-h-screen bg-[#f5f7fa] text-slate-900">
-      <section className="bg-[#111a25] px-5 pb-14 pt-32 text-white sm:pb-20 sm:pt-36">
-        <div className="mx-auto max-w-7xl">
-          <nav className="mb-8 flex flex-wrap items-center gap-2 text-sm text-slate-300" aria-label={t('Breadcrumb','مسار التنقل')}>
-            <Link to={ar ? '/ar' : '/'} className="underline underline-offset-4 hover:text-white">{t('Home','الرئيسية')}</Link><span aria-hidden="true">/</span>
-            <Link to={ar ? '/ar/services' : '/services'} className="underline underline-offset-4 hover:text-white">{t('Services','الخدمات')}</Link><span aria-hidden="true">/</span><span aria-current="page">{title}</span>
-          </nav>
-          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-            <div className="min-w-0">
-              <p className="mb-4 text-sm font-extrabold tracking-wide text-emerald-300">{t('HAWALLI REPAIR LAB · KUWAIT-WIDE PICKUP','مختبر تصليح حولي · استلام وتوصيل بكل الكويت')}</p>
-              <h1 className="max-w-3xl text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">{title}</h1>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-200">{intro}</p>
-              <div className="mt-7 flex flex-wrap gap-3 text-sm font-semibold text-slate-200">
-                <span className="inline-flex items-center gap-2 rounded-full border border-slate-500 px-3 py-2"><MapPin className="h-4 w-4 text-emerald-300" />{t('Repaired at our Hawalli lab','التصليح في مختبر حولي')}</span>
-                <span className="inline-flex items-center gap-2 rounded-full border border-slate-500 px-3 py-2"><ShieldCheck className="h-4 w-4 text-emerald-300" />{t('Quote before paid work','نوضح السعر قبل أي عمل')}</span>
+  const relatedPaths = [...new Set([
+    item.parent,
+    ...item.related
+      .map((id) => KCROC_GRAPH.services.find((service) => service.id === id)?.slug)
+      .filter((value): value is string => Boolean(value))
+      .map((value) => '/' + value),
+  ])].filter((path) => path !== '/' + item.slug).slice(0, 4);
+  const related = relatedPaths.map((path) => {
+    const href = localizedSitePath(path, locale);
+    const localizedEntity = KCROC_GRAPH.routableEntities.find((entity) => entity.slug === href.replace(/^\//, ''));
+    const englishEntity = KCROC_GRAPH.routableEntities.find((entity) => entity.slug === path.replace(/^\//, ''));
+    const label = ar
+      ? AR_RELATED_LABELS[path] || (localizedEntity && /[\u0600-\u06ff]/.test(localizedEntity.title) ? localizedEntity.title : t('Repair service', 'خدمة تصليح مرتبطة'))
+      : englishEntity?.title || 'Related repair service';
+    return { path, href, label };
+  });
+
+  return (
+    <>
+      <SEOEngine entityId={entityId} />
+      <div
+        className="kcroc-repair"
+        lang={ar ? 'ar-KW' : 'en-KW'}
+        dir={ar ? 'rtl' : 'ltr'}
+        data-service-layout="service"
+        data-repair-expansion={slug}
+      >
+        <section className="kcroc-repair-hero" aria-labelledby="kcroc-repair-title">
+          <div className="kcroc-repair-container">
+            <nav className="kcroc-repair-breadcrumbs" aria-label={t('Breadcrumb', 'مسار التنقل')}>
+              <Link to={ar ? '/ar' : '/'}>{t('Home', 'الرئيسية')}</Link>
+              <span aria-hidden="true">/</span>
+              <Link to={ar ? '/ar/services' : '/services'}>{t('Repair services', 'خدمات التصليح')}</Link>
+              <span aria-hidden="true">/</span>
+              <span aria-current="page">{title}</span>
+            </nav>
+
+            <div className="kcroc-repair-hero-grid">
+              <div className="kcroc-repair-hero-copy">
+                <p className="kcroc-repair-eyebrow kcroc-repair-eyebrow-on-dark">
+                  <Wrench className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  {t('PRECISION DIAGNOSIS · HAWALLI LAB', 'فحص دقيق في مختبر حولي')}
+                </p>
+                <h1 id="kcroc-repair-title">{title}</h1>
+                <p className="kcroc-repair-hero-intro">{intro}</p>
+                <div className="kcroc-repair-hero-facts">
+                  <span><MapPin aria-hidden="true" />{t('Repair work at our Hawalli lab', 'التصليح داخل مختبر حولي')}</span>
+                  <span><ShieldCheck aria-hidden="true" />{t('Quote before paid work', 'السعر واضح قبل أي عمل')}</span>
+                </div>
+                <ServiceConversionActions locale={locale} entityId={entityId} whatsappHref={wa} showPricing className="kcroc-repair-actions" />
+                <p className="kcroc-repair-microcopy">
+                  {t(
+                    'Exact repair scope, compatible parts and turnaround are confirmed after diagnosis of your model. No automatic replacement or unverified availability promises.',
+                    'نحدد طريقة التصليح وتوافق القطعة والمدة عقب فحص موديل جهازك. ما نبدّل قطع أو نؤكد توفرها قبل التأكد.'
+                  )}
+                </p>
               </div>
-              <div className="mt-8"><ServiceConversionActions locale={locale} entityId={entityId} whatsappHref={wa} showPricing /></div>
-              <p className="max-w-xl text-sm leading-6 text-slate-300">{t('Parts, exact repair method and turnaround are confirmed only after inspecting your specific model. Free initial diagnosis; our established repair warranty terms apply to covered completed work.','القطعة وطريقة التصليح والمدة نأكدهم بعد معرفة موديل جهازك وفحصه. الفحص الأولي مجاني، والضمان على الإصلاحات المكتملة حسب الشروط.')}</p>
+
+              <figure className="kcroc-repair-hero-figure">
+                <div className="kcroc-repair-image-wrap">
+                  <img
+                    src={item.photo}
+                    alt={ar ? visual.hero.ar : visual.hero.en}
+                    data-kcroc-service-photo="hero"
+                    loading="eager"
+                    decoding="async"
+                    fetchPriority="high"
+                    className="kcroc-repair-hero-image"
+                  />
+                </div>
+                <figcaption>
+                  <span className="kcroc-repair-image-tag">{t('COMPONENT DETAIL', 'تفاصيل المكوّن')}</span>
+                  <span>{ar ? visual.hero.ar : visual.hero.en}</span>
+                </figcaption>
+              </figure>
             </div>
-            <figure className="overflow-hidden rounded-3xl border border-slate-500/50 bg-slate-800 shadow-2xl">
-              <img src={item.photo} alt={ar ? item.arabicTitle + ' في مختبر KCROC بحولي' : item.title + ' - repair component inspection in the KCROC Hawalli lab'} loading="eager" decoding="async" className="aspect-[16/11] w-full object-cover" />
-              <figcaption className="px-5 py-3 text-sm text-slate-200">{t('Relevant component-level repair imagery from the KCROC image library.','صورة توضّح نوع المكوّنات المرتبطة بالخدمة من مكتبة KCROC.')}</figcaption>
-            </figure>
           </div>
-        </div>
-      </section>
-      <section className="px-5 py-14 sm:py-20">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-          <div><p className="mb-3 text-xs font-extrabold tracking-widest text-slate-600">{t('START WITH THE SYMPTOMS','ابدأ بالأعراض')}</p><h2 className="text-3xl font-black leading-tight">{t('When this repair may be relevant','متى تحتاج تفحص هالمشكلة؟')}</h2><p className="mt-4 leading-7 text-slate-700">{t('These symptoms are clues, not a confirmed diagnosis. Similar symptoms can have different hardware causes.','هذي علامات تساعد بالفحص، مو تشخيص نهائي. نفس الأعراض ممكن يكون لها أكثر من سبب.')}</p></div>
-          <div className="grid gap-3 sm:grid-cols-2">{symptoms.map((s,i) => <div key={i} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"><CheckCircle2 aria-hidden="true" className="mb-4 h-6 w-6 text-emerald-700"/><h3 className="font-bold leading-7">{s}</h3></div>)}</div>
-        </div>
-      </section>
-      <section className="bg-white px-5 py-16">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-8 max-w-3xl"><p className="mb-3 text-xs font-extrabold tracking-widest text-slate-600">{t('DIAGNOSIS FIRST','الفحص قبل تبديل القطع')}</p><h2 className="text-3xl font-black">{t('What the technician checks','شنو نفحص في المختبر؟')}</h2></div>
-          <div className="grid gap-4 md:grid-cols-2">{checks.map((step,i) => <div key={i} className="rounded-2xl border border-slate-200 bg-[#f8fafc] p-6"><div className="mb-4 flex items-center gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-900 text-sm font-bold text-white">{String(i+1).padStart(2,'0')}</span><ClipboardCheck className="h-5 w-5 text-slate-600" aria-hidden="true"/></div><h3 className="font-bold leading-7">{step}</h3></div>)}</div>
-          <div className="mt-8 rounded-2xl border-l-4 border-amber-500 bg-amber-50 p-6 text-slate-900" role="note"><h3 className="font-bold">{t('Repair scope & safety','نطاق الخدمة والسلامة')}</h3><p className="mt-2 leading-7">{ar ? item.ar.scope : item.scope}</p></div>
-        </div>
-      </section>
-      <section className="px-5 py-16"><div className="mx-auto max-w-4xl"><h2 className="mb-7 text-3xl font-black">{t('Frequently asked questions','أسئلة شائعة')}</h2><div className="space-y-3">{faqs.map(([q,a],i) => <details key={i} data-kcroc-faq-item="true" className="rounded-xl border border-slate-200 bg-white p-5 open:shadow-sm"><summary className="cursor-pointer font-bold leading-7 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-600">{q}</summary><p className="mt-4 border-t border-slate-200 pt-4 leading-7 text-slate-700">{a}</p></details>)}</div></div></section>
-      <section className="bg-[#111a25] px-5 py-16 text-white"><div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-2 lg:items-center"><div><BadgeCheck className="mb-4 h-7 w-7 text-emerald-300" aria-hidden="true"/><h2 className="text-3xl font-black">{t('Get a model-specific assessment','خلّنا نفحص موديل جهازك')}</h2><p className="mt-4 leading-8 text-slate-200">{t('Describe the exact model, fault and pickup area. We will explain the appropriate diagnostic route and confirm parts and pricing before you approve paid work.','أرسل الموديل والأعراض والمنطقة. نوضح لك طريقة الفحص وتوفر القطعة وعرض السعر قبل أي تصليح مدفوع.')}</p><Link to={localizedSitePath('/book',locale)} className="mt-6 inline-flex min-h-12 items-center gap-2 rounded-xl bg-emerald-400 px-6 py-3 font-extrabold text-slate-950 hover:bg-emerald-300">{t('Arrange free pickup','احجز استلام مجاني')}<ArrowUpRight className="h-4 w-4"/></Link></div><div><h3 className="mb-4 text-lg font-bold">{t('Related repair services','خدمات تصليح مرتبطة')}</h3><div className="grid gap-3">{related.map(path => <Link key={path} to={localizedSitePath(path,locale)} className="flex items-center justify-between rounded-xl border border-slate-600 px-5 py-3 text-sm font-semibold text-white hover:border-emerald-300">{t('Explore related service','شوف الخدمة المرتبطة')}: {path.split('/').pop()?.replace(/-kuwait/g,'').replace(/-/g,' ')}<ArrowUpRight className="h-4 w-4" aria-hidden="true"/></Link>)}</div><Link to={localizedSitePath('/location/hawalli',locale)} className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-emerald-300 underline underline-offset-4">{t('Visit our Hawalli laboratory page','صفحة مختبر حولي')}<MapPin className="h-4 w-4"/></Link></div></div></section>
-    </div>
-  </>;
+        </section>
+
+        <section className="kcroc-repair-confidence" aria-label={t('Our customer commitments', 'التزاماتنا للعملاء')}>
+          <div className="kcroc-repair-confidence-inner">
+            <div>
+              <ClipboardCheck aria-hidden="true" />
+              <span><strong>{t('Free initial diagnosis', 'الفحص الأولي مجاني')}</strong><small>{t('Understand the fault first', 'نعرف سبب العطل أول')}</small></span>
+            </div>
+            <div>
+              <Truck aria-hidden="true" />
+              <span><strong>{t('Free pickup and delivery', 'استلام وتوصيل مجاني')}</strong><small>{t('Across Kuwait', 'في جميع مناطق الكويت')}</small></span>
+            </div>
+            <div>
+              <BadgeCheck aria-hidden="true" />
+              <span><strong>{t('30-day repair warranty', 'ضمان تصليح 30 يوم')}</strong><small>{t('On covered completed repairs', 'على الإصلاحات المكتملة المشمولة')}</small></span>
+            </div>
+          </div>
+        </section>
+
+        <section className="kcroc-repair-symptoms" aria-labelledby="kcroc-repair-symptoms-title">
+          <div className="kcroc-repair-container kcroc-repair-symptoms-grid">
+            <div className="kcroc-repair-section-intro">
+              <p className="kcroc-repair-eyebrow">{t('RECOGNIZE THE SIGNS', 'اعرف علامات العطل')}</p>
+              <h2 id="kcroc-repair-symptoms-title">{t('When this service may help', 'متى تحتاج هالخدمة؟')}</h2>
+              <p>{t(
+                'These are useful clues, not a final diagnosis. The same symptom can have several different hardware causes.',
+                'هذي علامات تساعدنا نحدد مكان الفحص، لكنها مو تشخيص نهائي. نفس العَرَض ممكن يكون له أكثر من سبب.'
+              )}</p>
+            </div>
+            <ul className="kcroc-repair-symptom-list">
+              {copy.symptoms.map((symptom, index) => (
+                <li key={symptom} className="kcroc-repair-symptom">
+                  <span className="kcroc-repair-symptom-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+                  <span>{symptom}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className="kcroc-repair-diagnosis" aria-labelledby="kcroc-repair-diagnosis-title">
+          <div className="kcroc-repair-container">
+            <div className="kcroc-repair-section-intro kcroc-repair-diagnosis-head">
+              <p className="kcroc-repair-eyebrow">{t('INSPECT · IDENTIFY · REPAIR · RETEST', 'نفحص · نحدد العطل · نصلح · نختبر')}</p>
+              <h2 id="kcroc-repair-diagnosis-title">{t('What happens in the repair lab', 'شنو نفحص داخل المختبر؟')}</h2>
+              <p>{t(
+                'Our checks follow the device and its reported fault. We confirm the cause before discussing parts, pricing or repair steps.',
+                'الفحص يعتمد على الجهاز والأعراض اللي ذكرتها. نحدد السبب قبل ما نتكلم عن القطع والسعر وخطوات التصليح.'
+              )}</p>
+            </div>
+
+            <div className="kcroc-repair-diagnosis-grid">
+              <ol className="kcroc-repair-steps">
+                {copy.checks.map((step, index) => (
+                  <li key={step}>
+                    <span className="kcroc-repair-step-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+                    <span>{step}</span>
+                    <CheckCircle2 aria-hidden="true" className="kcroc-repair-step-check" />
+                  </li>
+                ))}
+              </ol>
+              <figure className="kcroc-repair-detail-figure">
+                <img
+                  src={item.pricingPhoto}
+                  alt={ar ? visual.detail.ar : visual.detail.en}
+                  data-kcroc-service-photo="detail"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>{ar ? visual.detail.ar : visual.detail.en}</figcaption>
+              </figure>
+            </div>
+
+            <aside className="kcroc-repair-scope" role="note">
+              <ShieldCheck aria-hidden="true" />
+              <div>
+                <h3>{t('Repair scope and safety', 'نطاق الخدمة والسلامة')}</h3>
+                <p>{ar ? item.ar.scope : item.scope}</p>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section className="kcroc-repair-faq" aria-labelledby="kcroc-repair-faq-title">
+          <div className="kcroc-repair-container kcroc-repair-faq-inner">
+            <div className="kcroc-repair-section-intro">
+              <p className="kcroc-repair-eyebrow">{t('STRAIGHT ANSWERS', 'إجابات واضحة')}</p>
+              <h2 id="kcroc-repair-faq-title">{t('Frequently asked questions', 'الأسئلة الشائعة')}</h2>
+              <p>{t('Answers about diagnosis, compatible parts and what to expect before approving a repair.', 'إجابات عن الفحص والقطع المتوافقة وخطوات العمل قبل الموافقة على التصليح.')}</p>
+            </div>
+            <div className="kcroc-repair-faq-list">
+              {copy.faqs.map(([question, answer], index) => (
+                <details key={question} data-kcroc-faq-item="true" className="kcroc-repair-faq-item">
+                  <summary>
+                    <span className="kcroc-repair-faq-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+                    <span className="kcroc-repair-faq-question">{question}</span>
+                    <ChevronDown className="kcroc-repair-chevron" aria-hidden="true" />
+                  </summary>
+                  <div className="kcroc-repair-faq-answer"><p>{answer}</p></div>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="kcroc-repair-next" aria-labelledby="kcroc-repair-next-title">
+          <div className="kcroc-repair-container kcroc-repair-next-grid">
+            <div className="kcroc-repair-next-primary">
+              <p className="kcroc-repair-eyebrow">{t('READY FOR THE NEXT STEP?', 'تبي تعرف الخطوة التالية؟')}</p>
+              <h2 id="kcroc-repair-next-title">{t('Tell us your device model and the problem', 'أرسل موديل الجهاز واشرح العطل')}</h2>
+              <p>{t(
+                'Share the exact model, symptoms and pickup area. We will explain the next diagnostic step and confirm the quote before any paid work.',
+                'أرسل الموديل والأعراض والمنطقة. نوضح طريقة الفحص ونأكد عرض السعر قبل أي تصليح مدفوع.'
+              )}</p>
+              <div className="kcroc-repair-next-actions">
+                <Link to={localizedSitePath('/book', locale)} className="kcroc-repair-book">
+                  {t('Arrange free pickup', 'احجز استلام مجاني')} <ArrowUpRight aria-hidden="true" />
+                </Link>
+                <a href={wa} target="_blank" rel="noopener noreferrer" className="kcroc-repair-contact">
+                  {t('Discuss on WhatsApp', 'استفسر على واتساب')}
+                </a>
+              </div>
+            </div>
+            <div className="kcroc-repair-next-related">
+              <h3>{t('Related repair services', 'خدمات تصليح مرتبطة')}</h3>
+              <div className="kcroc-repair-related-links">
+                {related.map(({ href, label }) => (
+                  <Link to={href} key={href}>
+                    <span>{label}</span>
+                    <ArrowUpRight aria-hidden="true" />
+                  </Link>
+                ))}
+              </div>
+              <Link to={localizedSitePath('/location/hawalli', locale)} className="kcroc-repair-location-link">
+                <MapPin aria-hidden="true" />
+                {t('Visit the Hawalli repair lab page', 'تعرف على مختبرنا في حولي')}
+              </Link>
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
+  );
 }

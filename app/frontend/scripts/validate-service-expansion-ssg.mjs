@@ -23,6 +23,19 @@ for (const spec of specs) {
     assert.equal(main.find('[data-service-action="booking"]').attr('href'),lang==='ar'?'/ar/book':'/book');
     assert.equal(main.find('[data-service-action="pricing"]').attr('href'),lang==='ar'?'/ar/pricing':'/pricing');
     assert.equal(main.find('img[src="' + spec.photo + '"]').length,1,url + ' unique relevant image');
+    assert.equal(main.find('[data-kcroc-service-photo="hero"]').length,1,url + ' contextual hero photo');
+    assert.equal(main.find('[data-kcroc-service-photo="detail"]').length,1,url + ' diagnostic detail photo');
+    assert.notEqual(main.find('[data-kcroc-service-photo="hero"]').attr('src'), main.find('[data-kcroc-service-photo="detail"]').attr('src'),url + ' no repeated photograph');
+    assert.ok(main.find('.kcroc-repair-hero-figure figcaption').text().trim().length>15,url + ' meaningful hero photo caption');
+    assert.ok(main.find('.kcroc-repair-detail-figure figcaption').text().trim().length>15,url + ' meaningful diagnostic photo caption');
+    assert.equal(main.find('.kcroc-repair-confidence > .kcroc-repair-confidence-inner > div').length,3,url + ' readable three-point trust panel');
+    assert.equal(main.find('.kcroc-repair-next-actions a').length,2,url + ' final bilingual booking and WhatsApp actions');
+    assert.ok(main.find('.kcroc-repair-related-links a').length>=1,url + ' related services are available');
+    if(lang==='ar') {
+      const relatedLabels=main.find('.kcroc-repair-related-links a').toArray().map(el=>$(el).text().trim());
+      assert.ok(relatedLabels.every(label=>/[\u0600-\u06ff]/.test(label)),url + ' all related service names must be localised, not raw English slugs');
+      assert.ok(!relatedLabels.some(label=>label.includes('شوف الخدمة المرتبطة: ')),url + ' remove generic slug headings');
+    }
     assert.equal($('link[rel="canonical"]').attr('href'),'https://www.computerrepairkuwait.com'+url,url+' canonical');
     const alts=$('link[rel="alternate"][hreflang]');
     assert.ok(alts.toArray().some(e=>$(e).attr('hreflang')==='ar-KW'&&$(e).attr('href')==='https://www.computerrepairkuwait.com'+ar),url+' Arabic hreflang');
