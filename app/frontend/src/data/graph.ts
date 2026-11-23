@@ -1294,11 +1294,11 @@ export const rawGraphData: RawGraphData = {
       slug: 'guides/windows-11-background-services-audit',
       entityType: 'WebPage',
       isActive: true,
-      title: 'Windows 11 Background Services You Can Audit in 2026',
-      description: 'A technician-led Windows 11 guide covering 12 commonly questioned services, startup triggers, svchost mapping, read-only PowerShell audits, safe rollback, and hardware-versus-software diagnosis.',
+      title: 'Windows 11 Services to Disable (and Keep): 2026 Audit',
+      description: 'Evidence-based Windows 11 background services audit: WHESVC folders and disk usage, DiagTrack privacy, SysMain, MapsBroker, Gaming Services and safe rollback.',
       seo: {
-        title: 'Windows 11 Background Services Audit 2026: Safe Settings | KCROC',
-        description: 'Audit 12 Windows 11 background services, map svchost.exe with PowerShell, review safe startup choices, and separate service activity from RAM, SSD and thermal faults.',
+        title: 'Windows 11 Services to Disable? WHESVC & More (2026) | KCROC',
+        description: 'Which Windows 11 services can you disable? Check WHESVC folders and disk usage, DiagTrack, SysMain, MapsBroker and Gaming Services safely.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/guides/windows-11-background-services-audit', locale: 'en',
         ogType: 'article',
         schemaTypes: ['Article', 'BreadcrumbList']
