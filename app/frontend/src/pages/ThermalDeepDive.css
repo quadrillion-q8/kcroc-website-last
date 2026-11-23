@@ -40,7 +40,10 @@
 .kcroc-repair .kcroc-thermal-price-secondary strong{color:#233742;font-size:1.05rem}
 .kcroc-repair .kcroc-thermal-price-secondary p{margin:0;font-size:.93rem}
 .kcroc-repair .kcroc-thermal-terms-note{margin-top:1.25rem;max-width:95ch;color:#435561;font-size:.95rem}
-.kcroc-repair .kcroc-thermal-book{display:inline-flex;align-items:center;justify-content:center;min-height:48px;margin-top:1.25rem;padding:.85rem 1.45rem;background:#172832;color:#fff;border:2px solid #172832;border-radius:.8rem;font-weight:800;text-decoration:none;line-height:1.5;transition:background-color .2s,border-color .2s}\n.kcroc-repair .kcroc-thermal-book:hover{background:#294555;border-color:#294555;color:#fff}\n.kcroc-repair .kcroc-thermal-book:focus-visible{outline:3px solid #b36c42;outline-offset:3px}\n.kcroc-repair .kcroc-thermal-pickup{margin-top:1.6rem;border:1px solid #d9e3e3;border-radius:1rem;background:#f6f8f7;padding:1.6rem}
+.kcroc-repair .kcroc-thermal-book{display:inline-flex;align-items:center;justify-content:center;min-height:48px;margin-top:1.25rem;padding:.85rem 1.45rem;background:#172832;color:#fff;border:2px solid #172832;border-radius:.8rem;font-weight:800;text-decoration:none;line-height:1.5;transition:background-color .2s,border-color .2s}
+.kcroc-repair .kcroc-thermal-book:hover{background:#294555;border-color:#294555;color:#fff}
+.kcroc-repair .kcroc-thermal-book:focus-visible{outline:3px solid #b36c42;outline-offset:3px}
+.kcroc-repair .kcroc-thermal-pickup{margin-top:1.6rem;border:1px solid #d9e3e3;border-radius:1rem;background:#f6f8f7;padding:1.6rem}
 .kcroc-repair .kcroc-thermal-pickup p{margin:.65rem 0 1rem}
 .kcroc-repair .kcroc-thermal-pickup a,.kcroc-repair .kcroc-thermal-guide a{color:#814321;text-decoration:underline;text-underline-offset:4px;font-weight:750}
 .kcroc-repair .kcroc-thermal-guide{margin:1.5rem 0 0}
