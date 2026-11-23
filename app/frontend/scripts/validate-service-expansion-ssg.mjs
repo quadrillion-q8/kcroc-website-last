@@ -97,7 +97,7 @@ const expectedInbound=[
   ['/ar/services','[data-thermal-inbound="services-directory"] a','/ar/laptop-cleaning-thermal-paste-kuwait'],
   ['/laptop-overheating-kuwait','[data-thermal-inbound="overheating"] a','/laptop-cleaning-thermal-paste-kuwait'],
   ['/ar/laptop-overheating-kuwait','[data-thermal-inbound="arabic-overheating"] a','/ar/laptop-cleaning-thermal-paste-kuwait'],
-  ['/laptop-repair-kuwait','[data-thermal-inbound="laptop-pricing"] a','/laptop-cleaning-thermal-paste-kuwait'],
+  ['/laptop-repair-kuwait','a[data-thermal-inbound="laptop-pricing"]','/laptop-cleaning-thermal-paste-kuwait'],
   ['/gaming-laptop-cleaning-kuwait','[data-thermal-inbound="gaming-routing"] a','/laptop-cleaning-thermal-paste-kuwait']
 ];
 for(const [route,selector,expected] of expectedInbound){
