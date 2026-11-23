@@ -34,6 +34,7 @@ const ARABIC_SERVICE_LABELS: Record<string, string> = {
   '/macbook-repair-kuwait': 'تصليح MacBook',
   '/gaming-pc-repair-kuwait': 'تصليح كمبيوتر الألعاب',
   '/gaming-laptop-cleaning-kuwait': 'تنظيف لابتوب الألعاب',
+  '/laptop-cleaning-thermal-paste-kuwait': 'تنظيف اللابتوب والمعجون الحراري',
   '/motherboard-repair-kuwait': 'تصليح المذربورد واللوحة الأم',
   '/laptop-screen-repair-kuwait': 'تبديل شاشة اللابتوب',
   '/macbook-screen-replacement-kuwait': 'تبديل شاشة ماك بوك',
@@ -142,7 +143,7 @@ export function Footer() {
   // Defensive filtering keeps malformed or empty generated navigation entries out of the DOM.
   const visibleServices = footerData.links.services
     .filter(isValidFooterLink)
-    .filter((link, index) => index < 10 || link.path === '/laptop-liquid-damage-repair-kuwait');
+    .filter((link, index) => index < 11 || link.path === '/laptop-liquid-damage-repair-kuwait');
   const areaLinks = footerData.links.areas.filter(isValidFooterLink);
   const companyLinks = footerData.links.company.filter(isValidFooterLink);
   const visibleAreas = areaLinks.slice(0, 8);
