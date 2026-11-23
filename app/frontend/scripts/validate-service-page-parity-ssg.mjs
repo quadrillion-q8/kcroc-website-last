@@ -13,7 +13,7 @@ const englishDirectory=read('/services');
 const arabicDirectory=read('/ar/services');
 const cards=($)=>new Map($('main [data-service-id]').toArray().map(el=>[$(el).attr('data-service-id'),$(el).attr('href')]));
 const enCards=cards(englishDirectory), arCards=cards(arabicDirectory);
-assert.equal(enCards.size,16,'Expected 16 distinct repair service cards');
+assert.equal(enCards.size,22,'Expected 22 distinct repair service cards');
 assert.deepEqual([...arCards.keys()].sort(),[...enCards.keys()].sort(),'Matching service inventory');
 const pairs=[...enCards].map(([id,en])=>{
   const ar=arCards.get(id);
@@ -23,7 +23,7 @@ const pairs=[...enCards].map(([id,en])=>{
 });
 assert.equal(mappings.get('/computer-repair-kuwait'),'/ar/computer-repair-kuwait');
 pairs.push(['/computer-repair-kuwait','/ar/computer-repair-kuwait']);
-assert.equal(new Set(pairs.map(([,ar])=>ar)).size,17,'Expected 17 distinct commercial repair pairs including the computer hub');
+assert.equal(new Set(pairs.map(([,ar])=>ar)).size,23,'Expected 23 distinct commercial repair pairs including the computer hub');
 for (const [en,ar] of pairs) {
   const e=read(en),a=read(ar);
   const main=a('main');
