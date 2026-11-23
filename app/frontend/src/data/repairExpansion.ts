@@ -60,6 +60,22 @@ export const REPAIR_EXPANSION = [
       [
             "Is pickup and delivery free throughout Kuwait?",
             "Yes. Free pickup and return are offered across Kuwait for eligible repair bookings; cleaning and testing take place at the Hawalli lab, not at customers' homes."
+      ],
+      [
+            "Can I just spray compressed air into my laptop vents instead of booking internal cleaning?",
+            "External compressed air can move lint deeper into narrow heatsink fins and, if a fan spins freely at excessive speed, stress its bearings or electronics. Safe internal cleaning uses a model-appropriate opening and clears the blocked fin stack directly after isolating power."
+      ],
+      [
+            "Why does my office or study laptop get hot during Zoom calls, browser tabs, or charging?",
+            "Video calls, background updates, browser hardware acceleration and charging power profiles can raise processor load and fan speed. Restricted airflow or degraded thermal contact may add to the heat, so we inspect workload, fan behaviour and the cooling path before recommending work."
+      ],
+      [
+            "Do I need to share my Windows login password for laptop cleaning and thermal paste service?",
+            "A Windows password is not needed for physical opening, dust removal, fan inspection or condition-based thermal material service. If a Windows-level thermal check would help, we discuss a privacy-respecting test arrangement with you first, without requesting access to personal files."
+      ],
+      [
+            "What if inspection shows a failed fan or motherboard fault instead of a dust issue?",
+            "Our Hawalli repair lab can diagnose a faulty fan, temperature-control circuit, charging or motherboard power fault. We explain the finding and provide a separate quote before any additional paid repair. For broader faults, see our laptop repair service."
       ]
 ],
     "scope": "Standard Windows laptop dust cleaning, airflow checks and condition-based thermal maintenance; gaming laptops and MacBooks have separate service paths.",
@@ -109,6 +125,22 @@ export const REPAIR_EXPANSION = [
       [
             "التوصيل والاستلام مجاني بكل الكويت؟",
             "نعم، نوفر استلام وتوصيل مجاني للحجوزات المؤهلة بجميع مناطق الكويت. الفحص والشغل في مختبر حولي، مو داخل بيت العميل."
+      ],
+      [
+            "أقدر أنفخ هواء مضغوط من فتحات اللابتوب بدل التنظيف الداخلي؟",
+            "الهواء المضغوط إذا انستخدم بطريقة غلط ممكن يدفع الوبر لداخل زعانف المشتت، أو يخلي المروحة تدور بسرعة تضرها. التنظيف الداخلي الآمن يعتمد على طريقة فتح مناسبة للموديل وعزل الطاقة وتنظيف مكان الانسداد نفسه."
+      ],
+      [
+            "ليش لابتوب الدوام أو الدراسة يسخن وقت Zoom أو التصفح أو مع الشاحن؟",
+            "مكالمات الفيديو وتحديثات Windows والخدمات اللي تشتغل بالخلفية ووضع الشحن ممكن تزيد حمل المعالج وصوت المروحة. إذا الغبار مسكر مجرى الهواء أو التلامس الحراري ضعيف، تزيد الأعراض. نفحص الحمل والمروحة والتبريد قبل ما نقترح شغل."
+      ],
+      [
+            "لازم أعطيكم كلمة مرور Windows عشان تنظفون اللابتوب أو تبدلون المعجون؟",
+            "ما نحتاج كلمة مرور Windows لفك الجهاز وتنظيف الغبار وفحص المروحة وخدمة المعجون حسب الحالة. إذا احتجنا اختبار حرارة داخل النظام، نتفق معاك أول على طريقة تحافظ على الخصوصية من غير طلب الوصول لملفاتك الشخصية."
+      ],
+      [
+            "إذا طلع العطل من المروحة أو المذربورد مو من الغبار، شنو يصير؟",
+            "مختبرنا بحولي يقدر يفحص المروحة ودوائر التحكم والشحن والطاقة بالمذربورد. نشرح لك العطل ونعطيك عرض سعر منفصل قبل أي تصليح إضافي مدفوع. للأعطال الأوسع شوف خدمة تصليح اللابتوب."
       ]
 ],
       "scope": "تنظيف وفحص تبريد لابتوبات Windows العادية، والمعجون حسب الفحص. القيمنق والماك بوك لهم خدمات منفصلة."
@@ -498,8 +530,8 @@ export const REPAIR_EXPANSION_ENTITIES: Record<string, ServiceEntity | WebPageEn
         { src: item.pricingPhoto, alt: item.title + ' - complementary internal component view', placement: 'coreFeatures' },
       ],
       coreFeatures: [...item.checks], faqs: enFaqs,
-      seo: { title: item.title + ' | KCROC', description: item.slug === 'laptop-cleaning-thermal-paste-kuwait'
-        ? 'Laptop overheating or loud fan? Internal dust cleaning and condition-based thermal paste service in Kuwait. Guide 15–20 KWD, free pickup and Hawalli lab diagnosis.'
+      seo: { title: item.slug === 'laptop-cleaning-thermal-paste-kuwait' ? 'Laptop Cleaning & Thermal Paste Service Kuwait (15–20 KWD) | KCROC' : item.title + ' | KCROC', description: item.slug === 'laptop-cleaning-thermal-paste-kuwait'
+        ? 'Loud fan or hot everyday laptop in Kuwait? Free initial diagnosis, internal dust cleaning and condition-based thermal paste at our Hawalli lab. Guide 15–20 KWD. Free pickup.'
         : item.scope + ' Diagnosis at our Hawalli lab. Kuwait-wide pickup, quote before work and 30-day warranty on covered completed repairs.',
         canonicalUrl: enUrl, locale: 'en_KW', alternates, ogType: 'website',
         ogImage: item.photo, ogImageAlt: item.title + ' - KCROC technical service image',
@@ -512,7 +544,7 @@ export const REPAIR_EXPANSION_ENTITIES: Record<string, ServiceEntity | WebPageEn
       entityType: 'WebPage', isActive: true, title: item.arabicTitle,
       description: item.ar.intro + ' ' + item.ar.scope,
       relatedServiceIds: [item.id],
-      seo: { title: item.arabicTitle + ' | KCROC', description: item.ar.intro + ' فحص في مختبر حولي واستلام وتوصيل بالكويت، وعرض سعر قبل التصليح.',
+      seo: { title: item.slug === 'laptop-cleaning-thermal-paste-kuwait' ? item.arabicTitle + ' | السعر 15–20 د.ك | KCROC' : item.arabicTitle + ' | KCROC', description: item.slug === 'laptop-cleaning-thermal-paste-kuwait' ? 'اللابتوب يسخن أو المروحة صوتها عالي؟ فحص أولي مجاني وتنظيف داخلي ومعجون حراري حسب الحالة بمختبر حولي. السعر الإرشادي 15–20 د.ك واستلام وتوصيل مجاني بالكويت.' : item.ar.intro + ' فحص في مختبر حولي واستلام وتوصيل بالكويت، وعرض سعر قبل التصليح.',
         canonicalUrl: arUrl, locale: 'ar_KW', alternates, ogType: 'website',
         ogImage: item.photo, ogImageAlt: item.arabicTitle,
         schemaTypes: item.slug === 'laptop-cleaning-thermal-paste-kuwait' ? ['WebPage', 'BreadcrumbList', 'LocalBusiness', 'FAQPage'] : ['WebPage', 'BreadcrumbList', 'LocalBusiness'],
