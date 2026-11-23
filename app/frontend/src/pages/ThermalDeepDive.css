@@ -1,0 +1,50 @@
+/* Bilingual thermal-service editorial sections. Isolated to the new service template. */
+.kcroc-repair .kcroc-thermal-section{padding:clamp(3.6rem,6vw,6rem) 0;color:#172832}
+.kcroc-repair .kcroc-thermal-section h2{max-width:800px}
+.kcroc-repair .kcroc-thermal-section h3{font-size:1.08rem;line-height:1.45}
+.kcroc-repair .kcroc-thermal-section p{color:#4b5d68}
+.kcroc-repair .kcroc-thermal-lead{max-width:850px;margin-top:1.2rem;font-size:1.05rem;line-height:1.85}
+.kcroc-repair .kcroc-thermal-climate{background:#f3f6f5}
+.kcroc-repair .kcroc-thermal-climate-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.5rem,4vw,3.5rem);margin-top:2rem;align-items:start}
+.kcroc-repair .kcroc-thermal-climate-grid>div:first-child p{max-width:65ch;font-size:1.03rem;margin:0 0 1.4rem;line-height:1.9}
+.kcroc-repair .kcroc-thermal-note-stack{display:grid;gap:.9rem}
+.kcroc-repair .kcroc-thermal-note-stack article{background:#fff;border:1px solid #dce3e4;border-inline-start:4px solid #ac643b;border-radius:1rem;padding:1.3rem 1.45rem}
+.kcroc-repair .kcroc-thermal-note-stack h3{margin:0 0 .5rem;color:#21333d}
+.kcroc-repair .kcroc-thermal-note-stack p{margin:0;font-size:.94rem;line-height:1.7}
+.kcroc-repair .kcroc-thermal-comparison{background:#fff}
+.kcroc-repair .kcroc-thermal-table-scroll{max-width:100%;overflow-x:auto;border:1px solid #cbd5d8;border-radius:1.1rem;margin-top:2rem;background:#fff}
+.kcroc-repair .kcroc-thermal-table-scroll:focus-visible{outline:3px solid #ad643b;outline-offset:4px}
+.kcroc-repair .kcroc-thermal-table{width:100%;min-width:670px;border-collapse:collapse;text-align:start;table-layout:fixed}
+.kcroc-repair .kcroc-thermal-table thead{background:#172832;color:#fff}
+.kcroc-repair .kcroc-thermal-table th,.kcroc-repair .kcroc-thermal-table td{padding:1.2rem 1.1rem;line-height:1.7;text-align:start;vertical-align:top;border-bottom:1px solid #dce3e4;font-size:.94rem}
+.kcroc-repair .kcroc-thermal-table thead th{color:#fff;font-weight:800;font-size:.91rem}
+.kcroc-repair .kcroc-thermal-table th:first-child{width:22%}
+.kcroc-repair .kcroc-thermal-table tbody th{background:#f6f8f7;color:#1a303a;font-weight:770}
+.kcroc-repair .kcroc-thermal-table tbody td{color:#334651}
+.kcroc-repair .kcroc-thermal-table tbody tr:last-child> *{border-bottom:0}
+.kcroc-repair .kcroc-thermal-coverage{background:#f4f6f6}
+.kcroc-repair .kcroc-thermal-subtitle{margin:2.1rem 0 1rem;font-size:1.25rem !important}
+.kcroc-repair .kcroc-thermal-service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+.kcroc-repair .kcroc-thermal-service-card{display:flex;flex-direction:column;gap:.5rem;background:#fff;color:#233642;border:1px solid #d4dfe0;padding:1.35rem;border-radius:1rem;min-width:0;text-decoration:none;transition:border-color .2s,box-shadow .2s}
+.kcroc-repair .kcroc-thermal-service-card:hover{border-color:#af714c;box-shadow:0 7px 25px rgba(25,40,47,.07)}
+.kcroc-repair .kcroc-thermal-service-card strong{color:#223540;font-size:.99rem}
+.kcroc-repair .kcroc-thermal-service-card span{color:#4c5e68;line-height:1.65;font-size:.88rem}
+.kcroc-repair .kcroc-thermal-terms{background:#fff}
+.kcroc-repair .kcroc-thermal-price-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:1rem;margin-top:2rem}
+.kcroc-repair .kcroc-thermal-price-primary,.kcroc-repair .kcroc-thermal-price-secondary{display:flex;flex-direction:column;gap:.9rem;border-radius:1.15rem;border:1px solid #d9e3e3;padding:clamp(1.3rem,3vw,2rem);min-width:0}
+.kcroc-repair .kcroc-thermal-price-primary{background:#172832;color:#fff}
+.kcroc-repair .kcroc-thermal-price-value{font-size:clamp(2.15rem,5vw,3.2rem);color:#fff;line-height:1.1;font-weight:850}
+.kcroc-repair .kcroc-thermal-price-primary p{color:#d4dfe5;margin:0}
+.kcroc-repair .kcroc-thermal-price-primary a{color:#ffe4cc;text-decoration:underline;text-underline-offset:4px;font-weight:750}
+.kcroc-repair .kcroc-thermal-price-secondary{background:#f6f8f8}
+.kcroc-repair .kcroc-thermal-price-secondary strong{color:#233742;font-size:1.05rem}
+.kcroc-repair .kcroc-thermal-price-secondary p{margin:0;font-size:.93rem}
+.kcroc-repair .kcroc-thermal-terms-note{margin-top:1.25rem;max-width:95ch;color:#435561;font-size:.95rem}
+.kcroc-repair .kcroc-thermal-pickup{margin-top:1.6rem;border:1px solid #d9e3e3;border-radius:1rem;background:#f6f8f7;padding:1.6rem}
+.kcroc-repair .kcroc-thermal-pickup p{margin:.65rem 0 1rem}
+.kcroc-repair .kcroc-thermal-pickup a,.kcroc-repair .kcroc-thermal-guide a{color:#814321;text-decoration:underline;text-underline-offset:4px;font-weight:750}
+.kcroc-repair .kcroc-thermal-guide{margin:1.5rem 0 0}
+.kcroc-repair[dir="rtl"] .kcroc-thermal-section :is(h2,h3){letter-spacing:normal;line-height:1.65}
+.kcroc-repair[dir="rtl"] .kcroc-thermal-table :is(th,td){line-height:1.9}
+@media(max-width:750px){.kcroc-repair .kcroc-thermal-climate-grid,.kcroc-repair .kcroc-thermal-price-grid{grid-template-columns:1fr}.kcroc-repair .kcroc-thermal-service-grid{grid-template-columns:1fr}.kcroc-repair .kcroc-thermal-section{padding:3.3rem 0}.kcroc-repair .kcroc-thermal-table th,.kcroc-repair .kcroc-thermal-table td{padding:1rem .8rem}}
+@media(prefers-reduced-motion:reduce){.kcroc-repair .kcroc-thermal-service-card{transition:none}}
