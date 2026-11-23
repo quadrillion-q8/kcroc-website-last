@@ -157,12 +157,27 @@ const newsEntries = [...contentEntries.values()]
   .filter((entry) => entry.slug.startsWith('news/'))
   .sort((a, b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug));
 
+// Include the specialist standard-laptop thermal page in the existing generated
+// footer service group, sourced from the central routable graph. No hand-edited
+// navGraph.generated.ts, no extra standalone page, no gaming-intent overlap.
+const everydayThermalRoute = KCROC_GRAPH.routableEntities.find(
+  entity => entity.id === 'srv-laptop-thermal-service' && entity.isActive
+);
+const existingFooterServices = KCROC_GRAPH.footer?.links.services ?? [];
+const footerServices = everydayThermalRoute && !existingFooterServices.some(
+  link => link.path === '/' + everydayThermalRoute.slug
+) ? [
+  ...existingFooterServices.slice(0, 4),
+  { label: everydayThermalRoute.title, path: '/' + everydayThermalRoute.slug },
+  ...existingFooterServices.slice(4)
+] : existingFooterServices;
+
 const navData = {
   // The Business entity itself is small (~600 bytes) — Header/Footer need
   // most of its fields (phone, logo, socials, address, rating, hours), so it
   // is included wholesale rather than field-by-field.
   business: KCROC_GRAPH.business ?? null,
-  footer: KCROC_GRAPH.footer?.links ?? null,
+  footer: KCROC_GRAPH.footer?.links ? { ...KCROC_GRAPH.footer.links, services: footerServices } : null,
   trustBadges: (KCROC_GRAPH.trustBadges ?? []).map((b) => ({
     id: b.id,
     title: b.title,
