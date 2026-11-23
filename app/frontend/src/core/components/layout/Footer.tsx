@@ -143,7 +143,7 @@ export function Footer() {
   // Defensive filtering keeps malformed or empty generated navigation entries out of the DOM.
   const visibleServices = footerData.links.services
     .filter(isValidFooterLink)
-    .filter((link, index) => index < 11 || link.path === '/laptop-liquid-damage-repair-kuwait');
+    .filter((link, index) => index < 10 || link.path === '/laptop-liquid-damage-repair-kuwait' || link.path === '/laptop-cleaning-thermal-paste-kuwait');
   const areaLinks = footerData.links.areas.filter(isValidFooterLink);
   const companyLinks = footerData.links.company.filter(isValidFooterLink);
   const visibleAreas = areaLinks.slice(0, 8);
