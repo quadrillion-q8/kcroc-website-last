@@ -218,7 +218,7 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                   This specialist page is for gaming cooling assemblies. For office, student and everyday Windows models, see our{' '}
                   <Link to="/laptop-cleaning-thermal-paste-kuwait" className="font-bold text-cyan-300 underline underline-offset-4 hover:text-cyan-200">standard Windows laptop cleaning &amp; thermal paste service</Link>.
                 </p>
-              )
+              )}
               {entity.id === 'srv-liquid-damage' && (
                 <>
                   <p className="mb-3 max-w-3xl text-xs leading-6 text-slate-400">
