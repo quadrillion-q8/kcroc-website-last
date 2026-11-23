@@ -619,7 +619,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
           const webPage = entity as WebPageEntity;
           const featuredIds = webPage.featuredFAQIds || [];
           const sourceFaqs = featuredIds.length > 0
-            ? featuredIds.map(id => SEO_GRAPH.faqs.find(f => f.id === id)).filter((f): f is FAQEntity => Boolean(f))
+            ? featuredIds.map(id => SEO_GRAPH.faqs.find(f => f.id === id)).filter((f): f is NonNullable<typeof f> => Boolean(f))
             : [];
           
           questions = sourceFaqs.map(faq => ({ title: faq.title, answer: faq.answer }));
