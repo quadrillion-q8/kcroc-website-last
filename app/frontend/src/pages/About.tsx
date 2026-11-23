@@ -44,14 +44,6 @@ const teamMembers = [
     skills: ['Hardware Testing', 'Data Safety', 'Micro-Soldering'],
     image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto:good,w_800,c_limit/KCROC-Owner-Image_zpdyg4',
     fallback: 'Imran+Natiq'
-  },
-  {
-    name: 'Riyaz Kawa',
-    role: 'Co-Founder & CTO',
-    bio: 'Lead engineer specializing in advanced troubleshooting and performance optimization. Expert in custom gaming builds, high-end systems, and mitigating Kuwait\'s extreme thermal stress on hardware. Passionate about delivering cutting-edge technical solutions.',
-    skills: ['Thermal Optimization', 'Custom PC Tuning', 'Motherboards'],
-    image: 'https://res.cloudinary.com/dsbwzags3/image/upload/f_auto,q_auto:good,w_800,c_limit/KCROC-Co-Founder-Image_salp7t',
-    fallback: 'Riyaz+Kawa'
   }
 ];
 
@@ -69,7 +61,7 @@ export default function About() {
       <SEOEngine entityId="page-about" />
       <Head>
         <title>About KCROC | Elite Component-Level Repair Laboratory in Kuwait</title>
-        <meta name="description" content="Learn about KCROC's Hawalli laboratory, our lead technicians Imran and Riyaz, and our mission to reclaim hardware from the 'beyond repair' category." />
+        <meta name="description" content="Learn about KCROC's Hawalli laboratory, our founder and lead technician Imran Natiq, and our mission to reclaim hardware from the 'beyond repair' category." />
       </Head>
 
       {/* ─── HERO SECTION (Technical Noir Aesthetic) ─── */}
@@ -169,7 +161,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* ─── EEAT PROFILE: LEADERSHIP TEAM (.scroll-row on mobile) ─── */}
+      {/* ─── FOUNDER PROFILE: VERIFIED LAB LEADERSHIP ─── */}
       <section aria-labelledby="team-heading" data-kcroc-editorial-panel="about-team" className="py-8 sm:py-24 px-4 sm:px-6 bg-slate-900/30 border-y border-slate-800 relative z-10">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-8 sm:mb-16">
@@ -178,14 +170,13 @@ export default function About() {
             </Badge>
             {/* FIXED H2: Scaled to 24px (text-2xl) on mobile */}
             <h2 id="team-heading" className="text-2xl sm:text-4xl font-black text-white tracking-tight">
-              Our Leadership Team
+              Meet Our Founder
             </h2>
           </div>
           
-          <div className="scroll-row gap-4 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-8 max-w-5xl mx-auto">
-            {/* FIXED Carousel peek width: w-[80%] gives a healthy 20% peek to the next item */}
+          <div className="mx-auto flex max-w-xl justify-center">
             {teamMembers.map((member) => (
-              <div key={member.name} data-kcroc-surface="light" className="scroll-row-item w-[80%] sm:w-auto group bg-white border border-[#e3dace] rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 flex flex-col">
+              <div key={member.name} data-kcroc-surface="light" className="w-full group bg-white border border-[#e3dace] rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 flex flex-col">
                 <div className="relative h-64 sm:h-80 overflow-hidden shrink-0">
                   <img
                     src={member.image}
