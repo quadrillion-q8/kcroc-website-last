@@ -28,7 +28,7 @@ export const HeadTermCallout: React.FC<HeadTermCalloutProps> = ({
 
   return (
     <aside
-      aria-label={isGamingPc ? 'Gaming PC and GPU repair in Kuwait' : 'Laptop and computer repair in Kuwait'}
+      aria-label={isGamingPc ? 'Gaming PC hardware repair in Kuwait' : 'Laptop and computer repair in Kuwait'}
       data-placement={placement}
       className="my-10 rounded-2xl border border-cyan-500/25 bg-slate-900/50 p-5 sm:p-6"
     >
@@ -36,9 +36,9 @@ export const HeadTermCallout: React.FC<HeadTermCalloutProps> = ({
         <p className="text-base leading-7 text-slate-300">
           If your gaming PC still has no display after safe checks, continue to{' '}
           <Link to="/gaming-pc-repair-kuwait" className="font-semibold text-cyan-400 underline underline-offset-2 hover:text-cyan-300">
-            Gaming PC and GPU repair in Kuwait
+            Gaming PC hardware repair in Kuwait
           </Link>
-          {' '}for GPU, power-delivery, BIOS/VBIOS and motherboard diagnosis at KCROC's Hawalli lab. The initial diagnostic and inspection is listed as free; you receive a quote before paid repair work. {KCROC_POLICY.pickupAndDelivery.label}, No Fix No Fee, and a {getWarrantyLabel()} on completed repairs.
+          {' '}for display-output, power-delivery, BIOS and motherboard diagnosis on complete gaming PCs at KCROC's Hawalli lab; standalone graphics-card repair is not offered. The initial diagnostic and inspection is listed as free; you receive a quote before paid repair work. {KCROC_POLICY.pickupAndDelivery.label}, No Fix No Fee, and a {getWarrantyLabel()} on completed repairs.
         </p>
       ) : (
         <p className="text-base leading-7 text-slate-300">
