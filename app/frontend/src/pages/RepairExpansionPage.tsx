@@ -16,7 +16,8 @@ export default function RepairExpansionPage() {
   if (!item) return <Navigate to="/404" replace />;
   const entityId = ar ? 'page-ar-' + item.id : item.id;
   const activeEntity = KCROC_GRAPH.routableEntities.some((entity) => entity.id === entityId);
-  if (!activeEntity) return <Navigate to="/404" replace />;
+  const business = KCROC_GRAPH.business;
+  if (!activeEntity || !business) return <Navigate to="/404" replace />;
   const locale = ar ? 'ar' : 'en';
   const copy = ar ? item.ar : item;
   const title = ar ? item.arabicTitle : item.title;
@@ -27,7 +28,7 @@ export default function RepairExpansionPage() {
   const waText = ar
     ? 'السلام عليكم KCROC، أبي استفسر عن ' + item.arabicTitle + '. موديل الجهاز الكامل: ____. العطل والأعراض: ____. المنطقة: ____. أبي فحص وعرض السعر شامل القطع وأجرة العمل قبل التصليح.'
     : 'Hello KCROC, I would like diagnosis for ' + item.title + '. Exact device brand/model: ____. Symptoms and history: ____. Kuwait pickup area: ____. Please confirm compatibility, parts availability and total quote before any paid repair.';
-  const wa = 'https://wa.me/96555301913?text=' + encodeURIComponent(waText);
+  const wa = 'https://wa.me/' + business.telephone + '?text=' + encodeURIComponent(waText);
   const t = (english: string, arabic: string) => ar ? arabic : english;
   const related = [...new Set([item.parent, ...item.related.map((id) => KCROC_GRAPH.services.find((s) => s.id === id)?.slug).filter((slug): slug is string => !!slug).map((slug) => '/' + slug)])].filter((path) => path !== '/' + item.slug).slice(0, 4);
   return <>
