@@ -289,6 +289,69 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
           </div>
         </header>
 
+        {isScreenService && (
+          <section
+            data-screen-cost-guide="true"
+            className="mx-auto max-w-7xl px-6 pb-12"
+            aria-labelledby="laptop-screen-cost-kuwait"
+          >
+            <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white text-slate-950 shadow-xl">
+              <div className="grid gap-7 p-6 sm:p-9 lg:grid-cols-[minmax(0,1fr)_minmax(250px,0.52fr)] lg:items-center">
+                <div>
+                  <p className="text-xs font-extrabold uppercase tracking-[0.12em] text-slate-600">Laptop display price &amp; replacement cost</p>
+                  <h2 id="laptop-screen-cost-kuwait" className="mt-2 text-2xl font-black leading-tight sm:text-3xl">
+                    How much does laptop screen repair cost in Kuwait?
+                  </h2>
+                  <p className="mt-4 max-w-3xl text-base leading-7 text-slate-700">
+                    Windows laptop screen replacement labour starts from <strong>30 KWD</strong>. The replacement LCD, IPS, OLED or touch panel is priced separately.
+                    There is no reliable single all-in laptop display price for every HP, Dell, Lenovo, ASUS, Acer or MSI model. We first check the fault and compatible part, then quote the complete screen-change cost before paid repair.
+                  </p>
+                  <p className="mt-3 text-sm leading-6 text-slate-700">
+                    If your laptop screen is cracked or broken, the panel usually needs replacement. If the display is black, flickering or showing lines without physical damage, the cause may instead be the display cable, connector or backlight circuit.
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+                  <p className="text-xs font-bold uppercase tracking-wider text-slate-600">Published starting labour</p>
+                  <p className="mt-2 text-4xl font-black tabular-nums text-slate-950">30 <span className="text-xl">KWD</span></p>
+                  <p className="mt-1 text-sm font-semibold text-slate-800">+ compatible panel cost</p>
+                  <p className="mt-3 text-xs leading-5 text-slate-600">Not the complete display replacement price. Initial diagnosis and pickup across Kuwait are free. Final pricing and parts availability depend on the exact device.</p>
+                  <a
+                    href={whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-slate-950 px-5 py-3 text-center text-sm font-bold text-white transition hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-950"
+                  >
+                    <MessageCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
+                    Get a total screen repair quote
+                  </a>
+                </div>
+              </div>
+              <div className="border-t border-slate-200 bg-slate-50 px-6 py-6 sm:px-9">
+                <h3 className="text-lg font-black text-slate-950">What changes the price of a new laptop display?</h3>
+                <div className="mt-4 grid gap-3 md:grid-cols-3">
+                  {[
+                    { title: 'Standard Full HD LCD / IPS', detail: 'Panel size, connector, resolution and part number determine the compatible LCD replacement and actual part price.' },
+                    { title: 'Gaming and OLED screens', detail: 'QHD, 144Hz–240Hz, OLED and specialist high-refresh panels require model-specific part matching; stock and pricing vary.' },
+                    { title: 'Touchscreen / 2-in-1 displays', detail: 'Some models use a combined glass, digitizer and LCD assembly, which affects parts and fitting costs.' },
+                  ].map((item) => (
+                    <article key={item.title} className="rounded-xl border border-slate-200 bg-white p-4">
+                      <h4 className="text-sm font-extrabold text-slate-950">{item.title}</h4>
+                      <p className="mt-2 text-sm leading-6 text-slate-700">{item.detail}</p>
+                    </article>
+                  ))}
+                </div>
+                <p className="mt-4 text-sm leading-6 text-slate-700">
+                  For an <strong>HP laptop screen replacement cost</strong>, an Acer cracked screen, or a Dell/Lenovo laptop display change, share the exact model or HP product number, the screen symptom and your Kuwait area. We confirm parts, labour and estimated turnaround. MacBook display quotes have a <Link to="/macbook-screen-replacement-kuwait" className="font-bold underline underline-offset-2 hover:text-slate-900">separate MacBook screen replacement page</Link>.
+                </p>
+                <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+                  <Link to="/pricing" className="font-bold text-slate-900 underline underline-offset-4 hover:text-slate-600">See published KCROC pricing</Link>
+                  <Link to="/ar/laptop-screen-repair-kuwait" lang="ar" dir="rtl" className="font-bold text-slate-900 underline underline-offset-4 hover:text-slate-600">تصليح شاشة لابتوب — الأسعار بالعربي</Link>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
         {entity.id === 'srv-keyboard' && (
           <section className="max-w-7xl mx-auto px-6 -mt-5 pb-8" aria-labelledby="keyboard-quick-dispatch-heading">
             <div className="rounded-2xl border border-cyan-900/60 bg-slate-950/75 p-5 sm:p-7">
