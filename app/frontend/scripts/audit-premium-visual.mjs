@@ -77,7 +77,7 @@ try {
      }
      return 'rgb(255, 255, 255)';
     };
-    const rgb=s=>(s.match(/[\\d.]+/g)||[]).map(Number);
+    const rgb=s=>(s.match(/[\d.]+/g)||[]).map(Number);
     const lum=c=>c.slice(0,3).map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4}).reduce((sum,v,i)=>sum+v*[.2126,.7152,.0722][i],0);
     const contrast=['.kcroc-thermal-climate-grid p','.kcroc-thermal-table tbody td','.kcroc-thermal-price-primary p','.kcroc-thermal-price-value','.kcroc-repair-faq-question'].map(sel=>{
      const el=root.querySelector(sel);if(!el)return {sel,ratio:0};
