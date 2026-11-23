@@ -10,6 +10,7 @@ export const REPAIR_EXPANSION = [
     "arabicTitle": "تنظيف اللابتوب وتبديل المعجون الحراري بالكويت",
     "primary": "laptop cleaning thermal paste Kuwait",
     "photo": "/images/gallery/laptop-cpu-thermal-paste-reapplication-intel-core.webp",
+    "pricingPhoto": "/images/gallery/laptop-fan-and-heatsink-deep-cleaning-kuwait.webp",
     "parent": "/laptop-repair-kuwait",
     "related": [
       "srv-laptop",
@@ -80,6 +81,7 @@ export const REPAIR_EXPANSION = [
     "arabicTitle": "تبديل مروحة اللابتوب بالكويت",
     "primary": "laptop fan replacement Kuwait",
     "photo": "/images/gallery/lenovo-laptop-replacement-cooling-fan-part-number-label-kuwait.webp",
+    "pricingPhoto": "/images/gallery/lenovo-laptop-old-cooling-fan-removed-next-to-new-fan-installation-kuwait.webp",
     "parent": "/laptop-overheating-kuwait",
     "related": [
       "srv-laptop",
@@ -150,6 +152,7 @@ export const REPAIR_EXPANSION = [
     "arabicTitle": "تصليح مدخل شحن ماك بوك USB-C بالكويت",
     "primary": "MacBook charging port repair Kuwait",
     "photo": "/images/gallery/macbook-pro-thunderbolt-usb-c-port-replacement-board-repair.webp",
+    "pricingPhoto": "/images/gallery/macbook-pro-logic-board-power-section-usb-c-controller-chips.webp",
     "parent": "/macbook-repair-kuwait",
     "related": [
       "srv-macbook",
@@ -221,6 +224,7 @@ export const REPAIR_EXPANSION = [
     "arabicTitle": "تصليح BIOS وUEFI للابتوب والكمبيوتر بالكويت",
     "primary": "BIOS repair Kuwait",
     "photo": "/images/gallery/asus-prime-z590-p-bios-ez-mode-core-i7-10700k.webp",
+    "pricingPhoto": "/images/gallery/motherboard-repair-tools-bga-stencil-holder-tweezers-kuwait.webp",
     "parent": "/motherboard-repair-kuwait",
     "related": [
       "srv-motherboard",
@@ -292,6 +296,7 @@ export const REPAIR_EXPANSION = [
     "arabicTitle": "تبديل باور سبلاي الكمبيوتر المكتبي بالكويت",
     "primary": "PC power supply replacement Kuwait",
     "photo": "/images/gallery/hp-desktop-pc-opened-motherboard-psu-ssd-and-hard-drive-kuwait.webp",
+    "pricingPhoto": "/images/gallery/dell-small-form-factor-desktop-interior-seagate-hdd-psu-kuwait.webp",
     "parent": "/desktop-pc-repair-kuwait",
     "related": [
       "srv-desktop-pc",
@@ -363,6 +368,7 @@ export const REPAIR_EXPANSION = [
     "arabicTitle": "تصليح ماك بوك بعد انسكاب السوائل بالكويت",
     "primary": "MacBook liquid damage repair Kuwait",
     "photo": "/images/gallery/macbook-pro-16-m1-logic-board-motherboard-repair.webp",
+    "pricingPhoto": "/images/gallery/macbook-logic-board-cleaning-crc-contact-cleaner.webp",
     "parent": "/macbook-repair-kuwait",
     "related": [
       "srv-macbook",
@@ -447,7 +453,10 @@ export const REPAIR_EXPANSION_ENTITIES: Record<string, ServiceEntity | WebPageEn
       relatedServiceIds: [...item.related], relatedProblemIds: [],
       relatedBrandIds: [], relatedResourcePaths: [{ label: 'Related repair service', path: item.parent }],
       relatedLocationIds: ['loc-hawalli'], relatedCaseStudyIds: [],
-      contentImages: [{ src: item.photo, alt: item.title + ' - component inspection at KCROC', placement: 'hero' }],
+      contentImages: [
+        { src: item.photo, alt: item.title + ' - repair process illustration from KCROC image library', placement: 'hero' },
+        { src: item.pricingPhoto, alt: item.title + ' - complementary internal component view', placement: 'coreFeatures' },
+      ],
       coreFeatures: [...item.checks], faqs: enFaqs,
       seo: { title: item.title + ' | KCROC', description: item.scope + ' Diagnosis at our Hawalli lab. Kuwait-wide pickup, quote before work and 30-day warranty on covered completed repairs.',
         canonicalUrl: enUrl, locale: 'en_KW', alternates, ogType: 'website',

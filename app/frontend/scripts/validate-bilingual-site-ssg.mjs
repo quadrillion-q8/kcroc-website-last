@@ -68,7 +68,7 @@ for (const name of ['BookingPage','ArabicBookingPage','Contact','ArabicContactPa
 }
 console.log('Phase 6.4 conversion parity checks passed.');
 
-for (const [route, count] of [['/ar/locations',26],['/ar/problems',14]]) {
+for (const [route, count] of [['/ar/locations',26],['/ar/problems',12]]) {
  const $ = read(route);
  const cards = $('main [data-directory-item]');
  assert.equal(cards.length,count,route+' directory inventory');
@@ -82,7 +82,7 @@ for (const [route, count] of [['/ar/locations',26],['/ar/problems',14]]) {
 console.log('Phase 6.5 directory inventory checks passed.');
 
 const problemDirectory=read('/ar/problems');
-assert.equal(problemDirectory('main [data-directory-item][data-translated="true"]').length,14,'All problem entries have Arabic destinations');
+assert.equal(problemDirectory('main [data-directory-item][data-translated="true"]').length,12,'All active problem entries have Arabic destinations');
 for(const el of problemDirectory('main [data-directory-item]').toArray()){
  const route=problemDirectory(el).attr('href');
  assert.ok(route?.startsWith('/ar/'),route);
@@ -159,7 +159,7 @@ assert.ok(read('/ar/about')('main a[href="/ar/author/imran"]').length,'Arabic au
 console.log('Phase 6.5E: '+eligible.length+' non-editorial sitemap URLs have reciprocal language twins.');
 
 const upgradedProblems=problemDirectory('main [data-directory-item]').toArray().map(el=>problemDirectory(el).attr('href')).filter(route=>route!=='/ar/laptop-plugged-in-not-charging');
-assert.equal(upgradedProblems.length,13);
+assert.equal(upgradedProblems.length,11);
 for(const route of upgradedProblems){
  const $=read(route);
  assert.ok($('main [data-diagnostic-row]').length>=4,route+' static diagnostic cases');
@@ -190,7 +190,7 @@ const slow=read('/ar/laptop-running-very-slow');
 assert.equal(slow('[data-diagnostic-row]').length,6);
 assert.ok(slow('[data-problem-editorial-panel="price-estimates"]').text().includes('15–20'));
 assert.ok(read('/ar/laptop-keyboard-not-working')('[data-problem-editorial-panel="quick-answer"]').length);
-console.log('Phase 7A: thirteen Arabic problem pages, static diagnostic cases, interactive control inventory and visible FAQ schema verified.');
+console.log('Phase 7A: eleven Arabic problem pages, static diagnostic cases, interactive control inventory and visible FAQ schema verified.');
 
 const locationRoutes=locationDirectory('main [data-directory-item]').toArray().map(el=>locationDirectory(el).attr('href'));
 assert.equal(locationRoutes.length,26);

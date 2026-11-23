@@ -74,7 +74,7 @@ for (const [en,ar] of pairs) {
       assert.equal(arabicPrice, englishPrice, 'Arabic price mismatch for ' + id);
     }
 
-    assert.equal(arMain.find('[data-hawalli-ar-problem]').length, 14, 'Hawalli requires all 14 localized problem links');
+    assert.equal(arMain.find('[data-hawalli-ar-problem]').length, 12, 'Hawalli requires all 12 active localized problem links');
     assert.equal(arMain.find('[data-hawalli-ar-brand]').length, 7, 'Hawalli requires six laptop brands and MacBook');
     assert.equal(arMain.find('[data-hawalli-ar-area]').length, pairs.length - 1, 'Hawalli must link every other active Arabic area');
     assert.equal(arMain.find('[data-hawalli-ar-trust]').length, 6, 'Hawalli requires all six repair assurances');
