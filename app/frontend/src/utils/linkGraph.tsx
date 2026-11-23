@@ -76,7 +76,7 @@ export const AutoLink: React.FC<AutoLinkProps> = ({ text, currentEntityId, exclu
 
       let matchedInThisPass = false;
 
-      parts = parts.flatMap((part) => {
+      parts = parts.flatMap((part): React.ReactNode[] => {
         if (typeof part !== 'string') return [part]; // Skip if it's already a <Link>
         if (matchedInThisPass) return [part]; // Stop searching if we already linked this entity
 

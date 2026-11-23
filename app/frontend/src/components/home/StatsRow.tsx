@@ -5,7 +5,8 @@ import { KCROC_GRAPH } from '../../data/graph';
 
 export const StatsRow = () => {
   const { ar } = useHomeLocale();
-  const stats = KCROC_GRAPH.entities['stats-row']?.items || [];
+  const statsEntity = KCROC_GRAPH.entities['stats-row'];
+  const stats = statsEntity?.entityType === 'Stats' ? statsEntity.items : [];
   if (stats.length === 0) return null;
 
   return (

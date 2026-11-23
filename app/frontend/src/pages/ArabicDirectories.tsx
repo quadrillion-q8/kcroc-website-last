@@ -28,7 +28,8 @@ export function ArabicProblemsDirectory() {
    const en='/'+p.slug, href=localizedSitePath(en,'ar');
    const copy=problemCopy[p.slug];
    if (!copy) throw new Error('Missing Arabic problem directory copy: '+p.slug);
-   return {id:p.id,href,translated:href!==en,title:copy[0],description:copy[1],image:p.contentImages?.[0]};
+   const image = p.contentImages?.[0];
+   return {id:p.id,href,translated:href!==en,title:copy[0],description:copy[1],image:image?.src && image?.alt ? {src:image.src,alt:image.alt,width:image.width,height:image.height} : undefined};
  });
  return <ArabicDirectory kind="problems" cards={cards}/>;
 }

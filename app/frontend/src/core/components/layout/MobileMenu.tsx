@@ -62,7 +62,7 @@ const MENU_COPY: Record<string, { eyebrow: string; subtitle: string; allLabel: s
 
 const getMenuCopy = (id: string) => MENU_COPY[id] ?? { eyebrow: 'KCROC', subtitle: 'Component-level repair and practical technical guidance.', allLabel: 'Explore', allHref: '/' };
 
-const getIndexEntity = (config: MegaMenuConfig) => config.sections.flatMap(section => section.items).find((item) => item.entityType === 'Page' && /^(services|brands|problems|pricing|blog|news|guides)$/.test(item.slug));
+const getIndexEntity = (config: MegaMenuConfig) => config.sections.flatMap(section => section.items).find((item) => item.entityType === 'WebPage' && /^(services|brands|problems|pricing|blog|news|guides)$/.test(item.slug));
 const getMoreItems = (config: MegaMenuConfig) => {
   const featured = new Set((config.featured ?? []).map(item => item.slug));
   return config.sections.flatMap(section => section.items).filter(item => !featured.has(item.slug));

@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 
 import { ROUTES, getBlogRoute, getContentRoute } from '../constants/routes';
-import { BLOG_POSTS, BlogPost, ContentBlock } from '../constants/blogPosts';
+import { BLOG_POSTS, BlogPost, ContentBlock, HeadingBlock } from '../constants/blogPosts';
 import { KCROC_GRAPH } from '../data/graph';
 import { AutoLink } from '../utils/linkGraph';
 import { getIntentWhatsAppLink } from '../utils/whatsappIntent';
@@ -578,12 +578,8 @@ const TECHNICAL_SOURCE_LABELS: Record<string, string> = {
     'NVIDIA — App graphics and legacy driver settings',
   'https://www.nvidia.com/en-us/geforce/news/nvidia-app-download-and-features/':
     'NVIDIA — App overview, graphics controls and overlay',
-  'https://learn.microsoft.com/en-us/windows/win32/api/dxgi1_4/ns-dxgi1_4-dxgi_query_video_memory_info':
-    'Microsoft Learn — DXGI video-memory budget and CurrentUsage',
   'https://www.nvidia.com/en-us/software/nvidia-app/release-highlights/':
     'NVIDIA — App overlay and Game Filters release highlights',
-  'https://developer.nvidia.com/rtx/streamline/get-started':
-    'NVIDIA Developer — DLSS Frame Generation integration notes',
   'https://docs.nvidia.com/nsight-systems/AnalysisGuide/':
     'NVIDIA Nsight Systems — CPU-bound and GPU-bound frame analysis',
 };
@@ -1042,7 +1038,7 @@ export default function BlogPostTemplate() {
   // happens after all hooks have run.
   const headings = useMemo(
     () => (post?.richContent
-      ?.filter((b): b is Extract<ContentBlock, { type: 'h2' }> => b.type === 'h2')
+      ?.filter((b): b is HeadingBlock => b.type === 'h2')
       .map((heading) => ({
         ...heading,
         // The visual article heading retains its authored text. The ToC strips

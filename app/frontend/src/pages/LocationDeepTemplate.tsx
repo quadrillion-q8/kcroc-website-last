@@ -241,7 +241,7 @@ export default function LocationDeepTemplate() {
   ];
   const localFaqs: LocalFAQ[] = [
     ...(usesDedicatedLocationFaqs ? [] : sharedLocationFaqs),
-    ...(location.localFaqs ?? []),
+    ...(location.localFaqs ?? []).flatMap((faq) => faq.id && faq.question && faq.answer ? [{ id: faq.id, question: faq.question, answer: faq.answer }] : []),
   ];
 
 
