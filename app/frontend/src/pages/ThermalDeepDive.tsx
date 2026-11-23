@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './ThermalDeepDive.css';
+import { ThermalScopeBreakdown, ThermalPickupPrep } from './ThermalAdditions';
 
 type Props = { ar: boolean };
 const data = {
@@ -137,8 +138,12 @@ export function ThermalServiceDetails({ ar }: Props) {
         <div className="kcroc-thermal-price-primary"><strong className="kcroc-thermal-price-value">{t.terms.price}</strong><p>{t.terms.priceDetail}</p><Link to={ar ? '/ar/pricing#thermal' : '/pricing#thermal'}>{ar ? 'شوف قائمة الأسعار المنشورة' : 'See published repair pricing'}</Link></div>
         <div className="kcroc-thermal-price-secondary"><strong>{t.terms.diagnostic}</strong><strong>{t.terms.timing}</strong><p>{t.terms.timingDetail}</p></div>
       </div><p className="kcroc-thermal-terms-note">{t.terms.note}</p><Link data-thermal-book-cta="true" className="kcroc-thermal-book" to={ar ? '/ar/book' : '/book'}>{ar ? 'احجز استلام لابتوبك مجاناً' : 'Book free laptop pickup'}</Link>
+    </div></section>
+    <ThermalScopeBreakdown ar={ar} />
+    <section className="kcroc-thermal-section kcroc-thermal-terms kcroc-thermal-pickup-section" aria-label={t.terms.pickupTitle}><div className="kcroc-repair-container">
       <div className="kcroc-thermal-pickup"><h3>{t.terms.pickupTitle}</h3><p>{t.terms.pickup}</p><Link to={ar ? '/ar/computer-repair-hawalli' : '/location/hawalli'}>{ar ? 'معلومات مختبر حولي' : 'Hawalli repair lab details'}</Link></div>
       <p className="kcroc-thermal-guide"><Link to={ar ? '/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait' : '/blog/how-often-clean-laptop-replace-thermal-paste-kuwait'}>{t.terms.guideTitle}</Link></p>
     </div></section>
+    <ThermalPickupPrep ar={ar} />
   </div>;
 }
