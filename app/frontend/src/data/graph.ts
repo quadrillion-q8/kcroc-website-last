@@ -386,7 +386,7 @@ export const rawGraphData: RawGraphData = {
         },
         ogType: 'website',
         schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service', 'OfferCatalog', 'ImageObject'],
-        lastModified: '2026-11-23T21:00:00+03:00',
+        lastModified: '2026-11-23T18:00:00+03:00',
         breadcrumbs: [
           { name: 'الرئيسية', url: '/' },
           { name: 'تصليح شاشة اللابتوب', url: '/ar/laptop-screen-repair-kuwait' }
@@ -4184,7 +4184,7 @@ export const rawGraphData: RawGraphData = {
         canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-screen-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait' },
         ogType: 'article',
         schemaTypes: ['Service', 'FAQPage'],
-        lastModified: '2026-11-23T21:00:00+03:00'
+        lastModified: '2026-11-23T18:00:00+03:00'
       },
       navigationPriority: 60,
       isFeatured: false,
