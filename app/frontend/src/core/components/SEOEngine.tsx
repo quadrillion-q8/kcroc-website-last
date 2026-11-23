@@ -296,7 +296,22 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
             "description": service.description,
             ...(service.id === 'srv-laptop-thermal-service' ? {
               "serviceType": "Standard Windows laptop internal dust cleaning and condition-based thermal paste replacement",
-              "inLanguage": "en-KW"
+              "inLanguage": "en-KW",
+              "availableChannel": {
+                "@type": "ServiceChannel",
+                "servicePhone": "+" + business.telephone,
+                "serviceLocation": {
+                  "@type": "Place",
+                  "name": "KCROC repair laboratory — Hawalli",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": business.streetAddress,
+                    "addressLocality": business.addressLocality,
+                    "addressRegion": business.addressRegion,
+                    "addressCountry": "KW"
+                  }
+                }
+              }
             } : {}),
             ...(service.id === 'srv-liquid-damage' ? {
               "serviceType": "Laptop and MacBook liquid-damage inspection, board decontamination and component-level repair where technically viable",
@@ -352,7 +367,7 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
               }
             } : {}),
             "provider": { "@id": `${business.websiteUrl}/#business` },
-            "areaServed": service.id === 'srv-gaming-laptop' || service.id === 'srv-macbook-screen' || service.id === 'srv-charging-port' || service.id === 'srv-liquid-damage'
+            "areaServed": service.id === 'srv-gaming-laptop' || service.id === 'srv-macbook-screen' || service.id === 'srv-charging-port' || service.id === 'srv-liquid-damage' || service.id === 'srv-laptop-thermal-service'
               ? [
                   { "@type": "Country", "name": "Kuwait" },
                   ...(primaryLocation?.serviceAreas ?? []).map(area => ({ "@type": "City", "name": area }))

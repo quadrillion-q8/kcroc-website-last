@@ -27,7 +27,7 @@ const editorial = {
         ['Thermal-interface decision', 'Confirm whether an intact compatible factory interface was left in place or fresh model-appropriate material was applied after inspection.'],
         ['Post-service checks', 'Check reassembly, fan response, exhaust flow and suitable repeatable workload behaviour as the device safely permits.']
       ],
-      note: 'Covered completed repair work carries the published 30-day warranty. The two proposed close-up lab photos are intentionally not shown without authenticated, privacy-reviewed source images.'
+      note: 'Covered completed repair work carries the published 30-day warranty. Work performed and findings are explained for the specific device; examples and illustrations do not substitute for a verified customer case.'
     },
     scope: {
       eyebrow: 'TRANSPARENT SCOPE · QUOTE FIRST',
@@ -101,7 +101,7 @@ const editorial = {
         ['قرار المعجون الحراري', 'نوضح إذا خلّينا المادة الأصلية السليمة أو استخدمنا مادة متوافقة عقب الفحص وعند الحاجة.'],
         ['اختبارات ما بعد الخدمة', 'نراجع التركيب ودوران المروحة وخروج الهواء وثبات الجهاز مع اختبار مناسب وآمن لحالته.']
       ],
-      note: 'الضمان المنشور 30 يوم على شغل التصليح المكتمل والمشمول بالشروط. ما نعرض صور أجهزة عملاء أو صور مختبر على إنها إثبات لحالة محددة إلا إذا كانت أصلية وتمت مراجعة الخصوصية.'
+      note: 'الضمان المنشور 30 يوم على التصليح المكتمل والمشمول بالشروط. نوضح الفحص والشغل الفعلي على جهازك؛ الصور التوضيحية مو بديل عن إثبات حالة عميل محددة.'
     },
     scope: {
       eyebrow: 'السعر واضح · موافقتك أول',

@@ -82,6 +82,7 @@ export default function ServicesGrid() {
   const [showAllServices, setShowAllServices] = useState(false);
   const visibleServices = showAllServices ? services : services.slice(0, 6);
   const featuredServiceIds = ['srv-laptop', 'srv-screen', 'srv-battery'];
+  const everydayThermalService = KCROC_GRAPH.routableEntities.find((entity) => entity.id === 'srv-laptop-thermal-service' && entity.isActive);
   const featuredServices = featuredServiceIds
     .map((id) => services.find((service) => service.id === id))
     .filter((service): service is ServiceEntity => Boolean(service));
@@ -120,6 +121,10 @@ export default function ServicesGrid() {
           </div>
         )}
 
+        {everydayThermalService && <div data-thermal-inbound="homepage" className="mt-6 flex flex-col gap-3 rounded-2xl border border-[#d8c3ac] bg-[#fffaf3] p-5 sm:flex-row sm:items-center sm:justify-between">
+          <div className="min-w-0"><p className="text-xs font-extrabold uppercase tracking-wide text-[#7b4528]">{t('Everyday laptop cooling', 'تبريد لابتوبات الاستخدام اليومي')}</p><h3 className="mt-1 text-lg font-black text-[#20343e]">{t('Laptop cleaning & thermal paste service', 'تنظيف اللابتوب والمعجون الحراري')}</h3><p className="mt-1 text-sm leading-6 text-[#40535c]">{t('Standard Windows laptops: free initial check, 15–20 KWD guide and pickup across Kuwait. Gaming devices have a separate specialist service.', 'لابتوبات Windows العادية: فحص أولي مجاني، وسعر إرشادي 15–20 د.ك، واستلام مجاني بالكويت. القيمنق له خدمة ثانية.')}</p></div>
+          <Link to={path('/' + everydayThermalService.slug)} className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl border border-[#7f4b30] bg-[#233840] px-5 py-3 text-sm font-bold text-white hover:bg-[#345261] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7f4b30]">{t('See standard laptop cleaning','شوف خدمة تنظيف اللابتوب')}</Link>
+        </div>}
         <div className="mt-4 flex flex-col gap-3 rounded-2xl border border-[#decbb8] bg-white p-4 shadow-sm sm:mt-6 sm:flex-row sm:items-center sm:gap-4 sm:px-5">
           <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#e8ded2] bg-[#f4efe7] text-[#8f4f2c]">
             <Truck className="h-5 w-5" aria-hidden="true" />

@@ -53,6 +53,7 @@ export default function Services({ locale = 'en' }: { locale?: SiteLocale } = {}
   const { trackConversion } = useAnalytics();
   const arabicMacbookBattery = KCROC_GRAPH.pages.find((page) => page.id === 'page-ar-macbook-battery-replacement' && page.isActive);
   const macbookBattery = KCROC_GRAPH.pages.find((page) => page.id === 'page-macbook-battery-replacement' && page.isActive);
+  const everydayThermalService = KCROC_GRAPH.routableEntities.find((entity) => entity.id === 'srv-laptop-thermal-service' && entity.isActive);
   const services = [
     ...KCROC_GRAPH.services.filter((service) => service.isActive),
     ...(macbookBattery ? [{ id: macbookBattery.id, slug: macbookBattery.slug, title: macbookBattery.title, description: macbookBattery.description, shortDescription: undefined, iconKey: 'apple', pricing: undefined }] : []),
@@ -126,6 +127,15 @@ export default function Services({ locale = 'en' }: { locale?: SiteLocale } = {}
               <span className="mt-4 inline-flex items-center text-sm font-bold text-emerald-400">{t("View starting prices", "عرض الأسعار")} <ChevronRight className="ms-1 h-4 w-4 rtl:rotate-180" aria-hidden="true" /></span>
             </Link>
           </section>
+
+          {everydayThermalService && (
+            <section data-thermal-inbound="services-directory" className="mb-10 rounded-2xl border border-emerald-500/30 bg-slate-900/75 p-5 sm:p-7" aria-label={t('Standard laptop cooling service', 'خدمة تبريد اللابتوب العادي')}>
+              <p className="text-xs font-black uppercase tracking-widest text-emerald-300">{t('Office, study & everyday laptops', 'لابتوبات الدوام والدراسة')}</p>
+              <h2 className="mt-2 text-xl font-black text-white sm:text-2xl">{t('Laptop Cleaning & Thermal Paste', 'تنظيف اللابتوب والمعجون الحراري')}</h2>
+              <p className="mt-2 max-w-3xl text-sm leading-7 text-slate-300">{t('15–20 KWD published guide, free initial diagnosis and collection anywhere in Kuwait. Gaming-laptop cooling remains a separate specialist route.', 'سعر إرشادي 15–20 د.ك، فحص أولي مجاني واستلام بكل الكويت. تبريد لابتوب القيمنق له خدمة متخصصة منفصلة.')}</p>
+              <Link to={route('/' + everydayThermalService.slug)} className="mt-4 inline-flex min-h-12 items-center rounded-xl border border-emerald-400/60 bg-emerald-900/30 px-5 py-3 text-sm font-bold text-emerald-200 hover:bg-emerald-900/60">{t('View standard laptop thermal service', 'شوف خدمة تبريد اللابتوب العادي')}</Link>
+            </section>
+          )}
 
           <section aria-labelledby="service-list-heading" data-kcroc-editorial-panel="service-index-cards">
             <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">

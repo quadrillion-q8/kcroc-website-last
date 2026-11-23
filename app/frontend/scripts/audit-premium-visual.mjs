@@ -70,6 +70,7 @@ try {
     const qa=[...root.querySelectorAll('details[data-kcroc-faq-item]')];
     const h1=[...root.querySelectorAll('h1')];
     const segments=[...root.querySelectorAll('[data-thermal-section]')].map(el=>el.getAttribute('data-thermal-section'));
+    const modules=[...root.querySelectorAll('[data-thermal-module]')].map(el=>el.getAttribute('data-thermal-module'));
     const bg=el=>{
      for(let parent=el;parent;parent=parent.parentElement){
       const v=getComputedStyle(parent).backgroundColor;
@@ -79,16 +80,16 @@ try {
     };
     const rgb=s=>(s.match(/[\d.]+/g)||[]).map(Number);
     const lum=c=>c.slice(0,3).map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4}).reduce((sum,v,i)=>sum+v*[.2126,.7152,.0722][i],0);
-    const contrast=['.kcroc-thermal-climate-grid p','.kcroc-thermal-table tbody td','.kcroc-thermal-price-primary p','.kcroc-thermal-price-value','.kcroc-repair-faq-question'].map(sel=>{
+    const contrast=['.kcroc-thermal-climate-grid p','.kcroc-thermal-table tbody td','.kcroc-thermal-price-primary p','.kcroc-thermal-price-value','.kcroc-thermal-extra-card p','.kcroc-thermal-scope-grid li','.kcroc-thermal-prep-grid li','.kcroc-thermal-fast-brief p','.kcroc-repair-faq-question'].map(sel=>{
      const el=root.querySelector(sel);if(!el)return {sel,ratio:0};
      const f=lum(rgb(getComputedStyle(el).color)),b=lum(rgb(bg(el)));
      return {sel,ratio:(Math.max(f,b)+.05)/(Math.min(f,b)+.05)};
     });
-    return {dir:root.getAttribute('dir'),h1:h1.length,faqs:qa.length,images:imgs,segments,
+    return {dir:root.getAttribute('dir'),h1:h1.length,faqs:qa.length,images:imgs,segments,modules,
       tableOverflow:cssTable?cssTable.scrollWidth>cssTable.clientWidth:false,
       pageOverflow:document.documentElement.scrollWidth-window.innerWidth,contrast};
    });
-   if(result.error||result.dir!==(route.startsWith('/ar/')?'rtl':'ltr')||result.h1!==1||result.faqs!==8||result.images?.length!==2||new Set(result.images).size!==2||result.segments?.length!==3||result.pageOverflow>2){
+   if(result.error||result.dir!==(route.startsWith('/ar/')?'rtl':'ltr')||result.h1!==1||result.faqs!==12||result.images?.length!==2||new Set(result.images).size!==2||result.segments?.length!==3||result.modules?.length!==5||result.pageOverflow>2){
     failures.push({route,width,error:'Thermal-page layout/RTL/FAQ/image/overflow regression',result});
    }
    for(const c of result.contrast||[])if(c.ratio<4.5)failures.push({route,width,error:'Thermal-page text contrast',contrast:c});

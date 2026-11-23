@@ -213,6 +213,12 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
               )}
 
               <ServiceConversionActions locale="en" entityId={entity.id} whatsappHref={whatsappLink} whatsappLabel={isScreenService ? 'Get a Screen Repair Quote on WhatsApp' : isMacbookScreenService ? 'Get a MacBook Screen Quote on WhatsApp' : 'Get a Free Quote on WhatsApp'} />
+              {entity.id === 'srv-gaming-laptop-cleaning' && (
+                <p data-thermal-inbound="gaming-routing" className="mt-4 max-w-3xl rounded-xl border border-cyan-400/30 bg-slate-950/70 p-4 text-sm leading-7 text-slate-200">
+                  This specialist page is for gaming cooling assemblies. For office, student and everyday Windows models, see our{' '}
+                  <Link to="/laptop-cleaning-thermal-paste-kuwait" className="font-bold text-cyan-300 underline underline-offset-4 hover:text-cyan-200">standard Windows laptop cleaning &amp; thermal paste service</Link>.
+                </p>
+              )}
               {entity.id === 'srv-liquid-damage' && (
                 <>
                   <p className="mb-3 max-w-3xl text-xs leading-6 text-slate-400">
@@ -516,7 +522,9 @@ export default function ServiceTemplate({ entityId }: ServiceTemplateProps) {
                 <tbody className="divide-y divide-slate-700/70">
                   {entity.pricingGuide.rows.map((row) => (
                     <tr key={row.category} className="align-top even:bg-slate-950/30">
-                      <th scope="row" className="px-4 py-4 font-semibold text-white">{row.category}</th>
+                      <th scope="row" className="px-4 py-4 font-semibold text-white">{row.category}{isLaptopService && /cooling|thermal/i.test(row.category) && (
+                         <Link to="/laptop-cleaning-thermal-paste-kuwait" data-thermal-inbound="laptop-pricing" className="mt-2 block text-sm font-bold text-cyan-300 underline underline-offset-4 hover:text-cyan-200">Laptop cleaning &amp; thermal paste service</Link>
+                       )}</th>
                       <td className="px-4 py-4 leading-6 text-slate-300">{row.symptoms}</td>
                       <td className="px-4 py-4 font-bold text-cyan-200">{row.startingPrice}</td>
                       <td className="px-4 py-4 leading-6 text-slate-300">{row.typicalTurnaround}</td>

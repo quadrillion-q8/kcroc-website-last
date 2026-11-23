@@ -536,7 +536,7 @@ export const REPAIR_EXPANSION_ENTITIES: Record<string, ServiceEntity | WebPageEn
         canonicalUrl: enUrl, locale: 'en_KW', alternates, ogType: 'website',
         ogImage: item.photo, ogImageAlt: item.title + ' - KCROC technical service image',
         schemaTypes: item.slug === 'laptop-cleaning-thermal-paste-kuwait' ? ['Service', 'WebPage', 'BreadcrumbList', 'LocalBusiness', 'FAQPage'] : ['Service', 'WebPage', 'BreadcrumbList', 'LocalBusiness'],
-        lastModified: stamp,
+        lastModified: item.slug === 'laptop-cleaning-thermal-paste-kuwait' ? '2026-11-24T00:00:00+03:00' : stamp,
         breadcrumbs: [{ name: 'Home', url: '/' }, { name: 'Services', url: '/services' }, { name: item.title, url: '/' + item.slug }] }
     } as ServiceEntity;
     const arPage = {
@@ -548,7 +548,7 @@ export const REPAIR_EXPANSION_ENTITIES: Record<string, ServiceEntity | WebPageEn
         canonicalUrl: arUrl, locale: 'ar_KW', alternates, ogType: 'website',
         ogImage: item.photo, ogImageAlt: item.arabicTitle,
         schemaTypes: item.slug === 'laptop-cleaning-thermal-paste-kuwait' ? ['WebPage', 'BreadcrumbList', 'LocalBusiness', 'FAQPage'] : ['WebPage', 'BreadcrumbList', 'LocalBusiness'],
-        lastModified: stamp,
+        lastModified: item.slug === 'laptop-cleaning-thermal-paste-kuwait' ? '2026-11-24T00:00:00+03:00' : stamp,
         breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }, { name: 'الخدمات', url: '/ar/services' }, { name: item.arabicTitle, url: '/ar/' + item.slug }] }
     } as WebPageEntity;
     return [[service.id, service], [arPage.id, arPage]];

@@ -400,6 +400,14 @@ const ProblemTemplate: React.FC = () => {
             </section>
           )}
 
+          {isOverheating && (
+            <aside data-thermal-inbound="overheating" className="rounded-2xl border border-cyan-500/35 bg-slate-900/75 p-5 sm:p-6">
+              <h2 className="text-lg font-bold text-white">When dust or restricted airflow is the likely cause</h2>
+              <p className="mt-2 text-sm leading-7 text-slate-300">Our separate standard Windows-laptop cleaning page explains the 15–20 KWD published guide range, inspection and condition-based paste service. Gaming laptops follow a different cooling procedure.</p>
+              <Link to="/laptop-cleaning-thermal-paste-kuwait" className="mt-3 inline-flex min-h-11 items-center font-bold text-cyan-300 underline underline-offset-4 hover:text-cyan-200">Everyday laptop dust cleaning and thermal paste service</Link>
+            </aside>
+          )}
+
           {problem.decisionTree && problem.decisionTree.length > 0 && (
             <section aria-labelledby="diagnostic-path" data-problem-editorial-panel="diagnostic-path">
               <div className="mb-6">
