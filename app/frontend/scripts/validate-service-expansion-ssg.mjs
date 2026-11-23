@@ -15,7 +15,7 @@ for (const spec of specs) {
   const en = '/' + spec.slug, ar = '/ar/' + spec.slug;
   for (const [url, lang] of [[en,'en'],[ar,'ar']]) {
     const $ = read(url);
-    const main = $('main[data-repair-expansion="' + spec.slug + '"]');
+    const main = $('main [data-repair-expansion="' + spec.slug + '"]');
     assert.equal(main.length,1,url + ' main template');
     assert.equal(main.find('h1').length,1,url + ' single H1');
     assert.equal(main.attr('dir'),lang === 'ar'?'rtl':'ltr');
