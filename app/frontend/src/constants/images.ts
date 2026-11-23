@@ -29,7 +29,6 @@ export const IMAGES = {
     shopEntrance: { src: "/images/kcroc-al-mullah-complex-basement-shop-entrance.webp", alt: "KCROC shop entrance", width: 800, height: 600 },
     shopInterior: { src: "/images/computer-repair-shop-hawalli-kuwait.webp", alt: "Interior of KCROC shop", width: 1200, height: 800 },
     inventory: { src: "/images/kcroc-laptop-repair-parts-inventory-shelves.webp", alt: "Spare parts inventory", width: 1000, height: 800 },
-    cofounder: { src: "/images/kcroc-team-member-imran-hat-fun.webp", alt: "KCROC Team Member", width: 400, height: 400 },
     technicians: { src: "/images/kcroc-pc-doctor-windows-repair-services.webp", alt: "Technicians at work", width: 1200, height: 800 },
     leadTechnician: { src: "/images/kcroc-lead-technician-laptop-repair-workbench.webp", alt: "Lead technician working", width: 1200, height: 800 },
     pcDoctor: { src: "/images/kcroc-pc-doctor-windows-repair-services.webp", alt: "PC Doctor services", width: 800, height: 600 },
