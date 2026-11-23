@@ -16,6 +16,11 @@ for (const heading of [
   'Official Technical References',
   'Capture an apples-to-apples baseline',
   'Verify the executable and its signer',
+  'What Is Xbox Presence',
+  'Game Bar Not Opening?',
+  'Event Viewer Errors: DCOM Timeout, Event ID 7000',
+  'Service Control Manager Event ID 7000',
+  'Error Editing Value',
 ]) assert.ok(html.includes(heading), 'GameBar guide prerendered heading missing: ' + heading);
 
 const faqQuestions = [
@@ -33,16 +38,35 @@ const faqQuestions = [
   'Does the AllowGameDVR policy apply to Windows 11?',
   'How can I measure frame-time instead of average FPS?',
   'Should I set ActivationType to 0 to disable Presence Writer?',
+  "What is Xbox presence?",
+  "Why do I get \"Access Denied\" or \"Error editing value\" when disabling GameBarPresenceWriter?",
+  "Why don't I see Xbox Game Bar in Windows 11 Settings?",
+  "How do I disable Game Bar completely in Windows 11 safely?",
+  "How do I fix Xbox Game Bar not opening in Windows 11?",
+  "Why is the Windows / Xbox Game Bar FPS counter not working in Windows 11?",
+  "Does the DCOM error 'The server Windows.Gaming.GameBar.PresenceServer.Internal.PresenceWriter did not register with DCOM within the required timeout' cause games to crash?",
 ];
 for (const q of faqQuestions) assert.ok(html.includes(q), 'GameBar FAQ missing from initial HTML: ' + q);
-assert.equal((html.match(/"@type"\s*:\s*"Question"/g) ?? []).length, faqQuestions.length, 'FAQ schema must match the fourteen rendered questions.');
+assert.equal((html.match(/"@type"\s*:\s*"Question"/g) ?? []).length, faqQuestions.length, 'FAQ schema must match the twenty-one rendered questions.');
 
 for (const type of ['TechArticle', 'HowTo', 'BreadcrumbList', 'FAQPage']) {
   assert.ok(html.includes('"@type":"' + type + '"') || html.includes('"@type": "' + type + '"'), 'Missing ' + type + ' structured data.');
 }
 assert.ok(html.includes('"datePublished":"2026-08-23"') || html.includes('"datePublished": "2026-08-23"'), 'Published date missing from TechArticle.');
-assert.ok(html.includes('"dateModified":"2026-11-11"') || html.includes('"dateModified": "2026-11-11"'), 'Review date missing from TechArticle.');
+assert.ok(html.includes('"dateModified":"2026-11-23"') || html.includes('"dateModified": "2026-11-23"'), 'Review date missing from TechArticle.');
 
+const newSectionStart = html.indexOf('<section id="event-viewer-errors"');
+const existingCausesStart = html.indexOf('<section id="other-causes"');
+assert.ok(newSectionStart >= 0 && existingCausesStart > newSectionStart, 'New event-log section must be before original diagnostics');
+assert.ok(html.includes('href="#event-viewer-errors"'), 'Sticky TOC must link to DCOM section');
+for (const id of ['xbox-presence-game-event-parser', 'game-bar-missing-menu', 'game-bar-repair-fps-counter', 'presence-writer-access-denied', 'presence-writer-dcom-10010', 'service-control-manager-7000']) {
+  assert.ok(html.includes('id="' + id + '"'), 'Missing additive troubleshooting subsection: ' + id);
+}
+for (const phrase of ['Performance Log Users', 'Windows.Gaming.GameBar.PresenceServer.Internal.PresenceWriter', 'perfmon /rel', 'Game Event Parser', 'TrustedInstaller']) {
+  assert.ok(html.includes(phrase), 'GameBar guide missing added term: ' + phrase);
+}
+assert.ok(html.includes('November 23, 2026'), 'Updated visible technical review missing');
+assert.equal(faqQuestions.length, 21, 'Preserved 14 FAQs plus 7 additive FAQs required');
 const relatedStart = html.indexOf('<section id="cluster"');
 const referencesStart = html.indexOf('<section id="official-references"', relatedStart);
 assert.ok(relatedStart >= 0 && referencesStart > relatedStart, 'Unified related-guide grid is missing.');
@@ -115,6 +139,6 @@ const pos = sitemap.indexOf(loc);
 assert.ok(pos >= 0, 'Original GameBar guide URL missing from sitemap.');
 const urlStart = sitemap.lastIndexOf('<url>', pos), urlEnd = sitemap.indexOf('</url>', pos);
 const urlEntry = sitemap.slice(urlStart, urlEnd + 6);
-assert.ok(urlEntry.includes('<lastmod>2026-11-10T23:00:00.000Z'), 'Sitemap review date must reflect November 11 in Kuwait time without a future UTC date.');
+assert.ok(urlEntry.includes('<lastmod>2026-11-22T21:00:00.000Z'), 'Sitemap review date must reflect November 23 in Kuwait time.');
 
-console.log('GameBar guide SSG validation passed: nine-step workflow, seven accessible tables, fourteen FAQ answers and schema, six unique related paths, frame-time evidence, signer guidance, official sources, global editorial scope and fresh sitemap metadata.');
+console.log('GameBar guide SSG validation passed: nine-step workflow, seven accessible tables, twenty-one FAQ answers and schema, six unique related paths, frame-time evidence, signer guidance, official sources, global editorial scope and fresh sitemap metadata.');
