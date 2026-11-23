@@ -38,7 +38,9 @@
 }
 [data-kcroc-rollout] [data-kcroc-editorial-panel] :is(article,li,div,figure)[class*="rounded-"][class*="border"]:not([data-kcroc-surface="dark"]):not([data-kcroc-surface="dark"] *):not([data-tower-handover-generator]) {
   border-color: var(--kcroc-rollout-line) !important;
-  background-color: var(--kcroc-rollout-white) !important;
+  /* A background-color override leaves a legacy dark gradient image active.
+     Reset BOTH image and color for explicitly editorial cards. */
+  background: var(--kcroc-rollout-white) !important;
   box-shadow: 0 4px 18px rgba(33,27,22,.045);
 }
 [data-kcroc-rollout] [data-kcroc-editorial-panel] :is(thead,th[scope="col"]) {
@@ -257,9 +259,13 @@
   margin-inline: auto;
   padding: clamp(1.5rem,3vw,2.5rem);
 }
-[data-kcroc-rollout="about"] [data-kcroc-editorial-panel] [class*="rounded-"][class*="border"] {
+/* About cards opt in to their light surface. Do not recolor every bordered
+   descendant: that also changes photograph frames, gradient overlays and icon badges. */
+[data-kcroc-rollout="about"] [data-kcroc-editorial-panel] [data-kcroc-surface="light"] {
   border-color: var(--kcroc-rollout-line) !important;
   background: var(--kcroc-rollout-white) !important;
+  color: var(--kcroc-rollout-ink) !important;
+  color-scheme: light;
 }
 [data-kcroc-rollout="about"] [data-kcroc-editorial-panel] :is(h2,h3,h4) {
   color: var(--kcroc-rollout-ink) !important;
@@ -270,8 +276,12 @@
 [data-kcroc-rollout="about"] [data-kcroc-editorial-panel="about-team"] [class*="bg-gradient-to-t"] .text-cyan-400 {
   color: #efc697 !important;
 }
-[data-kcroc-rollout="about"] [data-kcroc-editorial-panel] :is(p,li,span) {
+[data-kcroc-rollout="about"] [data-kcroc-editorial-panel] :is(p,li) {
   color: var(--kcroc-rollout-muted) !important;
+}
+/* Don't bleach role badges, statistics, links, or labels via a blanket span selector. */
+[data-kcroc-rollout="about"] [data-kcroc-editorial-panel] [data-kcroc-surface="light"] :is(.text-white,.text-slate-100,.text-slate-200,.text-slate-300) {
+  color: var(--kcroc-rollout-ink) !important;
 }
 [data-kcroc-rollout="gallery"] [data-kcroc-editorial-panel] {
   padding: clamp(1.5rem,3vw,2.5rem);
