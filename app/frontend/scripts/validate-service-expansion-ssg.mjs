@@ -47,15 +47,27 @@ for (const spec of specs) {
       assert.equal(main.find('[data-thermal-section="environment"]').length,1,url+' climate context');
       assert.equal(main.find('[data-thermal-section="comparison"] table tbody tr').length,4,url+' comparison rows');
       assert.equal(main.find('[data-thermal-section="practical"]').length,1,url+' models, pricing and pickup');
-      assert.equal(main.find('details[data-kcroc-faq-item]').length,8,url+' eight FAQs');
+      assert.equal(main.find('details[data-kcroc-faq-item]').length,12,url+' twelve FAQs');
+       for(const module of ['precision','handover','scope','preparation','whatsapp-helper']){
+         assert.equal(main.find('[data-thermal-module="'+module+'"]').length,1,url+' additive module '+module);
+       }
+       assert.equal(main.find('[data-thermal-module="precision"] table tbody tr').length,3,url+' thin-laptop engineering comparison');
+       assert.equal(main.find('[data-thermal-module="handover"] article').length,3,url+' handover checks');
+       assert.equal(main.find('[data-thermal-module="scope"] article').length,2,url+' included vs separately quoted scope');
+       assert.equal(main.find('[data-thermal-module="preparation"] ol li').length,3,url+' pickup prep');
+       const safetyLinks=main.find('[data-thermal-module="preparation"] a').toArray().map(e=>$(e).attr('href'));
+       assert.ok(safetyLinks.includes(lang==='ar'?'/ar/laptop-overheating-kuwait':'/laptop-overheating-kuwait'),url+' localized overheating diagnosis link');
+       assert.ok(safetyLinks.includes('/guides/why-is-my-laptop-so-hot'),url+' general overheating guide');
+       assert.equal(main.find('[data-thermal-module="whatsapp-helper"] .kcroc-thermal-fast-example').length,1,url+' model/symptom/pickup brief');
+       assert.equal(main.find('.kcroc-thermal-faq-bridge a').attr('href'),lang==='ar'?'/ar/laptop-repair-kuwait':'/laptop-repair-kuwait',url+' link to broader laptop repair');
       const schema=$('script[type="application/ld+json"]').toArray().flatMap(node=>{
         try {return JSON.parse($(node).html()||'{}')['@graph']||[];} catch {return [];}
       });
       const faqPage=schema.find(node=>node['@type']==='FAQPage');
       assert.ok(faqPage,url+' FAQPage JSON-LD');
-      assert.equal(faqPage.mainEntity.length,8,url+' eight schema QAs');
+      assert.equal(faqPage.mainEntity.length,12,url+' twelve schema QAs');
       const visible=main.find('details[data-kcroc-faq-item]').toArray().map(el=>[$(el).find('summary .kcroc-repair-faq-question').text().trim(),$(el).find('.kcroc-repair-faq-answer p').text().trim()]);
-      for(let i=0;i<8;i++){
+      for(let i=0;i<12;i++){
         assert.equal(faqPage.mainEntity[i].name,visible[i][0],url+' visible question matches schema');
         assert.equal(faqPage.mainEntity[i].acceptedAnswer.text,visible[i][1],url+' visible answer matches schema');
       }
@@ -63,6 +75,8 @@ for (const spec of specs) {
         const service=schema.find(node=>node['@type']==='Service'&&node['@id']?.endsWith('#service'));
         assert.equal(service?.offers?.priceSpecification?.minPrice,15,url+' published price min');
         assert.equal(service?.offers?.priceSpecification?.maxPrice,20,url+' published price max');
+         assert.equal(service?.offers?.availability,undefined,url+' no unverifiable InStock claim');
+         assert.equal(service?.provider?.['@id'],'https://www.computerrepairkuwait.com/#business',url+' existing single Hawalli business entity');
       }
     }
     if(lang==='ar') assert.ok(/[\u0600-\u06ff]/.test(main.find('img').attr('alt')||''),url+' Arabic alt');
@@ -74,4 +88,24 @@ for(const spec of specs){
   assert.equal(enDirectory('[data-service-id="'+spec.id+'"]').attr('href'),'/'+spec.slug);
   assert.equal(arDirectory('[data-service-id="'+spec.id+'"]').attr('href'),'/ar/'+spec.slug);
 }
-console.log('Repair expansion: all six bilingual service pairs, canonicals, hreflang, single-use images, CTAs and FAQs verified.');
+// Inbound discovery: new thermal service must be linked by graph-derived navigation
+// and from genuinely relevant diagnostic and commercial routes.
+const expectedInbound=[
+  ['/', '[data-thermal-inbound="homepage"] a','/laptop-cleaning-thermal-paste-kuwait'],
+  ['/ar', '[data-thermal-inbound="homepage"] a','/ar/laptop-cleaning-thermal-paste-kuwait'],
+  ['/services','[data-thermal-inbound="services-directory"] a','/laptop-cleaning-thermal-paste-kuwait'],
+  ['/ar/services','[data-thermal-inbound="services-directory"] a','/ar/laptop-cleaning-thermal-paste-kuwait'],
+  ['/laptop-overheating-kuwait','[data-thermal-inbound="overheating"] a','/laptop-cleaning-thermal-paste-kuwait'],
+  ['/ar/laptop-overheating-kuwait','[data-thermal-inbound="arabic-overheating"] a','/ar/laptop-cleaning-thermal-paste-kuwait'],
+  ['/laptop-repair-kuwait','[data-thermal-inbound="laptop-pricing"] a','/laptop-cleaning-thermal-paste-kuwait'],
+  ['/gaming-laptop-cleaning-kuwait','[data-thermal-inbound="gaming-routing"] a','/laptop-cleaning-thermal-paste-kuwait']
+];
+for(const [route,selector,expected] of expectedInbound){
+  const $=read(route);
+  assert.equal($(selector).attr('href'),expected,route+' thermal route intent ownership');
+}
+for(const route of ['/','/ar']){
+  const $=read(route);
+  assert.equal($('footer a[href="'+(route==='/ar'?'/ar/laptop-cleaning-thermal-paste-kuwait':'/laptop-cleaning-thermal-paste-kuwait')+'"]').length,1,route+' discoverable footer link');
+}
+console.log('Repair expansion: six bilingual service pairs, twelve thermal FAQs/schema entries, six additive modules, SEO, photos and inbound navigation verified.');
