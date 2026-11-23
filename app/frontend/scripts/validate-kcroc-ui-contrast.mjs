@@ -69,6 +69,19 @@ assert.ok(
   rollout.includes(':not([data-kcroc-surface="dark"]):not([data-kcroc-surface="dark"] *)'),
   'Light cards must exclude dark sections and dark descendants',
 );
+const aboutPage = await read('../src/pages/About.tsx');
+const arabicAbout = await read('../src/pages/ArabicAbout.tsx');
+assert.ok(rollout.includes('background: var(--kcroc-rollout-white) !important;'), 'Editorial cards must clear dark background gradients, not only set a background-color');
+assert.ok(!rollout.includes('[data-kcroc-rollout="about"] [data-kcroc-editorial-panel] :is(p,li,span)'), 'Do not globally mute About badges and statistics by styling all spans');
+assert.ok(!rollout.includes('[data-kcroc-rollout="about"] [data-kcroc-editorial-panel] [class*="rounded-"][class*="border"]'), 'Do not recolor every About image frame and button');
+for (const marker of ['data-kcroc-surface="light"', 'bg-white border border-[#e3dace]', 'Specialist Hardware Expertise']) {
+  assert.ok(aboutPage.includes(marker), 'English About visual regression: '+marker);
+}
+assert.ok(!aboutPage.includes('opacity-20 bg-[url('), 'About hero photograph must not be darkened to 20% opacity');
+assert.ok(!aboutPage.includes('from-slate-800/80 to-slate-900/80'), 'About stats must not combine dark gradients with editorial muted foregrounds');
+assert.ok(aboutPage.includes('member.name}</h3>') && !aboutPage.includes('absolute bottom-6 sm:bottom-8 left-6 sm:left-8'), 'Leadership names must appear outside photo overlays');
+assert.ok((arabicAbout.match(/data-kcroc-surface="light"/g) || []).length >= 3, 'Arabic About cards must opt into the same readable surface contract');
+assert.ok(globalCss.includes('[data-kcroc-surface="light"] :is(.text-white'), 'Explicit light surfaces must not inherit white utility text');
 assert.ok(!rollout.includes('[data-tower-handover-generator] *,'), 'Blanket tower child color override reintroduced');
 assert.ok(!rollout.includes('[aria-labelledby="local-emergency-protocol"] * {'), 'Blanket emergency child color override reintroduced');
 
