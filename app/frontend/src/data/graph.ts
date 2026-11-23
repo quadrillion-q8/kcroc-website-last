@@ -386,7 +386,7 @@ export const rawGraphData: RawGraphData = {
         },
         ogType: 'website',
         schemaTypes: ['WebPage', 'BreadcrumbList', 'FAQPage', 'Service', 'OfferCatalog', 'ImageObject'],
-        lastModified: '2026-10-29T00:00:00+03:00',
+        lastModified: '2026-11-23T21:00:00+03:00',
         breadcrumbs: [
           { name: 'الرئيسية', url: '/' },
           { name: 'تصليح شاشة اللابتوب', url: '/ar/laptop-screen-repair-kuwait' }
@@ -4042,10 +4042,10 @@ export const rawGraphData: RawGraphData = {
       slug: 'laptop-screen-repair-kuwait',
       entityType: 'Service',
       isActive: true,
-      title: 'Laptop Screen Repair Kuwait', primaryKeyword: "laptop screen repair Kuwait", secondaryKeywords: ["laptop screen replacement Kuwait","cracked laptop display repair","laptop black screen diagnosis","laptop screen replacement price Kuwait","laptop display replacement cost Kuwait"],
+      title: 'Laptop Screen Repair Kuwait', primaryKeyword: "laptop screen repair Kuwait", secondaryKeywords: ["laptop screen replacement Kuwait","Windows laptop screen repair cost","laptop screen replacement price Kuwait","laptop display repair cost","laptop LCD replacement","cracked laptop screen repair","HP laptop screen replacement cost","Acer laptop cracked screen","laptop OLED and touchscreen replacement","laptop screen repair near me"],
       iconKey: 'monitor',
-      shortDescription: 'Repair for cracked, black, flickering or lined laptop screens in Kuwait. We check the panel, display cable and backlight before recommending replacement.',
-      description: 'A cracked panel, vertical lines, a black display or flicker does not always mean the panel itself has failed. We check the display panel, cable, connector and backlight path, then confirm compatible options, total price and turnaround before any paid work. Repairs are completed in our Hawalli lab, with free pickup and delivery across Kuwait.',
+      shortDescription: 'Windows laptop screen repair and replacement in Kuwait. Cracked LCD, IPS, OLED and touch displays: we check the panel, cable and backlight first. Screen fitting labour from 30 KWD plus the compatible panel.',
+      description: 'Need to fix a broken laptop screen or find the Windows laptop screen repair cost in Kuwait? Screen replacement labour starts from 30 KWD; the LCD, IPS, OLED or touch panel is priced separately for your exact laptop. For cracks, lines, flicker or a black display, we check the panel, cable, connector and backlight first. KCROC confirms compatible parts and the total price before paid work at our Hawalli lab, with free pickup and delivery across Kuwait.',
       idealCustomer: 'Laptop owners in Kuwait with a cracked, flickering, lined or blank display who want the fault checked and a model-matched repair quote before authorizing work.',
       deviceTypes: [
         'Windows laptops with Full HD and IPS displays',
@@ -4054,7 +4054,7 @@ export const rawGraphData: RawGraphData = {
         '2-in-1 / convertible touchscreen laptops'
       ],
       repairLevel: 'panel-cable-backlight-diagnostics',
-      estimatedTurnaround: 'Same day when the correct panel is available',
+      estimatedTurnaround: 'Confirmed after model and panel-stock check',
       pricing: { startingFrom: 30, currency: 'KWD', quoteRequired: true, displayLabel: 'Labor from 30 KWD + panel' },
       relatedServiceIds: ['srv-laptop', 'srv-hinge', 'srv-macbook-screen'],
       relatedProblemIds: ['problem-cracked-screen', 'problem-black-screen'],
@@ -4084,7 +4084,7 @@ export const rawGraphData: RawGraphData = {
         { id: 'cracked-screen', title: 'Cracked or Shattered Screen', severity: 'high', description: 'Physical impact from a drop or closing the lid on an object. The panel itself is replaced; the surrounding bezel and hinge are checked for related damage at the same time.' },
         { id: 'screen-flicker', title: 'Screen Flickering', severity: 'medium', description: 'Flicker may be linked to the panel, cable or connector, especially if it changes when the lid moves. We test the display path before recommending a part.' },
         { id: 'vertical-lines', title: 'Vertical or Horizontal Lines on Display', severity: 'high', description: 'Lines may come from a damaged panel, cable or connector. We check the connection and display path before quoting a panel replacement.' },
-        { id: 'black-screen-external-works', title: 'Black Screen, But External Monitor Works', severity: 'high', description: 'Points to the panel or its cable rather than the graphics hardware, since the system is clearly still rendering a display signal correctly.' },
+        { id: 'black-screen-external-works', title: 'Black Screen, But External Monitor Works', severity: 'high', description: 'An external display working helps narrow the diagnosis toward the internal panel, cable, connector or backlight path, but it does not by itself prove that every graphics or mainboard circuit is fault-free.' },
         { id: 'backlight-dim', title: 'Screen Very Dim or Backlight Not Working', severity: 'medium', description: 'A faint image can point to a backlight, fuse, driver or panel fault. We test the display path before recommending replacement.' },
         { id: 'discoloration', title: 'Discoloration or Uneven Tint', severity: 'low', description: 'Can be early-stage backlight degradation or a panel manufacturing fault appearing over time; we confirm which before quoting a replacement.' },
         { id: 'touchscreen-unresponsive', title: 'Touchscreen Not Responding', severity: 'medium', description: 'On 2-in-1 and convertible models, the touch digitizer layer can fail independently of the display panel underneath it.' },
@@ -4135,13 +4135,18 @@ export const rawGraphData: RawGraphData = {
       faqs: [
         { id: 'faq-screen-same-day', title: 'Can screen replacement be done the same day?', answer: 'It may be possible if the correct panel is available and collection, diagnosis and fitting timing allow. We confirm part availability and the expected turnaround for your exact model before you approve the quote.' },
         { id: 'faq-flicker-not-crack', title: 'My screen is flickering but not cracked — is that still a screen problem?', answer: 'Often, yes, but not always the panel itself. Flickering that worsens when opening or closing the lid usually points to a worn display cable near the hinge, which we test for before quoting a full panel replacement.' },
-        { id: 'faq-external-monitor-works', title: 'The screen is black but an external monitor works fine — what does that mean?', answer: 'It points to the internal display or its cable rather than the graphics hardware, since the system is clearly still producing a valid display signal.' },
+        { id: 'faq-external-monitor-works', title: 'The screen is black but an external monitor works fine — what does that mean?', answer: 'If an external monitor works, the internal panel, eDP display cable, connector or backlight becomes more likely, but this test alone cannot confirm the failed part or rule out every board fault. We check before quoting.' },
         { id: 'faq-touchscreen-replace', title: 'Can you replace a touchscreen on a 2-in-1 laptop?', answer: 'Yes. The touch digitizer can fail independently of the display panel beneath it, and we diagnose and replace whichever layer is actually at fault.' },
-        { id: 'faq-screen-cost', title: 'How much does laptop screen replacement cost?', answer: 'Screen-replacement labor starts from 30 KWD, with the panel priced separately. The complete price depends on the panel size, resolution, display type and exact laptop model.' },
+        { id: 'faq-screen-cost', title: 'How much does laptop screen replacement cost?', answer: 'In Kuwait, laptop screen replacement labour starts from 30 KWD. That is not a complete screen price: the compatible LCD, IPS, OLED or touch display panel is extra. The final itemized quote depends on laptop model, panel size, resolution, refresh rate, connector and stock. Initial diagnosis and Kuwait-wide pickup are free; we confirm the full cost before paid repair.' },
         { id: 'faq-high-refresh-panels', title: 'Can you replace a 144Hz, 165Hz or 240Hz gaming laptop screen?', answer: 'Potentially, if a compatible panel is available for the exact laptop model. We verify the original panel label, resolution, refresh rate, connector and cable layout before confirming compatibility and price.' },
         { id: 'faq-screen-oem', title: 'Do you offer original-manufacturer or compatible screens?', answer: 'Available options depend on the exact laptop model. We explain the quoted part type and price, including the difference between an original-manufacturer part and a compatible replacement, before you approve the work.' },
+        { id: 'faq-screen-hp-price', title: 'How much does an HP laptop screen replacement cost in Kuwait?', answer: 'HP Pavilion, ProBook, EliteBook, Envy, Spectre, OMEN and Victus models can use different screen assemblies. HP laptop screen replacement labour starts from 30 KWD plus the correctly matched panel, not a fixed all-in price. Send the exact HP product number and a screen photo for a quote.' },
+        { id: 'faq-screen-acer-crack', title: 'Can you fix an Acer laptop cracked screen or a broken Dell or Lenovo display?', answer: 'We assess Acer Aspire, Swift, Nitro, Predator and supported Dell, Lenovo, ASUS and MSI Windows laptops for model-matched cracked screen replacement. A physically broken LCD normally needs panel replacement rather than glass-only fixing. Availability, panel compatibility and total price are confirmed first.' },
+        { id: 'faq-screen-oled-touch-cost', title: 'Do OLED, Full HD and laptop touch screens have different replacement prices?', answer: 'Yes. A standard Full HD LCD/IPS panel, OLED laptop display, gaming high-refresh screen and integrated touch assembly may have different part costs. The 30 KWD starting screen-fitting labour does not include the panel. We verify part number, connector, resolution and touch functions before quoting.' },
+        { id: 'faq-screen-near-me', title: 'Where can I get laptop screen repair near me in Kuwait?', answer: 'KCROC serves Kuwait with free laptop pickup and delivery to its Hawalli workshop at Al Mullah Complex, Ibn Khaldoun Street, Basement Shop 19. We are not claiming separate storefront branches in each service area. Share your area, laptop model and screen symptoms for a confirmed quote.' },
+        { id: 'faq-screen-macbook-route', title: 'Is MacBook screen repair included in this Windows laptop display service?', answer: 'MacBook Air and MacBook Pro display assemblies have their own model-specific requirements. For MacBook screen replacement prices and options, see our separate MacBook screen replacement service page instead of using a Windows laptop part quote.' },
         { id: 'faq-screen-data-safety', title: 'Is my data safe during a screen replacement?', answer: 'A screen replacement normally does not require accessing the storage drive. We focus on the display repair; let us know before collection if you have specific data-handling preferences.' },
-        { id: 'faq-screen-warranty', title: 'Is there a warranty on screen replacements?', answer: 'Yes, 30 days covering the panel and labor.' },
+        { id: 'faq-screen-warranty', title: 'Is there a warranty on screen replacements?', answer: 'The quoted screen replacement includes the applicable 30-day repair warranty; KCROC explains coverage for the fitted panel and labour before you approve the work.' },
         { id: 'faq-edp-connector', title: 'Do 30-pin and 40-pin display connectors fit every laptop?', answer: 'No. Connector pin count alone does not establish compatibility. We verify the exact laptop model, panel part number, cable and supported specifications before confirming a replacement.' },
         { id: 'faq-backlight-vs-panel', title: 'My screen is very dim — do I need a new panel?', answer: 'Not necessarily. A faint image can involve the backlight, fuse, driver or panel. We test the display path before quoting the part or repair that is actually needed.' }
       ],
@@ -4179,7 +4184,7 @@ export const rawGraphData: RawGraphData = {
         canonicalUrl: 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait', locale: 'en_KW', alternates: { 'en-KW': 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait', 'ar-KW': 'https://www.computerrepairkuwait.com/ar/laptop-screen-repair-kuwait', 'x-default': 'https://www.computerrepairkuwait.com/laptop-screen-repair-kuwait' },
         ogType: 'article',
         schemaTypes: ['Service', 'FAQPage'],
-        lastModified: '2026-10-27T00:00:00+03:00'
+        lastModified: '2026-11-23T21:00:00+03:00'
       },
       navigationPriority: 60,
       isFeatured: false,
