@@ -42,7 +42,7 @@ for (const spec of specs) {
     assert.ok(alts.toArray().some(e=>$(e).attr('hreflang')==='en-KW'&&$(e).attr('href')==='https://www.computerrepairkuwait.com'+en),url+' English hreflang');
     assert.ok(main.find('details[data-kcroc-faq-item]').length >= 3,url+' questions');
     if(spec.slug==='laptop-cleaning-thermal-paste-kuwait') {
-      assert.equal(main.find('[data-thermal-guide-price="true"]').length,1,url+' price fact');
+      assert.equal(main.find('[data-thermal-guide-price="true"]').length,1,url+' price fact');\n      assert.equal(main.find('a[data-thermal-book-cta="true"]').attr('href'),lang==='ar'?'/ar/book':'/book',url+' booking CTA destination');
       assert.equal(main.find('[data-thermal-section="environment"]').length,1,url+' climate context');
       assert.equal(main.find('[data-thermal-section="comparison"] table tbody tr').length,4,url+' comparison rows');
       assert.equal(main.find('[data-thermal-section="practical"]').length,1,url+' models, pricing and pickup');
