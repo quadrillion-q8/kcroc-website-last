@@ -17,7 +17,7 @@ const PRICE_GROUPS = [
     items: [
       { name: 'الفحص والتشخيص الأولي', price: 'مجاني', note: 'تقييم أولي بدون التزام بالإصلاح' },
       { name: 'إعادة تثبيت Windows وضبط النظام', price: '10–15 د.ك', note: 'قد يؤدي التثبيت النظيف إلى حذف الملفات والتطبيقات. احتفظ بنسخة احتياطية من ملفاتك المتاحة قبل الموافقة.' },
-      { name: 'إزالة الفيروسات والبرامج الضارة', price: '10–20 د.ك', note: 'معالجة البرمجيات الضارة فقط؛ لا تشمل استعادة الملفات المستقلة أو فك تشفير ملفات الفدية.' },
+      { name: 'تبديل مروحة اللابتوب', price: 'السعر بعد الفحص', note: 'نطابق المروحة مع موديل الجهاز ونتأكد من توفر القطعة قبل عرض السعر.' },
       { name: 'استعادة BIOS أو Firmware', price: '20–40 د.ك', note: 'يعتمد على نوع الجهاز وطريقة الاستعادة' },
     ],
   },
@@ -58,7 +58,7 @@ const PRICE_GROUPS = [
 const PRICE_LINKS: Partial<Record<string, { href: string; label: string }>> = {
   'الفحص والتشخيص الأولي': { href: '/ar/computer-repair-kuwait', label: 'تفاصيل خدمة التصليح والفحص' },
   'إعادة تثبيت Windows وضبط النظام': { href: '/ar/computer-repair-kuwait', label: 'عرض خدمات الكمبيوتر' },
-  'إزالة الفيروسات والبرامج الضارة': { href: '/ar/computer-repair-kuwait', label: 'عرض خدمات الكمبيوتر' },
+  'تبديل مروحة اللابتوب': { href: '/ar/laptop-fan-replacement-kuwait', label: 'تفاصيل تبديل مروحة اللابتوب' }
   'استعادة BIOS أو Firmware': { href: '/guides/ar/bios-uefi-recovery-kuwait', label: 'اقرأ دليل استعادة BIOS وUEFI' },
   'تنظيف اللابتوب وخدمة التبريد': { href: '/ar/laptop-repair-kuwait', label: 'تفاصيل تصليح اللابتوب' },
   'خدمة تبريد Gaming PC': { href: '/ar/gaming-pc-repair-kuwait', label: 'تفاصيل تصليح Gaming PC' },

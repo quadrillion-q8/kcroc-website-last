@@ -15,7 +15,7 @@ export const GLOBAL_FAQS = [
     question: "Do you offer same-day computer repair in Kuwait?",
     // ✅ Fixed: added 11 AM booking condition and excluded complex repairs
     answer:
-      "Yes. Book before 11:00 AM for same-day return on eligible repairs including Windows installation, SSD upgrades, RAM upgrades, virus removal, and standard screen replacements. Complex motherboard and liquid damage repairs require 24–48 hours or more."
+      "Yes. Book before 11:00 AM for same-day return on eligible repairs including Windows installation, SSD upgrades, RAM upgrades and standard screen replacements. Complex motherboard and liquid damage repairs require 24–48 hours or more."
   },
   {
     id: "pickup-time",
@@ -181,7 +181,7 @@ export const GLOBAL_FAQS = [
     category: "Software",
     question: "Can you remove viruses and malware?",
     answer:
-      "Yes. We remove viruses, malware, spyware, and unwanted software while helping improve your computer's security and performance."
+      "No. Virus and malware removal are not KCROC services. We focus on supported computer and laptop hardware repairs, Windows installations, and upgrades. If you suspect infection, consult a qualified cybersecurity provider."
   },
   {
     id: "slow-computer",

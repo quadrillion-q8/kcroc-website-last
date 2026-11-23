@@ -176,7 +176,7 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/ssd-ram-upgrade-kuwait', label: 'SSD & RAM Upgrade Kuwait', description: 'The direct service path for memory upgrades and storage improvements.' },
       { href: '/laptop-running-very-slow', label: 'Laptop Running Very Slow', description: 'For slowdowns where RAM, storage, thermals, or background software may all contribute.' },
       { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'Use broader diagnosis when performance problems are not explained by memory alone.' },
-      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC & GPU Repair Kuwait', description: 'For gaming systems where RAM capacity interacts with GPU, CPU, thermals, or stability.' },
+      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Hardware Repair Kuwait', description: 'For gaming systems where RAM capacity interacts with GPU, CPU, thermals, or stability.' },
     ],
   },
   '10-reasons-why-people-are-dumping-windows-11': {
@@ -185,7 +185,7 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
     links: [
       { href: '/windows-wont-boot-kuwait', label: "Windows Won't Boot", description: 'For startup failures, boot loops, or systems that cannot reach Windows normally.' },
       { href: '/blue-screen-of-death-bsod-fix-kuwait', label: 'BSOD Diagnostic', description: 'For repeated blue-screen crashes and stop-code troubleshooting.' },
-      { href: '/virus-malware-removal-kuwait', label: 'Virus & Malware Removal', description: 'For suspected infection or persistent malicious software symptoms.' },
+      { href: '/computer-repair-kuwait', label: 'Computer Hardware Repair', description: 'For physical PC and laptop faults; KCROC does not provide malware removal.' },
       { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'For hardware or mixed software/hardware faults that need technician diagnosis.' },
     ],
   },
@@ -193,7 +193,7 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
     title: 'Gaming PC problems: related repair paths',
     intro: 'Connect common gaming-PC mistakes to the service or evidence page that matches the resulting hardware symptom.',
     links: [
-      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC & GPU Repair Kuwait', description: 'For instability, crashes, artifacting, GPU, RAM, power, and component-level faults.' },
+      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Hardware Repair Kuwait', description: 'For instability, crashes, artifacting, GPU, RAM, power, and component-level faults.' },
       { href: '/blog/gaming-pc-cooling', label: 'Gaming PC Cooling Guide', description: 'For heat, dust, fan, airflow, and thermal-interface problems.' },
       { href: '/motherboard-repair-kuwait', label: 'Motherboard Repair Kuwait', description: 'For board-level faults caused by power, thermal, or component problems.' },
     ],
@@ -205,7 +205,7 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/blog/laptop-buying-guide-kuwait-2026', label: 'Laptop Buying Guide 2026', description: 'Compare processor, memory, storage, cooling, display and ownership factors before buying a laptop in Kuwait.' },
       { href: '/blog/intel-core-ultra-vs-amd-ryzen-ai', label: 'Intel Core Ultra vs AMD Ryzen AI', description: 'A practical comparison of current Windows processor platforms and the role of AI acceleration.' },
       { href: '/laptop-repair-kuwait', label: 'Laptop Repair Kuwait', description: 'For persistent performance, thermal, power or hardware problems that need technician diagnosis.' },
-      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC & GPU Repair Kuwait', description: 'For GPU, gaming, power, cooling and component-level faults on high-performance systems.' },
+      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Hardware Repair Kuwait', description: 'For GPU, gaming, power, cooling and component-level faults on high-performance systems.' },
     ],
   },
   'gaming-pc-not-turning-on-kuwait': {
@@ -314,7 +314,7 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/guides/shader-compilation-stutter-windows', label: 'Shader Compilation Stutter', description: 'For repeatable first-use hitches caused by rendering pipeline preparation.' },
       { href: '/guides/dpc-latency-gaming-stutter', label: 'DPC Latency & Gaming Stutter', description: 'Advanced driver-timing diagnostics when simpler branches do not explain the hitch.' },
       { href: '/blog/gaming-pc-cooling', label: 'Gaming PC Cooling Guide', description: 'Investigate temperature, airflow, fans and sustained-load performance.' },
-      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC & GPU Repair Kuwait', description: 'For artifacts, crashes, unstable power, thermal faults or hardware instability.' },
+      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Hardware Repair Kuwait', description: 'For artifacts, crashes, unstable power, thermal faults or hardware instability.' },
     ],
   },
   'windows-gaming-performance-stutter-fix': {
@@ -327,7 +327,7 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/guides/shader-compilation-stutter-windows', label: 'Shader Compilation Stutter', description: 'Recognize first-use shader and pipeline compilation hitches and avoid unnecessary cache resets.' },
       { href: '/guides/dpc-latency-gaming-stutter', label: 'DPC Latency & Gaming Stutter', description: 'Advanced driver-latency troubleshooting for repeatable timing-related hitches.' },
       { href: '/blog/gaming-pc-cooling', label: 'Gaming PC Cooling Guide', description: 'Investigate dust, fans, thermal interfaces and sustained-load heat when stutter follows temperature.' },
-      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC & GPU Repair Kuwait', description: 'For crashes, artifacts, unstable power, thermal faults or hardware problems that survive software testing.' },
+      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Hardware Repair Kuwait', description: 'For crashes, artifacts, unstable power, thermal faults or hardware problems that survive software testing.' },
     ],
   },
   'windows-gaming-frame-time-stutter': {
@@ -339,7 +339,7 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/guides/gamebar-presence-writer-fix', label: 'GameBarPresenceWriter.exe Fix', description: 'Use when the hitch is linked specifically to Game Bar or capture activity.' },
       { href: '/guides/shader-compilation-stutter-windows', label: 'Shader Compilation Stutter', description: 'Use when hitches follow first-use effects, materials or game areas.' },
       { href: '/blog/gaming-pc-cooling', label: 'Gaming PC Cooling Guide', description: 'Use when frame-time becomes worse as temperature rises.' },
-      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC & GPU Repair Kuwait', description: 'For persistent stutter with crashes, artifacts, power or hardware symptoms.' },
+      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Hardware Repair Kuwait', description: 'For persistent stutter with crashes, artifacts, power or hardware symptoms.' },
     ],
   },
   'shader-compilation-stutter-windows': {
@@ -351,7 +351,7 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/guides/windows-gaming-frame-time-stutter', label: 'High FPS but Gaming Stutter', description: 'Learn how to distinguish frame-time spikes from an ordinary GPU-bound workload.' },
       { href: '/guides/gamebar-presence-writer-fix', label: 'GameBarPresenceWriter.exe Fix', description: 'Use the dedicated Game Bar branch when the hitch follows overlay or capture activity.' },
       { href: '/guides/dpc-latency-gaming-stutter', label: 'DPC Latency & Gaming Stutter', description: 'Advanced branch when timing-related driver activity is a stronger hypothesis.' },
-      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC & GPU Repair Kuwait', description: 'For stutter accompanied by crashes, artifacts or suspected GPU/VRAM/power instability.' },
+      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Hardware Repair Kuwait', description: 'For stutter accompanied by crashes, artifacts or suspected GPU/VRAM/power instability.' },
     ],
   },
   'dpc-latency-gaming-stutter': {
@@ -363,7 +363,7 @@ const STANDALONE_REPAIR_PATHS: Record<string, { title: string; intro: string; li
       { href: '/guides/windows-gaming-frame-time-stutter', label: 'High FPS but Gaming Stutter', description: 'Confirm that the symptom is a real frame-time problem before tracing drivers.' },
       { href: '/guides/gamebar-presence-writer-fix', label: 'GameBarPresenceWriter.exe Fix', description: 'Test Game Bar and capture activity separately from driver latency.' },
       { href: '/guides/shader-compilation-stutter-windows', label: 'Shader Compilation Stutter', description: 'Check first-use shader and pipeline compilation before blaming drivers.' },
-      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC & GPU Repair Kuwait', description: 'For persistent instability, crashes, artifacts, thermal faults or hardware problems.' },
+      { href: '/gaming-pc-repair-kuwait', label: 'Gaming PC Hardware Repair Kuwait', description: 'For persistent instability, crashes, artifacts, thermal faults or hardware problems.' },
       { href: '/gaming-laptop-cleaning-kuwait', label: 'Gaming Laptop Cleaning', description: 'For dust-restricted airflow, fan noise and temperature-linked throttling on gaming laptops.' },
       { href: '/pricing', label: 'KCROC repair pricing', description: 'Review published starting ranges before requesting a model-specific quote.' },
     ],
@@ -391,7 +391,7 @@ const INTERNAL_LINK_LABELS: Record<string, string> = {
   'https://www.computerrepairkuwait.com/guides/dpc-latency-gaming-stutter':
     'DPC Latency & Gaming Stutter',
   'https://www.computerrepairkuwait.com/gaming-pc-repair-kuwait':
-    'Gaming PC & GPU Repair',
+    'Gaming PC Hardware Repair',
   'https://www.computerrepairkuwait.com/guides/ssd-not-detected-windows-11':
     'SSD Not Detected Diagnostic Guide',
   'https://www.computerrepairkuwait.com/guides/why-is-my-laptop-so-hot':
