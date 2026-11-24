@@ -6,6 +6,42 @@ type Section = { headingId?: string; blocks: ContentBlock[]; visual?: ImageBlock
 // assets; never pick a photograph by keyword or imply a specific customer case.
 const CURATED: Record<string, Record<string, ImageBlock>> = {
   'laptop-temperatures-kuwait-safe-cpu-gpu-temperatures': {
+    'temperature-vs-thermal-limit': {
+      type: 'image',
+      src: "/images/editorial/thermal-limit-vs-operating-range.svg",
+      alt: "Conceptual comparison of a variable operating temperature range and a model-specific thermal limit",
+      caption: "Illustration: practical operating temperatures and manufacturer thermal limits are different concepts.",
+    },
+    'what-temperature-is-too-hot-cpu': {
+      type: 'image',
+      src: "/images/laptop-motherboard-cpu-thermal-paste-ram-slots.webp",
+      alt: "Laptop motherboard showing processor thermal interface and memory slots",
+      caption: "The processor package, thermal interface and cooling design all influence sustained temperatures.",
+    },
+    'what-temperature-is-too-hot-gpu': {
+      type: 'image',
+      src: "/images/gaming-laptop-dual-fan-motherboard-diagnostics.webp",
+      alt: "Gaming laptop internal cooling assembly with two fans",
+      caption: "A dedicated graphics processor shares a compact cooling environment; the exact GPU and laptop design determine the limits.",
+    },
+    'kuwait-climate-laptop-temperatures': {
+      type: 'image',
+      src: "/images/editorial/ambient-air-cooling-path.svg",
+      alt: "Conceptual comparison of cooler and warmer intake air and the laptop heat transfer path",
+      caption: "Illustration: warmer intake air reduces thermal headroom; the temperature change is not fixed.",
+    },
+    'thermal-throttling': {
+      type: 'image',
+      src: "/images/editorial/thermal-throttling-pattern.svg",
+      alt: "Illustrative trend of temperature rising and clock speed falling under sustained load",
+      caption: "Conceptual trend, not benchmark data. Confirm throttling with clock speed, workload and thermal or power-limit indicators.",
+    },
+    'how-to-check-laptop-temperature': {
+      type: 'image',
+      src: "/images/editorial/repeatable-temperature-test.svg",
+      alt: "Four-stage temperature testing workflow from idle to real workload and comparison",
+      caption: "Illustration: repeat the same workload under comparable conditions; record sustained temperature and clocks.",
+    },
     'signs-of-thermal-problem': {
       type: 'image',
       src: '/images/gallery/lenovo-laptop-replacement-cooling-fan-part-number-label-kuwait.webp',
@@ -26,6 +62,24 @@ const CURATED: Record<string, Record<string, ImageBlock>> = {
     },
   },
   'why-is-my-laptop-so-slow': {
+    'startup-apps': {
+      type: 'image',
+      src: "/images/editorial/startup-apps-diagnostic.svg",
+      alt: "Four-step conceptual startup application diagnosis workflow",
+      caption: "Illustration, not a Windows screenshot: identify unnecessary startup applications and compare before and after.",
+    },
+    'disk-usage': {
+      type: 'image',
+      src: "/images/editorial/disk-activity-diagnostic.svg",
+      alt: "Four-step conceptual disk activity troubleshooting workflow",
+      caption: "Illustration: active time, the responsible process, response time and drive health should be interpreted together.",
+    },
+    'storage-health': {
+      type: 'image',
+      src: "/images/editorial/storage-health-diagnostic.svg",
+      alt: "Conceptual storage health diagnostic checklist",
+      caption: "Illustration, not a measured SMART result: protect important files and assess health indicators alongside symptoms.",
+    },
     'ssd-nearly-full': {
       type: 'image',
       src: "/images/micron-m2-nvme-ssd-laptop-storage.webp",

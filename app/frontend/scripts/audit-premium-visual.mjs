@@ -13,7 +13,7 @@ try {
  const page=await browser.newPage();
  for(const width of [390,768,1024,1440,1920]){
   await page.setViewport({width,height:900,deviceScaleFactor:1});
-  for(const [route,expected] of [['/blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures',4],['/blog/why-is-my-laptop-so-slow',7]]){
+  for(const [route,expected] of [['/blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures',10],['/blog/why-is-my-laptop-so-slow',10]]){
    await page.goto(new URL(route,base).href,{waitUntil:'networkidle2',timeout:60000});
    const layout=await page.evaluate(()=>{
     const root=document.querySelector('[data-kcroc-contextual-editorial]');
