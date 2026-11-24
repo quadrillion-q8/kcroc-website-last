@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
+import { load } from 'cheerio';
 
 const articlePath = path.join(process.cwd(), 'dist', 'guides', 'laptop-wont-turn-on.html');
 
@@ -93,7 +94,18 @@ assert.ok(!/href="tel:\+/i.test(html), 'Global no-power guide must not contain a
 assert.ok(!html.includes('Book free pickup'), 'Global no-power guide must not contain a Kuwait pickup CTA');
 assert.ok(!html.includes('Area in Kuwait'), 'Global no-power guide must not request a Kuwait collection area');
 
-const numberedToCCount = (html.match(/class="m-0 list-decimal/g) ?? []).length;
-assert.equal(numberedToCCount, 2, 'Both mobile and desktop tables of contents should use ordered lists');
+// The contextual editorial layout uses one responsive native disclosure.
+const $ = load(html);
+const toc = $('details[data-kcroc-article-toc="true"]');
+assert.equal(toc.length, 1, 'Expected one shared responsive article TOC');
+assert.equal(toc.children('summary').length, 1, 'TOC must have a native summary');
+assert.ok(toc.children('summary').text().includes('On This Page'), 'TOC must retain its visible label');
+assert.equal(toc.children('ol').length, 1, 'TOC must use an ordered list');
+assert.ok(!toc.is('[data-kcroc-faq-item], [data-kcroc-faq-list]'), 'TOC must not be styled as FAQ');
+const tocLinks = toc.children('ol').children('li').children('a').toArray().map(el => $(el).attr('href'));
+const headingIds = $('article [data-kcroc-editorial-panel="article-body"] h2[id]').toArray().map(el => '#' + $(el).attr('id'));
+assert.ok(headingIds.length > 0, 'Article must have anchored headings');
+assert.deepEqual(tocLinks, headingIds, 'TOC must link to every article H2 in reading order');
+assert.equal(new Set(tocLinks).size, tocLinks.length, 'TOC must not contain duplicate anchors');
 
 console.log('Laptop no-power SSG validation passed: canonical URL, 10 visible FAQ answers, TechArticle/FAQPage schema, OEM source links, board-level guidance, ordered ToC and global symptom-triage worksheet are present without local sales CTAs.');
