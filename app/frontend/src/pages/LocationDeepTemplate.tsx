@@ -749,6 +749,7 @@ export default function LocationDeepTemplate() {
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
             {location.localServicesHeading || `Computer Repair Services in ${location.title}`}
           </h2>
+          {['salmiya','kuwait-city','farwaniya','jahra','ahmadi'].includes(location.slug) && (<p data-thermal-inbound="location" className="mb-6 rounded-xl border border-cyan-500/30 bg-slate-900/60 p-4 text-sm leading-7 text-slate-200">Free pickup and delivery from this area; work takes place at our Hawalli laboratory. <Link to="/laptop-cleaning-thermal-paste-kuwait" className="font-bold text-cyan-300 underline underline-offset-4">Laptop dust cleaning &amp; thermal paste service</Link> — 15–20 KWD published guide; thermal paste only when inspection supports it.</p>)}
           {location.localServiceCards?.length ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {location.localServiceCards.map((card, index) => {

@@ -477,6 +477,8 @@ export default function LaptopOverheatingGuide() {
           </div>
         </section>
 
+        <aside data-thermal-inbound="guide" className="mt-6 rounded-xl border border-cyan-500/30 bg-slate-900/60 p-5 text-sm leading-7 text-slate-300">If testing suggests dust-blocked airflow or poor heatsink contact in an everyday Windows laptop, our <Link to="/laptop-cleaning-thermal-paste-kuwait" className="font-bold text-cyan-300 underline underline-offset-4">laptop cleaning and thermal paste service in Kuwait</Link> explains diagnosis-led cleaning and when fresh thermal material is justified. High-power gaming laptops have a separate <Link to="/gaming-laptop-cleaning-kuwait" className="font-bold text-cyan-300 underline underline-offset-4">gaming laptop cleaning</Link> route.</aside>
+
         <section className="mt-16" id="temperature">
           <h2 className="text-3xl font-bold">What temperature is too hot for a laptop?</h2>
           <p className="mt-3 max-w-4xl leading-7 text-slate-300">There is no single temperature number that applies to every laptop. Processor and GPU limits vary by model, while laptop manufacturers also control power targets, fan curves and chassis cooling differently. A short boost near a documented limit is not automatically equivalent to a sustained thermal fault.</p>

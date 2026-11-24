@@ -461,6 +461,7 @@ export default function ArabicHawalliLocationPage() {
             <div><p className="text-sm font-black text-cyan-300">خدمات المختبر</p><h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">تصليح الكمبيوتر واللابتوب في حولي</h2></div>
             <Link to="/ar/pricing" className="inline-flex min-h-11 items-center gap-2 text-sm font-bold text-cyan-300 hover:text-cyan-200">شاهد الأسعار <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
           </div>
+          <p data-thermal-inbound="location" className="mb-5 rounded-xl border border-cyan-500/30 p-4 leading-loose text-slate-200">لابتوبات الدوام والدراسة لها خدمة تبريد مستقلة في مختبرنا بحولي. <Link to="/ar/laptop-cleaning-thermal-paste-kuwait" className="font-bold text-cyan-300 underline underline-offset-4">تنظيف اللابتوب العادي والمعجون الحراري</Link> — سعر إرشادي 15–20 د.ك، وتبديل المعجون حسب الفحص.</p>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => {
               const copy = ARABIC_SERVICES[service.id];

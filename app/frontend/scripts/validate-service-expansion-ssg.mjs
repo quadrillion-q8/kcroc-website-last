@@ -108,4 +108,24 @@ for(const route of ['/','/ar']){
   const $=read(route);
   assert.equal($('footer a[href="'+(route==='/ar'?'/ar/laptop-cleaning-thermal-paste-kuwait':'/laptop-cleaning-thermal-paste-kuwait')+'"]').length,1,route+' discoverable footer link');
 }
+
+const thermal='/laptop-cleaning-thermal-paste-kuwait';
+const contextualRoutes=[
+  ['/guides/why-is-my-laptop-so-hot','guide',thermal],
+  ...['dell','hp','lenovo','asus','acer'].flatMap(brand=>[
+    ['/'+brand+'-laptop-repair-kuwait','brand',thermal],
+    ['/ar/brands/'+brand+'-laptop-repair-kuwait','brand','/ar'+thermal]
+  ]),
+  ...['hawalli','salmiya','kuwait-city','farwaniya','jahra','ahmadi'].flatMap(area=>[
+    ['/location/'+area,'location',thermal],
+    ['/ar/computer-repair-'+area,'location','/ar'+thermal]
+  ])
+];
+for(const [route,kind,target] of contextualRoutes){
+  const $=read(route);
+  const link=$('main [data-thermal-inbound="'+kind+'"] a[href="'+target+'"]');
+  assert.equal(link.length,1,route+' localized contextual thermal route');
+  assert.ok(link.text().trim().length>10,route+' descriptive thermal anchor');
+}
+
 console.log('Repair expansion: six bilingual service pairs, twelve thermal FAQs/schema entries, six additive modules, SEO, photos and inbound navigation verified.');
