@@ -433,6 +433,7 @@ export default function HawalliLocationPage() {
           <h2 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-10 text-white tracking-tight">
             Computer Repair Services in Hawalli
           </h2>
+          <p data-thermal-inbound="location" className="mb-6 rounded-xl border border-cyan-500/30 bg-slate-900/60 p-4 text-sm leading-7 text-slate-200">For ordinary office and study laptops, our Hawalli lab offers a separate cooling service. <Link to="/laptop-cleaning-thermal-paste-kuwait" className="font-bold text-cyan-300 underline underline-offset-4">Laptop dust cleaning &amp; thermal paste service</Link> — 15–20 KWD published guide; thermal paste only when inspection supports it.</p>
           <div className="space-y-9 sm:space-y-12">
             {serviceGroups.map((group) => (
               <section key={group.id} aria-labelledby={`hawalli-service-group-${group.id}`}>
