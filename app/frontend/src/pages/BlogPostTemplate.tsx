@@ -1,6 +1,8 @@
 // File: app/frontend/src/pages/BlogPostTemplate.tsx
 import { Head } from 'vite-react-ssg';
 import './KCROCEditorialRollout.css';
+import './ContextualEditorialLayout.css';
+import { contextualSections } from '../utils/contextualEditorial';
 import React, { useMemo, useState, useEffect, useRef, useCallback } from 'react';
 import { useParams, Navigate, Link, useLocation } from 'react-router-dom';
 import {
@@ -1529,7 +1531,7 @@ export default function BlogPostTemplate() {
         />
       </div>
 
-      <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto px-6 mb-8">
+      <nav aria-label="Breadcrumb" className="max-w-7xl mx-auto px-4 sm:px-6 mb-8">
         <ol className="m-0 flex list-none items-center gap-2 p-0 text-sm text-slate-400 overflow-x-auto pb-2 scrollbar-hide">
           <li className="inline-flex shrink-0 items-center whitespace-nowrap after:ml-2 after:text-slate-600 after:content-['/']"><Link to={ROUTES.HOME} className="hover:text-cyan-400">Home</Link></li>
           <li className="inline-flex shrink-0 items-center whitespace-nowrap after:ml-2 after:text-slate-600 after:content-['/']"><Link to={isNews ? ROUTES.NEWS : isGuide ? ROUTES.GUIDES : ROUTES.BLOG} className="hover:text-cyan-400">{isNews ? "News" : isGuide ? "Guides" : "Blog"}</Link></li>
@@ -1537,94 +1539,11 @@ export default function BlogPostTemplate() {
         </ol>
       </nav>
 
-      <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-[1fr_280px] gap-12">
-        {/* ═══ SIDEBAR (desktop only) ═══ */}
-        <aside className="hidden lg:order-last lg:block">
-          <div className="sticky top-28 space-y-6">
-            {headings.length > 0 && (
-              <nav aria-label="Table of contents" className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
-                <p className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-slate-400 mb-4">
-                  <List size={14} className="text-cyan-400" aria-hidden="true" /> On This Page
-                </p>
-                <ol className="m-0 list-decimal space-y-2.5 pl-8 pr-0 text-sm">
-                  {headings.map(h => (
-                    <li key={h.id}>
-                      <a
-                        href={`#${h.id}`}
-                        className={`block transition-colors ${activeHeadingId === h.id ? 'text-cyan-400 font-bold' : 'text-slate-400 hover:text-slate-200'}`}
-                      >
-                        {h.tocLabel}
-                      </a>
-                    </li>
-                  ))}
-                </ol>
-              </nav>
-            )}
-
-            <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
-              <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-3">Author</p>
-              <p className="font-bold text-white">{post.author}</p>
-              <p className="text-xs text-slate-500 mt-1">{isGlobalNewsArticle ? 'Global technology coverage' : post.slug === 'why-is-my-laptop-so-slow' || post.slug === 'gaming-pc-not-turning-on-kuwait' ? 'KCROC Hardware Engineering Lab · Hawalli, Kuwait' : isGlobalEditorialArticle ? 'KCROC Technical Editorial' : 'Kuwait Computer Repair On Call'}</p>
-            </div>
-
-            {(isGlobalEditorialArticle ? relatedPosts : recentPosts).length > 0 && (
-              <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
-                <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-4">{isGlobalNewsArticle ? 'Related News' : isGlobalEditorialArticle ? 'Related Guides' : 'Recent Articles'}</p>
-                <ul className="space-y-3">
-                  {(isGlobalEditorialArticle ? relatedPosts : recentPosts).map(r => (
-                    <li key={r.slug}>
-                      <Link to={contentRoute(r)} className="text-sm text-slate-300 hover:text-cyan-400 leading-snug line-clamp-2">
-                        {r.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
-              <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-3">Categories</p>
-              <ul className="flex flex-wrap gap-2">
-                {categories.map(([cat, count]) => (
-                  <li key={cat} className="text-xs bg-slate-800/60 text-slate-300 px-2.5 py-1 rounded-full">
-                    {cat} <span className="text-slate-500">({count})</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {!isWindows26H2Guide && !isGlobalEditorialArticle && (
-            <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-2xl p-5 text-center">
-              <p className="font-black text-white mb-1">Free Diagnosis</p>
-              <p className="text-xs text-slate-400 mb-4">Not sure what's wrong? We'll check for free.</p>
-              <a
-                href={waLink}
-                onClick={() => trackLead('Blog_Sidebar_WhatsApp')}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-black font-black py-2.5 rounded-xl mb-2 transition-colors"
-              >
-                <MessageCircle size={16} aria-hidden="true" /> WhatsApp Us
-              </a>
-              {/* Added conditional handling for the phone number */}
-              {business.telephone && (
-                <a
-                  href={`tel:+${business.telephone}`}
-                  onClick={() => trackLead('Blog_Sidebar_Call')}
-                  className="flex items-center justify-center gap-2 border border-slate-700 hover:border-cyan-500/40 text-white font-bold py-2.5 rounded-xl transition-colors"
-                >
-                  <Phone size={16} aria-hidden="true" /> Call Now
-                </a>
-              )}
-            </div>
-            )}
-          </div>
-        </aside>
-
+      <div data-kcroc-contextual-editorial="true" className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col gap-10">
         {/* ═══ MAIN COLUMN ═══ */}
-        <div className="lg:order-first">
-          <article className="max-w-4xl" ref={articleRef}>
-            <header className="mb-12">
+        <div className="min-w-0">
+          <article className="min-w-0" ref={articleRef}>
+            <header className="mb-12 max-w-5xl mx-auto">
               <Link to={isNews ? ROUTES.NEWS : isGuide ? ROUTES.GUIDES : ROUTES.BLOG} className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-8 font-medium">
                 <ArrowLeft size={16} aria-hidden="true" /> Back to {isNews ? "News" : isGuide ? "Guides" : "Blog"}
               </Link>
@@ -1764,14 +1683,14 @@ export default function BlogPostTemplate() {
               )}
 
               {headings.length > 0 && (
-                <details className="lg:hidden mb-10 border border-slate-800 rounded-2xl bg-slate-900/40 open:border-cyan-500/30">
+                <details data-kcroc-article-toc="true" className="mb-10 border rounded-2xl">
                   <summary className="flex items-center gap-2 p-4 font-bold text-white cursor-pointer list-none">
                     <List size={16} className="text-cyan-400" aria-hidden="true" /> On This Page
                   </summary>
                   <ol className="m-0 list-decimal pl-8 pr-4 pb-4 space-y-2">
                     {headings.map(h => (
                       <li key={h.id}>
-                        <a href={`#${h.id}`} className="text-sm text-slate-400 hover:text-cyan-400">{h.tocLabel}</a>
+                        <a href={`#${h.id}`} aria-current={activeHeadingId === h.id ? "location" : undefined} className="text-sm text-slate-400 hover:text-cyan-400">{h.tocLabel}</a>
                       </li>
                     ))}
                   </ol>
@@ -1780,18 +1699,28 @@ export default function BlogPostTemplate() {
 
               {post.richContent && post.richContent.length > 0 ? (
                 <div>
-                  {post.richContent.map((block, index) => {
-                    if (block.type === 'image' && (block.src === post.image || post.richContent!.slice(0, index).some(previous => previous.type === 'image' && previous.src === block.src))) {
-                      return block.caption ? <p key={index} className="my-6 text-sm text-slate-400">{block.caption}</p> : null;
-                    }
+                  {contextualSections(post).map((section, index) => {
+                    const renderBlock = (block: ContentBlock, key: number) => (
+                      <RichBlock
+                        key={key}
+                        block={block}
+                        headingRef={block.type === 'h2' ? setHeadingRef(block.id) : undefined}
+                        currentEntityId={currentGraphEntityId}
+                        excludeEntityIds={isGlobalEditorialArticle ? GLOBAL_EDITORIAL_AUTOLINK_EXCLUSIONS : undefined}
+                      />
+                    );
                     return (
-                    <RichBlock
-                      key={index}
-                      block={block}
-                      headingRef={block.type === 'h2' ? setHeadingRef(block.id) : undefined}
-                      currentEntityId={currentGraphEntityId}
-                      excludeEntityIds={isGlobalEditorialArticle ? GLOBAL_EDITORIAL_AUTOLINK_EXCLUSIONS : undefined}
-                    />
+                      <div key={index} data-kcroc-editorial-section={section.headingId || 'intro'} data-kcroc-contextual-pair={section.visual ? 'true' : undefined}>
+                        <div data-kcroc-section-copy="true">
+                          {section.blocks.map(renderBlock)}
+                        </div>
+                        {section.visual && (
+                          <figure data-kcroc-contextual-visual="true">
+                            <img src={section.visual.src} alt={section.visual.alt} loading="lazy" decoding="async" />
+                            {section.visual.caption && <figcaption>{section.visual.caption}</figcaption>}
+                          </figure>
+                        )}
+                      </div>
                     );
                   })}
                 </div>
@@ -1946,6 +1875,70 @@ export default function BlogPostTemplate() {
             </section>
           )}
         </div>
+
+        {/* Supplementary cards follow the article visually, not an empty fixed rail. */}
+        <aside className="min-w-0" aria-label="More article information">
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
+              <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-3">Author</p>
+              <p className="font-bold text-white">{post.author}</p>
+              <p className="text-xs text-slate-500 mt-1">{isGlobalNewsArticle ? 'Global technology coverage' : post.slug === 'why-is-my-laptop-so-slow' || post.slug === 'gaming-pc-not-turning-on-kuwait' ? 'KCROC Hardware Engineering Lab · Hawalli, Kuwait' : isGlobalEditorialArticle ? 'KCROC Technical Editorial' : 'Kuwait Computer Repair On Call'}</p>
+            </div>
+
+            {(isGlobalEditorialArticle ? relatedPosts : recentPosts).length > 0 && (
+              <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
+                <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-4">{isGlobalNewsArticle ? 'Related News' : isGlobalEditorialArticle ? 'Related Guides' : 'Recent Articles'}</p>
+                <ul className="space-y-3">
+                  {(isGlobalEditorialArticle ? relatedPosts : recentPosts).map(r => (
+                    <li key={r.slug}>
+                      <Link to={contentRoute(r)} className="text-sm text-slate-300 hover:text-cyan-400 leading-snug line-clamp-2">
+                        {r.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
+              <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-3">Categories</p>
+              <ul className="flex flex-wrap gap-2">
+                {categories.map(([cat, count]) => (
+                  <li key={cat} className="text-xs bg-slate-800/60 text-slate-300 px-2.5 py-1 rounded-full">
+                    {cat} <span className="text-slate-500">({count})</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {!isWindows26H2Guide && !isGlobalEditorialArticle && (
+            <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-2xl p-5 text-center">
+              <p className="font-black text-white mb-1">Free Diagnosis</p>
+              <p className="text-xs text-slate-400 mb-4">Not sure what's wrong? We'll check for free.</p>
+              <a
+                href={waLink}
+                onClick={() => trackLead('Blog_Sidebar_WhatsApp')}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-black font-black py-2.5 rounded-xl mb-2 transition-colors"
+              >
+                <MessageCircle size={16} aria-hidden="true" /> WhatsApp Us
+              </a>
+              {/* Added conditional handling for the phone number */}
+              {business.telephone && (
+                <a
+                  href={`tel:+${business.telephone}`}
+                  onClick={() => trackLead('Blog_Sidebar_Call')}
+                  className="flex items-center justify-center gap-2 border border-slate-700 hover:border-cyan-500/40 text-white font-bold py-2.5 rounded-xl transition-colors"
+                >
+                  <Phone size={16} aria-hidden="true" /> Call Now
+                </a>
+              )}
+            </div>
+            )}
+          </div>
+        </aside>
+
 
 
       </div>
