@@ -11,6 +11,27 @@ const failures=[];
 await fs.mkdir('premium-visual-evidence',{recursive:true});
 try {
  const page=await browser.newPage();
+ for(const width of [390,1024,1440]){
+  await page.setViewport({width,height:900,deviceScaleFactor:1});
+  const route='/blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures';
+  await page.goto(new URL(route,base).href,{waitUntil:'networkidle2',timeout:60000});
+  const pairs=await page.$('[data-kcroc-contextual-pair="true"]');
+  if(pairs.length!==4)failures.push({route,width,error:'Expected four contextual pairs',actual:pairs.length});
+  for(const pair of pairs){
+   await pair.evaluate(el=>el.scrollIntoView({block:'start',behavior:'instant'}));
+   const result=await pair.evaluate(async el=>{
+    const copy=el.querySelector('[data-kcroc-section-copy]');
+    const figure=el.querySelector('[data-kcroc-contextual-visual]');
+    const image=figure.querySelector('img');
+    await image.decode().catch(()=>{});
+    const c=copy.getBoundingClientRect(),f=figure.getBoundingClientRect();
+    return {id:el.getAttribute('data-kcroc-editorial-section'),loaded:image.naturalWidth>0,side:f.left>=c.right-2,stack:f.top>=c.bottom-2,overflow:document.documentElement.scrollWidth-innerWidth};
+   });
+   if(!result.loaded||result.overflow>2||(width>=1024?!result.side:!result.stack))failures.push({route,width,result});
+   await page.screenshot({path:'premium-visual-evidence/contextual-'+width+'-'+result.id+'.png'});
+  }
+ }
+
  for(const width of [390,1440]){
   await page.setViewport({width,height:900,deviceScaleFactor:1});
   for(const route of ['/msi-laptop-repair-kuwait','/ar/brands/msi-laptop-repair-kuwait','/location/kuwait-city','/ar/computer-repair-kuwait-city','/pricing','/ar/pricing']){
