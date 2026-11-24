@@ -1540,71 +1540,8 @@ export default function BlogPostTemplate() {
       </nav>
 
       <div data-kcroc-contextual-editorial="true" className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col gap-10">
-        {/* Supplementary cards follow the article visually, not an empty fixed rail. */}
-        <aside className="order-last" aria-label="More article information">
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
-              <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-3">Author</p>
-              <p className="font-bold text-white">{post.author}</p>
-              <p className="text-xs text-slate-500 mt-1">{isGlobalNewsArticle ? 'Global technology coverage' : post.slug === 'why-is-my-laptop-so-slow' || post.slug === 'gaming-pc-not-turning-on-kuwait' ? 'KCROC Hardware Engineering Lab · Hawalli, Kuwait' : isGlobalEditorialArticle ? 'KCROC Technical Editorial' : 'Kuwait Computer Repair On Call'}</p>
-            </div>
-
-            {(isGlobalEditorialArticle ? relatedPosts : recentPosts).length > 0 && (
-              <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
-                <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-4">{isGlobalNewsArticle ? 'Related News' : isGlobalEditorialArticle ? 'Related Guides' : 'Recent Articles'}</p>
-                <ul className="space-y-3">
-                  {(isGlobalEditorialArticle ? relatedPosts : recentPosts).map(r => (
-                    <li key={r.slug}>
-                      <Link to={contentRoute(r)} className="text-sm text-slate-300 hover:text-cyan-400 leading-snug line-clamp-2">
-                        {r.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
-              <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-3">Categories</p>
-              <ul className="flex flex-wrap gap-2">
-                {categories.map(([cat, count]) => (
-                  <li key={cat} className="text-xs bg-slate-800/60 text-slate-300 px-2.5 py-1 rounded-full">
-                    {cat} <span className="text-slate-500">({count})</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {!isWindows26H2Guide && !isGlobalEditorialArticle && (
-            <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-2xl p-5 text-center">
-              <p className="font-black text-white mb-1">Free Diagnosis</p>
-              <p className="text-xs text-slate-400 mb-4">Not sure what's wrong? We'll check for free.</p>
-              <a
-                href={waLink}
-                onClick={() => trackLead('Blog_Sidebar_WhatsApp')}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-black font-black py-2.5 rounded-xl mb-2 transition-colors"
-              >
-                <MessageCircle size={16} aria-hidden="true" /> WhatsApp Us
-              </a>
-              {/* Added conditional handling for the phone number */}
-              {business.telephone && (
-                <a
-                  href={`tel:+${business.telephone}`}
-                  onClick={() => trackLead('Blog_Sidebar_Call')}
-                  className="flex items-center justify-center gap-2 border border-slate-700 hover:border-cyan-500/40 text-white font-bold py-2.5 rounded-xl transition-colors"
-                >
-                  <Phone size={16} aria-hidden="true" /> Call Now
-                </a>
-              )}
-            </div>
-            )}
-          </div>
-        </aside>
-
         {/* ═══ MAIN COLUMN ═══ */}
-        <div className="order-first min-w-0">
+        <div className="min-w-0">
           <article className="min-w-0" ref={articleRef}>
             <header className="mb-12 max-w-5xl mx-auto">
               <Link to={isNews ? ROUTES.NEWS : isGuide ? ROUTES.GUIDES : ROUTES.BLOG} className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-8 font-medium">
@@ -1938,6 +1875,70 @@ export default function BlogPostTemplate() {
             </section>
           )}
         </div>
+
+        {/* Supplementary cards follow the article visually, not an empty fixed rail. */}
+        <aside className="min-w-0" aria-label="More article information">
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
+              <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-3">Author</p>
+              <p className="font-bold text-white">{post.author}</p>
+              <p className="text-xs text-slate-500 mt-1">{isGlobalNewsArticle ? 'Global technology coverage' : post.slug === 'why-is-my-laptop-so-slow' || post.slug === 'gaming-pc-not-turning-on-kuwait' ? 'KCROC Hardware Engineering Lab · Hawalli, Kuwait' : isGlobalEditorialArticle ? 'KCROC Technical Editorial' : 'Kuwait Computer Repair On Call'}</p>
+            </div>
+
+            {(isGlobalEditorialArticle ? relatedPosts : recentPosts).length > 0 && (
+              <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
+                <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-4">{isGlobalNewsArticle ? 'Related News' : isGlobalEditorialArticle ? 'Related Guides' : 'Recent Articles'}</p>
+                <ul className="space-y-3">
+                  {(isGlobalEditorialArticle ? relatedPosts : recentPosts).map(r => (
+                    <li key={r.slug}>
+                      <Link to={contentRoute(r)} className="text-sm text-slate-300 hover:text-cyan-400 leading-snug line-clamp-2">
+                        {r.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5">
+              <p className="text-xs font-black uppercase tracking-wider text-slate-400 mb-3">Categories</p>
+              <ul className="flex flex-wrap gap-2">
+                {categories.map(([cat, count]) => (
+                  <li key={cat} className="text-xs bg-slate-800/60 text-slate-300 px-2.5 py-1 rounded-full">
+                    {cat} <span className="text-slate-500">({count})</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {!isWindows26H2Guide && !isGlobalEditorialArticle && (
+            <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-2xl p-5 text-center">
+              <p className="font-black text-white mb-1">Free Diagnosis</p>
+              <p className="text-xs text-slate-400 mb-4">Not sure what's wrong? We'll check for free.</p>
+              <a
+                href={waLink}
+                onClick={() => trackLead('Blog_Sidebar_WhatsApp')}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-black font-black py-2.5 rounded-xl mb-2 transition-colors"
+              >
+                <MessageCircle size={16} aria-hidden="true" /> WhatsApp Us
+              </a>
+              {/* Added conditional handling for the phone number */}
+              {business.telephone && (
+                <a
+                  href={`tel:+${business.telephone}`}
+                  onClick={() => trackLead('Blog_Sidebar_Call')}
+                  className="flex items-center justify-center gap-2 border border-slate-700 hover:border-cyan-500/40 text-white font-bold py-2.5 rounded-xl transition-colors"
+                >
+                  <Phone size={16} aria-hidden="true" /> Call Now
+                </a>
+              )}
+            </div>
+            )}
+          </div>
+        </aside>
+
 
 
       </div>
