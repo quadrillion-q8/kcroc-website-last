@@ -5381,6 +5381,11 @@ export default function ArabicCommercialPage() {
             <p className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-400">الخدمات المرتبطة</p>
             <h2 id="arabic-services" className="mt-2 text-2xl font-black text-white sm:text-3xl">الخدمة تبدأ من العطل الذي عندك</h2>
           </div>
+          {locationEntity && ['salmiya', 'kuwait-city', 'farwaniya', 'jahra', 'ahmadi'].includes(locationEntity.slug) && (
+            <p data-thermal-inbound="location" className="mb-5 rounded-xl border border-cyan-500/30 p-4 leading-loose text-slate-200">
+              إذا حرارة لابتوبك مرتفعة أو صوت المروحة مزعج، نستلم الجهاز من منطقتك ونفحصه بمختبر حولي. راجع خدمة <Link to="/ar/laptop-cleaning-thermal-paste-kuwait" className="font-bold text-cyan-300 underline underline-offset-4">تنظيف اللابتوب العادي والمعجون الحراري</Link> — السعر الإرشادي 15–20 د.ك، وتبديل المعجون حسب نتيجة الفحص وموافقتك.
+            </p>
+          )}
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => service && (
               <Link data-premium-light-card={locationEntity ? "true" : undefined} key={service.id} to={localizedSitePath(`/${service.slug}`, "ar")} className="group rounded-2xl border border-slate-800 bg-slate-900/45 p-6 hover:border-cyan-500/40">
