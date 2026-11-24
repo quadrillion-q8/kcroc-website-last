@@ -860,6 +860,7 @@ const RichBlock: React.FC<{ block: ContentBlock; headingRef?: (el: HTMLElement |
     case 'comparisonTable':
       return (
         <div
+          data-kcroc-editorial-table="true"
           role="region"
           aria-label={block.title ? `${block.title} table` : "Horizontally scrollable comparison table"}
           tabIndex={0}
@@ -1543,7 +1544,7 @@ export default function BlogPostTemplate() {
         {/* ═══ MAIN COLUMN ═══ */}
         <div className="min-w-0">
           <article className="min-w-0" ref={articleRef}>
-            <header className="mb-12 max-w-5xl mx-auto">
+            <header data-kcroc-editorial-hero="true" className="mb-10 w-full">
               <Link to={isNews ? ROUTES.NEWS : isGuide ? ROUTES.GUIDES : ROUTES.BLOG} className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors mb-8 font-medium">
                 <ArrowLeft size={16} aria-hidden="true" /> Back to {isNews ? "News" : isGuide ? "Guides" : "Blog"}
               </Link>
@@ -1576,8 +1577,8 @@ export default function BlogPostTemplate() {
 
               {post.image && (
                 <figure className="mb-6">
-                  <div className="aspect-[21/9] rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl">
-                    <img src={post.image} alt={post.imageAlt || post.title} className="w-full h-full object-cover opacity-90" loading="eager" decoding="async" />
+                  <div data-kcroc-editorial-hero-image="true" className="aspect-[21/9] rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl">
+                    <img src={post.image} alt={post.imageAlt || post.title} className="w-full h-full object-cover" loading="eager" decoding="async" />
                   </div>
                   {post.imageCaption && (
                     <figcaption className="mt-2 text-center text-xs leading-5 text-slate-500">
@@ -1616,13 +1617,13 @@ export default function BlogPostTemplate() {
               </p>
 
               {post.author === 'Imran Natiq' && (
-                <aside className="mb-10 rounded-2xl border border-slate-800 bg-slate-900/50 p-5 sm:p-6" aria-label="Author and technical review">
+                <aside data-kcroc-editorial-author="true" className="mb-10 rounded-2xl border p-5 sm:p-6" aria-label="Author and technical review">
                   <div className="flex items-start gap-4">
                     {!isGlobalNewsArticle && (
                       <img
                         src={AUTHOR_IMAGE_URL}
                         alt={isGlobalEditorialArticle ? 'Imran Natiq — Hardware Repair Engineer' : 'Imran Natiq — Hardware Repair Engineer at KCROC'}
-                        className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl object-cover border border-slate-800 shrink-0"
+                        className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl object-cover border border-stone-300 shrink-0"
                         loading="lazy"
                         decoding="async"
                       />
