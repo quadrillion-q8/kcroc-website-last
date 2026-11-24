@@ -11,24 +11,38 @@ const failures=[];
 await fs.mkdir('premium-visual-evidence',{recursive:true});
 try {
  const page=await browser.newPage();
- for(const width of [390,1024,1440]){
+ for(const width of [390,768,1024,1440,1920]){
   await page.setViewport({width,height:900,deviceScaleFactor:1});
-  const route='/blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures';
-  await page.goto(new URL(route,base).href,{waitUntil:'networkidle2',timeout:60000});
-  const pairs=await page.$('[data-kcroc-contextual-pair="true"]');
-  if(pairs.length!==4)failures.push({route,width,error:'Expected four contextual pairs',actual:pairs.length});
-  for(const pair of pairs){
-   await pair.evaluate(el=>el.scrollIntoView({block:'start',behavior:'instant'}));
-   const result=await pair.evaluate(async el=>{
-    const copy=el.querySelector('[data-kcroc-section-copy]');
-    const figure=el.querySelector('[data-kcroc-contextual-visual]');
-    const image=figure.querySelector('img');
-    await image.decode().catch(()=>{});
-    const c=copy.getBoundingClientRect(),f=figure.getBoundingClientRect();
-    return {id:el.getAttribute('data-kcroc-editorial-section'),loaded:image.naturalWidth>0,side:f.left>=c.right-2,stack:f.top>=c.bottom-2,overflow:document.documentElement.scrollWidth-innerWidth};
+  for(const [route,expected] of [['/blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures',4],['/blog/why-is-my-laptop-so-slow',7]]){
+   await page.goto(new URL(route,base).href,{waitUntil:'networkidle2',timeout:60000});
+   const layout=await page.evaluate(()=>{
+    const root=document.querySelector('[data-kcroc-contextual-editorial]');
+    if(!root)return {error:'Missing contextual editorial shell'};
+    const hero=root.querySelector('[data-kcroc-editorial-hero]').getBoundingClientRect();
+    const body=root.querySelector('[data-kcroc-editorial-panel="article-body"]').getBoundingClientRect();
+    const centered=[...root.querySelectorAll('[data-kcroc-editorial-section]:not([data-kcroc-contextual-pair]) > [data-kcroc-section-copy]')].map(copy=>{
+     const c=copy.getBoundingClientRect(),p=copy.parentElement.getBoundingClientRect();
+     return Math.abs(c.left+c.width/2-p.left-p.width/2);
+    });
+    const author=root.querySelector('[data-kcroc-editorial-author]');
+    return {alignment:Math.abs(hero.left-body.left)+Math.abs(hero.right-body.right),centered,author:author?getComputedStyle(author).backgroundColor:null,overflow:document.documentElement.scrollWidth-innerWidth};
    });
-   if(!result.loaded||result.overflow>2||(width>=1024?!result.side:!result.stack))failures.push({route,width,result});
-   await page.screenshot({path:'premium-visual-evidence/contextual-'+width+'-'+result.id+'.png'});
+   if(layout.error||layout.alignment>4||layout.centered.some(n=>n>4)||layout.overflow>2||layout.author!=='rgb(255, 255, 255)')failures.push({route,width,layout});
+   const pairs=await page.$$('[data-kcroc-contextual-pair="true"]');
+   if(pairs.length!==expected)failures.push({route,width,error:'Wrong contextual image count',actual:pairs.length,expected});
+   for(const pair of pairs){
+    await pair.evaluate(el=>el.scrollIntoView({block:'start',behavior:'instant'}));
+    const result=await pair.evaluate(async el=>{
+     const copy=el.querySelector('[data-kcroc-section-copy]');
+     const figure=el.querySelector('[data-kcroc-contextual-visual]');
+     const image=figure.querySelector('img');
+     await image.decode().catch(()=>{});
+     const c=copy.getBoundingClientRect(),f=figure.getBoundingClientRect();
+     return {id:el.getAttribute('data-kcroc-editorial-section'),loaded:image.naturalWidth>0,side:f.left>=c.right-2,stack:f.top>=c.bottom-2,imageWidth:f.width,overflow:document.documentElement.scrollWidth-innerWidth};
+    });
+    if(!result.loaded||result.overflow>2||(width>=1024?!result.side:!result.stack)||(width>=1440&&result.imageWidth<300))failures.push({route,width,result});
+    await page.screenshot({path:'premium-visual-evidence/contextual-'+route.split('/').pop()+'-'+width+'-'+result.id+'.png'});
+   }
   }
  }
 
