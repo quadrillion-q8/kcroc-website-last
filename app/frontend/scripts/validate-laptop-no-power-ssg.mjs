@@ -103,7 +103,7 @@ assert.ok(toc.children('summary').text().includes('On This Page'), 'TOC must ret
 assert.equal(toc.children('ol').length, 1, 'TOC must use an ordered list');
 assert.ok(!toc.is('[data-kcroc-faq-item], [data-kcroc-faq-list]'), 'TOC must not be styled as FAQ');
 const tocLinks = toc.children('ol').children('li').children('a').toArray().map(el => $(el).attr('href'));
-const headingIds = $('article [data-kcroc-editorial-panel="article-body"] h2[id]').toArray().map(el => '#' + $(el).attr('id'));
+const headingIds = $('article [data-kcroc-editorial-section] > [data-kcroc-section-copy] > h2[id]').toArray().map(el => '#' + $(el).attr('id'));
 assert.ok(headingIds.length > 0, 'Article must have anchored headings');
 assert.deepEqual(tocLinks, headingIds, 'TOC must link to every article H2 in reading order');
 assert.equal(new Set(tocLinks).size, tocLinks.length, 'TOC must not contain duplicate anchors');
