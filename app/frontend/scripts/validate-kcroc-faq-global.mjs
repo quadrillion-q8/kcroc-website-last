@@ -111,7 +111,11 @@ assert.ok(hawalli.includes('data-hawalli-faq-answer="true"'), 'Hawalli pre-rende
 const ar=byName['pages/ArabicCommercialPage.tsx'];
 assert.ok(!ar.includes("open={slug === 'laptop-charging-port-repair-kuwait'}"), 'Arabic charging-port FAQ auto-expansion regression');
 const blog=byName['pages/BlogPostTemplate.tsx'];
-assert.ok(blog.includes('<details className="lg:hidden'), 'Mobile article TOC must remain a separate non-FAQ disclosure');
-assert.ok(!blog.includes('<details data-kcroc-faq-item="true" className="lg:hidden'), 'Never restyle diagnostic/TOC controls as FAQ cards');
+const toc = blog.match(/<details\b[^>]*\bdata-kcroc-article-toc="true"[^>]*>[\s\S]*?<\/details>/g) ?? [];
+assert.equal(toc.length, 1, 'Shared article TOC must remain a single separate non-FAQ disclosure');
+assert.ok(/<summary\b[^>]*>[\s\S]*?On This Page[\s\S]*?<\/summary>/.test(toc[0]), 'Article TOC must keep its native accessible summary');
+assert.ok(!/data-kcroc-faq-(?:item|list)\b/.test(toc[0]), 'Never restyle article TOC controls as FAQ cards');
+assert.ok(/<ol\b/.test(toc[0]) && /href=\{\x60#\$\{h\.id\}\x60\}/.test(toc[0]), 'Article TOC must keep ordered heading anchor links');
+assert.ok(!/\blg:hidden\b/.test(toc[0]), 'Shared article TOC must remain available on desktop');
 console.log('✅ Global FAQ design policy passed: '+contrasts.length+' measured contrast pairs and '+templates.length+' page/component templates checked.');
 console.log('   Full SSG, SEO/FAQ schema and keyboard/viewport checks still apply.');
