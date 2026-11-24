@@ -1220,8 +1220,8 @@ export const NAV_GRAPH = {
     {
       "id": "news-microsoft-windows-surface-event-october-7-2026",
       "slug": "news/microsoft-windows-surface-event-october-7-2026",
-      "title": "Microsoft Windows & Surface Event 2026: What Launched and What Reviews Reveal",
-      "description": "Updated November 23: What Microsoft announced October 7, what shipped, what reviewers found about Surface Laptop Ultra and RTX Spark, and what buyers should verify.",
+      "title": "Microsoft Windows & Surface Event 2026: RTX Spark, Surface Laptop Ultra and Windows AI Updates",
+      "description": "Updated November 24: Surface event recap, RTX Spark desktop availability, Laptop Ultra reviews, Dev Box firmware and Windows AI.",
       "iconKey": "shield",
       "date": "2026-10-03",
       "primaryKeyword": "Microsoft Surface"
