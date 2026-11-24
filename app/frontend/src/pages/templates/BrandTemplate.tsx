@@ -445,6 +445,12 @@ const BrandTemplate: React.FC = () => {
           </section>
         )}
 
+        {['brand-dell','brand-hp','brand-lenovo','brand-asus','brand-acer'].includes(brand.id) && (
+          <aside data-thermal-inbound="brand" className="mb-10 rounded-2xl border border-cyan-500/30 bg-slate-900/60 p-5 text-sm leading-7 text-slate-200">
+            For everyday {brand.brandName} Windows laptops with noisy fans or restricted airflow, see the <Link to="/laptop-cleaning-thermal-paste-kuwait" className="font-bold text-cyan-300 underline underline-offset-4">{brand.brandName} laptop cleaning and thermal paste service</Link> (15–20 KWD guide; paste only when diagnosis supports it). Gaming models follow the <Link to="/gaming-laptop-cleaning-kuwait" className="font-bold text-cyan-300 underline underline-offset-4">gaming laptop cleaning</Link> route.
+          </aside>
+        )}
+
         {/* Guides + evidence */}
         <section aria-labelledby="lenovo-resources" className="mb-20 grid gap-6 lg:grid-cols-2">
           {relatedResourcePaths.length > 0 && (
