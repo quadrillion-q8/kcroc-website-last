@@ -781,20 +781,20 @@ export const rawGraphData: RawGraphData = {
       slug: 'news/microsoft-windows-surface-event-october-7-2026',
       entityType: 'WebPage',
       isActive: true,
-      title: 'Microsoft Windows & Surface Event 2026: What Launched and What Reviews Reveal',
-      description: "Updated November 23: What Microsoft announced October 7, what shipped, what reviewers found about Surface Laptop Ultra and RTX Spark, and what buyers should verify.",
+      title: 'Microsoft Windows & Surface Event 2026: RTX Spark, Surface Laptop Ultra and Windows AI Updates',
+      description: "Updated November 24: Surface event recap, RTX Spark desktop availability, Laptop Ultra reviews, Dev Box firmware and Windows AI.",
       seo: {
-        title: 'Microsoft Surface Event 2026: What Launched & Reviews',
-        description: "Microsoft's October 7 Surface event: RTX Spark laptop launch, MXC, Surface prices, reviews and Windows 12 status. Updated November 23, 2026.",
+        title: 'Microsoft Surface Event 2026: RTX Spark, Windows AI & Updates',
+        description: "Explore Microsoft's 2026 Surface event, Surface Laptop Ultra reviews, RTX Spark Dev Box, Windows 11 AI, firmware updates, pricing and buying advice.",
         canonicalUrl: 'https://www.computerrepairkuwait.com/news/microsoft-windows-surface-event-october-7-2026',
         ogImage: 'https://www.computerrepairkuwait.com/images/news-microsoft-windows-surface-event-2026-kcroc.webp',
         ogType: 'article',
         schemaTypes: ['WebPage', 'NewsArticle', 'BreadcrumbList', 'Person'],
-        lastModified: '2026-11-23T12:00:00+03:00',
+        lastModified: '2026-11-24T15:00:00+03:00',
         breadcrumbs: [
           { name: 'Home', url: '/' },
           { name: 'News', url: '/news' },
-          { name: 'Microsoft Surface Event 2026: What Launched', url: '/news/microsoft-windows-surface-event-october-7-2026' }
+          { name: 'Microsoft Surface Event 2026: RTX Spark and Windows AI', url: '/news/microsoft-windows-surface-event-october-7-2026' }
         ]
       },
       relatedServiceIds: ['srv-laptop', 'srv-gaming', 'srv-ssd-ram'],

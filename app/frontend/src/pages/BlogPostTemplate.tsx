@@ -1741,11 +1741,11 @@ export default function BlogPostTemplate() {
               {isMicrosoftSurfaceEventNews && (
                 <div className="grid gap-5 md:grid-cols-2 mb-10" aria-label="October 7 event outcome and buying limitations">
                   <aside className="rounded-2xl border border-cyan-500/30 bg-cyan-500/5 p-6" role="note">
-                    <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-400 mb-2">Confirmed · Updated November 23, 2026</p>
+                    <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-400 mb-2">Confirmed · Updated November 24, 2026</p>
                     <ul className="space-y-2 text-sm text-slate-300 leading-relaxed">
                       <li>Surface Laptop Ultra became available starting October 16, with a US$2,599 launch MSRP.</li>
-                      <li>Surface RTX Spark Dev Box entered US-only preorders, with November shipping planned.</li>
-                      <li>NVIDIA announced RTX Spark laptops available October 16 from multiple PC brands.</li>
+                      <li>Microsoft lists November 24 as the Surface RTX Spark Dev Box release date; regional stock and fulfillment still require verification.</li>
+                      <li>NVIDIA announced RTX Spark laptops on October 16 and partner compact desktops on November 18.</li>
                       <li>Microsoft announced hybrid intelligence and general availability of Execution Containers for Windows 11.</li>
                       <li>Windows 12 was not announced at the event.</li>
                     </ul>
