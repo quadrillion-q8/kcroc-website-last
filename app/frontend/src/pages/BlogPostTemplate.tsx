@@ -1029,6 +1029,7 @@ export default function BlogPostTemplate() {
   const [linkCopied, setLinkCopied] = useState(false);
   
   const articleRef = useRef<HTMLElement>(null);
+  const tocRef = useRef<HTMLDetailsElement>(null);
   const headingRefs = useRef<Record<string, HTMLElement | null>>({});
 
   // 🩹 FIX: all hooks in this component now run unconditionally on every
@@ -1068,21 +1069,55 @@ export default function BlogPostTemplate() {
     return () => window.removeEventListener('scroll', onScroll);
   }, [post]);
 
-  // Scroll-spy for the Table of Contents
+  // Keep the single native TOC sticky below the actual header height.
+  // Resolve the most recent heading above the reading line, including when
+  // scrolling upwards or jumping directly to an anchor in a long section.
   useEffect(() => {
-    if (!headings.length) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter(e => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-        if (visible[0]) setActiveHeadingId(visible[0].target.id);
-      },
-      { rootMargin: '-100px 0px -70% 0px' }
-    );
-    headings.forEach(h => {
-      const el = document.getElementById(h.id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
+    const article = articleRef.current;
+    if (!article || !headings.length) return;
+    const header = document.querySelector<HTMLElement>('header[data-premium-chrome="header"]');
+    const toc = tocRef.current;
+    const summary = toc?.querySelector('summary');
+    let frame = 0;
+    let readingLine = 140;
+    const measure = () => {
+      const headerHeight = Math.ceil(header?.getBoundingClientRect().height ?? 80);
+      const summaryHeight = Math.ceil(summary?.getBoundingClientRect().height ?? 52);
+      article.style.setProperty('--kcroc-editorial-sticky-top', `${headerHeight + 8}px`);
+      readingLine = headerHeight + summaryHeight + 28;
+      article.style.setProperty('--kcroc-editorial-reading-line', `${readingLine}px`);
+    };
+    const update = () => {
+      frame = 0;
+      let current: string | null = null;
+      for (const heading of headings) {
+        const el = headingRefs.current[heading.id] ?? document.getElementById(heading.id);
+        if (!el) continue;
+        if (el.getBoundingClientRect().top <= readingLine + 2) current = heading.id;
+        else break;
+      }
+      setActiveHeadingId(current);
+    };
+    const schedule = () => { if (!frame) frame = window.requestAnimationFrame(update); };
+    const resize = () => { measure(); schedule(); };
+    if (toc) toc.open = false;
+    measure();
+    update();
+    const observer = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(resize) : null;
+    if (header) observer?.observe(header);
+    if (summary) observer?.observe(summary);
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', resize);
+    window.addEventListener('hashchange', schedule);
+    return () => {
+      observer?.disconnect();
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', resize);
+      window.removeEventListener('hashchange', schedule);
+      article.style.removeProperty('--kcroc-editorial-sticky-top');
+      article.style.removeProperty('--kcroc-editorial-reading-line');
+    };
   }, [headings]);
 
   const setHeadingRef = useCallback((id: string) => (el: HTMLElement | null) => {
@@ -1684,14 +1719,18 @@ export default function BlogPostTemplate() {
               )}
 
               {headings.length > 0 && (
-                <details data-kcroc-article-toc="true" className="mb-10 border rounded-2xl">
-                  <summary className="flex items-center gap-2 p-4 font-bold text-white cursor-pointer list-none">
-                    <List size={16} className="text-cyan-400" aria-hidden="true" /> On This Page
+                <details ref={tocRef} data-kcroc-article-toc="true" data-kcroc-intelligent-sticky="true" className="mb-10 border rounded-2xl" onKeyDown={event => { if (event.key === "Escape" && event.currentTarget.open) { event.currentTarget.open = false; event.currentTarget.querySelector("summary")?.focus(); } }}>
+                  <summary className="flex items-center gap-3 p-4 font-bold text-white cursor-pointer list-none">
+                    <List size={18} className="shrink-0" aria-hidden="true" />
+                    <span className="shrink-0">On This Page</span>
+                    <span data-kcroc-current-section="true" aria-hidden="true">{headings.find(h => h.id === activeHeadingId)?.tocLabel ?? 'Article navigation'}</span>
+                    <span data-kcroc-reading-percent="true" aria-hidden="true">{progress}%</span>
+                    <ChevronDown size={18} className="shrink-0" aria-hidden="true" />
                   </summary>
                   <ol className="m-0 list-decimal pl-8 pr-4 pb-4 space-y-2">
                     {headings.map(h => (
                       <li key={h.id}>
-                        <a href={`#${h.id}`} aria-current={activeHeadingId === h.id ? "location" : undefined} className="text-sm text-slate-400 hover:text-cyan-400">{h.tocLabel}</a>
+                        <a href={`#${h.id}`} aria-current={activeHeadingId === h.id ? "location" : undefined} onClick={event => { if (!event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey && tocRef.current) { tocRef.current.open = false; } }} className="text-sm text-slate-400 hover:text-cyan-400">{h.tocLabel}</a>
                       </li>
                     ))}
                   </ol>

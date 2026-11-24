@@ -28,7 +28,35 @@ try {
     return {alignment:Math.abs(hero.left-body.left)+Math.abs(hero.right-body.right),centered,author:author?getComputedStyle(author).backgroundColor:null,overflow:document.documentElement.scrollWidth-innerWidth};
    });
    if(layout.error||layout.alignment>4||layout.centered.some(n=>n>4)||layout.overflow>2||layout.author!=='rgb(255, 255, 255)')failures.push({route,width,layout});
-   const pairs=await page.$$('[data-kcroc-contextual-pair="true"]');
+   // Exercise real scrolling and the one native disclosure, not only source markup.
+   const sticky = await page.evaluate(async () => {
+    const toc = document.querySelector('[data-kcroc-intelligent-sticky="true"]');
+    const summary = toc?.querySelector('summary');
+    const header = document.querySelector('header[data-premium-chrome="header"]');
+    const links = [...(toc?.querySelectorAll('ol a[href^="#"]') ?? [])];
+    if (!toc || !summary || !header || links.length < 3) return {error:'Missing sticky navigation or heading links'};
+    const id = links[Math.floor(links.length / 2)].getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if (!target) return {error:'Missing target heading'};
+    const settle = () => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    target.scrollIntoView({block:'start',behavior:'instant'});
+    await settle();
+    const headerBottom = header.getBoundingClientRect().bottom;
+    const top = toc.getBoundingClientRect().top;
+    const targetTop = target.getBoundingClientRect().top;
+    const active = toc.querySelector('[aria-current="location"]')?.getAttribute('href');
+    summary.click();
+    await settle();
+    const ol = toc.querySelector('ol');
+    const listHeight = ol.getBoundingClientRect().height;
+    const listBottom = ol.getBoundingClientRect().bottom;
+    const open = toc.open;
+    summary.click();
+    await settle();
+    return {top,headerBottom,targetTop,active,expected:'#'+id,open,closed:!toc.open,listHeight,listBottom,viewport:innerHeight,position:getComputedStyle(toc).position};
+   });
+   if(sticky.error||sticky.position!=='sticky'||Math.abs(sticky.top-sticky.headerBottom-8)>4||sticky.targetTop<sticky.top+40||sticky.active!==sticky.expected||!sticky.open||!sticky.closed||sticky.listBottom>sticky.viewport||sticky.listHeight<=0)failures.push({route,width,sticky});
+   const pairs=await page.$('[data-kcroc-contextual-pair="true"]');
    if(pairs.length!==expected)failures.push({route,width,error:'Wrong contextual image count',actual:pairs.length,expected});
    for(const pair of pairs){
     await pair.evaluate(el=>el.scrollIntoView({block:'start',behavior:'instant'}));
