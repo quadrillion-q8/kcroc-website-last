@@ -26,6 +26,30 @@ const CURATED: Record<string, Record<string, ImageBlock>> = {
     },
   },
   'why-is-my-laptop-so-slow': {
+    'ssd-nearly-full': {
+      type: 'image',
+      src: "/images/micron-m2-nvme-ssd-laptop-storage.webp",
+      alt: "Micron M.2 NVMe solid-state drive",
+      caption: "An SSD needs sufficient free capacity for normal storage maintenance; the pictured drive is a hardware example, not a measured fault.",
+    },
+    'overheating': {
+      type: 'image',
+      src: "/images/gaming-laptop-dual-fan-motherboard-diagnostics.webp",
+      alt: "Laptop motherboard and dual-fan cooling system",
+      caption: "Thermal throttling is diagnosed by comparing temperature, clock speed and workload, not by appearance alone.",
+    },
+    'power-battery': {
+      type: 'image',
+      src: "/images/dell-laptop-ram-fan-battery-chassis-open.webp",
+      alt: "Dell laptop interior showing the battery and cooling fan",
+      caption: "Power limits can depend on charger recognition, battery condition, firmware and the active power profile.",
+    },
+    'upgrade-repair': {
+      type: 'image',
+      src: "/images/laptop-motherboard-dual-m2-ssd-slots.webp",
+      alt: "Laptop motherboard with two M.2 storage slots",
+      caption: "Verify the exact motherboard and supported storage or memory configuration before purchasing an upgrade.",
+    },
     'ram-pressure': {
       type: 'image',
       src: "/images/blog/windows-11-ram-upgrade-guide.webp",
