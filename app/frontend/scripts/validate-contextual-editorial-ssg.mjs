@@ -22,7 +22,7 @@ assert.equal(new Set(sources).size, sources.length, 'Duplicate article image');
 console.log('Contextual editorial SSG checks passed.');
 
 const phase2 = {
-  'why-is-my-laptop-so-slow': ['ram-pressure', 'old-hdd', 'dust-fan-thermal-paste'],
+  'why-is-my-laptop-so-slow': ['ram-pressure', 'old-hdd', 'dust-fan-thermal-paste', 'ssd-nearly-full', 'overheating', 'power-battery', 'upgrade-repair'],
   'how-often-clean-laptop-replace-thermal-paste-kuwait': ['why-gaming-laptops-need-care', 'dust-cleaning-vs-thermal-paste-gaming', 'safe-gaming-laptop-cleaning'],
   'pc-gaming-graphics-settings-better-visuals-fps': ['when-settings-arent-the-problem'],
   'why-8gb-ram-is-no-longer-enough-for-windows-11': ['where-your-8gb-goes', 'memory-swapping', 'ram-comparison', 'check-upgrade-compatibility'],
@@ -51,4 +51,11 @@ for (const [slug, ids] of Object.entries(phase2)) {
   const sources = doc('article img').map((_, el) => doc(el).attr('src')).get();
   assert.equal(new Set(sources).size, sources.length, page + ' duplicate article image');
 }
-console.log('Phase 2 contextual blog placement checks passed: six priority blogs and 17 required section/image pairs.');
+console.log('Phase 2 contextual blog placement checks passed: six priority blogs and 21 required section/image pairs.');
+
+const slow = load(readFileSync('dist/blog/why-is-my-laptop-so-slow.html', 'utf8'));
+assert.equal(slow('[data-kcroc-editorial-hero]').length, 1, 'Aligned hero');
+assert.equal(slow('[data-kcroc-editorial-hero-image]').length, 1, 'Hero image');
+assert.equal(slow('[data-kcroc-editorial-author]').length, 1, 'Editorial author card');
+assert.ok(slow('[data-kcroc-editorial-table]').length > 0, 'Editorial table surface');
+assert.equal(slow('[data-kcroc-contextual-pair="true"]').length, 7, 'Seven curated slow-laptop placements');
