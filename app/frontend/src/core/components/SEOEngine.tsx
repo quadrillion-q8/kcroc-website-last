@@ -541,6 +541,50 @@ export const SEOEngine: React.FC<SEOEngineProps> = ({ entityId }) => {
               "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0]
             } : undefined
           });
+        } else if (entity.entityType === 'WebPage' && entity.id === 'page-ar-srv-laptop-thermal-service' && isArabicLocale) {
+          // The Arabic twin is a WebPage entity, but describes the same
+          // standard-laptop service and published guide range as the EN route.
+          // Keep one provider identity; no inventory or guaranteed-price claim.
+          const thermal = REPAIR_EXPANSION.find(item => item.id === 'srv-laptop-thermal-service');
+          if (thermal) {
+            schemaGraph.push({
+              "@type": "Service",
+              "@id": `${fullCanonicalUrl}#service`,
+              "url": fullCanonicalUrl,
+              "name": thermal.arabicTitle,
+              "description": thermal.ar.scope + ' ' + thermal.ar.checks.join('. '),
+              "serviceType": "تنظيف الغبار الداخلي وفحص تبريد لابتوبات Windows العادية وتجديد المعجون الحراري حسب الحالة",
+              "inLanguage": "ar-KW",
+              "provider": { "@id": `${business.websiteUrl}/#business` },
+              "areaServed": [
+                { "@type": "Country", "name": "الكويت" },
+                ...baseLocalBusiness.areaServed.filter((area: { '@type': string }) => area['@type'] !== 'Country')
+              ],
+              "availableChannel": {
+                "@type": "ServiceChannel",
+                "serviceUrl": `${business.websiteUrl}/ar/book`,
+                "servicePhone": { "@type": "ContactPoint", "telephone": "+" + business.telephone },
+                "availableLanguage": ["ar", "en"],
+                "serviceLocation": {
+                  "@type": "Place",
+                  "name": "مختبر KCROC لتصليح الكمبيوتر — حولي",
+                  "address": baseLocalBusiness.address
+                }
+              },
+              "offers": {
+                "@type": "Offer",
+                "name": "خدمة تبريد اللابتوب العادي — السعر الإرشادي المنشور",
+                "priceCurrency": "KWD",
+                "priceSpecification": {
+                  "@type": "PriceSpecification",
+                  "priceCurrency": "KWD",
+                  "minPrice": 15,
+                  "maxPrice": 20
+                },
+                "description": "السعر إرشادي حسب الموديل وحالة الجهاز. الفحص الأولي مجاني والسعر النهائي قبل أي شغل مدفوع، والقطع الإضافية لها عرض سعر منفصل."
+              }
+            });
+          }
         } else if (entity.entityType === 'Brand') {
           const brandEntity = entity as BrandEntity;
           schemaGraph.push({

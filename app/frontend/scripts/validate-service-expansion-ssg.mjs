@@ -71,12 +71,23 @@ for (const spec of specs) {
         assert.equal(faqPage.mainEntity[i].name,visible[i][0],url+' visible question matches schema');
         assert.equal(faqPage.mainEntity[i].acceptedAnswer.text,visible[i][1],url+' visible answer matches schema');
       }
-      if(lang==='en') {
-        const service=schema.find(node=>node['@type']==='Service'&&node['@id']?.endsWith('#service'));
-        assert.equal(service?.offers?.priceSpecification?.minPrice,15,url+' published price min');
-        assert.equal(service?.offers?.priceSpecification?.maxPrice,20,url+' published price max');
-         assert.equal(service?.offers?.availability,undefined,url+' no unverifiable InStock claim');
-         assert.equal(service?.provider?.['@id'],'https://www.computerrepairkuwait.com/#business',url+' existing single Hawalli business entity');
+      const services=schema.filter(node=>node['@type']==='Service');
+      assert.equal(services.length,1,url+' exactly one localized Service JSON-LD node');
+      const service=services[0];
+      assert.equal(service['@id'],'https://www.computerrepairkuwait.com'+url+'#service',url+' localized service identity');
+      assert.equal(service.name,main.find('h1').text().trim(),url+' service name matches visible H1');
+      assert.equal(service.inLanguage,lang==='ar'?'ar-KW':'en-KW',url+' service language');
+      assert.equal(service.offers?.priceSpecification?.minPrice,15,url+' published price min');
+      assert.equal(service.offers?.priceSpecification?.maxPrice,20,url+' published price max');
+      assert.equal(service.offers?.priceSpecification?.priceCurrency,'KWD',url+' published currency');
+      assert.equal(service.offers?.availability,undefined,url+' no unverifiable InStock claim');
+      assert.equal(service.provider?.['@id'],'https://www.computerrepairkuwait.com/#business',url+' existing single Hawalli business entity');
+      assert.equal(service.availableChannel?.serviceLocation?.address?.addressCountry,'KW',url+' Kuwait lab');
+      assert.ok(service.areaServed?.some(area=>area['@type']==='Country'&&area.name===(lang==='ar'?'الكويت':'Kuwait')),url+' country-wide service');
+      if(lang==='ar') {
+        assert.ok(/[\u0600-\u06ff]/.test(service.description)&&/[\u0600-\u06ff]/.test(service.serviceType)&&/[\u0600-\u06ff]/.test(service.offers.description),url+' localized service and offer text');
+        assert.equal(service.availableChannel?.serviceUrl,'https://www.computerrepairkuwait.com/ar/book',url+' localized service booking channel');
+        assert.equal(service.availableChannel?.servicePhone?.telephone,'+96555301913',url+' shared service phone');
       }
     }
     if(lang==='ar') assert.ok(/[\u0600-\u06ff]/.test(main.find('img').attr('alt')||''),url+' Arabic alt');

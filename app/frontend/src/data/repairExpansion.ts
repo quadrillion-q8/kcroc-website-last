@@ -547,7 +547,7 @@ export const REPAIR_EXPANSION_ENTITIES: Record<string, ServiceEntity | WebPageEn
       seo: { title: item.slug === 'laptop-cleaning-thermal-paste-kuwait' ? item.arabicTitle + ' | السعر 15–20 د.ك | KCROC' : item.arabicTitle + ' | KCROC', description: item.slug === 'laptop-cleaning-thermal-paste-kuwait' ? 'اللابتوب يسخن أو المروحة صوتها عالي؟ فحص أولي مجاني وتنظيف داخلي ومعجون حراري حسب الحالة بمختبر حولي. السعر الإرشادي 15–20 د.ك واستلام وتوصيل مجاني بالكويت.' : item.ar.intro + ' فحص في مختبر حولي واستلام وتوصيل بالكويت، وعرض سعر قبل التصليح.',
         canonicalUrl: arUrl, locale: 'ar_KW', alternates, ogType: 'website',
         ogImage: item.photo, ogImageAlt: item.arabicTitle,
-        schemaTypes: item.slug === 'laptop-cleaning-thermal-paste-kuwait' ? ['WebPage', 'BreadcrumbList', 'LocalBusiness', 'FAQPage'] : ['WebPage', 'BreadcrumbList', 'LocalBusiness'],
+        schemaTypes: item.slug === 'laptop-cleaning-thermal-paste-kuwait' ? ['Service', 'WebPage', 'BreadcrumbList', 'LocalBusiness', 'FAQPage'] : ['WebPage', 'BreadcrumbList', 'LocalBusiness'],
         lastModified: item.slug === 'laptop-cleaning-thermal-paste-kuwait' ? '2026-11-24T00:00:00+03:00' : stamp,
         breadcrumbs: [{ name: 'الرئيسية', url: '/ar' }, { name: 'الخدمات', url: '/ar/services' }, { name: item.arabicTitle, url: '/ar/' + item.slug }] }
     } as WebPageEntity;
