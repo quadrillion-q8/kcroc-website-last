@@ -1127,19 +1127,68 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     "id": "news-microsoft-windows-surface-event-october-7-2026",
     "slug": "microsoft-windows-surface-event-october-7-2026",
-    "title": "Microsoft Windows & Surface Event 2026: What Launched and What Reviews Reveal",
-    "excerpt": "Updated November 23: Microsoft's October 7 Windows and Surface event brought RTX Spark PCs, Surface Laptop Ultra, agent security and hybrid AI. Here are confirmed launches, independent review trade-offs and buying advice.",
-    "description": "What Microsoft announced October 7, 2026, what shipped, what reviewers found about Surface Laptop Ultra and RTX Spark PCs, and what buyers should check in November.",
+    "title": "Microsoft Windows & Surface Event 2026: RTX Spark, Surface Laptop Ultra and Windows AI Updates",
+    "excerpt": "Updated November 24: Microsoft's October Surface event, RTX Spark laptops and compact desktops, Surface Laptop Ultra reviews, Dev Box firmware fixes and Windows 11 AI.",
+    "description": "Microsoft's October 7 event, November RTX Spark desktop expansion, Surface Dev Box servicing dates and firmware, independent laptop reviews and practical platform comparisons.",
     "content": [
       "Microsoft's October 7, 2026 Windows and Surface event has now happened. Surface Laptop Ultra reached its announced October 16 availability date, NVIDIA launched RTX Spark partner laptops, and Microsoft outlined hybrid intelligence and new protections for AI agents in Windows 11.",
-      "This report was originally published October 3 as a preview and was updated November 23 with Microsoft's and NVIDIA's post-event announcements and published independent reviews. Pricing is in US dollars unless noted; regional sales, configurations and support should be checked locally."
+      "This report was originally published October 3 as a preview and was updated November 23 with Microsoft's and NVIDIA's post-event announcements and published independent reviews. Pricing is in US dollars unless noted; regional sales, configurations and support should be checked locally.",
+      "The November 24 follow-up adds the RTX Spark compact desktop launch, Microsoft's documented Dev Box release and firmware lifecycle, and a practical checklist for comparing AI PCs without assuming identical application support."
     ],
     "richContent": [
       {
         "type": "callout",
         "variant": "info",
-        "title": "Event outcome · Updated November 23, 2026",
+        "title": "Event outcome · Updated November 24, 2026",
         "text": "This is post-event coverage, not an event preview. Microsoft announced Surface Laptop Ultra preorders from US$2,599, Surface RTX Spark Dev Box preorders from US$5,999, Windows hybrid AI initiatives and Microsoft Execution Containers. Surface Laptop Ultra availability began October 16; NVIDIA announced RTX Spark laptops available October 16. Some software experiences have staged rollouts and regional pricing varies."
+      },
+      {
+        "type": "h2",
+        "text": "Latest Microsoft Surface and RTX Spark updates — November 24, 2026",
+        "id": "latest-surface-updates"
+      },
+      {
+        "type": "comparisonTable",
+        "title": "From launch announcement to documented support",
+        "columns": [
+          "Confirmed development",
+          "What to check"
+        ],
+        "rows": [
+          {
+            "feature": "November 18",
+            "values": [
+              "NVIDIA announced RTX Spark compact desktops from ASUS, Dell and MSI.",
+              "Check the exact seller, configuration and delivery date."
+            ]
+          },
+          {
+            "feature": "November 19",
+            "values": [
+              "Microsoft published a Dev Box hardware update addressing several reliability problems.",
+              "Check update history and retest affected workloads."
+            ]
+          },
+          {
+            "feature": "November 24",
+            "values": [
+              "Microsoft lists the Surface RTX Spark Dev Box release date in its firmware lifecycle table.",
+              "This is a documented release date, not proof of stock or delivery in every market."
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Primary sources: NVIDIA desktop announcement: https://blogs.nvidia.com/blog/rtx-spark-desktop-local-ai-available-now/"
+      },
+      {
+        "type": "paragraph",
+        "text": "Microsoft firmware release history: https://support.microsoft.com/en-us/surface/updates/surface-rtx-spark-dev-box-update-history"
+      },
+      {
+        "type": "paragraph",
+        "text": "Microsoft Surface device servicing lifecycle: https://learn.microsoft.com/en-us/surface/surface-driver-firmware-lifecycle-support"
       },
       {
         "type": "h2",
@@ -1278,6 +1327,22 @@ export const BLOG_POSTS: BlogPost[] = [
         ]
       },
       {
+        "type": "paragraph",
+        "text": "Additional independent reviews broaden the evidence: PCWorld assessed the balance of productivity, RTX acceleration and premium pricing; Tom's Hardware disclosed its test configuration; Notebookcheck investigated the display and its behavior. These are separate test units and methods, not a pooled benchmark. Compare the specific review configuration and workload before drawing conclusions."
+      },
+      {
+        "type": "paragraph",
+        "text": "PCWorld independent review: https://www.pcworld.com/article/3258665/microsoft-surface-laptop-ultra-review.html"
+      },
+      {
+        "type": "paragraph",
+        "text": "Tom's Hardware independent review: https://www.tomshardware.com/tablets/microsoft-surface/microsoft-surface-laptop-ultra-rtx-spark-review"
+      },
+      {
+        "type": "paragraph",
+        "text": "Notebookcheck independent review: https://www.notebookcheck.net/Microsoft-Surface-Laptop-Ultra-RTX-Spark-Review-The-2000-nits-Mini-LED-panel-is-a-problem.1426103.0.html"
+      },
+      {
         "type": "h2",
         "text": "Surface RTX Spark Dev Box and partner laptops",
         "id": "devbox-and-partners"
@@ -1293,6 +1358,41 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         "type": "paragraph",
         "text": "RTX Spark combines NVIDIA Grace CPU architecture, Blackwell graphics and unified memory. CUDA and other platform tools may be useful for supported AI and creative workflows, but buyers should still confirm application builds, driver compatibility, gaming performance and workload power limits. Manufacturer background: https://nvidianews.nvidia.com/news/nvidia-microsoft-windows-pcs-agents-rtx-spark"
+      },
+      {
+        "type": "h2",
+        "text": "RTX Spark compact desktops and Surface Dev Box availability",
+        "id": "rtx-spark-desktops"
+      },
+      {
+        "type": "paragraph",
+        "text": "NVIDIA's November 18 announcement expanded RTX Spark to desktop systems from ASUS, Dell and MSI; it identified additional manufacturers and the Surface Dev Box as forthcoming at that point. The desktop platform is intended for local model inference, creative work and development. Check actual memory capacity, supported software and purchase terms for each SKU. Official announcement: https://blogs.nvidia.com/blog/rtx-spark-desktop-local-ai-available-now/"
+      },
+      {
+        "type": "paragraph",
+        "text": "Microsoft's driver and firmware lifecycle table lists Surface Laptop Ultra as released October 16, 2026, with servicing through October 16, 2032, and Surface RTX Spark Dev Box as released November 24, 2026, with servicing through November 24, 2032. These are hardware driver/firmware servicing dates, distinct from Windows OS support and warranty coverage. Source: https://learn.microsoft.com/en-us/surface/surface-driver-firmware-lifecycle-support"
+      },
+      {
+        "type": "paragraph",
+        "text": "NVIDIA's November 19 Ignite follow-up describes expanded model development and deployment across Azure and Windows PCs. Enterprise infrastructure announcements do not imply that every consumer PC receives the same features. Source: https://blogs.nvidia.com/blog/microsoft-ignite-accelerated-computing-azure-windows-pcs/"
+      },
+      {
+        "type": "h2",
+        "text": "Surface RTX Spark Dev Box firmware: November 19 fixes and safe checks",
+        "id": "devbox-firmware-november"
+      },
+      {
+        "type": "paragraph",
+        "text": "Microsoft's November 19 release notes identify fixes for CUDA setup and memory-related failures, USB and audio problems, display/dock behavior and unexpectedly loud fans. The update is listed as system hardware update 200.0.4.0; installed components depend on configuration. This is specific to the Dev Box, not the Surface Laptop Ultra. Source: https://support.microsoft.com/en-us/surface/updates/surface-rtx-spark-dev-box-update-history"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Record the Windows build, update history, exact workload and reproducible symptoms before changing anything.",
+          "Back up important files, use stable power and install applicable updates via the Surface app or Windows Update. Follow Microsoft guidance for any manual package.",
+          "Restart and repeat the original workload under comparable settings. Check whether the issue persists before assuming faulty hardware.",
+          "Microsoft states that Surface firmware updates cannot be uninstalled or rolled back. Do not force firmware intended for another device. Contact Microsoft support if reproducible faults persist."
+        ]
       },
       {
         "type": "h2",
@@ -1321,6 +1421,53 @@ export const BLOG_POSTS: BlogPost[] = [
         "src": "/images/blog/intel-core-ultra-vs-amd-ryzen-ai-comparison.webp",
         "alt": "Illustration comparing contemporary Windows laptop processing platforms",
         "caption": "Compare the entire software and hardware platform, not just AI marketing figures."
+      },
+      {
+        "type": "h2",
+        "text": "Surface Laptop Ultra vs MacBook Pro vs Snapdragon X2: workload fit",
+        "id": "platform-comparison"
+      },
+      {
+        "type": "comparisonTable",
+        "title": "Platform comparison — decision criteria, not a speed ranking",
+        "columns": [
+          "Best reason to consider",
+          "Verify before buying"
+        ],
+        "rows": [
+          {
+            "feature": "Surface Laptop Ultra / RTX Spark",
+            "values": [
+              "Windows and supported CUDA workflows with unified memory.",
+              "Exact model runtime, VRAM/shared-memory requirements, drivers, fan noise and battery results."
+            ]
+          },
+          {
+            "feature": "MacBook Pro / Apple silicon",
+            "values": [
+              "macOS-native creative and development applications; supported Metal workloads.",
+              "Whether essential Windows-only tools, CUDA dependencies or games have supported alternatives."
+            ]
+          },
+          {
+            "feature": "Snapdragon X2 Windows devices",
+            "values": [
+              "Mobile Windows productivity and compatible Arm-native applications.",
+              "Native builds, emulation, peripheral drivers, battery testing and whether the required AI runtime is supported."
+            ]
+          },
+          {
+            "feature": "Conventional x86 Windows PC",
+            "values": [
+              "Established x86 software, drivers and gaming ecosystem; optional discrete GPU.",
+              "GPU memory, power, upgradeability, acoustics and actual application performance."
+            ]
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Do not compare results from different model sizes, quantization levels or precision settings as if they were identical. For local AI, estimate memory for the weights, context/KV cache, runtime and operating system; theoretical peak compute does not establish tokens per second. For games, verify anti-cheat support, native or emulated execution, and frame times at the same resolution and quality settings. For creators, verify plug-ins, codecs and export times with the exact software versions."
       },
       {
         "type": "h2",
@@ -1406,7 +1553,7 @@ export const BLOG_POSTS: BlogPost[] = [
           },
           {
             "question": "Is Surface RTX Spark Dev Box shipping?",
-            "answer": "Microsoft announced US-only Microsoft.com preorders at a $5,999 MSRP and planned November 2026 customer shipments. Check the current store order page for an individual shipping date."
+            "answer": "Microsoft originally planned November customer shipments and now lists November 24, 2026 as the release date in its driver and firmware lifecycle documentation. Actual retailer stock, order fulfillment and regional availability must still be checked."
           },
           {
             "question": "Are RTX Spark laptops good for everyday work or gaming?",
@@ -1419,8 +1566,25 @@ export const BLOG_POSTS: BlogPost[] = [
           {
             "question": "Can I buy Surface Laptop Ultra officially in Kuwait today?",
             "answer": "The October 7 US announcement and NVIDIA's global launch notice do not establish a verified Kuwait seller, SKU, local price or warranty. Check Microsoft's regional site and authorized retailers before purchase."
+          },
+          {
+            "question": "What did the November 19 Surface RTX Spark Dev Box update fix?",
+            "answer": "Microsoft documents corrections for CUDA installation and workload issues, USB peripherals, audio, display behavior and unexpected fan speed. Use the model-specific Surface update history and install only applicable packages."
+          },
+          {
+            "question": "When does Surface RTX Spark Dev Box firmware support end?",
+            "answer": "Microsoft lists November 24, 2032 as the end of driver and firmware servicing. This is not a warranty expiration date or a promise of Windows OS support for every version."
+          },
+          {
+            "question": "Is Surface Laptop Ultra better than MacBook Pro for AI?",
+            "answer": "It depends on your software and model runtime. RTX Spark supports relevant CUDA workflows while Apple silicon uses its own supported frameworks. Compare the same model, quantization, context, throughput, power and price rather than peak marketing figures."
+          },
+          {
+            "question": "Are RTX Spark compact desktops available?",
+            "answer": "NVIDIA announced ASUS, Dell and MSI compact desktop availability on November 18, 2026. Confirm each configuration and regional seller before purchase."
           }
-        ]
+        ],
+        "display": "static"
       },
       {
         "type": "h2",
@@ -1460,20 +1624,36 @@ export const BLOG_POSTS: BlogPost[] = [
         "text": "TechRadar independent review, November 2026: https://www.techradar.com/computing/windows-laptops/microsoft-surface-laptop-ultra"
       },
       {
+        "type": "paragraph",
+        "text": "NVIDIA RTX Spark compact desktop announcement, November 18: https://blogs.nvidia.com/blog/rtx-spark-desktop-local-ai-available-now/"
+      },
+      {
+        "type": "paragraph",
+        "text": "Microsoft Surface Dev Box November 19 update: https://support.microsoft.com/en-us/surface/updates/surface-rtx-spark-dev-box-update-history"
+      },
+      {
+        "type": "paragraph",
+        "text": "Microsoft Surface driver and firmware lifecycle: https://learn.microsoft.com/en-us/surface/surface-driver-firmware-lifecycle-support"
+      },
+      {
+        "type": "paragraph",
+        "text": "NVIDIA Microsoft Ignite follow-up, November 19: https://blogs.nvidia.com/blog/microsoft-ignite-accelerated-computing-azure-windows-pcs/"
+      },
+      {
         "type": "callout",
         "variant": "info",
         "title": "Editorial update history",
-        "text": "Originally published October 3, 2026 as a preview. Revised and technically reviewed November 23, 2026 to distinguish official event announcements, staged software availability, published third-party review findings and unverified country-specific sales claims. No KCROC hands-on benchmark is claimed."
+        "text": "Originally published October 3, 2026 as a preview. Revised and technically reviewed November 23, 2026 to distinguish official event announcements, staged software availability, published third-party review findings and unverified country-specific sales claims. No KCROC hands-on benchmark is claimed. Expanded November 24, 2026 with official desktop launch and firmware/lifecycle documentation, additional independent review references and workload comparisons."
       }
     ],
     "image": "/images/news-microsoft-windows-surface-event-2026-kcroc.webp",
     "discoverImage": "/images/news-microsoft-windows-surface-event-2026-kcroc.webp",
     "imageAlt": "Editorial illustration of AI-enabled Windows laptop hardware and Microsoft Surface announcement",
     "date": "2026-10-03",
-    "technicalReviewDate": "2026-11-23T12:00:00+03:00",
+    "technicalReviewDate": "2026-11-24T15:00:00+03:00",
     "author": "Imran Natiq",
     "category": "Windows & Microsoft",
-    "readTime": "10–12 min read",
+    "readTime": "14–16 min read",
     "tags": [
       "Microsoft Surface",
       "Surface Laptop Ultra",
@@ -1481,10 +1661,14 @@ export const BLOG_POSTS: BlogPost[] = [
       "Windows 11",
       "Hybrid intelligence",
       "Microsoft Execution Containers",
-      "Windows 12"
+      "Windows 12",
+      "Surface RTX Spark Dev Box",
+      "RTX Spark desktops",
+      "Windows on Arm",
+      "Surface firmware"
     ],
-    "seoTitle": "Microsoft Surface Event 2026: What Launched & Reviews",
-    "seoDescription": "Microsoft's October 7 Surface event: RTX Spark laptop launch, MXC, Surface prices, reviews and Windows 12 status. Updated November 23, 2026.",
+    "seoTitle": "Microsoft Surface Event 2026: RTX Spark, Windows AI & Updates",
+    "seoDescription": "Explore Microsoft's 2026 Surface event, Surface Laptop Ultra reviews, RTX Spark Dev Box, Windows 11 AI, firmware updates, pricing and buying advice.",
     "isGlobalGuide": true,
     "contentType": "news"
   },
