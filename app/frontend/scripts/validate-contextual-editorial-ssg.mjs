@@ -6,6 +6,9 @@ const route = 'blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures';
 const $ = load(readFileSync('dist/' + route + '.html', 'utf8'));
 assert.equal($('[data-kcroc-contextual-editorial]').length, 1);
 assert.equal($('[data-kcroc-article-toc]').length, 1);
+assert.equal($('details[data-kcroc-article-toc][data-kcroc-intelligent-sticky="true"]').length, 1, 'One intelligent sticky TOC');
+assert.equal($('[data-kcroc-current-section="true"]').length, 1, 'Current section indicator');
+assert.equal($('[data-kcroc-reading-percent="true"]').length, 1, 'Reading progress indicator');
 assert.equal($('link[rel="canonical"]').attr('href'), 'https://www.computerrepairkuwait.com/' + route);
 for (const id of ['signs-of-thermal-problem','kcroc-thermal-diagnostic-method','causes-of-high-laptop-temperatures','when-to-clean-or-repaste','temperature-vs-thermal-limit','what-temperature-is-too-hot-cpu','what-temperature-is-too-hot-gpu','kuwait-climate-laptop-temperatures','thermal-throttling','how-to-check-laptop-temperature']) {
   const section = $('[data-kcroc-editorial-section="' + id + '"]');
