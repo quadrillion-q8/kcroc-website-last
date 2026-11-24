@@ -25,12 +25,61 @@ const CURATED: Record<string, Record<string, ImageBlock>> = {
       caption: 'Thermal material is renewed when inspection and diagnosis justify it.',
     },
   },
+  'why-is-my-laptop-so-slow': {
+    'ram-pressure': {
+      type: 'image',
+      src: "/images/blog/windows-11-ram-upgrade-guide.webp",
+      alt: "Laptop memory upgrade illustration",
+      caption: "More memory can help when measurements show that the working set exceeds the installed capacity; check upgrade compatibility first.",
+    },
+    'old-hdd': {
+      type: 'image',
+      src: "/images/seagate-1tb-mobile-hdd-laptop-hard-drive.webp",
+      alt: "Seagate 2.5-inch laptop mechanical hard drive",
+      caption: "An older mechanical drive can limit random-access performance even when the processor is lightly loaded.",
+    },
+    'dust-fan-thermal-paste': {
+      type: 'image',
+      src: "/images/laptop-cooling-fins-dust-removal-kuwait-1000.webp",
+      alt: "Dust obstruction in laptop cooling fins",
+      caption: "Inspect the fan and fin stack before deciding whether cleaning or thermal service is justified.",
+    },
+  },
+  'how-often-clean-laptop-replace-thermal-paste-kuwait': {
+    'why-gaming-laptops-need-care': {
+      type: 'image',
+      src: "/images/gaming-laptop-dual-fan-motherboard-diagnostics.webp",
+      alt: "Gaming laptop motherboard with its dual-fan cooling system",
+      caption: "Compact gaming-laptop cooling systems must dissipate heat from sustained CPU and GPU workloads.",
+    },
+    'safe-gaming-laptop-cleaning': {
+      type: 'image',
+      src: "/images/laptop-cooling-fins-dust-removal-kuwait-1000.webp",
+      alt: "Laptop heatsink fins exposed during dust removal",
+      caption: "Internal cleaning is model-specific; the photograph illustrates the cooling path, not a universal disassembly procedure.",
+    },
+  },
+  'pc-gaming-graphics-settings-better-visuals-fps': {
+    'when-settings-arent-the-problem': {
+      type: 'image',
+      src: "/images/gaming-laptop-dual-fan-motherboard-diagnostics.webp",
+      alt: "Gaming laptop motherboard and dual cooling fans",
+      caption: "Cooling and power limits can influence sustained gaming performance independently of graphics presets.",
+    },
+  },
+};
+
+// Explicitly reviewed authored images may be moved out of the middle of a
+// section without changing the order of any surrounding non-image content.
+const PROMOTE_AUTHORED: Record<string, readonly string[]> = {
+  'why-8gb-ram-is-no-longer-enough-for-windows-11': ['where-your-8gb-goes', 'memory-swapping', 'ram-comparison', 'check-upgrade-compatibility'],
+  'gaming-pc-mistakes-kuwait': ['thermal-paste', 'xmp-bios', 'psu-quality', 'placement'],
 };
 
 // Keep every non-image block, heading ID and relative text order unchanged.
-// Only a single trailing authored figure is promoted to the contextual rail;
-// images embedded within a sequence or multiple figures remain in their
-// original positions. A section with no suitable visual uses the full canvas.
+// Single trailing authored figures or explicitly reviewed single figures are
+// promoted to the contextual rail. Unreviewed embedded or multiple figures
+// remain in their original positions. A section with no suitable visual uses the full canvas.
 export function contextualSections(post: BlogPost): Section[] {
   const sections: Section[] = [];
   let current: Section = { blocks: [] };
@@ -54,9 +103,10 @@ export function contextualSections(post: BlogPost): Section[] {
     if (!section.headingId) continue;
     const images = section.blocks.filter((block): block is ImageBlock => block.type === 'image');
     const last = section.blocks[section.blocks.length - 1];
-    if (images.length === 1 && last?.type === 'image' && section.blocks.length > 2) {
-      section.visual = last;
-      section.blocks.pop();
+    const reviewed = PROMOTE_AUTHORED[post.slug]?.includes(section.headingId) ?? false;
+    if (images.length === 1 && (last?.type === 'image' || reviewed) && section.blocks.length > 2) {
+      section.visual = images[0];
+      section.blocks = section.blocks.filter(block => block !== section.visual);
       continue;
     }
     const candidate = CURATED[post.slug]?.[section.headingId];

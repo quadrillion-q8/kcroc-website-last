@@ -20,3 +20,35 @@ for (const id of ['signs-of-thermal-problem','kcroc-thermal-diagnostic-method','
 const sources = $('article img').map((_, el) => $(el).attr('src')).get();
 assert.equal(new Set(sources).size, sources.length, 'Duplicate article image');
 console.log('Contextual editorial SSG checks passed.');
+
+const phase2 = {
+  'why-is-my-laptop-so-slow': ['ram-pressure', 'old-hdd', 'dust-fan-thermal-paste'],
+  'how-often-clean-laptop-replace-thermal-paste-kuwait': ['why-gaming-laptops-need-care', 'dust-cleaning-vs-thermal-paste-gaming', 'safe-gaming-laptop-cleaning'],
+  'pc-gaming-graphics-settings-better-visuals-fps': ['when-settings-arent-the-problem'],
+  'why-8gb-ram-is-no-longer-enough-for-windows-11': ['where-your-8gb-goes', 'memory-swapping', 'ram-comparison', 'check-upgrade-compatibility'],
+  'gaming-pc-mistakes-kuwait': ['thermal-paste', 'xmp-bios', 'psu-quality', 'placement'],
+  'windows-11-100-disk-usage-causes-solutions': ['hdd-vs-ssd', 'ssd-upgrade'],
+};
+for (const [slug, ids] of Object.entries(phase2)) {
+  const page = 'blog/' + slug;
+  const doc = load(readFileSync('dist/' + page + '.html', 'utf8'));
+  assert.equal(doc('link[rel="canonical"]').attr('href'), 'https://www.computerrepairkuwait.com/' + page, page + ' canonical');
+  assert.equal(doc('[data-kcroc-article-toc]').length, 1, page + ' single responsive TOC');
+  for (const id of ids) {
+    const section = doc('[data-kcroc-editorial-section="' + id + '"]');
+    assert.equal(section.length, 1, page + '#' + id);
+    assert.equal(section.attr('data-kcroc-contextual-pair'), 'true', page + '#' + id + ' contextual pair');
+    assert.equal(section.find('h2#' + id).length, 1, page + '#' + id + ' anchor');
+    assert.equal(doc('[data-kcroc-article-toc] a[href="#' + id + '"]').length, 1, page + '#' + id + ' TOC anchor');
+    const figure = section.children('figure[data-kcroc-contextual-visual]');
+    const img = figure.find('img');
+    assert.equal(img.length, 1, page + '#' + id + ' image');
+    assert.ok(img.attr('alt')?.trim(), page + '#' + id + ' alt');
+    assert.equal(img.attr('loading'), 'lazy', page + '#' + id + ' lazy');
+    assert.ok(figure.find('figcaption').text().trim(), page + '#' + id + ' caption');
+    assert.ok(existsSync('dist' + img.attr('src')), page + ' missing local asset ' + img.attr('src'));
+  }
+  const sources = doc('article img').map((_, el) => doc(el).attr('src')).get();
+  assert.equal(new Set(sources).size, sources.length, page + ' duplicate article image');
+}
+console.log('Phase 2 contextual blog placement checks passed: six priority blogs and 17 required section/image pairs.');
