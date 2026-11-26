@@ -6,6 +6,9 @@ for(const [route,count] of Object.entries(routes)){
  const $=load(readFileSync('dist/'+route+'.html','utf8'));
  assert.equal($('[data-kcroc-signature-editorial="4"]').length,1,route);
  assert.equal($('[data-signature-toc]').length,1,route+' navigation');
+ const label=route.includes('/ar/')?'محتويات الدليل':'Table of contents';
+ assert.equal($('[data-signature-toc] > nav[aria-label="'+label+'"]').length,1,route+' labelled navigation landmark');
+ assert.ok($('[data-signature-toc] > nav > ol a[href^="#"]').length>0,route+' anchor navigation');
  assert.equal($('[data-signature-pair]').length,count,route+' pairs');
  assert.equal($('link[rel="canonical"]').attr('href'),'https://www.computerrepairkuwait.com/'+route);
  const sources=[];
