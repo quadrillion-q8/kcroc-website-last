@@ -211,7 +211,16 @@ requireContains(serviceLayoutCss, 'background: #c9804d !important;', 'pages/temp
 requireContains(serviceLayoutCss, 'color: #17110c !important;', 'pages/templates/ServiceTemplateLaptopLayout.css', 'warm service-process markers must use a high-contrast dark foreground.');
 requireContains(serviceLayoutCss, 'border-radius: 1.4rem;', 'pages/templates/ServiceTemplateLaptopLayout.css', 'service hero corners must be restrained rather than oversized.');
 requireContains(globalCss, "--kcroc-arabic-font: 'IBM Plex Sans Arabic', 'Noto Sans Arabic', Tahoma, Arial, sans-serif;", 'index.css', 'Arabic reading areas must use the licensed, self-hosted IBM Plex font stack.');
-requireContains(globalCss, ':lang(ar):is(h1, h2, h3, h4)', 'index.css', 'Arabic headings must not inherit tight Latin tracking and must retain adequate line height.');
+// Match the actual typography contract, rather than a particular :is() spelling
+// that the CSS minifier previously converted into invalid selectors.
+const arabicHeadingRules = [
+  [/h1:lang\(ar\),\s*h2:lang\(ar\),\s*h3:lang\(ar\),\s*h4:lang\(ar\)\s*\{(?=[^}]*\bfont-family:\s*var\(--kcroc-arabic-font\)\s*;)(?=[^}]*\bfont-weight:\s*700\s*;)(?=[^}]*\bletter-spacing:\s*normal\s*;)[^}]*\}/, 'Arabic headings must use the Arabic font, genuine 700 weight and normal tracking.'],
+  [/h1:lang\(ar\),\s*h2:lang\(ar\)\s*\{[^}]*\bline-height:\s*1\.4\s*;[^}]*\}/, 'Arabic H1/H2 must retain 1.4 line height.'],
+  [/h3:lang\(ar\),\s*h4:lang\(ar\)\s*\{[^}]*\bline-height:\s*1\.5\s*;[^}]*\}/, 'Arabic H3/H4 must retain 1.5 line height.'],
+];
+for (const [pattern, description] of arabicHeadingRules) {
+  if (!pattern.test(globalCss)) issues.push('index.css: ' + description);
+}
 requireContains(arabicServicePage, 'aria-labelledby="charging-port-repair-process" data-service-editorial-panel', 'pages/ArabicCommercialPage.tsx', 'Arabic charging-port process section must use the shared editorial panel.');
 requireContains(arabicServicePage, 'aria-labelledby="keyboard-repair-process" data-service-editorial-panel', 'pages/ArabicCommercialPage.tsx', 'Arabic keyboard process section must use the shared editorial panel.');
 requireContains(arabicServicePage, 'aria-labelledby="macbook-screen-process" data-service-editorial-panel', 'pages/ArabicCommercialPage.tsx', 'Arabic MacBook screen process section must use the shared editorial panel.');
