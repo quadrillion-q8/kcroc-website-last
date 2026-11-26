@@ -1,5 +1,7 @@
 // File: app/frontend/src/pages/BiosUefiRecoveryGuide.tsx
 import React from 'react';
+import SignatureGuideTOC from '../components/blog/SignatureGuideTOC';
+import './SignatureEditorial.css';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -151,7 +153,7 @@ const LAST_REVIEWED = 'November 13, 2026';
 
 export default function BiosUefiRecoveryGuide() {
   return (
-    <div className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30">
+    <div data-kcroc-signature-editorial="4" className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30">
 
       {/* Dynamic SEO Engine Integration */}
       <SEOEngine entityId="guide-bios-uefi" />
@@ -185,13 +187,7 @@ export default function BiosUefiRecoveryGuide() {
                   <a href="#manufacturers">OEM Recovery Table</a>
                 </Button>
               </div>
-              <nav aria-label="Table of contents" className="mt-6 flex flex-wrap gap-2">
-                {toc.map((item) => (
-                  <a key={item.id} href={`#${item.id}`} className="rounded-full border border-slate-800 bg-brand-dark/40 px-3 py-1.5 text-[11px] text-slate-400 transition hover:border-cyan-500/50 hover:text-cyan-300">
-                    {item.label}
-                  </a>
-                ))}
-              </nav>
+              
             </div>
 
             <div className="rounded-2xl border border-red-500/30 bg-red-500/5 p-5 shadow-2xl shadow-red-950/20 sm:p-6">
@@ -214,13 +210,14 @@ export default function BiosUefiRecoveryGuide() {
           </div>
         </div>
       </section>
+      <SignatureGuideTOC toc={toc} />
 
       {/* ─── HERO BANNER IMAGE ─── */}
       <section className="px-4 py-8 sm:px-6 sm:py-10 border-b border-slate-800/80">
         <div className="container mx-auto max-w-5xl">
           <figure className="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900">
             <img
-              src={IMAGES.guides.biosHeroMotherboard.src}
+              data-signature-hero-image="true" src={IMAGES.guides.biosHeroMotherboard.src}
               alt={IMAGES.guides.biosHeroMotherboard.alt}
               width={IMAGES.guides.biosHeroMotherboard.width}
               height={IMAGES.guides.biosHeroMotherboard.height}
@@ -492,7 +489,7 @@ export default function BiosUefiRecoveryGuide() {
       {/* ─── FIRMWARE VS HARDWARE ─── */}
       <section id="firmware-vs-hardware" className="scroll-mt-20 py-8 sm:py-20 px-4 sm:px-6 bg-slate-900/30 border-t border-slate-900">
         <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-8 sm:mb-12">
+          <div data-signature-pair="firmware-vs-hardware"><div data-signature-copy="true"><div className="text-center mb-8 sm:mb-12">
             <Badge className={`bg-indigo-500/20 text-indigo-300 border-indigo-500/30 ${sectionBadge}`}>Critical Distinction</Badge>
             <h2 className="text-2xl sm:text-4xl font-bold text-white">BIOS Corruption vs Hardware Failure</h2>
             <p className="text-slate-300 text-xs sm:text-base max-w-2xl mx-auto leading-relaxed mt-3">
@@ -500,7 +497,7 @@ export default function BiosUefiRecoveryGuide() {
             </p>
           </div>
 
-          <figure className="mb-6 sm:mb-8 rounded-2xl overflow-hidden border border-slate-800 bg-slate-900">
+          </div><figure data-signature-visual="true" className="mb-6 sm:mb-8 rounded-2xl overflow-hidden border border-slate-800 bg-slate-900">
             <img
               src={IMAGES.guides.multimeterMotherboardDiag.src}
               alt={IMAGES.guides.multimeterMotherboardDiag.alt}
@@ -513,7 +510,7 @@ export default function BiosUefiRecoveryGuide() {
             <figcaption className="p-3 text-xs text-slate-400 border-t border-slate-800">
               Verifying standby rails (3.3V / 5V) and memory power with a multimeter before diagnosing corrupted firmware.
             </figcaption>
-          </figure>
+          </figure></div>
 
           <div id="post-hardware" className="scroll-mt-24 grid sm:grid-cols-2 gap-4 sm:gap-6">
             <div className="rounded-2xl border border-slate-800 bg-brand-dark/50 p-5 sm:p-6">
@@ -843,7 +840,7 @@ export default function BiosUefiRecoveryGuide() {
       {/* ─── SECURITY LAYER: SECURE BOOT, TPM & BITLOCKER ─── */}
       <section id="security-layer" className="scroll-mt-20 py-8 sm:py-20 px-4 sm:px-6 border-t border-slate-900">
         <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-8 sm:mb-12">
+          <div data-signature-pair="security-layer"><div data-signature-copy="true"><div className="text-center mb-8 sm:mb-12">
             <Badge className={`bg-indigo-500/20 text-indigo-300 border-indigo-500/30 ${sectionBadge}`}>Security Layer</Badge>
             <h2 className="text-2xl sm:text-4xl font-bold text-white">Secure Boot, TPM &amp; BitLocker</h2>
             <p className="text-slate-300 text-xs sm:text-base max-w-2xl mx-auto leading-relaxed mt-3">
@@ -851,7 +848,7 @@ export default function BiosUefiRecoveryGuide() {
             </p>
           </div>
 
-          <figure className="mb-6 sm:mb-8 rounded-2xl overflow-hidden border border-slate-800 bg-slate-900">
+          </div><figure data-signature-visual="true" className="mb-6 sm:mb-8 rounded-2xl overflow-hidden border border-slate-800 bg-slate-900">
             <img
               src={IMAGES.guides.tpmSecurityChip.src}
               alt={IMAGES.guides.tpmSecurityChip.alt}
@@ -864,7 +861,7 @@ export default function BiosUefiRecoveryGuide() {
             <figcaption className="p-3 text-xs text-slate-400 border-t border-slate-800">
               TPM-related security hardware validates the boot chain that BitLocker relies on.
             </figcaption>
-          </figure>
+          </figure></div>
 
           <div className="border border-slate-800 rounded-2xl divide-y divide-slate-800 overflow-hidden">
             <div className="p-5 sm:p-7">

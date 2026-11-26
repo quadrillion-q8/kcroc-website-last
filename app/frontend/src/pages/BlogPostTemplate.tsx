@@ -1575,7 +1575,7 @@ export default function BlogPostTemplate() {
         </ol>
       </nav>
 
-      <div data-kcroc-contextual-editorial="true" className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col gap-10">
+      <div data-kcroc-contextual-editorial="true" data-kcroc-signature-version="4" className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col gap-10">
         {/* ═══ MAIN COLUMN ═══ */}
         <div className="min-w-0">
           <article className="min-w-0" ref={articleRef}>

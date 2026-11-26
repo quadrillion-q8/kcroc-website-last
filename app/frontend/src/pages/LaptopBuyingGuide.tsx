@@ -1,8 +1,10 @@
 // File: app/frontend/src/pages/LaptopBuyingGuide.tsx
 import { Head } from 'vite-react-ssg';
 import React from 'react';
+import SignatureGuideTOC from '../components/blog/SignatureGuideTOC';
+import './SignatureEditorial.css';
 import { Link } from 'react-router-dom';
-import StickyTOC from '@/components/blog/StickyTOC';
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -298,7 +300,7 @@ function DataTable({ headers, rows }: { headers: string[]; rows: string[][] }) {
 ───────────────────────────────────────────────────────────────────────────── */
 export default function LaptopBuyingGuide() {
   return (
-    <div className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30">
+    <div data-kcroc-signature-editorial="4" className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30">
 
       <Head>
         <title>Laptop Buying Guide Kuwait (2026): What the Spec Sheet Won't Tell You</title>
@@ -325,7 +327,7 @@ export default function LaptopBuyingGuide() {
       </Head>
 
       <SchemaMarkup schema={{ '@graph': PILLAR_SCHEMA }} />
-      <StickyTOC toc={toc} />
+      
 
       {/* Breadcrumb */}
       <div className="pt-20 sm:pt-24 px-4 sm:px-6">
@@ -389,7 +391,7 @@ export default function LaptopBuyingGuide() {
         </div>
       </section>
 
-      <figure className="mx-auto mb-10 max-w-5xl overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+      <figure data-signature-hero-image="true" className="mx-auto mb-10 max-w-5xl overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
         <img src="/images/blog/laptop-buying-guide-kuwait-2026.webp"
           alt="Laptop hardware and buying decisions illustrated for the Kuwait 2026 laptop guide"
           loading="eager" fetchPriority="high" decoding="async"
@@ -432,30 +434,7 @@ export default function LaptopBuyingGuide() {
         </div>
       </section>
 
-      {/* Table of Contents */}
-      <section className="pb-8 sm:pb-16 px-4 sm:px-6">
-        <div className="container mx-auto max-w-4xl">
-          <Card className="bg-slate-900/50 border-slate-800 backdrop-blur-sm">
-            <CardContent className="p-4 sm:p-6">
-              <h2 className="text-xs sm:text-sm font-bold text-cyan-400 uppercase tracking-wide mb-3 sm:mb-4 flex items-center gap-2">
-                <BookOpen className="w-4 h-4" /> Table of Contents
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5">
-                {toc.map((item) => (
-                  <a
-                    key={item.id}
-                    href={`#${item.id}`}
-                    className="flex items-center gap-1.5 text-xs sm:text-sm text-slate-300 hover:text-cyan-400 transition-colors py-1"
-                  >
-                    <ChevronRight className="w-3 h-3 flex-shrink-0 text-slate-600" />
-                    {item.label}
-                  </a>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+      <SignatureGuideTOC toc={toc} />
 
       {/* Understanding Modern Laptop Hardware */}
       <section className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/30 border-y border-slate-800">
@@ -582,7 +561,7 @@ export default function LaptopBuyingGuide() {
       <section className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/30 border-y border-slate-800">
         <div className="container mx-auto max-w-4xl">
           <SectionHeading id="cpu-guide" kicker="Component Deep Dive" title="CPU Guide" icon={Cpu} />
-          <Prose>
+          <div data-signature-pair="cpu-guide"><div data-signature-copy="true"><Prose>
             <p>
               Every laptop we take apart in the lab has the same story on the spec sheet and a different one on
               the board. Salespeople sell CPU generation and core count; what actually decides whether a laptop
@@ -626,7 +605,7 @@ export default function LaptopBuyingGuide() {
               limit. The letter at the end of the model number tells the manufacturer how much power, and
               therefore how much sustained performance, that specific chip is allowed to draw.
             </p>
-          </Prose>
+          </Prose></div><figure data-signature-visual="true"><img src="/images/blog/intel-core-ultra-vs-amd-ryzen-ai-comparison.webp" alt="Illustrative processor comparison" loading="lazy" decoding="async" /><figcaption>Check exact processor, power limits and laptop-level tests.</figcaption></figure></div>
 
           <DataTable
             headers={['Suffix', 'General Position', "What It's Built For", 'Fits Best']}
@@ -674,7 +653,7 @@ export default function LaptopBuyingGuide() {
       <section className="py-8 sm:py-16 px-4 sm:px-6">
         <div className="container mx-auto max-w-4xl">
           <SectionHeading id="ram-guide" kicker="Component Deep Dive" title="RAM Guide" icon={MemoryStick} />
-          <Prose>
+          <div data-signature-pair="ram-guide"><div data-signature-copy="true"><Prose>
             <p>
               RAM is the single most common upgrade request we get from customers who bought a laptop a year or
               two ago and now find it grinding under multiple browser tabs and a video call. RAM is the CPU's
@@ -684,7 +663,7 @@ export default function LaptopBuyingGuide() {
             </p>
 
             <h3 className="text-white font-semibold text-base sm:text-lg pt-2">Capacity</h3>
-          </Prose>
+          </Prose></div><figure data-signature-visual="true"><img src="/images/laptop-ram-sticks-comparison-upgrade.webp" alt="Laptop RAM modules" loading="lazy" decoding="async" /><figcaption>Check memory capacity, channels and upgradeability.</figcaption></figure></div>
           <BulletList
             items={[
               '<strong class="text-white">8GB</strong> — Windows and a modern browser alone can consume most of this before any other application opens. Fine for very light, single-task use; not recommended for general purpose use in 2026.',
@@ -750,7 +729,7 @@ export default function LaptopBuyingGuide() {
       <section className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/30 border-y border-slate-800">
         <div className="container mx-auto max-w-4xl">
           <SectionHeading id="storage-guide" kicker="Component Deep Dive" title="Storage Guide" icon={HardDrive} />
-          <Prose>
+          <div data-signature-pair="storage-guide"><div data-signature-copy="true"><Prose>
             <p>
               Almost every modern mainstream laptop now uses NVMe SSDs over PCIe lanes, though some budget or
               older models still ship with slower SATA-based storage — mechanical hard drives, meanwhile, are
@@ -759,7 +738,7 @@ export default function LaptopBuyingGuide() {
             </p>
 
             <h3 className="text-white font-semibold text-base sm:text-lg pt-2">PCIe Generations</h3>
-          </Prose>
+          </Prose></div><figure data-signature-visual="true"><img src="/images/m2-nvme-ssd-motherboard-installation.webp" alt="M.2 SSD installed on motherboard" loading="lazy" decoding="async" /><figcaption>Confirm the supported slot and interface.</figcaption></figure></div>
           <BulletList
             items={[
               '<strong class="text-white">PCIe Gen3</strong> — up to roughly 3,500 MB/s. Adequate for general use, increasingly dated.',
@@ -819,7 +798,7 @@ export default function LaptopBuyingGuide() {
       <section className="py-8 sm:py-16 px-4 sm:px-6">
         <div className="container mx-auto max-w-4xl">
           <SectionHeading id="gpu-guide" kicker="Component Deep Dive" title="GPU Guide" icon={Gauge} />
-          <Prose>
+          <div data-signature-pair="gpu-guide"><div data-signature-copy="true"><Prose>
             <h3 className="text-white font-semibold text-base sm:text-lg">Integrated vs. Dedicated Graphics</h3>
             <p>
               Modern integrated GPUs (Intel Arc, AMD Radeon, and Apple's integrated GPU architecture within its
@@ -860,7 +839,7 @@ export default function LaptopBuyingGuide() {
               laptop marketing. The same GPU model can be configured across a fairly wide wattage range
               depending on the laptop's cooling and power delivery design.
             </p>
-          </Prose>
+          </Prose></div><figure data-signature-visual="true"><img src="/images/msi-gaming-laptop-and-gpu-repair-workstation.webp" alt="Gaming laptop at hardware workstation" loading="lazy" decoding="async" /><figcaption>Compare graphics power limits and cooling as well as GPU model.</figcaption></figure></div>
 
           <div className="mt-5">
             <Callout>
@@ -892,7 +871,7 @@ export default function LaptopBuyingGuide() {
       <section className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/30 border-y border-slate-800">
         <div className="container mx-auto max-w-4xl">
           <SectionHeading id="cooling" kicker="Component Deep Dive" title="Cooling" icon={Thermometer} />
-          <Prose>
+          <div data-signature-pair="cooling"><div data-signature-copy="true"><Prose>
             <p>
               Cooling is the part of a laptop's design that receives the least marketing attention and has the
               largest long-term impact on both performance and hardware lifespan.
@@ -906,7 +885,7 @@ export default function LaptopBuyingGuide() {
               one.
             </p>
             <h3 className="text-white font-semibold text-base sm:text-lg pt-2">Cooling Technologies</h3>
-          </Prose>
+          </Prose></div><figure data-signature-visual="true"><img src="/images/laptop-dual-copper-heatpipes-ram-sticks.webp" alt="Laptop heatpipes and memory" loading="lazy" decoding="async" /><figcaption>Cooling design influences sustained performance.</figcaption></figure></div>
           <BulletList
             items={[
               '<strong class="text-white">Heat pipes</strong> — copper tubes that carry heat away from the chip to the fans; the standard cooling method across most laptops.',

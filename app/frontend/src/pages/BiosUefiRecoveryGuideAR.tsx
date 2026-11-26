@@ -3,6 +3,8 @@
 // Pattern follows GamingLaptopCleaningAR.tsx (Head + SchemaMarkup, RTL, hreflang).
 
 import React, { useEffect } from 'react';
+import SignatureGuideTOC from '../components/blog/SignatureGuideTOC';
+import './SignatureEditorial.css';
 import { Head } from 'vite-react-ssg';
 import { Link } from 'react-router-dom';
 import {
@@ -220,7 +222,7 @@ export default function BiosUefiRecoveryGuideAR() {
   }, []);
 
   return (
-    <div dir="rtl" lang="ar" className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
+    <div data-kcroc-signature-editorial="4" dir="rtl" lang="ar" className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
       <Head htmlAttributes={{ lang: 'ar', dir: 'rtl' }}>
         <title>استرداد BIOS بعد فشل التحديث: دليل UEFI والأعطال | KCROC</title>
         <meta name="description" content="هل توقف اللابتوب أو الكمبيوتر عن الإقلاع بعد تحديث BIOS أو UEFI؟ تعرّف على علامات تلف الفيرموير، وكيف تميّزه عن أعطال الرام والطاقة واللوحة الأم، وخيارات الاسترداد الآمنة." />
@@ -278,8 +280,9 @@ export default function BiosUefiRecoveryGuideAR() {
           </div>
         </aside>
 
-        <img src={HERO_IMAGE} alt="لوحة أم لابتوب مع شريحة BIOS أثناء الفحص في مختبر KCROC" className="w-full rounded-2xl border border-slate-800 mb-10" width={800} height={450} fetchPriority="high" />
+        <img data-signature-hero-image="true" src={HERO_IMAGE} alt="لوحة أم لابتوب مع شريحة BIOS أثناء الفحص في مختبر KCROC" className="w-full rounded-2xl border border-slate-800 mb-10" width={800} height={450} fetchPriority="high" />
 
+        <SignatureGuideTOC toc={[{"id":"quick-paths","label":"مسارات التشخيص"},{"id":"first-aid","label":"أول خطوات آمنة"},{"id":"bios-vs-uefi","label":"BIOS و UEFI"},{"id":"warning-signs","label":"علامات تلف الفيرموير"},{"id":"firmware-vs-hardware","label":"الفيرموير مقابل الهاردوير"},{"id":"resets","label":"إعادة الضبط"},{"id":"before-recovery","label":"قبل الاسترداد"},{"id":"by-brand","label":"حسب الشركة"},{"id":"spi","label":"برمجة SPI"},{"id":"bitlocker","label":"TPM و BitLocker"},{"id":"post-codes","label":"أكواد POST"},{"id":"data-safety","label":"سلامة البيانات"},{"id":"diy-or-pro","label":"متى تحتاج فني"},{"id":"dont","label":"تجنب هذه الأخطاء"},{"id":"kuwait","label":"الصيانة في الكويت"},{"id":"faq","label":"أسئلة شائعة"}]} arabic />
         <section aria-labelledby="quick-paths">
           <SectionTitle id="quick-paths">ابدأ من الأعراض</SectionTitle>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -396,9 +399,9 @@ export default function BiosUefiRecoveryGuideAR() {
 
         <section aria-labelledby="spi">
           <SectionTitle id="spi">استرداد BIOS عبر برمجة شريحة SPI / EEPROM</SectionTitle>
-          <p className="text-slate-300 leading-relaxed mb-5">
+          <div data-signature-pair="spi"><div data-signature-copy="true"><p className="text-slate-300 leading-relaxed mb-5">
             ثلاثة مستويات وليس مستوى واحداً: (1) تحديث BIOS عادي من داخل ويندوز على جهاز سليم، (2) استرداد مدمج من الشركة عندما توفره اللوحة، (3) برمجة شريحة SPI/EEPROM بمبرمج خارجي يتصل بالشريحة مباشرة، وهي الملاذ الأخير عندما لا يتوفر استرداد مدمج في الجهاز، أو فشل، أو لم تعد اللوحة تصل إلى المرحلة التي يعمل فيها الاسترداد. لهذا السبب يوجد إصلاح على مستوى الشريحة كمستوى مستقل.
-          </p>
+          </p></div><figure data-signature-visual="true"><img src={SPI_IMAGE} alt="مبرمج SPI من نوع CH341A مع مشبك SOIC8 لقراءة شريحة BIOS وكتابتها" className="w-full h-auto rounded-2xl border border-slate-800 mb-4" width={800} height={450} loading="lazy" /><figcaption>مبرمج SPI ومشبك الشريحة: مثال على أدوات الاسترداد المتخصص.</figcaption></figure></div>
           <ol className="space-y-3 mb-8">
             {spiSteps.map((s, i) => (
               <li key={s.title} className="flex gap-4 rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
@@ -410,7 +413,7 @@ export default function BiosUefiRecoveryGuideAR() {
               </li>
             ))}
           </ol>
-          <img src={SPI_IMAGE} alt="مبرمج SPI من نوع CH341A مع مشبك SOIC8 لقراءة شريحة BIOS وكتابتها" className="w-full max-w-xl rounded-2xl border border-slate-800 mb-4" width={800} height={450} loading="lazy" />
+          
           <p className="text-slate-400 text-sm">لماذا تهم نسخة الفيرموير الأصلية؟ لأن الفيرموير الحديث قد يحتوي بيانات خاصة بالمنصة وإعدادات ومناطق مرتبطة بالأمان. الاسترداد المهني يحافظ على البيانات الأصلية ذات الصلة بدل استبدال الصورة كلها بنسخة عشوائية.</p>
         </section>
 
