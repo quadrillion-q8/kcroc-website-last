@@ -259,7 +259,7 @@ export default function IntelVsAmdGuide() {
                 </a>
               </div>
               <figure data-kcroc-editorial-hero-image="true" className="mt-8 overflow-hidden rounded-3xl border border-slate-800 bg-slate-900">
-                <img src="/images/blog/intel-core-ultra-vs-amd-ryzen-ai-comparison.webp" alt="Intel Core Ultra versus AMD Ryzen AI laptop processor comparison" width="1200" height="630" loading="eager" fetchPriority="high" decoding="async" className="w-full h-auto object-contain" />
+                <img src="/images/blog/intel-core-ultra-vs-amd-ryzen-ai-comparison.webp" alt="Intel Core Ultra versus AMD Ryzen AI laptop processor comparison" width="1200" height="630" loading="eager" fetchPriority="high" decoding="async" className="block w-full h-auto object-cover" />
                 <figcaption className="px-4 py-3 text-xs text-slate-500">Platform names describe a family. Laptop performance is determined by the exact silicon, configuration and chassis.</figcaption>
               </figure>
             </header>

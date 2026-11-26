@@ -1612,8 +1612,8 @@ export default function BlogPostTemplate() {
 
               {post.image && (
                 <figure className="mb-6">
-                  <div data-kcroc-editorial-hero-image="true" className="aspect-[21/9] rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl">
-                    <img src={post.image} alt={post.imageAlt || post.title} className="w-full h-full object-cover" loading="eager" decoding="async" />
+                  <div data-kcroc-editorial-hero-image="true" className="rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl">
+                    <img src={post.image} alt={post.imageAlt || post.title} className="block w-full h-auto object-cover" loading="eager" decoding="async" />
                   </div>
                   {post.imageCaption && (
                     <figcaption className="mt-2 text-center text-xs leading-5 text-slate-500">

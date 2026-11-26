@@ -13,7 +13,7 @@ try {
  const page=await browser.newPage();
  for(const width of [390,768,1024,1440,1920]){
   await page.setViewport({width,height:900,deviceScaleFactor:1});
-  for(const [route,expected] of [['/blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures',10],['/blog/why-is-my-laptop-so-slow',10]]){
+  for(const [route,expected] of [['/blog/laptop-temperatures-kuwait-safe-cpu-gpu-temperatures',10],['/blog/why-is-my-laptop-so-slow',10],['/blog/intel-core-ultra-vs-amd-ryzen-ai',7]]){
    await page.goto(new URL(route,base).href,{waitUntil:'networkidle2',timeout:60000});
    const layout=await page.evaluate(()=>{
     const root=document.querySelector('[data-kcroc-contextual-editorial]');
@@ -25,7 +25,7 @@ try {
      return Math.abs(c.left+c.width/2-p.left-p.width/2);
     });
     const author=root.querySelector('[data-kcroc-editorial-author]');
-    return {alignment:Math.abs(hero.left-body.left)+Math.abs(hero.right-body.right),centered,author:author?getComputedStyle(author).backgroundColor:null,overflow:document.documentElement.scrollWidth-innerWidth};
+    return {alignment:body.contains(root.querySelector('[data-kcroc-editorial-hero]'))?0:Math.abs(hero.left-body.left)+Math.abs(hero.right-body.right),centered,author:author?getComputedStyle(author).backgroundColor:null,overflow:document.documentElement.scrollWidth-innerWidth};
    });
    if(layout.error||layout.alignment>4||layout.centered.some(n=>n>4)||layout.overflow>2||layout.author!=='rgb(255, 255, 255)')failures.push({route,width,layout});
    // Exercise real scrolling and the one native disclosure, not only source markup.
@@ -56,7 +56,29 @@ try {
     return {top,headerBottom,targetTop,active,expected:'#'+id,open,closed:!toc.open,listHeight,listBottom,viewport:innerHeight,position:getComputedStyle(toc).position};
    });
    if(sticky.error||sticky.position!=='sticky'||Math.abs(sticky.top-sticky.headerBottom-8)>4||sticky.targetTop<sticky.top+40||sticky.active!==sticky.expected||!sticky.open||!sticky.closed||sticky.listBottom>sticky.viewport||sticky.listHeight<=0)failures.push({route,width,sticky});
-   const pairs=await page.$$('[data-kcroc-contextual-pair="true"]');
+   // Check real rendered image geometry, including the standalone article.
+   const imageFrames=await page.evaluate(async()=>{
+    const images=[...document.querySelectorAll('[data-kcroc-contextual-visual] img,[data-kcroc-editorial-hero-image] img')];
+    return Promise.all(images.map(async img=>{
+     img.loading='eager';
+     await img.decode().catch(()=>{});
+     const style=getComputedStyle(img), box=img.getBoundingClientRect();
+     const px=v=>parseFloat(v)||0;
+     const w=box.width-px(style.borderLeftWidth)-px(style.borderRightWidth)-px(style.paddingLeft)-px(style.paddingRight);
+     const h=box.height-px(style.borderTopWidth)-px(style.borderBottomWidth)-px(style.paddingTop)-px(style.paddingBottom);
+     const native=img.naturalWidth/img.naturalHeight;
+     const ratio=w/h;
+     const diagram=img.getAttribute('src')?.endsWith('.svg')||img.dataset.kcrocVisualKind==='diagram';
+     const mismatch=Math.abs(ratio/native-1);
+     const hero=img.closest('[data-kcroc-editorial-hero-image]');
+     const frame=hero?.getBoundingClientRect();
+     return {src:img.getAttribute('src'),loaded:img.naturalWidth>0,fit:style.objectFit,mismatch,diagram,heroGap:frame?Math.abs(frame.width-box.width):0,padding:px(style.paddingLeft)+px(style.paddingRight)+px(style.paddingTop)+px(style.paddingBottom)};
+    }));
+   });
+   for(const image of imageFrames){
+    if(!image.loaded||image.padding>1||image.heroGap>4||image.fit!=='cover'||(image.diagram&&image.mismatch>.03))failures.push({route,width,error:'Editorial image frame regression',image});
+   }
+   const pairs=await page.$('[data-kcroc-contextual-pair="true"]');
    if(pairs.length!==expected)failures.push({route,width,error:'Wrong contextual image count',actual:pairs.length,expected});
    for(const pair of pairs){
     await pair.evaluate(el=>el.scrollIntoView({block:'start',behavior:'instant'}));
