@@ -1,6 +1,8 @@
 // File: app/frontend/src/pages/LaptopBuyingGuideAR.tsx
 import { Head } from 'vite-react-ssg';
 import React from 'react';
+import SignatureGuideTOC from '../components/blog/SignatureGuideTOC';
+import './SignatureEditorial.css';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -263,7 +265,7 @@ function DataTable({ headers, rows }: { headers: string[]; rows: string[][] }) {
 ───────────────────────────────────────────────────────────────────────────── */
 export default function LaptopBuyingGuideAR() {
   return (
-    <div className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30" dir="rtl">
+    <div data-kcroc-signature-editorial="4" className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30" dir="rtl">
 
       <Head htmlAttributes={{ lang: 'ar-KW', dir: 'rtl' }}>
         <title>شراء لابتوب في الكويت 2026 | دليل المواصفات | KCROC</title>
@@ -376,7 +378,7 @@ export default function LaptopBuyingGuideAR() {
 
             <div className="pt-6 sm:pt-10 max-w-4xl mx-auto">
               <img
-                src={HERO_IMAGE_URL}
+                data-signature-hero-image="true" src={HERO_IMAGE_URL}
                 alt="غلاف دليل شراء اللابتوب في الكويت 2026 لمقارنة المواصفات قبل الشراء"
                 width="1200"
                 height="630"
@@ -445,30 +447,7 @@ export default function LaptopBuyingGuideAR() {
         </div>
       </section>
 
-      {/* Table of Contents */}
-      <section className="pb-8 sm:pb-16 px-4 sm:px-6">
-        <div className="container mx-auto max-w-4xl">
-          <Card className="bg-slate-900/50 border-slate-800 backdrop-blur-sm">
-            <CardContent className="p-4 sm:p-6 text-start">
-              <h2 className="text-xs sm:text-sm font-bold text-cyan-400 uppercase tracking-wide mb-3 sm:mb-4 flex items-center gap-2">
-                <BookOpen className="w-4 h-4" /> محتويات الدليل
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
-                {toc.map((item) => (
-                  <a
-                    key={item.id}
-                    href={`#${item.id}`}
-                    className="flex items-center gap-1.5 text-xs sm:text-sm text-slate-300 hover:text-cyan-400 transition-colors py-1"
-                  >
-                    <ChevronLeft className="w-3 h-3 flex-shrink-0 text-slate-600" />
-                    {item.label}
-                  </a>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+      <SignatureGuideTOC toc={toc} arabic />
 
       {/* Understanding Modern Laptop Hardware */}
       <section className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/30 border-y border-slate-800">
@@ -571,7 +550,7 @@ export default function LaptopBuyingGuideAR() {
       <section className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/30 border-y border-slate-800">
         <div className="container mx-auto max-w-4xl">
           <SectionHeading id="cpu-guide" kicker="القطع بالتفصيل" title="دليل المعالج: لا تنخدع بـ Core i7 أو Ryzen 7" icon={Cpu} />
-          <Prose>
+          <div data-signature-pair="cpu-guide"><div data-signature-copy="true"><Prose>
             <p>
               هذي من أهم النقاط في اختيار اللابتوب. ممكن جهاز Core i5 يكون أسرع من جهاز Core i7 في بعض المهام، وممكن Ryzen 7 يكون أبطأ من Ryzen 5 في استخدام معين. السبب هو الـ Suffix (الحرف الأخير من اسم المعالج) والجيل، مو رقم الفئة نفسه.
             </p>
@@ -583,12 +562,12 @@ export default function LaptopBuyingGuideAR() {
             <p>
               وبنفس الأهمية: قارن حسب <strong className="text-white">الجيل + الموديل بالضبط + الـSuffix</strong>، مو اسم الفئة بروحه. معالج i7 من جيل قديم مو بالضرورة أسرع من i5 من جيل أحدث.
             </p>
-          </Prose>
-
-          <figure className="my-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
+          </Prose></div><figure data-signature-visual="true" className="my-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
             <img src="/images/blog/intel-core-ultra-vs-amd-ryzen-ai-comparison.webp" alt="مقارنة بصرية بين معالجات Intel Core Ultra وAMD Ryzen AI قبل اختيار موديل اللابتوب" width="1200" height="675" loading="lazy" decoding="async" className="w-full h-auto" />
             <figcaption className="px-4 py-3 text-xs sm:text-sm text-slate-400 leading-relaxed">قارن اسم المعالج الكامل والجيل وحدود الطاقة واختبارات نفس الجهاز؛ اسم الفئة وحده ما يعطيك نتيجة أداء مضمونة.</figcaption>
-          </figure>
+          </figure></div>
+
+          
           <DataTable
             headers={['الـ Suffix', 'التوجيه العام', "الميزة الأساسية", 'الاستخدام الأنسب']}
             rows={cpuSuffixTable.map((r) => [r.suffix, r.power, r.builtFor, r.fits])}
@@ -607,11 +586,14 @@ export default function LaptopBuyingGuideAR() {
       <section className="py-8 sm:py-16 px-4 sm:px-6">
         <div className="container mx-auto max-w-4xl">
           <SectionHeading id="ram-guide" kicker="القطع بالتفصيل" title="الرام: 16GB صارت نقطة البداية" icon={MemoryStick} />
-          <Prose>
+          <div data-signature-pair="ram-guide"><div data-signature-copy="true"><Prose>
             <p>
               إذا بتشتري لابتوب جديد في 2026، 8GB صارت محدودة لمعظم الاستخدامات الحديثة، خصوصًا إذا تستخدم برامج كثيرة أو تفتح تبويبات وايد بنفس الوقت.
             </p>
-          </Prose>
+          </Prose></div><figure data-signature-visual="true" className="my-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
+            <img src="/images/laptop-ram-sticks-comparison-upgrade.webp" alt="وحدات RAM للابتوب للمقارنة بين الذاكرة وترقية السعة قبل شراء الجهاز" width="800" height="600" loading="lazy" decoding="async" className="w-full h-auto" />
+            <figcaption className="px-4 py-3 text-xs sm:text-sm text-slate-400 leading-relaxed">قبل الشراء، تحقق من الحد الأقصى للرام وعدد المنافذ وهل الذاكرة ملحومة أو قابلة للاستبدال في رقم الموديل نفسه.</figcaption>
+          </figure></div>
           <BulletList
             items={[
               '<strong class="text-white">16GB:</strong> الخيار المناسب لمعظم الناس (دراسة، أوفيس، تصفح، استخدام يومي).',
@@ -622,10 +604,7 @@ export default function LaptopBuyingGuideAR() {
           />
 
           <Prose>
-            <figure className="my-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
-            <img src="/images/laptop-ram-sticks-comparison-upgrade.webp" alt="وحدات RAM للابتوب للمقارنة بين الذاكرة وترقية السعة قبل شراء الجهاز" width="800" height="600" loading="lazy" decoding="async" className="w-full h-auto" />
-            <figcaption className="px-4 py-3 text-xs sm:text-sm text-slate-400 leading-relaxed">قبل الشراء، تحقق من الحد الأقصى للرام وعدد المنافذ وهل الذاكرة ملحومة أو قابلة للاستبدال في رقم الموديل نفسه.</figcaption>
-          </figure>
+            
           <h3 className="text-white font-semibold text-base sm:text-lg pt-4">مو كل DDR5 قابلة للترقية!</h3>
             <p>
               هذي نقطة مهمة جداً. ممكن تشوف 16GB DDR5 وتفترض إنك تقدر تزيدها بعدين. مو شرط. بعض الأجهزة تكون الرام فيها ملحومة باللوحة الأم (خصوصاً LPDDR5X). إذا ناوي تستخدم الجهاز 4-6 سنوات، قابلية الترقية تستاهل تنتبه لها من البداية.
@@ -641,15 +620,15 @@ export default function LaptopBuyingGuideAR() {
       <section className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/30 border-y border-slate-800">
         <div className="container mx-auto max-w-4xl">
           <SectionHeading id="storage-guide" kicker="القطع بالتفصيل" title="التخزين (SSD): لا تشوف 1TB وتوقف" icon={HardDrive} />
-          <Prose>
+          <div data-signature-pair="storage-guide"><div data-signature-copy="true"><Prose>
             <p>
               وايد ناس يشترون حسب السعة: "هذا 2TB أكيد أحسن". مو شرط! نوع الـSSD وحده ما يحدد كل شيء — الأهم دائمًا مقارنة موديل الـSSD نفسه بالكامل (الكنترولر، الـDRAM، وسلوكه الحراري) مو بس نوع NAND. وتأكد من نوع المنفذ المدعوم في اللابتوب؛ وجود M.2 لا يعني تلقائيًا أن كل قرص NVMe أو SATA متوافق.
             </p>
-          </Prose>
-          <figure className="my-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
+          </Prose></div><figure data-signature-visual="true" className="my-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
             <img src="/images/m2-nvme-ssd-motherboard-installation.webp" alt="تركيب قرص M.2 NVMe SSD في اللابتوب: افحص التوافق والمنفذ قبل شراء التخزين" width="800" height="600" loading="lazy" decoding="async" className="w-full h-auto" />
             <figcaption className="px-4 py-3 text-xs sm:text-sm text-slate-400 leading-relaxed">السعة والسرعة وحدهما لا تكفيان؛ راجع طول القرص وواجهة التوصيل ودعم الموديل للترقية قبل الدفع.</figcaption>
-          </figure>
+          </figure></div>
+          
           <BulletList
             items={[
               '<strong class="text-white">TLC:</strong> عادةً أسرع وأكثر تحملًا، ويحافظ على الأداء بشكل أفضل حتى لو كان شبه ممتلئ.',
@@ -670,7 +649,7 @@ export default function LaptopBuyingGuideAR() {
       <section className="py-8 sm:py-16 px-4 sm:px-6">
         <div className="container mx-auto max-w-4xl">
           <SectionHeading id="gpu-guide" kicker="القطع بالتفصيل" title="كرت الشاشة (GPU): لا تشتري RTX على الاسم بس" icon={Gauge} />
-          <Prose>
+          <div data-signature-pair="gpu-guide"><div data-signature-copy="true"><Prose>
             <p>
               إذا بتشتري Gaming Laptop، لا تقارن اسم البطاقة وحده أو نتائج كرت مكتبي بكرت لابتوب. اكتب اسم GPU الكامل والجيل في مواصفات الجهاز، ثم قارن TGP وسعة VRAM وأداء التبريد في اختبارات نفس الموديل؛ اختلاف حدود الطاقة والهيكل ممكن يغيّر الأداء حتى بين جهازين يحملان الاسم نفسه.
             </p>
@@ -679,12 +658,12 @@ export default function LaptopBuyingGuideAR() {
             <p>
               TGP يعني كمية الطاقة اللي اللابتوب يسمح فيها لكرت الشاشة. نفس الكرت ممكن يشتغل بطاقة مختلفة حسب الجهاز. اسم الـGPU وحده ما يكفي للحكم على أداء اللابتوب؛ الـTGP والتبريد والحدود الحرارية وتصميم الجهاز كلها تؤثر على الأداء الفعلي — كمثال على ذلك، RTX 4070 بقدرة منخفضة (TGP ضعيف) ممكن ما يتفوق على RTX 4060 بقدرة عالية في نفس المقارنة.
             </p>
-          </Prose>
-
-          <figure className="my-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
+          </Prose></div><figure data-signature-visual="true" className="my-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
             <img src="/images/msi-gaming-laptop-and-gpu-repair-workstation.webp" alt="لابتوب قيمنق على طاولة فحص هاردوير لتوضيح أهمية البطاقة الرسومية والتبريد في اختيار الجهاز" width="1200" height="800" loading="lazy" decoding="async" className="w-full h-auto" />
             <figcaption className="px-4 py-3 text-xs sm:text-sm text-slate-400 leading-relaxed">لألعابك وبرامج 3D، اختبر أداء موديل اللابتوب نفسه ولا تعتمد على اسم GPU في إعلان المتجر فقط.</figcaption>
-          </figure>
+          </figure></div>
+
+          
           <div className="mt-5">
             <Callout>
               <strong className="text-white">ملاحظة للمصممين والمونتاج:</strong> تأكد من سعة الـ VRAM لأنها تلعب دور كبير في الرندر وتشغيل برامج الثري دي بسلاسة.
@@ -697,11 +676,7 @@ export default function LaptopBuyingGuideAR() {
       <section className="py-8 sm:py-16 px-4 sm:px-6 bg-slate-900/30 border-y border-slate-800">
         <div className="container mx-auto max-w-4xl">
           <SectionHeading id="cooling" kicker="القطع بالتفصيل" title="التبريد في الكويت مو شيء ثانوي" icon={Thermometer} />
-          <figure className="mb-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
-            <img src="/images/laptop-dual-copper-heatpipes-ram-sticks.webp" alt="أنابيب نحاسية للتبريد داخل اللابتوب بجوار وحدات الذاكرة لفهم تصميم التبريد الداخلي" width="800" height="600" loading="lazy" decoding="async" className="w-full h-auto" />
-            <figcaption className="px-4 py-3 text-xs sm:text-sm text-slate-400 leading-relaxed">افحص أداء الجهاز تحت حمل متواصل، لأن شكل المواصفات في المتجر لا يوضح وحده استقرار الأداء وحرارة الهيكل.</figcaption>
-          </figure>
-          <Prose>
+          <div data-signature-pair="cooling"><div data-signature-copy="true"><Prose>
             <p>
               لابتوب بمواصفات قوية لكن بتبريد ضعيف قد يعطي أداءً ممتازًا في أول عشر دقائق فقط، ثم يبدأ بالتباطؤ بسبب ارتفاع الحرارة (Thermal Throttling) — وتبدأ الألعاب تتقطع وتنخفض الفريمات.
             </p>
@@ -709,7 +684,11 @@ export default function LaptopBuyingGuideAR() {
               في الكويت، الموضوع أهم بسبب حرارة الصيف والغبار. الغبار مو بس يزعج المروحة، بل يكتم التبريد ويزيد الضغط على المعالج.
             </p>
             <h3 className="text-white font-semibold text-base sm:text-lg pt-2">كيف تحافظ على التبريد؟</h3>
-          </Prose>
+          </Prose></div><figure data-signature-visual="true" className="mb-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
+            <img src="/images/laptop-dual-copper-heatpipes-ram-sticks.webp" alt="أنابيب نحاسية للتبريد داخل اللابتوب بجوار وحدات الذاكرة لفهم تصميم التبريد الداخلي" width="800" height="600" loading="lazy" decoding="async" className="w-full h-auto" />
+            <figcaption className="px-4 py-3 text-xs sm:text-sm text-slate-400 leading-relaxed">افحص أداء الجهاز تحت حمل متواصل، لأن شكل المواصفات في المتجر لا يوضح وحده استقرار الأداء وحرارة الهيكل.</figcaption>
+          </figure></div>
+          
           <BulletList
             items={[
               'استخدمه على سطح صلب (لا تحطه على السرير أو المخدة).',
