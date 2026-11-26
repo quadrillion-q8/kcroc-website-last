@@ -21,7 +21,9 @@ assert.match(layout, /lang=\{isArabicRoute \? 'ar-KW' : 'en-KW'\}/, 'Shared head
 assert.match(tailwind, /sans:\s*\["Plus Jakarta Sans"/, 'Preserve English font family');
 assert.match(tailwind, /arabic:\s*\["IBM Plex Sans Arabic"/, 'Expose the Arabic font token');
 assert.match(stylesheet, /:lang\(ar\)\s*\{/, 'Arabic font must apply to nested components');
-assert.match(stylesheet, /:lang\(ar\):is\(h1, h2, h3, h4\)/, 'Arabic heading line heights and weights required');
+assert.match(stylesheet, /h1:lang\(ar\),\s*h2:lang\(ar\),\s*h3:lang\(ar\),\s*h4:lang\(ar\)\s*\{[^}]*font-weight:\s*700;[^}]*\}/, 'Arabic heading weights required');
+assert.match(stylesheet, /h1:lang\(ar\),\s*h2:lang\(ar\)\s*\{\s*line-height:\s*1\.4;/, 'Arabic primary heading line heights required');
+assert.match(stylesheet, /h3:lang\(ar\),\s*h4:lang\(ar\)\s*\{\s*line-height:\s*1\.5;/, 'Arabic secondary heading line heights required');
 assert.match(stylesheet, /:lang\(ar\)\.font-black/, 'Arabic black-weight normalization required');
 assert.match(stylesheet, /font-display:\s*swap/, 'Use non-blocking webfont loading');
 assert.doesNotMatch(stylesheet, /fonts\.googleapis\.com|fonts\.gstatic\.com/, 'No third-party font dependency');
@@ -63,6 +65,10 @@ if (process.argv.includes('--dist')) {
     .filter((name) => name.endsWith('.css'))
     .some((name) => fs.readFileSync(path.join(dist, 'assets', name), 'utf8').includes('ibm-plex-sans-arabic-arabic-700-normal.woff2'));
   assert.ok(generatedCss, 'Built CSS must reference the self-hosted Arabic family');
+  for (const name of fs.readdirSync(path.join(dist, 'assets')).filter(name => name.endsWith('.css'))) {
+    const css = fs.readFileSync(path.join(dist, 'assets', name), 'utf8');
+    assert.doesNotMatch(css, /:lang\(ar\)h[1-4]\b/, 'Minified CSS must not place a heading type selector after :lang(ar)');
+  }
 }
 
 console.log(`Arabic typography: ${faceCount} WOFF2 faces (4 weights × 2 subsets), OFL license, language isolation${process.argv.includes('--dist') ? ', and SSG delivery' : ''} verified.`);
