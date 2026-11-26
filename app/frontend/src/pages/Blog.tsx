@@ -43,7 +43,7 @@ const EXTRA_GUIDES: ExtraGuideCard[] = [
       '/images/blog/intel-core-ultra-vs-amd-ryzen-ai-comparison.webp',
     category: 'Hardware Comparison',
     date: '2026-08-07',
-    readTime: '8 min read',
+    readTime: '20–24 min read',
   },
   {
     entityId: 'guide-laptop-buying-ar',

@@ -15,8 +15,8 @@ assert.ok(
   'The existing canonical URL is missing from prerendered HTML',
 );
 assert.ok(html.includes('Intel Core Ultra vs. AMD Ryzen AI: What Actually Differs in a Laptop'), 'Article H1 is missing');
-assert.ok(html.includes('Updated November 9, 2026'), 'Visible Kuwait-local update date is missing');
-assert.ok(html.includes('2026-11-09T00:00:00+03:00') || html.includes('2026-11-08T21:00:00.000Z'), 'Article dateModified timestamp is missing');
+assert.ok(html.includes('Updated November 27, 2026'), 'Visible Kuwait-local update date is missing');
+assert.ok(html.includes('2026-11-27T00:00:00+03:00') || html.includes('2026-11-26T21:00:00.000Z'), 'Article dateModified timestamp is missing');
 
 const faqStart = html.indexOf('id="faq"');
 const referencesStart = html.indexOf('id="references"', faqStart);
@@ -98,3 +98,27 @@ const schemaQuestionCount = (html.match(/"@type"\s*:\s*"Question"/g) ?? []).leng
 assert.equal(schemaQuestionCount, 12, 'FAQPage JSON-LD should contain exactly the same 12 questions as the visible FAQ');
 
 console.log('Intel vs AMD SSG validation passed: canonical, Kuwait-local review date, 12 static FAQ answers and schema questions, generation matrix, suffix decoder, engineering sections, processor records and official references are present.');
+
+const { load } = await import('cheerio');
+const $ = load(html);
+assert.equal($('details[data-kcroc-intelligent-sticky="true"]').length, 1, 'Single responsive sticky navigation');
+assert.equal($('[data-kcroc-editorial-hero]').length, 1, 'Premium hero');
+assert.equal($('[data-kcroc-editorial-author]').length, 1, 'Editorial author card');
+for (const id of ['intel-architecture','amd-architecture','power-delivery','kuwait-climate','thermal-physics','benchmarks','hidden-variables']) {
+  const section = $('[data-kcroc-editorial-section="' + id + '"]');
+  assert.equal(section.attr('data-kcroc-contextual-pair'), 'true', id);
+  const img = section.children('figure[data-kcroc-contextual-visual]').find('img');
+  assert.equal(img.length, 1, id + ' visual');
+  assert.equal(img.attr('loading'), 'lazy');
+  assert.ok(img.attr('alt')?.trim());
+  assert.ok(section.find('figcaption').text().trim());
+  readFileSync(path.join(process.cwd(), 'dist', img.attr('src').replace(/^\//, '')));
+}
+const images = $('article[data-kcroc-editorial-panel] img').map((_, img) => $(img).attr('src')).get();
+assert.equal(images.length, new Set(images).size, 'No repeated editorial images');
+for (const id of ['november-update','independent-tests','ai-and-battery']) {
+  assert.equal($('#' + id).length, 1);
+  assert.equal($('[data-kcroc-article-toc] a[href="#' + id + '"]').length, 1);
+}
+assert.ok($('#exact-cpu table').text().includes('Ryzen AI 9 HX 470'));
+assert.ok(html.includes('Ryzen AI Max PRO 400'));

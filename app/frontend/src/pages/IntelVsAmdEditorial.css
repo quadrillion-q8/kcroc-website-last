@@ -1,0 +1,15 @@
+/* Standalone guide adopts the shared premium editorial composition. */
+.intel-amd-editorial .intel-amd-section { scroll-margin-block-start: var(--kcroc-editorial-reading-line, 148px); }
+.intel-amd-editorial [data-kcroc-editorial-hero-image] { aspect-ratio: auto; max-block-size: none; }
+.intel-amd-editorial [data-kcroc-editorial-hero-image] img { display: block; max-height: 490px; object-fit: contain; }
+.intel-amd-editorial [data-kcroc-editorial-hero] span { color: #34464a !important; }
+.intel-amd-editorial [data-kcroc-editorial-hero] span[class*="rounded-full"] { background: #fffdf9 !important; border-color: #c8c1b7 !important; }
+.intel-amd-editorial .intel-amd-section :is(details,section)[class*="rounded-"] { background: #fffdf9 !important; border-color: #d6cfc4 !important; }
+.intel-amd-editorial .intel-amd-section summary { color: #172022 !important; }
+.intel-amd-editorial .intel-amd-section [class*="text-emerald-"] { color: #245b46 !important; }
+.intel-amd-editorial .intel-amd-section [class*="text-amber-"] { color: #854d0e !important; }
+.intel-amd-editorial .intel-amd-section [class*="text-slate-600"] { color: #566467 !important; }
+.intel-amd-editorial .intel-amd-section :is(div,figure)[class*="bg-"][class*="rounded-"] { color: #26383c; }
+.intel-amd-editorial [data-kcroc-editorial-table] { max-width: 100%; }
+.intel-amd-editorial [data-kcroc-contextual-visual] img { aspect-ratio: 4 / 3; object-fit: contain; }
+.intel-amd-editorial :is(a,button,summary,[tabindex]):focus-visible { outline: 3px solid #8f4f2c; outline-offset: 3px; }

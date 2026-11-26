@@ -1051,14 +1051,14 @@ export const rawGraphData: RawGraphData = {
       entityType: 'WebPage',
       isActive: true,
       title: 'Intel Core Ultra vs AMD Ryzen AI: Which Is Better?',
-      description: 'Compare exact Intel Core Ultra and AMD Ryzen AI laptop processors in 2026, including CPU topology, integrated graphics, NPU capability, power limits, RAM configuration and Kuwait thermal considerations.',
+      description: 'Compare Core Ultra Series 3, Ryzen AI 400 and AI Max laptop processors using exact specifications, independent review evidence, graphics, NPU, power, battery and memory considerations.',
       seo: {
         title: 'Intel Core Ultra vs Ryzen AI: 2026 Laptop Guide | KCROC',
-        description: 'Compare Intel Core Ultra and Ryzen AI laptop chips in 2026: CPU cores, Arc vs Radeon graphics, NPU TOPS, power limits, RAM and Kuwait thermals.',
+        description: 'Compare Intel Core Ultra Series 3 vs Ryzen AI 400 and AI Max in 2026: CPU, Arc vs Radeon graphics, AI, battery, memory and real laptop tests.',
         canonicalUrl: 'https://www.computerrepairkuwait.com/blog/intel-core-ultra-vs-amd-ryzen-ai',
         ogImage: 'https://www.computerrepairkuwait.com/images/blog/intel-core-ultra-vs-amd-ryzen-ai-comparison.webp',
         ogType: 'article',
-        lastModified: '2026-11-09T00:00:00+03:00',
+        lastModified: '2026-11-27T00:00:00+03:00',
         schemaTypes: ['TechArticle', 'BreadcrumbList', 'Person'],
         breadcrumbs: [
           { name: 'Home', url: '/' },
@@ -1068,7 +1068,7 @@ export const rawGraphData: RawGraphData = {
         ]
       },
       datePublished: '2026-08-07',
-      dateModified: '2026-11-09T00:00:00+03:00',
+      dateModified: '2026-11-27T00:00:00+03:00',
       articleSection: 'Hardware Comparisons & Laptop Buying Guides'
     } as WebPageEntity,
     'guide-laptop-buying': {
