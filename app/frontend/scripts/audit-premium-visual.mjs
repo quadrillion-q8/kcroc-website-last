@@ -56,7 +56,7 @@ try {
     return {top,headerBottom,targetTop,active,expected:'#'+id,open,closed:!toc.open,listHeight,listBottom,viewport:innerHeight,position:getComputedStyle(toc).position};
    });
    if(sticky.error||sticky.position!=='sticky'||Math.abs(sticky.top-sticky.headerBottom-8)>4||sticky.targetTop<sticky.top+40||sticky.active!==sticky.expected||!sticky.open||!sticky.closed||sticky.listBottom>sticky.viewport||sticky.listHeight<=0)failures.push({route,width,sticky});
-   const pairs=await page.$('[data-kcroc-contextual-pair="true"]');
+   const pairs=await page.$$('[data-kcroc-contextual-pair="true"]');
    if(pairs.length!==expected)failures.push({route,width,error:'Wrong contextual image count',actual:pairs.length,expected});
    for(const pair of pairs){
     await pair.evaluate(el=>el.scrollIntoView({block:'start',behavior:'instant'}));

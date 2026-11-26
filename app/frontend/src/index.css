@@ -1100,17 +1100,22 @@ select {
   letter-spacing: normal;
 }
 
-:lang(ar):is(h1, h2, h3, h4) {
+h1:lang(ar),
+h2:lang(ar),
+h3:lang(ar),
+h4:lang(ar) {
   font-family: var(--kcroc-arabic-font);
   font-weight: 700;
   letter-spacing: normal;
 }
 
-:lang(ar):is(h1, h2) {
+h1:lang(ar),
+h2:lang(ar) {
   line-height: 1.4;
 }
 
-:lang(ar):is(h3, h4) {
+h3:lang(ar),
+h4:lang(ar) {
   line-height: 1.5;
 }
 
