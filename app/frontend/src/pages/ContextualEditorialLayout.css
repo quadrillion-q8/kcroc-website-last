@@ -16,8 +16,22 @@
   max-inline-size: 34ch;
 }
 [data-kcroc-contextual-editorial] [data-kcroc-editorial-hero-image] {
-  aspect-ratio: 21 / 9;
-  max-block-size: 490px;
+  /* The photograph defines the frame; never letterbox a natural image. */
+  aspect-ratio: auto;
+  max-block-size: none;
+  overflow: hidden;
+  padding: 0;
+}
+[data-kcroc-contextual-editorial] [data-kcroc-editorial-hero-image] > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  max-block-size: none;
+  object-fit: cover;
+  object-position: center;
+  margin: 0;
+  padding: 0;
 }
 [data-kcroc-rollout="article"] [data-kcroc-contextual-editorial] [data-kcroc-editorial-panel="article-body"] {
   min-width: 0;
@@ -62,9 +76,13 @@
 [data-kcroc-contextual-editorial] [data-kcroc-contextual-visual] img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: contain;
-  background: #fff;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: cover;
+  object-position: center;
+  padding: 0;
+  box-sizing: border-box;
+  background: transparent;
   border: 1px solid #d6cfc4;
   border-radius: 1rem;
   margin: 0;
@@ -133,9 +151,6 @@
   }
 }
 @media (max-width: 639px) {
-  [data-kcroc-contextual-editorial] [data-kcroc-editorial-hero-image] {
-    aspect-ratio: 16 / 9;
-  }
   [data-kcroc-contextual-editorial] [data-kcroc-contextual-visual] {
     max-inline-size: 34rem;
     margin-inline: auto;
@@ -222,10 +237,15 @@
   [data-kcroc-contextual-editorial] [data-kcroc-contextual-pair="true"] > [data-kcroc-contextual-visual] {
     position: sticky;
     inset-block-start: calc(var(--kcroc-editorial-reading-line, 148px) + 12px);
-    max-block-size: calc(100vh - var(--kcroc-editorial-reading-line, 148px) - 28px);
+    max-block-size: none;
   }
-  [data-kcroc-contextual-editorial] [data-kcroc-contextual-visual] img {
+  /* Keep large photographs within the reading viewport without white bars.
+     Vector diagrams use intrinsic dimensions and scroll normally so no label is cropped. */
+  [data-kcroc-contextual-editorial] [data-kcroc-contextual-visual] img:not([src$=".svg"]):not([data-kcroc-visual-kind="diagram"]) {
     max-block-size: max(180px, calc(100vh - var(--kcroc-editorial-reading-line, 148px) - 145px));
+  }
+  [data-kcroc-contextual-editorial] [data-kcroc-contextual-visual]:has(img:is([src$=".svg"],[data-kcroc-visual-kind="diagram"])) {
+    position: static;
   }
 }
 @media (max-width: 639px) {
