@@ -1,6 +1,9 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import './KCROCEditorialRollout.css';
+import './ContextualEditorialLayout.css';
+import './IntelVsAmdEditorial.css';
 import { Link } from 'react-router-dom';
-import { Calendar, Clock, List, MessageCircle, Share2, User, Check, ArrowRight, Cpu, Thermometer, Zap } from 'lucide-react';
+import { Calendar, Clock, List, MessageCircle, Share2, User, Check, ArrowRight, Cpu, Thermometer, Zap, ChevronDown } from 'lucide-react';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { KCROC_GRAPH } from '../data/graph';
@@ -68,8 +71,47 @@ const checklist = [
   'Repairability and serviceability considered'
 ];
 
+const contextualVisuals: Record<string, [string, string, string]> = {
+  "intel-architecture": [
+    "/images/laptop-motherboard-cpu-thermal-paste-ram-slots.webp",
+    "Laptop processor package and nearby memory slots on a motherboard",
+    "Hardware example: a processor is part of an integrated platform; this photograph does not depict a verified Panther Lake die."
+  ],
+  "amd-architecture": [
+    "/images/editorial/intel-amd-accelerators.svg",
+    "Conceptual comparison of CPU, integrated graphics, NPU and shared memory",
+    "Conceptual architecture diagram, not a die photograph or benchmark."
+  ],
+  "power-delivery": [
+    "/images/gaming-laptop-dual-fan-motherboard-diagnostics.webp",
+    "Laptop motherboard with dual cooling fans",
+    "Cooling and board power delivery determine the sustained power available to the processor and graphics."
+  ],
+  "kuwait-climate": [
+    "/images/editorial/ambient-air-cooling-path.svg",
+    "Conceptual warmer and cooler intake air paths through a laptop",
+    "Warmer intake air reduces the cooling system’s temperature margin; the effect is model-dependent."
+  ],
+  "thermal-physics": [
+    "/images/laptop-cooling-fins-dust-removal-kuwait-1000.webp",
+    "Dust obstruction in laptop cooling fins",
+    "Dust can restrict airflow; inspection is more useful than automatic repasting."
+  ],
+  "benchmarks": [
+    "/images/editorial/thermal-throttling-pattern.svg",
+    "Illustrative temperature and clock-speed trends during sustained workload",
+    "Conceptual trend only, not measured Intel or AMD benchmark data."
+  ],
+  "hidden-variables": [
+    "/images/dell-laptop-ram-fan-battery-chassis-open.webp",
+    "Laptop interior showing memory, fan and battery",
+    "Check the exact laptop’s battery, memory layout and cooling serviceability. This is a representative hardware example."
+  ]
+};
+
 function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
-  return <section id={id} className="scroll-mt-28 mb-14"><h2 className="mb-5 text-2xl sm:text-3xl font-black tracking-tight text-white">{title}</h2>{children}</section>;
+  const visual = contextualVisuals[id];
+  return <section id={id} data-kcroc-editorial-section={id} data-kcroc-contextual-pair={visual ? 'true' : undefined} className="intel-amd-section"><div data-kcroc-section-copy="true"><h2 className="mb-5 text-2xl sm:text-3xl font-black tracking-tight text-white">{title}</h2>{children}</div>{visual && <figure data-kcroc-contextual-visual="true"><img src={visual[0]} alt={visual[1]} loading="lazy" decoding="async" /><figcaption>{visual[2]}</figcaption></figure>}</section>;
 }
 
 function P({ children }: { children: React.ReactNode }) {
@@ -79,9 +121,15 @@ function P({ children }: { children: React.ReactNode }) {
 export default function IntelVsAmdGuide() {
   const [activeId, setActiveId] = useState('short-answer');
   const [copied, setCopied] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const articleRef = useRef<HTMLElement>(null);
+  const tocRef = useRef<HTMLDetailsElement>(null);
 
   const toc = useMemo(() => [
     ['short-answer', 'Short answer'],
+    ['november-update', '2026 platform update'],
+    ['independent-tests', 'Independent test evidence'],
+    ['ai-and-battery', 'AI, memory and battery decisions'],
     ['at-a-glance', 'At-a-glance comparison'],
     ['generation-matrix', '2024–2026 generation matrix'],
     ['suffix-decoder', 'Model and suffix decoder'],
@@ -89,8 +137,8 @@ export default function IntelVsAmdGuide() {
     ['amd-architecture', 'AMD Ryzen AI architecture'],
     ['brand-vs-laptop', 'CPU brand ≠ laptop performance'],
     ['power-delivery', 'Power limits and motherboard delivery'],
-    ['kuwait-climate', 'What Kuwait’s climate changes'],
-    ['thermal-physics', 'Kuwait thermal physics and maintenance'],
+    ['kuwait-climate', 'What ambient heat changes (including Kuwait)'],
+    ['thermal-physics', 'Thermal physics and maintenance'],
     ['benchmarks', 'How to read benchmarks'],
     ['benchmark-red-flags', 'Benchmark red flags'],
     ['hidden-variables', 'What manufacturers don’t tell you'],
@@ -98,21 +146,50 @@ export default function IntelVsAmdGuide() {
     ['exact-cpu', 'Exact-CPU comparison records'],
     ['buying-checklist', 'Buying checklist'],
     ['faq', 'Frequently asked questions'],
-    ['references', 'Official specification references']
+    ['references', 'Official specification and research references']
   ], []);
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = [];
-    toc.forEach(([id]) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const observer = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) setActiveId(id);
-      }, { rootMargin: '-18% 0px -68% 0px', threshold: 0 });
-      observer.observe(el);
-      observers.push(observer);
-    });
-    return () => observers.forEach(o => o.disconnect());
+    const article = articleRef.current;
+    const summary = tocRef.current?.querySelector('summary');
+    const header = document.querySelector<HTMLElement>('header[data-premium-chrome="header"]');
+    if (!article || !summary) return;
+    let frame = 0;
+    let readingLine = 148;
+    const measure = () => {
+      const top = Math.ceil(header?.getBoundingClientRect().height ?? 80) + 8;
+      readingLine = top + Math.ceil(summary.getBoundingClientRect().height) + 20;
+      article.style.setProperty('--kcroc-editorial-sticky-top', top + 'px');
+      article.style.setProperty('--kcroc-editorial-reading-line', readingLine + 'px');
+    };
+    const update = () => {
+      frame = 0;
+      let current = toc[0][0];
+      for (const [id] of toc) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= readingLine + 2) current = id;
+      }
+      setActiveId(current);
+      const rect = article.getBoundingClientRect();
+      setProgress(Math.round(Math.max(0, Math.min(1, (readingLine - rect.top) / Math.max(1, rect.height - readingLine))) * 100));
+    };
+    const schedule = () => { if (!frame) frame = window.requestAnimationFrame(update); };
+    const resize = () => { measure(); schedule(); };
+    measure(); update();
+    const observer = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(resize) : null;
+    if (header) observer?.observe(header);
+    observer?.observe(summary);
+    observer?.observe(article);
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', resize);
+    window.addEventListener('hashchange', schedule);
+    return () => {
+      observer?.disconnect();
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', resize);
+      window.removeEventListener('hashchange', schedule);
+    };
   }, [toc]);
 
   const copyLink = async () => {
@@ -137,15 +214,15 @@ export default function IntelVsAmdGuide() {
   };
 
   return (
-    <div className="min-h-screen bg-transparent text-slate-300">
+    <div data-kcroc-rollout="article" className="min-h-screen bg-transparent text-slate-300">
       <SEOEngine entityId="guide-intel-vs-amd" />
       <SchemaMarkup schema={faqSchema} />
 
       <div className="fixed top-0 left-0 right-0 z-50 h-1 bg-slate-900" aria-hidden="true">
-        <div className="h-full bg-cyan-400 transition-[width] duration-150" style={{ width: '100%' }} />
+        <div className="h-full bg-cyan-400 transition-[width] duration-150" style={{ width: progress + '%' }} />
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-20 sm:pt-28 pb-20">
+      <div data-kcroc-contextual-editorial="true" className="mx-auto pt-20 sm:pt-28 pb-20">
         <nav aria-label="Breadcrumb" className="mb-8 text-sm text-slate-500">
           <ol className="flex flex-wrap items-center gap-2">
             <li><Link to="/" className="hover:text-cyan-400">Home</Link></li><li>/</li>
@@ -155,20 +232,8 @@ export default function IntelVsAmdGuide() {
           </ol>
         </nav>
 
-        <div className="mb-8 lg:hidden">
-          <details className="rounded-2xl border border-slate-800 bg-slate-900/60">
-            <summary className="flex min-h-12 cursor-pointer items-center gap-2 px-5 font-black text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-400">
-              <List size={16} className="text-cyan-400" aria-hidden="true" /> On this page
-            </summary>
-            <ol className="grid gap-1 border-t border-slate-800 p-4 sm:grid-cols-2">
-              {toc.map(([id, label]) => <li key={id}><a href={`#${id}`} className="block rounded-lg px-3 py-2 text-sm text-slate-400 hover:bg-slate-800 hover:text-cyan-300">{label}</a></li>)}
-            </ol>
-          </details>
-        </div>
-
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_270px]">
-          <article className="min-w-0">
-            <header className="mb-12">
+        <article ref={articleRef} data-kcroc-editorial-panel="article-body" className="intel-amd-editorial min-w-0">
+            <header data-kcroc-editorial-hero="true" className="mb-12">
               <div className="mb-5 flex flex-wrap items-center gap-2 text-xs font-black uppercase tracking-wider">
                 <span className="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-cyan-300">Hardware Comparison</span>
                 <span className="rounded-full border border-slate-700 bg-slate-900 px-3 py-1 text-slate-400">Technically reviewed</span>
@@ -177,13 +242,13 @@ export default function IntelVsAmdGuide() {
                 Intel Core Ultra vs. AMD Ryzen AI: What Actually Differs in a Laptop
               </h1>
               <p className="mt-6 max-w-4xl text-lg sm:text-xl leading-8 text-slate-300">
-                A practical, model-first comparison of CPU architecture, integrated graphics, NPUs, power limits and cooling — with a Kuwait-specific look at sustained laptop performance.
+                A November 2026 model-first guide to Panther Lake, Ryzen AI 400 and AI Max: compare CPU and graphics performance, local AI, memory, battery life, power limits and repairability before choosing a laptop.
               </p>
               <div className="mt-7 flex flex-wrap gap-x-5 gap-y-3 text-xs font-semibold text-slate-500">
                 <span className="flex items-center gap-1.5"><User size={14} /> Imran Natiq</span>
                 <span className="flex items-center gap-1.5"><Calendar size={14} /> Published August 7, 2026</span>
-                <span className="flex items-center gap-1.5"><Calendar size={14} /> Updated November 9, 2026</span>
-                <span className="flex items-center gap-1.5"><Clock size={14} /> 16–20 min read</span>
+                <span className="flex items-center gap-1.5"><Calendar size={14} /> Updated November 27, 2026</span>
+                <span className="flex items-center gap-1.5"><Clock size={14} /> 20–24 min read</span>
               </div>
               <div className="mt-6 flex flex-wrap gap-3">
                 <button onClick={copyLink} className="inline-flex min-h-10 items-center gap-2 rounded-full border border-slate-700 px-4 py-2 text-xs font-black text-slate-300 hover:border-cyan-500/50 hover:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400" aria-label="Copy article link">
@@ -193,11 +258,15 @@ export default function IntelVsAmdGuide() {
                   <MessageCircle size={14} /> Ask a technician
                 </a>
               </div>
-              <figure className="mt-8 overflow-hidden rounded-3xl border border-slate-800 bg-slate-900">
-                <img src="/images/blog/intel-core-ultra-vs-amd-ryzen-ai-comparison.webp" alt="Intel Core Ultra versus AMD Ryzen AI laptop processor comparison" width="1200" height="630" loading="eager" fetchPriority="high" decoding="async" className="aspect-[1200/630] w-full object-cover" />
+              <figure data-kcroc-editorial-hero-image="true" className="mt-8 overflow-hidden rounded-3xl border border-slate-800 bg-slate-900">
+                <img src="/images/blog/intel-core-ultra-vs-amd-ryzen-ai-comparison.webp" alt="Intel Core Ultra versus AMD Ryzen AI laptop processor comparison" width="1200" height="630" loading="eager" fetchPriority="high" decoding="async" className="w-full h-auto object-contain" />
                 <figcaption className="px-4 py-3 text-xs text-slate-500">Platform names describe a family. Laptop performance is determined by the exact silicon, configuration and chassis.</figcaption>
               </figure>
             </header>
+            <details ref={tocRef} data-kcroc-article-toc="true" data-kcroc-intelligent-sticky="true" className="mb-10 rounded-2xl" onKeyDown={event => { if (event.key === "Escape" && event.currentTarget.open) { event.currentTarget.open = false; event.currentTarget.querySelector("summary")?.focus(); } }}>
+              <summary className="flex cursor-pointer items-center gap-3 font-bold"><List size={18} className="shrink-0" aria-hidden="true" /><span className="shrink-0">On this page</span><span data-kcroc-current-section="true" aria-hidden="true">{toc.find(([id]) => id === activeId)?.[1]}</span><span data-kcroc-reading-percent="true" aria-hidden="true">{progress}%</span><ChevronDown size={18} className="shrink-0" aria-hidden="true" /></summary>
+              <ol className="list-decimal space-y-2">{toc.map(([id, label]) => <li key={id}><a href={`#${id}`} aria-current={activeId === id ? "location" : undefined} onClick={event => { if (!event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey && tocRef.current) tocRef.current.open = false; }}>{label}</a></li>)}</ol>
+            </details>
 
             <Section id="short-answer" title="The short answer">
               <div className="rounded-2xl border border-cyan-500/30 bg-cyan-500/5 p-6 sm:p-8">
@@ -206,15 +275,47 @@ export default function IntelVsAmdGuide() {
               </div>
             </Section>
 
+            <Section id="november-update" title="What changed in 2026 — November buying brief">
+              <P>Intel Core Ultra Series 3 (Panther Lake) and AMD Ryzen AI 400 are the main contemporary mobile families covered here, but neither replaces every older performance tier. The following additions matter when comparing a new laptop or discounted 2025 stock.</P>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {[
+                  ['Intel Core Ultra Series 3', 'January 2026: Panther Lake introduces Intel 18A and selected X7/X9 configurations with higher-tier Arc graphics. The Arc B390 is not fitted to every Series 3 chip.'],
+                  ['AMD Ryzen AI 400 / PRO 400', 'January 2026: Gorgon Point updates the Ryzen AI mobile range. The HX 470 combines 12 CPU cores, Radeon 890M and up to 55 NPU TOPS; check the exact SKU.'],
+                  ['Intel Core Ultra 200HX Plus', 'March 2026: Intel refreshed its high-power 200HX laptop range, including the 290HX Plus. This is a different class from Panther Lake thin-and-light models; compare discrete GPU, cooling and sustained power.'],
+                  ['AMD Ryzen AI Max PRO 400', 'Announced May 2026: Gorgon Halo targets professional mobile workstations and compact desktops. AMD lists Max+ PRO 495 with 16 cores / 32 threads, Radeon 8065S (40 graphics cores) and 256-bit LPDDR5x. Confirm actual regional system availability.'],
+                  ['Intel Core Series 3 (without Ultra)', 'April 2026: a separate value-oriented mobile family uses foundations of Panther Lake. The absence of Ultra matters: verify the exact graphics, NPU and platform capabilities rather than assuming equivalence.'],
+                  ['Discounted previous-generation laptops', 'Core Ultra 200V, Ryzen AI 300 and Ryzen AI Max 300 can still make sense if the complete laptop offers the right RAM, battery, display, warranty and price. A newer badge alone does not justify replacement.']
+                ].map(([title, detail]) => <div key={title} className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5"><h3 className="font-black text-white">{title}</h3><p className="mt-2 text-sm leading-7">{detail}</p></div>)}
+              </div>
+              <P>These are verified announcements and processor specifications, not a claim that every model is in stock in Kuwait or that all platforms have been tested in the KCROC lab. Manufacturer links and independent reviews appear below.</P>
+            </Section>
+
+            <Section id="independent-tests" title="What independent laptop tests actually show">
+              <P>Independent evidence supports a more useful shortlist than a universal winner. Review results are tied to the tested machine, firmware, memory, power mode, display and workload.</P>
+              <div className="grid gap-4 md:grid-cols-3">
+                <div className="rounded-2xl border border-slate-800 p-5"><h3 className="font-black">Panther Lake CPU and efficiency</h3><p className="mt-2 text-sm leading-7">Notebookcheck’s X9 388H analysis reported strong efficiency and graphics, but its lower-power X7 358H testing also found an HX 370 advantage in some conditions. Do not extend flagship results to every Series 3 laptop.</p><a className="underline" href="https://www.notebookcheck.net/Intel-Panther-Lake-Core-Ultra-X9-388H-performance-analysis-Outpaces-Arrow-Lake-and-exceeds-Zen-5-in-efficiency.1212583.0.html" rel="noopener noreferrer" target="_blank">Read Notebookcheck’s test</a></div>
+                <div className="rounded-2xl border border-slate-800 p-5"><h3 className="font-black">Integrated graphics and mixed workloads</h3><p className="mt-2 text-sm leading-7">Ars Technica’s February review of the Asus Zenbook Duo with X9 388H found competitive CPU and graphics performance against Ryzen AI alternatives. This is evidence for that configuration, not an entire brand ranking.</p><a className="underline" href="https://arstechnica.com/gadgets/2026/02/intel-panther-lake-core-ultra-review-intels-best-laptop-cpu-in-a-very-long-time/" rel="noopener noreferrer" target="_blank">Read Ars Technica’s review</a></div>
+                <div className="rounded-2xl border border-slate-800 p-5"><h3 className="font-black">Battery comparisons need context</h3><p className="mt-2 text-sm leading-7">PCWorld’s July Ryzen AI 400 battery comparison highlights why a 99Wh Intel review unit and smaller-battery systems cannot be treated as a controlled CPU-only test. Compare the exact battery capacity, screen and test protocol.</p><a className="underline" href="https://www.pcworld.com/article/3172411/amds-ryzen-ai-400-doesnt-look-like-a-long-lasting-laptop-chip.html" rel="noopener noreferrer" target="_blank">Read PCWorld’s comparison</a></div>
+              </div>
+              <P>Editorial interpretation: start with Panther Lake and Lunar Lake for portable efficiency candidates, Ryzen AI 300/400 for balanced productivity, and AI Max for unusually large shared-memory or integrated-graphics workloads. Validate every candidate with exact laptop reviews; these are shopping shortlists, not measured rankings.</P>
+            </Section>
+
+            <Section id="ai-and-battery" title="AI, RAM and battery: three decisions that matter more than the badge">
+              <P><strong>AI:</strong> Copilot+ PC features require an eligible system, typically including a 40-TOPS-class NPU, at least 16GB RAM and 256GB storage. A CPU with the right TOPS alone does not establish eligibility or feature availability. Check the Windows version, feature rollout, regional eligibility and application runtime. Cloud-based AI does not require a high-end local NPU. Local language models often depend more on GPU support, available memory, quantization and memory bandwidth.</P>
+              <P><strong>Memory:</strong> 16GB is a practical starting point for everyday use; 32GB is often a better fit for development, editing and multitasking. Larger local AI, VMs and professional projects may require 64GB or more. With integrated graphics, the CPU and GPU share system RAM, so check the usable memory after graphics allocation. Soldered memory must be sized at purchase.</P>
+              <P><strong>Battery:</strong> compare watt-hours and measured runtime under the same workload and screen brightness. For example, an illustrative 60Wh battery drawing 8W on average would last about 7.5 hours in an idealized calculation; a 75Wh battery drawing 12W would last about 6.25 hours. These are arithmetic examples, not tested Intel or AMD results. Real usable capacity and power draw fluctuate.</P>
+              <p className="text-sm"><a className="underline" href="https://learn.microsoft.com/en-us/windows/ai/npu-devices" target="_blank" rel="noopener noreferrer">Microsoft: Copilot+ PC developer requirements</a></p>
+            </Section>
+
             <Section id="at-a-glance" title="At-a-glance comparison">
               <P>This table is intentionally qualitative. CPU families span multiple generations and power classes, so a platform-wide benchmark number would be misleading.</P>
-              <ComparisonTable rows={comparisonRows} />
+              <div data-kcroc-editorial-table="true" className="min-w-0"><ComparisonTable rows={comparisonRows} /></div>
             </Section>
 
 
             <Section id="generation-matrix" title="Generation and architecture matrix (2024–2026)">
               <P>These labels cover several different silicon designs. The rows below are a generation map, not a promise that every processor in a family has the same core count, GPU, NPU or memory layout. Confirm the complete model number on the manufacturer’s specification page.</P>
-              <div className="my-8 overflow-x-auto rounded-2xl border border-slate-800" role="region" aria-label="Intel Core Ultra and AMD Ryzen AI generation matrix" tabIndex={0}>
+              <div data-kcroc-editorial-table="true" className="my-8 overflow-x-auto rounded-2xl border border-slate-800" role="region" aria-label="Intel Core Ultra and AMD Ryzen AI generation matrix" tabIndex={0}>
                 <table className="w-full min-w-[980px] border-collapse text-sm">
                   <caption className="sr-only">2024 to 2026 Intel Core Ultra and AMD Ryzen AI generation and architecture matrix</caption>
                   <thead><tr className="bg-slate-900 text-left">
@@ -239,7 +340,7 @@ export default function IntelVsAmdGuide() {
 
             <Section id="suffix-decoder" title="Model and suffix decoder: read the whole name">
               <P>Suffixes are useful clues, but they are not universal wattage guarantees. Intel’s Series 2 V models identify Lunar Lake, H marks performance-oriented mobile variants and HX identifies higher-power mobile chips in the relevant families. The X7 and X9 labels used on selected Series 3 products are performance-tier branding before the model number; they are not an “X suffix.” For example, Core Ultra X9 388H ends in H.</P>
-              <div className="my-8 overflow-x-auto rounded-2xl border border-slate-800">
+              <div data-kcroc-editorial-table="true" className="my-8 overflow-x-auto rounded-2xl border border-slate-800">
                 <table className="w-full min-w-[720px] border-collapse text-sm">
                   <thead><tr className="bg-slate-900 text-left"><th scope="col" className="p-4 text-xs font-black uppercase text-slate-400">Label</th><th scope="col" className="p-4 text-xs font-black uppercase text-slate-400">Typical interpretation</th><th scope="col" className="p-4 text-xs font-black uppercase text-slate-400">Buying check</th></tr></thead>
                   <tbody>
@@ -312,7 +413,7 @@ export default function IntelVsAmdGuide() {
             </Section>
 
 
-            <Section id="thermal-physics" title="Kuwait thermal physics: temperature margin, dust and interface materials">
+            <Section id="thermal-physics" title="Thermal physics: temperature margin, dust and interface materials">
               <P>A useful first approximation is the temperature margin between the processor’s configured thermal limit and the air entering the cooling system. If a hypothetical processor limit is 100°C, the simple margin is 78°C with 22°C intake air and 60°C with 40°C intake air. The 18°C reduction in margin is illustrative; it does not predict an exact throttle time or benchmark loss because heat load, fan curves, heatsink resistance, firmware and chassis airflow all matter.</P>
               <div className="my-7 rounded-2xl border border-cyan-500/30 bg-cyan-500/5 p-6">
                 <p className="text-xs font-black uppercase tracking-wider text-cyan-300">Illustrative thermal margin</p>
@@ -380,29 +481,28 @@ export default function IntelVsAmdGuide() {
                 {['Processor model', 'Architecture / generation', 'CPU cores and threads', 'NPU presence and published capability', 'Integrated GPU', 'Memory support / configuration', 'Power class / limits', 'Release generation', 'Target segment'].map(item => <div key={item} className="rounded-xl border border-slate-800 bg-slate-900/50 p-4 text-sm font-semibold text-slate-300"><Cpu size={15} className="mb-2 text-cyan-400" />{item}</div>)}
               </div>
               <div className="mt-5 rounded-xl border border-cyan-500/30 bg-cyan-500/5 p-5 text-sm leading-7 text-slate-300"><strong className="text-cyan-200">No fabricated numbers:</strong> if an NPU TOPS figure, core count or power limit is not verified for the exact model, leave it unspecified rather than turning a platform-level claim into a processor-level fact.</div>
-            </Section>
-
-
               <h3 className="mt-10 mb-4 text-xl font-black text-white">Verified reference records: example processors</h3>
               <P>The following entries illustrate how much the platform can differ. Values are manufacturer-published processor specifications; they do not guarantee the sustained result or exact memory configuration of a particular laptop.</P>
-              <div className="my-8 overflow-x-auto rounded-2xl border border-slate-800" role="region" aria-label="Verified Intel and AMD exact processor comparison" tabIndex={0}>
+              <div data-kcroc-editorial-table="true" className="my-8 overflow-x-auto rounded-2xl border border-slate-800" role="region" aria-label="Verified Intel and AMD exact processor comparison" tabIndex={0}>
                 <table className="w-full min-w-[1050px] border-collapse text-sm">
-                  <caption className="sr-only">Manufacturer specification examples for four Intel and AMD laptop processors</caption>
-                  <thead><tr className="bg-slate-900 text-left"><th scope="col" className="p-4 text-xs font-black uppercase text-slate-400">Specification</th><th scope="col" className="p-4 text-xs font-black uppercase text-cyan-300">Core Ultra 7 258V</th><th scope="col" className="p-4 text-xs font-black uppercase text-cyan-300">Core Ultra X9 388H</th><th scope="col" className="p-4 text-xs font-black uppercase text-emerald-300">Ryzen AI 9 HX 370</th><th scope="col" className="p-4 text-xs font-black uppercase text-emerald-300">Ryzen AI Max+ 395</th></tr></thead>
+                  <caption className="sr-only">Manufacturer specification examples for five Intel and AMD laptop processors</caption>
+                  <thead><tr className="bg-slate-900 text-left"><th scope="col" className="p-4 text-xs font-black uppercase text-slate-400">Specification</th><th scope="col" className="p-4 text-xs font-black uppercase text-cyan-300">Core Ultra 7 258V</th><th scope="col" className="p-4 text-xs font-black uppercase text-cyan-300">Core Ultra X9 388H</th><th scope="col" className="p-4 text-xs font-black uppercase text-emerald-300">Ryzen AI 9 HX 370</th><th scope="col" className="p-4 text-xs font-black uppercase text-emerald-300">Ryzen AI 9 HX 470</th><th scope="col" className="p-4 text-xs font-black uppercase text-emerald-300">Ryzen AI Max+ 395</th></tr></thead>
                   <tbody>
                     {[
-                      ['Generation / codename', 'Series 2 / Lunar Lake', 'Series 3 / Panther Lake', 'Ryzen AI 300 / Strix Point', 'Ryzen AI Max 300 / Strix Halo'],
-                      ['CPU cores / threads', '8 (4 P + 4 LP E) / 8', '16 (4 P + 8 E + 4 LP E) / 16', '12 (4 Zen 5 + 8 Zen 5c) / 24', '16 Zen 5 / 32'],
-                      ['NPU peak', '47 TOPS', '50 TOPS', 'Up to 50 TOPS', '50 TOPS'],
-                      ['Integrated graphics', 'Intel Arc 140V / 8 Xe-cores', 'Intel Arc B390 / 12 Xe-cores', 'Radeon 890M / 16 graphics cores', 'Radeon 8060S / 40 graphics cores'],
-                      ['Processor power specification', '17W base / 37W maximum turbo', '25W base / 80W maximum turbo', '28W default TDP / 15–54W cTDP', '55W default TDP / 45–120W cTDP'],
-                      ['Memory specification', 'Up to 32GB LPDDR5X-8533; on-package', 'Up to 96GB LPDDR5X-9600; laptop implementation varies', 'DDR5-5600 or LPDDR5X-8000; laptop implementation varies', '256-bit LPDDR5X-8000; up to 128GB'],
-                      ['Important buying note', 'Choose memory capacity at purchase', 'Confirm actual GPU enablement and cooling in the OEM model', 'Do not assume the RAM is socketed; inspect the exact laptop', 'High-bandwidth unified memory is a fixed platform configuration, not a normal SO-DIMM upgrade']
+                      ['Generation / codename', 'Series 2 / Lunar Lake', 'Series 3 / Panther Lake', 'Ryzen AI 300 / Strix Point', 'Ryzen AI 400 / Gorgon Point', 'Ryzen AI Max 300 / Strix Halo'],
+                      ['CPU cores / threads', '8 (4 P + 4 LP E) / 8', '16 (4 P + 8 E + 4 LP E) / 16', '12 (4 Zen 5 + 8 Zen 5c) / 24', '12 (4 Zen 5 + 8 Zen 5c) / 24', '16 Zen 5 / 32'],
+                      ['NPU peak', '47 TOPS', '50 TOPS', 'Up to 50 TOPS', 'Up to 55 TOPS', '50 TOPS'],
+                      ['Integrated graphics', 'Intel Arc 140V / 8 Xe-cores', 'Intel Arc B390 / 12 Xe-cores', 'Radeon 890M / 16 graphics cores', 'Radeon 890M / 16 graphics cores', 'Radeon 8060S / 40 graphics cores'],
+                      ['Processor power specification', '17W base / 37W maximum turbo', '25W base / 80W maximum turbo', '28W default TDP / 15–54W cTDP', '28W default TDP / 15–54W cTDP', '55W default TDP / 45–120W cTDP'],
+                      ['Memory specification', 'Up to 32GB LPDDR5X-8533; on-package', 'Up to 96GB LPDDR5X-9600; laptop implementation varies', 'DDR5-5600 or LPDDR5X-8000; laptop implementation varies', 'DDR5 or LPDDR5X; check exact OEM configuration', '256-bit LPDDR5X-8000; up to 128GB'],
+                      ['Important buying note', 'Choose memory capacity at purchase', 'Confirm actual GPU enablement and cooling in the OEM model', 'Do not assume the RAM is socketed; inspect the exact laptop', 'Compare actual battery, sustained CPU and iGPU tests with HX 370', 'High-bandwidth unified memory is a fixed platform configuration, not a normal SO-DIMM upgrade']
                     ].map(([label, ...values]) => <tr key={label} className="border-t border-slate-800 align-top"><th scope="row" className="p-4 text-left font-bold text-white">{label}</th>{values.map((value, i) => <td key={i} className="p-4 text-slate-300">{value}</td>)}</tr>)}
                   </tbody>
                 </table>
               </div>
               <P>For an apples-to-apples comparison, use the same application version, power mode, ambient conditions and test duration, then compare actual laptop results. A Core Ultra X9 388H processor specification and a Ryzen AI Max+ 395 specification describe different system classes; they are not directly equivalent just because they are the highest-tier names in their respective families.</P>
+
+            </Section>
 
             <Section id="buying-checklist" title="Practical laptop buying checklist">
               <BuyingChecklist items={checklist} />
@@ -420,9 +520,15 @@ export default function IntelVsAmdGuide() {
             </Section>
 
 
-            <Section id="references" title="Official specification references">
+            <Section id="references" title="Official specification and research references">
               <P>Use the manufacturer pages below to confirm the precise processor number, supported memory, graphics, NPU and power specification. Product data can change, and the laptop manufacturer still determines the final system configuration.</P>
               <ul className="space-y-3">
+                <li><a className="font-semibold text-cyan-300 underline underline-offset-4" href="https://www.intel.com/content/www/us/en/newsroom/news/client-computing/intel-launches-core-ultra-200hx-plus-series-mobile-processors.html" target="_blank" rel="noopener noreferrer">Intel: March 2026 Core Ultra 200HX Plus launch</a></li>
+                <li><a className="font-semibold text-cyan-300 underline underline-offset-4" href="https://www.intel.com/content/www/us/en/newsroom/news/client-computing/intel-launches-intel-core-series-3-processors-changing-the-game-for-everyday-computing.html" target="_blank" rel="noopener noreferrer">Intel: April 2026 Core Series 3 launch</a></li>
+                <li><a className="font-semibold text-cyan-300 underline underline-offset-4" href="https://www.intel.com/content/www/us/en/newsroom/news/artificial-intelligence/ces-2026-intel-core-ultra-series-3-debut-first-built-on-intel-18a.html" target="_blank" rel="noopener noreferrer">Intel: Panther Lake Series 3 launch</a></li>
+                <li><a className="font-semibold text-cyan-300 underline underline-offset-4" href="https://newsroom.amd.com/news/amd-expands-ai-leadership-across-client-graphics/" target="_blank" rel="noopener noreferrer">AMD: CES 2026 Ryzen AI 400 and PRO 400 announcements</a></li>
+                <li><a className="font-semibold text-cyan-300 underline underline-offset-4" href="https://www.amd.com/en/blogs/2026/amd-powers-next-generation-agent-computers-with-new-ryzen-ai-hal.html" target="_blank" rel="noopener noreferrer">AMD: Ryzen AI Max PRO 400 announcement</a></li>
+                <li><a className="font-semibold text-cyan-300 underline underline-offset-4" href="https://www.amd.com/en/products/specifications/processors.html" target="_blank" rel="noopener noreferrer">AMD: current processor specification database</a></li>
                 <li><a className="font-semibold text-cyan-300 underline underline-offset-4 hover:text-cyan-200" href="https://www.intel.com/content/www/us/en/products/sku/240957/intel-core-ultra-7-processor-258v-12m-cache-up-to-4-80-ghz/specifications.html" target="_blank" rel="noopener noreferrer">Intel Core Ultra 7 258V — official specifications</a></li>
                 <li><a className="font-semibold text-cyan-300 underline underline-offset-4 hover:text-cyan-200" href="https://www.intel.com/content/www/us/en/products/sku/245526/intel-core-ultra-x9-processor-388h-18m-cache-up-to-5-10-ghz/specifications.html" target="_blank" rel="noopener noreferrer">Intel Core Ultra X9 388H — official specifications</a></li>
                 <li><a className="font-semibold text-cyan-300 underline underline-offset-4 hover:text-cyan-200" href="https://www.amd.com/en/support/downloads/drivers.html/processors/ryzen/ryzen-ai-300-series/amd-ryzen-ai-9-hx-370.html" target="_blank" rel="noopener noreferrer">AMD Ryzen AI 9 HX 370 — official specifications</a></li>
@@ -452,25 +558,13 @@ export default function IntelVsAmdGuide() {
               </div>
             </section>
 
-            <p className="mt-8 text-xs leading-6 text-slate-600">Editorial note: specifications in the reference tables were checked against the linked Intel and AMD product pages on November 9, 2026. Processor maximums are not a promise of sustained laptop performance; verify the OEM configuration, BIOS power policy and service manual before purchase.</p>
+            <p className="mt-8 text-xs leading-6 text-slate-600">Editorial note: This November 27, 2026 update adds verified 2026 platform announcements, the HX 470 comparison, and published independent review evidence. Manufacturer specifications are distinguished from third-party tests and illustrative calculations; no new KCROC laboratory benchmarks are claimed. Processor maximums are not a promise of sustained laptop performance; verify the OEM configuration, BIOS power policy and service manual before purchase.</p>
+            <aside data-kcroc-editorial-author="true" className="mt-8 rounded-2xl border p-6">
+              <p className="text-xs font-black uppercase tracking-wider">Author and technical perspective</p>
+              <Link to="/author/imran" className="mt-2 block text-lg font-bold">Imran Natiq</Link>
+              <p className="mt-1 text-sm leading-6">Founder &amp; Lead Technician, KCROC. This guide is an editorial comparison of published specifications and independent reviews, not a claim of in-house testing of every processor.</p>
+            </aside>
           </article>
-
-          <aside className="hidden lg:block">
-            <div className="sticky top-24 space-y-5">
-              <nav aria-label="On this page" className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-                <p className="mb-4 flex items-center gap-2 text-xs font-black uppercase tracking-wider text-slate-400"><List size={14} className="text-cyan-400" /> On this page</p>
-                <ol className="space-y-2">
-                  {toc.map(([id, label]) => <li key={id}><a href={`#${id}`} className={`block rounded-md px-2 py-1 text-sm ${activeId === id ? 'bg-cyan-500/10 font-bold text-cyan-300' : 'text-slate-500 hover:text-slate-200'}`}>{label}</a></li>)}
-                </ol>
-              </nav>
-              <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-                <p className="text-xs font-black uppercase tracking-wider text-slate-500">Reviewed by</p>
-                <Link to="/author/imran" className="mt-2 block font-bold text-white hover:text-cyan-300">Imran Natiq</Link>
-                <p className="mt-1 text-xs leading-5 text-slate-500">Founder & Lead Technician, KCROC</p>
-              </div>
-            </div>
-          </aside>
-        </div>
       </div>
     </div>
   );
