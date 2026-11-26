@@ -3,6 +3,15 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import postcss from 'postcss';
+import normalizeArabicHeadingSelectors from './normalize-arabic-heading-selectors.mjs';
+
+// Exercise the same plugin used by the production PostCSS pipeline.
+const malformed = ':lang(ar)h1, :lang(ar)h2 { line-height: 1.4; }';
+const valid = 'h3:lang(ar), h4:lang(ar), :lang(ar) .example, h2:lang(en) { line-height: 1.5; }';
+const repaired = await postcss([normalizeArabicHeadingSelectors()]).process(malformed + '\n' + valid, { from: undefined });
+assert.equal(repaired.css, 'h1:lang(ar), h2:lang(ar) { line-height: 1.4; }\n' + valid,
+  'PostCSS must repair malformed Arabic headings without changing valid selector scopes');
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (name) => fs.readFileSync(path.join(root, name), 'utf8');
@@ -67,7 +76,8 @@ if (process.argv.includes('--dist')) {
   assert.ok(generatedCss, 'Built CSS must reference the self-hosted Arabic family');
   for (const name of fs.readdirSync(path.join(dist, 'assets')).filter(name => name.endsWith('.css'))) {
     const css = fs.readFileSync(path.join(dist, 'assets', name), 'utf8');
-    assert.doesNotMatch(css, /:lang\(ar\)h[1-4]\b/, 'Minified CSS must not place a heading type selector after :lang(ar)');
+    const malformedHeading = css.match(/:lang\(ar\)h[1-4]\b/);
+    assert.ok(!malformedHeading, 'Invalid Arabic heading selector in ' + name + ': ' + (malformedHeading?.[0] ?? ''));
   }
 }
 
