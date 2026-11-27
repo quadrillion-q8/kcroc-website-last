@@ -1,3 +1,5 @@
+import SignatureGuideTOC from '../components/blog/SignatureGuideTOC';
+import './SignatureEditorial.css';
 // File: app/frontend/src/pages/GamingLaptopCleaningAR.tsx
 // Arabic/Kuwaiti-Arabic counterpart of:
 // /blog/how-often-clean-laptop-replace-thermal-paste-kuwait
@@ -142,7 +144,7 @@ export default function GamingLaptopCleaningAR() {
   }, []);
 
   return (
-    <div dir="rtl" lang="ar-KW" className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
+    <div data-kcroc-signature-editorial="4" dir="rtl" lang="ar-KW" className="w-full min-h-screen bg-transparent text-slate-200 pt-8 sm:pt-16 lg:pt-32 pb-8 sm:pb-16 lg:pb-24">
       <Head htmlAttributes={{ lang: 'ar-KW', dir: 'rtl' }}>
         <title>تنظيف لابتوب القيمنق وتغيير المعجون الحراري في الكويت | KCROC</title>
         <meta name="description" content="كل كم لازم تنظف لابتوب القيمنق في الكويت؟ تعرف على جدول تنظيف الغبار، متى تغيّر المعجون الحراري، وعلامات ارتفاع الحرارة والـthermal throttling." />
@@ -211,7 +213,8 @@ export default function GamingLaptopCleaningAR() {
           </div>
         </div>
 
-        <div className="prose prose-invert prose-lg max-w-none prose-p:text-slate-300 prose-headings:text-white prose-a:text-cyan-400">
+        <SignatureGuideTOC toc={[{"id":"short-answer","label":"أول شيء: كل كم أنظف لابتوب القيمنق؟"},{"id":"gaming-care","label":"ليش لابتوب القيمنق يحتاج عناية أكثر؟"},{"id":"gaming-vs-desktop-cooling","label":"شنو الفرق بين تبريد لابتوب القيمنق والـGaming PC؟"},{"id":"kuwait-heat-dust","label":"شلون تأثر حرارة وغبار الكويت على اللابتوب؟"},{"id":"thermal-paste","label":"متى فعلاً أحتاج أغيّر المعجون الحراري؟"},{"id":"model-specific-thermal-material","label":"هل كل لابتوبات القيمنق تستخدم نفس المعجون الحراري؟"},{"id":"clean-vs-repaste","label":"تنظيف الغبار وتغيير المعجون مو نفس الشي"},{"id":"thermal-throttling","label":"شلون أعرف إذا الجهاز قاعد يسوي Thermal Throttling؟"},{"id":"safe-maintenance","label":"شلون تحافظ على لابتوبك وتقلل مشاكل الحرارة؟"},{"id":"routine","label":"روتين بسيط لصيانة لابتوب القيمنق بالكويت"},{"id":"proper-service","label":"شنو المفروض يشمل تنظيف وتبريد لابتوب احترافي؟"},{"id":"faq","label":"الأسئلة الشائعة"}]} arabic />
+          <div className="prose prose-invert prose-lg max-w-none prose-p:text-slate-300 prose-headings:text-white prose-a:text-cyan-400">
           <SectionTitle id="short-answer">أول شيء: كل كم أنظف لابتوب القيمنق؟</SectionTitle>
           <p>ما في موعد واحد يمشي على كل اللابتوبات. جهاز استخدامه خفيف وغرفته نظيفة غير عن جهاز قيمنق شغال كل يوم وفيه غبار. بالكويت، خل فحص فتحات التهوية وسلوك التبريد عادة شهرية، وللاستخدام الثقيل أو الأماكن اللي فيها غبار، خل تنظيف داخلي كل 6–12 شهر نقطة بداية معقولة — وأبكر إذا ظهرت أعراض.</p>
           <div className="overflow-x-auto not-prose my-8">
@@ -241,13 +244,13 @@ export default function GamingLaptopCleaningAR() {
           <p>لابتوب القيمنق مساحته محدودة ونظام تبريده مدمج، ولهذا كل موديل ممكن يكون له تصميم مختلف. ممكن تلقى heat pipes مشتركة بين الـCPU والـGPU، زعانف heatsink دقيقة، تبريد للـVRAM والـVRM، أو vapor chamber. أما الـGaming PC فعادة عنده مساحة أكبر للهواء ومكونات تبريد أسهل في التعديل والتبديل. عشان جذي، لا تطبق جدول تنظيف أو طريقة repaste حق كمبيوتر مكتبي على لابتوب إلا بعد ما تعرف تصميم الموديل وطريقة صيانته.</p>
 
           <SectionTitle id="kuwait-heat-dust">شلون تأثر حرارة وغبار الكويت على اللابتوب؟</SectionTitle>
-          <p>اللابتوب يطرد حرارته للجو اللي حوله، فكل ما كانت الغرفة أحر، يصير على نظام التبريد شغل أكثر. والغبار موضوع ثاني: ممكن يتجمع عند فتحات السحب، على شفرات المراوح وبين زعانف الـheatsink. والمكيف يبرد الغرفة، بس طبعاً مو معناه إن الغبار ما يدخل الجهاز.</p>
+          <div data-signature-pair="kuwait-heat-dust"><div data-signature-copy="true"><p>اللابتوب يطرد حرارته للجو اللي حوله، فكل ما كانت الغرفة أحر، يصير على نظام التبريد شغل أكثر. والغبار موضوع ثاني: ممكن يتجمع عند فتحات السحب، على شفرات المراوح وبين زعانف الـheatsink. والمكيف يبرد الغرفة، بس طبعاً مو معناه إن الغبار ما يدخل الجهاز.</p>
           <p>لا تحكم من قراءة حرارة وحدة. إذا تقدر، قارن الجهاز بنفس اللعبة ونفس الإعدادات ونفس ظروف الاستخدام. إذا كان جهازك قبل مستقر وصار مع الوقت يحمى أكثر، أو المراوح صارت أعلى، أو الأداء صار ينزل، هذي علامة أهم من رقم واحد تشوفه على برنامج مراقبة الحرارة.</p>
 
-          <figure className="my-10 not-prose">
+          </div><figure data-signature-visual="true" className="my-10 not-prose">
             <img src={COOLING_IMAGE_URL} alt="ارتفاع حرارة نظام تبريد لابتوب قيمنق في الكويت" className="w-full rounded-2xl border border-slate-800" loading="lazy" decoding="async" />
             <figcaption className="text-sm text-slate-500 mt-3">الحرارة المستمرة ممكن تظهر من خلال ارتفاع الحرارة، صوت المراوح ونزول الأداء أو الـthermal throttling.</figcaption>
-          </figure>
+          </figure></div>
 
           <SectionTitle id="thermal-paste">متى فعلاً أحتاج أغيّر المعجون الحراري؟</SectionTitle>
           <p>المعجون الحراري يساعد على نقل الحرارة من الشريحة إلى المشتت. بس مو شي لازم تغيّره كل سنة تلقائياً. في أجهزة تظل حرارتها مستقرة سنين، وأجهزة ثانية تحتاج صيانة أبكر بسبب الاستخدام القوي، مشكلة بالتلامس، تدهور المادة الحرارية، أو لأن الـheatsink انفك في صيانة سابقة.</p>

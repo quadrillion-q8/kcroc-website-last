@@ -1,3 +1,5 @@
+import SignatureGuideTOC from '../components/blog/SignatureGuideTOC';
+import './SignatureEditorial.css';
 // File: app/frontend/src/pages/BlogLaptopRepair.tsx
 import React from 'react';
 import { Head } from 'vite-react-ssg';
@@ -359,7 +361,7 @@ function SectionHeading({ eyebrow, title, intro }: { eyebrow: string; title: str
 
 export default function BlogLaptopRepair() {
   return (
-    <div className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30">
+    <div data-kcroc-signature-editorial="4" className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30">
       <Head>
         <title>Laptop Repair in Kuwait (2026 Guide): Costs, Diagnostics &amp; Board-Level Restoration | KCROC</title>
         <meta
@@ -424,13 +426,14 @@ export default function BlogLaptopRepair() {
         </div>
       </section>
 
-      <figure className="mx-auto my-10 max-w-5xl overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+      <figure data-signature-hero-image="true" className="mx-auto my-10 max-w-5xl overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
         <img src="/images/laptop-repair-kuwait.webp"
           alt="Opened laptop at a computer hardware repair workbench"
           loading="eager" fetchPriority="high" decoding="async"
-          className="max-h-[440px] w-full object-contain" />
+          className="h-auto w-full object-cover" />
         <figcaption className="px-5 py-3 text-sm leading-relaxed text-slate-300">Hardware-first diagnosis: identify the faulty component before approving parts or replacement work.</figcaption>
       </figure>
+      <SignatureGuideTOC toc={[{"id":"repair-blog-1","label":"Why laptops develop faults in Kuwait"},{"id":"repair-blog-2","label":"Component-level motherboard repair or a complete board replacement?"},{"id":"repair-blog-3","label":"Laptop repair costs in Kuwait: 2026 KWD reference"},{"id":"repair-blog-4","label":"Start with what your laptop is doing"},{"id":"repair-blog-5","label":"Brand-specific laptop diagnostics"},{"id":"repair-blog-6","label":"The first five minutes after a laptop spill or sudden failure"},{"id":"repair-blog-7","label":"One physical repair lab in Hawalli, with free pickup across Kuwait"},{"id":"repair-blog-8","label":"Laptop repair in Kuwait: common questions"},{"id":"faq","label":"Frequently asked questions"}]} />
       <section aria-label="KCROC service facts" className="px-4 py-8 sm:px-6">
         <div className="mx-auto grid max-w-6xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {[
@@ -457,6 +460,7 @@ export default function BlogLaptopRepair() {
 
       <section className="px-4 py-12 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-6xl">
+          <div id="repair-blog-1" data-signature-anchor="true" />
           <SectionHeading
             eyebrow="01 · Environment and hardware"
             title="Why laptops develop faults in Kuwait"
@@ -491,6 +495,7 @@ export default function BlogLaptopRepair() {
 
       <section className="border-y border-slate-800 bg-slate-900/40 px-4 py-12 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-6xl">
+          <div id="repair-blog-2" data-signature-anchor="true" />
           <SectionHeading
             eyebrow="02 · Repair decision"
             title="Component-level motherboard repair or a complete board replacement?"
@@ -541,6 +546,7 @@ export default function BlogLaptopRepair() {
 
       <section className="px-4 py-12 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-6xl">
+          <div id="repair-blog-3" data-signature-anchor="true" />
           <SectionHeading
             eyebrow="03 · Published price guide"
             title="Laptop repair costs in Kuwait: 2026 KWD reference"
@@ -584,6 +590,7 @@ export default function BlogLaptopRepair() {
 
       <section className="border-y border-slate-800 bg-slate-900/40 px-4 py-12 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-6xl">
+          <div id="repair-blog-4" data-signature-anchor="true" />
           <SectionHeading
             eyebrow="04 · Symptom-first diagnosis"
             title="Start with what your laptop is doing"
@@ -631,6 +638,7 @@ export default function BlogLaptopRepair() {
 
       <section className="px-4 py-12 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-6xl">
+          <div id="repair-blog-5" data-signature-anchor="true" />
           <SectionHeading
             eyebrow="05 · Brand and platform differences"
             title="Brand-specific laptop diagnostics"
@@ -663,6 +671,7 @@ export default function BlogLaptopRepair() {
 
       <section className="border-y border-amber-500/10 bg-amber-500/[0.03] px-4 py-12 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-6xl">
+          <div id="repair-blog-6" data-signature-anchor="true" />
           <SectionHeading
             eyebrow="06 · Immediate triage"
             title="The first five minutes after a laptop spill or sudden failure"
@@ -703,7 +712,8 @@ export default function BlogLaptopRepair() {
       <section className="px-4 py-12 sm:px-6 sm:py-16">
         <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_0.85fr]">
           <div>
-            <SectionHeading
+            <div id="repair-blog-7" data-signature-anchor="true" />
+          <SectionHeading
               eyebrow="07 · Collection and lab intake"
               title="One physical repair lab in Hawalli, with free pickup across Kuwait"
               intro="All diagnostics and repairs take place at the KCROC workshop. Customers outside Hawalli use the collection and return-delivery service; service-area coverage does not mean there is a separate KCROC storefront in each district."
@@ -767,6 +777,7 @@ export default function BlogLaptopRepair() {
 
       <section id="faq" className="border-t border-slate-800 bg-slate-900/40 px-4 py-12 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-4xl">
+          <div id="repair-blog-8" data-signature-anchor="true" />
           <SectionHeading
             eyebrow="08 · Frequently asked questions"
             title="Laptop repair in Kuwait: common questions"

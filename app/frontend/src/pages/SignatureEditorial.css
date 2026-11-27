@@ -20,3 +20,11 @@
 @media(min-width:1024px){[data-signature-pair]{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(1.5rem,3vw,2.5rem)}[data-signature-toc] ol{columns:2}[data-signature-toc] li{break-inside:avoid}}
 @media(max-width:639px){[data-signature-toc] summary{gap:.4rem;padding-inline:.65rem;font-size:.75rem}[data-signature-current]{padding-inline-start:.4rem}}
 @media(max-height:420px){[data-kcroc-signature-editorial] [data-signature-toc]{position:relative;inset-block-start:auto}}
+
+/* Context-aware rails: preserve source proportions and avoid a short wrapper trapping sticky navigation. */
+[data-signature-pair] > [data-signature-copy]{grid-column:1;grid-row:1}
+[data-signature-pair] > [data-signature-visual]{grid-column:1;grid-row:2}
+[data-signature-visual] img{max-block-size:none!important}
+[data-signature-anchor]{scroll-margin-block-start:var(--signature-reading-line)}
+[data-kcroc-signature-editorial] [data-signature-toc]{align-self:start}
+@media(min-width:1024px){[data-signature-pair] > [data-signature-visual]{grid-column:2;grid-row:1}[data-signature-pair] > [data-signature-copy]{grid-column:1;grid-row:1}}

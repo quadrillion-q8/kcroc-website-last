@@ -8,7 +8,8 @@ import {
 } from 'lucide-react';
 import { SEOEngine } from '../core/components/SEOEngine';
 import { KCROC_GRAPH } from '../data/graph';
-import StickyTOC from '@/components/blog/StickyTOC';
+import SignatureGuideTOC from '../components/blog/SignatureGuideTOC';
+import './SignatureEditorial.css';
 import SchemaMarkup from '../components/seo/SchemaMarkup';
 
 const business = KCROC_GRAPH.business!;
@@ -236,10 +237,10 @@ export default function GameBarPresenceWriterGuide() {
   };
 
   return (
-    <div className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30">
+    <div data-kcroc-signature-editorial="4" className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30">
       <SEOEngine entityId="guide-gamebar-presence-writer" />
       <SchemaMarkup schema={STRUCTURED_DATA} />
-      <StickyTOC toc={toc} />
+      
 
       <section className="relative overflow-hidden border-b border-slate-800/80 px-4 pb-10 pt-24 sm:px-6 sm:pb-16">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-violet-500/10" />
@@ -304,6 +305,7 @@ export default function GameBarPresenceWriterGuide() {
           </div>
         </div>
       </section>
+      <SignatureGuideTOC toc={toc} />
 
       <section id="quick-answer" className={sectionClass}>
         <div className="container mx-auto max-w-5xl">
@@ -418,8 +420,8 @@ export default function GameBarPresenceWriterGuide() {
 
       <section className="border-b border-slate-800/80 px-4 py-8 sm:px-6 sm:py-10">
         <div className="container mx-auto max-w-5xl">
-          <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
-            <img src={GUIDE_IMAGE_URL} alt={GUIDE_IMAGE_ALT} width={1376} height={768} loading="eager" decoding="async" className="h-auto max-h-[420px] w-full object-cover" />
+          <figure data-signature-hero-image="true" className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
+            <img src={GUIDE_IMAGE_URL} alt={GUIDE_IMAGE_ALT} width={1376} height={768} loading="eager" decoding="async" className="h-auto w-full object-cover" />
             <figcaption className="border-t border-slate-800/60 bg-brand-dark/80 p-3 text-xs text-slate-400">A high-performance gaming system still needs clean software scheduling, stable drivers, and adequate thermal headroom.</figcaption>
           </figure>
         </div>

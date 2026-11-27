@@ -1,3 +1,5 @@
+import SignatureGuideTOC from '../components/blog/SignatureGuideTOC';
+import './SignatureEditorial.css';
 // File: app/frontend/src/pages/DellLaptopOverheatingPage.tsx
 import { Head } from 'vite-react-ssg';
 import React from 'react';
@@ -147,7 +149,7 @@ export const DellLaptopOverheatingPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-transparent text-slate-300 selection:bg-cyan-500/30 pb-24">
+    <div data-kcroc-signature-editorial="4" className="min-h-screen bg-transparent text-slate-300 selection:bg-cyan-500/30 pb-24">
       <Head htmlAttributes={{ lang: 'en' }}>
         <title>{PAGE_TITLE}</title>
         <meta name="description" content={PAGE_DESCRIPTION} />
@@ -227,23 +229,14 @@ export const DellLaptopOverheatingPage = () => {
           </div>
         </section>
 
+        <SignatureGuideTOC toc={[{"id":"dell-preboot-diagnostics","label":"1. Layer 1 — F12 pre-boot diagnostics and ePSA codes"},{"id":"dell-thermal-profiles","label":"2. Layer 2 — Dell Optimizer, legacy utilities and AWCC profiles"},{"id":"dell-bios-updates","label":"3. Layer 3 — BIOS, EC, charger ID and Modern Standby"},{"id":"dell-model-families","label":"4. Layer 4 — Model-family cooling and hardware checks"},{"id":"dell-symptoms-and-causes","label":"Warning symptoms and common causes"},{"id":"dell-symptom-checker","label":"Symptom-to-cause diagnostic matrix"},{"id":"dell-safe-checks","label":"Safe DIY checks and escalation signs"},{"id":"dell-faq","label":"Frequently asked questions"},{"id":"official-dell-references","label":"Official technical references"}]} />
         <section id="dell-quick-navigation" className="scroll-mt-28 rounded-3xl border border-slate-800 bg-slate-900/50 p-6 sm:p-8">
           <div className="flex flex-wrap items-center gap-3 mb-3">
             <Badge className="bg-cyan-500/10 text-cyan-300 border-cyan-500/20">Four-layer diagnostic workflow</Badge>
             <span className="text-xs uppercase tracking-wider text-slate-500">Start with low-risk checks</span>
           </div>
           <h2 className="text-2xl font-bold text-white mb-4">Quick Navigation</h2>
-          <ol className="grid sm:grid-cols-2 gap-x-8 gap-y-3 text-sm leading-6">
-            <li><a href="#dell-preboot-diagnostics" className="text-cyan-300 hover:underline">1. Layer 1 — F12 pre-boot diagnostics and ePSA codes</a></li>
-            <li><a href="#dell-thermal-profiles" className="text-cyan-300 hover:underline">2. Layer 2 — Dell Optimizer, legacy utilities and AWCC profiles</a></li>
-            <li><a href="#dell-bios-updates" className="text-cyan-300 hover:underline">3. Layer 3 — BIOS, EC, charger ID and Modern Standby</a></li>
-            <li><a href="#dell-model-families" className="text-cyan-300 hover:underline">4. Layer 4 — Model-family cooling and hardware checks</a></li>
-            <li><a href="#dell-symptoms-and-causes" className="text-cyan-300 hover:underline">Warning symptoms and common causes</a></li>
-            <li><a href="#dell-symptom-checker" className="text-cyan-300 hover:underline">Symptom-to-cause diagnostic matrix</a></li>
-            <li><a href="#dell-safe-checks" className="text-cyan-300 hover:underline">Safe DIY checks and escalation signs</a></li>
-            <li><a href="#dell-faq" className="text-cyan-300 hover:underline">Frequently asked questions</a></li>
-            <li><a href="#official-dell-references" className="text-cyan-300 hover:underline">Official technical references</a></li>
-          </ol>
+          
         </section>
 
         {/* Symptoms & Causes Grid */}
@@ -470,15 +463,15 @@ export const DellLaptopOverheatingPage = () => {
           </div>
         </section>
 
-        <section id="hot-ambient-conditions" className="scroll-mt-28 grid md:grid-cols-[1fr_.9fr] gap-6 items-center">
-          <div>
+        <section id="hot-ambient-conditions" data-signature-pair="hot-ambient-conditions" className="scroll-mt-28">
+          <div data-signature-copy="true">
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Why a Hot Room or Parked Car Changes the Result</h2>
             <p className="text-slate-300 leading-7">
               A laptop cools itself using the air around it. When intake air is already hot, the cooling system has less temperature headroom and may need higher fan speed or lower sustained power. Direct sunlight, a closed vehicle and an unventilated room can make a laptop behave very differently from the same machine on a desk in a climate-controlled space.
             </p>
             <p className="text-sm leading-6 text-slate-400 mb-0">Move the laptop to a shaded, ventilated place and let it return to a safe operating environment before testing. Never leave a powered laptop in a parked vehicle or use it on a surface that blocks its vents.</p>
           </div>
-          <figure className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
+          <figure data-signature-visual="true" className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
             <img src={IMAGES.laptopHardware.cloggedFan.src} alt="Dust restricting airflow through a laptop cooling fan" width={800} height={600} loading="lazy" className="w-full h-auto" />
             <figcaption className="p-4 text-xs leading-5 text-slate-400">A blocked heatsink can compound the effect of warm intake air. Check external vents first; internal cleaning requires model-specific service steps.</figcaption>
           </figure>

@@ -1,3 +1,5 @@
+import SignatureGuideTOC from '../components/blog/SignatureGuideTOC';
+import './SignatureEditorial.css';
 import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -246,7 +248,7 @@ export default function LaptopOverheatingGuide() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <div data-kcroc-signature-editorial="4" className="min-h-screen bg-slate-950 text-slate-100">
       <SEOEngine entityId="guide-laptop-overheating" />
       <SchemaMarkup schema={schema} />
 
@@ -282,7 +284,7 @@ export default function LaptopOverheatingGuide() {
 
           <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 shadow-2xl">
             <img
-              src="/images/laptop-fan-copper-heatpipe-closeup.webp"
+              data-signature-hero-image="true" src="/images/laptop-fan-copper-heatpipe-closeup.webp"
               alt="Laptop cooling fan and copper heatpipe assembly"
               className="h-full w-full object-cover"
               width="1000"
@@ -297,14 +299,7 @@ export default function LaptopOverheatingGuide() {
           <span>Last reviewed: {LAST_REVIEWED}</span>
         </section>
 
-        <nav className="mt-8 rounded-2xl border border-slate-800 bg-slate-900/70 p-6" aria-label="On this page">
-          <h2 className="text-lg font-semibold text-white">On this page</h2>
-          <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-            {toc.map(([id, label]) => (
-              <a key={id} href={`#${id}`} className="text-sm text-cyan-300 hover:text-cyan-200">{label}</a>
-            ))}
-          </div>
-        </nav>
+        <SignatureGuideTOC toc={toc.map(([id,label]) => ({ id,label }))} />
 
         <section id="quick-answer" className="mt-10 rounded-2xl border border-cyan-400/20 bg-cyan-400/5 p-6 sm:p-8">
           <h2 className="text-2xl font-semibold">Quick answer: why is my laptop so hot?</h2>
@@ -483,12 +478,12 @@ export default function LaptopOverheatingGuide() {
           <h2 className="text-3xl font-bold">What temperature is too hot for a laptop?</h2>
           <p className="mt-3 max-w-4xl leading-7 text-slate-300">There is no single temperature number that applies to every laptop. Processor and GPU limits vary by model, while laptop manufacturers also control power targets, fan curves and chassis cooling differently. A short boost near a documented limit is not automatically equivalent to a sustained thermal fault.</p>
           <p className="mt-3 max-w-4xl text-slate-400 leading-7">For diagnosis, record the exact component and sensor, workload, temperature trend, clock speed, utilization and performance. A repeatable relationship between rising temperature and falling clocks or performance is more informative than a generic “90°C is bad” or “100°C is fine” rule.</p>
-          <div className="mt-6 grid gap-6 lg:grid-cols-2">
-            <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
+          <div data-signature-pair="thermal-interface" className="mt-6 gap-6">
+            <div data-signature-visual="true" className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
               <img src={IMAGES.laptopHardware.copperHeatsink3.src} alt="Laptop copper heatsink showing dried thermal interface material" width="800" height="600" loading="lazy" className="w-full" />
               <p className="p-4 text-sm text-slate-400">Thermal-interface condition is one possible cause, but it should be assessed after airflow, workload and fan behaviour are considered.</p>
             </div>
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-6">
+            <div data-signature-copy="true" className="rounded-2xl border border-slate-800 bg-slate-900/70 p-6">
               <h3 className="text-xl font-semibold">A better thermal question</h3>
               <ol className="mt-4 space-y-3 text-sm leading-6 text-slate-300">
                 <li><strong>1.</strong> What component and sensor are you measuring?</li>

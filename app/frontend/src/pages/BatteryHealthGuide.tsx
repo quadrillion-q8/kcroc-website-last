@@ -9,7 +9,8 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { StandaloneRelatedLinks } from '@/components/content/StandaloneRelatedLinks';
-import StickyTOC from '@/components/blog/StickyTOC';
+import SignatureGuideTOC from '../components/blog/SignatureGuideTOC';
+import './SignatureEditorial.css';
 
 import { SEOEngine } from '../core/components/SEOEngine';
 import { IMAGES } from '../constants/images';
@@ -475,12 +476,12 @@ const toneClasses: Record<string, string> = {
 
 export default function BatteryHealthGuide() {
   return (
-    <div className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30">
+    <div data-kcroc-signature-editorial="4" className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30">
 
       {/* Dynamic SEO Engine Integration */}
       <SEOEngine entityId="guide-battery" />
 
-      <StickyTOC toc={toc} />
+      
 
       {/* ─── HERO ─── */}
       <section className="relative overflow-hidden border-b border-slate-800/80 px-4 pb-10 pt-24 sm:px-6 sm:pb-16">
@@ -510,13 +511,7 @@ export default function BatteryHealthGuide() {
                   Check Battery Health
                 </a>
               </div>
-              <div className="mt-6 flex flex-wrap gap-2">
-                {toc.map((item) => (
-                  <a key={item.id} href={`#${item.id}`} className="rounded-full border border-slate-800 bg-brand-dark/40 px-3 py-1.5 text-[11px] text-slate-400 transition hover:border-cyan-500/50 hover:text-cyan-300">
-                    {item.label}
-                  </a>
-                ))}
-              </div>
+              
             </div>
 
             <div className="rounded-2xl border border-red-500/30 bg-red-500/5 p-5 shadow-2xl shadow-red-950/20 sm:p-6">
@@ -539,6 +534,7 @@ export default function BatteryHealthGuide() {
           </div>
         </div>
       </section>
+      <SignatureGuideTOC toc={toc} />
 
       {/* ─── QUICK ANSWER ─── */}
       <section id="quick-answer" className="scroll-mt-20 border-b border-slate-800/80 bg-slate-900/40 px-4 py-10 sm:px-6 sm:py-16">
@@ -855,18 +851,18 @@ upower -i /org/freedesktop/UPower/devices/battery_BAT0</code></pre>
             </h2>
           </div>
 
-          <div className="grid sm:grid-cols-[1fr_1fr] gap-4 sm:gap-6 items-stretch">
-            <div className="rounded-2xl overflow-hidden border border-slate-800 min-h-[16rem]">
+          <div data-signature-pair="battery-safety" className="gap-4 sm:gap-6 items-start">
+            <div data-signature-visual="true" className="rounded-2xl overflow-hidden border border-slate-800">
               <img
                 src={IMAGES.macbook.swollenBattery1.src}
                 alt={IMAGES.macbook.swollenBattery1.alt}
                 width={IMAGES.macbook.swollenBattery1.width}
                 height={IMAGES.macbook.swollenBattery1.height}
                 loading="lazy"
-                className="w-full h-full object-cover"
+                className="w-full h-auto object-cover"
               />
             </div>
-            <div className="rounded-2xl border-2 border-red-500/40 bg-red-500/10 p-5 sm:p-6">
+            <div data-signature-copy="true" className="rounded-2xl border-2 border-red-500/40 bg-red-500/10 p-5 sm:p-6">
               <div className="flex items-center gap-3 mb-3">
                 <div className="bg-red-500/20 p-2 rounded-lg shrink-0">
                   <AlertTriangle className="w-5 h-5 text-red-400" aria-hidden="true" />
