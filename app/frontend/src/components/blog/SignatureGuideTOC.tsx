@@ -33,6 +33,6 @@ export default function SignatureGuideTOC({ toc, arabic = false }: { toc: Item[]
  if(!toc.length) return null;
  return <details ref={ref} data-signature-toc="true" data-kcroc-intelligent-sticky="true" onKeyDown={e=>{if(e.key==='Escape'&&e.currentTarget.open){e.currentTarget.open=false;e.currentTarget.querySelector('summary')?.focus();}}}>
  <summary><List size={18} aria-hidden="true"/><strong>{arabic?'محتويات الدليل':'On this page'}</strong><span data-signature-current="true" aria-hidden="true">{toc.find(i=>i.id===active)?.label}</span><span aria-hidden="true">{progress}%</span><ChevronDown size={18} aria-hidden="true"/></summary>
- <ol>{toc.map(item=><li key={item.id}><a href={'#'+item.id} aria-current={active===item.id?'location':undefined} onClick={e=>{if(!e.ctrlKey&&!e.metaKey&&!e.shiftKey&&!e.altKey&&ref.current)ref.current.open=false;}}>{item.label}</a></li>)}</ol>
+ <nav aria-label={arabic?'محتويات الدليل':'Table of contents'}><ol>{toc.map(item=><li key={item.id}><a href={'#'+item.id} aria-current={active===item.id?'location':undefined} onClick={e=>{if(!e.ctrlKey&&!e.metaKey&&!e.shiftKey&&!e.altKey&&ref.current)ref.current.open=false;}}>{item.label}</a></li>)}</ol></nav>
  </details>;
 }
