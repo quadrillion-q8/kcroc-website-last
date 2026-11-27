@@ -1,3 +1,5 @@
+import SignatureGuideTOC from '../components/blog/SignatureGuideTOC';
+import './SignatureEditorial.css';
 // File: app/frontend/src/pages/GamingPCCooling.tsx
 import { Head } from 'vite-react-ssg';
 import React from 'react';
@@ -303,7 +305,7 @@ export default function GamingPCCooling() {
   };
 
   return (
-    <article className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30">
+    <article data-kcroc-signature-editorial="4" className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30">
       <Head>
         <title>{PAGE_TITLE}</title>
         <meta name="description" content={PAGE_DESCRIPTION} />
@@ -370,7 +372,7 @@ export default function GamingPCCooling() {
               </div>
             </div>
 
-            <figure className="relative overflow-hidden rounded-2xl border border-cyan-400/20 bg-slate-900 shadow-2xl shadow-cyan-950/30">
+            <figure data-signature-hero-image="true" className="relative overflow-hidden rounded-2xl border border-cyan-400/20 bg-slate-900 shadow-2xl shadow-cyan-950/30">
               <img
                 src={HERO_IMAGE}
                 alt="Desktop gaming PC opened on a workbench for cooling inspection and thermal diagnosis"
@@ -388,7 +390,8 @@ export default function GamingPCCooling() {
         </div>
       </header>
 
-      <div className="container mx-auto grid max-w-6xl gap-10 px-4 py-10 sm:px-6 lg:grid-cols-[minmax(0,1fr)_260px] lg:gap-12 lg:py-14">
+      <SignatureGuideTOC toc={[{"id":"why-pcs-overheat","label":"Why PCs overheat"},{"id":"thermal-throttling","label":"Thermal throttling"},{"id":"temperature-guide","label":"Temperature guide"},{"id":"diagnostic-workflow","label":"Diagnosis workflow"},{"id":"symptom-table","label":"Symptoms and checks"},{"id":"case-airflow","label":"Case airflow"},{"id":"air-vs-liquid","label":"Air vs. liquid cooling"},{"id":"fan-curves","label":"Fan curves"},{"id":"thermal-paste","label":"Paste and GPU pads"},{"id":"safe-cleaning","label":"Safe cleaning"},{"id":"maintenance-plan","label":"Maintenance plan"},{"id":"monitoring-tools","label":"Monitoring tools"},{"id":"faqs","label":"FAQs"},{"id":"sources","label":"Technical references"}]} />
+      <div className="container mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-14">
         <div className="min-w-0">
           <section aria-labelledby="quick-answer" className="mb-10">
             <Card className="overflow-hidden border-cyan-400/25 bg-gradient-to-br from-slate-900 to-slate-900/70">
@@ -588,14 +591,14 @@ export default function GamingPCCooling() {
           </section>
 
           <section id="case-airflow" className="scroll-mt-28 mb-14">
-            <div className="mb-6">
+            <div data-signature-pair="case-airflow"><div data-signature-copy="true"><div className="mb-6">
               <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-cyan-300">Build the right air path</p>
               <h2 className="text-2xl font-bold text-white sm:text-3xl">PC case airflow: intake, exhaust and fan direction</h2>
               <p className="mt-3 leading-7 text-slate-300">
                 Case airflow should carry cool room air across heat-producing components and move warmed air out. A common starting layout is front or side intake with rear and top exhaust, but the best arrangement depends on the case, radiator and component layout.
               </p>
             </div>
-            <figure className="mb-6 overflow-hidden rounded-2xl border border-slate-700 bg-slate-900">
+            </div><figure data-signature-visual="true" className="mb-6 overflow-hidden rounded-2xl border border-slate-700 bg-slate-900">
               <img
                 src="/images/evga-pc-case-dual-fan-interior.webp"
                 alt="Interior of a desktop PC case showing installed cooling fans and component airflow space"
@@ -606,7 +609,7 @@ export default function GamingPCCooling() {
               <figcaption className="border-t border-slate-800 px-4 py-3 text-xs leading-5 text-slate-400">
                 Think in terms of a complete intake-to-exhaust path rather than counting fans.
               </figcaption>
-            </figure>
+            </figure></div>
             <div className="grid gap-4 sm:grid-cols-2">
               <Card className="border-slate-700 bg-slate-900/70">
                 <CardHeader>
@@ -688,14 +691,14 @@ export default function GamingPCCooling() {
           </section>
 
           <section id="thermal-paste" className="scroll-mt-28 mb-14">
-            <div className="mb-6">
+            <div data-signature-pair="thermal-paste"><div data-signature-copy="true"><div className="mb-6">
               <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-cyan-300">Interface and contact</p>
               <h2 className="text-2xl font-bold text-white sm:text-3xl">Thermal paste, GPU pads and cooler contact</h2>
               <p className="mt-3 leading-7 text-slate-300">
                 Thermal paste fills microscopic gaps between a chip’s heat spreader and the cooler’s cold plate. Its job is to improve contact and heat transfer; it is not a universal cure for poor airflow, a failing fan or an undersized cooler.
               </p>
             </div>
-            <figure className="mb-6 overflow-hidden rounded-2xl border border-slate-700 bg-slate-900">
+            </div><figure data-signature-visual="true" className="mb-6 overflow-hidden rounded-2xl border border-slate-700 bg-slate-900">
               <img
                 src="/images/applying-thermal-paste-pc-cpu-build.webp"
                 alt="Thermal compound being applied to a desktop processor before cooler installation"
@@ -706,7 +709,7 @@ export default function GamingPCCooling() {
               <figcaption className="border-t border-slate-800 px-4 py-3 text-xs leading-5 text-slate-400">
                 Correct contact pressure and an appropriate thermal interface matter as much as the compound selected.
               </figcaption>
-            </figure>
+            </figure></div>
             <div className="space-y-3 text-sm leading-7 text-slate-300">
               <p><strong className="text-white">CPU paste:</strong> use a reputable compound and the application method recommended for the cooler or processor. Clean old material carefully if the cooler has been removed, and tighten the mounting hardware evenly.</p>
               <p><strong className="text-white">GPU paste:</strong> graphics cards use model-specific cooler assemblies. Disassembly may affect warranty coverage, so check the card maker’s terms and service instructions first.</p>
@@ -881,31 +884,7 @@ export default function GamingPCCooling() {
           </section>
         </div>
 
-        <aside className="hidden lg:block">
-          <div className="sticky top-28 rounded-2xl border border-slate-700 bg-slate-900/70 p-5">
-            <p className="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-cyan-300">In this guide</p>
-            <nav aria-label="Article contents" className="space-y-1.5 text-sm">
-              {[
-                ['why-pcs-overheat', 'Why PCs overheat'],
-                ['thermal-throttling', 'Thermal throttling'],
-                ['temperature-guide', 'Temperature guide'],
-                ['diagnostic-workflow', 'Diagnosis workflow'],
-                ['symptom-table', 'Symptoms and checks'],
-                ['case-airflow', 'Case airflow'],
-                ['air-vs-liquid', 'Air vs. liquid cooling'],
-                ['fan-curves', 'Fan curves'],
-                ['thermal-paste', 'Paste and GPU pads'],
-                ['safe-cleaning', 'Safe cleaning'],
-                ['maintenance-plan', 'Maintenance plan'],
-                ['monitoring-tools', 'Monitoring tools'],
-                ['faqs', 'FAQs'],
-                ['sources', 'Technical references'],
-              ].map(([id, label]) => (
-                <a key={id} href={`#${id}`} className="block rounded-lg px-2.5 py-2 text-slate-400 transition-colors hover:bg-cyan-400/10 hover:text-cyan-200">{label}</a>
-              ))}
-            </nav>
-          </div>
-        </aside>
+        
       </div>
     </article>
   );

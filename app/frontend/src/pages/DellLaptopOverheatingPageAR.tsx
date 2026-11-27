@@ -1,3 +1,5 @@
+import SignatureGuideTOC from '../components/blog/SignatureGuideTOC';
+import './SignatureEditorial.css';
 // Arabic counterpart of /guides/dell-laptop-overheating.
 // Dell-only technical guide: do not turn this into the all-brand overheating page.
 
@@ -112,7 +114,7 @@ export default function DellLaptopOverheatingPageAR() {
         <meta name="twitter:image" content={OG_IMAGE_URL} />
       </Head>
       <SchemaMarkup schema={SCHEMA} />
-      <div dir="rtl" className="min-h-screen bg-transparent text-slate-200 pt-28 pb-24">
+      <div data-kcroc-signature-editorial="4" dir="rtl" className="min-h-screen bg-transparent text-slate-200 pt-28 pb-24">
         <article className="max-w-5xl mx-auto px-4 sm:px-6">
           <nav aria-label="مسار الصفحة" className="text-sm text-slate-400 mb-7">
             <Link to="/ar" className="hover:text-cyan-300">الرئيسية</Link>
@@ -133,12 +135,13 @@ export default function DellLaptopOverheatingPageAR() {
             </p>
           </header>
 
-          <figure className="mb-9 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
+          <figure data-signature-hero-image="true" className="mb-9 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950">
             <img src="/images/dell-laptop-ram-fan-battery-chassis-open.webp"
               alt="لابتوب Dell مفتوح يوضح المروحة والمذربورد والبطارية لفحص الحرارة"
-              loading="eager" decoding="async" className="max-h-80 w-full object-contain"/>
+              loading="eager" decoding="async" className="h-auto w-full object-cover"/>
             <figcaption className="px-5 py-3 text-sm leading-loose text-slate-300">مكان المروحة والمشتت يختلف حسب موديل Dell؛ الصورة للتوضيح وليست تعليمات لفك جهازك.</figcaption>
           </figure>
+          <SignatureGuideTOC toc={[{"id":"dell-ar-f12","label":"1. فحص Dell من قائمة F12"},{"id":"dell-ar-fan","label":"2. أكواد المروحة"},{"id":"dell-ar-profiles","label":"3. إعدادات التبريد"},{"id":"dell-ar-bios","label":"4. تحديث BIOS"},{"id":"dell-ar-models","label":"5. حسب عائلة Dell"},{"id":"dell-ar-symptoms","label":"6. فاحص الأعراض"},{"id":"dell-ar-faq","label":"أسئلة شائعة"},{"id":"dell-ar-references","label":"مصادر Dell الرسمية"}]} arabic />
           <section className="rounded-3xl border border-amber-500/30 bg-amber-500/10 p-6 mb-9">
             <h2 className="text-xl font-bold text-amber-200 mb-3">متى تكون حرارة Dell طبيعية ومتى نقلق؟</h2>
             <p className="leading-8 text-slate-300 mb-0">
@@ -147,7 +150,7 @@ export default function DellLaptopOverheatingPageAR() {
           </section>
 
           <section className="border-t border-slate-800 pt-9 mb-9">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">1. فحص Dell من قائمة F12 قبل دخول ويندوز</h2>
+            <h2 id="dell-ar-f12" className="text-2xl sm:text-3xl font-bold text-white mb-4">1. فحص Dell من قائمة F12 قبل دخول ويندوز</h2>
             <p className="leading-8 text-slate-300 mb-5">الفحص المدمج يختبر أجزاء من الجهاز قبل تشغيل ويندوز، ويساعدك تعرف إذا في مشكلة عتادية ظاهرة.</p>
             <ol className="list-decimal pr-6 space-y-3 leading-8 text-slate-300">
               <li>طفّ اللابتوب بشكل طبيعي.</li>
@@ -160,7 +163,7 @@ export default function DellLaptopOverheatingPageAR() {
           </section>
 
           <section className="border-t border-slate-800 pt-9 mb-9">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-5">2. شنو معنى أكواد مروحة Dell؟</h2>
+            <h2 id="dell-ar-fan" className="text-2xl sm:text-3xl font-bold text-white mb-5">2. شنو معنى أكواد مروحة Dell؟</h2><div data-signature-pair="dell-ar-fan"><div data-signature-copy="true"><p className="leading-8 text-slate-300">شكل المروحة والمشتت يختلف من موديل لي موديل. افحص نتيجة تشخيص Dell أولاً قبل تبديل أي قطعة.</p></div><figure data-signature-visual="true"><img src="/images/laptop-cooling-fins-dust-removal-kuwait-1000.webp" alt="غبار متراكم في زعانف تبريد لابتوب" loading="lazy" decoding="async" /><figcaption>الصورة توضح مسار التهوية؛ مو تشخيص لخلل معين في جهاز Dell.</figcaption></figure></div>
             <div className="grid md:grid-cols-3 gap-4">
               <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
                 <p className="font-mono text-lg font-bold text-red-300">2000-0501</p>
@@ -181,7 +184,7 @@ export default function DellLaptopOverheatingPageAR() {
           </section>
 
           <section className="border-t border-slate-800 pt-9 mb-9">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">3. إعدادات التبريد في Dell Power Manager وMyDell</h2>
+            <h2 id="dell-ar-profiles" className="text-2xl sm:text-3xl font-bold text-white mb-4">3. إعدادات التبريد في Dell Power Manager وMyDell</h2>
             <p className="leading-8 text-slate-300 mb-5">إعدادات التبريد تغيّر التوازن بين الأداء وصوت المروحة وحرارة سطح الجهاز. توفر الخيارات يعتمد على موديلك والبرنامج المثبّت.</p>
             <div className="overflow-x-auto rounded-2xl border border-slate-800">
               <table className="w-full min-w-[600px] text-right text-sm">
@@ -200,12 +203,12 @@ export default function DellLaptopOverheatingPageAR() {
           </section>
 
           <section className="border-t border-slate-800 pt-9 mb-9">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">4. متى أراجع تحديث BIOS؟</h2>
+            <h2 id="dell-ar-bios" className="text-2xl sm:text-3xl font-bold text-white mb-4">4. متى أراجع تحديث BIOS؟</h2>
             <p className="leading-8 text-slate-300">تأكد من إصدار BIOS وملاحظات الإصدار للموديل ورقم Service Tag نفسه من موقع Dell. بعض التحديثات قد تغيّر سلوك الطاقة أو المروحة على موديلات محددة. وصّل الشاحن بمصدر كهرباء ثابت، ولا تفصل الجهاز أثناء التحديث. وتذكّر: تحديث BIOS ما يشيل الغبار ولا يصلّح مروحة فيها تلف ميكانيكي.</p>
           </section>
 
           <section className="border-t border-slate-800 pt-9 mb-9">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-5">5. ملاحظات حسب عائلة Dell</h2>
+            <h2 id="dell-ar-models" className="text-2xl sm:text-3xl font-bold text-white mb-5">5. ملاحظات حسب عائلة Dell</h2>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5"><h3 className="font-bold text-white mb-2">XPS</h3><p className="text-sm leading-7 text-slate-400 mb-0">التصميم النحيف يحد من مساحة التبريد. مع الحمل المستمر ممكن المروحة تعلي والأداء ينخفض للمحافظة على حدود الحرارة. راقب الإطفاء أو التقطيع مع الشغل الخفيف أو فشل فحص المروحة.</p></div>
               <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5"><h3 className="font-bold text-white mb-2">G Series وAlienware</h3><p className="text-sm leading-7 text-slate-400 mb-0">الألعاب تضغط المعالج وكرت الشاشة مع بعض. راجع وضع التبريد وافحص فتحات دخول وخروج الهواء، وقارن الأداء في نفس اللعبة والإعدادات.</p></div>
@@ -215,7 +218,7 @@ export default function DellLaptopOverheatingPageAR() {
           </section>
 
           <section className="border-t border-slate-800 pt-9 mb-9">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">6. فاحص سريع للأعراض</h2>
+            <h2 id="dell-ar-symptoms" className="text-2xl sm:text-3xl font-bold text-white mb-4">6. فاحص سريع للأعراض</h2>
             <label htmlFor="dell-ar-symptom" className="block text-sm font-semibold text-slate-200 mb-2">شنو العرض اللي تشوفه؟</label>
             <select id="dell-ar-symptom" value={selectedSymptom} onChange={(event) => setSelectedSymptom(event.target.value)} className="w-full rounded-xl border border-slate-700 bg-slate-950 text-white p-4">
               {symptoms.map((item) => <option key={item.value} value={item.value}>{item.label}</option>)}
@@ -226,7 +229,7 @@ export default function DellLaptopOverheatingPageAR() {
           </section>
 
           <section className="border-t border-slate-800 pt-9 mb-9">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">أسئلة تتكرر عن حرارة لابتوبات Dell</h2>
+            <h2 id="dell-ar-faq" className="text-2xl sm:text-3xl font-bold text-white mb-4">أسئلة تتكرر عن حرارة لابتوبات Dell</h2>
             <div className="space-y-4">
               {faq.map(({ q, a }) => (
                 <details key={q} data-kcroc-faq-item="true" className="rounded-2xl border border-slate-800 bg-slate-900/50 p-5">
@@ -238,7 +241,7 @@ export default function DellLaptopOverheatingPageAR() {
           </section>
 
           <section className="border-t border-slate-800 pt-9">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">مصادر Dell الرسمية</h2>
+            <h2 id="dell-ar-references" className="text-2xl sm:text-3xl font-bold text-white mb-4">مصادر Dell الرسمية</h2>
             <ul className="space-y-3 text-sm leading-7">
               <li><a className="text-cyan-300 hover:underline" target="_blank" rel="noopener noreferrer" href="https://www.dell.com/support/kbdoc/en-us/000181163/how-to-enter-the-built-in-diagnostics-32-bit-diagnostics-supportassist-epsa-epsa-and-psa">ديل: تشغيل فحوصات ما قبل الإقلاع</a></li>
               <li><a className="text-cyan-300 hover:underline" target="_blank" rel="noopener noreferrer" href="https://www.dell.com/support/kbdoc/en-us/000181167/reference-table-of-epsa-psa-error-codes-and-troubleshooting-steps-2000-0nnn-series">ديل: مرجع أكواد ePSA من سلسلة 2000</a></li>

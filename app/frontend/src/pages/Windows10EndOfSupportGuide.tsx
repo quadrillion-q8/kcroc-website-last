@@ -1,3 +1,5 @@
+import SignatureGuideTOC from '../components/blog/SignatureGuideTOC';
+import './SignatureEditorial.css';
 // File: app/frontend/src/pages/Windows10EndOfSupportGuide.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -116,8 +118,8 @@ const Section = ({ id, title, children }: { id?: string; title: string; children
   </section>
 );
 
-const Figure = ({ src, alt, caption }: { src: string; alt: string; caption: string }) => (
-  <figure className="my-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
+const Figure = ({ src, alt, caption, contextual = false }: { src: string; alt: string; caption: string; contextual?: boolean }) => (
+  <figure data-signature-visual={contextual ? "true" : undefined} className="my-8 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
     <img src={src} alt={alt} loading="lazy" className="w-full h-auto object-cover" />
     <figcaption className="px-5 py-4 text-sm text-slate-400">{caption}</figcaption>
   </figure>
@@ -130,7 +132,7 @@ export default function Windows10EndOfSupportGuide() {
       <SEOEngine entityId="guide-windows-10-eos" />
       <SchemaMarkup schema={structuredData} />
 
-      <div className="min-h-screen bg-transparent text-white pt-28 pb-24">
+      <div data-kcroc-signature-editorial="4" className="min-h-screen bg-transparent text-white pt-28 pb-24">
         <article className="max-w-5xl mx-auto px-5 md:px-8">
           <nav aria-label="Breadcrumb" className="text-sm text-slate-400 mb-7">
             <Link to="/" className="hover:text-cyan-400">Home</Link>
@@ -172,7 +174,8 @@ export default function Windows10EndOfSupportGuide() {
             ))}
           </div>
 
-          <Section title='What “end of support” actually means'>
+          <SignatureGuideTOC toc={[{"id":"support-meaning","label":"What end of support means"},{"id":"support-action","label":"Do you need to act now?"},{"id":"windows-11","label":"Upgrade to Windows 11"},{"id":"esu","label":"Extended Security Updates"},{"id":"repair-upgrade","label":"Repair or upgrade"},{"id":"replace","label":"Replace the computer"},{"id":"linux","label":"Linux"},{"id":"safety-checklist","label":"Safety checklist"},{"id":"decision","label":"Decision rule"},{"id":"faq","label":"FAQs"}]} />
+          <Section id="support-meaning" title='What “end of support” actually means'>
             <p>Windows 10 did not stop functioning on October 14, 2025. Apps still open, files remain on the disk, and the PC can still boot and connect to the internet.</p>
             <p>What ended was Microsoft’s normal product maintenance: free software updates from Windows Update, technical assistance, and security fixes for standard unsupported Windows 10 installations. Microsoft explicitly says the PC will continue to work, but recommends moving to Windows 11.</p>
             <p>
@@ -181,19 +184,19 @@ export default function Windows10EndOfSupportGuide() {
             </p>
           </Section>
 
-          <Section title="Do you need to do anything right now?">
+          <Section id="support-action" title="Do you need to do anything right now?">
             <p>Yes, but the right urgency depends on how the PC is used. A computer used for banking, business documents, customer information, or sensitive accounts deserves a faster transition plan than a lightly used offline or secondary machine.</p>
             <p>If you need more time, Consumer ESU can reduce the security gap on an eligible Windows 10 22H2 PC. It should still be treated as transition time rather than a reason to stay on Windows 10 indefinitely.</p>
           </Section>
 
           <Section id="windows-11" title="Option 1: Upgrade to Windows 11">
-            <p>For an eligible, healthy PC, Windows 11 is usually the cleanest long-term path. Microsoft’s minimum requirements include a compatible 1 GHz+ two-core processor, 4 GB RAM, 64 GB storage, UEFI with Secure Boot capability, TPM 2.0, DirectX 12-compatible graphics, and a suitable display.</p>
+            <div data-signature-pair="windows-11"><div data-signature-copy="true"><p>For an eligible, healthy PC, Windows 11 is usually the cleanest long-term path. Microsoft’s minimum requirements include a compatible 1 GHz+ two-core processor, 4 GB RAM, 64 GB storage, UEFI with Secure Boot capability, TPM 2.0, DirectX 12-compatible graphics, and a suitable display.</p>
             <p>Use Windows Update or Microsoft’s PC Health Check app for a device-specific compatibility result. Do not assume TPM is missing simply because it is not enabled: on some systems TPM functionality exists in firmware under names such as Intel PTT or AMD fTPM.</p>
-            <Figure
+            </div><Figure contextual
               src={IMAGES.laptopHardware.thinkpadLaptopInstallingWindows11.src}
               alt="ThinkPad laptop installing Windows 11"
               caption="A Windows 11 compatibility result can depend on firmware settings as well as the CPU and other hardware."
-            />
+            /></div>
             <p>
               See Microsoft’s current <a href={MS_WIN11} target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">Windows 11 specifications <ExternalLink className="inline w-4 h-4" /></a>. If the upgrade is failing or Windows itself is unstable, follow the <Link to="/guides/windows-troubleshooting-complete-guide" className="text-cyan-400 hover:underline">complete Windows troubleshooting guide</Link> and isolate the specific failure before attempting another installation.
             </p>
@@ -220,27 +223,27 @@ export default function Windows10EndOfSupportGuide() {
             />
           </Section>
 
-          <Section title="Option 3: Repair or upgrade the existing PC">
-            <p>A Windows 11 compatibility failure does not automatically mean the hardware is worthless. An SSD, more RAM, a new battery, cooling service, or a repaired Windows installation can still make a machine useful—provided the processor and platform fit your longer-term needs.</p>
+          <Section id="repair-upgrade" title="Option 3: Repair or upgrade the existing PC">
+            <div data-signature-pair="repair-upgrade"><div data-signature-copy="true"><p>A Windows 11 compatibility failure does not automatically mean the hardware is worthless. An SSD, more RAM, a new battery, cooling service, or a repaired Windows installation can still make a machine useful—provided the processor and platform fit your longer-term needs.</p>
             <p>For a very slow machine, see the <Link to="/blog/why-is-my-laptop-so-slow" className="text-cyan-400 hover:underline">measurement-led laptop performance guide</Link>. It explains how to distinguish memory pressure, storage latency, thermal throttling, power behaviour and background software before deciding what to change.</p>
-            <Figure
+            </div><Figure contextual
               src={IMAGES.upgrades.miniPcCrucial.src}
               alt="Mini PC with DDR5 memory and NVMe SSD upgrade components"
               caption="RAM and SSD upgrades can extend the useful life of suitable hardware, but they do not override Windows 11 CPU or firmware requirements."
-            />
+            /></div>
           </Section>
 
-          <Section title="Option 4: Replace the computer">
+          <Section id="replace" title="Option 4: Replace the computer">
             <p>Replacement is often better when the PC cannot officially meet Windows 11 requirements, already has several failing components, or no longer delivers the performance and reliability you need for work.</p>
             <p>Before buying a new machine, compare its expected useful life, repairability, support window and hardware requirements with the workloads you actually run.</p>
           </Section>
 
-          <Section title="Option 5: Move suitable older hardware to Linux">
+          <Section id="linux" title="Option 5: Move suitable older hardware to Linux">
             <p>Linux can give older hardware a useful second life for browsing, email, documents, and other general-purpose work. Ubuntu and Linux Mint are common beginner-friendly choices.</p>
             <p>Check your software, printer, scanner, gaming, and specialist application requirements first. Linux is a valid option, but not a drop-in replacement for every Windows workflow.</p>
           </Section>
 
-          <Section title="Safety checklist if you are staying on Windows 10 for now">
+          <Section id="safety-checklist" title="Safety checklist if you are staying on Windows 10 for now">
             <ul className="space-y-3">
               {[
                 'Enroll in Consumer ESU if your device is eligible.',
@@ -254,7 +257,7 @@ export default function Windows10EndOfSupportGuide() {
             <p>If you suspect the computer is infected, use Microsoft Defender or a reputable security product and follow the vendor’s malware-removal guidance rather than stacking multiple cleanup utilities on top of each other.</p>
           </Section>
 
-          <Section title="Upgrade, ESU, repair or replace? A practical decision rule">
+          <Section id="decision" title="Upgrade, ESU, repair or replace? A practical decision rule">
             <div className="grid md:grid-cols-2 gap-4">
               {[
                 ['Upgrade to Windows 11', 'The PC passes compatibility checks and the hardware is healthy.', Laptop],

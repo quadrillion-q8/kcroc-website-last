@@ -18,14 +18,17 @@ try {
    const layout=await page.evaluate(()=>{
     const root=document.querySelector('[data-kcroc-contextual-editorial]');
     if(!root)return {error:'Missing contextual editorial shell'};
-    const hero=root.querySelector('[data-kcroc-editorial-hero]').getBoundingClientRect();
-    const body=root.querySelector('[data-kcroc-editorial-panel="article-body"]').getBoundingClientRect();
+    const heroElement=root.querySelector('[data-kcroc-editorial-hero]');
+    const bodyElement=root.querySelector('[data-kcroc-editorial-panel="article-body"]');
+    if(!heroElement||!bodyElement)return {error:'Missing hero or body'};
+    const hero=heroElement.getBoundingClientRect();
+    const body=bodyElement.getBoundingClientRect();
     const centered=[...root.querySelectorAll('[data-kcroc-editorial-section]:not([data-kcroc-contextual-pair]) > [data-kcroc-section-copy]')].map(copy=>{
      const c=copy.getBoundingClientRect(),p=copy.parentElement.getBoundingClientRect();
      return Math.abs(c.left+c.width/2-p.left-p.width/2);
     });
     const author=root.querySelector('[data-kcroc-editorial-author]');
-    return {alignment:body.contains(root.querySelector('[data-kcroc-editorial-hero]'))?0:Math.abs(hero.left-body.left)+Math.abs(hero.right-body.right),centered,author:author?getComputedStyle(author).backgroundColor:null,overflow:document.documentElement.scrollWidth-innerWidth};
+    return {alignment:bodyElement.contains(heroElement)?0:Math.abs(hero.left-body.left)+Math.abs(hero.right-body.right),centered,author:author?getComputedStyle(author).backgroundColor:null,overflow:document.documentElement.scrollWidth-innerWidth};
    });
    if(layout.error||layout.alignment>4||layout.centered.some(n=>n>4)||layout.overflow>2||layout.author!=='rgb(255, 255, 255)')failures.push({route,width,layout});
    // Exercise real scrolling and the one native disclosure, not only source markup.
@@ -96,6 +99,23 @@ try {
   }
  }
 
+ // Signature standalone layouts: exercise native navigation and geometry on real pages.
+ for(const width of [390,1440]){
+  await page.setViewport({width,height:900,deviceScaleFactor:1});
+  for(const route of ['/blog/laptop-buying-guide-kuwait-2026','/blog/ar/laptop-buying-guide-kuwait-2026','/guides/bios-uefi-recovery-kuwait','/guides/ar/bios-uefi-recovery-kuwait','/guides/laptop-battery-warning-signs','/guides/why-is-my-laptop-so-hot','/blog/ar/how-often-clean-laptop-replace-thermal-paste-kuwait','/blog/laptop-repair-kuwait-2026','/blog/gaming-pc-cooling','/guides/dell-laptop-overheating','/guides/ar/dell-laptop-overheating','/guides/gamebar-presence-writer-fix','/guides/windows-10-end-of-support']){
+   await page.goto(new URL(route,base).href,{waitUntil:'networkidle2',timeout:60000});
+   const result=await page.evaluate(async()=>{
+    const root=document.querySelector('[data-kcroc-signature-editorial]'),toc=root?.querySelector('[data-signature-toc]');if(!root||!toc)return {error:'Missing signature shell or TOC'};
+    const links=[...toc.querySelectorAll('a[href^="#"]')];const target=document.getElementById(links[Math.floor(links.length/2)]?.getAttribute('href')?.slice(1));if(!target)return {error:'Missing target'};
+    target.scrollIntoView({block:'start',behavior:'instant'});await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+    const summary=toc.querySelector('summary');summary.click();await new Promise(r=>requestAnimationFrame(r));const open=toc.open;summary.click();
+    const geometry=await Promise.all([...root.querySelectorAll('[data-signature-visual] img, [data-signature-hero-image] img, img[data-signature-hero-image]')].map(async img=>{img.loading='eager';await img.decode().catch(()=>{});const b=img.getBoundingClientRect(),style=getComputedStyle(img);return {src:img.getAttribute('src'),loaded:img.naturalWidth>0,fit:style.objectFit,ratio:Math.abs((b.width/b.height)/(img.naturalWidth/img.naturalHeight)-1)};}));
+    return {open,closed:!toc.open,position:getComputedStyle(toc).position,top:toc.getBoundingClientRect().top,header:document.querySelector('header[data-premium-chrome="header"]')?.getBoundingClientRect().bottom,overflow:document.documentElement.scrollWidth-innerWidth,geometry};
+   });
+   if(result.error||!result.open||!result.closed||result.position!=='sticky'||Math.abs(result.top-result.header-8)>5||result.overflow>2||result.geometry.some(x=>!x.loaded||x.fit!=='cover'||x.ratio>.04))failures.push({route,width,signature:result});
+   await page.screenshot({path:'premium-visual-evidence/signature-'+route.replace(/^\\//,'').replaceAll('/','-')+'-'+width+'.png'});
+  }
+ }
  for(const width of [390,1440]){
   await page.setViewport({width,height:900,deviceScaleFactor:1});
   for(const route of ['/msi-laptop-repair-kuwait','/ar/brands/msi-laptop-repair-kuwait','/location/kuwait-city','/ar/computer-repair-kuwait-city','/pricing','/ar/pricing']){
